@@ -1,0 +1,29 @@
+@import '@/scss/utils/func';
+@import '@/scss/utils/mixin';
+
+
+
+.container {
+    --padding-x: 16px;
+
+    max-width: getBreakpoint(mobile);
+    height: 100%;
+    margin-inline: auto;
+    padding-inline: var(--padding-x);
+
+    @include breakpoint(tablet) {
+        --padding-x: 40px;
+        max-width: getBreakpoint(tablet);
+    }
+
+    @include breakpoint(desktop) {
+        --padding-x: 40px;
+        max-width: getBreakpoint(desktop);
+    }
+}
+
+.header {
+    background-color: tomato;
+    height: 78px;
+
+}
