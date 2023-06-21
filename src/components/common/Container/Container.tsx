@@ -8,7 +8,7 @@ type Props = {
 };
 
 const Container = ({ children, className }: Props) => {
-  const classes = classNames(styles.container, className);
+  const classes = classNames(className, styles.container);
 
   return <div className={classes}>{children}</div>;
 };

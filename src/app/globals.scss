@@ -14,9 +14,19 @@ body {
   max-width: 100vw;
   height: 100%;
   overflow-x: hidden;
+
+  font-family: 'Raleway';
+  font-weight: 400;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+
+  border: none;
+  background: none;
 }

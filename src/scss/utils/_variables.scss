@@ -85,6 +85,9 @@ $palettes: (
   ),
 );
 
+$black: #1e1e1e;
+$white: #fdfdfd;
+
 $primary: map-get(map-get($palettes, blue), 40);
 $on-primary: map-get(map-get($palettes, blue), 100);
 $primary-variant: map-get(map-get($palettes, blue), 80);
