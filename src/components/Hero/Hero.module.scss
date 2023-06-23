@@ -59,7 +59,7 @@
   }
 }
 
-.container {
+.section .container {
   position: relative;
   z-index: 1;
 
@@ -82,7 +82,7 @@
   }
 }
 
-.title {
+.section .title {
   color: $white;
 
   @include breakpoint(false, tablet) {
@@ -90,7 +90,7 @@
   }
 }
 
-.text {
+.section .text {
   margin-top: 12px;
 
   font-size: 18px;
@@ -103,7 +103,7 @@
   }
 }
 
-.button {
+.section .button {
   margin-top: 48px;
   padding: 17px 0px;
 
