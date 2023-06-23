@@ -7,7 +7,7 @@ type Props = {
   type?: HTMLButtonElement['type'];
   className?: string;
   variant?: 'filled' | 'outline' | 'text';
-  color?: 'primary' | 'secondary' | 'tertiary' | 'quaternary' | 'error';
+  color?: 'primary' | 'secondary' | 'tertiary' | 'quaternary';
   onClick?: MouseEventHandler<HTMLButtonElement> | undefined;
 };
 

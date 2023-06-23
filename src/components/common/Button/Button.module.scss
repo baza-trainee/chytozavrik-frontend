@@ -9,7 +9,7 @@
 
   font-family: 'Comfortaa';
   font-weight: 700;
-  line-height: calc(22 / 20);
+  line-height: inherit;
   text-align: center;
 
   border-radius: 8px;
@@ -24,7 +24,10 @@
   &:active {
   }
 
+  // color scheme
   &--primary {
+    --button-color: #{$primary};
+    --button-text-color: #{$on-primary};
   }
 
   &--secondary {
@@ -32,14 +35,30 @@
     --button-text-color: #{$on-secondary};
   }
 
+  &--tertiary {
+    --button-color: #{$tertiary};
+    --button-text-color: #{$on-tertiary};
+  }
+
+  &--quaternary {
+    --button-color: #{$quaternary};
+    --button-text-color: #{$on-quaternary};
+  }
+
+  // variants
   &--filled {
     color: var(--button-text-color);
     background-color: var(--button-color);
   }
 
   &--outline {
+    color: var(--button-color);
+
+    background: none;
+    border: 2px solid var(--button-color);
   }
 
   &--text {
+    color: var(--button-color);
   }
 }
