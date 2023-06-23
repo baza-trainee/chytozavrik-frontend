@@ -1,56 +1,51 @@
-@import '@/scss/utils/func';
-@import '@/scss/utils/mixin';
-
-
+@import "@/scss/utils/func";
+@import "@/scss/utils/mixin";
 
 .container {
-    --padding-x: 16px;
+  --padding-x: 16px;
 
-    max-width: getBreakpoint(mobile);
-    height: 100%;
-    margin-inline: auto;
-    padding-inline: var(--padding-x);
+  max-width: getBreakpoint(mobile);
+  height: 100%;
+  margin-inline: auto;
+  padding-inline: var(--padding-x);
 
-    @include breakpoint(tablet) {
-        --padding-x: 40px;
-        max-width: getBreakpoint(tablet);
+  @include breakpoint(tablet) {
+    --padding-x: 40px;
+    max-width: getBreakpoint(tablet);
 
-        .buttonContainer {
-                align-items: baseline;
-                padding-top: 24px;
-            }
+    .buttonContainer {
+      align-items: baseline;
+      padding-top: 24px;
     }
+  }
 
-    @include breakpoint(desktop) {
-        --padding-x: 40px;
-        max-width: getBreakpoint(desktop);
-    }
+  @include breakpoint(desktop) {
+    --padding-x: 40px;
+    max-width: getBreakpoint(desktop);
+  }
 }
 
 .header {
-    background-color: tomato;
-    height: 78px;
-
+  background-color: tomato;
+  height: 78px;
 }
 
-.headerContainer{
-    // height: 54px;
-    // padding-top: 24px;
-    display: flex;
-    justify-content: space-between;
-    
+.headerContainer {
+  // height: 54px;
+  // padding-top: 24px;
+  display: flex;
+  justify-content: space-between;
 }
 
-.logo{
-    margin-top: 12px;
-    display: flex;
-        justify-content: center;
-        
-        align-items: center;
+.logo {
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+
+  align-items: center;
 }
 
 .buttonContainer {
-    align-items: baseline;
-    padding-top: 24px;
+  align-items: baseline;
+  padding-top: 24px;
 }
-
