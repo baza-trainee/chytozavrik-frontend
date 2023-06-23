@@ -14,6 +14,11 @@
     @include breakpoint(tablet) {
         --padding-x: 40px;
         max-width: getBreakpoint(tablet);
+
+        .buttonContainer {
+                align-items: baseline;
+                padding-top: 24px;
+            }
     }
 
     @include breakpoint(desktop) {
@@ -27,3 +32,25 @@
     height: 78px;
 
 }
+
+.headerContainer{
+    // height: 54px;
+    // padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.logo{
+    margin-top: 12px;
+    display: flex;
+        justify-content: center;
+        
+        align-items: center;
+}
+
+.buttonContainer {
+    align-items: baseline;
+    padding-top: 24px;
+}
+
