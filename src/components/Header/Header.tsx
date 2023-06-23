@@ -1,41 +1,29 @@
-// import Link from "next/link";
-
-'use client'
-
-import styles from './Header.module.scss'
-import classNames from 'classnames';
-import { ReactNode, useEffect, useState  } from 'react';
+"use client";
+import Link from "next/link";
+import styles from "./Header.module.scss";
+import classNames from "classnames";
 import Image from "next/image";
-import { Button } from '../Button/Button'
+import { Button } from "../Button/Button";
+import Container from "../common/Container/Container";
 
-
-type Props = {
-  children: ReactNode;
-  className?: string;
+const Header = () => {
+  return (
+    <Container className={classNames(styles.headerContainer, styles.header)}>
+      <Image
+        src="/path431.png"
+        width={64}
+        height={54}
+        alt="Logo"
+        className={classNames(styles.logo)}
+      />
+      <div className={classNames(styles.buttonContainer)}>
+        <Link className={classNames(styles.link)} href="#">
+          Про проєкт
+        </Link>
+        <Button children={undefined} />
+      </div>
+    </Container>
+  );
 };
 
-const Header = ({ children, className }: Props) => {
-  const [screenWidth, setScreenWidth] = useState<number>(0);
- useEffect(() => {
-    setScreenWidth(window.innerWidth);
-    const handleResize = () => setScreenWidth(window.innerWidth);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-    const classes = classNames(styles.header,styles.container, className);
-  
-  return (
-      <header className={classes}>
-      <div className={classNames(styles.headerContainer, { [styles.largeScreen]: screenWidth > 768 })}>
-        <Image src="/path431.png" width={64} height={54} alt="Logo" className={classNames(styles.logo)}/>
-        <div className={classNames(styles.buttonContainer)}>
-        {screenWidth > 768 && <a href="#">Про проєкт</a>}
-          <Button />
-          </div>
-      </div> 
-      {children}
-        </header>
-    )
-}
-
-export {Header}
+export { Header };
