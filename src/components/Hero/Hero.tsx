@@ -1,16 +1,16 @@
-import { Container, Title } from 'components/common';
+import { Container, Typography } from 'components/common';
 import styles from './Hero.module.scss';
 
 const Hero = () => {
   return (
     <section className={styles.section}>
       <Container className={styles.container}>
-        <Title variant='h1' className={styles.title}>
+        <Typography component='h1' variant='h1' className={styles.title}>
           Розпочни свою велику книжкову пригоду!
-        </Title>
-        <p className={styles.text}>
+        </Typography>
+        <Typography component='p' variant='body' className={styles.text}>
           Інтерактивна вікторина для маленьких книголюбів, яка зробить процес читання ще цікавішим
-        </p>
+        </Typography>
         <button className={styles.button} type='button'>
           Почати гру
         </button>

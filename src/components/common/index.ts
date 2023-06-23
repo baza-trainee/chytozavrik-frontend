@@ -1,2 +1,2 @@
 export { default as Container } from './Container/Container';
-export { default as Title } from './text/Title';
+export { default as Typography } from './Typography/Typography';

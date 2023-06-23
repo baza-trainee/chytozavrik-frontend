@@ -1,0 +1,19 @@
+// @import 'scss/utils/variables';
+
+%title {
+  font-family: 'Comfortaa';
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.text {
+  &--h1 {
+    @extend %title;
+
+    font-size: 32px;
+  }
+
+  &--body {
+    font-family: inherit;
+  }
+}
