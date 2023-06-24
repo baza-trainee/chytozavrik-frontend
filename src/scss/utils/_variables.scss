@@ -6,7 +6,7 @@ $breakpoints: (
 
 $palettes: (
   blue: (
-    100: #ffffff,
+    100: #fdfdfd,
     90: #dbf5ff,
     80: #c7e1ff,
     70: #b3cdff,
@@ -16,10 +16,10 @@ $palettes: (
     30: #637de6,
     20: #455fc8,
     10: #132d96,
-    0: #000000,
+    0: #1e1e1e,
   ),
   yellow: (
-    100: #ffffff,
+    100: #fdfdfd,
     90: #ffffb9,
     80: #ffff91,
     70: #fff07d,
@@ -29,10 +29,10 @@ $palettes: (
     30: #dea02d,
     20: #b67805,
     10: #8e5000,
-    0: #000000,
+    0: #1e1e1e,
   ),
   green: (
-    100: #ffffff,
+    100: #fdfdfd,
     90: #caffec,
     80: #acffce,
     70: #8effb0,
@@ -42,10 +42,10 @@ $palettes: (
     30: #3eb560,
     20: #209742,
     10: #006510,
-    0: #000000,
+    0: #1e1e1e,
   ),
   rose: (
-    100: #ffffff,
+    100: #fdfdfd,
     90: #ffdada,
     80: #ffbcbc,
     70: #ff9e9e,
@@ -55,10 +55,10 @@ $palettes: (
     30: #d64444,
     20: #ae1c1c,
     10: #860000,
-    0: #000000,
+    0: #1e1e1e,
   ),
   error: (
-    100: #ffffff,
+    100: #fdfdfd,
     90: #ffb4b4,
     80: #ff9696,
     70: #ff7878,
@@ -68,10 +68,10 @@ $palettes: (
     30: #e00000,
     20: #b80000,
     10: #900000,
-    0: #000000,
+    0: #1e1e1e,
   ),
   neutral: (
-    100: #ffffff,
+    100: #fdfdfd,
     90: #ebebeb,
     80: #d7d7d7,
     70: #c3c3c3,
@@ -81,9 +81,12 @@ $palettes: (
     30: #727272,
     20: #5e5e5e,
     10: #4a4a4a,
-    0: #000000,
+    0: #1e1e1e,
   ),
 );
+
+$black: #1e1e1e;
+$white: #fdfdfd;
 
 $primary: map-get(map-get($palettes, blue), 40);
 $on-primary: map-get(map-get($palettes, blue), 100);

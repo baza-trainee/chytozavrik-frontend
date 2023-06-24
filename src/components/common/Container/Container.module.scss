@@ -6,8 +6,9 @@
 
   max-width: getBreakpoint(mobile);
   height: 100%;
-  margin-inline: auto;
-  padding-inline: var(--padding-x);
+  margin: 0 auto;
+  padding-left: var(--padding-x);
+  padding-right: var(--padding-x);
 
   @include breakpoint(tablet) {
     --padding-x: 40px;
