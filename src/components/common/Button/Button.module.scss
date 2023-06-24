@@ -1,0 +1,64 @@
+@import 'scss/utils/variables';
+@import 'scss/utils/mixin';
+
+.button {
+  --button-color: transparent;
+  --button-text-color: $black;
+
+  padding: 20px 36px;
+
+  font-family: 'Comfortaa';
+  font-weight: 700;
+  line-height: inherit;
+  text-align: center;
+
+  border-radius: 8px;
+
+  @include setTransition(background-color, color, border-color, box-shadow);
+
+  &:hover,
+  &:focus {
+    box-shadow: 0px 0px 5px 0px rgba(9, 35, 140, 0.3), 0px 0px 2px 0px rgba(9, 35, 140, 0.3);
+  }
+
+  &:active {
+  }
+
+  // color scheme
+  &--primary {
+    --button-color: #{$primary};
+    --button-text-color: #{$on-primary};
+  }
+
+  &--secondary {
+    --button-color: #{$secondary};
+    --button-text-color: #{$on-secondary};
+  }
+
+  &--tertiary {
+    --button-color: #{$tertiary};
+    --button-text-color: #{$on-tertiary};
+  }
+
+  &--quaternary {
+    --button-color: #{$quaternary};
+    --button-text-color: #{$on-quaternary};
+  }
+
+  // variants
+  &--filled {
+    color: var(--button-text-color);
+    background-color: var(--button-color);
+  }
+
+  &--outline {
+    color: var(--button-color);
+
+    background: none;
+    border: 2px solid var(--button-color);
+  }
+
+  &--text {
+    color: var(--button-color);
+  }
+}
