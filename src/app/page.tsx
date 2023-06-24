@@ -1,3 +1,6 @@
+import AdditionalInfo from "@/components/AdditionalInfo/AdditionalInfo";
 export default function Home() {
-  return <main></main>;
+  return <main>
+    <AdditionalInfo />
+  </main>;
 }
