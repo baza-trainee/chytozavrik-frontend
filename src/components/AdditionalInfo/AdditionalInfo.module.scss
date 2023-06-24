@@ -2,8 +2,11 @@
 @import '@/scss/utils/variables';
 
 .infoContainer {
-    max-width: getBreakpoint(mobile);
+    min-width: getBreakpoint(mobile);
     margin: 0 auto;
+    background-image: url('/images/additional-background.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
 }
 
 .feedbackContainer {
@@ -17,7 +20,8 @@
 }
 
 .feedbackTitle {
-    color: #000;
+    margin-top: 48px;
+    color: $black;
     text-align: center;
     font-size: 24px;
     font-family: Comfortaa;
@@ -27,7 +31,7 @@
 }
 
 .feedbackText {
-    color: #1E1E1E;
+    color: $black;
     font-size: 16px;
     font-family: Raleway;
     line-height: 1.2;
@@ -40,17 +44,17 @@
 
 .bazaContainer {
     min-height: 260px;
-    width: 328px;
+    min-width: 328px;
     padding: 24px;
     border-radius: 8px;
-    border: 8px solid var(--white, #FDFDFD);
+    border: 8px solid $white;
     background: $primary;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.31);
 }
 
 .bazaTitle {
     margin-bottom: 24px;
-    color: var(--white, #FDFDFD);
+    color: $white;
     font-size: 24px;
     font-family: Comfortaa;
     font-weight: 700;
@@ -59,7 +63,7 @@
 }
 
 .bazaText {
-    color: var(--white, #FDFDFD);
+    color: $white;
     font-size: 16px;
     font-family: Raleway;
     line-height: 1.2;
