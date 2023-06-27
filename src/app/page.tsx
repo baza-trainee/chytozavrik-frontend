@@ -11,8 +11,8 @@ export default function Home() {
         <Header />
         <Hero />
         <CtaBlock />
-        <AdditionalInfo />
         <Advantages />
+        <AdditionalInfo />
       </main>
     </>
   );

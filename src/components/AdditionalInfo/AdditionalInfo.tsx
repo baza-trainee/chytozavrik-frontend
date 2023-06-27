@@ -29,7 +29,7 @@ export default function AdditionalInfo() {
           </div>
           <div className={styles.bazaContainer}> 
               <h2 className={styles.bazaTitle}>Про Baza Trainee</h2>
-          <p className={styles.bazaText}>Ми цінуємо ваш зворотній зв'язок! Не соромтеся зв'язатися з нами за допомогою наведених контактів. Ми готові відповісти на ваші питання, вислухати ваші пропозиції та разом з вами побудувати захопливий світ читання для дітей!</p>
+          <p className={styles.bazaText}>Baza Trainee Ukraine - це волонтерський проєкт, який сприяє розвитку ІТ-спільноти України через взаємодію з громадскістю і бдагодійність. Дізнайтесь більше про нас на нашому сайті https:\\baza-trainee.tech</p>
           </div>
     </div>
   )

@@ -1,26 +1,36 @@
 @import '@/scss/utils/func';
 @import '@/scss/utils/variables';
+@import 'scss/utils/mixin';
 
 .infoContainer {
     min-width: getBreakpoint(mobile);
     margin: 0 auto;
+    padding: 48px 16px 44px;
     background-image: url('/images/additional-background.jpg');
     background-repeat: no-repeat;
     background-size: 100%;
+    @include breakpoint(tablet) {
+        min-width: getBreakpoint(tablet);
+        display: flex;
+        gap: 25px;
+        background-image: url('/images/additional-bg-tb.jpg');
+        padding: 73px 40px 81px;
+    }
 }
 
 .feedbackContainer {
-    
-    margin-top: 48px;
     margin-bottom: 24px;
-    padding: 0 16px;
     display: flex;
     flex-direction: column;
     gap: 24px;
+    @include breakpoint(tablet) {
+        width: calc(100% / 2);
+        margin: 0;
+        padding: 24px 0;
+    }
 }
 
 .feedbackTitle {
-    margin-top: 48px;
     color: $black;
     text-align: center;
     font-size: 24px;
@@ -28,6 +38,10 @@
     font-weight: 700;
     line-height: 1.2;
     letter-spacing: -0.72px;
+    @include breakpoint(tablet) {
+        margin-top: 0;
+        text-align: start;
+        }
 }
 
 .feedbackText {
@@ -50,6 +64,10 @@
     border: 8px solid $white;
     background: $primary;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.31);
+    @include breakpoint(tablet) {
+        width: calc(100% / 2);
+        height: 251px;
+    }
 }
 
 .bazaTitle {
