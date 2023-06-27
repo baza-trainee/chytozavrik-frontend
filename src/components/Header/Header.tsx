@@ -1,10 +1,11 @@
-"use client";
-import Link from "next/link";
-import styles from "./Header.module.scss";
-import classNames from "classnames";
-import Image from "next/image";
-import { Button } from "../Button/Button";
-import Container from "../common/Container/Container";
+'use client';
+import Link from 'next/link';
+import styles from './Header.module.scss';
+import classNames from 'classnames';
+import Image from 'next/image';
+
+import Container from '../common/Container/Container';
+import { Button } from '../common';
 
 const Header = () => {
   return (
@@ -20,10 +21,12 @@ const Header = () => {
         <Link className={classNames(styles.link)} href="#">
           Про проєкт
         </Link>
-        <Button children={undefined} />
+        <Button className={classNames(styles.button)} variant="outline">
+          Вхід
+        </Button>
       </div>
     </Container>
   );
 };
 
-export { Header };
+export default Header;
