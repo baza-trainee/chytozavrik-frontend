@@ -1,3 +1,4 @@
+import AdditionalInfo from '@/components/AdditionalInfo/AdditionalInfo';
 import CtaBlock from '@/components/CtaBlock/CtaBlock';
 import Hero from 'components/Hero';
 import  Header  from "../components/Header/Header";
@@ -10,6 +11,7 @@ export default function Home() {
         <Header />
         <Hero />
         <CtaBlock />
+        <AdditionalInfo />
         <Advantages />
       </main>
     </>

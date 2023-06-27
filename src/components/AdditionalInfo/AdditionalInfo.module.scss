@@ -1,0 +1,70 @@
+@import '@/scss/utils/func';
+@import '@/scss/utils/variables';
+
+.infoContainer {
+    min-width: getBreakpoint(mobile);
+    margin: 0 auto;
+    background-image: url('/images/additional-background.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.feedbackContainer {
+    
+    margin-top: 48px;
+    margin-bottom: 24px;
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.feedbackTitle {
+    margin-top: 48px;
+    color: $black;
+    text-align: center;
+    font-size: 24px;
+    font-family: Comfortaa;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.72px;
+}
+
+.feedbackText {
+    color: $black;
+    font-size: 16px;
+    font-family: Raleway;
+    line-height: 1.2;
+}
+
+.socialWrapper {
+ display: flex;
+ gap: 24px;
+}
+
+.bazaContainer {
+    min-height: 260px;
+    min-width: 328px;
+    padding: 24px;
+    border-radius: 8px;
+    border: 8px solid $white;
+    background: $primary;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.31);
+}
+
+.bazaTitle {
+    margin-bottom: 24px;
+    color: $white;
+    font-size: 24px;
+    font-family: Comfortaa;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.72px;
+}
+
+.bazaText {
+    color: $white;
+    font-size: 16px;
+    font-family: Raleway;
+    line-height: 1.2;
+}
