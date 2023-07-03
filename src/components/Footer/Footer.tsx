@@ -56,14 +56,14 @@ const Footer = () => {
                       </Typography>
                       
 
-          <Typography className={classNames(styles.informationText)} component="p1" variant="p1">  
+          <Typography className={classNames(styles.informationText)} component="p" variant="p">  
         {/* <li className={classNames(styles.text1)}> */}
                   <Link href="tel:+380675681788" className={classNames(styles.listIcon)}>
                       <Image alt="Logo" src="/call.svg" width={18}
               height={18} className={classNames(styles.image)}></Image>+380 67 568 1788</Link>
                           {/* </li> */}
                           </Typography>
-        <Typography className={classNames(styles.informationText)} component="p1" variant="p">
+        <Typography className={classNames(styles.informationText)} component="p" variant="p">
                   <Link href="mailto:1111111@gmail.com" className={classNames(styles.listIcon)}>
                       <Image alt="Logo" src="/sms.svg" width={18}
               height={18} className={classNames(styles.image)}></Image>1111111@gmail.com</Link>
@@ -78,12 +78,12 @@ const Footer = () => {
               </p>
 
               <ul className={classNames(styles.socialLink, styles.list)}>
-                  <li className={classNames(styles.text1)}>
+                  <li >
                   <Link href="#" className={classNames(styles.listIcon)}>
                       <Image alt="Logo" src="/facebook.svg" width={32}
               height={32} className={classNames(styles.image)}></Image></Link>
         </li>
-                  <li className={classNames(styles.text1)}>
+                  <li >
                   <Link href="#" className={classNames(styles.listIcon)}>
                       <Image alt="Logo" src="/insta.svg" width={32}
               height={32} className={classNames(styles.image)}></Image></Link>
