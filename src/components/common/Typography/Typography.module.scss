@@ -6,10 +6,7 @@
   letter-spacing: -0.03em;
 }
 
-%title-h3 {
-  font-family: Raleway;
-  line-height: 120%;
-}
+
 
 .text {
   &--h1 {
@@ -27,14 +24,46 @@
   }
 
   &--h3 {
-    @extend %title;
+    
     color: #fdfdfd;
     font-size: 14px;
     letter-spacing: -0.72px;
     text-align: center;
+    font-style: normal;
+      font-weight: 400;
+      font-family: 'Raleway';
+        line-height: 120%;
   }
+
+     &--p {
+  
+      color:#FFF;
+        font-size: 14px;
+        font-family: 'Montserrat Alternates';
+        font-style: normal;
+        font-weight: 400;
+        line-height: 120%;
+        
+     }
+
+            &--p1 {
+      
+              color: #FFF;
+              font-size: 14px;
+              font-family: 'Raleway';
+              font-style: normal;
+              font-weight: 400;
+              line-height: 120%;
+      
+            }
+
+
 
   &--body {
     font-family: inherit;
   }
 }
+
+
+
+

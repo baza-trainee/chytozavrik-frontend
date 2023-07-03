@@ -9,14 +9,27 @@ import Typography from '../common/Typography/Typography';
 
 const Footer = () => {
   return (
-    <Container className={classNames(styles.footerContainer, styles.footer)}>
+      
+      <Container className={classNames(styles.footer)}>
+          <Container className={classNames(styles.footer1)}>
+            
+              <div className={classNames(styles.footerContainer)}>
+                  <div className={classNames(styles.logoContainer)}>
       <Image
         src="/path431-3.png"
-        width={95}
-        height={80}
+        width={59}
+        height={50}
         alt="Logo"
         className={classNames(styles.logo)}
-      />
+                  />
+                  <Image
+        src="/path418.svg"
+        width={120}
+        height={17}
+        alt="Logo"
+        className={classNames(styles.logo)}
+                      />
+                      </div>
 
       <ul className={classNames(styles.list, styles.informationText)}>
         <Typography className={classNames(styles.informationText)} component="h3" variant="h3">
@@ -34,22 +47,51 @@ const Footer = () => {
       </ul>
 
           <ul className={classNames(styles.list, styles.contacts)}>
-              <li className={classNames(styles.text)}>
+                      {/* <li className={classNames(styles.text)}> */}
+                      <Typography className={classNames(styles.informationText)} component="p" variant="p">
                   <Link href="tel:+380636286630" className={classNames(styles.listIcon)}>
-                  <Image alt="Logo" src="/call.svg" width={24}
-              height={24} className={classNames(styles.image)}></Image>+380 63 628 6630</Link>
-              </li>   
-            
-        <li className={classNames(styles.text1)}>
-          <Link href="tel:+380675681788">+380 67 568 1788</Link>
-        </li>
-        <li >
+                  <Image alt="Logo" src="/call.svg" width={18}
+              height={18} className={classNames(styles.image)}></Image>+380 63 628 6630</Link>
+                          {/* </li>    */}
+                      </Typography>
+                      
+
+          <Typography className={classNames(styles.informationText)} component="p1" variant="p1">  
+        {/* <li className={classNames(styles.text1)}> */}
+                  <Link href="tel:+380675681788" className={classNames(styles.listIcon)}>
+                      <Image alt="Logo" src="/call.svg" width={18}
+              height={18} className={classNames(styles.image)}></Image>+380 67 568 1788</Link>
+                          {/* </li> */}
+                          </Typography>
+        <Typography className={classNames(styles.informationText)} component="p1" variant="p">
                   <Link href="mailto:1111111@gmail.com" className={classNames(styles.listIcon)}>
-                      <Image alt="Logo" src="/sms.svg" width={24}
-              height={24} className={classNames(styles.text1)}></Image>1111111@gmail.com</Link>
+                      <Image alt="Logo" src="/sms.svg" width={18}
+              height={18} className={classNames(styles.image)}></Image>1111111@gmail.com</Link>
+        </Typography>
+          </ul>
+          
+          
+              </div>
+              <div className={classNames(styles.footerContainer1)}>
+              <p className={classNames(styles.footerText)}>
+                Розробка Baza Trainee Ukraine 2023, Усі права захищені  
+              </p>
+
+              <ul className={classNames(styles.socialLink, styles.list)}>
+                  <li className={classNames(styles.text1)}>
+                  <Link href="#" className={classNames(styles.listIcon)}>
+                      <Image alt="Logo" src="/facebook.svg" width={32}
+              height={32} className={classNames(styles.image)}></Image></Link>
         </li>
-      </ul>
-    </Container>
+                  <li className={classNames(styles.text1)}>
+                  <Link href="#" className={classNames(styles.listIcon)}>
+                      <Image alt="Logo" src="/insta.svg" width={32}
+              height={32} className={classNames(styles.image)}></Image></Link>
+        </li>
+              </ul>
+          </div>
+          </Container>
+   </Container>
   );
 };
 
