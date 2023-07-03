@@ -16,56 +16,56 @@ const Footer = () => {
               <div className={classNames(styles.footerContainer)}>
                   <div className={classNames(styles.logoContainer)}>
       <Image
-        src="/path431-3.png"
+        src="/logo-footer.svg"
         width={59}
         height={50}
         alt="Logo"
         className={classNames(styles.logo)}
                   />
                   <Image
-        src="/path418.svg"
+        src="/chytozavryk-footer.svg"
         width={120}
-        height={17}
+        height={16}
         alt="Logo"
         className={classNames(styles.logo)}
                       />
                       </div>
 
-      <ul className={classNames(styles.list, styles.informationText)}>
+      <ul className={classNames(styles.list, styles.informationText,styles.footerList)}>
         <Typography className={classNames(styles.informationText)} component="h3" variant="h3">
           Про проєкт
         </Typography>
         <Typography className={classNames(styles.informationText)} component="h3" variant="h3">
           До вігваму
         </Typography>
-        <Typography className={classNames(styles.informationText)} component="h3" variant="h3">
+        <Typography className={classNames(styles.informationText, styles.decoration)} component="h3" variant="h3">
           <Link href="#">Політика конфіденційності</Link>
         </Typography>
-        <Typography className={classNames(styles.informationText)} component="h3" variant="h3">
+        <Typography className={classNames(styles.informationText, styles.decoration)} component="h3" variant="h3">
           <Link href="#">Правила поведінки на сайті</Link>
         </Typography>
       </ul>
 
           <ul className={classNames(styles.list, styles.contacts)}>
                       {/* <li className={classNames(styles.text)}> */}
-                      <Typography className={classNames(styles.informationText)} component="p" variant="p">
+                      <Typography className={classNames(styles.informationContact)} component="p" variant="p">
                   <Link href="tel:+380636286630" className={classNames(styles.listIcon)}>
-                  <Image alt="Logo" src="/call.svg" width={18}
+                  <Image alt="Logo" src="/phone.svg" width={18}
               height={18} className={classNames(styles.image)}></Image>+380 63 628 6630</Link>
                           {/* </li>    */}
                       </Typography>
                       
 
-          <Typography className={classNames(styles.informationText)} component="p" variant="p">  
+          <Typography className={classNames(styles.informationContactSecond)} component="p" variant="p">  
         {/* <li className={classNames(styles.text1)}> */}
                   <Link href="tel:+380675681788" className={classNames(styles.listIcon)}>
-                      <Image alt="Logo" src="/call.svg" width={18}
+                      <Image alt="Logo" src="/phone.svg" width={18}
               height={18} className={classNames(styles.image)}></Image>+380 67 568 1788</Link>
                           {/* </li> */}
                           </Typography>
-        <Typography className={classNames(styles.informationText)} component="p" variant="p">
+        <Typography className={classNames(styles.informationText)} component="h3" variant="h3">
                   <Link href="mailto:1111111@gmail.com" className={classNames(styles.listIcon)}>
-                      <Image alt="Logo" src="/sms.svg" width={18}
+                      <Image alt="Logo" src="/mail.svg" width={18}
               height={18} className={classNames(styles.image)}></Image>1111111@gmail.com</Link>
         </Typography>
           </ul>
@@ -84,7 +84,7 @@ const Footer = () => {
               height={32} className={classNames(styles.image)}></Image></Link>
         </li>
                   <li >
-                  <Link href="#" className={classNames(styles.listIcon)}>
+                  <Link href="#" className={classNames(styles.listIcon, styles.iconInsta)}>
                       <Image alt="Logo" src="/insta.svg" width={32}
               height={32} className={classNames(styles.image)}></Image></Link>
         </li>

@@ -37,9 +37,8 @@
 .footer {
   background: var(--ref-blue-blue-20, #455fc8);
   height: 78px;
-//   display: flex;
-//   flex-direction: column;
-
+  //   display: flex;
+  //   flex-direction: column;
 
   @include breakpoint(tablet) {
     height: 264px;
@@ -54,9 +53,9 @@
   // height: 54px;
   // padding-top: 24px;
   display: flex;
-  justify-content: space-between;
-  align-content: space-between;
---padding-x: 0px;
+  // justify-content: space-between;
+  // align-content: space-between;
+  --padding-x: 0px;
 }
 
 // .logo {
@@ -67,9 +66,6 @@
 
 //   align-items: center;
 // }
-
-
-
 
 .link {
   display: none;
@@ -96,10 +92,14 @@
 }
 
 .informationText {
+  text-align: start;
   :not(:last-child) {
     margin-bottom: 24px;
-    text-align: start;
   }
+}
+
+.decoration{
+  text-decoration: underline;
 }
 
 .listIcon {
@@ -107,62 +107,73 @@
   align-items: flex-start;
 }
 
+.iconInsta {
+  margin-left: 24px;
+}
+
 .text {
   margin-bottom: 14px;
-  
 }
 
 .image {
   margin-right: 8px;
+  margin-bottom: 8px;
+}
+.logo {
   margin-bottom: 15px;
 }
-.logo{
-    margin-bottom: 15px;
-}
 
-.logoContainer{
-display: flex;
-flex-direction: column;
-align-items: center;
+.logoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .contacts {
-  text-align: end;
+  margin-left: 24px;
 }
 
-.text1{
-    margin-bottom: 19px;
-    
+.informationContact {
+  margin-bottom: 8px;
 }
 
-.footer1{
-    display:block;
-    
-    
+.informationContactSecond {
+  margin-bottom: 17px;
 }
 
-.footerContainer1{
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    
+.text1 {
+  margin-bottom: 19px;
 }
 
-.socialLink{
-    display: flex;
-    justify-content: end;
+.footer1 {
+  display: block;
 }
 
-.footerText{
-    color: #FFF;
-        
-        /* Caption */
-        font-size: 12px;
-        font-family: Raleway;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 120%;
+.footerContainer1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
 
-        padding-top: 48px;
-        
+.socialLink {
+  display: flex;
+  justify-content: end;
+}
+
+.footerText {
+  color: #fff;
+
+  /* Caption */
+  font-size: 12px;
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%;
+
+  padding-top: 48px;
+}
+
+.footerList {
+  margin-left: 117px;
+  width: 217px;
 }
