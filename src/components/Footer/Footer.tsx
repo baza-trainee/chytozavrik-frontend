@@ -29,7 +29,8 @@ const Footer = () => {
         alt="Logo"
         className={classNames(styles.logo)}
                       />
-                      </div>
+          </div>
+          
 
       <ul className={classNames(styles.list, styles.informationText,styles.footerList)}>
         <Typography className={classNames(styles.informationText)} component="h3" variant="h3">

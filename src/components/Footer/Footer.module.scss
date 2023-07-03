@@ -36,10 +36,11 @@
 
 .footer {
   background: var(--ref-blue-blue-20, #455fc8);
-  height: 78px;
+  height: 304px;
   //   display: flex;
   //   flex-direction: column;
-
+padding-top: 24px;
+  padding-bottom: 24px;
   @include breakpoint(tablet) {
     height: 264px;
     min-width: 100%;
@@ -50,12 +51,14 @@
 }
 
 .footerContainer {
-  // height: 54px;
-  // padding-top: 24px;
-  display: flex;
-  // justify-content: space-between;
-  // align-content: space-between;
-  --padding-x: 0px;
+  @include breakpoint(tablet) {
+    // height: 54px;
+    // padding-top: 24px;
+    display: flex;
+    // justify-content: space-between;
+    // align-content: space-between;
+    --padding-x: 0px;
+  }
 }
 
 // .logo {
@@ -98,7 +101,7 @@
   }
 }
 
-.decoration{
+.decoration {
   text-decoration: underline;
 }
 
@@ -125,12 +128,18 @@
 
 .logoContainer {
   display: flex;
-  flex-direction: column;
   align-items: center;
+
+  @include breakpoint(tablet) {
+    flex-direction: column;
+  }
 }
 
 .contacts {
+
+  @include breakpoint(tablet){
   margin-left: 24px;
+  }
 }
 
 .informationContact {
@@ -145,9 +154,9 @@
   margin-bottom: 19px;
 }
 
-.footer1 {
-  display: block;
-}
+// .footer1 {
+//   display: block;
+// }
 
 .footerContainer1 {
   display: flex;
@@ -174,6 +183,13 @@
 }
 
 .footerList {
-  margin-left: 117px;
+display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  @include breakpoint(tablet){
+margin-left: 117px;
   width: 217px;
+  }
+ 
+ 
 }
