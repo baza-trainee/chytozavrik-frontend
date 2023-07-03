@@ -4,6 +4,10 @@
 .button {
   --button-color: transparent;
   --button-text-color: $black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
 
   padding: 20px 36px;
 
@@ -61,4 +65,11 @@
   &--text {
     color: var(--button-color);
   }
+}
+
+.button-icon {
+  display: block;
+
+  width: 24px;
+  height: 24px;
 }

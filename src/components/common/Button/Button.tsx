@@ -8,6 +8,8 @@ type Props = {
   className?: string;
   variant?: 'filled' | 'outline' | 'text';
   color?: 'primary' | 'secondary' | 'tertiary' | 'quaternary';
+  startIcon?: ReactNode;
+  endIcon?: ReactNode;
   onClick?: MouseEventHandler<HTMLButtonElement> | undefined;
 };
 
@@ -18,6 +20,8 @@ const Button = ({
   className,
   variant = 'filled',
   color = 'primary',
+  startIcon = null,
+  endIcon = null,
 }: Props) => {
   return (
     <button
@@ -30,7 +34,9 @@ const Button = ({
         styles[`button--${color}`]
       )}
     >
+      {startIcon && <span className={styles['button-icon']}>{startIcon}</span>}
       {children}
+      {endIcon && <span className={styles['button-icon']}>{endIcon}</span>}
     </button>
   );
 };
