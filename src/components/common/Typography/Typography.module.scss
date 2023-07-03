@@ -1,7 +1,7 @@
 @import 'scss/utils/mixin';
 
 %title {
-  font-family: 'Montserrat Alternates';
+  font-family: var(--montserrat-alternates-font);
   font-weight: 600;
   letter-spacing: -0.03em;
 }
