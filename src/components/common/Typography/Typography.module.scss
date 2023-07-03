@@ -1,8 +1,8 @@
-// @import 'scss/utils/variables';
+@import 'scss/utils/mixin';
 
 %title {
-  font-family: 'Comfortaa';
-  font-weight: 700;
+  font-family: 'Montserrat Alternates';
+  font-weight: 600;
   letter-spacing: -0.03em;
 }
 
@@ -11,6 +11,10 @@
     @extend %title;
 
     font-size: 32px;
+
+    @include breakpoint(desktop) {
+      font-size: 52px;
+    }
   }
 
   &--h2 {

@@ -7,6 +7,11 @@
 
   background-color: $primary;
 
+  background-image: url('/images/hero-background-wave.svg');
+  background-repeat: repeat-x;
+  background-position: center top;
+  background-size: getBreakpoint(mobile) auto;
+
   &::before,
   &::after {
     content: '';
@@ -25,64 +30,54 @@
   }
 
   &::after {
-    //Variant 1
-    // background-image: url('~/public/images/hero-background-image.svg');
-    // background-repeat: no-repeat;
-    // background-position: right calc(100% - 17px);
-    // background-size: auto 333px;
-
-    // Variant 3
-    background-image: url('/images/hero-background-image-2.svg');
+    background-image: url('/images/hero-background-image.svg');
     background-repeat: no-repeat;
     background-position: calc(50% + 64px) calc(100% - 17px);
-    background-size: auto 333px;
+    background-size: auto 342px;
+    // background-size: auto 333px;
   }
 
   @include breakpoint(tablet) {
-    background-image: url('/images/hero-background-wave.svg');
-    background-repeat: repeat-x;
-    background-position: center top;
+    background-size: getBreakpoint(tablet) auto;
 
     &::before {
       height: 48px;
     }
 
     &::after {
-      //Variant 1
-      // background-position: right bottom;
-      // background-size: auto 432px;
-
-      //Variant 3
       background-position: calc(50% + 218px) bottom;
       background-size: auto 432px;
     }
   }
+
+  @include breakpoint(desktop) {
+    background-size: getBreakpoint(desktop) auto;
+
+    &::before {
+      //height: 48px;
+    }
+
+    &::after {
+      // background-position: calc(50% + 218px) bottom;
+      // background-size: auto 432px;
+    }
+  }
 }
 
-.section .container {
+.container {
   position: relative;
   z-index: 1;
 
   padding-top: 104px;
   padding-bottom: 339px;
 
-  // Variant 2
-  // background-image: url('~/public/images/hero-background-image.svg');
-  // background-repeat: no-repeat;
-  // background-position: right calc(100% - 17px);
-  // background-size: auto 333px;
-
   @include breakpoint(tablet) {
     padding-right: 277px;
     padding-bottom: 156px;
-
-    // Variant 2
-    // background-position: right bottom;
-    // background-size: auto 432px;
   }
 }
 
-.section .title {
+.title {
   color: $white;
 
   @include breakpoint(false, tablet) {
@@ -90,7 +85,7 @@
   }
 }
 
-.section .text {
+.text {
   margin-top: 12px;
 
   font-size: 18px;
@@ -103,7 +98,7 @@
   }
 }
 
-.section .button {
+.button {
   margin-top: 48px;
   padding: 17px 0px;
 

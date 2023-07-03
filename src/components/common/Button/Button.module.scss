@@ -7,8 +7,8 @@
 
   padding: 20px 36px;
 
-  font-family: 'Comfortaa';
-  font-weight: 700;
+  font-family: 'Montserrat Alternates';
+  font-weight: 600;
   line-height: inherit;
   text-align: center;
 
@@ -43,7 +43,6 @@
   &--quaternary {
     --button-color: #{$quaternary};
     --button-text-color: #{$on-quaternary};
-    
   }
 
   // variants
