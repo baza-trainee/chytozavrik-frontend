@@ -9,14 +9,23 @@ import { Button } from '../common';
 
 const Header = () => {
   return (
-    <Container className={classNames(styles.headerContainer, styles.header)}>
+    <Container className={classNames(styles.header)}>
+      <div className={classNames(styles.headerContainer)}>
       <Image
-        src="/path431.png"
+        src="/header-logo.svg"
         width={64}
         height={54}
         alt="Logo"
         className={classNames(styles.logo)}
       />
+      <Image
+        src="/chytozavryk.svg"
+        width={105}
+        height={14}
+        alt="Logo"
+        className={classNames(styles.logoText)}
+        />
+        </div>
       <div className={classNames(styles.buttonContainer)}>
         <Link className={classNames(styles.link)} href="#">
           Про проєкт
