@@ -85,15 +85,19 @@ $palettes: (
   ),
 );
 
+@function getColor($color, $tone) {
+  @return map-get(map-get($palettes, $color), $tone);
+}
+
 $black: #1e1e1e;
 $white: #fdfdfd;
 
-$primary: map-get(map-get($palettes, blue), 40);
+$primary: getColor(blue, 40); //map-get(map-get($palettes, blue), 40);
 $on-primary: map-get(map-get($palettes, blue), 100);
 $primary-variant: map-get(map-get($palettes, blue), 80);
 $on-primary-variant: map-get(map-get($palettes, blue), 20);
 
-$secondary: map-get(map-get($palettes, yellow), 40);
+$secondary: getColor(yellow, 40); //map-get(map-get($palettes, yellow), 40);
 $on-secondary: map-get(map-get($palettes, yellow), 0);
 $secondary-variant: map-get(map-get($palettes, yellow), 90);
 $on-secondary-variant: map-get(map-get($palettes, yellow), 100);

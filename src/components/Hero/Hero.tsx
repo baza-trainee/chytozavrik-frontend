@@ -12,12 +12,7 @@ const Hero = () => {
         <Typography component="p" variant="body" className={styles.text}>
           Інтерактивна вікторина для маленьких книголюбів, яка зробить процес читання ще цікавішим
         </Typography>
-        <Button
-          color="secondary"
-          className={styles.button}
-          endIcon={<ArrowRight size="24" />}
-          startIcon={true}
-        >
+        <Button color="secondary" className={styles.button} endIcon={<ArrowRight size="24" />}>
           Почати гру
         </Button>
       </Container>

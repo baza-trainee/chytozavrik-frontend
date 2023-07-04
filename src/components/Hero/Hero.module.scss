@@ -118,6 +118,7 @@
   @include breakpoint(tablet) {
     margin-top: 32px;
     padding: 16px 28px;
+    padding-right: 24px;
 
     min-width: 248px;
   }
@@ -125,6 +126,7 @@
   @include breakpoint(desktop) {
     margin-top: 80px;
     padding: 20px 36px;
+    padding-right: 28px;
 
     min-width: 248px;
   }
