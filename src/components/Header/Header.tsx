@@ -9,6 +9,7 @@ import { Button } from '../common';
 
 const Header = () => {
   return (
+    <header>
     <Container className={classNames(styles.header)}>
       <div className={classNames(styles.headerContainer)}>
       <Image
@@ -34,7 +35,8 @@ const Header = () => {
           Вхід
         </Button>
       </div>
-    </Container>
+      </Container>
+      </header>
   );
 };
 
