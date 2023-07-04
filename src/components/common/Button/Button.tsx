@@ -1,14 +1,18 @@
-import { MouseEventHandler, ReactNode } from 'react';
+'use client';
+
+import { ButtonHTMLAttributes, ReactNode } from 'react';
 import styles from './Button.module.scss';
 import classNames from 'classnames';
 
-type Props = {
+type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
   children: ReactNode;
   type?: HTMLButtonElement['type'];
   className?: string;
   variant?: 'filled' | 'outline' | 'text';
   color?: 'primary' | 'secondary' | 'tertiary' | 'quaternary';
-  onClick?: MouseEventHandler<HTMLButtonElement> | undefined;
+  startIcon?: ReactNode;
+  endIcon?: ReactNode;
+  onClick?: () => void;
 };
 
 const Button = ({
@@ -18,6 +22,9 @@ const Button = ({
   className,
   variant = 'filled',
   color = 'primary',
+  startIcon = null,
+  endIcon = null,
+  ...props
 }: Props) => {
   return (
     <button
@@ -29,8 +36,11 @@ const Button = ({
         styles[`button--${variant}`],
         styles[`button--${color}`]
       )}
+      {...props}
     >
+      {startIcon && <span className={styles['button-icon']}>{startIcon}</span>}
       {children}
+      {endIcon && <span className={styles['button-icon']}>{endIcon}</span>}
     </button>
   );
 };

@@ -16,7 +16,7 @@
   }
 
   @include breakpoint(desktop) {
-    --padding-x: 40px;
+    --padding-x: 80px;
     max-width: getBreakpoint(desktop);
   }
 }
