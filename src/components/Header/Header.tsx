@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import Image from 'next/image';
 
 import Container from '../common/Container/Container';
-import { Button } from '../common';
+import { Button, Typography } from '../common';
 
 const Header = () => {
   return (
@@ -27,10 +27,12 @@ const Header = () => {
         className={classNames(styles.logoText)}
         />
         </div>
-      <div className={classNames(styles.buttonContainer)}>
+        <div className={classNames(styles.buttonContainer)}>
+          <Typography className={styles.title} component="h2" variant="h2">
         <Link className={classNames(styles.link)} href="#">
           Про проєкт
-        </Link>
+            </Link>
+            </Typography>
         <Button className={classNames(styles.button)} variant="outline">
           Вхід
         </Button>
