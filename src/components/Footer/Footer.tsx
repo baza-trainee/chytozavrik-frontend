@@ -17,7 +17,7 @@ const Footer = () => {
                   <div className={classNames(styles.logoContainer)}>
       <Image
         src="/logo-footer.svg"
-        width={59}
+        width={58}
         height={50}
         alt="Logo"
         className={classNames(styles.logo)}
@@ -31,7 +31,7 @@ const Footer = () => {
                       />
           </div>
           
-
+        <div className={classNames(styles.wrapper)}>
       <ul className={classNames(styles.list, styles.informationText,styles.footerList)}>
         <Typography className={classNames(styles.informationText)} component="h3" variant="h3">
           Про проєкт
@@ -40,10 +40,11 @@ const Footer = () => {
           До вігваму
         </Typography>
         <Typography className={classNames(styles.informationText, styles.decoration)} component="h3" variant="h3">
-          <Link href="#">Політика конфіденційності</Link>
+          <Link href="#" >Політика <span className={classNames(styles.wbr)}>конфіденційності</span><p className={classNames(styles.wbr1)}>конфіденційності</p></Link>
         </Typography>
         <Typography className={classNames(styles.informationText, styles.decoration)} component="h3" variant="h3">
-          <Link href="#">Правила поведінки на сайті</Link>
+                  <Link href="#">Правила поведінки <span className={classNames(styles.wbr)}>на сайті</span><p className={classNames(styles.wbr1)}>на сайті</p>
+                    </Link>
         </Typography>
       </ul>
 
@@ -64,7 +65,7 @@ const Footer = () => {
               height={18} className={classNames(styles.image)}></Image>+380 67 568 1788</Link>
                           {/* </li> */}
                           </Typography>
-        <Typography className={classNames(styles.informationText)} component="h3" variant="h3">
+        <Typography className={classNames(styles.informationMail)} component="h3" variant="h3">
                   <Link href="mailto:1111111@gmail.com" className={classNames(styles.listIcon)}>
                       <Image alt="Logo" src="/mail.svg" width={18}
               height={18} className={classNames(styles.image)}></Image>1111111@gmail.com</Link>
@@ -88,15 +89,16 @@ const Footer = () => {
                 </div>
           </ul>
           
-          
+          </div>
+         
         </div>
         
-        
-         
-              <div className={classNames(styles.footerContainer1)}>
-              <p className={classNames(styles.footerText)}>
-                Розробка Baza Trainee Ukraine 2023, Усі права захищені  
+         <p className={classNames(styles.footerText)}>
+                Розробка Baza Trainee Ukraine 2023 Усі права захищені  
               </p>
+         
+              
+              
 
               {/* <ul className={classNames(styles.socialLink, styles.list)}>
                   <li >
@@ -110,7 +112,7 @@ const Footer = () => {
               height={32} className={classNames(styles.image)}></Image></Link>
         </li>
               </ul> */}
-          </div>
+          
         </Container>
        
       </Container>
