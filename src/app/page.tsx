@@ -1,5 +1,5 @@
 import AdditionalInfo from '@/components/AdditionalInfo';
-import CtaBlock from '@/components/CtaBlock';
+import Donate from '@/components/Donate';
 import Hero from 'components/Hero';
 import Advantages from '@/components/Advantages';
 
@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <main>
       <Hero />
-      <CtaBlock />
+      <Donate />
       <AdditionalInfo />
       <Advantages />
     </main>
