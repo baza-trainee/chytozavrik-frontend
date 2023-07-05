@@ -1,27 +1,29 @@
-// @import 'scss/utils/variables';
+@import 'scss/utils/mixin';
 
 %title {
-  font-family: 'Comfortaa';
-  font-weight: 700;
+  font-family: var(--montserrat-alternates-font);
+  font-weight: 600;
   letter-spacing: -0.03em;
+  text-align: center;
 }
 
-.text {
-  &--h1 {
-    @extend %title;
+:where(.text-h1) {
+  @extend %title;
 
-    font-size: 32px;
+  font-size: 32px;
+
+  @include breakpoint(desktop) {
+    font-size: 52px;
   }
+}
 
-  &--h2 {
-    @extend %title;
+:where(.text-h2) {
+  @extend %title;
 
-    font-size: 24px;
-    letter-spacing: -0.72px;
-    text-align: center;
-  }
+  font-size: 24px;
+  letter-spacing: -0.72px;
+}
 
-  &--body {
-    font-family: inherit;
-  }
+:where(.text-body) {
+  font-family: inherit;
 }

@@ -10,7 +10,11 @@ type Props = {
 };
 
 const Typography = ({ children, variant, component, className }: Props) => {
-  return createElement(component, { className: classNames(className, styles[`text--${variant}`]) }, children);
+  return createElement(
+    component,
+    { className: classNames(className, styles[`text-${variant}`]) },
+    children
+  );
 };
 
 export default Typography;

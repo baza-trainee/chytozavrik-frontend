@@ -2,13 +2,18 @@
 @import 'scss/utils/mixin';
 
 .button {
-  --button-color: transparent;
+  --button-bg-color: transparent;
   --button-text-color: $black;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
 
   padding: 20px 36px;
 
-  font-family: 'Comfortaa';
-  font-weight: 700;
+  font-family: var(--montserrat-alternates-font);
+  font-weight: 600;
   line-height: inherit;
   text-align: center;
 
@@ -16,50 +21,96 @@
 
   @include setTransition(background-color, color, border-color, box-shadow);
 
-  &:hover,
-  &:focus {
-    box-shadow: 0px 0px 5px 0px rgba(9, 35, 140, 0.3), 0px 0px 2px 0px rgba(9, 35, 140, 0.3);
-  }
+  &:disabled {
+    cursor: not-allowed;
 
-  &:active {
+    opacity: 0.4;
   }
 
   // color scheme
   &--primary {
-    --button-color: #{$primary};
+    --button-bg-color: #{$primary};
     --button-text-color: #{$on-primary};
+
+    &:not(:disabled):hover,
+    &:not(:disabled):focus {
+      --button-bg-color: #{getColor(blue, 50)};
+    }
+
+    &:not(:disabled):active {
+      --button-bg-color: #{getColor(blue, 30)};
+    }
   }
 
   &--secondary {
-    --button-color: #{$secondary};
+    --button-bg-color: #{$secondary};
     --button-text-color: #{$on-secondary};
+
+    &:not(:disabled):hover,
+    &:not(:disabled):focus {
+      --button-bg-color: #{getColor(yellow, 50)};
+    }
+
+    &:not(:disabled):active {
+      --button-bg-color: #{getColor(yellow, 30)};
+    }
   }
 
   &--tertiary {
-    --button-color: #{$tertiary};
+    --button-bg-color: #{$tertiary};
     --button-text-color: #{$on-tertiary};
+
+    &:not(:disabled):hover,
+    &:not(:disabled):focus {
+      --button-bg-color: #{getColor(green, 50)};
+    }
+
+    &:not(:disabled):active {
+      --button-bg-color: #{getColor(green, 30)};
+    }
   }
 
   &--quaternary {
-    --button-color: #{$quaternary};
+    --button-bg-color: #{$quaternary};
     --button-text-color: #{$on-quaternary};
-    
+
+    &:not(:disabled):hover,
+    &:not(:disabled):focus {
+      --button-bg-color: #{getColor(rose, 50)};
+    }
+
+    &:not(:disabled):active {
+      --button-bg-color: #{getColor(rose, 30)};
+    }
   }
 
   // variants
   &--filled {
     color: var(--button-text-color);
-    background-color: var(--button-color);
+    background-color: var(--button-bg-color);
   }
 
   &--outline {
-    color: var(--button-color);
+    color: var(--button-bg-color);
 
     background: none;
-    border: 2px solid var(--button-color);
+    border: 2px solid var(--button-bg-color);
+
+    &:not(:disabled):hover,
+    &:not(:disabled):focus {
+      color: $white;
+      background-color: var(--button-bg-color);
+    }
   }
 
   &--text {
-    color: var(--button-color);
+    color: var(--button-bg-color);
   }
+}
+
+.button-icon {
+  display: block;
+
+  width: 24px;
+  height: 24px;
 }

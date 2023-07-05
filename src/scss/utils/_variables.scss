@@ -1,13 +1,13 @@
 $breakpoints: (
   mobile: 360px,
   tablet: 768px,
-  desktop: 1200px,
+  desktop: 1440px,
 );
 
 $palettes: (
   blue: (
     100: #fdfdfd,
-    90: #dbf5ff,
+    90: #e3f0ff,
     80: #c7e1ff,
     70: #b3cdff,
     60: #9fb9ff,
@@ -85,33 +85,37 @@ $palettes: (
   ),
 );
 
+@function getColor($color, $tone) {
+  @return map-get(map-get($palettes, $color), $tone);
+}
+
 $black: #1e1e1e;
 $white: #fdfdfd;
 
-$primary: map-get(map-get($palettes, blue), 40);
-$on-primary: map-get(map-get($palettes, blue), 100);
-$primary-variant: map-get(map-get($palettes, blue), 80);
-$on-primary-variant: map-get(map-get($palettes, blue), 20);
+$primary: getColor(blue, 40);
+$on-primary: getColor(blue, 100);
+$primary-variant: getColor(blue, 80);
+$on-primary-variant: getColor(blue, 20);
 
-$secondary: map-get(map-get($palettes, yellow), 40);
-$on-secondary: map-get(map-get($palettes, yellow), 0);
-$secondary-variant: map-get(map-get($palettes, yellow), 90);
-$on-secondary-variant: map-get(map-get($palettes, yellow), 100);
+$secondary: getColor(yellow, 40);
+$on-secondary: getColor(yellow, 0);
+$secondary-variant: getColor(yellow, 90);
+$on-secondary-variant: getColor(yellow, 100);
 
-$tertiary: map-get(map-get($palettes, green), 40);
-$on-tertiary: map-get(map-get($palettes, green), 100);
-$tertiary-variant: map-get(map-get($palettes, green), 70);
-$on-tertiary-variant: map-get(map-get($palettes, green), 10);
+$tertiary: getColor(green, 40);
+$on-tertiary: getColor(green, 100);
+$tertiary-variant: getColor(green, 70);
+$on-tertiary-variant: getColor(green, 10);
 
-$quaternary: map-get(map-get($palettes, rose), 40);
-$on-quaternary: map-get(map-get($palettes, rose), 100);
-$quaternary-variant: map-get(map-get($palettes, rose), 90);
-$on-quaternary-variant: map-get(map-get($palettes, rose), 20);
+$quaternary: getColor(rose, 40);
+$on-quaternary: getColor(rose, 100);
+$quaternary-variant: getColor(rose, 90);
+$on-quaternary-variant: getColor(rose, 20);
 
-$error: map-get(map-get($palettes, error), 40);
-$on-error: map-get(map-get($palettes, error), 100);
-$error-variant: map-get(map-get($palettes, error), 10);
-$on-error-variant: map-get(map-get($palettes, error), 90);
+$error: getColor(error, 40);
+$on-error: getColor(error, 100);
+$error-variant: getColor(error, 10);
+$on-error-variant: getColor(error, 90);
 
 $animation-function: cubic-bezier(0.4, 0, 0.2, 1);
 $animation-duration: 250ms;
