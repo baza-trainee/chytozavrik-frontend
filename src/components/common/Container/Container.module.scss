@@ -1,7 +1,7 @@
 @import '@/scss/utils/func';
 @import '@/scss/utils/mixin';
 
-.container {
+:where(.container) {
   --padding-x: 16px;
 
   max-width: getBreakpoint(mobile);
