@@ -9,7 +9,7 @@ import Typography from '../common/Typography/Typography';
 
 const Footer = () => {
   return (
-      
+      <footer>
       <Container className={classNames(styles.footer)}>
           <Container className={classNames(styles.footer1)}>
             
@@ -68,17 +68,37 @@ const Footer = () => {
                   <Link href="mailto:1111111@gmail.com" className={classNames(styles.listIcon)}>
                       <Image alt="Logo" src="/mail.svg" width={18}
               height={18} className={classNames(styles.image)}></Image>1111111@gmail.com</Link>
+              </Typography>
+              
+
+
+
+              <div className={classNames(styles.social)}>
+            
+            <Typography  component="h3" variant="h3">
+                  <Link href="#" >
+                      <Image alt="Logo" src="/facebook.svg" width={32}
+              height={32} className={classNames(styles.socialImage)}></Image></Link>
         </Typography>
+                  <Typography  component="h3" variant="h3">
+                  <Link href="#" >
+                      <Image alt="Logo" src="/insta.svg" width={32}
+              height={32} className={classNames(styles.socialImage)}></Image></Link>
+                </Typography>
+                </div>
           </ul>
           
           
-              </div>
+        </div>
+        
+        
+         
               <div className={classNames(styles.footerContainer1)}>
               <p className={classNames(styles.footerText)}>
                 Розробка Baza Trainee Ukraine 2023, Усі права захищені  
               </p>
 
-              <ul className={classNames(styles.socialLink, styles.list)}>
+              {/* <ul className={classNames(styles.socialLink, styles.list)}>
                   <li >
                   <Link href="#" className={classNames(styles.listIcon)}>
                       <Image alt="Logo" src="/facebook.svg" width={32}
@@ -89,10 +109,12 @@ const Footer = () => {
                       <Image alt="Logo" src="/insta.svg" width={32}
               height={32} className={classNames(styles.image)}></Image></Link>
         </li>
-              </ul>
+              </ul> */}
           </div>
-          </Container>
-   </Container>
+        </Container>
+       
+      </Container>
+      </footer>
   );
 };
 
