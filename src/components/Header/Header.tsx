@@ -28,15 +28,18 @@ const Header = () => {
         />
         </div>
         <div className={classNames(styles.buttonContainer)}>
-          <Typography className={styles.title} component="h2" variant="h2">
-        <Link className={classNames(styles.link)} href="#">
-          Про проєкт
+
+
+          <Typography className={classNames(styles.link)} component="h2" variant="h2">
+          <Link  href="#">
+            Про проєкт
             </Link>
             </Typography>
-        <Button className={classNames(styles.button)} variant="outline">
-          Вхід
-        </Button>
-      </div>
+          <Button className={classNames(styles.button)} variant="outline">
+            Вхід
+          </Button>
+        </div>
+
       </Container>
       </header>
   );
