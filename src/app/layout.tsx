@@ -1,11 +1,11 @@
 import { Metadata } from 'next';
 import Header from '@/components/Header';
-import { Raleway, Montserrat_Alternates } from '@next/font/google';
+import { Raleway, Montserrat_Alternates } from 'next/font/google';
 import './globals.scss';
 
 const raleway = Raleway({
   variable: '--raleway-font',
-  weight: ['400', '500'],
+  weight: '300',
   style: 'normal',
   subsets: ['latin'],
   display: 'swap',
