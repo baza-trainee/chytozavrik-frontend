@@ -10,7 +10,7 @@
   background-image: url('/images/background-wave.svg');
   background-repeat: repeat-x;
   background-position: center top;
-  background-size: getBreakpoint(mobile) auto;
+  background-size: auto 27px;
 
   &::before,
   &::after {
@@ -36,7 +36,7 @@
   }
 
   @include breakpoint(tablet) {
-    background-size: getBreakpoint(tablet) auto;
+    background-size: auto 54px;
 
     &::before {
       height: 48px;
@@ -49,7 +49,7 @@
   }
 
   @include breakpoint(desktop) {
-    background-size: getBreakpoint(desktop) auto;
+    background-size: auto 102px;
 
     &::before {
       height: 90px;
