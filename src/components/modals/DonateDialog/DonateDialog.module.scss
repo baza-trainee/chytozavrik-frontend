@@ -1,0 +1,7 @@
+.dialog {
+  --padding-top: 86px;
+}
+
+.title {
+  padding-inline: calc(28px - var(--padding-left));
+}
