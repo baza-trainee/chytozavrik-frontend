@@ -15,9 +15,13 @@ body {
   height: 100%;
 
   font-family: var(--raleway-font);
-  font-weight: 400;
+  font-weight: 300;
   font-size: 16px;
   line-height: 1.2;
+
+  &.modal-open {
+    overflow: hidden;
+  }
 }
 
 a {
@@ -32,4 +36,8 @@ button {
 
   border: none;
   background: none;
+}
+
+ul {
+  list-style: none;
 }

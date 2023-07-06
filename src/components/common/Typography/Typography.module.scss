@@ -7,39 +7,25 @@
   text-align: center;
 }
 
-.text {
-  &--h1 {
-    @extend %title;
+:where(.text-h1) {
+  @extend %title;
 
-    font-size: 32px;
+  font-size: 32px;
 
-    @include breakpoint(desktop) {
-      font-size: 52px;
-    }
+
+  @include breakpoint(desktop) {
+    font-size: 52px;
+
   }
+}
 
-  &--h2 {
-    @extend %title;
+:where(.text-h2) {
+  @extend %title;
 
-    font-size: 24px;
-    @include breakpoint(desktop) {
-      font-size: 32px;
-    }
-  }
+  font-size: 24px;
+  letter-spacing: -0.72px;
+}
 
-  &--h3 {
-    @extend %title;
-
-    font-size: 18px;
-    @include breakpoint(desktop) {
-      font-size: 32px;
-    }
-  }
-
-  &--body {
-    font-family: inherit;
-    @include breakpoint(desktop) {
-      font-size: 20px;
-    }
-  }
+:where(.text-body) {
+  font-family: inherit;
 }
