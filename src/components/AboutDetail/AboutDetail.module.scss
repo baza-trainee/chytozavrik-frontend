@@ -1,0 +1,85 @@
+@import '../../scss/utils/variables';
+@import '../../scss/utils/mixin';
+
+.section {
+  @include breakpoint(tablet) {
+    background: url('../../../public/images/aboutDet_plane.png'),
+      url('../../../public/images/aboutDet_line.png');
+    background-repeat: no-repeat;
+    background-size: 298px 98px, 262px 1159px;
+    background-position: right top, 54% 59%;
+  }
+
+  @include breakpoint(desktop) {
+    background-size: 589px 194px, 401px 1773px;
+  }
+}
+
+.container {
+  padding-top: 48px;
+  padding-bottom: 48px;
+
+  @include breakpoint(tablet) {
+    padding: 72px 40px;
+  }
+
+  @include breakpoint(desktop) {
+    padding: 136px 0px;
+    max-width: 1062px;
+  }
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+
+  @include breakpoint(tablet) {
+    flex-direction: row;
+    gap: 32px;
+
+    &:nth-child(2n) {
+      flex-direction: row-reverse;
+    }
+  }
+  @include breakpoint(desktop) {
+    gap: 40px;
+  }
+}
+
+.img {
+  max-width: 260px;
+  height: 100%;
+  @include breakpoint(tablet) {
+    max-width: 325px;
+  }
+
+  @include breakpoint(desktop) {
+    max-width: 510px;
+  }
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-bottom: 24px;
+
+  @include breakpoint(tablet) {
+    max-width: 332px;
+    padding-bottom: 0;
+  }
+  @include breakpoint(desktop) {
+    max-width: 512px;
+    gap: 32px;
+  }
+}
+
+.title {
+  text-align: left;
+}
+
+.text{
+  color: $light-black;
+}

@@ -3,7 +3,7 @@
 %title {
   font-family: var(--montserrat-alternates-font);
   font-weight: 600;
-  letter-spacing: -0.03em;
+  letter-spacing: 1.2;
   text-align: center;
 }
 
@@ -22,10 +22,24 @@
     @extend %title;
 
     font-size: 24px;
-    letter-spacing: -0.72px;
+    @include breakpoint(desktop) {
+      font-size: 32px;
+    }
+  }
+
+  &--h3 {
+    @extend %title;
+
+    font-size: 18px;
+    @include breakpoint(desktop) {
+      font-size: 32px;
+    }
   }
 
   &--body {
     font-family: inherit;
+    @include breakpoint(desktop) {
+      font-size: 20px;
+    }
   }
 }
