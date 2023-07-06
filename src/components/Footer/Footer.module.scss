@@ -48,6 +48,13 @@ padding-top: 24px;
     padding-top: 36px;
     padding-bottom: 36px;
   }
+    @include breakpoint(desktop) {
+      height: 370px;
+      min-width: 100%;
+      margin: 0 auto;
+      padding-top: 72px;
+      padding-bottom: 72px;
+    }
 }
 
 .footerContainer {
@@ -105,6 +112,13 @@ padding-top: 24px;
           margin-bottom: 24px;
         }
     }
+
+        @include breakpoint(desktop) {
+          :not(:last-child) {
+            margin-bottom: 32px;
+            width: 193px;
+          }
+        }
 }
 
 .informationMail{
@@ -133,11 +147,29 @@ padding-top: 24px;
     margin-top: 48px;
     margin-right: -40px;
 }
+
+@include breakpoint(desktop) {
+  display: flex;
+  flex-direction: column;
+  margin-left: 127px;
+  margin-top: 0px;
+  :not(:last-child) {
+      margin-right: 0px;
+    }
+        :not(:last-child) {
+          margin-bottom: 40px;
+        }
+}
 }
 
 .socialImage{
 width: 24px;
 height: 24px;
+
+@include breakpoint(desktop){
+  width: 40px;
+    height: 40px;
+}
 }
 // .iconInsta {
 //   margin-left: 24px;
@@ -150,12 +182,35 @@ height: 24px;
 .image {
   margin-right: 8px;
   margin-bottom: 8px;
+@include breakpoint(desktop){
+  width: 24px;
+    height: 24px;
+  }
 }
 .logo {
   @include breakpoint(tablet){
     margin-bottom: 15px;
   }
+
+    @include breakpoint(desktop) {
+      margin-bottom: 22px;
+      width: 87px;
+      height: 74px;
+    }
   
+}
+
+.logoText{
+  @include breakpoint(tablet) {
+      margin-bottom: 15px;
+      
+    }
+  
+    @include breakpoint(desktop) {
+      
+      width: 178px;
+      height: 24px;
+    }
 }
 
 .logoContainer {
@@ -174,10 +229,21 @@ height: 24px;
   display: flex;
   flex-direction: column;
   }
+
+    @include breakpoint(desktop) {
+      margin-left: 60px;
+      flex-direction: row;
+      
+    }
 }
 
 .informationContact {
   margin-bottom: 8px;
+
+  @include breakpoint(desktop) {
+      margin-bottom: 32px;
+      
+    }
 }
 
 .informationContactSecond {
@@ -220,7 +286,9 @@ height: 24px;
 @include breakpoint(tablet){
   margin-top: -22px;
 }
-  
+    @include breakpoint(desktop) {
+      margin-top: 0px;
+    }
 }
 
 .footerList {
@@ -230,8 +298,14 @@ display: flex;
   @include breakpoint(tablet){
 margin-left: 117px;
   width: 217px;
+  flex-direction: column;
   }
- 
+
+    @include breakpoint(desktop) {
+ flex-direction: row;
+ width: auto;
+margin-left: 148px;
+    }
  
 }
 
@@ -265,6 +339,29 @@ margin-left: 117px;
     @include breakpoint(desktop) {
       display: none
     }
+}
+
+.class{
+  display: flex;
+  flex-direction: column;
+}
+
+.class1 {
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.class2 {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.class3 {
+  display: flex;
+  flex-direction: column;
+
 }
 
 

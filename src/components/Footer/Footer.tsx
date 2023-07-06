@@ -27,18 +27,22 @@ const Footer = () => {
         width={120}
         height={16}
         alt="Logo"
-        className={classNames(styles.logo)}
+        className={classNames(styles.logoText)}
                       />
           </div>
           
-        <div className={classNames(styles.wrapper)}>
-      <ul className={classNames(styles.list, styles.informationText,styles.footerList)}>
+            <div className={classNames(styles.wrapper)}>
+              
+              <ul className={classNames(styles.list, styles.informationText, styles.footerList)}>
+                <div className={classNames(styles.class)}>
         <Typography className={classNames(styles.informationText)} component="h3" variant="h3">
           Про проєкт
         </Typography>
         <Typography className={classNames(styles.informationText)} component="h3" variant="h3">
           До вігваму
-        </Typography>
+                  </Typography>
+                  </div>
+                <div className={classNames(styles.class1)}>
         <Typography className={classNames(styles.informationText, styles.decoration)} component="h3" variant="h3">
           <Link href="#" >Політика <span className={classNames(styles.wbr)}>конфіденційності</span><p className={classNames(styles.wbr1)}>конфіденційності</p></Link>
         </Typography>
@@ -46,9 +50,12 @@ const Footer = () => {
                   <Link href="#">Правила поведінки <span className={classNames(styles.wbr)}>на сайті</span><p className={classNames(styles.wbr1)}>на сайті</p>
                     </Link>
         </Typography>
+                
+                  </div>
       </ul>
 
-          <ul className={classNames(styles.list, styles.contacts)}>
+              <ul className={classNames(styles.list, styles.contacts)}>
+                <div className={classNames(styles.class2)}>
                       {/* <li className={classNames(styles.text)}> */}
                       <Typography className={classNames(styles.informationContact)} component="p" variant="p">
                   <Link href="tel:+380636286630" className={classNames(styles.listIcon)}>
@@ -70,12 +77,12 @@ const Footer = () => {
                       <Image alt="Logo" src="/mail.svg" width={18}
               height={18} className={classNames(styles.image)}></Image>1111111@gmail.com</Link>
               </Typography>
-              
+              </div>
 
 
-
+ <div className={classNames(styles.class3)}>
               <div className={classNames(styles.social)}>
-            
+           
             <Typography  component="h3" variant="h3">
                   <Link href="#" >
                       <Image alt="Logo" src="/facebook.svg" width={32}
@@ -85,7 +92,8 @@ const Footer = () => {
                   <Link href="#" >
                       <Image alt="Logo" src="/insta.svg" width={32}
               height={32} className={classNames(styles.socialImage)}></Image></Link>
-                </Typography>
+                    </Typography>
+                    </div>
                 </div>
           </ul>
           
