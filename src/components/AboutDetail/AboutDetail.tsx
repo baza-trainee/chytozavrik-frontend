@@ -15,7 +15,7 @@ export default function AboutDetail() {
         <div className={styles.item}>
           <Image className={styles.img} src={kids1} alt="kids1" />
           <div className={styles.info}>
-            <Typography component="h3" variant="h3" className={styles.title}>
+            <Typography component="h2" variant="h5" className={styles.title}>
               Сприяє розвитку читацьких навичок дитини
             </Typography>
             <Typography variant="body" component="p" className={styles.text}>
@@ -28,7 +28,7 @@ export default function AboutDetail() {
         <div className={styles.item}>
           <Image className={styles.img} src={kids2} alt="kids2" />
           <div className={styles.info}>
-            <Typography component="h3" variant="h3" className={styles.title}>
+            <Typography component="h2" variant="h5" className={styles.title}>
               Підвищує мотивацію до читання
             </Typography>
             <Typography variant="body" component="p" className={styles.text}>
@@ -41,7 +41,7 @@ export default function AboutDetail() {
         <div className={styles.item}>
           <Image className={styles.img} src={kids3} alt="kids3" />
           <div className={styles.info}>
-            <Typography component="h3" variant="h3" className={styles.title}>
+            <Typography component="h2" variant="h5" className={styles.title}>
               Розширює знання та розвиває мислення
             </Typography>
             <Typography variant="body" component="p" className={styles.text}>
@@ -54,7 +54,7 @@ export default function AboutDetail() {
         <div className={styles.item}>
           <Image className={styles.img} src={kids4} alt="kids4" />
           <div className={styles.info}>
-            <Typography component="h3" variant="h3" className={styles.title}>
+            <Typography component="h2" variant="h5" className={styles.title}>
               Сприяє родинній взаємодії
             </Typography>
             <Typography variant="body" component="p" className={styles.text}>
@@ -68,7 +68,7 @@ export default function AboutDetail() {
         <div className={styles.item}>
           <Image className={styles.img} src={kids5} alt="kids5" />
           <div className={styles.info}>
-            <Typography component="h3" variant="h3" className={styles.title}>
+            <Typography component="h2" variant="h5" className={styles.title}>
               Батькам легко відстежувати прогрес
             </Typography>
             <Typography variant="body" component="p" className={styles.text}>

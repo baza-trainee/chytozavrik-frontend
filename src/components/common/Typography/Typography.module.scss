@@ -26,6 +26,12 @@
   letter-spacing: -0.72px;
 }
 
+:where(.text-h5) {
+  @extend %title;
+
+  font-size: 18px;
+}
+
 :where(.text-body) {
   font-family: inherit;
 }
