@@ -8,10 +8,10 @@
     url('/images/background-donate-wave.svg'), url('/images/background-donate-image.svg');
   background-repeat: repeat-x, no-repeat, no-repeat;
   background-position: center top, center calc(100% + 1px), center bottom;
-  background-size: getBreakpoint(mobile), getBreakpoint(mobile) auto, 338px auto;
+  background-size: auto 27px, getBreakpoint(mobile) auto, 338px auto;
 
   @include breakpoint(tablet) {
-    background-size: getBreakpoint(tablet), getBreakpoint(tablet) auto, 566px auto;
+    background-size: auto 54px, getBreakpoint(tablet) auto, 566px auto;
   }
 
   @include breakpoint(desktop) {
@@ -22,7 +22,7 @@
 
     background-position: center top, center calc(100% + 1px), calc(50% - 53px) bottom, -100px 178px,
       calc(100% + 10px) 35px;
-    background-size: getBreakpoint(desktop), getBreakpoint(desktop), 1200px auto, 415px, 210px;
+    background-size: auto 102px, getBreakpoint(desktop), 1200px auto, 415px, 210px;
   }
 }
 
