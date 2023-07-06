@@ -5,7 +5,8 @@
   background-color: #e3f0ff;
 
   background-image: url('~/public/images/about-wave_m.svg');
-  background-position: center bottom;
+  background-position: center calc(100% + 4px);
+  // background-position: center bottom;
   background-size: getBreakpoint(mobile) auto;
   background-repeat: repeat-x;
 
@@ -49,10 +50,6 @@
     margin-bottom: 0;
     min-width: 516px;
   }
-}
-
-.text {
-  color: $light-black;
 }
 
 .about__row {
