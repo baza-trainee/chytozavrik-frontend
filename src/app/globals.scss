@@ -18,6 +18,10 @@ body {
   font-weight: 300;
   font-size: 16px;
   line-height: 1.2;
+
+  &.modal-open {
+    overflow: hidden;
+  }
 }
 
 a {
