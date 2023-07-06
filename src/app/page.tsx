@@ -9,9 +9,9 @@ export default function Home() {
     <main>
       <Hero />
       <Donate />
-      <AdditionalInfo />
       <Advantages />
       <Partners />
+      <AdditionalInfo />
     </main>
   );
 }

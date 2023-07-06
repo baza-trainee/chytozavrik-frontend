@@ -2,42 +2,47 @@
 @import '@/scss/utils/variables';
 @import 'scss/utils/mixin';
 
-.infoContainer {
-    min-width: getBreakpoint(mobile);
-    margin: 0 auto;
-    padding: 48px 16px 44px;
-    background-image: url('/images/additional-background.jpg');
-    background-repeat: no-repeat;
+.section {
+    padding: 48px 0;
+    background-color: getColor(blue, 90);
+    background-image: url('/images/additional-cloud.svg');
+    background-repeat: repeat-x;
     background-size: 100%;
     @include breakpoint(tablet) {
-        min-width: getBreakpoint(tablet);
-        display: flex;
-        gap: 25px;
-        background-image: url('/images/additional-bg-tb.jpg');
-        padding: 73px 40px 81px;
+        padding-top: 72px;
+        background-image: url('/images/additional-cloud-tb.svg');
+        padding-bottom: 92px;
     }
 }
 
-.feedbackContainer {
-    margin-bottom: 24px;
+.container {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 25px;
+    align-items: center;
     @include breakpoint(tablet) {
-        width: calc(100% / 2);
+        flex-direction: row;
+        gap: 25px;
+        }
+}
+
+.feedbackContainer {
+    padding: 24px 0;
+    @include breakpoint(tablet) {
+        width: 332px;
+        min-height: 297px;
         margin: 0;
         padding: 24px 0;
     }
 }
 
 .feedbackTitle {
+    margin-bottom: 24px;
     color: $black;
-    text-align: center;
-    font-size: 24px;
-    font-family: Comfortaa;
-    font-weight: 700;
+    text-align: left;
     line-height: 1.2;
-    letter-spacing: -0.72px;
+    letter-spacing: 0.01px;
+    
     @include breakpoint(tablet) {
         margin-top: 0;
         text-align: start;
@@ -45,10 +50,11 @@
 }
 
 .feedbackText {
+    margin-bottom: 64px;
     color: $black;
-    font-size: 16px;
-    font-family: Raleway;
+    font-weight: 400;
     line-height: 1.2;
+    
 }
 
 .socialWrapper {
@@ -59,30 +65,43 @@
 .bazaContainer {
     min-height: 260px;
     min-width: 328px;
-    padding: 24px;
+    padding: 16px;
     border-radius: 8px;
-    border: 8px solid $white;
+    border: 8px solid #fff;
     background: $primary;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.31);
     @include breakpoint(tablet) {
-        width: calc(100% / 2);
-        height: 251px;
+        width: 330px;
+        min-height: 297px;
     }
 }
 
-.bazaTitle {
+.titleWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3px;
     margin-bottom: 24px;
-    color: $white;
-    font-size: 24px;
-    font-family: Comfortaa;
-    font-weight: 700;
+}
+
+.bazaTitle {
+    color: #fff;
     line-height: 1.2;
     letter-spacing: -0.72px;
 }
+ .z {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.72px;
+}
+.textWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
 
 .bazaText {
-    color: $white;
-    font-size: 16px;
-    font-family: Raleway;
-    line-height: 1.2;
+    color: #fff;
+    font-weight: 400;
 }
