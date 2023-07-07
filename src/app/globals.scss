@@ -34,10 +34,17 @@ button {
 
   display: block;
 
+  color: inherit;
+
   border: none;
   background: none;
 }
 
 ul {
   list-style: none;
+}
+
+svg {
+  width: 100%;
+  height: auto;
 }
