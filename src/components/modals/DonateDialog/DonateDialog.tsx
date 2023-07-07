@@ -22,10 +22,15 @@ const defaultValues: FormData = {
 };
 
 const DonateDialog = ({ onClose }: Props) => {
-  const { control, handleSubmit } = useForm({
+  const { control, handleSubmit, resetField, setValue } = useForm({
     defaultValues,
     resolver: yupResolver(schema),
   });
+
+  const resetFieldByName = (name: keyof FormData) => () =>
+    resetField(name, { keepError: true, keepDirty: true, keepTouched: true });
+  const setFieldValue = (name: keyof FormData, value: number) => () =>
+    setValue(name, value, { shouldDirty: true, shouldTouch: true });
 
   const submit = (data: FormData) => {
     console.log(data);
@@ -40,17 +45,30 @@ const DonateDialog = ({ onClose }: Props) => {
         <Input
           control={control}
           name="donate"
+          resetField={resetFieldByName('donate')}
           label="Введіть або оберіть суму донату"
           placeholder="Введіть суму донату"
         />
         <div className={styles['buttons-container']}>
-          <Button className={styles['button-template']} variant="outline">
+          <Button
+            className={styles['button-template']}
+            variant="outline"
+            onClick={setFieldValue('donate', 50)}
+          >
             50 грн
           </Button>
-          <Button className={styles['button-template']} variant="outline">
+          <Button
+            className={styles['button-template']}
+            variant="outline"
+            onClick={setFieldValue('donate', 100)}
+          >
             100 грн
           </Button>
-          <Button className={styles['button-template']} variant="outline">
+          <Button
+            className={styles['button-template']}
+            variant="outline"
+            onClick={setFieldValue('donate', 200)}
+          >
             200 грн
           </Button>
         </div>
