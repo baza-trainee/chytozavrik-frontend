@@ -42,22 +42,49 @@
 }
 
 .input-group {
-  display: block;
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
 
   width: 100%;
-}
-
-.input {
-  width: inherit;
+  height: 42px;
 
   padding: 12px 16px;
-
-  color: inherit;
 
   border-radius: 8px;
   border: 1px solid var(--border-color);
   background-color: $white;
+
+  @include breakpoint(tablet) {
+    height: 48px;
+  }
+}
+
+.input {
+  flex-grow: 1;
+
+  color: inherit;
+
+  border: none;
+  background: none;
   outline: none;
+}
+
+.icon {
+  --icon-size: 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: var(--icon-size);
+  height: var(--icon-size);
+
+  @include breakpoint(tablet) {
+    --icon-size: 24px;
+  }
 }
 
 .message {

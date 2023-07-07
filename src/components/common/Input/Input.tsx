@@ -1,15 +1,17 @@
-import { InputHTMLAttributes, useMemo } from 'react';
+import { InputHTMLAttributes, ReactNode, useMemo } from 'react';
 import { useController, UseControllerProps, FieldValues } from 'react-hook-form';
+import { MdOutlineCancel } from 'react-icons/md';
 import styles from './Input.module.scss';
 
 export type InputProps<T extends FieldValues> = InputHTMLAttributes<HTMLInputElement> &
   UseControllerProps<T> & {
+    icon?: ReactNode;
     label?: string;
   };
 
 export type InputStatus = 'normal' | 'filled' | 'error';
 
-const Input = <T extends FieldValues>({ label, name, control, ...props }: InputProps<T>) => {
+const Input = <T extends FieldValues>({ label, name, control, icon, ...props }: InputProps<T>) => {
   const {
     field,
     fieldState: { error },
@@ -35,6 +37,9 @@ const Input = <T extends FieldValues>({ label, name, control, ...props }: InputP
             value={field.value === 0 ? '' : field.value}
             {...props}
           />
+          {(icon || status === 'error') && (
+            <span className={styles.icon}>{<MdOutlineCancel />}</span>
+          )}
         </span>
         {error && <span className={styles.message}>{error.message}</span>}
       </label>
