@@ -4,8 +4,8 @@ import styles from './Typography.module.scss';
 
 type Props = {
   children: ReactNode;
-  component: 'p' | 'h1' | 'h2' | 'h3' | 'h4';
-  variant: 'h1' | 'h2' | 'h3' | 'h4' | 'body';
+  component: 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'span';
+  variant: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'body';
   className?: string;
 };
 

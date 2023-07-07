@@ -30,7 +30,7 @@ const DonateDialog = ({ onClose }: Props) => {
   const resetFieldByName = (name: keyof FormData) => () =>
     resetField(name, { keepError: true, keepDirty: true, keepTouched: true });
   const setFieldValue = (name: keyof FormData, value: number) => () =>
-    setValue(name, value, { shouldDirty: true, shouldTouch: true });
+    setValue(name, value, { shouldValidate: true, shouldDirty: true, shouldTouch: true });
 
   const submit = (data: FormData) => {
     console.log(data);

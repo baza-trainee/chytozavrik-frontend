@@ -3,7 +3,7 @@
 %title {
   font-family: var(--montserrat-alternates-font);
   font-weight: 600;
-  letter-spacing: -0.03em;
+  letter-spacing: 1.2;
   text-align: center;
 }
 
@@ -28,6 +28,12 @@
   @extend %title;
 
   font-size: 24px;
+}
+
+:where(.text-h5) {
+  @extend %title;
+
+  font-size: 18px;
 }
 
 :where(.text-body) {
