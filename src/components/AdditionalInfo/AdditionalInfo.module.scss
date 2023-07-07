@@ -34,6 +34,7 @@
 
 .feedbackContainer {
   padding: 24px 0;
+  color: $black;
   @include breakpoint(tablet) {
     width: 332px;
     min-height: 297px;
@@ -49,9 +50,7 @@
 
 .feedbackTitle {
   margin-bottom: 24px;
-  color: $black;
   text-align: left;
-  line-height: 1.2;
   letter-spacing: 0.01px;
   @include breakpoint(desktop) {
     font-size: 32px;
@@ -61,8 +60,6 @@
 
 .feedbackText {
   margin-bottom: 24px;
-  color: $black;
-  font-weight: 400;
   letter-spacing: -0.72px;
   @include breakpoint(tablet) {
     margin-bottom: 64px;
@@ -77,23 +74,16 @@
   gap: 24px;
   align-items: baseline;
 }
-.socialIcon {
-  height: 32px;
-  width: 32px;
-  @include breakpoint(desktop) {
-    height: 40px;
-    width: 40px;
-  }
-}
 
 .bazaContainer {
   min-height: 297px;
   min-width: 328px;
   padding: 16px;
   border-radius: 8px;
-  border: 8px solid #fff;
+  border: 8px solid $white;
   background: $primary;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.31);
+  color: $white;
   @include breakpoint(tablet) {
     width: 330px;
   }
@@ -115,15 +105,17 @@
 }
 
 .bazaTitle {
-  color: #fff;
-  line-height: 1.2;
+  margin-bottom: 24px;
   letter-spacing: -0.72px;
+  text-align: left;
   @include breakpoint(desktop) {
+    margin-bottom: 32px;
     font-size: 32px;
   }
 }
+
 .z {
-  color: #fff;
+  font-family: var(--raleway-font);
   font-size: 24px;
   font-weight: 800;
   letter-spacing: -0.72px;
@@ -131,6 +123,7 @@
     font-size: 32px;
   }
 }
+
 .textWrapper {
   display: flex;
   flex-direction: column;
@@ -138,8 +131,6 @@
 }
 
 .bazaText {
-  color: #fff;
-  font-weight: 400;
   @include breakpoint(desktop) {
     font-size: 20px;
   }
