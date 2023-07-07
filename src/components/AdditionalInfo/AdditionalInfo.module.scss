@@ -1,70 +1,147 @@
 @import '@/scss/utils/func';
 @import '@/scss/utils/variables';
+@import 'scss/utils/mixin';
 
-.infoContainer {
-    min-width: getBreakpoint(mobile);
-    margin: 0 auto;
-    background-image: url('/images/additional-background.jpg');
-    background-repeat: no-repeat;
-    background-size: 100%;
+.section {
+    padding: 48px 0;
+    background-color: getColor(blue, 90);
+    background-image: url('/images/additional-cloud.svg');
+    background-repeat: repeat-x;
+    background-position: center top;
+    @include breakpoint(tablet) {
+        padding-top: 72px;
+        background-image: url('/images/additional-cloud-tb.svg');
+        padding-bottom: 92px;
+    }
+    @include breakpoint(desktop) {
+        padding: 136px 0;
+        background-image: url('/images/additional-cloud-dt.svg');
+    }
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    align-items: center;
+    @include breakpoint(tablet) {
+        flex-direction: row;
+        }
+    @include breakpoint(desktop) {
+        gap: 135px;
+    }
 }
 
 .feedbackContainer {
-    
-    margin-top: 48px;
-    margin-bottom: 24px;
-    padding: 0 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
+    padding: 24px 0;
+    @include breakpoint(tablet) {
+        width: 332px;
+        min-height: 297px;
+        margin: 0;
+        padding: 24px 0;
+    }
+    @include breakpoint(desktop) {
+        width: 520px;
+        min-height: 320px;
+        padding: 32px 0 0;
+        }
 }
 
 .feedbackTitle {
-    margin-top: 48px;
+    margin-bottom: 24px;
     color: $black;
-    text-align: center;
-    font-size: 24px;
-    font-family: Comfortaa;
-    font-weight: 700;
+    text-align: left;
     line-height: 1.2;
-    letter-spacing: -0.72px;
+    letter-spacing: 0.01px;
+    @include breakpoint(desktop) {
+        font-size: 32px;
+        margin-bottom: 32px;
+    }
 }
 
 .feedbackText {
+    margin-bottom: 24px;
     color: $black;
-    font-size: 16px;
-    font-family: Raleway;
-    line-height: 1.2;
+    font-weight: 400;
+    letter-spacing: -0.72px;
+    @include breakpoint(tablet) {
+    margin-bottom: 64px;
+    }
+    @include breakpoint(desktop) {
+        font-size: 20px;
+    }
+    
 }
 
 .socialWrapper {
  display: flex;
  gap: 24px;
+ align-items: baseline;
 }
+.socialIcon {
+    height: 32px;
+    width: 32px;
+    @include breakpoint(desktop) {
+        height: 40px;
+        width: 40px;
+    }
+ }
 
 .bazaContainer {
-    min-height: 260px;
+    min-height: 297px;
     min-width: 328px;
-    padding: 24px;
+    padding: 16px;
     border-radius: 8px;
-    border: 8px solid $white;
+    border: 8px solid #fff;
     background: $primary;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.31);
+    @include breakpoint(tablet) {
+        width: 330px;
+    }
+    @include breakpoint(desktop) {
+        width: 625px;
+        min-height: 320px;
+        padding: 24px;
+    }
+}
+
+.titleWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3px;
+    margin-bottom: 24px;
+    @include breakpoint(desktop) {
+        margin-bottom: 32px;
+    }
 }
 
 .bazaTitle {
-    margin-bottom: 24px;
-    color: $white;
-    font-size: 24px;
-    font-family: Comfortaa;
-    font-weight: 700;
+    color: #fff;
     line-height: 1.2;
     letter-spacing: -0.72px;
+    @include breakpoint(desktop) {
+        font-size: 32px;
+    }
+}
+ .z {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.72px;
+    @include breakpoint(desktop) {
+        font-size: 32px;
+    }
+}
+.textWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
 }
 
 .bazaText {
-    color: $white;
-    font-size: 16px;
-    font-family: Raleway;
-    line-height: 1.2;
+    color: #fff;
+    font-weight: 400;
+    @include breakpoint(desktop) {
+    font-size: 20px;
+}
 }

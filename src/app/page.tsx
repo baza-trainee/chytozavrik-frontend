@@ -19,10 +19,9 @@ export default function Home() {
 
 
       <Donate />
-
-      <AdditionalInfo />
       <Advantages />
       <Partners />
+      <AdditionalInfo />
     </main>
   );
 }
