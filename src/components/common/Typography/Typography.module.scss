@@ -1,0 +1,41 @@
+@import 'scss/utils/mixin';
+
+%title {
+  font-family: var(--montserrat-alternates-font);
+  font-weight: 600;
+  letter-spacing: 1.2;
+  text-align: center;
+}
+
+:where(.text-h1) {
+  @extend %title;
+
+  font-size: 32px;
+
+  @include breakpoint(desktop) {
+    font-size: 52px;
+  }
+}
+
+:where(.text-h2) {
+  @extend %title;
+
+  font-size: 24px;
+  letter-spacing: -0.72px;
+}
+
+:where(.text-h3) {
+  @extend %title;
+
+  font-size: 24px;
+}
+
+:where(.text-h5) {
+  @extend %title;
+
+  font-size: 18px;
+}
+
+:where(.text-body) {
+  font-family: inherit;
+}

@@ -1,0 +1,114 @@
+@import "@/scss/utils/func";
+@import "@/scss/utils/mixin";
+
+
+
+.header {
+  // background-color: tomato;
+  height: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+
+@include breakpoint(tablet){
+    height: 86px;
+}
+
+@include breakpoint(desktop) {
+  height: 101px;
+}
+}
+
+.headerContainer {
+  // height: 54px;
+  // padding-top: 24px;
+  display: flex;
+  
+  align-items: center;
+  
+}
+
+.logo {
+  // margin-top: 12px;
+  //align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 40px;
+  height: 34px;
+  @include breakpoint(tablet){
+    width: 64px;
+      height: 54px;
+  }
+
+    @include breakpoint(desktop) {
+      width: 72px;
+      height: 61px;
+    }
+  
+}
+
+.logoText{
+  width: 105px;
+    height: 14px;
+    margin-left: 4px;
+    @include breakpoint(tablet) {
+      width: 211px;
+        height: 28px;
+      margin-left: 24px;
+    }
+}
+
+.buttonContainer {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  
+  
+}
+
+.link {
+  display: none;
+
+  @include breakpoint(desktop) {
+    --padding-x: 40px;
+    max-width: getBreakpoint(desktop);
+    display: unset;
+    margin-right: 85px;
+    color:  #000;
+        text-align: center;
+        text-decoration: none;
+        font-size: 20px;
+          font-family: 'comfortaa';
+          font-style: normal;
+          font-weight: 600;
+          line-height: 120%;
+
+        
+  }
+}
+
+.button{
+display: flex;
+  width: 128px;
+  height: 37px;
+  padding: 10px 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+  
+
+  @include breakpoint(tablet){
+    width: 169px;
+      height: 48px;
+      padding: 12px 28px;
+  }
+
+    @include breakpoint(desktop) {
+      width: 193px;
+      height: 56px;
+      padding: 16px 28px;
+      
+    }
+  
+}
