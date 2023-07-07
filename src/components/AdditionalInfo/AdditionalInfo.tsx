@@ -39,20 +39,9 @@ export default function AdditionalInfo() {
           </div>
         </div>
         <div className={styles.bazaContainer}>
-          <div className={styles.titleWrapper}>
             <Typography component="h2" variant="h2" className={styles.bazaTitle}>
-              Про Ba
+              Про Ba<span className={styles.z}>z</span>a Trainee Ukraine
             </Typography>
-            <Typography component="span" variant="body" className={styles.z}>
-              z
-            </Typography>
-            <Typography component="h2" variant="h2" className={styles.bazaTitle}>
-              a Trainee&nbsp;
-            </Typography>
-            <Typography component="h2" variant="h2" className={styles.bazaTitle}>
-              Ukraine
-            </Typography>
-          </div>
           <div className={styles.textWrapper}>
             <Typography component="p" variant="body" className={styles.bazaText}>
               Навчальний проєкт-платформа Baza Trainee Ukraine надає можливість кожному, хто хоче
