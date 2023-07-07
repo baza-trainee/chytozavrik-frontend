@@ -63,6 +63,7 @@
     margin-bottom: 24px;
     color: $black;
     font-weight: 400;
+    letter-spacing: -0.72px;
     @include breakpoint(tablet) {
     margin-bottom: 64px;
     }
