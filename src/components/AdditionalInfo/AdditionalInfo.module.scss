@@ -60,10 +60,12 @@
 }
 
 .feedbackText {
-    margin-bottom: 64px;
+    margin-bottom: 24px;
     color: $black;
     font-weight: 400;
-    line-height: 1.2;
+    @include breakpoint(tablet) {
+    margin-bottom: 64px;
+    }
     @include breakpoint(desktop) {
         font-size: 20px;
     }
@@ -75,12 +77,15 @@
  gap: 24px;
  align-items: baseline;
 }
- .socialIcon {
+.socialIcon {
+    height: 32px;
+    width: 32px;
     @include breakpoint(desktop) {
-        width: 40px;
         height: 40px;
+        width: 40px;
     }
  }
+
 .bazaContainer {
     min-height: 297px;
     min-width: 328px;
@@ -121,7 +126,6 @@
     color: #fff;
     font-size: 24px;
     font-weight: 800;
-    line-height: 1.05;
     letter-spacing: -0.72px;
     @include breakpoint(desktop) {
         font-size: 32px;
