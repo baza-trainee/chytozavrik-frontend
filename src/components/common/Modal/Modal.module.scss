@@ -30,7 +30,7 @@
 
   position: relative;
 
-  width: 360px;
+  min-width: 360px;
   min-height: 100%;
 
   padding-top: var(--padding-top);
@@ -39,6 +39,10 @@
   padding-right: var(--padding-right);
 
   background-color: $white;
+
+  @include breakpoint(false, tablet) {
+    max-width: 360px;
+  }
 
   @include breakpoint(tablet) {
     --padding-top: 32px;

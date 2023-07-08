@@ -1,35 +1,63 @@
 import React from 'react';
-import { Facebook, Instagram } from 'iconsax-react';
+import { Container, Typography } from 'components/common';
+import Image from 'next/image';
+import facebook from 'public/images/facebook-add.svg';
+import insta from 'public/images/insta-add.svg';
 
 import styles from './AdditionalInfo.module.scss';
 
 export default function AdditionalInfo() {
   return (
-    <div className={styles.infoContainer}>
-      <div className={styles.feedbackContainer}>
-        <h2 className={styles.feedbackTitle}>Залиште свій слід у світі читання</h2>
-        <p className={styles.feedbackText}>
-          Ми цінуємо ваш зворотній зв&apos;язок! Не соромтеся зв&apos;язатися з нами за допомогою
-          наведених контактів. Ми готові відповісти на ваші питання, вислухати ваші пропозиції та
-          разом з вами побудувати захопливий світ читання для дітей!
-        </p>
-        <div className={styles.socialWrapper}>
-          <a href="https://www.facebook.com/" target="_blank" rel="nofollow noreferrer noopener">
-            <Facebook size={32} />
-          </a>
-          <a href="https://www.instagram.com/" target="_blank" rel="nofollow noreferrer noopener">
-            <Instagram size={32} />
-          </a>
+    <section className={styles.section}>
+      <Container className={styles.container}>
+        <div className={styles.feedbackContainer}>
+          <Typography component="h2" variant="h2" className={styles.feedbackTitle}>
+            Залиште свій слід у світі читання
+          </Typography>
+          <Typography component="p" variant="body" className={styles.feedbackText}>
+            Ми цінуємо ваш зворотній зв&apos;язок! Ми готові відповісти на ваші питання, вислухати
+            ваші пропозиції та разом з вами побудувати захопливий світ читання для дітей!
+          </Typography>
+          <div className={styles.socialWrapper}>
+            <a
+              className={styles.socialLink}
+              href="https://www.facebook.com/"
+              target="_blank"
+              rel="nofollow noreferrer noopener"
+            >
+              <Image src={facebook} className={styles.socailIcon} alt="іконка фейсбука" />
+            </a>
+
+            <a
+              className={styles.socialLink}
+              href="https://www.instagram.com/"
+              target="_blank"
+              rel="nofollow noreferrer noopener"
+            >
+              <Image src={insta} className={styles.socailIcon} alt="іконка інстаграма" />
+            </a>
+          </div>
         </div>
-      </div>
-      <div className={styles.bazaContainer}>
-        <h2 className={styles.bazaTitle}>Про Baza Trainee</h2>
-        <p className={styles.bazaText}>
-          Ми цінуємо ваш зворотній зв&apos;язок! Не соромтеся зв&apos;язатися з нами за допомогою
-          наведених контактів. Ми готові відповісти на ваші питання, вислухати ваші пропозиції та
-          разом з вами побудувати захопливий світ читання для дітей!
-        </p>
-      </div>
-    </div>
+        <div className={styles.bazaContainer}>
+            <Typography component="h2" variant="h2" className={styles.bazaTitle}>
+              Про Ba<span className={styles.z}>z</span>a Trainee Ukraine
+            </Typography>
+          <div className={styles.textWrapper}>
+            <Typography component="p" variant="body" className={styles.bazaText}>
+              Навчальний проєкт-платформа Baza Trainee Ukraine надає можливість кожному, хто хоче
+              набути практики в ІТ сфері, взяти участь у створенні реальних проєктів для
+              громадськості.
+            </Typography>
+            <Typography component="p" variant="body" className={styles.bazaText}>
+              Дізнайтесь більше про нас на нашому сайті:
+              <br />
+              <a href="#" target="_blank" rel="nofollow noreferrer noopener">
+                https://baza-trainee.tech
+              </a>
+            </Typography>
+          </div>
+        </div>
+      </Container>
+    </section>
   );
 }

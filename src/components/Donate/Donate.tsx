@@ -2,8 +2,9 @@
 
 import { useState } from 'react';
 import { Button, Container, Typography } from '../common';
-import styles from './Donate.module.scss';
 import Modal from '../common/Modal';
+import { DonateDialog } from '../modals';
+import styles from './Donate.module.scss';
 
 const Donate = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -29,7 +30,11 @@ const Donate = () => {
           </Button>
         </Container>
       </section>
-      {isModalOpen && <Modal onClose={closeModalHandler} />}
+      {isModalOpen && (
+        <Modal onClose={closeModalHandler}>
+          <DonateDialog onClose={closeModalHandler} />
+        </Modal>
+      )}
     </>
   );
 };
