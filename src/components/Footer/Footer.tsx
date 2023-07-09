@@ -3,7 +3,6 @@ import Link from 'next/link';
 import styles from './Footer.module.scss';
 import classNames from 'classnames';
 import Image from 'next/image';
-// import { Button } from "../Button/Button";
 import Container from '../common/Container/Container';
 import Typography from '../common/Typography/Typography';
 
