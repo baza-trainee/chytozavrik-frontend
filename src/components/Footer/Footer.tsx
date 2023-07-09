@@ -44,10 +44,10 @@ const Footer = () => {
                   </div>
                 <div className={classNames(styles.class1)}>
         <Typography className={classNames(styles.informationText, styles.decoration)} component="h3" variant="h3">
-          <Link href="#" >Політика <span className={classNames(styles.wbr)}>конфіденційності</span><p className={classNames(styles.wbr1)}>конфіденційності</p></Link>
+                    <Link href="#" className={classNames(styles.linkText)}>Політика <span className={classNames(styles.wbr)}>конфіденційності</span><p className={classNames(styles.wbr1)}>конфіденційності</p></Link>
         </Typography>
         <Typography className={classNames(styles.informationText, styles.decoration)} component="h3" variant="h3">
-                  <Link href="#">Правила поведінки <span className={classNames(styles.wbr)}>на сайті</span><p className={classNames(styles.wbr1)}>на сайті</p>
+                  <Link href="#" className={classNames(styles.linkText)}>Правила<span className={classNames(styles.wbr)}> користування</span><p className={classNames(styles.wbr1)}>користування</p><span className={classNames(styles.wbr)}> сайтом</span><p className={classNames(styles.wbr1)}>сайтом</p>
                     </Link>
         </Typography>
                 

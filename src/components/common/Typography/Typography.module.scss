@@ -28,14 +28,27 @@
     color: #fdfdfd;
     font-size: 14px;
     letter-spacing: -0.72px;
-    text-align: center;
+    // text-align: center;
     font-style: normal;
       font-weight: 400;
       font-family: 'Raleway';
         line-height: 120%;
   }
 
-     &--p {
+    &--h4 {
+  
+      color: #fdfdfd;
+      font-size: 18px;
+      letter-spacing: -0.72px;
+      // text-align: center;
+      font-style: normal;
+      font-weight: 400;
+      font-family: 'Raleway';
+      line-height: 120%;
+    }
+
+
+     &--p1 {
   
       color:#FFF;
         font-size: 14px;
