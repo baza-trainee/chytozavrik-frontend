@@ -2,45 +2,40 @@
 @import 'scss/utils/mixin';
 
 .advantages {
-    margin: 72px auto 36px auto;
+  margin: 72px auto 36px auto;
 
-    .container {
-        --padding-x: 0;
+  .title {
+    margin: 0 auto 36px auto;
+    max-width: 350px;
+  }
+
+  .section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 72px;
+    flex-wrap: wrap;
+
+    @include breakpoint(tablet) {
+      justify-content: space-between;
     }
 
-    .title {
-        margin: 0 auto 36px auto;
-        max-width: 350px;
-    }
-    
-    .section {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 24px;
-        margin-bottom: 72px;
-        flex-wrap: wrap;
-        
-        @include breakpoint(tablet) {
-            justify-content: space-between;
-        }
+    article {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      text-align: start;
+      justify-content: space-around;
+      font-size: 16px;
+      gap: 24px;
 
-        article {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            text-align: start;
-            justify-content: space-around;
-            font-size: 16px;
-            gap: 24px;
-
-            @include breakpoint(tablet) {
-                flex-direction: column;
-                font-size: 18px;
-                max-width: 213px;
-                text-align: center;
-            }
-        }
+      @include breakpoint(tablet) {
+        flex-direction: column;
+        font-size: 18px;
+        max-width: 213px;
+        text-align: center;
+      }
     }
+  }
 }
-
