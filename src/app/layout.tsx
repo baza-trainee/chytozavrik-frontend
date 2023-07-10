@@ -2,7 +2,11 @@ import { Metadata } from 'next';
 import Header from '@/components/Header';
 import { Raleway, Montserrat_Alternates } from 'next/font/google';
 import './globals.scss';
-import Footer from '@/components/Footer/Footer';
+
+import { Inter } from 'next/font/google';
+import Footer from '../components/Footer/Footer'
+const inter = Inter({ subsets: ['latin'] });
+
 
 const raleway = Raleway({
   variable: '--raleway-font',
@@ -36,7 +40,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Footer/>
       </body>
 
-      
     </html>
   );
 }
