@@ -1,19 +1,21 @@
-import AdditionalInfo from '@/components/AdditionalInfo/AdditionalInfo';
-import CtaBlock from '@/components/CtaBlock/CtaBlock';
+import AdditionalInfo from '@/components/AdditionalInfo';
+import Donate from '@/components/Donate';
 import Hero from 'components/Hero';
-import  Header  from "../components/Header/Header";
-import Advantages from '@/components/Advantages/Advantages';
+import Advantages from '@/components/Advantages';
+import About from '@/components/About/About';
+import AboutDetail from '@/components/AboutDetail/AboutDetail';
+import Partners from '@/components/Partners';
 
 export default function Home() {
   return (
-    <>
-      <main>
-        <Header />
-        <Hero />
-        <CtaBlock />
-        <AdditionalInfo />
-        <Advantages />
-      </main>
-    </>
+    <main>
+      <Hero />
+      <About />
+      <AboutDetail />
+      <Donate />
+      <Advantages />
+      <Partners />
+      <AdditionalInfo />
+    </main>
   );
 }

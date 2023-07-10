@@ -1,8 +1,23 @@
 import { Metadata } from 'next';
+import Header from '@/components/Header';
+import { Raleway, Montserrat_Alternates } from 'next/font/google';
 import './globals.scss';
-import { Inter } from 'next/font/google';
 
-const inter = Inter({ subsets: ['latin'] });
+const raleway = Raleway({
+  variable: '--raleway-font',
+  weight: ['300', '800'],
+  style: 'normal',
+  subsets: ['latin'],
+  display: 'swap',
+});
+
+const montserratAlternates = Montserrat_Alternates({
+  variable: '--montserrat-alternates-font',
+  weight: '600',
+  style: 'normal',
+  subsets: ['latin'],
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: 'Читозаврик',
@@ -11,8 +26,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="uk">
-      <body className={inter.className}>{children}</body>
+    <html lang="uk" className={`${raleway.variable} ${montserratAlternates.variable}`}>
+      <body>
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }
