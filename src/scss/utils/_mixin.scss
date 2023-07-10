@@ -14,6 +14,21 @@
   overflow: hidden;
 }
 
+@mixin addWaveBackground($imageUrl) {
+  background-image: url($imageUrl);
+  background-repeat: repeat-x;
+  background-position: center top;
+  background-size: auto 27px;
+
+  @include breakpoint(tablet) {
+    background-size: auto 54px;
+  }
+
+  @include breakpoint(desktop) {
+    background-size: auto 102px;
+  }
+}
+
 @mixin breakpoint($from, $to: false) {
   @if not $to {
     @media screen and (min-width: getBreakpoint($from)) {
