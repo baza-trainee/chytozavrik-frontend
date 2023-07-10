@@ -27,14 +27,7 @@ const Header = () => {
             className={classNames(styles.logoText)}
           />
         </div>
-        <div className={classNames(styles.buttonContainer)}>
-          <Link className={classNames(styles.link)} href="#">
-            Про проєкт
-          </Link>
-          <Button className={classNames(styles.button)} variant="outline">
-            Вхід
-          </Button>
-        </div>
+       
 
         <div className={classNames(styles.buttonContainer)}>
 
