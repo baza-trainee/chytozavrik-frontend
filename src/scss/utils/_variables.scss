@@ -85,10 +85,6 @@ $palettes: (
   ),
 );
 
-$black: #000;
-$light-black: #1e1e1e;
-$white: #fdfdfd;
-
 @function getColor($color, $tone) {
   @return map-get(map-get($palettes, $color), $tone);
 }
