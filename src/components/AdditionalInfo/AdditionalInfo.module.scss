@@ -4,18 +4,16 @@
 
 .section {
   padding: 48px 0;
+
   background-color: getColor(blue, 90);
-  background-image: url('/images/additional-cloud.svg');
-  background-repeat: repeat-x;
-  background-position: center top;
+  @include addWaveBackground('/images/background-wave-reverse.svg');
+
   @include breakpoint(tablet) {
     padding-top: 72px;
-    background-image: url('/images/additional-cloud-tb.svg');
     padding-bottom: 92px;
   }
   @include breakpoint(desktop) {
     padding: 136px 0;
-    background-image: url('/images/additional-cloud-dt.svg');
   }
 }
 
