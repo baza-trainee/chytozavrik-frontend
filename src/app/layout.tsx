@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import Header from '@/components/Header';
 import { Raleway, Montserrat_Alternates } from 'next/font/google';
 import './globals.scss';
-
+import Footer from '@/components/Footer/Footer';
 
 const raleway = Raleway({
   variable: '--raleway-font',
@@ -33,6 +33,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <Header />
         {children}
+        <Footer/>
       </body>
 
       

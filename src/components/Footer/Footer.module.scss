@@ -115,9 +115,11 @@
   @include breakpoint(desktop) {
     :not(:last-child) {
       margin-bottom: 32px;
-      width: 193px;
+      // width: 193px;
     }
-            font-size: 18px;
+        font-size: 18px;
+        margin-bottom: 0px;
+               
         
   }
 }
@@ -170,6 +172,11 @@
 .socialImage {
   width: 24px;
   height: 24px;
+
+  @include breakpoint(tablet) {
+      width: 32px;
+      height: 32px;
+    }
 
   @include breakpoint(desktop) {
     width: 40px;
@@ -239,22 +246,34 @@
 
 .informationContact {
   margin-bottom: 8px;
+  font-family: 'Montserrat Alternates';
 
   @include breakpoint(desktop) {
     margin-bottom: 32px;
     font-size: 18px;
+    
+     
+      font-style: normal;
+      font-weight: 400;
+      line-height: 120%;
   }
 }
 
 .informationContactSecond {
   margin-bottom: 16px;
+  font-family: 'Montserrat Alternates';
   @include breakpoint(tablet) {
     margin-bottom: 17px;
   }
 
     @include breakpoint(desktop) {
-     
+     margin-bottom: 36px;
       font-size: 18px;
+      font-family: 'Montserrat Alternates';
+      
+        font-style: normal;
+        font-weight: 400;
+        line-height: 120%;
     }
   
 }
@@ -283,17 +302,17 @@
   color: #ffff;
 
   /* Caption */
-  font-size: 12px;
-  font-family: Raleway;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 120%;
+  font-size: 11px;
+  // font-family: 'Raleway'
+  ;
+ 
   @include breakpoint(tablet) {
     margin-top: -22px;
   }
   @include breakpoint(desktop) {
-    margin-top: 64px;
+    margin-top: 14px;
     font-size: 16px;
+    // font-family: 'Raleway'
   }
 }
 
@@ -353,6 +372,9 @@
 .class1 {
   display: flex;
   flex-direction: column;
+  @include breakpoint(desktop) {
+  margin-left: 117px;
+  }
 }
 
 .class2 {

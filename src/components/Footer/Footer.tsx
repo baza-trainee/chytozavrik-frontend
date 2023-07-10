@@ -34,18 +34,18 @@ const Footer = () => {
               
               <ul className={classNames(styles.list, styles.informationText, styles.footerList)}>
                 <div className={classNames(styles.class)}>
-        <Typography className={classNames(styles.informationText)} component="h3" variant="h3">
+        <Typography className={classNames(styles.informationText)} component="h3" variant="footer">
           Про проєкт
         </Typography>
-        <Typography className={classNames(styles.informationText)} component="h3" variant="h3">
+        <Typography className={classNames(styles.informationText)} component="h3" variant="footer">
           До вігваму
                   </Typography>
                   </div>
                 <div className={classNames(styles.class1)}>
-        <Typography className={classNames(styles.informationText, styles.decoration)} component="h3" variant="h3">
+        <Typography className={classNames(styles.informationText, styles.decoration)} component="h3" variant="footer">
                     <Link href="#" className={classNames(styles.linkText)}>Політика <span className={classNames(styles.wbr)}>конфіденційності</span><p className={classNames(styles.wbr1)}>конфіденційності</p></Link>
         </Typography>
-        <Typography className={classNames(styles.informationText, styles.decoration)} component="h3" variant="h3">
+        <Typography className={classNames(styles.informationText, styles.decoration)} component="h3" variant="footer">
                   <Link href="#" className={classNames(styles.linkText)}>Правила<span className={classNames(styles.wbr)}> користування</span><p className={classNames(styles.wbr1)}>користування</p><span className={classNames(styles.wbr)}> сайтом</span><p className={classNames(styles.wbr1)}>сайтом</p>
                     </Link>
         </Typography>
@@ -56,7 +56,7 @@ const Footer = () => {
               <ul className={classNames(styles.list, styles.contacts)}>
                 <div className={classNames(styles.class2)}>
                       {/* <li className={classNames(styles.text)}> */}
-                      <Typography className={classNames(styles.informationContact)} component="p" variant="p">
+                      <Typography className={classNames(styles.informationContact)} component="p" variant="h6">
                   <Link href="tel:+380636286630" className={classNames(styles.listIcon)}>
                   <Image alt="Logo" src="/phone.svg" width={18}
               height={18} className={classNames(styles.image)}></Image>+380 63 628 6630</Link>
@@ -64,14 +64,14 @@ const Footer = () => {
                       </Typography>
                       
 
-          <Typography className={classNames(styles.informationContactSecond)} component="p" variant="p">  
+          <Typography className={classNames(styles.informationContactSecond)} component="p" variant="h6">  
         {/* <li className={classNames(styles.text1)}> */}
                   <Link href="tel:+380675681788" className={classNames(styles.listIcon)}>
                       <Image alt="Logo" src="/phone.svg" width={18}
               height={18} className={classNames(styles.image)}></Image>+380 67 568 1788</Link>
                           {/* </li> */}
                           </Typography>
-        <Typography className={classNames(styles.informationMail)} component="h3" variant="h3">
+        <Typography className={classNames(styles.informationMail)} component="p" variant="footer">
                   <Link href="mailto:1111111@gmail.com" className={classNames(styles.listIcon)}>
                       <Image alt="Logo" src="/mail.svg" width={18}
               height={18} className={classNames(styles.image)}></Image>1111111@gmail.com</Link>
@@ -100,9 +100,9 @@ const Footer = () => {
          
         </div>
         
-         <p className={classNames(styles.footerText)}>
+         <Typography className={classNames(styles.footerText)} component="p" variant="footer-end">
                 Розробка Baza Trainee Ukraine 2023 Усі права захищені  
-              </p>
+              </Typography>
          
               
               
