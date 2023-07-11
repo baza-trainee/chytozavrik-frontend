@@ -3,9 +3,9 @@ import Header from '@/components/Header';
 import { Raleway, Montserrat_Alternates } from 'next/font/google';
 import './globals.scss';
 
-import { Inter } from 'next/font/google';
+
 import Footer from '../components/Footer/Footer'
-const inter = Inter({ subsets: ['latin'] });
+
 
 
 const raleway = Raleway({
@@ -18,7 +18,7 @@ const raleway = Raleway({
 
 const montserratAlternates = Montserrat_Alternates({
   variable: '--montserrat-alternates-font',
-  weight: '600',
+  weight: ['400', '600'],
   style: 'normal',
   subsets: ['latin'],
   display: 'swap',
