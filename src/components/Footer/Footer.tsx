@@ -11,7 +11,7 @@ const Footer = () => {
   return (
     <footer>
       <Container className={styles.footer}>
-        <Container className={styles.footer1}>
+        
           <div className={styles.footerContainer}>
             <div className={styles.logoContainer}>
               <Image
@@ -128,7 +128,7 @@ const Footer = () => {
           <Typography className={styles.footerText} component="p" variant="footer-end">
             Розробка Baza Trainee Ukraine 2023 Усі права захищені
           </Typography>
-        </Container>
+        
       </Container>
     </footer>
   );
