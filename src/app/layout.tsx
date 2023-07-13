@@ -3,6 +3,11 @@ import Header from '@/components/Header';
 import { Raleway, Montserrat_Alternates } from 'next/font/google';
 import './globals.scss';
 
+
+import Footer from '../components/Footer/Footer'
+
+
+
 const raleway = Raleway({
   variable: '--raleway-font',
   weight: ['300', '800'],
@@ -13,11 +18,12 @@ const raleway = Raleway({
 
 const montserratAlternates = Montserrat_Alternates({
   variable: '--montserrat-alternates-font',
-  weight: '600',
+  weight: ['400', '600'],
   style: 'normal',
   subsets: ['latin'],
   display: 'swap',
 });
+
 
 export const metadata: Metadata = {
   title: 'Читозаврик',
@@ -26,11 +32,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
+
     <html lang="uk" className={`${raleway.variable} ${montserratAlternates.variable}`}>
       <body>
         <Header />
         {children}
+        <Footer />
+        
       </body>
+
     </html>
   );
 }
