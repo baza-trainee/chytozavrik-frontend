@@ -10,7 +10,7 @@ import Footer from '../components/Footer/Footer'
 
 const raleway = Raleway({
   variable: '--raleway-font',
-  weight: ['300', '800'],
+  weight: ['300', '400', '800'],
   style: 'normal',
   subsets: ['latin'],
   display: 'swap',
