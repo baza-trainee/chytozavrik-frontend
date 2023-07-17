@@ -13,7 +13,7 @@ const raleway = Raleway({
 
 const montserratAlternates = Montserrat_Alternates({
   variable: '--montserrat-alternates-font',
-  weight: '600',
+  weight: ['600', '400'],
   style: 'normal',
   subsets: ['latin'],
   display: 'swap',

@@ -63,8 +63,8 @@ const Input = <T extends FieldValues>({
           />
           {renderIcon && <span className={styles.icon}>{renderIcon}</span>}
         </span>
-        {error && <span className={styles.message}>{error.message}</span>}
       </label>
+      {error && <span className={styles.message}>{error.message}</span>}
     </div>
   );
 };
