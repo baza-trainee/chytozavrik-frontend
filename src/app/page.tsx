@@ -6,6 +6,7 @@ import Advantages from '@/components/Advantages';
 import About from '@/components/About/About';
 import AboutDetail from '@/components/AboutDetail/AboutDetail';
 import Partners from '@/components/Partners';
+import Auth from '@/components/Auth';
 
 
 export default function Home() {
@@ -18,6 +19,7 @@ export default function Home() {
       <Advantages />
       <Partners />
       <AdditionalInfo />
+      <Auth />
     </main>
 
     

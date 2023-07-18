@@ -1,7 +1,6 @@
 import { InputHTMLAttributes, ReactNode, useMemo } from 'react';
 import { useController, UseControllerProps, FieldValues } from 'react-hook-form';
-import { MdOutlineCancel } from 'react-icons/md';
-import { PiWarningCircleBold } from 'react-icons/pi';
+import { AlertCircle, XCircle } from 'lucide-react';
 import IconButton from '@/components/common/IconButton';
 import styles from './Input.module.scss';
 
@@ -39,9 +38,9 @@ const Input = <T extends FieldValues>({
   const renderIcon = useMemo(() => {
     if (status === 'error') {
       return field.value.length > 0 ? (
-        <IconButton onClick={resetField} icon={<MdOutlineCancel />} />
+        <IconButton onClick={resetField} icon={<XCircle />} />
       ) : (
-        <PiWarningCircleBold />
+        <AlertCircle />
       );
     } else if (icon) {
       return icon;
@@ -63,8 +62,8 @@ const Input = <T extends FieldValues>({
           />
           {renderIcon && <span className={styles.icon}>{renderIcon}</span>}
         </span>
-        {error && <span className={styles.message}>{error.message}</span>}
       </label>
+      {error && <span className={styles.message}>{error.message}</span>}
     </div>
   );
 };

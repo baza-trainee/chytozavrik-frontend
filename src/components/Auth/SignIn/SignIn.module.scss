@@ -1,0 +1,96 @@
+@import 'scss/utils/variables';
+@import 'scss/utils/mixin';
+
+.dialog {
+  --py: 56px;
+  --px: 16px;
+  display: flex;
+  flex-direction: column;
+
+  padding: var(--py) var(--px);
+
+  height: 100%;
+
+  @include breakpoint(tablet) {
+    --py: 32px;
+    --px: 24px;
+  }
+}
+
+.title {
+  --title-margin-bottom: 40px;
+
+  margin-bottom: var(--title-margin-bottom);
+
+  @include breakpoint(tablet) {
+    --title-margin-bottom: 24px;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+
+  height: 100%;
+
+  @include breakpoint(tablet) {
+  }
+
+  @include breakpoint(desktop) {
+  }
+}
+
+.inputs-group {
+  display: flex;
+  flex-direction: column;
+  gap: 38px;
+
+  margin-bottom: 46px;
+}
+
+.forgot-password {
+  --mb: 32px;
+  margin-bottom: var(--mb);
+
+  @include breakpoint(tablet) {
+    --mb: 24px;
+  }
+}
+
+.remember-me {
+  @include breakpoint(tablet) {
+    margin-bottom: 24px;
+  }
+}
+
+.signup-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+
+  @include breakpoint(false, tablet) {
+    margin: auto 0;
+  }
+
+  @include breakpoint(tablet) {
+    flex-direction: row;
+    justify-content: space-between;
+
+    margin-bottom: 32px;
+  }
+}
+
+.button-submit {
+  width: 100%;
+
+  padding: 16px 28px;
+
+  font-size: 18px;
+
+  @include breakpoint(tablet) {
+    padding-block: 20px;
+
+    font-size: 24px;
+  }
+}

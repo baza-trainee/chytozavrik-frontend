@@ -1,0 +1,23 @@
+@import 'scss/utils/variables';
+@import 'scss/utils/mixin';
+
+@layer auth-link;
+
+.link {
+  --font-size: 14px;
+
+  width: fit-content;
+
+  font-size: var(--font-size);
+  font-weight: 500;
+  color: getColor(blue, 10);
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+
+  @include breakpoint(tablet) {
+    --font-size: 16px;
+  }
+}
