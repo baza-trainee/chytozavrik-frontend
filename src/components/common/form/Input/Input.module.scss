@@ -1,6 +1,8 @@
 @import 'scss/utils/variables';
 @import 'scss/utils/mixin';
 
+@layer input;
+
 .group {
   --text-color: #{getColor(neutral, 30)};
   --border-color: #{getColor(neutral, 50)};

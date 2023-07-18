@@ -1,9 +1,9 @@
-import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Button, Typography } from '@/components/common';
 import { Checkbox, Input, PasswordInput, validation } from '@/components/common/form';
+import AuthLink from '../AuthLink';
 import styles from './SignIn.module.scss';
 
 const regex =
@@ -42,38 +42,44 @@ const SignIn = () => {
 
   return (
     <div className={styles.dialog}>
-      <Typography component="h2" variant="h2">
+      <Typography className={styles.title} component="h2" variant="h2">
         Вхід
       </Typography>
       <form className={styles.form} onSubmit={handleSubmit(formSubmit)} noValidate>
-        <Input
-          control={control}
-          type="email"
-          name="email"
-          resetField={resetFieldByName('email')}
-          label="E-mail"
-          placeholder="Введіть свій e-mail"
-          autoComplete="username"
-        />
-        <PasswordInput
-          control={control}
-          name="password"
-          resetField={resetFieldByName('password')}
-          label="Ввести пароль"
-          placeholder="Введіть свій пароль"
-          autoComplete="current-password"
-        />
+        <div className={styles['inputs-group']}>
+          <Input
+            control={control}
+            type="email"
+            name="email"
+            resetField={resetFieldByName('email')}
+            label="E-mail"
+            placeholder="Введіть свій e-mail"
+            autoComplete="username"
+          />
+          <PasswordInput
+            control={control}
+            name="password"
+            resetField={resetFieldByName('password')}
+            label="Ввести пароль"
+            placeholder="Введіть свій пароль"
+            autoComplete="current-password"
+          />
+        </div>
 
-        <Link href="/?auth=forgot-password">Забули пароль?</Link>
+        <AuthLink className={styles['forgot-password']} href="/?auth=forgot-password">
+          Забули пароль?
+        </AuthLink>
 
-        <Checkbox name="rememberMe" control={control}>
+        <Checkbox className={styles['remember-me']} name="rememberMe" control={control}>
           Запам&apos;ятати мене
         </Checkbox>
 
-        <Typography component="p" variant="body">
-          Ви ще не зареєстровані?
-        </Typography>
-        <Link href="/?auth=signup">Зареєструватися</Link>
+        <div className={styles['signup-group']}>
+          <Typography component="p" variant="body">
+            Ви ще не зареєстровані?
+          </Typography>
+          <AuthLink href="/?auth=signup">Зареєструватися</AuthLink>
+        </div>
 
         <Button className={styles['button-submit']} type="submit" color="secondary">
           Увійти
