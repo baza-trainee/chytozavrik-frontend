@@ -4,10 +4,22 @@
   font-family: var(--montserrat-alternates-font);
   font-weight: 600;
   text-align: center;
+  
 }
+
+%title-footer {
+  font-family: var(--raleway-font);
+  font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+}
+
+
 
 :where(.text-h1) {
   @extend %title;
+
+  
 
   font-size: 32px;
 
@@ -23,6 +35,7 @@
   letter-spacing: -0.72px;
 }
 
+
 :where(.text-h3) {
   @extend %title;
 
@@ -35,6 +48,29 @@
   font-size: 18px;
 }
 
+:where(.text-h6) {
+  @extend %title;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+
 :where(.text-body) {
   font-family: inherit;
+
+
 }
+
+:where(.text-footer) {
+  @extend %title-footer;
+
+  }
+
+    :where(.text-footer-end) {
+      @extend %title-footer;
+  font-size: 12px;
+    }
+
+
+
+
