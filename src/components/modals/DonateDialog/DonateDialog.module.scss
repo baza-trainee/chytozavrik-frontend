@@ -2,25 +2,24 @@
 @import 'scss/utils/mixin';
 
 .dialog {
-  --dialog-padding-top: calc(86px - var(--padding-top));
+  --dialog-pt: 86px;
+  --dialog-pb: 95px;
+  --dialog-px: 16px;
 
-  padding-top: var(--dialog-padding-top);
+  padding: var(--dialog-pt) var(--dialog-px) var(--dialog-pb);
 
   @include breakpoint(tablet) {
-    --dialog-padding-top: calc(106px - var(--padding-top));
+    --dialog-pt: 106px;
+    --dialog-pt: 125px;
+    --dialog-px: 40px;
 
-    width: calc(620px - var(--padding-left) * 2);
-
-    padding-bottom: calc(135px - var(--padding-bottom));
-    padding-inline: calc(40px - var(--padding-left));
+    width: 620px;
   }
 
   @include breakpoint(desktop) {
-    --dialog-padding-top: calc(106px - var(--padding-top));
+    --dialog-pt: 135px;
 
-    width: calc(768px - var(--padding-left) * 2);
-
-    padding-bottom: calc(145px - var(--padding-bottom));
+    width: 768px;
   }
 }
 

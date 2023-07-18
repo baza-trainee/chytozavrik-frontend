@@ -15,5 +15,9 @@ export const validation = {
     .oneOf([yup.ref('password')], 'Passwords must match.')
     .required('Please, confirm your password.'),
   rememberMe: yup.boolean().required(),
-  donate: yup.number().positive().required(),
+  donate: yup
+    .number()
+    .typeError('Value must be a positive number.')
+    .positive('Value must be a positive number.')
+    .required(),
 };
