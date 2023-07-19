@@ -80,6 +80,18 @@
   border: none;
   background: none;
   outline: none;
+
+  // Hide arrows in type=number
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  &[type='number'] {
+    appearance: textfield;
+  }
 }
 
 .icon {
