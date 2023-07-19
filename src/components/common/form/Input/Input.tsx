@@ -54,12 +54,7 @@ const Input = <T extends FieldValues>({
       <label className={styles.label}>
         {label && <span className={styles['label-text']}>{label}</span>}
         <span className={styles['input-group']}>
-          <input
-            className={styles.input}
-            {...field}
-            value={field.value === 0 ? '' : field.value}
-            {...props}
-          />
+          <input className={styles.input} {...field} {...props} />
           {renderIcon && <span className={styles.icon}>{renderIcon}</span>}
         </span>
       </label>

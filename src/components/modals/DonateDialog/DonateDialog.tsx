@@ -5,7 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Button, Typography } from '@/components/common';
 import styles from './DonateDialog.module.scss';
-import { Input, validation } from '@/components/common/form';
+import { Input, NumberInput, validation } from '@/components/common/form';
 
 type Props = {
   onClose: () => void;
@@ -44,8 +44,8 @@ const DonateDialog = ({ onClose }: Props) => {
       <Typography className={styles.title} component="h2" variant="h3">
         Допоможіть нам відкрити світ книг для дітей!
       </Typography>
-      <form className={styles.form} onSubmit={handleSubmit(submit)}>
-        <Input
+      <form className={styles.form} onSubmit={handleSubmit(submit)} noValidate>
+        <NumberInput
           control={control}
           name="donate"
           resetField={resetFieldByName('donate')}
