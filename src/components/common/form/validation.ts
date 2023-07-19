@@ -15,6 +15,10 @@ export const validation = {
     .oneOf([yup.ref('password')], 'Паролі не співпадають.')
     .required('Будь ласка, підтвердіть пароль.'),
   rememberMe: yup.boolean().required(),
+  acceptedRules: yup
+    .boolean()
+    .oneOf([true], 'Ви повинні прийняти правила користування сайтом.')
+    .required(),
   donate: yup
     .number()
     .typeError('Сума донату повинна бути більша за 0.')

@@ -57,7 +57,11 @@
   }
 }
 
-.remember-me {
+.checkboxes-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
   @include breakpoint(tablet) {
     margin-bottom: 24px;
   }
@@ -78,6 +82,13 @@
     justify-content: space-between;
 
     margin-bottom: 32px;
+  }
+}
+
+.link {
+  &:hover,
+  &:focus {
+    text-decoration: underline;
   }
 }
 
