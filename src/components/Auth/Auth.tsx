@@ -6,7 +6,7 @@ import Modal from '../common/Modal';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 
-type AuthType = 'signin' | 'signup' | null;
+type AuthType = 'signin' | 'signup' | 'forgot-password' | null;
 
 const Auth = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);

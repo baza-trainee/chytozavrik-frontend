@@ -4,6 +4,7 @@ import * as yup from 'yup';
 import { Button, Typography } from '@/components/common';
 import { Checkbox, Input, PasswordInput, validation } from '@/components/common/form';
 import AuthLink from '../AuthLink';
+import { Route } from '@/constants';
 import styles from '../Auth.module.scss';
 
 const schema = yup.object({
@@ -59,7 +60,7 @@ const SignIn = () => {
           />
         </div>
 
-        {/* <AuthLink className={styles['forgot-password']} href="/?auth=forgot-password">
+        {/* <AuthLink className={styles['forgot-password']} href={Route.FORGOT_PASSWORD}>
           Забули пароль?
         </AuthLink> */}
 
@@ -73,7 +74,7 @@ const SignIn = () => {
           <Typography component="p" variant="body">
             Ви ще не зареєстровані?
           </Typography>
-          <AuthLink href="/?auth=signup">Зареєструватися</AuthLink>
+          <AuthLink href={Route.SIGN_UP}>Зареєструватися</AuthLink>
         </div>
 
         <Button className={styles['button-submit']} type="submit" color="secondary">
