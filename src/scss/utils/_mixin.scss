@@ -24,7 +24,7 @@
     background-size: auto 54px;
   }
 
-    @include breakpoint(tab) {
+    @include breakpoint(laptop) {
       background-size: auto 72px;
     }
 
