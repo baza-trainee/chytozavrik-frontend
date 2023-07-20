@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -10,7 +11,9 @@ import styles from '../Auth.module.scss';
 const schema = yup.object({
   email: validation.email,
   password: validation.password,
+  confirmPassword: validation.confirmPassword,
   rememberMe: validation.rememberMe,
+  acceptedRules: validation.acceptedRules,
 });
 
 type FormData = yup.InferType<typeof schema>;
@@ -18,11 +21,13 @@ type FormData = yup.InferType<typeof schema>;
 const defaultValues: FormData = {
   email: '',
   password: '',
+  confirmPassword: '',
   rememberMe: false,
+  acceptedRules: false,
 };
 
-const SignIn = () => {
-  const { control, handleSubmit, resetField } = useForm({
+const SignUp = () => {
+  const { control, handleSubmit, resetField, watch, getValues } = useForm({
     defaultValues,
     resolver: yupResolver(schema),
   });
@@ -30,14 +35,18 @@ const SignIn = () => {
   const resetFieldByName = (name: keyof FormData) => () =>
     resetField(name, { keepError: true, keepDirty: true, keepTouched: true });
 
-  const formSubmit = ({ rememberMe, ...data }: FormData) => {
+  const formSubmit = ({ confirmPassword, rememberMe, ...data }: FormData) => {
     console.log(data);
   };
+
+  useEffect(() => {
+    watch('acceptedRules');
+  }, [watch]);
 
   return (
     <div className={styles.dialog}>
       <Typography className={styles.title} component="h2" variant="h2">
-        Вхід
+        Реєстрація
       </Typography>
       <form className={styles.form} onSubmit={handleSubmit(formSubmit)} noValidate>
         <div className={styles['inputs-group']}>
@@ -54,35 +63,56 @@ const SignIn = () => {
             control={control}
             name="password"
             resetField={resetFieldByName('password')}
-            label="Ввести пароль"
+            label="Створити пароль"
             placeholder="Введіть свій пароль"
-            autoComplete="current-password"
+            autoComplete="new-password"
+          />
+          <PasswordInput
+            control={control}
+            name="confirmPassword"
+            resetField={resetFieldByName('confirmPassword')}
+            label="Повторити пароль"
+            placeholder="Повторіть свій пароль"
+            autoComplete="new-password"
           />
         </div>
-
-        {/* <AuthLink className={styles['forgot-password']} href={Route.FORGOT_PASSWORD}>
-          Забули пароль?
-        </AuthLink> */}
 
         <div className={styles['checkboxes-groups']}>
           <Checkbox name="rememberMe" control={control}>
             Запам&apos;ятати мене
           </Checkbox>
+
+          <Checkbox name="acceptedRules" control={control}>
+            Я згоден з{' '}
+            <a
+              className={styles.link}
+              href="/pdf/site-rules.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Правилами користування сайтом
+            </a>
+          </Checkbox>
         </div>
 
         <div className={styles['signup-group']}>
           <Typography component="p" variant="body">
-            Ви ще не зареєстровані?
+            Ви вже зареєстровані?
           </Typography>
-          <AuthLink href={Route.SIGN_UP}>Зареєструватися</AuthLink>
+          <AuthLink href={Route.SIGN_IN}>Увійти в обліковий запис</AuthLink>
         </div>
 
-        <Button className={styles['button-submit']} type="submit" color="secondary">
-          Увійти
+        <Button
+          className={styles['button-submit']}
+          type="submit"
+          color="secondary"
+          disabled={!getValues().acceptedRules}
+        >
+          Зареєструватися
         </Button>
       </form>
     </div>
   );
 };
 
-export default SignIn;
+export default SignUp;

@@ -1,9 +1,7 @@
 @import 'scss/utils/variables';
 @import 'scss/utils/mixin';
 
-@layer auth-link;
-
-.link {
+:where(.link) {
   --font-size: 14px;
 
   width: fit-content;

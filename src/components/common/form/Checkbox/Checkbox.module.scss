@@ -1,8 +1,6 @@
 @import 'scss/utils/variables';
 @import 'scss/utils/mixin';
 
-@layer checkbox;
-
 .label {
   display: flex;
   align-items: center;
@@ -81,9 +79,6 @@
     --checkbox-color: #{$secondary};
     --checkbox-hover-color: #{rgba($secondary, 0.16)};
   }
-}
-
-.input-checked-icon + input:not(:checked) {
 }
 
 .input {

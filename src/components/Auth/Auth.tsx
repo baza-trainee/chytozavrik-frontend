@@ -3,9 +3,10 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Modal from '../common/Modal';
-import SignIn from './SignIn/SignIn';
+import SignIn from './SignIn';
+import SignUp from './SignUp';
 
-type AuthType = 'signin' | 'signup' | null;
+type AuthType = 'signin' | 'signup' | 'forgot-password' | null;
 
 const Auth = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -25,7 +26,10 @@ const Auth = () => {
   }, [searchParams]);
 
   return (
-    <>{isModalOpen && authType === 'signin' && <Modal onClose={closeModal}>{<SignIn />}</Modal>}</>
+    <>
+      {isModalOpen && authType === 'signin' && <Modal onClose={closeModal}>{<SignIn />}</Modal>}
+      {isModalOpen && authType === 'signup' && <Modal onClose={closeModal}>{<SignUp />}</Modal>}
+    </>
   );
 };
 
