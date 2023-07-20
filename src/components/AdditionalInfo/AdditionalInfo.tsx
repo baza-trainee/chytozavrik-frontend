@@ -24,7 +24,7 @@ export default function AdditionalInfo() {
               target="_blank"
               rel="nofollow noreferrer noopener"
             >
-              <Facebook className={styles.socailIcon} size="32" />
+              <Facebook className={styles.socialIcon} size="32" />
             </a>
 
             <a
@@ -33,7 +33,7 @@ export default function AdditionalInfo() {
               target="_blank"
               rel="nofollow noreferrer noopener"
             >
-              <Instagram className={styles.socailIcon} size="32" />
+              <Instagram className={styles.socialIcon} size="32" />
             </a>
           </div>
         </div>

@@ -27,7 +27,7 @@
     align-items: normal;
   }
   @include breakpoint(desktop) {
-    gap: 135px;
+    gap: 133px;
   }
 }
 
@@ -40,7 +40,7 @@
     padding: 24px 0;
   }
     @include breakpoint(tab) {
-      width: 420px;
+      width: 440px;
     }
   @include breakpoint(desktop) {
     width: 520px;
@@ -66,8 +66,14 @@
   @include breakpoint(tablet) {
     margin-bottom: 64px;
   }
+    @include breakpoint(tab) {
+      margin-bottom: 40px;
+      letter-spacing: inherit;
+    }
   @include breakpoint(desktop) {
     font-size: 20px;
+    margin-bottom: 76px;
+    letter-spacing: -0.72px;
   }
 }
 
@@ -75,10 +81,20 @@
   display: flex;
   gap: 24px;
   align-items: baseline;
+  height: 32px;
+  @include breakpoint(desktop) {
+  height: 40px;
+  }
+}
+
+.socialIcon {
+@include breakpoint(desktop) {
+    width: 40px;
+    height: 40px;
+  }
 }
 
 .bazaContainer {
-  min-height: 297px;
   min-width: 328px;
   padding: 16px;
   border-radius: 8px;
@@ -90,7 +106,7 @@
     width: 330px;
   }
     @include breakpoint(tab) {
-      width: 420px;
+      width: 440px;
     }
   @include breakpoint(desktop) {
     width: 625px;
