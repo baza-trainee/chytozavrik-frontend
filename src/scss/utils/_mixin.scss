@@ -24,6 +24,10 @@
     background-size: auto 54px;
   }
 
+    @include breakpoint(laptop) {
+      background-size: auto 72px;
+    }
+
   @include breakpoint(desktop) {
     background-size: auto 102px;
   }
