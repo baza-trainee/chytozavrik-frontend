@@ -6,9 +6,11 @@
   padding: 48px 0;
   background-color: getColor(blue, 90);
   @include addWaveBackground('/images/background-wave-reverse.svg');
+  
   @include breakpoint(tablet) {
     padding: 72px 0;
   }
+  
   @include breakpoint(laptop) {
   padding: 100px 0;
   }
