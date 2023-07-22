@@ -162,7 +162,10 @@
     display: flex;
     flex-direction: column;
   }
-
+@include breakpoint(laptop) {
+  margin-left: 101px;
+  
+}
   @include breakpoint(desktop) {
     margin-left: 56px;
     flex-direction: row;
@@ -237,7 +240,9 @@
     width: 217px;
     flex-direction: column;
   }
-
+@include breakpoint(laptop){
+  margin-left: 267px;
+}
   @include breakpoint(desktop) {
     flex-direction: row;
     width: auto;
@@ -271,7 +276,9 @@
 
 .class3 {
   display: flex;
-  flex-direction: column;
+  @include breakpoint(desktop) {
+      display: block;
+    }
 }
 
 .linkText {
