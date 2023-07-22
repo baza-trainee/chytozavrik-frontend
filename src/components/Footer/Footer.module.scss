@@ -119,6 +119,8 @@
 .image {
   margin-right: 8px;
   margin-bottom: 8px;
+  width: 18px;
+    height: 18px;
   @include breakpoint(desktop) {
     width: 24px;
     height: 24px;
