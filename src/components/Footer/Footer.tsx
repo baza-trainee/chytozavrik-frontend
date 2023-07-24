@@ -10,8 +10,8 @@ import { Facebook, Instagram, Phone, Mail } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <footer>
-      <Container className={styles.footer}>
+    <footer className={styles.footer}>
+      <Container>
         <div className={styles.footerContainer}>
           <div className={styles.logoContainer}>
             <Image
@@ -59,37 +59,20 @@ const Footer = () => {
               <ul>
                 <List className={styles.informationContact} component="li" variant="h6">
                   <Link href="tel:+380636286630" className={styles.listIcon}>
-                    <Phone
-                      
-                      
-                      
-                      width={18}
-                      height={18}
-                      className={styles.image}
-                    ></Phone>
+                    <Phone width={18} height={18} className={styles.image}></Phone>
                     +380 63 628 6630
                   </Link>
                 </List>
 
                 <List className={styles.informationContactSecond} component="li" variant="h6">
                   <Link href="tel:+380675681788" className={styles.listIcon}>
-                    <Phone
-                      
-                      width={18}
-                      height={18}
-                      className={styles.image}
-                    ></Phone>
+                    <Phone width={18} height={18} className={styles.image}></Phone>
                     +380 67 568 1788
                   </Link>
                 </List>
                 <List className={styles.informationMail} component="li" variant="footer">
                   <Link href="mailto:1111111@gmail.com" className={styles.listIcon}>
-                    <Mail
-                      
-                      width={18}
-                      height={18}
-                      className={styles.image}
-                    ></Mail>
+                    <Mail width={18} height={18} className={styles.image}></Mail>
                     1111111@gmail.com
                   </Link>
                 </List>
@@ -98,25 +81,13 @@ const Footer = () => {
               <div className={styles.class3}>
                 <ul className={styles.social}>
                   <List component="li" variant="h3">
-                    <Link href="#">
-                      <Facebook
-                        href="https://www.facebook.com/"
-                        target="_blank"
-                        width={32}
-                        height={32}
-                        className={styles.socialImage}
-                      ></Facebook>
+                    <Link href="https://www.facebook.com/" target="_blank">
+                      <Facebook width={32} height={32} className={styles.socialImage}></Facebook>
                     </Link>
                   </List>
                   <List component="li" variant="h3">
-                    <Link href="#">
-                      <Instagram
-                        href="https://www.instagram.com/"
-                        target="_blank"
-                        width={32}
-                        height={32}
-                        className={styles.socialImage}
-                      ></Instagram>
+                    <Link href="https://www.instagram.com/" target="_blank">
+                      <Instagram width={32} height={32} className={styles.socialImage}></Instagram>
                     </Link>
                   </List>
                 </ul>

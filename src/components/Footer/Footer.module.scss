@@ -6,7 +6,7 @@
   background: getColor(blue, 20);
   padding-top: 24px;
   padding-bottom: 24px;
-  min-width: 100%;
+  // min-width: 100%;
   @include breakpoint(tablet) {
     height: 264px;
 
