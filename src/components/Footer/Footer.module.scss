@@ -6,7 +6,7 @@
   background: getColor(blue, 20);
   padding-top: 24px;
   padding-bottom: 24px;
-  min-width: 100%;
+  // min-width: 100%;
   @include breakpoint(tablet) {
     height: 264px;
 
@@ -30,29 +30,35 @@
   }
 }
 
-
-
 .list {
   list-style: none;
   color: $white;
-  
 }
 
 .informationText {
   text-align: start;
-  margin-bottom: 20px;
-@include breakpoint(desktop) {
-    :not(:last-child) {
-      margin-bottom: 32px;
-      // width: 193px;
-    }
-    font-size: 18px;
-    margin-bottom: 0px;
+  :not(:last-child) {
+    margin-bottom: 20px;
   }
+  font-size: 14px;
+
+  @include breakpoint(tablet) {
+    :not(:last-child) {
+      margin-bottom: 24px;
+    }
+  }
+  @include breakpoint(desktop) {
+    // :not(:last-child) {
+    //   margin-bottom: 32px;
+    // width: 193px;
+    font-size: 18px;
+  }
+
+  margin-bottom: 0px;
 }
 
 .informationMail {
-  margin-bottom: 19px;
+  margin-bottom: 26px;
 
   @include breakpoint(desktop) {
     font-size: 18px;
@@ -77,8 +83,11 @@
   @include breakpoint(tablet) {
     display: flex;
     justify-content: flex-end;
-    margin-top: 48px;
+    margin-top: 24px;
     margin-right: -40px;
+    :not(:last-child) {
+      margin-right: 24px;
+    }
   }
 
   @include breakpoint(desktop) {
@@ -111,7 +120,6 @@
   }
 }
 
-
 .text {
   margin-bottom: 14px;
 }
@@ -119,6 +127,8 @@
 .image {
   margin-right: 8px;
   margin-bottom: 8px;
+  width: 18px;
+  height: 18px;
   @include breakpoint(desktop) {
     width: 24px;
     height: 24px;
@@ -162,7 +172,9 @@
     display: flex;
     flex-direction: column;
   }
-
+  @include breakpoint(laptop) {
+    margin-left: 101px;
+  }
   @include breakpoint(desktop) {
     margin-left: 56px;
     flex-direction: row;
@@ -170,7 +182,7 @@
 }
 
 .informationContact {
-  margin-bottom: 8px;
+  margin-bottom: 9px;
   font-family: 'Montserrat Alternates';
 
   @include breakpoint(desktop) {
@@ -184,10 +196,10 @@
 }
 
 .informationContactSecond {
-  margin-bottom: 16px;
+  margin-bottom: 23px;
   font-family: 'Montserrat Alternates';
   @include breakpoint(tablet) {
-    margin-bottom: 17px;
+    margin-bottom: 23px;
   }
 
   @include breakpoint(desktop) {
@@ -205,25 +217,17 @@
   margin-bottom: 19px;
 }
 
-
-
-.socialLink {
-  display: flex;
-  justify-content: end;
-}
-
 .footerText {
   margin-top: 32px;
   color: $white;
   font-size: 11px;
- 
+
   @include breakpoint(tablet) {
     margin-top: -22px;
   }
   @include breakpoint(desktop) {
     margin-top: 14px;
     font-size: 16px;
-   
   }
 }
 
@@ -237,7 +241,9 @@
     width: 217px;
     flex-direction: column;
   }
-
+  @include breakpoint(laptop) {
+    margin-left: 267px;
+  }
   @include breakpoint(desktop) {
     flex-direction: row;
     width: auto;
@@ -255,10 +261,6 @@
   }
 }
 
-
-
-
-
 .class1 {
   display: flex;
   flex-direction: column;
@@ -267,11 +269,11 @@
   }
 }
 
-
-
 .class3 {
   display: flex;
-  flex-direction: column;
+  @include breakpoint(desktop) {
+    display: block;
+  }
 }
 
 .linkText {
