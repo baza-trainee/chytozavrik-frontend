@@ -28,16 +28,23 @@
     padding-bottom: 72px;
   }
 
+  @include breakpoint(laptop) {
+    padding-top: 35px;
+    padding-bottom: 100px;
+    display: flex;
+    gap: 101px;
+  }
+
   @include breakpoint(desktop) {
     padding-top: 47px;
     padding-bottom: 99px;
-    display: flex;
     gap: 138px;
   }
 }
 
 .title {
   text-align: left;
+  letter-spacing: 0px;
   margin-bottom: 24px;
 
   @include breakpoint(tablet) {
@@ -45,14 +52,27 @@
     margin-bottom: 36px;
   }
 
-  @include breakpoint(desktop) {
+  @include breakpoint(laptop){
     text-align: left;
     margin-bottom: 0;
+    min-width: 363px;
+  }
+
+  @include breakpoint(desktop) {
     min-width: 516px;
+    font-size: 32px;
   }
 }
 
-.about__row {
+.text{
+  font-weight: 400;
+
+  @include breakpoint(desktop) {
+    font-size: 20px;
+  }
+}
+
+.row {
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -61,8 +81,7 @@
     flex-direction: row;
   }
 
-  @include breakpoint(desktop) {
+  @include breakpoint(laptop){
     flex-direction: column;
-    color: $black;
   }
 }

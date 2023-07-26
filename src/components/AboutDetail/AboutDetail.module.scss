@@ -6,8 +6,13 @@
     background: url('../../../public/images/aboutDet_plane.svg'),
       url('../../../public/images/aboutDet_line.svg');
     background-repeat: no-repeat;
-    background-size: 298px 98px, 262px 1159px;
+    background-size: 298px 98px, 262px 1199px;
     background-position: calc(100% + 30px) 0, 54% 59%;
+  }
+
+  @include breakpoint(laptop) {
+    background-size: 450px 154px, 330px 1450px;
+    background-position: calc(100% + 30px) 0, 51% 51%;
   }
 
   @include breakpoint(desktop) {
@@ -22,6 +27,10 @@
 
   @include breakpoint(tablet) {
     padding: 72px 40px;
+  }
+
+  @include breakpoint(laptop) {
+    padding: 100px 60px;
   }
 
   @include breakpoint(desktop) {
@@ -56,6 +65,10 @@
     max-width: 325px;
   }
 
+  @include breakpoint(laptop){
+    max-width: 432px;
+  }
+
   @include breakpoint(desktop) {
     max-width: 510px;
   }
@@ -71,6 +84,11 @@
     max-width: 332px;
     padding-bottom: 0;
   }
+
+  @include breakpoint(laptop){
+    max-width: 440px;
+  }
+
   @include breakpoint(desktop) {
     max-width: 512px;
     gap: 32px;
@@ -79,4 +97,17 @@
 
 .title {
   text-align: left;
+
+  @include breakpoint(desktop) {
+    font-size: 32px;
+  }
+}
+
+.text{
+  font-weight: 400;
+
+  @include breakpoint(desktop) {
+    font-size: 20px;
+  }
+
 }

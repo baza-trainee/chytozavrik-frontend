@@ -18,9 +18,7 @@
 
 :where(.text-h1) {
   @extend %title;
-
   
-
   font-size: 32px;
 
   @include breakpoint(desktop) {

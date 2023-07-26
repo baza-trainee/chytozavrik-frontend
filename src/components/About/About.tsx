@@ -9,7 +9,7 @@ export default function About() {
         <Typography component="h2" variant="h2" className={styles.title}>
           Читання стає захоплюючою грою
         </Typography>
-        <div className={styles.about__row}>
+        <div className={styles.row}>
           <Typography variant="body" component="p" className={styles.text}>
             Важко переоцінити вплив читання на життя людини. Широкий світогляд, розвиненість,
             креативність та вміння формулювати свої думки - це позитивні наслідки від читання.

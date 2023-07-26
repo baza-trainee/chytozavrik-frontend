@@ -10,6 +10,11 @@
     padding-bottom: 72px;
   }
 
+  @include breakpoint(laptop) {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+
   @include breakpoint(desktop) {
     padding: 136px 0px;
     max-width: 1062px;
@@ -24,8 +29,11 @@
     margin: 0 auto 36px;
   }
 
-  @include breakpoint(desktop) {
+  @include breakpoint(laptop) {
     max-width: 100%;
+  }
+
+  @include breakpoint(desktop) {
     font-size: 32px;
     margin-bottom: 64px;
   }
@@ -41,6 +49,10 @@
   @include breakpoint(tablet) {
     flex-direction: row;
     gap: 25px;
+  }
+
+  @include breakpoint(laptop) {
+    gap: 63px;
   }
 
   @include breakpoint(desktop) {
@@ -82,6 +94,8 @@
 }
 
 .text {
+  font-weight: 400;
+
   @include breakpoint(tablet) {
     font-size: 18px;
   }
