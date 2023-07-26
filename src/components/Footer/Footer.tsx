@@ -36,18 +36,18 @@ const Footer = () => {
                 <Typography className={styles.informationText} component="p" variant="footer">
                   Про проєкт
                 </Typography>
-                <Typography className={styles.informationText} component="li" variant="footer">
+                <Typography className={styles.informationText} component="p" variant="footer">
                   До вігваму
                 </Typography>
               </ul>
               <ul className={styles.class1}>
-                <Typography className={styles.informationText} component="li" variant="footer">
+                <Typography className={styles.informationText} component="p" variant="footer">
                   <Link href="#" className={styles.linkText}>
                     Політика конфіденційності
                   </Link>
                 </Typography>
 
-                <Typography className={styles.informationText} component="li" variant="footer">
+                <Typography className={styles.informationText} component="p" variant="footer">
                   <Link href="#" className={styles.linkText}>
                     Правила користування сайтом
                   </Link>
