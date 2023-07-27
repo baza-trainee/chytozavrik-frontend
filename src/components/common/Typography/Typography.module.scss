@@ -43,6 +43,7 @@
 }
 
 :where(.text-h6) {
+  
   @extend %title;
   font-weight: 400;
   font-size: 16px;
@@ -63,4 +64,7 @@
 :where(.text-footer-end) {
   @extend %title-footer;
   font-size: 12px;
+  @include breakpoint(desktop) {
+      font-size: 16px;
+    }
 }

@@ -184,17 +184,18 @@
 
 .informationContact {
   margin-bottom: 9px;
-  font-family: 'Montserrat Alternates';
+  width: 166px;
 
   @include breakpoint(desktop) {
     margin-bottom: 32px;
     font-size: 18px;
+    width: 188px;
   }
 }
 
 .informationContactSecond {
   margin-bottom: 23px;
-  font-family: 'Montserrat Alternates';
+  // font-family: 'Montserrat Alternates';
   @include breakpoint(tablet) {
     margin-bottom: 23px;
   }
@@ -202,11 +203,11 @@
   @include breakpoint(desktop) {
     margin-bottom: 36px;
     font-size: 18px;
-    font-family: 'Montserrat Alternates';
+    // font-family: 'Montserrat Alternates';
 
-    font-style: normal;
-    font-weight: 400;
-    line-height: 120%;
+    // font-style: normal;
+    // font-weight: 400;
+    // line-height: 120%;
   }
 }
 
@@ -223,7 +224,7 @@
   }
   @include breakpoint(desktop) {
     margin-top: 14px;
-    font-size: 16px;
+   
   }
 }
 
