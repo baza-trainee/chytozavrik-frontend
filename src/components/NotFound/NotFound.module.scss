@@ -1,0 +1,106 @@
+@import 'scss/utils/variables';
+@import 'scss/utils/mixin';
+
+.section {
+  background-color: getColor(blue, 10);
+  background-image: url('/images/background-wave.svg'), url('/images/space-mob.svg'),
+    url('/images/stars.svg'), url('/images/path.svg');
+  background-repeat: repeat-x, no-repeat, no-repeat, no-repeat;
+  background-position: center top, center bottom, center bottom -20px, left bottom;
+  background-size: auto 27px, auto, auto, 100% 280px;
+
+  @include breakpoint(tablet) {
+    background-image: url('/images/background-wave.svg'), url('/images/space-tab.svg'),
+      url('/images/stars-tab.svg'), url('/images/path-tab.svg');
+    background-position: center top, right bottom, center top 40px, left bottom;
+    background-size: auto 54px, auto, auto, 100% auto;
+  }
+
+  @include breakpoint(laptop) {
+    background-image: url('/images/cloud-laptop.svg'), url('/images/space-laptop.svg'),
+      url('/images/stars-laptop.svg'), url('/images/path-laptop.svg');
+    background-position: center top, right bottom, center top 72px, left bottom 134px;
+    background-size: auto, auto, auto, 100% auto;
+  }
+
+  @include breakpoint(desktop) {
+    background-image: url('/images/cloud-desktop.svg'), url('/images/space-desktop.svg'),
+      url('/images/stars-desktop.svg'), url('/images/path-desktop.svg');
+    background-position: center top, right bottom, center top 72px, left top 74px;
+    background-size: auto, auto, auto, 100% auto;
+  }
+}
+
+.container {
+  display: flex;
+  gap: 36px;
+  flex-direction: column;
+  padding: 52px 16px 302px;
+
+  @include breakpoint(tablet) {
+    padding: 167px 397px 137px 40px;
+  }
+
+  @include breakpoint(laptop) {
+    padding: 177px 631px 180px 40px;
+    gap: 24px;
+  }
+
+  @include breakpoint(desktop) {
+    padding: 235px 928px 202px 80px;
+  }
+}
+
+.image {
+  margin: 0 auto;
+  width: 331px;
+  height: 204px;
+  @include breakpoint(laptop) {
+    width: 306px;
+    height: 185px;
+  }
+  @include breakpoint(desktop) {
+    width: 432px;
+    height: 260px;
+  }
+}
+
+.text {
+  margin: 0 auto;
+  font-size: 20px;
+  font-weight: 400;
+  color: $white;
+  text-align: center;
+  @include breakpoint(tablet) {
+    width: 328px;
+  }
+  @include breakpoint(laptop) {
+    width: 358px;
+    font-size: 18px;
+  }
+  @include breakpoint(desktop) {
+    width: 395px;
+    font-size: 20px;
+  }
+}
+
+.button {
+  width: 327px;
+  height: 54px;
+  margin: 0 auto;
+  font-family: var(--montserrat-alternates-font);
+  font-weight: 600;
+  font-size: 18px;
+  @include breakpoint(tablet) {
+    width: 328px;
+    height: 56px;
+    font-size: 20px;
+  }
+  @include breakpoint(laptop) {
+    width: 291px;
+  }
+  @include breakpoint(desktop) {
+    width: 405px;
+    height: 64px;
+  }
+}
