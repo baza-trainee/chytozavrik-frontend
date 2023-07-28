@@ -42,7 +42,7 @@ const Footer = () => {
               </ul>
               <ul className={styles.class1}>
                 <Typography className={styles.informationText} component="p" variant="footer">
-                  <Link href="#" target="_blank" className={styles.linkText}>
+                  <Link href="/pdf/privacy policy.pdf" target="_blank" className={styles.linkText}>
                     Політика конфіденційності
                   </Link>
                 </Typography>
