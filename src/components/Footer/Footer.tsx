@@ -34,21 +34,25 @@ const Footer = () => {
             <div className={classNames(styles.list, styles.informationText, styles.footerList)}>
               <ul className={styles.class4}>
                 <Typography className={styles.informationText} component="p" variant="footer">
-                  Про проєкт
+                  <Link href="#" >
+                    Про проєкт
+                    </Link>
                 </Typography>
                 <Typography className={styles.informationText} component="p" variant="footer">
-                  До вігваму
+                  <Link href="#" >
+                    До вігваму
+                    </Link>
                 </Typography>
               </ul>
               <ul className={styles.class1}>
                 <Typography className={styles.informationText} component="p" variant="footer">
-                  <Link href="#" className={styles.linkText}>
+                  <Link href="#" target="_blank" className={styles.linkText}>
                     Політика конфіденційності
                   </Link>
                 </Typography>
 
                 <Typography className={styles.informationText} component="p" variant="footer">
-                  <Link href="#" className={styles.linkText}>
+                  <Link href="#" target="_blank" className={styles.linkText}>
                     Правила користування сайтом
                   </Link>
                 </Typography>
