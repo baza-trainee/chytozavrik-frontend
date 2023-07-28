@@ -48,7 +48,7 @@ const Footer = () => {
                 </Typography>
 
                 <Typography className={styles.informationText} component="p" variant="footer">
-                  <Link href="#" target="_blank" className={styles.linkText}>
+                  <Link href="/pdf/site-rules.pdf" target="_blank" className={styles.linkText}>
                     Правила користування сайтом
                   </Link>
                 </Typography>
