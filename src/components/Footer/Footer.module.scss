@@ -65,19 +65,24 @@
 
 .informationMail {
   margin-bottom: 26px;
-}
-
-.decoration {
-  text-decoration: underline;
-}
-
-.listIcon {
   display: flex;
   align-items: flex-start;
   @include breakpoint(desktop) {
     font-size: 18px;
   }
 }
+
+.decoration {
+  text-decoration: underline;
+}
+
+// .listIcon {
+//   display: flex;
+//   align-items: flex-start;
+//   @include breakpoint(desktop) {
+//     font-size: 18px;
+//   }
+// }
 
 .social {
   display: flex;
@@ -185,6 +190,8 @@
 .informationContact {
   margin-bottom: 9px;
   width: 166px;
+  display: flex;
+  align-items: flex-start;
 
   @include breakpoint(desktop) {
     margin-bottom: 32px;
@@ -195,7 +202,9 @@
 
 .informationContactSecond {
   margin-bottom: 23px;
-  // font-family: 'Montserrat Alternates';
+  display: flex;
+  align-items: flex-start;
+
   @include breakpoint(tablet) {
     margin-bottom: 23px;
   }
@@ -203,11 +212,6 @@
   @include breakpoint(desktop) {
     margin-bottom: 36px;
     font-size: 18px;
-    // font-family: 'Montserrat Alternates';
-
-    // font-style: normal;
-    // font-weight: 400;
-    // line-height: 120%;
   }
 }
 
@@ -224,7 +228,6 @@
   }
   @include breakpoint(desktop) {
     margin-top: 14px;
-   
   }
 }
 
