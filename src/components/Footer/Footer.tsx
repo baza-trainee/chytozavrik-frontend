@@ -34,14 +34,10 @@ const Footer = () => {
             <div className={classNames(styles.list, styles.informationText, styles.footerList)}>
               <ul className={styles.class4}>
                 <Typography className={styles.informationText} component="p" variant="footer">
-                  <Link href="#" >
-                    Про проєкт
-                    </Link>
+                  <Link href="#">Про проєкт</Link>
                 </Typography>
                 <Typography className={styles.informationText} component="p" variant="footer">
-                  <Link href="#" >
-                    До вігваму
-                    </Link>
+                  <Link href="#">До вігваму</Link>
                 </Typography>
               </ul>
               <ul className={styles.class1}>
@@ -62,40 +58,32 @@ const Footer = () => {
             <div className={classNames(styles.list, styles.contacts)}>
               <ul>
                 <Typography className={styles.informationContact} component="p" variant="h6">
-                  <Link href="tel:+380636286630" className={styles.listIcon}>
-                    <Phone width={18} height={18} className={styles.image}></Phone>
-                    +380 63 628 6630
-                  </Link>
+                  <Phone width={18} height={18} className={styles.image}></Phone>
+                  +380 63 628 6630
                 </Typography>
 
                 <Typography className={styles.informationContactSecond} component="p" variant="h6">
-                  <Link href="tel:+380675681788" className={styles.listIcon}>
-                    <Phone width={18} height={18} className={styles.image}></Phone>
-                    +380 67 568 1788
-                  </Link>
+                  <Phone width={18} height={18} className={styles.image}></Phone>
+                  +380 67 568 1788
                 </Typography>
                 <Typography className={styles.informationMail} component="p" variant="footer-mail">
-                  <Link href="mailto:1111111@gmail.com" className={styles.listIcon}>
-                    <Mail width={18} height={18} className={styles.image}></Mail>
-                    1111111@gmail.com
-                  </Link>
+                  <Mail width={18} height={18} className={styles.image}></Mail>
+                  1111111@gmail.com
                 </Typography>
               </ul>
 
-              
-                <ul className={styles.social}>
-                  <li>
-                    <Link href="https://www.facebook.com/" target="_blank">
-                      <Facebook width={32} height={32} className={styles.socialImage}></Facebook>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="https://www.instagram.com/" target="_blank">
-                      <Instagram width={32} height={32} className={styles.socialImage}></Instagram>
-                    </Link>
-                  </li>
-                </ul>
-            
+              <ul className={styles.social}>
+                <li>
+                  <Link href="https://www.facebook.com/" target="_blank">
+                    <Facebook width={32} height={32} className={styles.socialImage}></Facebook>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="https://www.instagram.com/" target="_blank">
+                    <Instagram width={32} height={32} className={styles.socialImage}></Instagram>
+                  </Link>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
