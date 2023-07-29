@@ -1,0 +1,154 @@
+@import 'scss/utils/variables';
+@import 'scss/utils/mixin';
+
+.books_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 412px;
+  height: 724px;
+  padding: 32px 16px;
+  background-color: $primary;
+  border-radius: 8px;
+}
+
+.title {
+  text-align: center;
+  color: $white;
+  margin-bottom: 24px;
+}
+
+.input {
+  width: 364px;
+  height: 48px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  padding: 12px 16px 12px 48px;
+  font-family: var(--montserrat-alternates-font);
+  background-color: $primary-next-variant;
+  color: $primary;
+
+  &::placeholder {
+    color: $primary;
+    font-family: var(--raleway-font);
+  }
+}
+
+.icon_wraper {
+  position: absolute;
+  top: 12px;
+  left: 16px;
+  width: 24px;
+  height: 24px;
+}
+
+.search_wraper {
+  position: relative;
+  margin-bottom: 32px;
+}
+
+.button {
+  width: 364px;
+  height: 64px;
+  margin-top: auto;
+  padding: 0;
+  background-color: $white;
+  color: $primary;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.button_icon {
+  margin-left: 8px;
+  width: 24px;
+  height: 24px;
+}
+
+.button_list {
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    position: absolute;
+    width: 1px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: $white;
+    // border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-button {
+    width: 5px;
+    height: 50px;
+    background-color: red;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: red;
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-button {
+    width: 4px; /* Змінюємо ширину повзунка на 4 пікселя */
+    height: 50px; /* Змінюємо висоту повзунка на 50 пікселів */
+    background-color: $primary; /* Змініть на вибраний вами колір */
+  }
+}
+
+.book_items {
+  display: flex;
+  justify-content: space-between;
+  width: 364px;
+  height: 80px;
+  margin-bottom: 8px;
+  padding: 8px;
+  border-radius: 8px;
+  background-color: $primary-next-variant;
+
+  &:last-child {
+    margin-bottom: 28px;
+  }
+}
+
+.arrow {
+  width: 20px;
+  height: 20px;
+  color: $primary;
+}
+
+.book_items_icon_wraper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+}
+
+.book_items_text_wraper {
+}
+
+.book_name {
+  margin-bottom: 6px;
+  font-family: var(--montserrat-alternates-font);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.book_author {
+  margin-bottom: 6px;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.book_counter {
+  margin-left: 8px;
+  font-family: var(--montserrat-alternates-font);
+  font-size: 16px;
+  font-weight: 400;
+  color: $on-next-primary-variant;
+}
+
+.book_counter_wraper {
+  display: flex;
+}

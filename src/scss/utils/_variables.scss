@@ -98,7 +98,9 @@ $white: #fdfdfd;
 
 $primary: getColor(blue, 40);
 $on-primary: getColor(blue, 100);
+$primary-next-variant: getColor(blue, 90);
 $primary-variant: getColor(blue, 80);
+$on-next-primary-variant: getColor(blue, 70);
 $on-primary-variant: getColor(blue, 20);
 
 $secondary: getColor(yellow, 40);
