@@ -16,7 +16,7 @@
     height: 408px;
   }
 
-  @include breakpoint(tablet1024) {
+  @include breakpoint(laptop) {
     width: 367px;
     height: 629px;
   }
@@ -33,7 +33,7 @@
   text-align: center;
   color: $white;
 
-  @include breakpoint(tablet1024) {
+  @include breakpoint(laptop) {
     margin-bottom: 24px;
   }
   @include breakpoint(desktop) {
@@ -63,7 +63,7 @@
   @include breakpoint(tablet) {
     width: 285px;
   }
-  @include breakpoint(tablet1024) {
+  @include breakpoint(laptop) {
     width: 319px;
   }
   @include breakpoint(desktop) {
@@ -167,7 +167,7 @@
     height: 80px;
   }
 
-  @include breakpoint(tablet1024) {
+  @include breakpoint(laptop) {
     width: 319px;
   }
 
