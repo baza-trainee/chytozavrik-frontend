@@ -1,11 +1,13 @@
 'use client';
 
+import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import Image from 'next/image';
 import { SearchNormal1, ArrowRight } from 'iconsax-react';
 
 import { Button, Typography } from '../common';
 import BrainIcon from '../../../public/images/brain.svg';
+import Tick from '../../../public/images/tick.svg';
 import styles from './WigwamBooks.module.scss';
 
 //delete after connect to database
@@ -27,6 +29,7 @@ const defaultValues = {
 };
 
 const WigwamBooks = () => {
+  const [selectedBooks, setSelectedBooks] = useState<{ [key: string]: boolean }>({});
   const { handleSubmit, resetField, setValue, register } = useForm({
     defaultValues,
   });
@@ -38,6 +41,15 @@ const WigwamBooks = () => {
 
   const showBooks = () => {
     console.log('all books');
+  };
+
+  const setBook = (id: string | number) => {
+    setSelectedBooks(prevState => ({
+      ...prevState,
+      [id]: !prevState[id],
+    }));
+
+    console.log('Book id: ', id);
   };
 
   return (
@@ -61,10 +73,11 @@ const WigwamBooks = () => {
           </div>
         </form>
       </div>
+
       <ul className={styles.button_list}>
         {items.map(({ id, name, author, counter }) => (
           <li className={styles.book_items} key={id}>
-            <div className={styles.book_items_text_wraper}>
+            <div>
               <p className={styles.book_name}>{name}</p>
               <p className={styles.book_author}>{author}</p>
               <div className={styles.book_counter_wraper}>
@@ -72,14 +85,19 @@ const WigwamBooks = () => {
                 <p className={styles.book_counter}>{counter}</p>
               </div>
             </div>
-            <div className={styles.book_items_icon_wraper}>
-              <span className={styles.arrow}>
-                <ArrowRight />
-              </span>
+            <div className={styles.book_items_icon_wraper} onClick={() => setBook(id)}>
+              {selectedBooks[id] ? (
+                <Image priority src={Tick} alt="tick icon" width={24} height={24} />
+              ) : (
+                <span className={styles.arrow}>
+                  <ArrowRight />
+                </span>
+              )}
             </div>
           </li>
         ))}
       </ul>
+
       <Button className={styles.button} onClick={showBooks}>
         Подивитися всі книжки
         <div className={styles.button_icon}>
