@@ -1,8 +1,7 @@
 import React from 'react';
+import { Facebook, Instagram } from 'lucide-react';
 import { Container, Typography } from 'components/common';
-import Image from 'next/image';
-import facebook from 'public/images/facebook-add.svg';
-import insta from 'public/images/insta-add.svg';
+
 
 import styles from './AdditionalInfo.module.scss';
 
@@ -25,7 +24,7 @@ export default function AdditionalInfo() {
               target="_blank"
               rel="nofollow noreferrer noopener"
             >
-              <Image src={facebook} className={styles.socailIcon} alt="іконка фейсбука" />
+              <Facebook className={styles.socialIcon} size="32" />
             </a>
 
             <a
@@ -34,25 +33,14 @@ export default function AdditionalInfo() {
               target="_blank"
               rel="nofollow noreferrer noopener"
             >
-              <Image src={insta} className={styles.socailIcon} alt="іконка інстаграма" />
+              <Instagram className={styles.socialIcon} size="32" />
             </a>
           </div>
         </div>
         <div className={styles.bazaContainer}>
-          <div className={styles.titleWrapper}>
             <Typography component="h2" variant="h2" className={styles.bazaTitle}>
-              Про Ba
+              Про Ba<span className={styles.z}>z</span>a Trainee Ukraine
             </Typography>
-            <Typography component="span" variant="body" className={styles.z}>
-              z
-            </Typography>
-            <Typography component="h2" variant="h2" className={styles.bazaTitle}>
-              a Trainee&nbsp;
-            </Typography>
-            <Typography component="h2" variant="h2" className={styles.bazaTitle}>
-              Ukraine
-            </Typography>
-          </div>
           <div className={styles.textWrapper}>
             <Typography component="p" variant="body" className={styles.bazaText}>
               Навчальний проєкт-платформа Baza Trainee Ukraine надає можливість кожному, хто хоче

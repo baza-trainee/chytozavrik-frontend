@@ -1,7 +1,11 @@
 $breakpoints: (
   mobile: 360px,
   tablet: 768px,
+<<<<<<< HEAD
   tablet1024: 1024px,
+=======
+  laptop: 1024px,
+>>>>>>> 0e5deaa6c53788066d92376ec8ec580a79ec6aa2
   desktop: 1440px,
 );
 
@@ -85,10 +89,6 @@ $palettes: (
     0: #1e1e1e,
   ),
 );
-
-$black: #000;
-$light-black: #1e1e1e;
-$white: #fdfdfd;
 
 @function getColor($color, $tone) {
   @return map-get(map-get($palettes, $color), $tone);

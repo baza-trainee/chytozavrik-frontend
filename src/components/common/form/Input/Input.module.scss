@@ -4,10 +4,16 @@
 .group {
   --text-color: #{getColor(neutral, 30)};
   --border-color: #{getColor(neutral, 50)};
+  --group-gap: 4px;
+
+  position: relative;
 
   width: 100%;
 
+  font-family: var(--montserrat-alternates-font);
   color: var(--text-color);
+
+  @include setTransition(color);
 
   &[data-status='filled'] {
     --text-color: #{getColor(neutral, 10)};
@@ -29,7 +35,7 @@
 .label {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: var(--group-gap);
 
   font-size: 14px;
 
@@ -58,6 +64,8 @@
   border: 1px solid var(--border-color);
   background-color: $white;
 
+  @include setTransition(border-color);
+
   @include breakpoint(tablet) {
     height: 48px;
   }
@@ -71,6 +79,18 @@
   border: none;
   background: none;
   outline: none;
+
+  // Hide arrows in type=number
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  &[type='number'] {
+    appearance: textfield;
+  }
 }
 
 .icon {
@@ -89,7 +109,13 @@
 }
 
 .message {
+  position: absolute;
+
+  bottom: calc(-1 * var(--group-gap));
+
   font-size: 12px;
+
+  transform: translateY(100%);
 
   @include breakpoint(tablet) {
     font-size: 14px;

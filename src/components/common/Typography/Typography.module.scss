@@ -3,8 +3,14 @@
 %title {
   font-family: var(--montserrat-alternates-font);
   font-weight: 600;
-  letter-spacing: 1.2;
   text-align: center;
+}
+
+%title-footer {
+  font-family: var(--raleway-font);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
 }
 
 :where(.text-h1) {
@@ -36,6 +42,29 @@
   font-size: 18px;
 }
 
+:where(.text-h6) {
+  
+  @extend %title;
+  font-weight: 400;
+  font-size: 16px;
+}
+
 :where(.text-body) {
   font-family: inherit;
+}
+
+:where(.text-footer-mail) {
+  @extend %title-footer;
+  @include breakpoint(mobile) {
+    font-size: 14px;
+  }
+  font-size: 18px;
+}
+
+:where(.text-footer-end) {
+  @extend %title-footer;
+  font-size: 12px;
+  @include breakpoint(desktop) {
+      font-size: 16px;
+    }
 }

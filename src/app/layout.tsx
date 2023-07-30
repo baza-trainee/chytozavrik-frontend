@@ -1,11 +1,12 @@
 import { Metadata } from 'next';
-import Header from '@/components/Header';
 import { Raleway, Montserrat_Alternates } from 'next/font/google';
+import Header from '@/components/Header';
+import Footer from '../components/Footer/Footer';
 import './globals.scss';
 
 const raleway = Raleway({
   variable: '--raleway-font',
-  weight: ['300', '800'],
+  weight: ['300', '500', '800'],
   style: 'normal',
   subsets: ['latin'],
   display: 'swap',
@@ -13,7 +14,7 @@ const raleway = Raleway({
 
 const montserratAlternates = Montserrat_Alternates({
   variable: '--montserrat-alternates-font',
-  weight: '600',
+  weight: ['400', '600'],
   style: 'normal',
   subsets: ['latin'],
   display: 'swap',
@@ -30,6 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

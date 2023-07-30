@@ -1,6 +1,6 @@
+import { MoveRight } from 'lucide-react';
 import { Button, Container, Typography } from 'components/common';
 import styles from './Hero.module.scss';
-import { ArrowRight } from 'iconsax-react';
 
 const Hero = () => {
   return (
@@ -12,7 +12,7 @@ const Hero = () => {
         <Typography component="p" variant="body" className={styles.text}>
           Інтерактивна вікторина для маленьких книголюбів, яка зробить процес читання ще цікавішим
         </Typography>
-        <Button color="secondary" className={styles.button} endIcon={<ArrowRight size="24" />}>
+        <Button color="secondary" className={styles.button} endIcon={<MoveRight size="24" />}>
           Почати гру
         </Button>
       </Container>
