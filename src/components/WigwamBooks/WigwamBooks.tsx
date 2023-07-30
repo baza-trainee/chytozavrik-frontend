@@ -73,7 +73,6 @@ const WigwamBooks = () => {
           </div>
         </form>
       </div>
-
       <ul className={styles.button_list}>
         {items.map(({ id, name, author, counter }) => (
           <li className={styles.book_items} key={id}>
@@ -109,4 +108,3 @@ const WigwamBooks = () => {
 };
 
 export default WigwamBooks;
-//
