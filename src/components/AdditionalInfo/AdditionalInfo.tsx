@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { Facebook, Instagram } from 'lucide-react';
 import { Container, Typography } from 'components/common';
 
@@ -18,23 +19,23 @@ export default function AdditionalInfo() {
             ваші пропозиції та разом з вами побудувати захопливий світ читання для дітей!
           </Typography>
           <div className={styles.socialWrapper}>
-            <a
+            <Link
               className={styles.socialLink}
               href="https://www.facebook.com/"
               target="_blank"
               rel="nofollow noreferrer noopener"
             >
               <Facebook className={styles.socialIcon} size="32" />
-            </a>
+            </Link>
 
-            <a
+            <Link
               className={styles.socialLink}
               href="https://www.instagram.com/"
               target="_blank"
               rel="nofollow noreferrer noopener"
             >
               <Instagram className={styles.socialIcon} size="32" />
-            </a>
+            </Link>
           </div>
         </div>
         <div className={styles.bazaContainer}>
@@ -50,9 +51,9 @@ export default function AdditionalInfo() {
             <Typography component="p" variant="body" className={styles.bazaText}>
               Дізнайтесь більше про нас на нашому сайті:
               <br />
-              <a href="#" target="_blank" rel="nofollow noreferrer noopener">
+              <Link href="https://baza-trainee.tech" target="_blank" rel="nofollow noreferrer noopener">
                 https://baza-trainee.tech
-              </a>
+              </Link>
             </Typography>
           </div>
         </div>
