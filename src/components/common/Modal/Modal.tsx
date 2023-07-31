@@ -2,7 +2,6 @@
 
 import { MouseEvent, ReactNode, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { CgClose } from 'react-icons/cg';
 import { X } from 'lucide-react';
 import styles from './Modal.module.scss';
 
