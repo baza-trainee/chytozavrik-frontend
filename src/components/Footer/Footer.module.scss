@@ -27,6 +27,13 @@
   @include breakpoint(tablet) {
     display: flex;
     --padding-x: 0px;
+    gap: 117px;
+  }
+  @include breakpoint(laptop) {
+    gap: 267px;
+  }
+  @include breakpoint(desktop) {
+    gap: 148px;
   }
 }
 
@@ -48,18 +55,18 @@
     }
   }
   @include breakpoint(desktop) {
-    // :not(:last-child) {
-    //   margin-bottom: 32px;
+    :not(:last-child) {
+      margin-bottom: 32px;
+    }
     // width: 193px;
     font-size: 18px;
   }
-
-  margin-bottom: 0px;
 }
 
 .informationMail {
   margin-bottom: 26px;
-
+  display: flex;
+  align-items: flex-start;
   @include breakpoint(desktop) {
     font-size: 18px;
   }
@@ -69,10 +76,13 @@
   text-decoration: underline;
 }
 
-.listIcon {
-  display: flex;
-  align-items: flex-start;
-}
+// .listIcon {
+//   display: flex;
+//   align-items: flex-start;
+//   @include breakpoint(desktop) {
+//     font-size: 18px;
+//   }
+// }
 
 .social {
   display: flex;
@@ -82,9 +92,9 @@
 
   @include breakpoint(tablet) {
     display: flex;
-    justify-content: flex-end;
+
     margin-top: 24px;
-    margin-right: -40px;
+
     :not(:last-child) {
       margin-right: 24px;
     }
@@ -93,15 +103,10 @@
   @include breakpoint(desktop) {
     display: flex;
     flex-direction: column;
-    margin-left: 127px;
-    // margin-left: 72px;
+
     margin-top: 0px;
-    :not(:last-child) {
-      margin-right: 0px;
-    }
-    :not(:last-child) {
-      margin-bottom: 40px;
-    }
+
+    gap: 40px;
   }
 }
 
@@ -178,26 +183,28 @@
   @include breakpoint(desktop) {
     margin-left: 56px;
     flex-direction: row;
+    gap: 127px;
   }
 }
 
 .informationContact {
   margin-bottom: 9px;
-  font-family: 'Montserrat Alternates';
+  width: 166px;
+  display: flex;
+  align-items: flex-start;
 
   @include breakpoint(desktop) {
     margin-bottom: 32px;
     font-size: 18px;
-
-    font-style: normal;
-    font-weight: 400;
-    line-height: 120%;
+    width: 188px;
   }
 }
 
 .informationContactSecond {
   margin-bottom: 23px;
-  font-family: 'Montserrat Alternates';
+  display: flex;
+  align-items: flex-start;
+
   @include breakpoint(tablet) {
     margin-bottom: 23px;
   }
@@ -205,11 +212,6 @@
   @include breakpoint(desktop) {
     margin-bottom: 36px;
     font-size: 18px;
-    font-family: 'Montserrat Alternates';
-
-    font-style: normal;
-    font-weight: 400;
-    line-height: 120%;
   }
 }
 
@@ -220,14 +222,12 @@
 .footerText {
   margin-top: 32px;
   color: $white;
-  font-size: 11px;
 
   @include breakpoint(tablet) {
     margin-top: -22px;
   }
   @include breakpoint(desktop) {
     margin-top: 14px;
-    font-size: 16px;
   }
 }
 
@@ -237,17 +237,13 @@
   flex-direction: column;
   align-items: flex-start;
   @include breakpoint(tablet) {
-    margin-left: 117px;
     width: 217px;
-    flex-direction: column;
   }
-  @include breakpoint(laptop) {
-    margin-left: 267px;
-  }
+
   @include breakpoint(desktop) {
     flex-direction: row;
     width: auto;
-    margin-left: 148px;
+    gap: 117px;
   }
 }
 
@@ -264,16 +260,6 @@
 .class1 {
   display: flex;
   flex-direction: column;
-  @include breakpoint(desktop) {
-    margin-left: 56px;
-  }
-}
-
-.class3 {
-  display: flex;
-  @include breakpoint(desktop) {
-    display: block;
-  }
 }
 
 .linkText {

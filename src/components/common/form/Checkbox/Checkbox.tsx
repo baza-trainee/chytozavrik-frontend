@@ -1,6 +1,6 @@
 import { InputHTMLAttributes, ReactNode } from 'react';
 import { FieldValues, UseControllerProps, useController } from 'react-hook-form';
-import { BsCheck } from 'react-icons/bs';
+import { Check } from 'lucide-react';
 import classNames from 'classnames';
 import styles from './Checkbox.module.scss';
 
@@ -23,7 +23,7 @@ const Checkbox = <T extends FieldValues>({
     <div className={classNames(className)}>
       <label className={styles.label}>
         <span className={classNames(styles['input-group'], styles[`input-group--${color}`])}>
-          <BsCheck className={styles['input-checked-icon']} />
+          <Check className={styles['input-checked-icon']} strokeWidth={4} />
           <input className={styles.input} {...field} {...props} type="checkbox" />
         </span>
         {children && <span className={styles['label-text']}>{children}</span>}

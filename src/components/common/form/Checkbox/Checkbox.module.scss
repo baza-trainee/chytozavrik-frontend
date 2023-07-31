@@ -26,10 +26,14 @@
 
   position: relative;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
   overflow: hidden;
 
   width: 18px;
   height: 18px;
+  padding: 3px;
 
   color: var(--checkbox-color);
 
@@ -79,8 +83,18 @@
     --checkbox-color: #{$secondary};
     --checkbox-hover-color: #{rgba($secondary, 0.16)};
   }
+
+  @include breakpoint(tablet) {
+    width: 20px;
+    height: 20px;
+  }
 }
 
 .input {
   @include visibilityHidden();
+}
+
+.input-checked-icon {
+  width: 100%;
+  height: 100%;
 }

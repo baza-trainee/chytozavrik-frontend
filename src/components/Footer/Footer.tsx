@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import Image from 'next/image';
 import Container from '../common/Container/Container';
 import Typography from '../common/Typography/Typography';
-import List from '../common/List/List';
+
 import { Facebook, Instagram, Phone, Mail } from 'lucide-react';
 
 const Footer = () => {
@@ -32,66 +32,58 @@ const Footer = () => {
 
           <div className={styles.wrapper}>
             <div className={classNames(styles.list, styles.informationText, styles.footerList)}>
-              <ul className={styles.class}>
-                <List className={styles.informationText} component="li" variant="footer">
-                  Про проєкт
-                </List>
-                <List className={styles.informationText} component="li" variant="footer">
-                  До вігваму
-                </List>
+              <ul className={styles.class4}>
+                <Typography className={styles.informationText} component="p" variant="footer">
+                  <Link href="#">Про проєкт</Link>
+                </Typography>
+                <Typography className={styles.informationText} component="p" variant="footer">
+                  <Link href="#">До вігваму</Link>
+                </Typography>
               </ul>
               <ul className={styles.class1}>
-                <List className={styles.informationText} component="li" variant="footer">
-                  <Link href="#" className={styles.linkText}>
+                <Typography className={styles.informationText} component="p" variant="footer">
+                  <Link href="/pdf/privacy policy.pdf" target="_blank" className={styles.linkText}>
                     Політика конфіденційності
                   </Link>
-                </List>
+                </Typography>
 
-                <List className={styles.informationText} component="li" variant="footer">
-                  <Link href="#" className={styles.linkText}>
+                <Typography className={styles.informationText} component="p" variant="footer">
+                  <Link href="/pdf/site-rules.pdf" target="_blank" className={styles.linkText}>
                     Правила користування сайтом
                   </Link>
-                </List>
+                </Typography>
               </ul>
             </div>
 
             <div className={classNames(styles.list, styles.contacts)}>
               <ul>
-                <List className={styles.informationContact} component="li" variant="h6">
-                  <Link href="tel:+380636286630" className={styles.listIcon}>
-                    <Phone width={18} height={18} className={styles.image}></Phone>
-                    +380 63 628 6630
-                  </Link>
-                </List>
+                <Typography className={styles.informationContact} component="p" variant="h6">
+                  <Phone width={18} height={18} className={styles.image}></Phone>
+                  +380 63 628 6630
+                </Typography>
 
-                <List className={styles.informationContactSecond} component="li" variant="h6">
-                  <Link href="tel:+380675681788" className={styles.listIcon}>
-                    <Phone width={18} height={18} className={styles.image}></Phone>
-                    +380 67 568 1788
-                  </Link>
-                </List>
-                <List className={styles.informationMail} component="li" variant="footer">
-                  <Link href="mailto:1111111@gmail.com" className={styles.listIcon}>
-                    <Mail width={18} height={18} className={styles.image}></Mail>
-                    1111111@gmail.com
-                  </Link>
-                </List>
+                <Typography className={styles.informationContactSecond} component="p" variant="h6">
+                  <Phone width={18} height={18} className={styles.image}></Phone>
+                  +380 67 568 1788
+                </Typography>
+                <Typography className={styles.informationMail} component="p" variant="footer-mail">
+                  <Mail width={18} height={18} className={styles.image}></Mail>
+                  1111111@gmail.com
+                </Typography>
               </ul>
 
-              <div className={styles.class3}>
-                <ul className={styles.social}>
-                  <List component="li" variant="h3">
-                    <Link href="https://www.facebook.com/" target="_blank">
-                      <Facebook width={32} height={32} className={styles.socialImage}></Facebook>
-                    </Link>
-                  </List>
-                  <List component="li" variant="h3">
-                    <Link href="https://www.instagram.com/" target="_blank">
-                      <Instagram width={32} height={32} className={styles.socialImage}></Instagram>
-                    </Link>
-                  </List>
-                </ul>
-              </div>
+              <ul className={styles.social}>
+                <li>
+                  <Link href="https://www.facebook.com/" target="_blank">
+                    <Facebook width={32} height={32} className={styles.socialImage}></Facebook>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="https://www.instagram.com/" target="_blank">
+                    <Instagram width={32} height={32} className={styles.socialImage}></Instagram>
+                  </Link>
+                </li>
+              </ul>
             </div>
           </div>
         </div>

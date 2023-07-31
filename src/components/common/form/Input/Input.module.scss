@@ -37,11 +37,7 @@
   flex-direction: column;
   gap: var(--group-gap);
 
-  font-size: 14px;
-
-  @include breakpoint(tablet) {
-    font-size: 16px;
-  }
+  font-size: 16px;
 }
 
 .label-text {

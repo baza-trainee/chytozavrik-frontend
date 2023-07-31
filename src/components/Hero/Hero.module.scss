@@ -45,6 +45,17 @@
     }
   }
 
+  @include breakpoint(laptop) {
+    &::before {
+      height: 72px;
+    }
+
+    &::after {
+      background-position: calc(50% + 290px) bottom;
+      background-size: auto 592px;
+    }
+  }
+
   @include breakpoint(desktop) {
     &::before {
       height: 90px;
@@ -69,6 +80,12 @@
     padding-bottom: 140px;
   }
 
+  @include breakpoint(laptop) {
+    padding-top: 136px;
+    padding-right: 447px;
+    padding-bottom: 219px;
+  }
+
   @include breakpoint(desktop) {
     padding-top: 198px;
     padding-right: 621px;
@@ -91,6 +108,12 @@
     margin-top: 16px;
 
     font-size: 16px;
+  }
+
+  @include breakpoint(laptop) {
+    margin-top: 24px;
+
+    font-size: 18px;
   }
 
   @include breakpoint(desktop) {
@@ -118,8 +141,18 @@
     min-width: 248px;
   }
 
+  @include breakpoint(laptop) {
+    margin-top: 72px;
+
+    padding: 16px 28px;
+    padding-right: 24px;
+
+    min-width: 208px;
+  }
+
   @include breakpoint(desktop) {
     margin-top: 80px;
+
     padding: 20px 36px;
     padding-right: 28px;
 
