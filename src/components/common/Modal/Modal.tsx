@@ -3,6 +3,7 @@
 import { MouseEvent, ReactNode, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { CgClose } from 'react-icons/cg';
+import { X } from 'lucide-react';
 import styles from './Modal.module.scss';
 
 type Props = {
@@ -42,7 +43,7 @@ const Modal = ({ children, onClose }: Props) => {
           aria-label="modal close"
           onClick={onClose}
         >
-          <CgClose size={24} />
+          <X size={24} />
         </button>
         {children}
       </div>
