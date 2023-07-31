@@ -16,7 +16,6 @@
     "classnames": "^2.3.2",
     "eslint": "8.43.0",
     "eslint-config-next": "13.4.6",
-    "iconsax-react": "^0.0.8",
     "js-confetti": "^0.11.0",
     "lucide-react": "^0.260.0",
     "next": "13.4.6",
