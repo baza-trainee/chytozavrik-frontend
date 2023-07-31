@@ -9,6 +9,7 @@ import Partners from '@/components/Partners';
 import Auth from '@/components/Auth';
 
 
+
 export default function Home() {
   return (
     <main>
@@ -20,6 +21,7 @@ export default function Home() {
       <Partners />
       <AdditionalInfo />
       <Auth />
+
     </main>
 
     
