@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import Image from 'next/image';
-import { SearchNormal1, ArrowRight } from 'iconsax-react';
+import { Search, MoveRight } from 'lucide-react';
 
 import { Button, Typography } from '../common';
 import BrainIcon from '../../../public/images/brain.svg';
@@ -69,7 +69,7 @@ const WigwamBooks = () => {
             autoFocus
           />
           <div className={styles.icon_wraper}>
-            <SearchNormal1 color="#7791fa" />
+            <Search color="#7791fa" />
           </div>
         </form>
       </div>
@@ -89,7 +89,7 @@ const WigwamBooks = () => {
                 <Image priority src={Tick} alt="tick icon" width={24} height={24} />
               ) : (
                 <span className={styles.arrow}>
-                  <ArrowRight />
+                  <MoveRight />
                 </span>
               )}
             </div>
@@ -97,11 +97,8 @@ const WigwamBooks = () => {
         ))}
       </ul>
 
-      <Button className={styles.button} onClick={showBooks}>
+      <Button className={styles.button} onClick={showBooks} endIcon={<MoveRight />}>
         Подивитися всі книжки
-        <div className={styles.button_icon}>
-          <ArrowRight />
-        </div>
       </Button>
     </div>
   );

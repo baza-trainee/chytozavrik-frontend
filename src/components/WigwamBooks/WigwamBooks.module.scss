@@ -91,7 +91,7 @@
   position: relative;
   margin-bottom: 24px;
 
-  @include breakpoint(tablet1024) {
+  @include breakpoint(laptop) {
     margin-bottom: 32px;
   }
 }
@@ -110,7 +110,7 @@
   @include breakpoint(tablet) {
     width: 285px;
   }
-  @include breakpoint(tablet1024) {
+  @include breakpoint(laptop) {
     width: 335px;
   }
   @include breakpoint(desktop) {
