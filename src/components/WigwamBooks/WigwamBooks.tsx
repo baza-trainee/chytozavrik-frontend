@@ -97,7 +97,7 @@ const WigwamBooks = () => {
         ))}
       </ul>
 
-      <Button className={styles.button} onClick={showBooks} endIcon={<MoveRight />}>
+      <Button className={styles.button} onClick={showBooks} endIcon={<MoveRight />} variant='outline'>
         Подивитися всі книжки
       </Button>
     </div>

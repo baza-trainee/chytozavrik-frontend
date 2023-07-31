@@ -127,6 +127,7 @@
 }
 
 .button_list {
+  margin-bottom: 32px;
   padding-left: 11px;
   padding-right: 11px;
   overflow-y: auto;
@@ -140,7 +141,11 @@
   }
 
   &::-webkit-scrollbar-track {
-    margin-bottom: 28px;
+    margin-bottom: 8px;
+  }
+
+  @include breakpoint(tablet) {
+    margin-bottom: 24px;
   }
 }
 
@@ -154,12 +159,8 @@
   border-radius: 8px;
   background-color: $primary-next-variant;
 
-  &:last-child {
-    margin-bottom: 32px;
-
-    @include breakpoint(tablet) {
-      margin-bottom: 24px;
-    }
+  &:last-child{
+    margin-bottom: 0;
   }
 
   @include breakpoint(tablet) {
