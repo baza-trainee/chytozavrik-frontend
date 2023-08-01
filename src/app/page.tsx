@@ -8,7 +8,6 @@ import AboutDetail from '@/components/AboutDetail/AboutDetail';
 import Partners from '@/components/Partners';
 import Auth from '@/components/Auth';
 
-
 export default function Home() {
   return (
     <main>
@@ -21,7 +20,5 @@ export default function Home() {
       <AdditionalInfo />
       <Auth />
     </main>
-
-    
   );
 }

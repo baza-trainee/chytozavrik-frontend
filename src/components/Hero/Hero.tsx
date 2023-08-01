@@ -1,8 +1,14 @@
+'use client';
+import { useSession } from 'next-auth/react';
 import { MoveRight } from 'lucide-react';
+import classNames from 'classnames';
 import { Button, Container, Typography } from 'components/common';
 import styles from './Hero.module.scss';
+import { Route } from '@/constants';
 
 const Hero = () => {
+  const session = useSession();
+
   return (
     <section className={styles.section}>
       <Container className={styles.container}>
@@ -12,7 +18,17 @@ const Hero = () => {
         <Typography component="p" variant="body" className={styles.text}>
           Інтерактивна вікторина для маленьких книголюбів, яка зробить процес читання ще цікавішим
         </Typography>
-        <Button color="secondary" className={styles.button} endIcon={<MoveRight size="24" />}>
+
+        <Button
+          component="link"
+          href={Route.WIGWAM}
+          color="secondary"
+          className={classNames({
+            [styles.button]: true,
+            [styles['button--hide']]: session.status !== 'authenticated',
+          })}
+          endIcon={<MoveRight size="24" />}
+        >
           Почати гру
         </Button>
       </Container>

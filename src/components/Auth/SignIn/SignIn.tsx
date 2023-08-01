@@ -1,11 +1,14 @@
+'use client';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { signIn } from 'next-auth/react';
 import { Button, Typography } from '@/components/common';
 import { Checkbox, Input, PasswordInput, validation } from '@/components/common/form';
 import AuthLink from '../AuthLink';
 import { Route } from '@/constants';
 import styles from '../Auth.module.scss';
+import { useRouter } from 'next/navigation';
 
 const schema = yup.object({
   email: validation.email,
@@ -30,8 +33,18 @@ const SignIn = () => {
   const resetFieldByName = (name: keyof FormData) => () =>
     resetField(name, { keepError: true, keepDirty: true, keepTouched: true });
 
+  const router = useRouter();
   const formSubmit = ({ rememberMe, ...data }: FormData) => {
     console.log(data);
+    signIn('credentials', { redirect: false, callbackUrl: Route.PARENTS, ...data }).then(data => {
+      if (data?.url) {
+        console.log(data.url);
+
+        router.replace(Route.HOME);
+      }
+
+      console.log(data?.error);
+    });
   };
 
   return (
@@ -49,6 +62,7 @@ const SignIn = () => {
             label="E-mail"
             placeholder="Введіть свій e-mail"
             autoComplete="username"
+            autoFocus
           />
           <PasswordInput
             control={control}

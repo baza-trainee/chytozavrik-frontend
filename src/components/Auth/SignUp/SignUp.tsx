@@ -58,6 +58,7 @@ const SignUp = () => {
             label="E-mail"
             placeholder="Введіть свій e-mail"
             autoComplete="username"
+            autoFocus
           />
           <PasswordInput
             control={control}
