@@ -1,0 +1,15 @@
+@import 'scss/utils/variables';
+@import 'scss/utils/mixin';
+
+.section {
+    padding: 68px 0 28px;
+    background-color: $primary;
+    @include addWaveBackground('/images/background-wave.svg');
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+}
