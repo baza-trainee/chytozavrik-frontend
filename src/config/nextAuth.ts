@@ -1,7 +1,15 @@
-import type { NextAuthOptions } from 'next-auth';
+import type { NextAuthOptions, User } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
+import { getUserInfoService, signInService, token } from '@/services/api';
 import { Route } from '@/constants';
-import { signInService } from '@/services/api';
+import { TokenType, UserType } from '@/types';
+import { JWT } from 'next-auth/jwt';
+
+const getMaxAge = () => {
+  const isRememberMe = true;
+
+  return isRememberMe ? 30 * 24 * 60 * 60 : 2 * 60 * 60; // 30 days : 2 hours
+};
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -12,41 +20,54 @@ export const authOptions: NextAuthOptions = {
         password: { label: 'Password', type: 'password' },
       },
       async authorize(credentials) {
-        const data = await signInService(
-          credentials?.email as string,
-          credentials?.password as string
-        );
+        try {
+          // Get token
+          const serverToken = await signInService(
+            credentials?.email as string,
+            credentials?.password as string
+          );
+          // Check for errors
+          if (serverToken.status === 'fail') throw new Error(serverToken.data.message);
 
-        if (data.non_field_errors) throw new Error(data.non_field_errors);
+          token.access = serverToken.data.access;
+          token.refresh = serverToken.data.refresh;
 
-        const user = { id: '1', email: credentials?.email, accessToken: data.auth_token };
+          // Get user info
+          const userInfo = await getUserInfoService();
+          // Check for errors
+          if (userInfo.status === 'fail') throw new Error(userInfo.data.message);
 
-        if (user) {
-          // Any object returned will be saved in `user` property of the JWT
-          return user;
-        } else {
-          // If you return null then an error will be displayed advising the user to check their details.
+          const user = { ...userInfo.data, ...serverToken.data, id: userInfo.data.id.toString() };
+          if (user) {
+            return user;
+          }
+
           return null;
-
-          // You can also Reject this callback with an Error thus the user will be sent to the error page with the error message as a query parameter
+        } catch (error) {
+          throw new Error((error as Error).message);
         }
       },
     }),
   ],
-  // callbacks: {
-  //   async signIn({ user, account, profile, email, credentials }) {
-  //     return true;
-  //   },
-  //   async redirect({ url, baseUrl }) {
-  //     return baseUrl;
-  //   },
-  //   async session({ session, token, user }) {
-  //     return session;
-  //   },
-  //   async jwt({ token, user, account, profile, isNewUser }) {
-  //     return token;
-  //   },
-  // },
+  callbacks: {
+    async session({ session, token }) {
+      if (token.user) {
+        session.user = { ...token.user };
+      }
+
+      return session;
+    },
+    async jwt({ token, user }) {
+      if (user) {
+        token.user = { ...user };
+      }
+
+      return token;
+    },
+  },
+  session: {
+    maxAge: getMaxAge(),
+  },
   pages: {
     signIn: Route.SIGN_IN,
   },

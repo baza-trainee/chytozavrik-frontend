@@ -1,5 +1,5 @@
 const WigwamPage = () => {
-  return <div>WigwamPage</div>;
+  return <main>WigwamPage</main>;
 };
 
 export default WigwamPage;

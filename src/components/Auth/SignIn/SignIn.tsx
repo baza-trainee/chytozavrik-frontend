@@ -38,8 +38,6 @@ const SignIn = () => {
     console.log(data);
     signIn('credentials', { redirect: false, callbackUrl: Route.PARENTS, ...data }).then(data => {
       if (data?.url) {
-        console.log(data.url);
-
         router.replace(Route.HOME);
       }
 

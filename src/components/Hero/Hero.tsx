@@ -3,8 +3,8 @@ import { useSession } from 'next-auth/react';
 import { MoveRight } from 'lucide-react';
 import classNames from 'classnames';
 import { Button, Container, Typography } from 'components/common';
-import styles from './Hero.module.scss';
 import { Route } from '@/constants';
+import styles from './Hero.module.scss';
 
 const Hero = () => {
   const session = useSession();
