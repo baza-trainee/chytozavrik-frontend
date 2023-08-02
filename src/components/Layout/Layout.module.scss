@@ -1,0 +1,14 @@
+@import 'scss/utils/variables';
+@import 'scss/utils/mixin';
+
+.layout {
+  display: block;
+
+  @include breakpoint(tablet) {
+    display: flex;
+    justify-content: space-between;
+    @include breakpoint(tablet) {
+      flex-direction: row-reverse;
+    }
+  }
+}
