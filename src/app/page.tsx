@@ -8,6 +8,7 @@ import About from '@/components/About/About';
 import AboutDetail from '@/components/AboutDetail/AboutDetail';
 import Partners from '@/components/Partners';
 import Auth from '@/components/Auth';
+import { Refresh } from '@/components/Refresh/Refresh';
 
 export default async function Home() {
   const session = await getServerSession(authOptions);
@@ -36,6 +37,7 @@ export default async function Home() {
       )}
 
       <Auth />
+      <Refresh />
     </main>
   );
 }
