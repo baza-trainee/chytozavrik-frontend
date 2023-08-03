@@ -1,7 +1,7 @@
 @import 'scss/utils/variables';
 @import 'scss/utils/mixin';
 
-.layout {
+.wraper {
   display: block;
 
   @include breakpoint(tablet) {
