@@ -273,6 +273,12 @@
     padding-right: 0px;
   }
 }
+.linkText:hover{
+  color: getColor(blue, 80);
+}
+.linkText1:hover {
+  color: getColor(blue, 80);
+}
 
 .informationTextLink {
   margin-bottom: 0px;

@@ -34,10 +34,10 @@ const Footer = () => {
             <div className={classNames(styles.list, styles.informationText, styles.footerList)}>
               <ul className={styles.class4}>
                 <Typography className={styles.informationText} component="p" variant="footer">
-                  <Link href="#">Про проєкт</Link>
+                  <Link href="#" className={styles.linkText1}>Про проєкт</Link>
                 </Typography>
                 <Typography className={styles.informationText} component="p" variant="footer">
-                  <Link href="#">До вігваму</Link>
+                  <Link href="/" className={styles.linkText1}>До вігваму</Link>
                 </Typography>
               </ul>
               <ul className={styles.class1}>
