@@ -11,7 +11,7 @@ const Header = () => {
   return (
     <header>
       <Container className={classNames(styles.header)}>
-        <div className={classNames(styles.headerContainer)}>
+        <Link href='/' className={classNames(styles.headerContainer)}>
           <Image
             src="/header-logo.svg"
             width={64}
@@ -26,7 +26,7 @@ const Header = () => {
             alt="Logo"
             className={classNames(styles.logoText)}
           />
-        </div>
+        </Link>
        
 
         <div className={classNames(styles.buttonContainer)}>
