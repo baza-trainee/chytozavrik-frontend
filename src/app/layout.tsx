@@ -7,7 +7,7 @@ import './globals.scss';
 
 const raleway = Raleway({
   variable: '--raleway-font',
-  weight: ['300', '500', '800'],
+  weight: ['300', '400', '500', '800'],
   style: 'normal',
   subsets: ['latin'],
   display: 'swap',

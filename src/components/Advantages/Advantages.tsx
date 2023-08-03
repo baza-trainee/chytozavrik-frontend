@@ -11,13 +11,13 @@ const Advantages = () => {
     <section className={styles.advantages}>
       <Container className={styles.container}>
         <Typography component="h2" variant="h2" className={styles.title}>
-          Додаток створений, щоб допомогти дитині:
+          Додаток створений, щоб допомогти дитині
         </Typography>
         <div className={styles.items}>
           <div className={styles.item}>
             <Image className={styles.img} src={medal} alt="medal" />
             <Typography component="p" variant="h4" className={styles.text}>
-              Пишатися своїми успіхами та досягненями у читанні
+              Пишатися своїми успіхами та досягненнями у читанні
             </Typography>
           </div>
           <div className={styles.item}>
