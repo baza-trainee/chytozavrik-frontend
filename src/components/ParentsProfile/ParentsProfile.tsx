@@ -4,6 +4,7 @@ import Image from 'next/image';
 import styles from './ParentsProfile.module.scss';
 import avatar from '../../../public/images/avatar-parents.svg';
 import wigwam from '../../../public/images/wigwam.svg';
+import Notification from '../Notification/Notification';
 
 export default function ParentsProfile() {
     return (
@@ -16,7 +17,8 @@ export default function ParentsProfile() {
                 Створити вігвам
                 </Typography>
                 </Button>
-            </Container>    
+            </Container>  
+            <Notification/>  
         </section>
     )
 }
