@@ -22,6 +22,7 @@ const Hero = () => {
         <Button
           component="link"
           href={Route.WIGWAM}
+          prefetch={false}
           color="secondary"
           className={classNames({
             [styles.button]: true,

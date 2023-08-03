@@ -1,6 +1,6 @@
 import { FetchResponseType, TokenType, UserType } from '@/types';
 
-const baseUrl = process.env.SERVER_URL || '';
+const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || '';
 
 export const token: { access: string | null; refresh: string | null } = {
   access: null,
@@ -30,6 +30,8 @@ export const signUpService = async (
   password: string,
   confirmPassword: string
 ): Promise<FetchResponseType<UserType>> => {
+  console.log(baseUrl);
+
   const result = await fetch(`${baseUrl}/users/`, {
     method: 'POST',
     headers: {
