@@ -25,24 +25,38 @@ const defaultValues: FormData = {
 };
 
 const SignIn = () => {
-  const { control, handleSubmit, resetField } = useForm({
+  const {
+    control,
+    handleSubmit,
+    resetField,
+    formState: { isSubmitting },
+  } = useForm({
     defaultValues,
     resolver: yupResolver(schema),
   });
+  const router = useRouter();
 
   const resetFieldByName = (name: keyof FormData) => () =>
     resetField(name, { keepError: true, keepDirty: true, keepTouched: true });
 
-  const router = useRouter();
-  const formSubmit = ({ rememberMe, ...data }: FormData) => {
-    console.log(data);
-    signIn('credentials', { redirect: false, callbackUrl: Route.PARENTS, ...data }).then(data => {
-      if (data?.url) {
-        router.replace(Route.HOME);
-      }
+  const formSubmit = async ({ rememberMe, ...data }: FormData) => {
+    try {
+      const result = await signIn('credentials', { redirect: false, ...data });
 
-      console.log(data?.error);
-    });
+      // Show server errors
+      if (result?.error) {
+        return console.log(result?.error);
+      }
+      // Redirect to the page, if the login was a success.
+      if (result?.url) {
+        const url = new URL(result.url);
+        const callbackUrl = url.searchParams.get('callbackUrl') ?? Route.HOME;
+
+        router.replace(callbackUrl);
+      }
+    } catch (error) {
+      console.error('SignIn error: ', (error as Error).message);
+    }
   };
 
   return (
@@ -89,8 +103,13 @@ const SignIn = () => {
           <AuthLink href={Route.SIGN_UP}>Зареєструватися</AuthLink>
         </div>
 
-        <Button className={styles['button-submit']} type="submit" color="secondary">
-          Увійти
+        <Button
+          className={styles['button-submit']}
+          type="submit"
+          color="secondary"
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? 'Відправка данних...' : 'Увійти'}
         </Button>
       </form>
     </div>

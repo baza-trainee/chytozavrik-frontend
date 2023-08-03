@@ -5,8 +5,9 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import Modal from '../common/Modal';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
+import SignUpSuccess from './SignUpSuccess';
 
-type AuthType = 'signin' | 'signup' | 'forgot-password' | null;
+type AuthType = 'signin' | 'signup' | 'forgot-password' | 'signup-success' | null;
 
 const Auth = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -22,13 +23,16 @@ const Auth = () => {
     const type = searchParams.get('auth') as AuthType;
 
     setAuthType(type);
-    setIsModalOpen(type === 'signin' || type === 'signup');
+    setIsModalOpen(type === 'signin' || type === 'signup' || type === 'signup-success');
   }, [searchParams]);
 
   return (
     <>
       {isModalOpen && authType === 'signin' && <Modal onClose={closeModal}>{<SignIn />}</Modal>}
       {isModalOpen && authType === 'signup' && <Modal onClose={closeModal}>{<SignUp />}</Modal>}
+      {isModalOpen && authType === 'signup-success' && (
+        <Modal onClose={closeModal}>{<SignUpSuccess />}</Modal>
+      )}
     </>
   );
 };

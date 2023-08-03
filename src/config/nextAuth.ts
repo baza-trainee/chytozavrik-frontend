@@ -2,8 +2,6 @@ import type { NextAuthOptions, User } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { getUserInfoService, signInService, token } from '@/services/api';
 import { Route } from '@/constants';
-import { TokenType, UserType } from '@/types';
-import { JWT } from 'next-auth/jwt';
 
 const getMaxAge = () => {
   const isRememberMe = true;
@@ -38,6 +36,7 @@ export const authOptions: NextAuthOptions = {
           if (userInfo.status === 'fail') throw new Error(userInfo.data.message);
 
           const user = { ...userInfo.data, ...serverToken.data, id: userInfo.data.id.toString() };
+
           if (user) {
             return user;
           }

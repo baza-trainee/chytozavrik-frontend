@@ -1,4 +1,5 @@
 import { FetchResponseType, TokenType, UserType } from '@/types';
+import { getAccessToken } from '@/utils/sessionTokenAccessor';
 
 const baseUrl = 'https://chytozavrik-backend.vercel.app/api/v1';
 
@@ -19,6 +20,26 @@ export const signInService = async (
     body: JSON.stringify({
       email,
       password,
+    }),
+  });
+
+  return await result.json();
+};
+
+export const signUpService = async (
+  email: string,
+  password: string,
+  confirmPassword: string
+): Promise<FetchResponseType<UserType>> => {
+  const result = await fetch(`${baseUrl}/users/`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      email,
+      password,
+      password2: confirmPassword,
     }),
   });
 
