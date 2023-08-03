@@ -2,11 +2,11 @@
 
 import React, { useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
+import { useSession } from 'next-auth/react';
 import Modal from '../common/Modal';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 import SignUpSuccess from './SignUpSuccess';
-import { useSession } from 'next-auth/react';
 
 type AuthType = 'signin' | 'signup' | 'forgot-password' | 'signup-success' | null;
 

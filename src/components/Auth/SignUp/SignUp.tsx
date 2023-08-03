@@ -29,7 +29,7 @@ const defaultValues: FormData = {
   acceptedRules: false,
 };
 
-const SignUp = async () => {
+const SignUp = () => {
   const {
     control,
     handleSubmit,
