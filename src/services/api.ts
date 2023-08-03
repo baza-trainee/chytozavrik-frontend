@@ -1,7 +1,6 @@
 import { FetchResponseType, TokenType, UserType } from '@/types';
-import { getAccessToken } from '@/utils/sessionTokenAccessor';
 
-const baseUrl = 'https://chytozavrik-backend.vercel.app/api/v1';
+const baseUrl = process.env.SERVER_URL || '';
 
 export const token: { access: string | null; refresh: string | null } = {
   access: null,
