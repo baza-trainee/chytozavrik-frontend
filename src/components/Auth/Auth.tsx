@@ -6,6 +6,7 @@ import Modal from '../common/Modal';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 import SignUpSuccess from './SignUpSuccess';
+import { useSession } from 'next-auth/react';
 
 type AuthType = 'signin' | 'signup' | 'forgot-password' | 'signup-success' | null;
 
@@ -14,6 +15,7 @@ const Auth = () => {
   const [authType, setAuthType] = useState<AuthType>(null);
   const searchParams = useSearchParams();
   const router = useRouter();
+  const session = useSession();
 
   const closeModal = () => {
     router.replace('/', { shallow: true });
@@ -28,9 +30,15 @@ const Auth = () => {
 
   return (
     <>
-      {isModalOpen && authType === 'signin' && <Modal onClose={closeModal}>{<SignIn />}</Modal>}
-      {isModalOpen && authType === 'signup' && <Modal onClose={closeModal}>{<SignUp />}</Modal>}
-      {isModalOpen && authType === 'signup-success' && (
+      {isModalOpen && session.status !== 'authenticated' && authType === 'signin' && (
+        <Modal onClose={closeModal}>{<SignIn />}</Modal>
+      )}
+
+      {isModalOpen && session.status !== 'authenticated' && authType === 'signup' && (
+        <Modal onClose={closeModal}>{<SignUp />}</Modal>
+      )}
+
+      {isModalOpen && session.status === 'authenticated' && authType === 'signup-success' && (
         <Modal onClose={closeModal}>{<SignUpSuccess />}</Modal>
       )}
     </>

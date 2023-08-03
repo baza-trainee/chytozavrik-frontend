@@ -1,7 +1,7 @@
 import JSConfetti from 'js-confetti';
 import { useEffect, useRef } from 'react';
 
-export const useConfetti = ({ className }: { className: string }) => {
+export default function useConfetti({ className }: { className: string }) {
   const ref = useRef(null);
   const canvas = <canvas className={className} ref={ref} />;
 
@@ -17,4 +17,4 @@ export const useConfetti = ({ className }: { className: string }) => {
   }, [ref]);
 
   return canvas;
-};
+}

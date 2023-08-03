@@ -1,7 +1,7 @@
 'use client';
 import classNames from 'classnames';
 import { Button, Typography } from '@/components/common';
-import { useConfetti } from '@/hooks/useConfetti';
+import { useConfetti } from '@/hooks';
 import { Route } from '@/constants';
 import authStyles from '../Auth.module.scss';
 import styles from './SignUpSuccess.module.scss';

@@ -47,7 +47,6 @@ const SignUp = async () => {
     resetField(name, { keepError: true, keepDirty: true, keepTouched: true });
 
   const formSubmit = async ({ confirmPassword, rememberMe, ...data }: FormData) => {
-    console.log(data);
     try {
       // Signup request
       const result = await signUpService(data.email, data.password, confirmPassword);

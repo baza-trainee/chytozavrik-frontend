@@ -57,6 +57,9 @@
   font-size: 18px;
   color: $white;
 
+  border-bottom-left-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
+
   background-color: $primary;
 
   @include breakpoint(tablet) {
