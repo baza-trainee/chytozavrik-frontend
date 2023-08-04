@@ -13,12 +13,13 @@ export default function ParentsProfile() {
                 <Image src={avatar} className={styles.image} alt ='аватарка батьків' width='106'/>
                 <Button color='secondary' className={styles.button}>
                     <Image src={wigwam} width='24' alt='іконка вігваму' />
-                <Typography component="span" variant="h5">
+                <Typography className={styles.text} component="span" variant="h5">
                 Створити вігвам
                 </Typography>
                 </Button>
+            <Notification/>    
             </Container>  
-            <Notification/>  
+              
         </section>
     )
 }
