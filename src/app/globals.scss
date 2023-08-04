@@ -11,6 +11,9 @@
 
 html,
 body {
+  display: flex;
+  flex-direction: column;
+
   max-width: 100vw;
   height: 100%;
 
@@ -22,6 +25,9 @@ body {
   &.modal-open {
     overflow: hidden;
   }
+}
+main {
+  flex-grow: 1;
 }
 
 a {

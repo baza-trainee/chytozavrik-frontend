@@ -23,12 +23,14 @@
 }
 
 .content {
+  --border-radius: 0px;
+
   position: relative;
 
   min-width: 360px;
   min-height: 100%;
 
-  overflow: hidden;
+  // overflow: hidden;
 
   background-color: $white;
 
@@ -38,10 +40,14 @@
   }
 
   @include breakpoint(tablet) {
+    --border-radius: 16px;
+
+    margin-top: 10px;
+    margin-bottom: 10px;
     min-width: 480px;
     min-height: auto;
 
-    border-radius: 16px;
+    border-radius: var(--border-radius);
   }
 }
 
