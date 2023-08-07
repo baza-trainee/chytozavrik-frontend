@@ -9,7 +9,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  
+  margin:auto;
+  padding-left: var(--padding-x);
+    padding-right: var(--padding-x);
 
 @include breakpoint(tablet){
     height: 86px;
@@ -108,4 +110,7 @@ display: flex;
       
     }
   
+}
+.userLogo{
+  width: auto;
 }

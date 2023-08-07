@@ -32,7 +32,7 @@ const HeaderButton = () => {
           href={Route.PARENTS}
           className={styles.button}
           variant="outline"
-          startIcon={<User />}
+          startIcon={<User className={styles.userLogo}/>}
         >
           Кабінет
         </Button>
