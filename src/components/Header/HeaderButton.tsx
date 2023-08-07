@@ -2,7 +2,7 @@
 
 import { signOut, useSession } from 'next-auth/react';
 import { usePathname } from 'next/navigation';
-import { User } from 'lucide-react';
+import { User2 } from 'lucide-react';
 import { Button } from '@/components/common';
 import { Route } from '@/constants';
 import styles from './Header.module.scss';
@@ -32,7 +32,7 @@ const HeaderButton = () => {
           href={Route.PARENTS}
           className={styles.button}
           variant="outline"
-          startIcon={<User className={styles.userLogo}/>}
+          startIcon={<User2 className={styles.userLogo}/>}
         >
           Кабінет
         </Button>
