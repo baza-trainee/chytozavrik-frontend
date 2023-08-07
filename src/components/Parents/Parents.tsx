@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
 import {Container, Button, Typography} from 'components/common/'
 import Image from 'next/image';
-import styles from './ParentsProfile.module.scss';
+import styles from './Parents.module.scss';
 import avatar from '../../../public/images/avatar-parents.svg';
 import wigwam from '../../../public/images/wigwam.svg';
 import Notification from '../Notification/Notification';
 
-export default function ParentsProfile() {
+export default function Parents() {
 
 
 
