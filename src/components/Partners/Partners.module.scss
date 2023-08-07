@@ -2,16 +2,24 @@
 @import 'scss/utils/mixin';
 
 .section {
-  margin-bottom: 42px;
+  --mt: 0px;
+  --mb: 42px;
+
+  margin-top: var(--mt);
+  margin-bottom: var(--mb);
 
   background-color: getColor(blue, 20);
 
+  &--margin-top {
+    --mt: var(--mb);
+  }
+
   @include breakpoint(tablet) {
-    margin-bottom: 72px;
+    --mb: 72px;
   }
 
   @include breakpoint(desktop) {
-    margin-bottom: 136px;
+    --mb: 136px;
   }
 }
 

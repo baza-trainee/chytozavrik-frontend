@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { Raleway, Montserrat_Alternates } from 'next/font/google';
 import Header from '@/components/Header';
 import Footer from '../components/Footer/Footer';
+import AppProvider from '@/components/providers';
 import './globals.scss';
 
 const raleway = Raleway({
@@ -29,9 +30,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="uk" className={`${raleway.variable} ${montserratAlternates.variable}`}>
       <body>
-        <Header />
-        {children}
-        <Footer />
+        <AppProvider>
+          <Header />
+          {children}
+          <Footer />
+        </AppProvider>
       </body>
     </html>
   );

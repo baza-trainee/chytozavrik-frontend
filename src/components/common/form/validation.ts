@@ -7,7 +7,7 @@ export const validation = {
   email: yup.string().matches(emailRegex, 'Не вірна email адреса.').required(),
   password: yup
     .string()
-    .min(3, ({ min }) => `Пароль має бути не менше ${min} символів.`)
+    .min(6, ({ min }) => `Пароль має бути не менше ${min} символів.`)
     .max(15, ({ max }) => `Пароль має бути не більше ніж ${max} characters.`)
     .required(),
   confirmPassword: yup
