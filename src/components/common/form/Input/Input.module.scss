@@ -6,6 +6,7 @@
   --border-color: #{getColor(neutral, 50)};
   --group-gap: 4px;
 
+  pointer-events: none;
   position: relative;
 
   width: 100%;
@@ -25,8 +26,8 @@
     --border-color: #{$error};
   }
 
-  &:not([data-status='error']):has(input:hover),
-  &:not([data-status='error']):has(input:focus) {
+  &:hover:not([data-status='error']),
+  &:focus-within:not([data-status='error']) {
     --text-color: #{$primary};
     --border-color: #{$primary};
   }
@@ -68,6 +69,7 @@
 }
 
 .input {
+  pointer-events: auto;
   flex-grow: 1;
 
   color: inherit;
@@ -90,6 +92,7 @@
 }
 
 .icon {
+  pointer-events: fill;
   --icon-size: 20px;
 
   display: flex;
