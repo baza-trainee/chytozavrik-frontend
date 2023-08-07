@@ -158,4 +158,9 @@
 
     min-width: 248px;
   }
+
+  &--hide {
+    pointer-events: none;
+    opacity: 0;
+  }
 }
