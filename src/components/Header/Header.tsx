@@ -24,7 +24,7 @@ const Header = () => {
             <Link href="#">Про проєкт</Link>
           </Typography>
 
-          <HeaderButton />
+          <HeaderButton classNames={styles.button} />
         </div>
       </Container>
     </header>
