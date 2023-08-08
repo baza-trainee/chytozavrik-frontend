@@ -6,6 +6,7 @@
   --border-color: #{getColor(neutral, 50)};
   --group-gap: 4px;
 
+  pointer-events: none;
   position: relative;
 
   width: 100%;
@@ -25,8 +26,8 @@
     --border-color: #{$error};
   }
 
-  &:not([data-status='error']):has(input:hover),
-  &:not([data-status='error']):has(input:focus) {
+  &:hover:not([data-status='error']),
+  &:focus-within:not([data-status='error']) {
     --text-color: #{$primary};
     --border-color: #{$primary};
   }
@@ -37,7 +38,11 @@
   flex-direction: column;
   gap: var(--group-gap);
 
-  font-size: 16px;
+  font-size: 14px;
+
+  @include breakpoint(tablet) {
+    font-size: 16px;
+  }
 }
 
 .label-text {
@@ -68,6 +73,7 @@
 }
 
 .input {
+  pointer-events: auto;
   flex-grow: 1;
 
   color: inherit;
@@ -75,6 +81,7 @@
   border: none;
   background: none;
   outline: none;
+  font-size: 16px;
 
   // Hide arrows in type=number
   &::-webkit-outer-spin-button,
@@ -90,6 +97,7 @@
 }
 
 .icon {
+  pointer-events: fill;
   --icon-size: 20px;
 
   display: flex;

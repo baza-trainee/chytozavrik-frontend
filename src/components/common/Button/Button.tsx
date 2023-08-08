@@ -63,6 +63,7 @@ const Button = (props: Props) => {
 
     return (
       <button
+        type="button"
         className={classNames(
           className,
           styles.button,
