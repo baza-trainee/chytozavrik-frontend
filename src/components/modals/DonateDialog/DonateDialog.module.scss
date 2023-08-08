@@ -2,63 +2,55 @@
 @import 'scss/utils/mixin';
 
 .dialog {
-  --dialog-pt: 86px;
-  --dialog-pb: 95px;
+  --dialog-pt: 32px;
+  --dialog-pb: 32px;
   --dialog-px: 16px;
 
   padding: var(--dialog-pt) var(--dialog-px) var(--dialog-pb);
 
   @include breakpoint(tablet) {
-    --dialog-pt: 106px;
-    --dialog-pt: 125px;
-    --dialog-px: 40px;
+    --dialog-px: 24px;
 
-    width: 620px;
+    width: 488px;
   }
 
   @include breakpoint(desktop) {
-    --dialog-pt: 135px;
-
-    width: 768px;
+    width: 676px;
   }
 }
 
 .title {
   --title-total-padding-x: 28px;
 
-  padding-inline: calc(var(--title-total-padding-x) - var(--padding-left) * 2);
+  padding-inline: calc(var(--title-total-padding-x) - var(--dialog-px));
 
   @include breakpoint(tablet) {
-    --title-total-padding-x: 104px;
+    --title-total-padding-x: 58px;
   }
   @include breakpoint(desktop) {
-    --title-total-padding-x: 178px;
+    --title-total-padding-x: 132px;
   }
 }
 
 .form {
-  margin-top: 46px;
+  margin-top: 40px;
   padding: 32px 24px;
 
   border-radius: 8px;
   border: 4px dashed $primary;
-
-  @include breakpoint(tablet) {
-    margin-top: 70px;
-  }
-
-  @include breakpoint(desktop) {
-    margin-top: 64px;
-  }
 }
 
 .buttons-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 24px;
+  gap: 17px;
 
   margin-top: 24px;
+
+  @include breakpoint(tablet) {
+    gap: 24px;
+  }
 }
 
 .button-template {
