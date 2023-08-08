@@ -1,8 +1,5 @@
 @import 'scss/utils/variables';
 @import 'scss/utils/mixin';
-.button {
-  color: red;
-}
 
 :where(.button) {
   --button-bg-color: transparent;
