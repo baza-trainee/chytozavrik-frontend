@@ -1,10 +1,10 @@
 import React from 'react';
 import Parents from '@/components/Parents';
 
-const page = () => {
+export default function ParentsPage () {
   return <main>
     <Parents/>
   </main>;
 };
 
-export default page;
+
