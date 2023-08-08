@@ -38,7 +38,11 @@
   flex-direction: column;
   gap: var(--group-gap);
 
-  font-size: 16px;
+  font-size: 14px;
+
+  @include breakpoint(tablet) {
+    font-size: 16px;
+  }
 }
 
 .label-text {
@@ -77,6 +81,7 @@
   border: none;
   background: none;
   outline: none;
+  font-size: 16px;
 
   // Hide arrows in type=number
   &::-webkit-outer-spin-button,
