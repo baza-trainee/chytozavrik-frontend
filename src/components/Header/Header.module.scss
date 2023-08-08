@@ -2,7 +2,6 @@
 @import '@/scss/utils/mixin';
 
 .header {
-  // background-color: tomato;
   height: 78px;
   display: flex;
   align-items: center;
@@ -78,32 +77,66 @@
   }
 }
 
-.button {
-  display: flex;
-  width: 128px;
-  height: 37px;
-  padding: 10px 20px;
-  justify-content: center;
-  align-items: center;
-  gap: 2px;
+a.button {
+  // display: flex;
+  // width: 128px;
+  // height: 37px;
+  padding: 6px 14px;
+  // justify-content: center;
+  // align-items: center;
+  gap: 8px;
 
   @include breakpoint(tablet) {
-    width: 169px;
-    height: 48px;
+    // width: 169px;
+    // height: 48px;
     padding: 12px 28px;
   }
 
   @include breakpoint(desktop) {
-    width: 193px;
-    height: 56px;
+    // width: 193px;
+    // height: 56px;
     padding: 16px 28px;
   }
 }
 .userLogo {
   width: 16px;
   height: 100%;
+  
 
   @include breakpoint(tablet) {
     width: 24px;
+    
   }
 }
+a.buttonIn {
+  width: 128px;
+  padding: 10px 20px;
+ @include breakpoint(tablet) {
+    width: 169px;
+    // height: 48px;
+    padding: 12px 28px;
+  }
+
+  @include breakpoint(desktop) {
+    width: 185px;
+    // height: 56px;
+    padding: 16px 28px;
+  }
+}
+.buttonOut {
+  width: 128px;
+  padding: 10px 20px;
+
+  @include breakpoint(tablet) {
+    width: 169px;
+    // height: 48px;
+    padding: 12px 28px;
+  }
+
+  @include breakpoint(desktop) {
+    width: 185px;
+    // height: 56px;
+    padding: 16px 28px;
+  }
+}
+

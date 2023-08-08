@@ -18,7 +18,7 @@ const HeaderButton = () => {
     if (isPartners) {
       return (
         <Button
-          className={styles.button}
+          className={styles.buttonOut}
           variant="outline"
           onClick={() => signOut({ callbackUrl: Route.HOME })}
         >
@@ -40,7 +40,7 @@ const HeaderButton = () => {
     }
   } else {
     return (
-      <Button component="link" href={Route.SIGN_IN} className={styles.button} variant="outline">
+      <Button component="link" href={Route.SIGN_IN} className={styles.buttonIn} variant="outline">
         Вхід
       </Button>
     );

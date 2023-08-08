@@ -21,7 +21,7 @@ const Header = () => {
 
         <div className={styles.buttonContainer}>
           <Typography className={styles.link} component="h2" variant="h2">
-            <Link href="#">Про проєкт</Link>
+            <Link href="https://baza-trainee.tech">Про проєкт</Link>
           </Typography>
 
           <HeaderButton  />
