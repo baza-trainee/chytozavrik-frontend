@@ -11,7 +11,6 @@
   padding-left: var(--padding-x);
   padding-right: var(--padding-x);
 
-
   @include breakpoint(tablet) {
     height: 86px;
   }
@@ -76,7 +75,6 @@
     text-align: center;
     text-decoration: none;
     font-size: 20px;
-
   }
 }
 
@@ -90,26 +88,23 @@ a.button {
 
   @include breakpoint(desktop) {
     padding: 16px 28px;
-
   }
 }
 .userLogo {
   width: 16px;
   height: 100%;
 
-
   @include breakpoint(tablet) {
     width: 24px;
   }
 }
 a.buttonIn {
-
   width: 128px;
   padding: 10px 20px;
 
- @include breakpoint(tablet) {
+  @include breakpoint(tablet) {
     width: 169px;
-   padding: 12px 28px;
+    padding: 12px 28px;
   }
 
   @include breakpoint(desktop) {
@@ -123,16 +118,11 @@ a.buttonIn {
 
   @include breakpoint(tablet) {
     width: 169px;
-    // height: 48px;
-
     padding: 12px 28px;
   }
 
   @include breakpoint(desktop) {
-
     width: 185px;
-    // height: 56px;
-
     padding: 16px 28px;
   }
 }
