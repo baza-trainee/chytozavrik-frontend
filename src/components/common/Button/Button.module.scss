@@ -96,7 +96,7 @@
   &--outline {
     color: var(--button-bg-color);
 
-    background: none;
+    background: $white;
     border: 2px solid var(--button-bg-color);
 
     &:not(:disabled):hover,

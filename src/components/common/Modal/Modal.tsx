@@ -4,6 +4,7 @@ import { MouseEvent, ReactNode, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { XButton } from '@/components/common';
 import styles from './Modal.module.scss';
+import FocusTrap from 'focus-trap-react';
 
 type Props = {
   children?: ReactNode;
@@ -34,12 +35,14 @@ const Modal = ({ children, onClose }: Props) => {
   }, [onClose]);
 
   return createPortal(
-    <div className={styles.modal} onClick={clickBackdropHandler}>
-      <div className={styles.content}>
-        <XButton className={styles['close-button']} aria-label="modal close" onClick={onClose} />
-        {children}
+    <FocusTrap focusTrapOptions={{ initialFocus: false }}>
+      <div className={styles.modal} onClick={clickBackdropHandler}>
+        <div className={styles.content}>
+          <XButton className={styles['close-button']} aria-label="modal close" onClick={onClose} />
+          {children}
+        </div>
       </div>
-    </div>,
+    </FocusTrap>,
     document.body
   );
 };

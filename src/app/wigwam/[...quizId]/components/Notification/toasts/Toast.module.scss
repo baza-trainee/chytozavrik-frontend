@@ -1,0 +1,111 @@
+@import 'scss/utils/variables';
+@import 'scss/utils/mixin';
+
+.toast {
+  @include breakpoint(laptop) {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+  }
+}
+
+.body {
+  margin-bottom: 16px;
+
+  @include breakpoint(tablet) {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+
+    margin-bottom: 24px;
+  }
+
+  @include breakpoint(laptop) {
+    margin-bottom: 0;
+  }
+}
+
+.thumb {
+  position: relative;
+
+  width: 96px;
+  height: 96px;
+  margin: 0 auto;
+  overflow: hidden;
+
+  border-radius: 50%;
+  background-color: $white;
+
+  @include breakpoint(false, tablet) {
+    margin-bottom: 24px;
+  }
+}
+
+.image {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+
+  display: block;
+
+  width: 124px;
+  height: auto;
+
+  transform: translateX(-50%);
+}
+
+.body-wrapper {
+  flex-grow: 1;
+
+  text-align: center;
+
+  @include breakpoint(tablet) {
+    text-align: left;
+  }
+}
+
+.title {
+  margin-bottom: 16px;
+
+  text-align: inherit;
+}
+
+.message {
+}
+
+.button-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include breakpoint(tablet) {
+    flex-direction: row;
+    gap: 24px;
+  }
+
+  @include breakpoint(laptop) {
+    flex-grow: 1;
+  }
+
+  @include breakpoint(desktop) {
+    justify-content: flex-end;
+    margin-left: auto;
+  }
+}
+
+.button {
+  width: 100%;
+  padding: 20px 36px;
+
+  font-size: 24px;
+
+  @include breakpoint(laptop) {
+    &:last-of-type {
+      width: fit-content;
+    }
+  }
+
+  @include breakpoint(desktop) {
+    width: fit-content;
+  }
+}
