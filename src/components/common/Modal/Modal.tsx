@@ -2,7 +2,7 @@
 
 import { MouseEvent, ReactNode, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import XButton from '../XButton';
+import { XButton } from '@/components/common';
 import styles from './Modal.module.scss';
 
 type Props = {
