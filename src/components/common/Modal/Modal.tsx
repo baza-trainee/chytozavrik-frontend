@@ -2,7 +2,7 @@
 
 import { MouseEvent, ReactNode, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { X } from 'lucide-react';
+import XButton from '../XButton';
 import styles from './Modal.module.scss';
 
 type Props = {
@@ -36,14 +36,7 @@ const Modal = ({ children, onClose }: Props) => {
   return createPortal(
     <div className={styles.modal} onClick={clickBackdropHandler}>
       <div className={styles.content}>
-        <button
-          className={styles['close-button']}
-          type="button"
-          aria-label="modal close"
-          onClick={onClose}
-        >
-          <X size={24} />
-        </button>
+        <XButton className={styles['close-button']} aria-label="modal close" onClick={onClose} />
         {children}
       </div>
     </div>,

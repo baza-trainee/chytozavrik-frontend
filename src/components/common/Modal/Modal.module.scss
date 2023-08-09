@@ -56,22 +56,6 @@
   top: 16px;
   right: 16px;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
   width: 24px;
   height: 24px;
-
-  color: getColor(neutral, 10);
-  @include setTransition(color);
-
-  &:focus,
-  &:hover {
-    color: getColor(neutral, 30);
-  }
-
-  &:active {
-    color: $black;
-  }
 }
