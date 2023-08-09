@@ -1,7 +1,7 @@
 @import 'scss/utils/variables';
 @import 'scss/utils/mixin';
 
-.button {
+:where(.button) {
   --button-bg-color: transparent;
   --button-text-color: $black;
 
@@ -21,7 +21,9 @@
   border-radius: 8px;
 
   @include setTransition(background-color, color, border-color, box-shadow);
+}
 
+.button {
   &:disabled {
     cursor: not-allowed;
 
