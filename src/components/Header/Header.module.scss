@@ -98,7 +98,7 @@ a.button {
     width: 24px;
   }
 }
-a.buttonIn {
+a.buttonIn,.buttonOut {
   width: 128px;
   padding: 10px 20px;
 
@@ -112,17 +112,4 @@ a.buttonIn {
     padding: 16px 28px;
   }
 }
-.buttonOut {
-  width: 128px;
-  padding: 10px 20px;
 
-  @include breakpoint(tablet) {
-    width: 169px;
-    padding: 12px 28px;
-  }
-
-  @include breakpoint(desktop) {
-    width: 185px;
-    padding: 16px 28px;
-  }
-}
