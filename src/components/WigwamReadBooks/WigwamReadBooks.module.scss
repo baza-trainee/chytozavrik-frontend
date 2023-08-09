@@ -7,18 +7,19 @@
   justify-content: space-around;
 
   width: 328px;
-  height: auto;
-  margin-bottom: 32px;
+  height: 52px;
   padding: 12px;
   border-radius: 8px;
   border: 1px solid $primary;
 
   @include breakpoint(tablet) {
     width: 332px;
+
     margin-bottom: 0;
   }
   @include breakpoint(laptop) {
     width: 521px;
+    height: auto;
     padding: 8px 16px;
   }
 
