@@ -10,9 +10,9 @@ type Props = {
 };
 
 type Question = {
+  id: number;
   question: string;
   answers: string[];
-  correctAnswer: string;
 };
 
 type Quiz = {
@@ -30,29 +30,25 @@ export const getQuiz = async (quizId: number): Promise<Quiz> => {
     bookAuthor: 'Всеволод Нестайко',
     questions: [
       {
+        id: 1,
         question: 'Які тварини головні герої книги "Тореодори з Васюківки"?',
         answers: ['Котики', 'Собачки', 'Ведмедики'],
-        correctAnswer: 'Собачки',
       },
       {
+        id: 2,
         question: 'Запитання 2?',
         answers: ['Відповідь 1', 'Відповідь 2', 'Відповідь 3'],
-        correctAnswer: 'Відповідь 2',
       },
       {
+        id: 3,
         question: 'Запитання 3?',
         answers: ['Відповідь 1', 'Відповідь 2', 'Відповідь 3'],
-        correctAnswer: 'Відповідь 3',
       },
+      { id: 4, question: 'Запитання 4?', answers: ['Відповідь 1', 'Відповідь 2', 'Відповідь 3'] },
       {
-        question: 'Запитання 4?',
-        answers: ['Відповідь 1', 'Відповідь 2', 'Відповідь 3'],
-        correctAnswer: 'Відповідь 1',
-      },
-      {
+        id: 5,
         question: 'Запитання 5?',
         answers: ['Відповідь 1', 'Відповідь 2', 'Відповідь 3'],
-        correctAnswer: 'Відповідь 2',
       },
     ],
     prizeUrl: '/images/test/quiz-prize-1.svg',
