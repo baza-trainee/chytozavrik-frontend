@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import {Container, Button, Typography} from 'components/common/';
 import Image from 'next/image';
