@@ -71,8 +71,12 @@
 }
 
 .thumb {
+  --thumb-size: 96px;
+
   position: relative;
 
+  width: var(--thumb-size);
+  height: var(--thumb-size);
   margin: 0 auto;
   overflow: hidden;
 
@@ -80,9 +84,6 @@
   background-color: $white;
 
   [data-type='default'] & {
-    width: 96px;
-    height: 96px;
-
     @include breakpoint(false, tablet) {
       margin-bottom: 24px;
     }
@@ -90,35 +91,37 @@
 
   [data-type='success'] &,
   [data-type='error'] & {
-    width: 56px;
-    height: 56px;
-
-    @include breakpoint(tablet) {
-      width: 96px;
-      height: 96px;
+    @include breakpoint(false, tablet) {
+      --thumb-size: 56px;
     }
   }
 }
 
 .image {
+  --image-width: 0px;
+
   position: absolute;
   bottom: 0;
   left: 50%;
 
   display: block;
 
-  width: 124px;
+  width: var(--image-width);
   height: auto;
 
   transform: translateX(-50%);
 
   [data-type='success'] &,
   [data-type='error'] & {
-    width: 62px;
+    --image-width: 62px;
 
     @include breakpoint(tablet) {
-      width: 100px;
+      --image-width: 100px;
     }
+  }
+
+  [data-type='default'] & {
+    --image-width: 124px;
   }
 }
 
@@ -184,9 +187,9 @@
 
   font-size: 24px;
 
-  [data-type='success'] &,
-  [data-type='error'] & {
-    @include breakpoint(tablet) {
+  @include breakpoint(tablet) {
+    [data-type='success'] &,
+    [data-type='error'] & {
       width: fit-content;
     }
   }
