@@ -1,9 +1,9 @@
-import JSConfetti from 'js-confetti';
 import { useEffect, useRef } from 'react';
+import JSConfetti from 'js-confetti';
 
 export default function useConfetti({ className }: { className: string }) {
   const ref = useRef(null);
-  const canvas = <canvas className={className} ref={ref} />;
+  const canvas = <canvas className={className} style={{ pointerEvents: 'none' }} ref={ref} />;
 
   useEffect(() => {
     if (!ref.current) return;

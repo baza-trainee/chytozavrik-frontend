@@ -2,7 +2,7 @@
 
 import { useState, type ButtonHTMLAttributes } from 'react';
 import { useRouter } from 'next/navigation';
-import { Notification, DefaultToast } from '../Notification/';
+import { Notification, DefaultToast, SuccessToast, ErrorToast } from '../Notification/';
 import { XButton } from '@/components/common';
 import { Route } from '@/constants';
 
@@ -29,8 +29,14 @@ const CloseQuizButton = (props: Props) => {
     <>
       <XButton {...props} onClick={showNotificationHandler} />
       {isShowNotification && (
-        <Notification backdrop>
-          <DefaultToast onAction={hideNotification} onClose={closeHandler} />
+        // <Notification backdrop>
+        //   <DefaultToast onAction={hideNotification} onClose={closeHandler} />
+        // </Notification>
+        // <Notification type="success">
+        //   <SuccessToast onAction={closeHandler} />
+        // </Notification>
+        <Notification type="error">
+          <ErrorToast onAction={closeHandler} />
         </Notification>
       )}
     </>

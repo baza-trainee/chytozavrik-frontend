@@ -169,11 +169,12 @@
   @include breakpoint(laptop) {
     flex-direction: row;
 
-    width: 595px;
+    // width: 595px;
+    width: fit-content;
   }
 
   @include breakpoint(desktop) {
-    width: 628px;
+    // width: 628px;
   }
 }
 

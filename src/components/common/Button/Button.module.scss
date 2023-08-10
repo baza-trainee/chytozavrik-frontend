@@ -59,7 +59,8 @@
     }
   }
 
-  &--tertiary {
+  &--tertiary,
+  &--success {
     --button-bg-color: #{$tertiary};
     --button-text-color: #{$on-tertiary};
 
@@ -73,7 +74,8 @@
     }
   }
 
-  &--quaternary {
+  &--quaternary,
+  &--error {
     --button-bg-color: #{$quaternary};
     --button-text-color: #{$on-quaternary};
 

@@ -2,42 +2,101 @@
 @import 'scss/utils/mixin';
 
 .toast {
+  --toast-px: 0;
+
+  @include breakpoint(tablet) {
+    [data-type='success'] &,
+    [data-type='error'] & {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+  }
+
   @include breakpoint(laptop) {
-    display: flex;
-    align-items: center;
-    gap: 40px;
+    padding-left: var(--toast-px);
+    padding-right: var(--toast-px);
+
+    [data-type='success'] &,
+    [data-type='error'] & {
+      --toast-px: 77px;
+    }
+
+    [data-type='default'] & {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+  }
+
+  @include breakpoint(desktop) {
+    [data-type='success'] &,
+    [data-type='error'] & {
+      --toast-px: 217px;
+    }
+
+    [data-type='default'] & {
+      --toast-px: 109px;
+    }
   }
 }
 
 .body {
   margin-bottom: 16px;
 
-  @include breakpoint(tablet) {
+  [data-type='success'] &,
+  [data-type='error'] & {
     display: flex;
     align-items: center;
-    gap: 40px;
+    gap: 24px;
 
-    margin-bottom: 24px;
+    @include breakpoint(tablet) {
+      margin-bottom: 0;
+    }
   }
 
-  @include breakpoint(laptop) {
-    margin-bottom: 0;
+  [data-type='default'] & {
+    @include breakpoint(tablet) {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+
+      margin-bottom: 24px;
+    }
+
+    @include breakpoint(laptop) {
+      margin-bottom: 0;
+    }
   }
 }
 
 .thumb {
   position: relative;
 
-  width: 96px;
-  height: 96px;
   margin: 0 auto;
   overflow: hidden;
 
   border-radius: 50%;
   background-color: $white;
 
-  @include breakpoint(false, tablet) {
-    margin-bottom: 24px;
+  [data-type='default'] & {
+    width: 96px;
+    height: 96px;
+
+    @include breakpoint(false, tablet) {
+      margin-bottom: 24px;
+    }
+  }
+
+  [data-type='success'] &,
+  [data-type='error'] & {
+    width: 56px;
+    height: 56px;
+
+    @include breakpoint(tablet) {
+      width: 96px;
+      height: 96px;
+    }
   }
 }
 
@@ -52,12 +111,26 @@
   height: auto;
 
   transform: translateX(-50%);
+
+  [data-type='success'] &,
+  [data-type='error'] & {
+    width: 62px;
+
+    @include breakpoint(tablet) {
+      width: 100px;
+    }
+  }
 }
 
 .body-wrapper {
   flex-grow: 1;
 
   text-align: center;
+
+  [data-type='success'] &,
+  [data-type='error'] & {
+    text-align: left;
+  }
 
   @include breakpoint(tablet) {
     text-align: left;
@@ -78,18 +151,30 @@
   flex-direction: column;
   gap: 16px;
 
+  [data-type='default'] & {
+    @include breakpoint(laptop) {
+      flex-grow: 1;
+    }
+    @include breakpoint(laptop, desktop) {
+      margin-right: -20px;
+    }
+  }
+
+  [data-type='success'] &,
+  [data-type='error'] & {
+    @include breakpoint(tablet) {
+      flex-grow: 1;
+      justify-content: flex-end;
+    }
+  }
+
   @include breakpoint(tablet) {
     flex-direction: row;
     gap: 24px;
   }
 
-  @include breakpoint(laptop) {
-    flex-grow: 1;
-  }
-
   @include breakpoint(desktop) {
     justify-content: flex-end;
-    margin-left: auto;
   }
 }
 
@@ -98,6 +183,13 @@
   padding: 20px 36px;
 
   font-size: 24px;
+
+  [data-type='success'] &,
+  [data-type='error'] & {
+    @include breakpoint(tablet) {
+      width: fit-content;
+    }
+  }
 
   @include breakpoint(laptop) {
     &:last-of-type {
@@ -108,4 +200,13 @@
   @include breakpoint(desktop) {
     width: fit-content;
   }
+}
+
+.confetti {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
 }

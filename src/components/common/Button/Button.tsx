@@ -18,7 +18,7 @@ type Props = {
   children: ReactNode;
   className?: string;
   variant?: 'filled' | 'outline' | 'text';
-  color?: 'primary' | 'secondary' | 'tertiary' | 'quaternary';
+  color?: 'primary' | 'secondary' | 'tertiary' | 'quaternary' | 'success' | 'error';
   startIcon?: ReactNode;
   endIcon?: ReactNode;
 } & (LinkProps | ButtonProps);
