@@ -2,7 +2,7 @@
 
 import { signOut, useSession } from 'next-auth/react';
 import { usePathname } from 'next/navigation';
-import { User } from 'lucide-react';
+import { User2 } from 'lucide-react';
 import { Button } from '@/components/common';
 import { Route } from '@/constants';
 import styles from './Header.module.scss';
@@ -18,7 +18,7 @@ const HeaderButton = () => {
     if (isPartners) {
       return (
         <Button
-          className={styles.button}
+          className={styles.buttonOut}
           variant="outline"
           onClick={() => signOut({ callbackUrl: Route.HOME })}
         >
@@ -32,7 +32,7 @@ const HeaderButton = () => {
           href={Route.PARENTS}
           className={styles.button}
           variant="outline"
-          startIcon={<User />}
+          startIcon={<User2 className={styles.userLogo}/>}
         >
           Кабінет
         </Button>
@@ -40,7 +40,7 @@ const HeaderButton = () => {
     }
   } else {
     return (
-      <Button component="link" href={Route.SIGN_IN} className={styles.button} variant="outline">
+      <Button component="link" href={Route.SIGN_IN} className={styles.buttonIn} variant="outline">
         Вхід
       </Button>
     );

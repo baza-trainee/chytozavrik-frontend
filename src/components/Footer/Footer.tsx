@@ -11,9 +11,9 @@ import { Facebook, Instagram, Phone, Mail } from 'lucide-react';
 const Footer = () => {
   return (
     <footer className={styles.footer}>
-      <Container>
+      <Container className={styles.container}>
         <div className={styles.footerContainer}>
-          <div className={styles.logoContainer}>
+          <Link href='/' className={styles.logoContainer}>
             <Image
               src="/logo-footer.svg"
               width={58}
@@ -28,27 +28,27 @@ const Footer = () => {
               alt="Logo"
               className={styles.logoText}
             />
-          </div>
+          </Link>
 
           <div className={styles.wrapper}>
             <div className={classNames(styles.list, styles.informationText, styles.footerList)}>
               <ul className={styles.class4}>
                 <Typography className={styles.informationText} component="p" variant="footer">
-                  <Link href="#">Про проєкт</Link>
+                  <Link href="#" className={styles.linkText1}>Про проєкт</Link>
                 </Typography>
                 <Typography className={styles.informationText} component="p" variant="footer">
-                  <Link href="#">До вігваму</Link>
+                  <Link href="/" className={styles.linkText1}>До вігваму</Link>
                 </Typography>
               </ul>
               <ul className={styles.class1}>
                 <Typography className={styles.informationText} component="p" variant="footer">
-                  <Link href="/pdf/privacy policy.pdf" target="_blank" className={styles.linkText}>
+                  <Link href={"/pdf/privacy policy.pdf"+"#toolbar=0"} target="_blank" className={styles.linkText}>
                     Політика конфіденційності
                   </Link>
                 </Typography>
 
                 <Typography className={styles.informationText} component="p" variant="footer">
-                  <Link href="/pdf/site-rules.pdf" target="_blank" className={styles.linkText}>
+                  <Link href={"/pdf/site-rules.pdf" + "#toolbar=0"} target="_blank" className={styles.linkText}>
                     Правила користування сайтом
                   </Link>
                 </Typography>

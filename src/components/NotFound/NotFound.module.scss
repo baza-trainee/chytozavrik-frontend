@@ -36,6 +36,9 @@
   gap: 36px;
   flex-direction: column;
   padding: 52px 16px 302px;
+  margin: auto;
+    padding-left: var(--padding-x);
+    padding-right: var(--padding-x);
 
   @include breakpoint(tablet) {
     padding: 167px 397px 137px 40px;
