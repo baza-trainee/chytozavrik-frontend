@@ -83,6 +83,8 @@
 }
 
 .button {
+  --button-pressd-color: #{getColor(yellow, 30)};
+
   display: none;
   background-color: $secondary;
   color: $black;
@@ -90,6 +92,10 @@
 
   &:hover {
     background-color: $secondary-btn;
+  }
+
+  &:active {
+    background-color: var(--button-pressd-color);
   }
 
   @include breakpoint(desktop) {

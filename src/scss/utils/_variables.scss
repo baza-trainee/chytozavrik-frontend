@@ -93,6 +93,10 @@ $palettes: (
 $black: #1e1e1e;
 $white: #fdfdfd;
 $secondary-black: #000000;
+$search-background: #f6faff;
+
+$neutral: getColor(neutral, 30);
+$on-neutral: getColor(neutral, 50);
 
 $primary: getColor(blue, 40);
 $on-primary: getColor(blue, 100);
