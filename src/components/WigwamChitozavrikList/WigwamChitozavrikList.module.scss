@@ -1,0 +1,53 @@
+@import 'scss/utils/variables';
+@import 'scss/utils/mixin';
+
+.wraper {
+  margin-top: 32px;
+
+  @include breakpoint(tablet) {
+    margin-top: 24px;
+  }
+
+  @include breakpoint(laptop) {
+    margin-top: 28px;
+  }
+
+  @include breakpoint(desktop) {
+    margin-top: 38px;
+  }
+}
+
+.title {
+  font-size: 18px;
+  text-align: start;
+
+  @include breakpoint(tablet) {
+    font-size: 24px;
+  }
+}
+
+.title_wraper {
+  width: 321px;
+  height: 56px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include breakpoint(tablet) {
+    width: 688px;
+  }
+
+  @include breakpoint(laptop) {
+    width: 517px;
+    height: 35px;
+  }
+
+  @include breakpoint(desktop) {
+    width: 410px;
+    height: 64px;
+  }
+}
+
+.arrow {
+  color: $primary;
+}
