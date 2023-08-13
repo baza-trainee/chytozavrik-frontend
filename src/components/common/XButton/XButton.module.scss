@@ -2,12 +2,13 @@
 @import 'scss/utils/mixin';
 
 :where(.button) {
+  --x-button-p: 16px;
+
   display: flex;
   justify-content: center;
   align-items: center;
 
-  width: 24px;
-  height: 24px;
+  padding: var(--x-button-p);
 
   color: getColor(neutral, 10);
   @include setTransition(color);
@@ -19,5 +20,14 @@
 
   &:active {
     color: $black;
+  }
+
+  & > svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  @include breakpoint(desktop) {
+    --x-button-p: 20px;
   }
 }

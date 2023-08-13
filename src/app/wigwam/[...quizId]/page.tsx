@@ -1,7 +1,5 @@
-import { Button, Container, Typography } from '@/components/common';
-import CloseQuizButton from './components/CloseQuizButton';
-import styles from './page.module.scss';
-import Image from 'next/image';
+import type { QuizType } from '@/types';
+import Quiz from './components/Quiz';
 
 type Props = {
   params: {
@@ -9,22 +7,10 @@ type Props = {
   };
 };
 
-type Question = {
-  id: number;
-  question: string;
-  answers: string[];
-};
-
-type Quiz = {
-  id: number;
-  bookName: string;
-  bookAuthor: string;
-  questions: Question[];
-  prizeUrl: string;
-};
-
-export const getQuiz = async (quizId: number): Promise<Quiz> => {
-  const quiz: Quiz = {
+export const getQuiz = async (
+  quizId: number
+): Promise<{ quiz: QuizType; currentQuestion: number }> => {
+  const quiz: QuizType = {
     id: quizId,
     bookName: 'Тореодори з Васюківки',
     bookAuthor: 'Всеволод Нестайко',
@@ -36,8 +22,8 @@ export const getQuiz = async (quizId: number): Promise<Quiz> => {
       },
       {
         id: 2,
-        question: 'Запитання 2?',
-        answers: ['Відповідь 1', 'Відповідь 2', 'Відповідь 3'],
+        question: 'Хто намастив повидлом учительські окуляри?',
+        answers: ['Петрик П’яточкін', 'Сашко П’явочка', 'Гриць Мамай'],
       },
       {
         id: 3,
@@ -54,52 +40,15 @@ export const getQuiz = async (quizId: number): Promise<Quiz> => {
     prizeUrl: '/images/test/quiz-prize-1.svg',
   };
 
-  return Promise.resolve(quiz);
+  return Promise.resolve({ quiz, currentQuestion: 4 });
 };
 
 const QuizPage = async ({ params }: Props) => {
-  const quiz = await getQuiz(Number(params.quizId));
-  // console.log(quiz);
+  const { quiz, currentQuestion } = await getQuiz(Number(params.quizId));
 
   return (
     <main>
-      <section className={styles.section}>
-        <Container className={styles.container}>
-          <CloseQuizButton className={styles['close-button']} />
-          <div className={styles.header}>
-            <Typography className={styles['question-count']} component="h3" variant="h3">
-              Питання 1/{quiz.questions.length}
-            </Typography>
-            <div className={styles['book-info']}>
-              <Typography className={styles['book-name']} component="h3" variant="h3">
-                Тореодори з Васюківки
-              </Typography>
-              <Typography className={styles['book-author']} component="p" variant="body">
-                Всеволод Нестайко
-              </Typography>
-            </div>
-          </div>
-          <div className={styles.body}>
-            <Image
-              className={styles['body-image']}
-              src="/images/test/quiz-question-image.svg"
-              width={103}
-              height={144}
-              alt="Зображення читозаврика"
-            />
-            <Typography className={styles.question} component="h2" variant="h2">
-              {quiz.questions.at(0)?.question}
-            </Typography>
-          </div>
-          <div className={styles.footer}>
-            {quiz.questions.at(0)?.answers.map(answer => (
-              <Button key={answer} className={styles['answer-button']} variant="outline">
-                {answer}
-              </Button>
-            ))}
-          </div>
-        </Container>
-      </section>
+      <Quiz quiz={quiz} currentQuestion={currentQuestion} />
     </main>
   );
 };

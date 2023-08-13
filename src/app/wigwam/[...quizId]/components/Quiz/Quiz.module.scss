@@ -43,6 +43,8 @@
 .question-count {
   pointer-events: none;
 
+  width: fit-content;
+  margin-inline: auto;
   font-size: 14px;
 
   @include breakpoint(tablet) {
@@ -61,12 +63,22 @@
 .book-info {
   text-align: center;
 
+  @include breakpoint(tablet, laptop) {
+    padding-inline: 119px;
+  }
+
   @include breakpoint(laptop) {
     position: absolute;
     left: 0;
     top: 0;
 
+    width: 285px;
+
     text-align: left;
+  }
+
+  @include breakpoint(desktop) {
+    width: 410px;
   }
 }
 
@@ -116,26 +128,20 @@
   font-size: 18px;
 
   @include breakpoint(tablet) {
-    padding-inline: 30px;
-
     font-size: 32px;
   }
 
   @include breakpoint(laptop) {
-    padding-inline: 165px;
+    padding-inline: 80px;
   }
 
   @include breakpoint(desktop) {
-    padding-inline: 338px;
+    padding-inline: 217px;
   }
 }
 
 .footer {
   position: relative;
-
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
 
   width: 100%;
   padding-top: 24px;
@@ -159,35 +165,18 @@
   }
 
   @include breakpoint(tablet) {
-    gap: 24px;
-
     width: 450px;
     margin: 0 auto;
     padding-top: 48px;
   }
 
   @include breakpoint(laptop) {
-    flex-direction: row;
-
-    // width: 595px;
     width: fit-content;
   }
-
-  @include breakpoint(desktop) {
-    // width: 628px;
-  }
-}
-
-.answer-button {
-  width: 100%;
-  padding: 20px 36px;
-
-  font-size: 24px;
-
-  background-color: $white;
 }
 
 .close-button {
   position: absolute;
-  right: var(--padding-x);
+  top: calc(var(--container-pt) - var(--x-button-p));
+  right: calc(var(--padding-x) - var(--x-button-p));
 }
