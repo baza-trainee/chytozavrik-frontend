@@ -11,7 +11,6 @@ import AuthLink from '../AuthLink';
 import { signUpService } from '@/services/api';
 import { Route } from '@/constants';
 import styles from '../Auth.module.scss';
-import { isJson } from '@/utils/isJson';
 
 const schema = yup.object({
   email: validation.email,
