@@ -76,12 +76,14 @@
   pointer-events: auto;
   flex-grow: 1;
 
+  font-family: var(--raleway-font);
+  font-size: 16px;
+  font-variant-numeric: lining-nums proportional-nums;
   color: inherit;
 
   border: none;
   background: none;
   outline: none;
-  font-size: 16px;
 
   // Hide arrows in type=number
   &::-webkit-outer-spin-button,

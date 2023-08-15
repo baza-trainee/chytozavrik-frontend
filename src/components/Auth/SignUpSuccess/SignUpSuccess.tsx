@@ -28,6 +28,7 @@ const SignUpSuccess = () => {
           component="link"
           color="secondary"
           href={Route.PARENTS}
+          replace={true}
         >
           Перейти до кабінету
         </Button>

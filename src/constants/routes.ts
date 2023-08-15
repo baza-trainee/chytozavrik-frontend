@@ -5,5 +5,6 @@ export enum Route {
   SIGN_IN = '/?auth=signin',
   FORGOT_PASSWORD = '/auth=forgot-password',
   WIGWAM = '/wigwam',
+  WIGWAM_LOBBY = '/wigwam/lobby',
   PARENTS = '/parents',
 }

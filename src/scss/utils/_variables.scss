@@ -86,8 +86,18 @@ $palettes: (
   ),
 );
 
+$notification-color: (
+  'default': #c7e1ff,
+  'success': #defade,
+  'error': #fff0f0,
+);
+
 @function getColor($color, $tone) {
   @return map-get(map-get($palettes, $color), $tone);
+}
+
+@function getNotificationColor($type) {
+  @return map-get($notification-color, $type);
 }
 
 $black: #1e1e1e;
