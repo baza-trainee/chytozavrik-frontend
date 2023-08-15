@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import type { QuizType } from '@/types';
 import { Container, Typography } from '@/components/common';
-import CloseQuizButton from '../CloseQuizButton/';
+import CloseQuizButton from '../CloseQuizButton';
 import AnswersList from './AnswersList';
 import styles from './Quiz.module.scss';
 import QuizPrize from '../QuizPrize/QuizPrize';

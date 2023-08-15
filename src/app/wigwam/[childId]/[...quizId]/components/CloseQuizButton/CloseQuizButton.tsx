@@ -2,7 +2,7 @@
 
 import { useState, type ButtonHTMLAttributes } from 'react';
 import { useRouter } from 'next/navigation';
-import { Notification, DefaultToast } from '../Notification/';
+import { Notification, DefaultToast } from '../Notification';
 import { XButton } from '@/components/common';
 import { Route } from '@/constants';
 

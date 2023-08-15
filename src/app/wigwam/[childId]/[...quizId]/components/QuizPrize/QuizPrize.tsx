@@ -1,3 +1,4 @@
+import { useParams } from 'next/navigation';
 import Image from 'next/image';
 import { Button, Typography } from '@/components/common';
 import { Route } from '@/constants';
@@ -11,6 +12,8 @@ type Props = {
 
 const QuizPrize = ({ prize, onReplyQuiz }: Props) => {
   const canvas = useConfetti({ className: styles.confetti });
+  const { childId } = useParams();
+
   return (
     <div className={styles.prize}>
       <div className={styles.thumb}>
@@ -31,7 +34,12 @@ const QuizPrize = ({ prize, onReplyQuiz }: Props) => {
         </Typography>
       </div>
       <div className={styles['buttons-wrapper']}>
-        <Button className={styles.button} component="link" href={Route.WIGWAM} color="secondary">
+        <Button
+          className={styles.button}
+          component="link"
+          href={`${Route.WIGWAM}/${childId}`}
+          color="secondary"
+        >
           До вігваму
         </Button>
         <Button className={styles.button} variant="outline" onClick={onReplyQuiz}>

@@ -7,9 +7,7 @@ type Props = {
   };
 };
 
-export const getQuiz = async (
-  quizId: number
-): Promise<{ quiz: QuizType; currentQuestion: number }> => {
+const getQuiz = async (quizId: number): Promise<{ quiz: QuizType; currentQuestion: number }> => {
   const quiz: QuizType = {
     id: quizId,
     bookName: 'Тореодори з Васюківки',
