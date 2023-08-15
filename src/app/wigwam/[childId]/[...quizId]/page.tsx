@@ -38,7 +38,7 @@ const getQuiz = async (quizId: number): Promise<{ quiz: QuizType; currentQuestio
     prizeUrl: '/images/test/quiz-prize-1.svg',
   };
 
-  return Promise.resolve({ quiz, currentQuestion: 4 });
+  return Promise.resolve({ quiz, currentQuestion: 0 });
 };
 
 const QuizPage = async ({ params }: Props) => {
