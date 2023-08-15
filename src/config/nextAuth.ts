@@ -25,7 +25,12 @@ export const authOptions: NextAuthOptions = {
             credentials?.password as string
           );
           // Check for errors
-          if (serverToken.status === 'fail') throw new Error(serverToken.data.message);
+          if (serverToken.status === 'fail') {
+            const errorMessage = serverToken.data.message;
+            throw new Error(
+              typeof errorMessage === 'string' ? errorMessage : JSON.stringify(errorMessage)
+            );
+          }
 
           token.access = serverToken.data.access;
           token.refresh = serverToken.data.refresh;
@@ -33,7 +38,12 @@ export const authOptions: NextAuthOptions = {
           // Get user info
           const userInfo = await getUserInfoService();
           // Check for errors
-          if (userInfo.status === 'fail') throw new Error(userInfo.data.message);
+          if (userInfo.status === 'fail') {
+            const errorMessage = userInfo.data.message;
+            throw new Error(
+              typeof errorMessage === 'string' ? errorMessage : JSON.stringify(errorMessage)
+            );
+          }
 
           const user = { ...userInfo.data, ...serverToken.data, id: userInfo.data.id.toString() };
 

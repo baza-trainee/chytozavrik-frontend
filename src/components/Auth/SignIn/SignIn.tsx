@@ -1,14 +1,18 @@
 'use client';
+
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { signIn } from 'next-auth/react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { signIn } from 'next-auth/react';
+import { AlertCircle } from 'lucide-react';
 import { Button, Typography } from '@/components/common';
 import { Checkbox, Input, PasswordInput, validation } from '@/components/common/form';
 import AuthLink from '../AuthLink';
 import { Route } from '@/constants';
+import { isJson } from '../../../utils/isJson';
 import styles from '../Auth.module.scss';
-import { useRouter } from 'next/navigation';
 
 const schema = yup.object({
   email: validation.email,
@@ -29,23 +33,40 @@ const SignIn = () => {
     control,
     handleSubmit,
     resetField,
+    setError: setFormError,
     formState: { isSubmitting },
   } = useForm({
     defaultValues,
     resolver: yupResolver(schema),
   });
   const router = useRouter();
+  const [error, setError] = useState<string | null>(null);
 
   const resetFieldByName = (name: keyof FormData) => () =>
     resetField(name, { keepError: true, keepDirty: true, keepTouched: true });
 
   const formSubmit = async ({ rememberMe, ...data }: FormData) => {
     try {
+      // clear error
+      if (error) setError(null);
+
       const result = await signIn('credentials', { redirect: false, ...data });
 
       // Show server errors
       if (result?.error) {
-        return console.log(result?.error);
+        // set server error
+        if (isJson(result.error)) {
+          const errorObj = JSON.parse(result.error);
+
+          Object.keys(errorObj).forEach(key => {
+            const k = key as keyof FormData;
+            setFormError(k, { message: errorObj[key].at(0) });
+          });
+        } else {
+          setError(result.error);
+        }
+
+        return;
       }
       // Redirect to the page, if the login was a success.
       if (result?.url) {
@@ -55,7 +76,7 @@ const SignIn = () => {
         router.replace(callbackUrl);
       }
     } catch (error) {
-      console.error('SignIn error: ', (error as Error).message);
+      setError('Упс. Щось пішло не так. Спробуйте ще раз.');
     }
   };
 
@@ -103,14 +124,24 @@ const SignIn = () => {
           <AuthLink href={Route.SIGN_UP}>Зареєструватися</AuthLink>
         </div>
 
-        <Button
-          className={styles['button-submit']}
-          type="submit"
-          color="secondary"
-          disabled={isSubmitting}
-        >
-          {isSubmitting ? 'Відправка данних...' : 'Увійти'}
-        </Button>
+        <div className={styles['form-footer']}>
+          {error && (
+            <div className={styles.error}>
+              <AlertCircle className={styles['error-icon']} />
+              <span className={styles['error-message']}>{error}</span>
+            </div>
+          )}
+
+          <Button
+            className={styles['button-submit']}
+            type="submit"
+            color="secondary"
+            disabled={isSubmitting}
+            isLoading={isSubmitting}
+          >
+            {isSubmitting ? ` ` : 'Увійти'}
+          </Button>
+        </div>
       </form>
     </div>
   );

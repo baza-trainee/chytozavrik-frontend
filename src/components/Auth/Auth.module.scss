@@ -74,15 +74,18 @@
   align-items: center;
   gap: 24px;
 
+  margin-top: 32px;
+  margin-bottom: 32px;
+
   @include breakpoint(false, tablet) {
-    margin: auto 0;
+    margin-bottom: auto;
   }
 
   @include breakpoint(tablet) {
     flex-direction: row;
     justify-content: space-between;
 
-    margin-bottom: 32px;
+    margin-bottom: 76px;
   }
 }
 
@@ -93,15 +96,44 @@
   }
 }
 
+.form-footer {
+  position: relative;
+}
+
+.error {
+  position: absolute;
+  top: -24px;
+
+  display: flex;
+  gap: 5px;
+
+  font-size: 14px;
+  color: $error;
+
+  transform: translateY(-100%);
+}
+
+.error-icon {
+  --error-icon-size: 16px;
+
+  width: var(--error-icon-size);
+  height: var(--error-icon-size);
+}
+
+.error-message {
+}
+
 .button-submit {
   width: 100%;
 
+  min-height: 54px;
   padding: 16px 28px;
 
   font-size: 18px;
 
   @include breakpoint(tablet) {
-    padding-block: 20px;
+    min-height: 69px;
+    padding: 20px 36px;
 
     font-size: 24px;
   }
