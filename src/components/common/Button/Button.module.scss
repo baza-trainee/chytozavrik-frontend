@@ -4,6 +4,9 @@
 :where(.button) {
   --button-bg-color: transparent;
   --button-text-color: $black;
+  --button-disabled-opcity: 0.4;
+
+  position: relative;
 
   display: flex;
   justify-content: center;
@@ -12,6 +15,7 @@
 
   width: fit-content;
   padding: 20px 36px;
+  overflow: hidden;
 
   font-family: var(--montserrat-alternates-font);
   font-weight: 600;
@@ -27,7 +31,7 @@
   &:disabled {
     cursor: not-allowed;
 
-    opacity: 0.4;
+    // opacity: var(--button-disabled-opcity);
   }
 
   // color scheme
@@ -40,8 +44,14 @@
       --button-bg-color: #{getColor(blue, 50)};
     }
 
-    &:not(:disabled):active {
+    &:not(:disabled):active,
+    &[data-selected='true'] {
       --button-bg-color: #{getColor(blue, 30)};
+    }
+
+    &:disabled {
+      --button-bg-color: #{rgba($primary, var(--button-disabled-opcity))};
+      --button-text-color: #{rgba($on-primary, var(--button-disabled-opcity))};
     }
   }
 
@@ -54,8 +64,14 @@
       --button-bg-color: #{getColor(yellow, 50)};
     }
 
-    &:not(:disabled):active {
+    &:not(:disabled):active,
+    &[data-selected='true'] {
       --button-bg-color: #{getColor(yellow, 30)};
+    }
+
+    &:disabled {
+      --button-bg-color: #{rgba($secondary, var(--button-disabled-opcity))};
+      --button-text-color: #{getColor(neutral, 40)};
     }
   }
 
@@ -69,8 +85,14 @@
       --button-bg-color: #{getColor(green, 50)};
     }
 
-    &:not(:disabled):active {
+    &:not(:disabled):active,
+    &[data-selected='true'] {
       --button-bg-color: #{getColor(green, 30)};
+    }
+
+    &:disabled {
+      --button-bg-color: #{rgba($tertiary, var(--button-disabled-opcity))};
+      --button-text-color: #{rgba($on-tertiary, var(--button-disabled-opcity))};
     }
   }
 
@@ -84,8 +106,14 @@
       --button-bg-color: #{getColor(rose, 50)};
     }
 
-    &:not(:disabled):active {
+    &:not(:disabled):active,
+    &[data-selected='true'] {
       --button-bg-color: #{getColor(rose, 30)};
+    }
+
+    &:disabled {
+      --button-bg-color: #{rgba($quaternary, var(--button-disabled-opcity))};
+      --button-text-color: #{rgba($on-quaternary, var(--button-disabled-opcity))};
     }
   }
 
@@ -102,8 +130,18 @@
     border: 2px solid var(--button-bg-color);
 
     &:not(:disabled):hover,
-    &:not(:disabled):focus {
+    &:not(:disabled):focus,
+    &[data-selected='true'] {
       color: $white;
+      background-color: var(--button-bg-color);
+    }
+
+    &:disabled {
+      background-color: rgba($white, var(--button-disabled-opcity));
+    }
+
+    &:disabled[data-selected='true'] {
+      color: rgba($white, var(--button-disabled-opcity));
       background-color: var(--button-bg-color);
     }
   }
@@ -118,4 +156,16 @@
 
   width: 24px;
   height: 24px;
+}
+
+.spinner {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba($black, 0.4);
 }

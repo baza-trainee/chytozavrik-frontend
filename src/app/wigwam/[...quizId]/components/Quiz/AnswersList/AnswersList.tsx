@@ -12,7 +12,7 @@ type Props = {
 
 const fetchAnwser = async (answer: string): Promise<boolean> => {
   return new Promise(resolve => {
-    const result = Math.round(Math.random() * 3);
+    const result = Math.round(Math.random() * 2);
     setTimeout(() => {
       if (result === 1) {
         return resolve(true);
@@ -25,14 +25,25 @@ const fetchAnwser = async (answer: string): Promise<boolean> => {
 
 const AnswersList = ({ answers, onNext }: Props) => {
   const [answerResult, setAnswerResult] = useState<boolean | null>(null);
+  const [selectAnswer, setSelectAnswer] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const clickHandler = (answer: string) => async () => {
-    const result = await fetchAnwser(answer);
+    try {
+      setIsLoading(true);
+      setSelectAnswer(answer);
+      const result = await fetchAnwser(answer);
 
-    setAnswerResult(result);
+      setAnswerResult(result);
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const closeNotification = () => {
+    setSelectAnswer(null);
     setAnswerResult(null);
   };
 
@@ -48,7 +59,15 @@ const AnswersList = ({ answers, onNext }: Props) => {
       <ul className={styles.list}>
         {answers.map(answer => (
           <li key={answer}>
-            <Button className={styles.button} variant="outline" onClick={clickHandler(answer)}>
+            <Button
+              className={styles.button}
+              variant="outline"
+              color="primary"
+              onClick={clickHandler(answer)}
+              disabled={isLoading}
+              isLoading={isLoading && answer === selectAnswer}
+              selected={answer === selectAnswer}
+            >
               {answer}
             </Button>
           </li>
