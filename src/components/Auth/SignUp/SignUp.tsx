@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { signIn } from 'next-auth/react';
 import { useForm } from 'react-hook-form';
@@ -6,15 +6,17 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Button, Typography } from '@/components/common';
 import { Checkbox, Input, PasswordInput, validation } from '@/components/common/form';
+import { AlertCircle } from 'lucide-react';
 import AuthLink from '../AuthLink';
 import { signUpService } from '@/services/api';
 import { Route } from '@/constants';
 import styles from '../Auth.module.scss';
+import { isJson } from '@/utils/isJson';
 
 const schema = yup.object({
   email: validation.email,
   password: validation.password,
-  confirmPassword: validation.confirmPassword,
+  password2: validation.confirmPassword,
   rememberMe: validation.rememberMe,
   acceptedRules: validation.acceptedRules,
 });
@@ -24,7 +26,7 @@ type FormData = yup.InferType<typeof schema>;
 const defaultValues: FormData = {
   email: '',
   password: '',
-  confirmPassword: '',
+  password2: '',
   rememberMe: false,
   acceptedRules: false,
 };
@@ -34,6 +36,7 @@ const SignUp = () => {
     control,
     handleSubmit,
     resetField,
+    setError: setFormError,
     watch,
     getValues,
     formState: { isSubmitting },
@@ -42,17 +45,34 @@ const SignUp = () => {
     resolver: yupResolver(schema),
   });
   const router = useRouter();
+  const [error, setError] = useState<string | null>(null);
 
   const resetFieldByName = (name: keyof FormData) => () =>
     resetField(name, { keepError: true, keepDirty: true, keepTouched: true });
 
-  const formSubmit = async ({ confirmPassword, rememberMe, ...data }: FormData) => {
+  const formSubmit = async ({ rememberMe, ...data }: FormData) => {
     try {
-      // Signup request
-      const result = await signUpService(data.email, data.password, confirmPassword);
+      // clear error
+      if (error) setError(null);
 
-      if (result.status === 'fail') {
-        return console.warn('Sign up', result.data.message);
+      // Signup request
+      const result = await signUpService(data.email, data.password, data.password2);
+
+      // Check for errors
+      if (result.status === 'fail' && result.data.message) {
+        // set server error
+        if (typeof result.data.message === 'object') {
+          const errorObj: { [key: string]: string[] } = result.data.message;
+
+          Object.keys(errorObj).forEach(key => {
+            const k = key as keyof FormData;
+            setFormError(k, { message: errorObj[key].at(0) });
+          });
+        } else {
+          setError(result.data.message);
+        }
+
+        return;
       }
 
       // Signin request
@@ -67,7 +87,7 @@ const SignUp = () => {
         router.replace(Route.SIGN_UP_SUCCESS);
       }
     } catch (error) {
-      console.error('SignUp: ', (error as Error).message);
+      setError('Упс. Щось пішло не так. Спробуйте ще раз.');
     }
   };
 
@@ -102,8 +122,8 @@ const SignUp = () => {
           />
           <PasswordInput
             control={control}
-            name="confirmPassword"
-            resetField={resetFieldByName('confirmPassword')}
+            name="password2"
+            resetField={resetFieldByName('password2')}
             label="Повторити пароль"
             placeholder="Повторіть свій пароль"
             autoComplete="new-password"
@@ -111,9 +131,9 @@ const SignUp = () => {
         </div>
 
         <div className={styles['checkboxes-groups']}>
-          <Checkbox name="rememberMe" control={control}>
+          {/* <Checkbox name="rememberMe" control={control}>
             Запам&apos;ятати мене
-          </Checkbox>
+          </Checkbox> */}
 
           <Checkbox name="acceptedRules" control={control}>
             Я згоден з{' '}
@@ -135,14 +155,23 @@ const SignUp = () => {
           <AuthLink href={Route.SIGN_IN}>Увійти в обліковий запис</AuthLink>
         </div>
 
-        <Button
-          className={styles['button-submit']}
-          type="submit"
-          color="secondary"
-          disabled={!getValues().acceptedRules || isSubmitting}
-        >
-          Зареєструватися
-        </Button>
+        <div className={styles['form-footer']}>
+          {error && (
+            <div className={styles.error}>
+              <AlertCircle className={styles['error-icon']} />
+              <span className={styles['error-message']}>{error}</span>
+            </div>
+          )}
+          <Button
+            className={styles['button-submit']}
+            type="submit"
+            color="secondary"
+            disabled={!getValues().acceptedRules || isSubmitting}
+            isLoading={isSubmitting}
+          >
+            {isSubmitting ? '' : 'Зареєструватися'}
+          </Button>
+        </div>
       </form>
     </div>
   );
