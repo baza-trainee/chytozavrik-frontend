@@ -18,9 +18,9 @@ const Footer = () => {
     <>
       {isShowFooter && (
         <footer className={styles.footer}>
-          <Container>
+          <Container className={styles.container}>
             <div className={styles.footerContainer}>
-              <div className={styles.logoContainer}>
+              <Link href="/" className={styles.logoContainer}>
                 <Image
                   src="/logo-footer.svg"
                   width={58}
@@ -35,7 +35,7 @@ const Footer = () => {
                   alt="Logo"
                   className={styles.logoText}
                 />
-              </div>
+              </Link>
 
               <div className={styles.wrapper}>
                 <div className={classNames(styles.list, styles.informationText, styles.footerList)}>

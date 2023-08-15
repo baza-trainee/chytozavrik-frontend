@@ -2,11 +2,14 @@
 @import '@/scss/utils/mixin';
 
 .header {
-  // background-color: tomato;
   height: 78px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  margin: auto;
+  padding-left: var(--padding-x);
+  padding-right: var(--padding-x);
 
   @include breakpoint(tablet) {
     height: 86px;
@@ -75,24 +78,38 @@
   }
 }
 
-.button {
-  display: flex;
-  width: 128px;
-  height: 37px;
-  padding: 10px 20px;
-  justify-content: center;
-  align-items: center;
-  gap: 2px;
+a.button {
+  padding: 6px 14px;
+  gap: 8px;
 
   @include breakpoint(tablet) {
-    width: 169px;
-    height: 48px;
     padding: 12px 28px;
   }
 
   @include breakpoint(desktop) {
-    width: 193px;
-    height: 56px;
     padding: 16px 28px;
   }
 }
+.userLogo {
+  width: 16px;
+  height: 100%;
+
+  @include breakpoint(tablet) {
+    width: 24px;
+  }
+}
+a.buttonIn,.buttonOut {
+  width: 128px;
+  padding: 10px 20px;
+
+  @include breakpoint(tablet) {
+    width: 169px;
+    padding: 12px 28px;
+  }
+
+  @include breakpoint(desktop) {
+    width: 185px;
+    padding: 16px 28px;
+  }
+}
+

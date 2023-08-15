@@ -69,7 +69,7 @@ const WigwamBooks = () => {
             autoFocus
           />
           <div className={styles.icon_wraper}>
-            <Search color="#7791fa" />
+            <Search className={styles.icon} />
           </div>
         </form>
       </div>
@@ -97,7 +97,12 @@ const WigwamBooks = () => {
         ))}
       </ul>
 
-      <Button className={styles.button} onClick={showBooks} endIcon={<MoveRight />} variant='outline'>
+      <Button
+        className={styles.button}
+        onClick={showBooks}
+        endIcon={<MoveRight />}
+        variant="outline"
+      >
         Подивитися всі книжки
       </Button>
     </div>

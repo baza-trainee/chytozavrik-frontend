@@ -102,6 +102,11 @@ $notification-color: (
 
 $black: #1e1e1e;
 $white: #fdfdfd;
+$secondary-black: #000000;
+$search-background: #f6faff;
+
+$neutral: getColor(neutral, 30);
+$on-neutral: getColor(neutral, 50);
 
 $primary: getColor(blue, 40);
 $on-primary: getColor(blue, 100);
@@ -111,6 +116,7 @@ $on-next-primary-variant: getColor(blue, 70);
 $on-primary-variant: getColor(blue, 20);
 
 $secondary: getColor(yellow, 40);
+$secondary-btn: getColor(yellow, 50);
 $on-secondary: getColor(yellow, 0);
 $secondary-variant: getColor(yellow, 90);
 $on-secondary-variant: getColor(yellow, 100);

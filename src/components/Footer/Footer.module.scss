@@ -6,21 +6,28 @@
   background: getColor(blue, 20);
   padding-top: 24px;
   padding-bottom: 24px;
+
   // min-width: 100%;
   @include breakpoint(tablet) {
     height: 264px;
 
-    margin: 0 auto;
+    // margin: 0 auto;
     padding-top: 36px;
     padding-bottom: 36px;
   }
   @include breakpoint(desktop) {
     height: 370px;
     min-width: 100%;
-    margin: 0 auto;
+    // margin: 0 auto;
     padding-top: 72px;
     padding-bottom: 72px;
   }
+}
+
+.container {
+  margin: auto;
+  padding-left: var(--padding-x);
+  padding-right: var(--padding-x);
 }
 
 .footerContainer {
@@ -276,4 +283,12 @@
 
 .informationTextLink {
   margin-bottom: 0px;
+}
+
+.linkText:hover {
+  color: getColor(blue, 80);
+}
+
+.linkText1:hover {
+  color: getColor(blue, 80);
 }

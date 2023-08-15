@@ -45,19 +45,24 @@
   width: 278px;
   height: 42px;
   border-radius: 8px;
-  border: none;
+  border: 2px solid $primary;
   outline: none;
   padding-top: 16px;
   padding-right: 12px;
   padding-bottom: 16px;
   padding-left: 46px;
   font-family: var(--montserrat-alternates-font);
-  background-color: $primary-next-variant;
+  background-color: $search-background;
   color: $primary;
+  pointer-events: auto;
 
   &::placeholder {
-    color: $primary;
+    color: $neutral;
     font-family: var(--raleway-font);
+  }
+
+  &:focus + .icon_wraper .icon {
+    color: $primary;
   }
 
   @include breakpoint(tablet) {
@@ -85,6 +90,11 @@
     width: 24px;
     height: 24px;
   }
+}
+
+.icon {
+  color: $neutral;
+  pointer-events: fill;
 }
 
 .search_wraper {
@@ -153,19 +163,19 @@
   display: flex;
   justify-content: space-between;
   width: 278px;
-  height: 74px;
+  height: auto;
   margin-bottom: 8px;
   padding: 8px;
   border-radius: 8px;
   background-color: $primary-next-variant;
+  border: 2px solid $primary;
 
-  &:last-child{
+  &:last-child {
     margin-bottom: 0;
   }
 
   @include breakpoint(tablet) {
     width: 285px;
-    height: 80px;
   }
 
   @include breakpoint(laptop) {
@@ -174,7 +184,6 @@
 
   @include breakpoint(desktop) {
     width: 364px;
-    height: 80px;
   }
 }
 
