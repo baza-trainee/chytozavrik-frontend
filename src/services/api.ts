@@ -30,8 +30,6 @@ export const signUpService = async (
   password: string,
   confirmPassword: string
 ): Promise<FetchResponseType<UserType>> => {
-  console.log(baseUrl);
-
   const result = await fetch(`${baseUrl}/users/`, {
     method: 'POST',
     headers: {
