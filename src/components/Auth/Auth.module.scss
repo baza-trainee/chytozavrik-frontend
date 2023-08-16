@@ -75,17 +75,11 @@
   gap: 24px;
 
   margin-top: 32px;
-  margin-bottom: 32px;
-
-  @include breakpoint(false, tablet) {
-    margin-bottom: auto;
-  }
+  margin-bottom: 76px;
 
   @include breakpoint(tablet) {
     flex-direction: row;
     justify-content: space-between;
-
-    margin-bottom: 76px;
   }
 }
 
@@ -98,6 +92,10 @@
 
 .form-footer {
   position: relative;
+
+  @include breakpoint(false, tablet) {
+    margin-top: auto;
+  }
 }
 
 .error {
