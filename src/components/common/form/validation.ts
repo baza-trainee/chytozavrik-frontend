@@ -6,6 +6,7 @@ const passworsRegex = /^(?=.*[0-9])(?=.*[a-zA-Z])[A-Za-z\d$@$!%*?&.].{6,30}$/;
 
 export const validation = {
   email: yup.string().matches(emailRegex, 'Не вірна email адреса.').required(),
+  signUpPassword: yup.string().required('Паро не може бути порожнім.'),
   password: yup
     .string()
     .min(6, ({ min }) => `Пароль має бути не менше ${min} символів.`)

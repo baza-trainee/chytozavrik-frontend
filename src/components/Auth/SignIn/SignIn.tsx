@@ -16,7 +16,7 @@ import styles from '../Auth.module.scss';
 
 const schema = yup.object({
   email: validation.email,
-  password: validation.password,
+  password: validation.signUpPassword,
   rememberMe: validation.rememberMe,
 });
 
