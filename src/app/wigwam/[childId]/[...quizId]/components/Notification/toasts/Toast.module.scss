@@ -17,11 +17,6 @@
     padding-left: var(--toast-px);
     padding-right: var(--toast-px);
 
-    [data-type='success'] &,
-    [data-type='error'] & {
-      --toast-px: 77px;
-    }
-
     [data-type='default'] & {
       display: flex;
       align-items: center;
@@ -51,6 +46,9 @@
     gap: 24px;
 
     @include breakpoint(tablet) {
+      flex-grow: 1;
+      gap: 40px;
+
       margin-bottom: 0;
     }
   }
@@ -60,11 +58,13 @@
       display: flex;
       align-items: center;
       gap: 40px;
+      flex-grow: 1;
 
       margin-bottom: 24px;
     }
 
     @include breakpoint(laptop) {
+      flex-grow: 1;
       margin-bottom: 0;
     }
   }
@@ -138,6 +138,10 @@
   @include breakpoint(tablet) {
     text-align: left;
   }
+
+  @include breakpoint(laptop) {
+    flex-grow: 1;
+  }
 }
 
 .title {
@@ -154,19 +158,9 @@
   flex-direction: column;
   gap: 16px;
 
-  [data-type='default'] & {
-    @include breakpoint(laptop) {
-      flex-grow: 1;
-    }
-    @include breakpoint(laptop, desktop) {
-      margin-right: -20px;
-    }
-  }
-
   [data-type='success'] &,
   [data-type='error'] & {
     @include breakpoint(tablet) {
-      flex-grow: 1;
       justify-content: flex-end;
     }
   }
@@ -176,21 +170,31 @@
     gap: 24px;
   }
 
-  @include breakpoint(desktop) {
+  @include breakpoint(laptop) {
     justify-content: flex-end;
+    gap: 16px;
   }
 }
 
 .button {
-  width: 100%;
-  padding: 20px 36px;
+  padding: 16px 28px;
 
-  font-size: 24px;
+  font-size: 18px;
+
+  @include breakpoint(false, laptop) {
+    width: 100%;
+  }
 
   @include breakpoint(tablet) {
     [data-type='success'] &,
     [data-type='error'] & {
       width: fit-content;
+    }
+  }
+
+  @include breakpoint(tablet, laptop) {
+    [data-type='default'] & {
+      width: calc((100% - 24px) / 2);
     }
   }
 
@@ -202,6 +206,9 @@
 
   @include breakpoint(desktop) {
     width: fit-content;
+    padding: 16px 36px;
+
+    font-size: 24px;
   }
 }
 
