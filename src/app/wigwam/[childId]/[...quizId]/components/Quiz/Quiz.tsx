@@ -6,8 +6,9 @@ import type { QuizType } from '@/types';
 import { Container, Typography } from '@/components/common';
 import CloseQuizButton from '../CloseQuizButton';
 import AnswersList from './AnswersList';
+import QuizPrize from '../QuizPrize';
+import questionImage from 'public/images/quiz-page/quiz-question-image.svg';
 import styles from './Quiz.module.scss';
-import QuizPrize from '../QuizPrize/QuizPrize';
 
 type Props = {
   quiz: QuizType;
@@ -56,9 +57,7 @@ const Quiz = ({ quiz, currentQuestion }: Props) => {
             <div className={styles.body}>
               <Image
                 className={styles['body-image']}
-                src="/images/test/quiz-question-image.svg"
-                width={103}
-                height={144}
+                src={questionImage}
                 alt="Зображення читозаврика"
               />
               <Typography className={styles.question} component="h2" variant="h2">

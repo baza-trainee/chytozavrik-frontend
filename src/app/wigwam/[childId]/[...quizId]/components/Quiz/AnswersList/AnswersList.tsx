@@ -58,7 +58,7 @@ const AnswersList = ({ answers, onNext }: Props) => {
     <>
       <ul className={styles.list}>
         {answers.map(answer => (
-          <li key={answer}>
+          <li key={answer} className={styles.item}>
             <Button
               className={styles.button}
               variant="outline"

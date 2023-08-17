@@ -23,13 +23,17 @@
 }
 
 .container {
-  --container-pt: 32px;
+  --container-pt: 24px;
   --container-pb: 55px;
 
   position: relative;
 
   padding-top: var(--container-pt);
   padding-bottom: var(--container-pb);
+
+  @include breakpoint(desktop) {
+    --container-pt: 40px;
+  }
 }
 
 .header {
@@ -98,45 +102,58 @@
   padding-bottom: 24px;
 
   @include breakpoint(tablet) {
-    padding-top: 72px;
+    padding-top: 48px;
     padding-bottom: 48px;
   }
 
   @include breakpoint(laptop) {
-    padding-top: 60px;
+    padding-top: 50px;
+  }
+
+  @include breakpoint(desktop) {
+    padding-top: 72px;
   }
 }
 
 .body-image {
-  --image-width: 103px;
+  --image-width: 93px;
+  --image-height: 120px;
 
   display: block;
 
   width: var(--image-width);
-  height: auto;
+  height: var(--image-height);
   margin: 0 auto;
   margin-bottom: 24px;
 
   @include breakpoint(tablet) {
-    --image-width: 130px;
+    --image-width: 117px;
+    --image-height: 150px;
 
     margin-bottom: 32px;
+  }
+
+  @include breakpoint(laptop) {
+    --image-width: 105px;
+    --image-height: 135px;
+  }
+
+  @include breakpoint(desktop) {
+    --image-width: 142px;
+    --image-height: 182px;
   }
 }
 
 .question {
-  font-size: 18px;
+  --question-font-size: 18px;
+  font-size: var(--question-font-size);
 
   @include breakpoint(tablet) {
-    font-size: 32px;
-  }
-
-  @include breakpoint(laptop) {
-    padding-inline: 80px;
+    --question-font-size: 24px;
   }
 
   @include breakpoint(desktop) {
-    padding-inline: 217px;
+    --question-font-size: 32px;
   }
 }
 
@@ -171,7 +188,7 @@
   }
 
   @include breakpoint(laptop) {
-    width: fit-content;
+    width: 100%;
   }
 }
 

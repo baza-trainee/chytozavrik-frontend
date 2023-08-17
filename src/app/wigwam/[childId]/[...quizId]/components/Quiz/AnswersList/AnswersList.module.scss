@@ -8,22 +8,30 @@
 
   width: 100%;
 
-  @include breakpoint(tablet) {
-    gap: 24px;
-  }
-
   @include breakpoint(laptop) {
     flex-direction: row;
+  }
+
+  @include breakpoint(desktop) {
+    gap: 24px;
   }
 }
 
 .item {
   width: 100%;
+  flex-grow: 1;
 }
 
 .button {
   width: 100%;
-  padding: 20px 36px;
+  height: 100%;
+  padding: 16px 28px;
 
-  font-size: 24px;
+  font-size: 18px;
+
+  @include breakpoint(desktop) {
+    padding: 20px 36px;
+
+    font-size: 24px;
+  }
 }
