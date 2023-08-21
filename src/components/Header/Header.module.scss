@@ -63,20 +63,7 @@
   justify-content: flex-end;
 }
 
-.link {
-  display: none;
 
-  @include breakpoint(desktop) {
-    --padding-x: 40px;
-    max-width: getBreakpoint(desktop);
-    display: unset;
-    margin-right: 85px;
-    color: #000;
-    text-align: center;
-    text-decoration: none;
-    font-size: 20px;
-  }
-}
 
 a.button {
   padding: 6px 14px;
