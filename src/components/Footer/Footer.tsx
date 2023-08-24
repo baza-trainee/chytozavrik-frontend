@@ -41,7 +41,7 @@ const Footer = () => {
                 <div className={classNames(styles.list, styles.informationText, styles.footerList)}>
                   <ul className={styles.class4}>
                     <Typography className={styles.informationText} component="p" variant="footer">
-                      <Link href="#">Про проєкт</Link>
+                      <Link href="https://baza-trainee.tech">Про проєкт</Link>
                     </Typography>
                     <Typography className={styles.informationText} component="p" variant="footer">
                       <Link href="#">До вігваму</Link>
