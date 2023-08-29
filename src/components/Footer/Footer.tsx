@@ -44,7 +44,7 @@ const Footer = () => {
                       <Link href="https://baza-trainee.tech">Про проєкт</Link>
                     </Typography>
                     <Typography className={styles.informationText} component="p" variant="footer">
-                      <Link href="#">До вігваму</Link>
+                      <Link href={Route.WIGWAM_LOBBY}>До вігваму</Link>
                     </Typography>
                   </ul>
                   <ul className={styles.class1}>

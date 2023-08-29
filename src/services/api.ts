@@ -1,3 +1,5 @@
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/config';
 import { FetchResponseType, TokenType, UserType } from '@/types';
 
 const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || '';
@@ -30,8 +32,6 @@ export const signUpService = async (
   password: string,
   confirmPassword: string
 ): Promise<FetchResponseType<UserType>> => {
-  console.log(baseUrl);
-
   const result = await fetch(`${baseUrl}/users/`, {
     method: 'POST',
     headers: {
@@ -57,10 +57,22 @@ export const getUserInfoService = async (): Promise<FetchResponseType<UserType>>
   return await result.json();
 };
 
-export const privateFetch = async (input: RequestInfo | URL, options: RequestInit | undefined) => {
+export const getChildrenService = async () => {
+  const result = await privateFetch(`${baseUrl}/users/me/children/`);
+
+  return await result.json();
+};
+
+export const privateFetch = async (
+  input: RequestInfo | URL,
+  options: RequestInit | undefined = undefined
+) => {
+  const sesstion = await getServerSession(authOptions);
+
   return await fetch(input, {
     headers: {
-      Authorization: 'Bearer ' + token,
+      Authorization: 'Bearer ' + sesstion?.user.access,
     },
+    ...options,
   });
 };
