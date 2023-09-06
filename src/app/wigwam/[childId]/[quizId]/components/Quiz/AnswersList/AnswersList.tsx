@@ -1,38 +1,30 @@
 'use client';
 
 import { useState } from 'react';
+import { QuestionAnswerType } from '@/types';
 import { Button } from '@/components/common';
 import { ErrorToast, Notification, SuccessToast } from '../../Notification';
 import styles from './AnswersList.module.scss';
 
 type Props = {
-  answers: string[] | undefined;
+  answers: QuestionAnswerType[] | undefined;
+  onAnswer: (answerId: number) => Promise<boolean>;
   onNext: () => void;
 };
 
-const fetchAnwser = async (answer: string): Promise<boolean> => {
-  return new Promise(resolve => {
-    const result = Math.round(Math.random() * 2);
-    setTimeout(() => {
-      if (result === 1) {
-        return resolve(true);
-      } else {
-        return resolve(false);
-      }
-    }, 1000);
-  });
-};
-
-const AnswersList = ({ answers, onNext }: Props) => {
+const AnswersList = ({ answers, onNext, onAnswer }: Props) => {
   const [answerResult, setAnswerResult] = useState<boolean | null>(null);
-  const [selectAnswer, setSelectAnswer] = useState<string | null>(null);
+  const [selectAnswer, setSelectAnswer] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const clickHandler = (answer: string) => async () => {
+  const clickHandler = (answerId: number) => async () => {
+    setIsLoading(true);
+    setSelectAnswer(answerId);
+
     try {
-      setIsLoading(true);
-      setSelectAnswer(answer);
-      const result = await fetchAnwser(answer);
+      const result = await onAnswer(answerId);
+
+      console.log(result);
 
       setAnswerResult(result);
     } catch (err) {
@@ -58,17 +50,17 @@ const AnswersList = ({ answers, onNext }: Props) => {
     <>
       <ul className={styles.list}>
         {answers.map(answer => (
-          <li key={answer} className={styles.item}>
+          <li key={answer.id} className={styles.item}>
             <Button
               className={styles.button}
               variant="outline"
               color="primary"
-              onClick={clickHandler(answer)}
+              onClick={clickHandler(answer.id)}
               disabled={isLoading}
-              isLoading={isLoading && answer === selectAnswer}
-              selected={answer === selectAnswer}
+              isLoading={isLoading && answer.id === selectAnswer}
+              selected={answer.id === selectAnswer}
             >
-              {answer}
+              {answer.text}
             </Button>
           </li>
         ))}

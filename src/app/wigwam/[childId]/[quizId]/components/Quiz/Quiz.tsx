@@ -9,16 +9,54 @@ import AnswersList from './AnswersList';
 import QuizPrize from '../QuizPrize';
 import questionImage from 'public/images/quiz-page/quiz-question-image.svg';
 import styles from './Quiz.module.scss';
+import { useParams, useSearchParams } from 'next/navigation';
+import { sendSelectedAnswerService } from '@/services/api';
+import { useFetch } from '@/hooks';
 
 type Props = {
   quiz: QuizType;
-  currentQuestion: number;
 };
 
-const Quiz = ({ quiz, currentQuestion }: Props) => {
-  const { bookAuthor, bookName, prizeUrl, questions } = quiz;
-  const [questionNumber, setQuestionNumber] = useState(currentQuestion);
+const Quiz = ({ quiz }: Props) => {
+  const searchParams = useSearchParams();
+  const params = useParams();
+  const childId = Number(params.childId);
+  const privateFetch = useFetch();
+  const bookAuthor = searchParams.get('book-author') ?? '';
+  const bookName = searchParams.get('book-name') ?? '';
+  const currentQuestion = Number(searchParams.get('question')) ?? 1;
+  const { questions } = quiz;
+
+  const [questionNumber, setQuestionNumber] = useState(currentQuestion - 1);
   const [isShowPrize, setIsShowPrize] = useState(false);
+
+  const fetchAnswer = async (answerId: number): Promise<boolean> => {
+    try {
+      const result = await privateFetch(
+        `questions/${quiz.questions.at(questionNumber)?.id}/submit-answer`,
+        {
+          method: 'POST',
+          body: JSON.stringify({
+            child_id: childId,
+            answer_id: answerId,
+          }),
+        }
+      );
+
+      const data = await result.json();
+
+      if (data.status === 'fail') {
+        console.log(data.data.message);
+        return false;
+      }
+      console.log(result);
+
+      return data.data.is_answer_correct;
+    } catch (error) {
+      console.log(error);
+    }
+    return false;
+  };
 
   const nextStep = () => {
     if (questionNumber >= questions.length - 1) {
@@ -37,7 +75,7 @@ const Quiz = ({ quiz, currentQuestion }: Props) => {
     <section className={styles.section}>
       <Container className={styles.container}>
         {isShowPrize ? (
-          <QuizPrize prize={prizeUrl} onReplyQuiz={replyQuiz} />
+          <>{/* <QuizPrize prize={prizeUrl} onReplyQuiz={replyQuiz} /> */}</>
         ) : (
           <>
             <CloseQuizButton className={styles['close-button']} />
@@ -61,11 +99,15 @@ const Quiz = ({ quiz, currentQuestion }: Props) => {
                 alt="Зображення читозаврика"
               />
               <Typography className={styles.question} component="h2" variant="h2">
-                {questions.at(questionNumber)?.question}
+                {questions.at(questionNumber)?.text}
               </Typography>
             </div>
             <div className={styles.footer}>
-              <AnswersList answers={questions.at(questionNumber)?.answers} onNext={nextStep} />
+              <AnswersList
+                answers={questions.at(questionNumber)?.answers}
+                onNext={nextStep}
+                onAnswer={fetchAnswer}
+              />
             </div>
           </>
         )}
