@@ -1,47 +1,56 @@
 'use client';
 
 import { useState } from 'react';
-import { QuestionAnswerType } from '@/types';
+import { useParams } from 'next/navigation';
+import { AnswerType, QuestionAnswerType } from '@/types';
+import { useFetch } from '@/hooks';
 import { Button } from '@/components/common';
 import { ErrorToast, Notification, SuccessToast } from '../../Notification';
 import styles from './AnswersList.module.scss';
 
 type Props = {
+  questionId: number;
   answers: QuestionAnswerType[] | undefined;
-  onAnswer: (answerId: number) => Promise<boolean>;
-  onNext: () => void;
+  onNext: (prize?: string | null) => void;
 };
 
-const AnswersList = ({ answers, onNext, onAnswer }: Props) => {
-  const [answerResult, setAnswerResult] = useState<boolean | null>(null);
+const AnswersList = ({ questionId, answers, onNext }: Props) => {
+  const { childId } = useParams();
+  const [isShowNotification, setIsShowNotification] = useState(false);
   const [selectAnswer, setSelectAnswer] = useState<number | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const { data: answerResult, isLoading, fetch } = useFetch<AnswerType>();
 
   const clickHandler = (answerId: number) => async () => {
-    setIsLoading(true);
     setSelectAnswer(answerId);
 
     try {
-      const result = await onAnswer(answerId);
+      const data = await fetch(`questions/${questionId}/submit-answer`, {
+        method: 'POST',
+        body: JSON.stringify({
+          child_id: childId,
+          answer_id: answerId,
+        }),
+      });
 
-      console.log(result);
+      if (data?.child_reward_id) {
+        // await
+      }
+      console.log('Result', data?.child_reward_id);
 
-      setAnswerResult(result);
+      setIsShowNotification(true);
     } catch (err) {
       console.log(err);
-    } finally {
-      setIsLoading(false);
     }
   };
 
   const closeNotification = () => {
     setSelectAnswer(null);
-    setAnswerResult(null);
+    setIsShowNotification(false);
   };
 
   const nextStep = () => {
-    closeNotification();
     onNext();
+    closeNotification();
   };
 
   if (!answers) return null;
@@ -65,8 +74,9 @@ const AnswersList = ({ answers, onNext, onAnswer }: Props) => {
           </li>
         ))}
       </ul>
-      {answerResult !== null &&
-        (answerResult ? (
+      {isShowNotification &&
+        answerResult &&
+        (answerResult.is_answer_correct ? (
           <Notification type="success">
             <SuccessToast onAction={nextStep} />
           </Notification>

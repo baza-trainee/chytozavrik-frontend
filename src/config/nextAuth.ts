@@ -1,7 +1,9 @@
 import type { NextAuthOptions, User } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
+import jwtDecode, { JwtPayload } from 'jwt-decode';
 import { getUserInfoService, signInService, token } from '@/services/api';
 import { Route } from '@/constants';
+import { signOut } from 'next-auth/react';
 
 const getMaxAge = () => {
   const isRememberMe = true;
@@ -45,7 +47,11 @@ export const authOptions: NextAuthOptions = {
             );
           }
 
-          const user = { ...userInfo.data, ...serverToken.data, id: userInfo.data.id.toString() };
+          const user: User = {
+            ...userInfo.data,
+            token: serverToken.data,
+            id: userInfo.data.id.toString(),
+          };
 
           if (user) {
             return user;
@@ -66,9 +72,18 @@ export const authOptions: NextAuthOptions = {
 
       return session;
     },
-    async jwt({ token, user }) {
-      if (user) {
+    async jwt({ token, user, account }) {
+      if (account && user) {
         token.user = { ...user };
+      }
+
+      if (token.user?.token.access) {
+        const exp = (jwtDecode<JwtPayload>(token.user?.token.access).exp as number) * 1000;
+
+        if (Date.now() - exp >= 0) {
+          // TODO: Add refresh token request
+          token.user.token.error = 'Session is expired.';
+        }
       }
 
       return token;

@@ -9,9 +9,15 @@ export type QuestionType = {
   answers: QuestionAnswerType[];
 };
 
+export type BookInfoType = {
+  name: string;
+  author: string;
+};
+
 export type QuizType = {
   id: number;
   questions: QuestionType[];
+  book_info: BookInfoType;
 };
 
 export type AnswerType = {

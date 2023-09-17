@@ -1,4 +1,3 @@
-import type { QuizType } from '@/types';
 import Quiz from './components/Quiz';
 import { getQuizByIdService } from '@/services/api';
 import { notFound } from 'next/navigation';
@@ -16,7 +15,6 @@ const QuizPage = async ({ params }: Props) => {
 
   return (
     <main>
-      {' '}
       <Quiz quiz={quiz.data} />
     </main>
   );

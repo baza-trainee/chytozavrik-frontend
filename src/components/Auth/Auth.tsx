@@ -2,11 +2,12 @@
 
 import React, { useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useSession } from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
 import Modal from '../common/Modal';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 import SignUpSuccess from './SignUpSuccess';
+import { Route } from '@/constants';
 
 type AuthType = 'signin' | 'signup' | 'forgot-password' | 'signup-success' | null;
 
@@ -27,6 +28,12 @@ const Auth = () => {
     setAuthType(type);
     setIsModalOpen(type === 'signin' || type === 'signup' || type === 'signup-success');
   }, [searchParams]);
+
+  useEffect(() => {
+    if (session.data?.user?.token?.error) {
+      signOut({ callbackUrl: Route.HOME });
+    }
+  }, [session]);
 
   return (
     <>

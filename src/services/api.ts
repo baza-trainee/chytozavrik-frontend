@@ -17,7 +17,7 @@ export const privateFetch = async (
 
   return await fetch(input, {
     headers: {
-      Authorization: 'Bearer ' + sesstion?.user.access,
+      Authorization: 'Bearer ' + sesstion?.user.token.access,
     },
     ...options,
   });
@@ -90,6 +90,9 @@ export const sendSelectedAnswerService = async (
 ): Promise<FetchResponseType<AnswerType>> => {
   const result = await fetch(`${baseUrl}/questions/${questionId}/submit-answer`, {
     method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
     body: JSON.stringify({
       child_id: childId,
       answer_id: answerId,
