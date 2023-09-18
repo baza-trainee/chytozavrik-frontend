@@ -22,5 +22,5 @@ export type QuizType = {
 
 export type AnswerType = {
   is_answer_correct: boolean;
-  child_reward_id: number | null;
+  child_reward_url: string | null;
 };

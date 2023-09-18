@@ -1,8 +1,9 @@
 'use client';
 
-import { signOut, useSession } from 'next-auth/react';
+import { useSession } from 'next-auth/react';
 import { usePathname } from 'next/navigation';
 import { User2 } from 'lucide-react';
+import { useSignOut } from '@/hooks';
 import { Button } from '@/components/common';
 import { Route } from '@/constants';
 import styles from './Header.module.scss';
@@ -10,6 +11,7 @@ import styles from './Header.module.scss';
 const HeaderButton = () => {
   const session = useSession();
   const path = usePathname();
+  const { signOut } = useSignOut();
   const isPartners = path.includes(Route.PARENTS);
 
   if (session.status === 'loading') return null;
@@ -32,7 +34,7 @@ const HeaderButton = () => {
           href={Route.PARENTS}
           className={styles.button}
           variant="outline"
-          startIcon={<User2 className={styles.userLogo}/>}
+          startIcon={<User2 className={styles.userLogo} />}
         >
           Кабінет
         </Button>

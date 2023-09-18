@@ -92,6 +92,7 @@ export const sendSelectedAnswerService = async (
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + token.access,
     },
     body: JSON.stringify({
       child_id: childId,

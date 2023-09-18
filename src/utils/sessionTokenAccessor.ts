@@ -5,7 +5,7 @@ export async function getAccessToken() {
   const session = await getServerSession(authOptions);
 
   if (session) {
-    return session.user.access;
+    return session.user.token.access;
   }
 
   return null;

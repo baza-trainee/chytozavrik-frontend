@@ -2,7 +2,8 @@
 
 import React, { useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { signOut, useSession } from 'next-auth/react';
+import { useSession } from 'next-auth/react';
+import { useSignOut } from '@/hooks';
 import Modal from '../common/Modal';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
@@ -17,6 +18,7 @@ const Auth = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
   const session = useSession();
+  const { signOut } = useSignOut();
 
   const closeModal = () => {
     router.replace('/', { shallow: true });
@@ -33,7 +35,7 @@ const Auth = () => {
     if (session.data?.user?.token?.error) {
       signOut({ callbackUrl: Route.HOME });
     }
-  }, [session]);
+  }, [session, signOut]);
 
   return (
     <>
