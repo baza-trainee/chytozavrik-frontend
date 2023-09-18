@@ -81,14 +81,18 @@ const Footer = () => {
                       <Phone width={18} height={18} className={styles.image}></Phone>
                       +380 67 568 1788
                     </Typography>
+                    <a href='mailto:1111111@gmail.com'>
                     <Typography
                       className={styles.informationMail}
                       component="p"
                       variant="footer-mail"
+                      
+                      
                     >
-                      <Mail width={18} height={18} className={styles.image}></Mail>
+                      <Mail width={18} height={18} className={styles.image} ></Mail>
                       1111111@gmail.com
-                    </Typography>
+                      </Typography>
+                      </a>
                   </ul>
 
                   <ul className={styles.social}>
