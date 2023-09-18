@@ -50,16 +50,17 @@ const Footer = () => {
                   <ul className={styles.class1}>
                     <Typography className={styles.informationText} component="p" variant="footer">
                       <Link
-                        href="/pdf/privacy policy.pdf"
+                        href={"/pdf/privacy policy.pdf"+"#toolbar=0"}
                         target="_blank"
                         className={styles.linkText}
+                        
                       >
                         Політика конфіденційності
                       </Link>
                     </Typography>
 
                     <Typography className={styles.informationText} component="p" variant="footer">
-                      <Link href="/pdf/site-rules.pdf" target="_blank" className={styles.linkText}>
+                      <Link href={"/pdf/site-rules.pdf"+"#toolbar=0"}  target="_blank" className={styles.linkText}>
                         Правила користування сайтом
                       </Link>
                     </Typography>
