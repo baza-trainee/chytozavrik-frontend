@@ -75,16 +75,28 @@
     --title-px: calc(159px - var(--padding-x));
 
     font-size: 32px;
+
+    &--no-user {
+      margin-bottom: 70px;
+    }
   }
 
   @include breakpoint(laptop, desktop) {
     --title-px: calc(287px - var(--padding-x));
 
     margin-bottom: 56px;
+
+    &--no-user {
+      margin-bottom: 48px;
+    }
   }
 
   @include breakpoint(desktop) {
     --title-px: calc(495px - var(--padding-x));
+  }
+
+  &--no-user {
+    margin-bottom: 60px;
   }
 }
 
@@ -165,5 +177,53 @@
 
   @include breakpoint(tablet) {
     font-size: 24px;
+  }
+}
+
+.image-wrapper {
+  --size: 138px;
+  position: relative;
+
+  width: var(--size);
+  height: var(--size);
+  margin: 0 auto;
+  overflow: hidden;
+
+  background-color: $white;
+  border-radius: 50%;
+
+  @include breakpoint(tablet) {
+    --size: 150px;
+  }
+
+  @include breakpoint(laptop) {
+    --size: 138px;
+  }
+
+  @include breakpoint(desktop) {
+    --size: 172px;
+  }
+}
+
+.image {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+
+  width: 180px;
+  height: auto;
+
+  transform: translateX(-50%);
+
+  @include breakpoint(tablet) {
+    width: 194px;
+  }
+
+  @include breakpoint(laptop) {
+    width: 180px;
+  }
+
+  @include breakpoint(desktop) {
+    width: 224px;
   }
 }

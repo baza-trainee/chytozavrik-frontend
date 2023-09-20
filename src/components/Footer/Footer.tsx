@@ -41,25 +41,26 @@ const Footer = () => {
                 <div className={classNames(styles.list, styles.informationText, styles.footerList)}>
                   <ul className={styles.class4}>
                     <Typography className={styles.informationText} component="p" variant="footer">
-                      <Link href="#">Про проєкт</Link>
+                      <Link href="https://baza-trainee.tech">Про проєкт</Link>
                     </Typography>
                     <Typography className={styles.informationText} component="p" variant="footer">
-                      <Link href="#">До вігваму</Link>
+                      <Link href={Route.WIGWAM_LOBBY}>До вігваму</Link>
                     </Typography>
                   </ul>
                   <ul className={styles.class1}>
                     <Typography className={styles.informationText} component="p" variant="footer">
                       <Link
-                        href="/pdf/privacy policy.pdf"
+                        href={"/pdf/privacy policy.pdf"+"#toolbar=0"}
                         target="_blank"
                         className={styles.linkText}
+                        
                       >
                         Політика конфіденційності
                       </Link>
                     </Typography>
 
                     <Typography className={styles.informationText} component="p" variant="footer">
-                      <Link href="/pdf/site-rules.pdf" target="_blank" className={styles.linkText}>
+                      <Link href={"/pdf/site-rules.pdf"+"#toolbar=0"}  target="_blank" className={styles.linkText}>
                         Правила користування сайтом
                       </Link>
                     </Typography>
@@ -81,14 +82,18 @@ const Footer = () => {
                       <Phone width={18} height={18} className={styles.image}></Phone>
                       +380 67 568 1788
                     </Typography>
+                    <a href='mailto:1111111@gmail.com'>
                     <Typography
                       className={styles.informationMail}
                       component="p"
                       variant="footer-mail"
+                      
+                      
                     >
-                      <Mail width={18} height={18} className={styles.image}></Mail>
+                      <Mail width={18} height={18} className={styles.image} ></Mail>
                       1111111@gmail.com
-                    </Typography>
+                      </Typography>
+                      </a>
                   </ul>
 
                   <ul className={styles.social}>
