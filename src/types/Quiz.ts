@@ -1,13 +1,27 @@
+export type QuestionAnswerType = {
+  id: number;
+  text: string;
+};
+
 export type QuestionType = {
   id: number;
-  question: string;
-  answers: string[];
+  text: string;
+  answers: QuestionAnswerType[];
+};
+
+export type BookInfoType = {
+  name: string;
+  author: string;
 };
 
 export type QuizType = {
   id: number;
-  bookName: string;
-  bookAuthor: string;
   questions: QuestionType[];
-  prizeUrl: string;
+  book_info: BookInfoType;
+  score: number;
+};
+
+export type AnswerType = {
+  is_answer_correct: boolean;
+  child_reward_url: string | null;
 };

@@ -1,55 +1,53 @@
 'use client';
 
 import { useState } from 'react';
+import { useParams } from 'next/navigation';
+import { AnswerType, QuestionAnswerType } from '@/types';
+import { useFetch } from '@/hooks';
 import { Button } from '@/components/common';
 import { ErrorToast, Notification, SuccessToast } from '../../Notification';
 import styles from './AnswersList.module.scss';
 
 type Props = {
-  answers: string[] | undefined;
-  onNext: () => void;
+  questionId: number;
+  answers: QuestionAnswerType[] | undefined;
+  onNext: (prize?: string) => void;
 };
 
-const fetchAnwser = async (answer: string): Promise<boolean> => {
-  return new Promise(resolve => {
-    const result = Math.round(Math.random() * 2);
-    setTimeout(() => {
-      if (result === 1) {
-        return resolve(true);
-      } else {
-        return resolve(false);
-      }
-    }, 1000);
-  });
+type AnswerRequestType = {
+  child_id: number;
+  answer_id: number;
 };
 
-const AnswersList = ({ answers, onNext }: Props) => {
-  const [answerResult, setAnswerResult] = useState<boolean | null>(null);
-  const [selectAnswer, setSelectAnswer] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
+const AnswersList = ({ questionId, answers, onNext }: Props) => {
+  const { childId } = useParams();
+  const [isShowNotification, setIsShowNotification] = useState(false);
+  const [selectAnswer, setSelectAnswer] = useState<number | null>(null);
+  const { data: answerResult, isLoading, fetch } = useFetch<AnswerType, AnswerRequestType>();
 
-  const clickHandler = (answer: string) => async () => {
+  const clickHandler = (answerId: number) => async () => {
+    setSelectAnswer(answerId);
+
     try {
-      setIsLoading(true);
-      setSelectAnswer(answer);
-      const result = await fetchAnwser(answer);
+      await fetch(`questions/${questionId}/submit-answer`, 'POST', {
+        child_id: Number(childId),
+        answer_id: answerId,
+      });
 
-      setAnswerResult(result);
+      setIsShowNotification(true);
     } catch (err) {
       console.log(err);
-    } finally {
-      setIsLoading(false);
     }
   };
 
   const closeNotification = () => {
     setSelectAnswer(null);
-    setAnswerResult(null);
+    setIsShowNotification(false);
   };
 
   const nextStep = () => {
+    onNext(answerResult?.child_reward_url as string);
     closeNotification();
-    onNext();
   };
 
   if (!answers) return null;
@@ -58,23 +56,24 @@ const AnswersList = ({ answers, onNext }: Props) => {
     <>
       <ul className={styles.list}>
         {answers.map(answer => (
-          <li key={answer}>
+          <li key={answer.id} className={styles.item}>
             <Button
               className={styles.button}
               variant="outline"
               color="primary"
-              onClick={clickHandler(answer)}
+              onClick={clickHandler(answer.id)}
               disabled={isLoading}
-              isLoading={isLoading && answer === selectAnswer}
-              selected={answer === selectAnswer}
+              isLoading={isLoading && answer.id === selectAnswer}
+              selected={answer.id === selectAnswer}
             >
-              {answer}
+              {answer.text}
             </Button>
           </li>
         ))}
       </ul>
-      {answerResult !== null &&
-        (answerResult ? (
+      {isShowNotification &&
+        answerResult &&
+        (answerResult.is_answer_correct ? (
           <Notification type="success">
             <SuccessToast onAction={nextStep} />
           </Notification>

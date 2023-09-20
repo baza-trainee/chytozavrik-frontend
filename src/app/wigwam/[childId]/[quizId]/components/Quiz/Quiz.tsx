@@ -3,40 +3,47 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import type { QuizType } from '@/types';
+import questionImage from 'public/images/quiz-page/quiz-question-image.svg';
 import { Container, Typography } from '@/components/common';
 import CloseQuizButton from '../CloseQuizButton';
 import AnswersList from './AnswersList';
+import QuizPrize from '../QuizPrize';
 import styles from './Quiz.module.scss';
-import QuizPrize from '../QuizPrize/QuizPrize';
 
 type Props = {
   quiz: QuizType;
-  currentQuestion: number;
 };
 
-const Quiz = ({ quiz, currentQuestion }: Props) => {
-  const { bookAuthor, bookName, prizeUrl, questions } = quiz;
-  const [questionNumber, setQuestionNumber] = useState(currentQuestion);
-  const [isShowPrize, setIsShowPrize] = useState(false);
+const Quiz = ({ quiz }: Props) => {
+  const {
+    questions,
+    book_info: { author: bookAuthor, name: bookName },
+    score,
+  } = quiz;
+  const [questionNumber, setQuestionNumber] = useState(() =>
+    score >= questions.length ? 0 : score
+  );
+  const [quizPrize, setQuizPrize] = useState<string | undefined>(undefined);
+  const currentQuestion = questions.at(questionNumber);
 
-  const nextStep = () => {
-    if (questionNumber >= questions.length - 1) {
-      return setIsShowPrize(true);
+  const nextStep = (prize?: string) => {
+    if (prize) {
+      return setQuizPrize(prize);
     }
 
     setQuestionNumber(prev => prev + 1);
   };
 
   const replyQuiz = () => {
-    setIsShowPrize(false);
     setQuestionNumber(0);
+    setQuizPrize(undefined);
   };
 
   return (
     <section className={styles.section}>
       <Container className={styles.container}>
-        {isShowPrize ? (
-          <QuizPrize prize={prizeUrl} onReplyQuiz={replyQuiz} />
+        {quizPrize ? (
+          <>{<QuizPrize prize={quizPrize} onReplyQuiz={replyQuiz} />}</>
         ) : (
           <>
             <CloseQuizButton className={styles['close-button']} />
@@ -56,17 +63,19 @@ const Quiz = ({ quiz, currentQuestion }: Props) => {
             <div className={styles.body}>
               <Image
                 className={styles['body-image']}
-                src="/images/test/quiz-question-image.svg"
-                width={103}
-                height={144}
+                src={questionImage}
                 alt="Зображення читозаврика"
               />
               <Typography className={styles.question} component="h2" variant="h2">
-                {questions.at(questionNumber)?.question}
+                {currentQuestion?.text}
               </Typography>
             </div>
             <div className={styles.footer}>
-              <AnswersList answers={questions.at(questionNumber)?.answers} onNext={nextStep} />
+              <AnswersList
+                questionId={currentQuestion?.id as number}
+                answers={currentQuestion?.answers}
+                onNext={nextStep}
+              />
             </div>
           </>
         )}

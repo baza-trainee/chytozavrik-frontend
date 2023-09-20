@@ -1,54 +1,25 @@
-import type { QuizType } from '@/types';
+import { notFound } from 'next/navigation';
+import type { AttemptsInfoType, QuizType } from '@/types';
+import { fetch } from '@/services/axios';
 import Quiz from './components/Quiz';
 
 type Props = {
   params: {
     quizId: string;
+    childId: string;
   };
 };
 
-const getQuiz = async (quizId: number): Promise<{ quiz: QuizType; currentQuestion: number }> => {
-  const quiz: QuizType = {
-    id: quizId,
-    bookName: 'Тореодори з Васюківки',
-    bookAuthor: 'Всеволод Нестайко',
-    questions: [
-      {
-        id: 1,
-        question: 'Які тварини головні герої книги "Тореодори з Васюківки"?',
-        answers: ['Котики', 'Собачки', 'Ведмедики'],
-      },
-      {
-        id: 2,
-        question: 'Хто намастив повидлом учительські окуляри?',
-        answers: ['Петрик П’яточкін', 'Сашко П’явочка', 'Гриць Мамай'],
-      },
-      {
-        id: 3,
-        question: 'Запитання 3?',
-        answers: ['Відповідь 1', 'Відповідь 2', 'Відповідь 3'],
-      },
-      { id: 4, question: 'Запитання 4?', answers: ['Відповідь 1', 'Відповідь 2', 'Відповідь 3'] },
-      {
-        id: 5,
-        question: 'Запитання 5?',
-        answers: ['Відповідь 1', 'Відповідь 2', 'Відповідь 3'],
-      },
-    ],
-    prizeUrl: '/images/test/quiz-prize-1.svg',
-  };
+const QuizPage = async ({ params: { quizId, childId } }: Props) => {
+  const quizReq = fetch<QuizType>(`/quizzes/${quizId}`);
+  const questionReq = fetch<AttemptsInfoType>(`/users/me/children/${childId}/attempts/${quizId}/`);
+  const [quizRes, questionRes] = await Promise.all([quizReq, questionReq]);
 
-  return Promise.resolve({ quiz, currentQuestion: 0 });
-};
+  if (quizRes.status === 'fail' || questionRes.status === 'fail') notFound();
 
-const QuizPage = async ({ params }: Props) => {
-  const { quiz, currentQuestion } = await getQuiz(Number(params.quizId));
+  const quiz: QuizType = { ...quizRes.data, ...questionRes.data };
 
-  return (
-    <main>
-      <Quiz quiz={quiz} currentQuestion={currentQuestion} />
-    </main>
-  );
+  return <main>{<Quiz quiz={quiz} />}</main>;
 };
 
 export default QuizPage;

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, type ButtonHTMLAttributes } from 'react';
-import { useRouter } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import { Notification, DefaultToast } from '../Notification';
 import { XButton } from '@/components/common';
 import { Route } from '@/constants';
@@ -10,6 +10,7 @@ type Props = ButtonHTMLAttributes<HTMLButtonElement>;
 
 const CloseQuizButton = (props: Props) => {
   const [isShowNotification, setIsShowNotification] = useState(false);
+  const { childId } = useParams();
 
   const router = useRouter();
 
@@ -22,7 +23,7 @@ const CloseQuizButton = (props: Props) => {
   };
 
   const closeHandler = () => {
-    router.replace(Route.WIGWAM);
+    router.replace(`${Route.WIGWAM}/${childId}`);
   };
 
   return (

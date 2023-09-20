@@ -1,12 +1,26 @@
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/config';
-import { FetchResponseType, TokenType, UserType } from '@/types';
+import { AnswerType, FetchResponseType, QuizType, TokenType, UserType } from '@/types';
 
 const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || '';
 
 export const token: { access: string | null; refresh: string | null } = {
   access: null,
   refresh: null,
+};
+
+export const privateFetch = async (
+  input: RequestInfo | URL,
+  options: RequestInit | undefined = undefined
+) => {
+  const sesstion = await getServerSession(authOptions);
+
+  return await fetch(input, {
+    headers: {
+      Authorization: 'Bearer ' + sesstion?.user.token.access,
+    },
+    ...options,
+  });
 };
 
 export const signInService = async (
@@ -63,16 +77,28 @@ export const getChildrenService = async () => {
   return await result.json();
 };
 
-export const privateFetch = async (
-  input: RequestInfo | URL,
-  options: RequestInit | undefined = undefined
-) => {
-  const sesstion = await getServerSession(authOptions);
+export const getQuizByIdService = async (id: number): Promise<FetchResponseType<QuizType>> => {
+  const result = await privateFetch(`${baseUrl}/quizzes/${id}`);
 
-  return await fetch(input, {
+  return await result.json();
+};
+
+export const sendSelectedAnswerService = async (
+  childId: number,
+  questionId: number,
+  answerId: number
+): Promise<FetchResponseType<AnswerType>> => {
+  const result = await fetch(`${baseUrl}/questions/${questionId}/submit-answer`, {
+    method: 'POST',
     headers: {
-      Authorization: 'Bearer ' + sesstion?.user.access,
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + token.access,
     },
-    ...options,
+    body: JSON.stringify({
+      child_id: childId,
+      answer_id: answerId,
+    }),
   });
+
+  return await result.json();
 };
