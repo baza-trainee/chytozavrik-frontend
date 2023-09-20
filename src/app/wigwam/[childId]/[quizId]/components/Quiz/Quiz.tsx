@@ -1,7 +1,6 @@
 'use client';
 
-import { useMemo } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useState } from 'react';
 import Image from 'next/image';
 import type { QuizType } from '@/types';
 import questionImage from 'public/images/quiz-page/quiz-question-image.svg';
@@ -19,30 +18,32 @@ const Quiz = ({ quiz }: Props) => {
   const {
     questions,
     book_info: { author: bookAuthor, name: bookName },
+    score,
   } = quiz;
-  const searchParams = useSearchParams();
-  const router = useRouter();
-  const questionNumber = useMemo(() => Number(searchParams.get('question')), [searchParams]);
-  const quizePrize = useMemo(() => searchParams.get('quize-prize'), [searchParams]);
+  const [questionNumber, setQuestionNumber] = useState(() =>
+    score >= questions.length ? 0 : score
+  );
+  const [quizPrize, setQuizPrize] = useState<string | undefined>(undefined);
   const currentQuestion = questions.at(questionNumber);
 
   const nextStep = (prize?: string) => {
     if (prize) {
-      return router.push(`?quize-prize=${prize}`);
+      return setQuizPrize(prize);
     }
 
-    router.push(`?question=${questionNumber + 1}`);
+    setQuestionNumber(prev => prev + 1);
   };
 
   const replyQuiz = () => {
-    router.push(`?question=0`);
+    setQuestionNumber(0);
+    setQuizPrize(undefined);
   };
 
   return (
     <section className={styles.section}>
       <Container className={styles.container}>
-        {quizePrize ? (
-          <>{<QuizPrize prize={quizePrize} onReplyQuiz={replyQuiz} />}</>
+        {quizPrize ? (
+          <>{<QuizPrize prize={quizPrize} onReplyQuiz={replyQuiz} />}</>
         ) : (
           <>
             <CloseQuizButton className={styles['close-button']} />

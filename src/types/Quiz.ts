@@ -18,6 +18,7 @@ export type QuizType = {
   id: number;
   questions: QuestionType[];
   book_info: BookInfoType;
+  score: number;
 };
 
 export type AnswerType = {

@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useParams } from 'next/navigation';
 import { AnswerType, QuestionAnswerType } from '@/types';
-import { useAuthAxiosInstanse, useFetch } from '@/hooks';
+import { useFetch } from '@/hooks';
 import { Button } from '@/components/common';
 import { ErrorToast, Notification, SuccessToast } from '../../Notification';
 import styles from './AnswersList.module.scss';
@@ -15,37 +15,24 @@ type Props = {
 };
 
 type AnswerRequestType = {
-  childId: number;
-  questionId: number;
-  answerId: number;
+  child_id: number;
+  answer_id: number;
 };
 
 const AnswersList = ({ questionId, answers, onNext }: Props) => {
   const { childId } = useParams();
   const [isShowNotification, setIsShowNotification] = useState(false);
   const [selectAnswer, setSelectAnswer] = useState<number | null>(null);
-  const axios = useAuthAxiosInstanse();
-  const {
-    data: answerResult,
-    isLoading,
-    fetch,
-  } = useFetch<AnswerType, AnswerRequestType>(
-    () =>
-      async ({ childId, questionId, answerId }: AnswerRequestType) => {
-        const result = await axios.post(`questions/${questionId}/submit-answer`, {
-          child_id: childId,
-          answer_id: answerId,
-        });
-
-        return result;
-      }
-  );
+  const { data: answerResult, isLoading, fetch } = useFetch<AnswerType, AnswerRequestType>();
 
   const clickHandler = (answerId: number) => async () => {
     setSelectAnswer(answerId);
 
     try {
-      await fetch({ childId: Number(childId), questionId, answerId });
+      await fetch(`questions/${questionId}/submit-answer`, 'POST', {
+        child_id: Number(childId),
+        answer_id: answerId,
+      });
 
       setIsShowNotification(true);
     } catch (err) {

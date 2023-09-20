@@ -1,23 +1,25 @@
-import Quiz from './components/Quiz';
-import { getQuizByIdService } from '@/services/api';
 import { notFound } from 'next/navigation';
+import type { AttemptsInfoType, QuizType } from '@/types';
+import { fetch } from '@/services/axios';
+import Quiz from './components/Quiz';
 
 type Props = {
   params: {
     quizId: string;
+    childId: string;
   };
 };
 
-const QuizPage = async ({ params }: Props) => {
-  const quiz = await getQuizByIdService(Number(params.quizId));
+const QuizPage = async ({ params: { quizId, childId } }: Props) => {
+  const quizReq = fetch<QuizType>(`/quizzes/${quizId}`);
+  const questionReq = fetch<AttemptsInfoType>(`/users/me/children/${childId}/attempts/${quizId}/`);
+  const [quizRes, questionRes] = await Promise.all([quizReq, questionReq]);
 
-  if (quiz.status === 'fail') notFound();
+  if (quizRes.status === 'fail' || questionRes.status === 'fail') notFound();
 
-  return (
-    <main>
-      <Quiz quiz={quiz.data} />
-    </main>
-  );
+  const quiz: QuizType = { ...quizRes.data, ...questionRes.data };
+
+  return <main>{<Quiz quiz={quiz} />}</main>;
 };
 
 export default QuizPage;
