@@ -5,7 +5,7 @@ const emailRegex =
 const passworsRegex = /^(?=.*[0-9])(?=.*[a-zA-Z]).{6,30}$/;
 
 export const validation = {
-  email: yup.string().matches(emailRegex, 'Не вірна email адреса.').required(),
+  email: yup.string().lowercase().matches(emailRegex, 'Не вірна email адреса.').required(),
   signUpPassword: yup.string().required('Пароль не може бути порожнім.'),
   password: yup
     .string()
