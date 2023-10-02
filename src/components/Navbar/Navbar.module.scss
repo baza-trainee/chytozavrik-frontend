@@ -1,0 +1,48 @@
+@import "@/scss/utils/func";
+@import "@/scss/utils/mixin";
+
+.section {
+    background: getColor(blue, 90);
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.logo {
+    width: 32px;
+    height: 32px;
+    color: rgba(119, 145, 250, 1);
+    margin-bottom: 8px;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+
+.avatar {
+    margin-left: 12px;
+
+    @include breakpoint(desktop) {
+        margin-left: 19px;
+    }
+}
