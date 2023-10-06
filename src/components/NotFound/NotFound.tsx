@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styles from './NotFound.module.scss';
 import page404 from '../../../public/images/page404.svg';
-import { Button, Typography } from 'components/common';
+import { Button } from 'components/common';
 
 export default function NotFound() {
   return (
