@@ -13,13 +13,15 @@ const Navbar = () => {
     <section className={styles.section}>
       <Container className={styles.container}>
         <div className={styles.wrapper}>
+          <div className={styles.generalLogo}>
           <Image
             src="/header-logo.svg"
             width={40}
             height={40}
             alt="Logo"
             className={classNames(styles.mainLogo)}
-          />
+            />
+            </div>
           <Typography  component="p" variant="navbar">
             <Link className={styles.link} href="#">
               <Tent width={24} height={24} className={classNames(styles.logo)} />

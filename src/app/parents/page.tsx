@@ -6,7 +6,7 @@ import NavbarMob from '@/components/NavbarMob/NavbarMob';
 export default function ParentsPage () {
   return <main>
     <Navbar />
-    <NavbarMob/>
+    {/* <NavbarMob/> */}
     <Parents />
     
   </main>;
