@@ -1,0 +1,52 @@
+@import 'scss/utils/variables';
+@import 'scss/utils/mixin';
+
+
+.title{
+	text-align: left;
+	margin-bottom: 64px;
+}
+
+.slider__content {
+	display: flex;
+	align-items: center;
+	column-gap: 67px;
+}
+
+.slider__arrow {
+	width: 48px;
+	height: 48px;
+	background-color: $secondary-btn;
+	border-radius: 8px;
+	padding: 6px;
+	svg {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+	}
+	@include breakpoint(laptop) {
+		padding: 4px;
+		width: 32px;
+		height: 32px;
+	}
+	@include breakpoint(tablet) {
+		padding: 4px;
+		width: 32px;
+		height: 32px;
+	}
+}
+
+.slider_slides {
+	width: 613px;
+	height: 173px;
+}
+
+.slider_slide {
+	height: 173px;
+	width: 145px;
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+	}
+}
