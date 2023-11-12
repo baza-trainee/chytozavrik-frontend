@@ -3,7 +3,7 @@ import { AxiosError, Method } from 'axios';
 import { useAuthAxiosInstanse } from './useAuthAxiosInstanse';
 import { FetchResponseType } from '@/types';
 
-export const useFetch = <T, B>() => {
+export const useFetch = <T, B = undefined>() => {
   const axios = useAuthAxiosInstanse();
   const [data, setData] = useState<T | null>(null);
   const [isLoading, setIsLoading] = useState(false);
