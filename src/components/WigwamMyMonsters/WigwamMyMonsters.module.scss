@@ -2,7 +2,7 @@
 @import 'scss/utils/mixin';
 
 .wrapper {
-  width: 100%;
+  // width: 100%;
   margin-top: 24px;
 
   @include breakpoint(desktop) {
@@ -54,31 +54,49 @@
 
   @include breakpoint(laptop) {
     flex-wrap: nowrap;
+    gap: 20px;
   }
 
   @include breakpoint(desktop) {
     flex-wrap: wrap;
+    gap: 24px;
   }
 
 }
 
+
 .monsterWrapper {
+  display: none;
   width: 80px;
   height: 80px;
   overflow: hidden;
   border-radius: 50%;
-  display: flex;
   justify-content: center;
   align-items: center;
-}
 
-.monsterWrapper:nth-child(n + 7) {
-  display: none;
-
-  @include breakpoint(desktop) {
-    display: initial;
+  @include breakpoint(mobile) {
+    &:nth-child(-n + 6) {
+      display: flex;
+    }
   }
 
+  @include breakpoint(tablet) {
+    &:nth-child(-n + 6) {
+      display: flex;
+    }
+  }
+
+  @include breakpoint(laptop) {
+    &:nth-child(-n + 7) {
+      display: flex;
+    }
+  }
+
+  @include breakpoint(desktop) {
+    &:nth-child(-n + 8) {
+      display: flex;
+    }
+  }
 }
 
 .monster {
