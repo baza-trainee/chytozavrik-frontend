@@ -13,6 +13,7 @@ import { useFetch } from '@/hooks'
 
 const WigwamSlider = () => {
 	const sliderRef = useRef<any>()
+	const { data: answerBooks, isLoading, error,fetch } = useFetch<BookAnswerType>();
 
 	useEffect(() => {
 		fetch(`/books/`)
