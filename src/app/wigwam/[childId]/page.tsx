@@ -9,14 +9,14 @@ export default function Wigwam() {
   return (
     <main>
       <Container className={styles.layout}>
-       <div className={styles.wigwam_content}>
-	   		<div className={styles.wraper}>
-        	  <WigwamReadBooks />
-        	  <WigwamQuiz />
-        	</div>
-			<WigwamSlider/>
-	   </div>
-        <WigwamBooks />
+	   		<div className={styles.content}>
+			   	<div className={styles.wraper}>
+        	  		<WigwamReadBooks />
+        	  		<WigwamQuiz />
+        		</div>
+				<WigwamSlider/>
+			</div>
+        	<WigwamBooks />
       </Container>
     </main>
   );

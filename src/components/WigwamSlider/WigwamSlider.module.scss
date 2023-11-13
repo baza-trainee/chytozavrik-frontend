@@ -1,10 +1,12 @@
 @import 'scss/utils/variables';
-@import 'scss/utils/mixin';
-
+@import 'scss/utils/mixin';	
 
 .title{
 	text-align: left;
-	margin-bottom: 64px;
+	margin-bottom: 16px;
+	@include breakpoint(desktop) {
+		margin-bottom: 64px;
+	}
 }
 
 .error {
@@ -13,36 +15,65 @@
 
 .slider__content {
 	display: flex;
+	flex-direction: column;
 	align-items: center;
-	column-gap: 67px;
+	@include breakpoint(tablet) {
+		column-gap: 71px;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+	}
+	@include breakpoint(laptop) {
+		column-gap: 32px;
+	}
+	@include breakpoint(desktop) {
+		column-gap: 67px;
+	}
 }
 
 .slider__arrow {
-	width: 48px;
-	height: 48px;
 	background-color: $secondary-btn;
 	border-radius: 8px;
-	padding: 6px;
+	display: none;
 	svg {
 		width: 100%;
 		height: 100%;
 		object-fit: contain;
 	}
-	@include breakpoint(laptop) {
-		padding: 4px;
-		width: 32px;
-		height: 32px;
-	}
 	@include breakpoint(tablet) {
-		padding: 4px;
+		width: 48px;
+		height: 48px;
+		padding: 6px;
+		display: block;
+	}
+	@include breakpoint(laptop) {
 		width: 32px;
 		height: 32px;
+		padding: 4px;
+	}
+	@include breakpoint(desktop) {
+		width: 48px;
+		height: 48px;
+		padding: 6px;
 	}
 }
 
 .slider_slides {
-	width: 613px;
+	width: 302px;
 	height: 173px;
+	margin-bottom: 24px;
+	@include breakpoint(tablet) {
+		width: 446px;
+		margin-bottom: 0;
+	}
+	@include breakpoint(laptop) {
+		width: 367px;
+		height: 106px;
+	}
+	@include breakpoint(desktop) {
+		width: 613px;
+		height: 173px;
+	}
 }
 
 .slider_slide {
@@ -52,5 +83,29 @@
 		width: 100%;
 		height: 100%;
 		object-fit: contain;
+	}
+	@include breakpoint(laptop) {
+		width: 89px;
+		height: 106px;
+	}
+	@include breakpoint(desktop) {
+		height: 173px;
+		width: 145px;
+	}
+}
+
+
+.slider__pagination {
+	margin-bottom: 25px;
+	transform: translateX(0) !important;
+	height: 16px;
+	& > span {
+		background-color: #F2B441;
+		width: 16px;
+		height: 16px;
+		opacity: 1;
+	}
+	@include breakpoint(tablet) {
+		display: none;
 	}
 }
