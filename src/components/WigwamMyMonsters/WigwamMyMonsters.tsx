@@ -4,9 +4,10 @@ import Image from 'next/image';
 import styles from './WigwamMyMonsters.module.scss';
 import moveRight from '../../../public/images/move-right.svg';
 import { Typography } from '@/components/common';
-import monsterAvatar from '../../../public/images/monsters-avatar4.svg';
 import lockedIcon from '../../../public/images/locked.svg';
 import { useState, useEffect } from 'react';
+import { useParams } from 'next/navigation';
+import { useSession } from 'next-auth/react';
 
 interface Monster {
   id: number;
@@ -17,26 +18,38 @@ interface Monster {
 }
 
 interface MonstersResponse {
-  count: number;
-  next: string;
-  previous: string;
-  results: Monster[];
+  data: {
+    count: number;
+    next: string | null;
+    previous: string | null;
+    results: Monster[];
+  };
 }
 
 const WigwamMyMonsters: React.FC = () => {
+  const { childId } = useParams();
+  const { data } = useSession();
+  const token = data?.user?.token.access;
+
   const [monsters, setMonsters] = useState<Monster[]>([]);
 
-  const fetchMonsters = async () => {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_SERVER_URL}/users/me/children/11/rewards/?page_size=8`
-    );
-    const data: MonstersResponse = await response.json();
-    setMonsters(data.results);
-  };
-
   useEffect(() => {
+    const fetchMonsters = async () => {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_SERVER_URL}/users/me/children/${childId}/rewards/?page_size=8`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      const { data }: MonstersResponse = await response.json();
+
+      setMonsters(data.results);
+    };
+
     fetchMonsters();
-  }, []);
+  }, [childId, token]);
 
   return (
     <>
@@ -50,8 +63,14 @@ const WigwamMyMonsters: React.FC = () => {
         <div className={styles.monstersContainer}>
           {Array.from({ length: 8 }).map((_, i) => (
             <div key={i} className={styles.monsterWrapper}>
-              {monsters && monsters.length > 0 && monsters[i] ? (
-                <Image src={monsters[i].reward} alt="Читозаврик" className={styles.monster} />
+              {monsters && monsters[i] ? (
+                <Image
+                  width={80}
+                  height={80}
+                  src={monsters[i].reward}
+                  alt="Читозаврик"
+                  className={styles.monster}
+                />
               ) : (
                 <Image src={lockedIcon} alt="icon locked" className={styles.monster} />
               )}

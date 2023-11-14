@@ -2,7 +2,7 @@
 @import 'scss/utils/mixin';
 
 .wrapper {
-  // width: 100%;
+  width: 100%;
   margin-top: 24px;
 
   @include breakpoint(desktop) {
@@ -87,7 +87,7 @@
   }
 
   @include breakpoint(laptop) {
-    &:nth-child(-n + 7) {
+    &:nth-child(-n + 6) {
       display: flex;
     }
   }
