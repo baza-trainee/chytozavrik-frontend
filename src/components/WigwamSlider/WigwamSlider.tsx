@@ -22,7 +22,7 @@ const WigwamSlider = () => {
 		fetch(`/books/`)
 	}, [])
 
-	const recommendedBooks = answerBooks?.results.filter(book => book.is_recommended === false)
+	const recommendedBooks = answerBooks?.results.filter(book => book.is_recommended === false) //поставить true когда в базу внесут книги
 
 	return (
 		<>
