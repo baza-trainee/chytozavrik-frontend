@@ -1,0 +1,24 @@
+@import 'scss/utils/variables';
+@import 'scss/utils/mixin';
+
+.banner {
+  background-image: url("/images/all-quizzes/banner.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 328px;
+  height: 140px;
+  padding: 16px 45px;
+
+  .title{
+    color: $sys-on-primary-variant;
+    align-self: center;
+    text-align: center;
+    /* Additional text 1 */
+    font-family: Montserrat Alternates;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 120%;
+  }
+}
