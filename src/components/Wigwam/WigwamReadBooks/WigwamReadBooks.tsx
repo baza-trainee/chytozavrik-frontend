@@ -1,6 +1,6 @@
 import { BookOpen } from 'lucide-react';
 import Image from 'next/image';
-import Sticker from '../../../public/images/sticker.svg';
+import Sticker from 'public/images/sticker.svg';
 import styles from './WigwamReadBooks.module.scss';
 
 const WigwamReadBooks = () => {

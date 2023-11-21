@@ -1,9 +1,9 @@
-import WigwamBooks from '@/components/WigwamBooks/WigwamBooks';
+import WigwamBooks from 'components/Wigwam/WigwamBooks/WigwamBooks';
 import Container from '../../../components/common/Container/Container';
-import WigwamReadBooks from '@/components/WigwamReadBooks/WigwamReadBooks';
+import WigwamReadBooks from 'components/Wigwam/WigwamReadBooks/WigwamReadBooks';
 import styles from './wigwam.module.scss';
-import WigwamQuiz from '@/components/WigwamQuiz/WigwamQuiz';
-import WigwamMyMonsters from '@/components/WigwamMyMonsters/WigwamMyMonsters';
+import WigwamQuiz from 'components/Wigwam/WigwamQuiz/WigwamQuiz';
+import WigwamMyMonsters from 'components/Wigwam/WigwamMyMonsters/WigwamMyMonsters';
 
 export default function Wigwam() {
   return (

@@ -1,14 +1,15 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import Image from 'next/image';
 import { Search, MoveRight } from 'lucide-react';
-
-import { Button, Typography } from '../common';
-import BrainIcon from '../../../public/images/brain.svg';
-import Tick from '../../../public/images/tick.svg';
+import { Button, Typography } from '../../common';
+import BrainIcon from 'public/images/brain.svg';
+import Tick from 'public/images/tick.svg';
 import styles from './WigwamBooks.module.scss';
+import { useSession } from 'next-auth/react';
+import { useFetch } from '@/hooks';
 
 //delete after connect to database
 const items = [
@@ -29,10 +30,25 @@ const defaultValues = {
 };
 
 const WigwamBooks = () => {
+  const {status} = useSession()
+  const {data: books, isLoading, error, fetch} = useFetch()
   const [selectedBooks, setSelectedBooks] = useState<{ [key: string]: boolean }>({});
   const { handleSubmit, resetField, setValue, register } = useForm({
     defaultValues,
   });
+
+  useEffect(() => {
+    const fetchBooks = async () => {
+      try{
+        await fetch(`books/`)
+      } catch (e) {
+        console.log(e);
+      }
+    }
+    if (status === 'authenticated') fetchBooks()
+    console.log(books);
+
+  }, [status]);
 
   const submit: SubmitHandler<FormValues> = values => {
     console.log(values);
