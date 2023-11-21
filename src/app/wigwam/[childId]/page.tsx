@@ -3,8 +3,10 @@ import Container from '../../../components/common/Container/Container';
 import WigwamReadBooks from '@/components/WigwamReadBooks/WigwamReadBooks';
 import styles from './wigwam.module.scss';
 import WigwamQuiz from '@/components/WigwamQuiz/WigwamQuiz';
+import { useRefreshToken } from '@/hooks/useRefreshToken';
 
 export default function Wigwam() {
+
   return (
     <main>
       <Container className={styles.layout}>
