@@ -1,7 +1,7 @@
 @import 'scss/utils/variables';
 @import 'scss/utils/mixin';
 
-.wrapper{
+.wrapper {
   padding-top: 24px;
   margin-bottom: 17px;
 
@@ -14,8 +14,30 @@
     height: 140px;
     padding: 16px 45px;
     position: relative;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    .title{
+    @include breakpoint(tablet) {
+      background-image: url("/images/all-quizzes/banner768.svg");
+      height: 160px;
+      padding: 49px 207px;
+    }
+
+    @include breakpoint(laptop) {
+      background-image: url("/images/all-quizzes/banner1024.svg");
+      height: 160px;
+      padding: 49px 334px;
+    }
+
+    @include breakpoint(desktop) {
+      background-image: url("/images/all-quizzes/banner1440.svg");
+      height: 224px;
+      padding: 0;
+    }
+
+    .title {
       color: $sys-on-primary-variant;
       align-self: center;
       text-align: center;
@@ -25,6 +47,17 @@
       font-style: normal;
       font-weight: 600;
       line-height: 120%;
+
+      @include breakpoint(tablet) {
+        font-size: 18px;
+      }
+
+      @include breakpoint(desktop) {
+        font-size: 24px;
+        width: 469px;
+        align-self: center;
+      }
+
     }
 
     .icon {
@@ -39,6 +72,19 @@
       top: 0;
       right: 0;
       z-index: 3;
+
+      @include breakpoint(tablet) {
+        width: 64px;
+        height: 64px;
+        padding: 20px;
+
+        & img {
+          width: 24px;
+          height: 24px;
+        }
+      }
+
+
     }
   }
 }
