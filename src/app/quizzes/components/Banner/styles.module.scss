@@ -3,6 +3,7 @@
 
 .wrapper{
   padding-top: 24px;
+  margin-bottom: 17px;
 
   .banner {
     background-image: url("/images/all-quizzes/banner.svg");
@@ -27,7 +28,6 @@
     }
 
     .icon {
-
       display: flex;
       width: 36px;
       height: 36px;
@@ -35,6 +35,10 @@
       justify-content: center;
       align-items: center;
       flex-shrink: 0;
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 3;
     }
   }
 }
