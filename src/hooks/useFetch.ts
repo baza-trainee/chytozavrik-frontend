@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { AxiosError, Method } from 'axios';
-import { useAuthAxiosInstanse } from './useAuthAxiosInstanse';
+import { useAuthAxiosInstance } from './useAuthAxiosInstance';
 import { FetchResponseType } from '@/types';
 
 export const useFetch = <T, B>() => {
-  const axios = useAuthAxiosInstanse();
+  const axios = useAuthAxiosInstance();
   const [data, setData] = useState<T | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
