@@ -29,7 +29,7 @@ const AnswersList = ({ questionId, answers, onNext }: Props) => {
     setSelectAnswer(answerId);
 
     try {
-      await fetch(`questions/${questionId}/submit-answer`, 'POST', {
+      await fetch(`quizzes/question/${questionId}/submit-answer/`, 'POST', {
         child_id: Number(childId),
         answer_id: answerId,
       });
