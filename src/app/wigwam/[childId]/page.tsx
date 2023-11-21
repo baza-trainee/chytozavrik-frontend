@@ -4,8 +4,22 @@ import WigwamReadBooks from 'components/Wigwam/WigwamReadBooks/WigwamReadBooks';
 import styles from './wigwam.module.scss';
 import WigwamQuiz from 'components/Wigwam/WigwamQuiz/WigwamQuiz';
 import WigwamMyMonsters from 'components/Wigwam/WigwamMyMonsters/WigwamMyMonsters';
+import { fetch } from '@/services/axios';
+import { BooksResponse, BookType } from '@/types/WigwamBooks';
+import { notFound } from 'next/navigation';
 
-export default function Wigwam() {
+
+interface WigwamProps {
+  params: {childId : string}
+}
+
+export default async function Wigwam({params: { childId }} : WigwamProps) {
+  const booksReq = fetch<BookType[]>(`users/me/children/${childId}/quizzes`)
+  const [booksRes] = await Promise.all([booksReq]);
+
+  if (booksRes.status === 'fail' ) notFound();
+  const booksData: BookType[] = booksRes.data;
+
   return (
     <main>
       <Container className={styles.layout}>
@@ -13,7 +27,7 @@ export default function Wigwam() {
           <WigwamReadBooks />
           <WigwamQuiz />
         </div>
-        <WigwamBooks />
+        <WigwamBooks booksReq={booksData}/>
         <WigwamMyMonsters />
       </Container>
     </main>
