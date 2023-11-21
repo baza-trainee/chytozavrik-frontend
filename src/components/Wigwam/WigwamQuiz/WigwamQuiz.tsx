@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image';
-import { Button } from '../common';
-import cat from '../../../public/images/wigwam-cat.png';
+import { Button } from '../../common';
+import cat from 'public/images/wigwam-cat.png';
 import styles from './WigwamQuiz.module.scss';
 
 const WigwamQuiz = () => {

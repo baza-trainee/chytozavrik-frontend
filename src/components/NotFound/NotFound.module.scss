@@ -6,7 +6,7 @@
   background-image: url('/images/background-wave.svg'), url('/images/space-mob.svg'),
     url('/images/stars.svg'), url('/images/path.svg');
   background-repeat: repeat-x, no-repeat, no-repeat, no-repeat;
-  background-position: center top, center bottom, center bottom -20px, left bottom;
+  background-position: center top, center bottom, center bottom -20px, left bottom -3px;
   background-size: auto 27px, auto, auto, 100% 280px;
 
   @include breakpoint(tablet) {
@@ -32,25 +32,27 @@
 }
 
 .container {
+  width: 331px;
   display: flex;
   gap: 36px;
   flex-direction: column;
-  padding: 52px 16px 302px;
-  margin: auto;
-    padding-left: var(--padding-x);
-    padding-right: var(--padding-x);
+  align-items: center;
+  margin: 52px auto 302px;
+  
 
   @include breakpoint(tablet) {
-    padding: 167px 397px 137px 40px;
+    margin: 167px 397px 137px 40px;
   }
 
   @include breakpoint(laptop) {
-    padding: 177px 631px 180px 40px;
+    width: 358px;
+    margin: 177px 631px 180px 94px;
     gap: 24px;
   }
 
   @include breakpoint(desktop) {
-    padding: 235px 928px 202px 80px;
+    width: 470px;
+    margin: 235px 840px 202px 130px;
   }
 }
 
@@ -90,7 +92,7 @@
 .button {
   width: 327px;
   height: 54px;
-  margin: 0 auto;
+  padding: 16px 28px;
   font-family: var(--montserrat-alternates-font);
   font-weight: 600;
   font-size: 18px;
@@ -101,6 +103,7 @@
   }
   @include breakpoint(laptop) {
     width: 291px;
+    padding: 20px 36px;
   }
   @include breakpoint(desktop) {
     width: 405px;
