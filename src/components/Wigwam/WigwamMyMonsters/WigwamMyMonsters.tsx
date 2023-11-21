@@ -2,9 +2,9 @@
 
 import Image from 'next/image';
 import styles from './WigwamMyMonsters.module.scss';
-import moveRight from '../../../public/images/move-right.svg';
-import { Typography } from '@/components/common';
-import lockedIcon from '../../../public/images/locked.svg';
+import moveRight from 'public/images/move-right.svg';
+import { Typography } from 'components/common';
+import lockedIcon from 'public/images/locked.svg';
 import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import { useSession } from 'next-auth/react';
