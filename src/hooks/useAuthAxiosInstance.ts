@@ -3,7 +3,7 @@ import { useSession } from 'next-auth/react';
 import { axiosClient } from '@/services/axios';
 import { useRefreshToken } from '@/hooks/useRefreshToken';
 
-export const useAuthAxiosInstanse = () => {
+export const useAuthAxiosInstance = () => {
   const { data: session } = useSession();
   const refreshToken = useRefreshToken();
 
