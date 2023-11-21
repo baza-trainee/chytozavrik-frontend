@@ -23,47 +23,37 @@
 }
 
 .content {
-  --padding-top: 72px;
-  --padding-bottom: 64px;
-  --padding-left: 16px;
-  --padding-right: 16px;
+  --border-radius: 0px;
 
   position: relative;
 
   min-width: 360px;
-  min-height: 100%;
+  // min-height: 100%;
 
-  padding-top: var(--padding-top);
-  padding-bottom: var(--padding-bottom);
-  padding-left: var(--padding-left);
-  padding-right: var(--padding-right);
+  // overflow: hidden;
 
   background-color: $white;
 
   @include breakpoint(false, tablet) {
     max-width: 360px;
+    height: 100%;
   }
 
   @include breakpoint(tablet) {
-    --padding-top: 32px;
-    --padding-bottom: 32px;
+    --border-radius: 16px;
 
+    margin-top: 10px;
+    margin-bottom: 10px;
     min-width: 480px;
     min-height: auto;
 
-    border-radius: 16px;
+    border-radius: var(--border-radius);
   }
 }
 
 .close-button {
   position: absolute;
-  top: 16px;
-  right: 16px;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  width: 24px;
-  height: 24px;
+  top: 0;
+  right: 0;
 }

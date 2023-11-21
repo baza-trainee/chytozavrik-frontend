@@ -1,6 +1,7 @@
 $breakpoints: (
   mobile: 360px,
   tablet: 768px,
+  laptop: 1024px,
   desktop: 1440px,
 );
 
@@ -85,23 +86,37 @@ $palettes: (
   ),
 );
 
-$black: #000;
-$light-black: #1e1e1e;
-$white: #fdfdfd;
+$notification-color: (
+  'default': #c7e1ff,
+  'success': #defade,
+  'error': #fff0f0,
+);
 
 @function getColor($color, $tone) {
   @return map-get(map-get($palettes, $color), $tone);
 }
 
+@function getNotificationColor($type) {
+  @return map-get($notification-color, $type);
+}
+
 $black: #1e1e1e;
 $white: #fdfdfd;
+$secondary-black: #000000;
+$search-background: #f6faff;
+
+$neutral: getColor(neutral, 30);
+$on-neutral: getColor(neutral, 50);
 
 $primary: getColor(blue, 40);
 $on-primary: getColor(blue, 100);
+$primary-next-variant: getColor(blue, 90);
 $primary-variant: getColor(blue, 80);
+$on-next-primary-variant: getColor(blue, 70);
 $on-primary-variant: getColor(blue, 20);
 
 $secondary: getColor(yellow, 40);
+$secondary-btn: getColor(yellow, 50);
 $on-secondary: getColor(yellow, 0);
 $secondary-variant: getColor(yellow, 90);
 $on-secondary-variant: getColor(yellow, 100);

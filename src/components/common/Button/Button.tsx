@@ -1,48 +1,102 @@
 'use client';
 
 import { ButtonHTMLAttributes, ReactNode } from 'react';
-import styles from './Button.module.scss';
+import Link from 'next/link';
+import type { LinkProps as NextLinkProps } from 'next/link';
 import classNames from 'classnames';
+import Spinner from '../Spinner/Spinner';
+import styles from './Button.module.scss';
 
-type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
-  children: ReactNode;
-  type?: HTMLButtonElement['type'];
-  className?: string;
-  variant?: 'filled' | 'outline' | 'text';
-  color?: 'primary' | 'secondary' | 'tertiary' | 'quaternary';
-  startIcon?: ReactNode;
-  endIcon?: ReactNode;
-  onClick?: () => void;
+type LinkProps = NextLinkProps & {
+  component: 'link';
 };
 
-const Button = ({
-  children,
-  type = 'button',
-  onClick,
-  className,
-  variant = 'filled',
-  color = 'primary',
-  startIcon = null,
-  endIcon = null,
-  ...props
-}: Props) => {
-  return (
-    <button
-      type={type}
-      onClick={onClick}
-      className={classNames(
-        className,
-        styles.button,
-        styles[`button--${variant}`],
-        styles[`button--${color}`]
-      )}
-      {...props}
-    >
-      {startIcon && <span className={styles['button-icon']}>{startIcon}</span>}
-      {children}
-      {endIcon && <span className={styles['button-icon']}>{endIcon}</span>}
-    </button>
-  );
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+  component?: 'button';
+};
+
+type Props = {
+  children: ReactNode;
+  className?: string;
+  variant?: 'filled' | 'outline' | 'text';
+  color?: 'primary' | 'secondary' | 'tertiary' | 'quaternary' | 'success' | 'error';
+  isLoading?: boolean;
+  selected?: boolean;
+  startIcon?: ReactNode;
+  endIcon?: ReactNode;
+} & (LinkProps | ButtonProps);
+
+const Button = (props: Props) => {
+  if (props.component === 'link') {
+    const {
+      children,
+      variant = 'filled',
+      color = 'primary',
+      isLoading,
+      selected,
+      startIcon,
+      endIcon,
+      className,
+      ...otherProps
+    } = props;
+
+    return (
+      <Link
+        className={classNames(
+          className,
+          styles.button,
+          styles[`button--${variant}`],
+          styles[`button--${color}`]
+        )}
+        data-selected={selected}
+        {...otherProps}
+      >
+        {startIcon && <span className={styles['button-icon']}>{startIcon}</span>}
+        {children}
+        {endIcon && <span className={styles['button-icon']}>{endIcon}</span>}
+        {isLoading && (
+          <span>
+            <Spinner />
+          </span>
+        )}
+      </Link>
+    );
+  } else {
+    const {
+      children,
+      variant = 'filled',
+      color = 'primary',
+      isLoading,
+      selected,
+      startIcon,
+      endIcon,
+      className,
+      ...otherProps
+    } = props;
+
+    return (
+      <button
+        type="button"
+        className={classNames(
+          className,
+          styles.button,
+          styles[`button--${variant}`],
+          styles[`button--${color}`]
+        )}
+        data-selected={selected}
+        {...otherProps}
+      >
+        {startIcon && <span className={styles['button-icon']}>{startIcon}</span>}
+        {children}
+        {endIcon && <span className={styles['button-icon']}>{endIcon}</span>}
+        {isLoading === true && (
+          <span className={styles.spinner}>
+            <Spinner />
+          </span>
+        )}
+      </button>
+    );
+  }
 };
 
 export default Button;

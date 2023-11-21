@@ -7,11 +7,17 @@
   background-image: url('/images/background-wave-reverse.svg'),
     url('/images/background-donate-wave.svg'), url('/images/background-donate-image.svg');
   background-repeat: repeat-x, no-repeat, no-repeat;
-  background-position: center top, center calc(100% + 1px), center bottom;
+  background-position: center top, center calc(100% + 1px), center calc(100% + 52px);
   background-size: auto 27px, getBreakpoint(mobile) auto, 338px auto;
 
   @include breakpoint(tablet) {
+    background-position: center top, center calc(100% + 1px), center calc(100% + 87px);
     background-size: auto 54px, getBreakpoint(tablet) auto, 566px auto;
+  }
+
+  @include breakpoint(laptop) {
+    background-position: center top, center calc(100% + 1px), center calc(100% + 130px);
+    background-size: auto 54px, getBreakpoint(tablet) auto, 850px auto;
   }
 
   @include breakpoint(desktop) {
@@ -20,8 +26,8 @@
       url('/images/background-donate-plane.svg'), url('/images/background-donate-curve-line.svg');
     background-repeat: repeat-x, no-repeat, no-repeat, no-repeat, no-repeat;
 
-    background-position: center top, center calc(100% + 1px), calc(50% - 53px) bottom, -100px 178px,
-      calc(100% + 10px) 35px;
+    background-position: center top, center calc(100% + 1px), calc(50% - 53px) calc(100% + 176px),
+      -100px 178px, calc(100% + 10px) 35px;
     background-size: auto 102px, getBreakpoint(desktop), 1200px auto, 415px, 210px;
   }
 }
@@ -37,6 +43,13 @@
 
     padding-top: 72px;
     padding-bottom: 139px;
+  }
+
+  @include breakpoint(laptop) {
+    --padding-x: 292px;
+
+    padding-top: 101px;
+    padding-bottom: 179px;
   }
 
   @include breakpoint(desktop) {

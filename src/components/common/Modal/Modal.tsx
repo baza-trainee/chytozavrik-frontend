@@ -2,8 +2,9 @@
 
 import { MouseEvent, ReactNode, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { CgClose } from 'react-icons/cg';
+import { XButton } from '@/components/common';
 import styles from './Modal.module.scss';
+import FocusTrap from 'focus-trap-react';
 
 type Props = {
   children?: ReactNode;
@@ -34,19 +35,14 @@ const Modal = ({ children, onClose }: Props) => {
   }, [onClose]);
 
   return createPortal(
-    <div className={styles.modal} onClick={clickBackdropHandler}>
-      <div className={styles.content}>
-        <button
-          className={styles['close-button']}
-          type="button"
-          aria-label="modal close"
-          onClick={onClose}
-        >
-          <CgClose size={24} />
-        </button>
-        {children}
+    <FocusTrap focusTrapOptions={{ initialFocus: false }}>
+      <div className={styles.modal} onClick={clickBackdropHandler}>
+        <div className={styles.content}>
+          <XButton className={styles['close-button']} aria-label="modal close" onClick={onClose} />
+          {children}
+        </div>
       </div>
-    </div>,
+    </FocusTrap>,
     document.body
   );
 };
