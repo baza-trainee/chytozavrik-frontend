@@ -25,7 +25,7 @@ const BookItem: FC<BookItemProps> = ({ item, selectedBooks, setBook }) => {
   else  icon = BrainIcon
 
   return (
-    <li className={styles.book_items}>
+    <div className={styles.book_items}>
       <div>
         <p className={styles.book_name}>{item.book.title}</p>
         <p className={styles.book_author}>{item.book.author}</p>
@@ -50,7 +50,7 @@ const BookItem: FC<BookItemProps> = ({ item, selectedBooks, setBook }) => {
                 </span>
         )}
       </div>
-    </li>
+    </div>
   );
 };
 
