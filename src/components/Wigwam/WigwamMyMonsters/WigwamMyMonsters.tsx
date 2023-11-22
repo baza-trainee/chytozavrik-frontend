@@ -6,50 +6,18 @@ import moveRight from 'public/images/move-right.svg';
 import { Typography } from 'components/common';
 import lockedIcon from 'public/images/locked.svg';
 import { useState, useEffect } from 'react';
-import { useParams } from 'next/navigation';
-import { useSession } from 'next-auth/react';
+import { Monster } from '@/types/MonstersTypes';
 
-interface Monster {
-  id: number;
-  reward: string;
-  received_at: string;
-  child: number;
-  quiz: number;
-}
+type WigwamMyMonstersProps = {
+  monstersData: Monster[];
+};
 
-interface MonstersResponse {
-  data: {
-    count: number;
-    next: string | null;
-    previous: string | null;
-    results: Monster[];
-  };
-}
-
-const WigwamMyMonsters: React.FC = () => {
-  const { childId } = useParams();
-  const { data } = useSession();
-  const token = data?.user?.token.access;
-
+const WigwamMyMonsters: React.FC<WigwamMyMonstersProps> = ({ monstersData }) => {
   const [monsters, setMonsters] = useState<Monster[]>([]);
 
   useEffect(() => {
-    const fetchMonsters = async () => {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_SERVER_URL}/users/me/children/${childId}/rewards/?page_size=8`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      const { data }: MonstersResponse = await response.json();
-
-      setMonsters(data.results);
-    };
-
-    fetchMonsters();
-  }, [childId, token]);
+    setMonsters(monstersData);
+  }, [monstersData]);
 
   return (
     <>
