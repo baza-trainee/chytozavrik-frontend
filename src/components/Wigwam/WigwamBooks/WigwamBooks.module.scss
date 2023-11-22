@@ -5,9 +5,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 326px;
-  height: 392px;
-  padding: 32px 16px;
+  width: 328px;
+  height: 410px;
+  padding: 24px 25px 26px 25px;
   background-color: $primary;
   border-radius: 8px;
 
@@ -25,6 +25,50 @@
     width: 412px;
     height: 724px;
   }
+}
+
+
+.form{
+  display: flex;
+  gap: 10px;
+}
+
+.notfound {
+  width: 239px;
+  margin-top: 10px;
+  color: $white;
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+
+  & img{
+    width: 212px;
+    height: 128px;
+  }
+
+  @include breakpoint(laptop) {
+    font-size: 18px;
+    width: 304px;
+    height: 265px;
+    margin-top: 86px;
+
+    & img{
+      width: 269px;
+      height: 179px;
+    }
+  }
+
+  @include breakpoint(desktop) {
+    margin-top: 90px;
+
+  }
+
 }
 
 .title {
@@ -47,10 +91,7 @@
   border-radius: 8px;
   border: 2px solid $primary;
   outline: none;
-  padding-top: 16px;
-  padding-right: 12px;
-  padding-bottom: 16px;
-  padding-left: 46px;
+  padding: 16px 12px 16px 46px;
   font-family: var(--montserrat-alternates-font);
   background-color: $search-background;
   color: $primary;
@@ -80,16 +121,23 @@
 
 .icon_wraper {
   position: absolute;
-  top: 11px;
+  top: 10px;
   left: 16px;
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
 
   @include breakpoint(desktop) {
-    top: 12px;
-    width: 24px;
-    height: 24px;
+    top: 10px;
   }
+}
+
+.icon_circle{
+  position: absolute;
+  top: 10px;
+  right: 16px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
 }
 
 .icon {
@@ -99,11 +147,6 @@
 
 .search_wraper {
   position: relative;
-  margin-bottom: 24px;
-
-  @include breakpoint(laptop) {
-    margin-bottom: 32px;
-  }
 }
 
 .button {
@@ -137,21 +180,34 @@
 }
 
 .button_list {
+  margin-top: 24px;
   margin-bottom: 32px;
   padding-left: 11px;
   padding-right: 11px;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  scrollbar-width: thin;
+  scrollbar-color: $white;
 
   &::-webkit-scrollbar {
-    width: 1px;
+    width: 5px;
+    height: 1px;
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: $white;
+    background: white;
+    border-radius: 24px;
+    border-bottom: 2px solid transparent;
   }
 
   &::-webkit-scrollbar-track {
-    margin-bottom: 8px;
+    background: transparent;
+    box-shadow: inset 0 0 15px $white;
+    border-radius: 24px;
+    border-left: 2px solid transparent;
+    border-right: 2px solid transparent;
   }
 
   @include breakpoint(tablet) {
@@ -163,16 +219,11 @@
   display: flex;
   justify-content: space-between;
   width: 278px;
-  height: auto;
-  margin-bottom: 8px;
+  height: 155px;
   padding: 8px;
   border-radius: 8px;
   background-color: $primary-next-variant;
   border: 2px solid $primary;
-
-  &:last-child {
-    margin-bottom: 0;
-  }
 
   @include breakpoint(tablet) {
     width: 285px;
@@ -180,6 +231,7 @@
 
   @include breakpoint(laptop) {
     width: 319px;
+    height: auto;
   }
 
   @include breakpoint(desktop) {
@@ -212,12 +264,14 @@
   font-family: var(--montserrat-alternates-font);
   font-size: 14px;
   font-weight: 600;
+  line-height: 120%;
 }
 
 .book_author {
   margin-bottom: 6px;
   font-size: 12px;
   font-weight: 400;
+  line-height: 120%;
 }
 
 .book_counter {
