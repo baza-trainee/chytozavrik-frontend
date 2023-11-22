@@ -1,13 +1,13 @@
 import WigwamBooks from 'components/Wigwam/WigwamBooks/WigwamBooks';
 import Container from '../../../components/common/Container/Container';
 import WigwamReadBooks from 'components/Wigwam/WigwamReadBooks/WigwamReadBooks';
-import styles from './wigwam.module.scss';
 import WigwamQuiz from 'components/Wigwam/WigwamQuiz/WigwamQuiz';
 import WigwamMyMonsters from 'components/Wigwam/WigwamMyMonsters/WigwamMyMonsters';
 import { fetch } from '@/services/axios';
-import { BooksResponse, BookType } from '@/types/WigwamBooks';
-import { MonstersResponse, Monster } from '@/types/MonstersTypes';
+import { BookType } from '@/types/WigwamBooks';
+import { MonstersResponse } from '@/types/MonstersTypes';
 import { notFound } from 'next/navigation';
+import styles from './wigwam.module.scss';
 
 interface WigwamProps {
   params: { childId: string };
