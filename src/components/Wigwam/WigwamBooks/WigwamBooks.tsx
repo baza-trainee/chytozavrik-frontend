@@ -43,8 +43,8 @@ const WigwamBooks = ({ booksReq }: { booksReq: BookType[]}) => {
   };
 
   const clearSearch = () => {
-    setValue('search', ''); // Очищує поле пошуку
-    setFilteredBooks(booksReq); // Опціонально: відновлює первісний список книг
+    setValue('search', '');
+    setFilteredBooks(booksReq);
   };
 
   return (
