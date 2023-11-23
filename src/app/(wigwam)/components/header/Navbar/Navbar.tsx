@@ -5,10 +5,13 @@ import Image from 'next/image';
 import { LogOut, Tent, Brain } from 'lucide-react';
 import Container from 'components/common/Container/Container';
 import { Typography } from 'components/common';
+import { NextPage } from 'next';
 
+interface Props {
+  childId: string
+}
 
-
-const Navbar = () => {
+const Navbar: NextPage<Props> = ({childId}) => {
 
   return (
     <section className={styles.section}>
@@ -25,21 +28,21 @@ const Navbar = () => {
           </div>
 
           <Typography component='p' variant='navbar'>
-            <Link className={styles.link} href="#">
+            <Link className={styles.link} href={`/wigwam/${childId}`}>
               <Tent width={24} height={24} className={classNames(styles.logo)} />
               Вігвам
             </Link>
           </Typography>
 
           <Typography component='p' variant='navbar'>
-            <Link className={styles.link} href="#">
+            <Link className={styles.link} href={`/wigwam/${childId}/quizzes`}>
               <Brain width={24} height={24} className={classNames(styles.logo)} />
               Вікторини
             </Link>
           </Typography>
 
           <Typography component='p' variant='navbar'>
-            <Link className={styles.link} href="#">
+            <Link className={styles.link} href={`/wigwam/${childId}/awards`}>
               <Image src='/images/chytozavr.svg' width={24} height={24} alt='Logo'
                      className={classNames(styles.logo)} />
               Читозаврики

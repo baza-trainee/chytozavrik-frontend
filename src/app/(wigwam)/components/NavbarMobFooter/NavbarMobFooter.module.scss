@@ -1,5 +1,5 @@
-@import "func";
-@import "mixin";
+@import "scss/utils/func";
+@import "scss/utils/mixin";
 
 .section {
     background: getColor(blue, 90);
