@@ -7,13 +7,17 @@ import avatar from '../../../public/images/avatar-parents.svg';
 import wigwam from '../../../public/images/wigwam.svg';
 import Notification from '../Notification/Notification';
 
-export default function Parents() {
+type Props = {
+    handleClick: () => void
+}
+
+const Parents = ({ handleClick }: Props) => {
 
     return (
         <section className={styles.section}>
             <Container className={styles.container}>
                 <Image src={avatar} className={styles.image} alt ='аватарка батьків' width='106'/>
-                <Button color='secondary' className={styles.button}>
+                <Button color='secondary' className={styles.button} onClick={handleClick}>
                     <Image src={wigwam} width='24' alt='іконка вігваму' />
                 <Typography className={styles.text} component="span" variant="h5">
                 Створити вігвам
@@ -24,3 +28,5 @@ export default function Parents() {
         </section>
     )
 }
+
+export default Parents;
