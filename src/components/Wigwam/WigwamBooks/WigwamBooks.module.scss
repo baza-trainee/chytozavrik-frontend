@@ -10,10 +10,12 @@
   padding: 32px 16px;
   background-color: $primary;
   border-radius: 8px;
+  grid-area: books;
+
 
   @include breakpoint(tablet) {
     width: 333px;
-    height: 408px;
+    height: 414px;
   }
 
   @include breakpoint(laptop) {

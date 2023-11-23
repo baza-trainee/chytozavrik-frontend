@@ -3,10 +3,18 @@
 
 .wrapper {
   width: 100%;
-  margin-top: 24px;
+  grid-area: monsters;
+
+  @include breakpoint(laptop) {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 521px;
+  }
 
   @include breakpoint(desktop) {
     margin-top: 32px;
+    width: 410px;
   }
 }
 
@@ -53,8 +61,9 @@
   }
 
   @include breakpoint(laptop) {
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     gap: 20px;
+
   }
 
   @include breakpoint(desktop) {
@@ -90,12 +99,16 @@
     &:nth-child(-n + 6) {
       display: flex;
     }
+    width: 56px;
+    height: 56px;
   }
 
   @include breakpoint(desktop) {
     &:nth-child(-n + 8) {
       display: flex;
     }
+    width: 80px;
+    height: 80px;
   }
 }
 

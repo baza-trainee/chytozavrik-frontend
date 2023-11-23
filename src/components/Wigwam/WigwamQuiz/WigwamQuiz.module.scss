@@ -3,14 +3,25 @@
 
 .wraper {
   margin-bottom: 24px;
+  grid-area: monster;
 
   @include breakpoint(tablet) {
     margin-bottom: 0;
+    height: 341px;
   }
+
+  @include breakpoint(laptop) {
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   @include breakpoint(desktop) {
     margin-right: 24px;
   }
 }
+
 
 .box {
   position: relative;
@@ -27,13 +38,14 @@
 
   @include breakpoint(tablet) {
     width: 332px;
-    margin-top: 171px;
+    height: 241px;
+    margin-top: 96px;
   }
 
   @include breakpoint(laptop) {
-    width: 368px;
-    height: 131px;
-    margin-top: 137px;
+    width: 298px;
+    height: 163px;
+    margin-top: 67px;
   }
 
   @include breakpoint(desktop) {
@@ -49,7 +61,7 @@
   bottom: 144px;
 
   @include breakpoint(tablet) {
-    bottom: 149px;
+    bottom: 215px;
   }
 
   @include breakpoint(laptop) {
