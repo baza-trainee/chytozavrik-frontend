@@ -3,14 +3,25 @@
 
 .wraper {
   margin-bottom: 24px;
+  grid-area: monster;
 
   @include breakpoint(tablet) {
     margin-bottom: 0;
+    height: 341px;
   }
+
+  @include breakpoint(laptop) {
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   @include breakpoint(desktop) {
-    margin-right: 24px;
+    height: 290px;
   }
 }
+
 
 .box {
   position: relative;
@@ -27,20 +38,21 @@
 
   @include breakpoint(tablet) {
     width: 332px;
-    margin-top: 171px;
+    height: 241px;
+    margin-top: 96px;
   }
 
   @include breakpoint(laptop) {
-    width: 368px;
-    height: 131px;
-    margin-top: 137px;
+    width: 298px;
+    height: 163px;
+    margin-top: 40px;
   }
 
   @include breakpoint(desktop) {
     width: 410px;
-    height: 155px;
-    margin-top: 147px;
-    margin-bottom: 40px;
+    height: 279px;
+    margin-top: 200px;
+    margin-bottom: 0;
   }
 }
 
@@ -48,16 +60,37 @@
   position: absolute;
   bottom: 144px;
 
+  & svg{
+    width: 194.997px;
+    height: 125.369px;
+  }
+
   @include breakpoint(tablet) {
-    bottom: 149px;
+    bottom: 215px;
+
+    & svg{
+      width: 156.913px;
+      height: 100.884px;
+    }
   }
 
   @include breakpoint(laptop) {
-    bottom: 110px;
+    bottom: 143px;
+    object-fit: cover;
+
+    & svg{
+      width: 136.59px;
+      height: 87.818px;
+    }
   }
 
   @include breakpoint(desktop) {
-    bottom: 132px;
+    bottom: 249px;
+
+    & svg{
+      width: 206.14px;
+      height: 132.534px;
+    }
   }
 }
 

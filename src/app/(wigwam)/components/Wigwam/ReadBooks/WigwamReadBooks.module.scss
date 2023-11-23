@@ -4,28 +4,38 @@
 .wraper {
   display: flex;
   align-items: center;
-  justify-content: space-around;
-
+  justify-content: space-between;
   width: 328px;
   height: 52px;
   padding: 12px;
   border-radius: 8px;
   border: 1px solid $primary;
+  grid-area: readedbooks;
 
   @include breakpoint(tablet) {
     width: 332px;
-
     margin-bottom: 0;
+
+    & img{
+      width: 38.402px;
+      height: 28px;
+    }
   }
   @include breakpoint(laptop) {
     width: 521px;
-    height: auto;
+    height: 64px;
     padding: 8px 16px;
+
+    & img{
+      width: 78.834px;
+      height: 48px;
+    }
   }
 
   @include breakpoint(desktop) {
     width: 411px;
     padding: 24px;
+
   }
 }
 

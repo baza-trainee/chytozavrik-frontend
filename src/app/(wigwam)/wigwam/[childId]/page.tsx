@@ -1,5 +1,3 @@
-import Container from 'components/common/Container/Container';
-import styles from './wigwam.module.scss'
 import WigwamReadBooks from '@/app/(wigwam)/components/Wigwam/ReadBooks';
 import WigwamQuiz from '@/app/(wigwam)/components/Wigwam/Quiz';
 import { BookType } from '@/types/WigwamBooks';
@@ -8,6 +6,8 @@ import { MonstersResponse } from '@/types/MonstersTypes';
 import { fetch } from '@/services/axios';
 import WigwamBooks from '@/app/(wigwam)/components/Wigwam/Books';
 import WigwamMyMonsters from '@/app/(wigwam)/components/Wigwam/Monsters';
+import Container from 'components/common/Container/Container';
+import styles from './wigwam.module.scss'
 
 
 
@@ -29,12 +29,16 @@ export default async function Wigwam({ params: { childId } }: WigwamProps) {
   return (
     <main>
       <Container className={styles.layout}>
-        <div className={styles.wraper}>
+
+        {/*<div className={styles.wrapper}>*/}
           <WigwamReadBooks />
           <WigwamQuiz />
-        </div>
+          <WigwamMyMonsters monstersData={monstersData} />
+        {/*</div>*/}
         <WigwamBooks booksReq={booksData} />
-        <WigwamMyMonsters monstersData={monstersData} />
+        <div className={styles.test}>
+          Recommended
+        </div>
       </Container>
     </main>
   );

@@ -26,7 +26,7 @@ const BookItem: FC<BookItemProps> = ({ item, selectedBooks, setBook }) => {
 
   return (
     <div className={styles.book_items}>
-      <div>
+      <div className={styles.book_about}>
         <p className={styles.book_name}>{item.book.title}</p>
         <p className={styles.book_author}>{item.book.author}</p>
         <div className={styles.book_counter_wraper}>
