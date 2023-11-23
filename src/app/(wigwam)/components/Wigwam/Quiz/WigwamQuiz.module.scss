@@ -60,16 +60,37 @@
   position: absolute;
   bottom: 144px;
 
+  & svg{
+    width: 194.997px;
+    height: 125.369px;
+  }
+
   @include breakpoint(tablet) {
     bottom: 215px;
+
+    & svg{
+      width: 156.913px;
+      height: 100.884px;
+    }
   }
 
   @include breakpoint(laptop) {
-    bottom: 110px;
+    bottom: 143px;
+    object-fit: cover;
+
+    & svg{
+      width: 136.59px;
+      height: 87.818px;
+    }
   }
 
   @include breakpoint(desktop) {
     bottom: 132px;
+
+    & svg{
+      width: 206.14px;
+      height: 132.534px;
+    }
   }
 }
 

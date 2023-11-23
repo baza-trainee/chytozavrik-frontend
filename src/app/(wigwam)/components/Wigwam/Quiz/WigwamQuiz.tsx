@@ -1,18 +1,18 @@
 'use client';
-import Image from 'next/image';
-import cat from 'public/images/wigwam-cat.png';
+
+import React from 'react';
 import styles from './WigwamQuiz.module.scss';
-import { Button } from 'components/common';
+import CatImage from '@/app/(wigwam)/components/Wigwam/Quiz/components/CatImage';
 
 const WigwamQuiz = () => {
-  const handleClick = () => {
-    console.log('start quiz');
-  };
 
   return (
     <div className={styles.wraper}>
+
       <div className={styles.box}>
-        <Image className={styles.image} src={cat} alt="cat" />
+        <div className={styles.image}>
+          <CatImage width={140} height={90} viewBox="0 0 140 90"/>
+        </div>
         <div className={styles.text_wraper}>
           <p className={styles.text_welcome}>Вітаємо у Вігвамі! </p>
           <p className={styles.text}>Обери книгу зі списку пройди вікторинута отримай читозаврика</p>

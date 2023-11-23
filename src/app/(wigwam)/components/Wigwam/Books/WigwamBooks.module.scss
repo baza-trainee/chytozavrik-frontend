@@ -89,7 +89,7 @@
 
 .input {
   width: 278px;
-  height: 42px;
+  height: 56px;
   border-radius: 8px;
   border: 2px solid $primary;
   outline: none;
@@ -123,7 +123,7 @@
 
 .icon_wraper {
   position: absolute;
-  top: 10px;
+  top: 15px;
   left: 16px;
   width: 24px;
   height: 24px;
@@ -135,7 +135,7 @@
 
 .icon_circle{
   position: absolute;
-  top: 10px;
+  top: 15px;
   right: 16px;
   width: 24px;
   height: 24px;
@@ -164,6 +164,7 @@
 
   @include breakpoint(tablet) {
     width: 285px;
+    height: 54px;
   }
   @include breakpoint(laptop) {
     width: 335px;
@@ -183,6 +184,7 @@
 
 .button_list {
   margin-top: 24px;
+  height: 155px;
   margin-bottom: 32px;
   padding-left: 11px;
   padding-right: 11px;
@@ -214,6 +216,7 @@
 
   @include breakpoint(tablet) {
     margin-bottom: 24px;
+    height: 173px;
   }
 }
 
@@ -221,14 +224,15 @@
   display: flex;
   justify-content: space-between;
   width: 278px;
-  height: 155px;
-  padding: 8px;
+  height: 74px;
+  padding: 7px;
   border-radius: 8px;
   background-color: $primary-next-variant;
   border: 2px solid $primary;
 
   @include breakpoint(tablet) {
     width: 285px;
+    height: 80px;
   }
 
   @include breakpoint(laptop) {
@@ -239,6 +243,27 @@
   @include breakpoint(desktop) {
     width: 364px;
   }
+}
+
+.book_about{
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.book_name {
+  font-family: var(--montserrat-alternates-font);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 120%;
+}
+
+.book_author {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 120%;
+  font-variant-numeric: lining-nums proportional-nums;
+  height: 13px;
 }
 
 .arrow {
@@ -261,20 +286,7 @@
   }
 }
 
-.book_name {
-  margin-bottom: 6px;
-  font-family: var(--montserrat-alternates-font);
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 120%;
-}
 
-.book_author {
-  margin-bottom: 6px;
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 120%;
-}
 
 .book_counter {
   margin-left: 8px;

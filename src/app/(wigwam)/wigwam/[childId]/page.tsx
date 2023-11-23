@@ -6,6 +6,8 @@ import { MonstersResponse } from '@/types/MonstersTypes';
 import { fetch } from '@/services/axios';
 import WigwamBooks from '@/app/(wigwam)/components/Wigwam/Books';
 import WigwamMyMonsters from '@/app/(wigwam)/components/Wigwam/Monsters';
+import Container from 'components/common/Container/Container';
+import styles from './wigwam.module.scss'
 
 
 
