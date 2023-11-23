@@ -1,15 +1,13 @@
 'use client';
 
 import { Fragment, useEffect, useState } from 'react';
-import { SubmitHandler, useForm } from 'react-hook-form';
-import Image from 'next/image';
-import { Search, MoveRight } from 'lucide-react';
+import { useForm } from 'react-hook-form';
+import { Search, MoveRight, XCircle } from 'lucide-react';
 import { Button, Typography } from '../../common';
-import BrainIcon from 'public/images/brain/brain.svg';
-import Tick from 'public/images/tick.svg';
 import styles from './WigwamBooks.module.scss';
 import { BookType} from '@/types/WigwamBooks';
 import BookItem from 'components/Wigwam/WigwamBooks/BookItem/BookItem';
+import NotFoundBook from 'components/Wigwam/WigwamBooks/NotFound/NotFoundBook';
 
 
 type FormValues = {
@@ -22,7 +20,7 @@ const defaultValues = {
 
 const WigwamBooks = ({ booksReq }: { booksReq: BookType[]}) => {
   const [selectedBooks, setSelectedBooks] = useState<{ [key: string]: boolean }>({});
-  const { watch , register } = useForm({
+  const { watch , register, setValue } = useForm({
     defaultValues
   });
 
@@ -36,10 +34,6 @@ const WigwamBooks = ({ booksReq }: { booksReq: BookType[]}) => {
     setFilteredBooks(matchedBooks);
   }, [searchTerm, booksReq]);
 
-  const showBooks = () => {
-    console.log('all books');
-  };
-
   const setBook = (id: string | number) => {
     setSelectedBooks(prevState => ({
       ...prevState,
@@ -48,13 +42,21 @@ const WigwamBooks = ({ booksReq }: { booksReq: BookType[]}) => {
     console.log('Book id: ', id);
   };
 
+  const clearSearch = () => {
+    setValue('search', '');
+    setFilteredBooks(booksReq);
+  };
+
   return (
     <div className={styles.books_container}>
       <Typography component="h2" variant="h2" className={styles.title}>
         Обери книгу для вікторини
       </Typography>
       <div className={styles.search_wraper}>
-        <form autoComplete="off">
+        <form autoComplete="off" className={styles.form}>
+          <div className={styles.icon_wraper}>
+            <Search className={styles.icon} stroke={"#7791FA"} />
+          </div>
           <input
             {...register('search', {
               required: true,
@@ -64,22 +66,23 @@ const WigwamBooks = ({ booksReq }: { booksReq: BookType[]}) => {
             placeholder="Швидкий пошук книги"
             autoFocus
           />
-          <div className={styles.icon_wraper}>
-            <Search className={styles.icon} />
-          </div>
+          {searchTerm &&
+            <div className={styles.icon_circle} onClick={clearSearch}>
+              <XCircle className={styles.icon} stroke={"#7791FA"} />
+            </div>}
         </form>
       </div>
-      <ul className={styles.button_list}>
-        {filteredBooks.map((item: BookType) => (
-          <Fragment key={item.id}>
-            <BookItem item={item} selectedBooks={selectedBooks} setBook={setBook} />
-          </Fragment>
-        ))}
-      </ul>
-
+      {filteredBooks.length > 1
+      ? <div className={styles.button_list}>
+          {filteredBooks.map((item: BookType) => (
+            <Fragment key={item.id}>
+              <BookItem item={item} selectedBooks={selectedBooks} setBook={setBook} />
+            </Fragment>
+          ))}
+        </div>
+      : <NotFoundBook/>}
       <Button
         className={styles.button}
-        onClick={showBooks}
         endIcon={<MoveRight />}
         variant="outline"
       >
