@@ -1,0 +1,140 @@
+@import 'scss/utils/variables';
+@import 'scss/utils/mixin';
+
+.wraper {
+  margin-bottom: 24px;
+  grid-area: monster;
+
+  @include breakpoint(tablet) {
+    margin-bottom: 0;
+    height: 341px;
+  }
+
+  @include breakpoint(laptop) {
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @include breakpoint(desktop) {
+    height: 290px;
+  }
+}
+
+
+.box {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 328px;
+  height: 171px;
+  margin-top: 162px;
+  background-color: $white;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.31);
+
+  @include breakpoint(tablet) {
+    width: 332px;
+    height: 241px;
+    margin-top: 96px;
+  }
+
+  @include breakpoint(laptop) {
+    width: 298px;
+    height: 163px;
+    margin-top: 40px;
+  }
+
+  @include breakpoint(desktop) {
+    width: 410px;
+    height: 279px;
+    margin-top: 200px;
+    margin-bottom: 0;
+  }
+}
+
+.image {
+  position: absolute;
+  bottom: 144px;
+
+  & svg{
+    width: 194.997px;
+    height: 125.369px;
+  }
+
+  @include breakpoint(tablet) {
+    bottom: 215px;
+
+    & svg{
+      width: 156.913px;
+      height: 100.884px;
+    }
+  }
+
+  @include breakpoint(laptop) {
+    bottom: 143px;
+    object-fit: cover;
+
+    & svg{
+      width: 136.59px;
+      height: 87.818px;
+    }
+  }
+
+  @include breakpoint(desktop) {
+    bottom: 249px;
+
+    & svg{
+      width: 206.14px;
+      height: 132.534px;
+    }
+  }
+}
+
+.text_wraper {
+  width: 312px;
+}
+
+.text_welcome {
+  margin-bottom: 16px;
+  text-align: center;
+  color: $secondary-black;
+  font-family: var(--montserrat-alternates-font);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.text {
+  text-align: center;
+  color: $secondary-black;
+  font-family: var(--montserrat-alternates-font);
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.button {
+  --button-pressd-color: #{getColor(yellow, 30)};
+
+  display: none;
+  background-color: $secondary;
+  color: $black;
+  transition: background-color 250ms;
+
+  &:hover {
+    background-color: $secondary-btn;
+  }
+
+  &:active {
+    background-color: var(--button-pressd-color);
+  }
+
+  @include breakpoint(desktop) {
+    display: block;
+    width: 410px;
+    height: 64px;
+    font-size: 20px;
+  }
+}
