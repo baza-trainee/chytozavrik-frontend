@@ -1,10 +1,12 @@
 import React from 'react';
+import MonstersList from '@/app/(wigwam)/wigwam/[childId]/awards/components/MonstersList';
+
 
 const Awards = () => {
   return (
-    <div>
-      awards page
-    </div>
+    <main>
+      <MonstersList/>
+    </main>
   );
 };
 

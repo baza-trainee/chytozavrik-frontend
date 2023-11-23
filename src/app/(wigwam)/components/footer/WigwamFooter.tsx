@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useMedia } from '@/hooks';
 import NavbarMobFooter from '@/app/(wigwam)/components/NavbarMobFooter/NavbarMobFooter';
 import { NextPage } from 'next';
@@ -10,10 +10,11 @@ interface Props {
 }
 
 const WigwamFooter: NextPage<Props> = ({childId}) => {
-  const {isMobile} = useMedia()
+  const {deviceType} = useMedia()
+
   return (
     <>
-      {isMobile && <NavbarMobFooter childId={childId}/>}
+      {deviceType === "mobile" && <NavbarMobFooter childId={childId}/>}
     </>
   );
 };

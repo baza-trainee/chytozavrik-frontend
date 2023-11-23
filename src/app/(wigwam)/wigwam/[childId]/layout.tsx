@@ -22,7 +22,7 @@ const montserratAlternates = Montserrat_Alternates({
   display: 'swap',
 });
 
-export default async function Layout({ children, params: {childId}}: { children: React.ReactNode, params: {
+export default function Layout({ children, params: {childId}}: { children: React.ReactNode, params: {
     childId: string
   } }) {
 

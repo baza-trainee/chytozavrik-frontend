@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link';
 import styles from './Navbar.module.scss';
 import classNames from 'classnames';
@@ -5,13 +7,13 @@ import Image from 'next/image';
 import { LogOut, Tent, Brain } from 'lucide-react';
 import Container from 'components/common/Container/Container';
 import { Typography } from 'components/common';
-import { NextPage } from 'next';
+import { FC } from 'react';
 
 interface Props {
   childId: string
 }
 
-const Navbar: NextPage<Props> = ({childId}) => {
+const Navbar: FC<Props> = ({childId}) => {
 
   return (
     <section className={styles.section}>
