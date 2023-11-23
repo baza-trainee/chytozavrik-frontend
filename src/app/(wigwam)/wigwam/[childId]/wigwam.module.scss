@@ -34,7 +34,8 @@
   @include breakpoint(desktop) {
     padding-top: 80px;
     padding-bottom: 120px;
-    flex-wrap: nowrap;
+    grid-template-rows: 80px 300px auto;
+    grid-template-areas: "books monster readedbooks" "books monster monsters" "books recommended recommended";
   }
 }
 
