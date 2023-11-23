@@ -1,5 +1,6 @@
 @import '@/scss/utils/func';
 @import '@/scss/utils/mixin';
+@import 'scss/utils/variables';
 
 :where(.container) {
   --padding-x: 16px;
