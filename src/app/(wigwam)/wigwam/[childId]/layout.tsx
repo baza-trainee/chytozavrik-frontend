@@ -2,7 +2,8 @@
 import WigwamProvider from '@/app/(wigwam)/components/Provider/WigmawProvider';
 import { Montserrat_Alternates, Raleway } from 'next/font/google';
 import WigwamHeader from '@/app/(wigwam)/components/header/WigwamHeader';
-import '../globals.scss';
+import '../../../globals.scss';
+import WigwamFooter from '@/app/(wigwam)/components/footer/WigwamFooter';
 
 
 const raleway = Raleway({
@@ -21,13 +22,17 @@ const montserratAlternates = Montserrat_Alternates({
   display: 'swap',
 });
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default async function Layout({ children, params: {childId}}: { children: React.ReactNode, params: {
+    childId: string
+  } }) {
+
   return (
     <html lang="uk" className={`${raleway.variable} ${montserratAlternates.variable}`}>
     <body>
     <WigwamProvider>
-      <WigwamHeader/>
+      <WigwamHeader childId={childId} />
       {children}
+      <WigwamFooter childId={childId}/>
     </WigwamProvider>
     </body>
     </html>

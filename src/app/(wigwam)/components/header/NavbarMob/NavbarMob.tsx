@@ -5,6 +5,8 @@ import classNames from 'classnames';
 import Image from 'next/image';
 import { LogOut } from 'lucide-react';
 import Container from 'components/common/Container/Container';
+import { NextPage } from 'next';
+
 
 const NavbarMob = () => {
   return (
