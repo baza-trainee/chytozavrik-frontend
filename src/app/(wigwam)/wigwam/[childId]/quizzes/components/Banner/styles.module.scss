@@ -41,8 +41,7 @@
       color: $sys-on-primary-variant;
       align-self: center;
       text-align: center;
-      /* Additional text 1 */
-      font-family: 'Montserrat Alternates', serif;
+      font-family: var(--montserrat-alternates-font);
       font-size: 14px;
       font-style: normal;
       font-weight: 600;
