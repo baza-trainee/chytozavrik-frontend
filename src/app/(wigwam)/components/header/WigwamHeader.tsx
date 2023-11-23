@@ -1,21 +1,20 @@
 'use client'
 
-import React from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import Navbar from '@/app/(wigwam)/components/header/Navbar/Navbar';
 import { useMedia } from '@/hooks';
 import NavbarMob from '@/app/(wigwam)/components/header/NavbarMob/NavbarMob';
-import { ChildType } from '@/types';
-import { NextPage } from 'next';
 
 
 interface WigwamHeaderProps {
   childId: string
 }
-const WigwamHeader: NextPage<WigwamHeaderProps> = ({childId} ) => {
-  const {isMobile} = useMedia()
+const WigwamHeader: FC<WigwamHeaderProps> = ({childId} ) => {
+  const {deviceType} = useMedia()
+
   return (
     <>
-      {isMobile ?<NavbarMob/> : <Navbar childId={childId}/>}
+      {deviceType === "mobile" ? <NavbarMob/> : <Navbar childId={childId}/>}
     </>
   );
 };

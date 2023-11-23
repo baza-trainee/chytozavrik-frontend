@@ -1,0 +1,25 @@
+@import 'scss/utils/variables';
+@import 'scss/utils/mixin';
+
+.wrapper {
+  background: $sys-on-primary-variant;
+  overflow: hidden;
+  height: calc(100vh - 81px);
+  position: relative;
+
+ .clouds {
+   position: absolute;
+   bottom: 0;
+   left: 0;
+ }
+
+  @include breakpoint(tablet) {
+    .rays{
+      width: 100%;
+    }
+  }
+  @include breakpoint(desktop) {
+
+  }
+
+}
