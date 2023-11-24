@@ -67,3 +67,17 @@
       font-size: 16px;
     }
 }
+
+:where(.text-navbar) {
+  @extend %title-footer;
+  color: #{getColor(blue, 40)};
+  font-size: 12px;
+  font-weight: 500;
+    @include breakpoint(tablet) {
+      font-size: 14px;
+    }
+
+  @include breakpoint(desktop) {
+    font-size: 16px;
+  }
+}

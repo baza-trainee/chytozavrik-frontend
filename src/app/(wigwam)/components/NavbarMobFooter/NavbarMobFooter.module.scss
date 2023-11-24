@@ -1,0 +1,27 @@
+@import "scss/utils/func";
+@import "scss/utils/mixin";
+
+.section {
+    background: getColor(blue, 90);
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+
+.link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90px;
+}
+
+.logo {
+    width: 32px;
+    height: 32px;
+    color: rgba(119, 145, 250, 1);
+}
+
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

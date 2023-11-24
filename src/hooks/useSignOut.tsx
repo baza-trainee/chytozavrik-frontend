@@ -1,3 +1,5 @@
+'use client'
+
 import { useState } from 'react';
 import { type SignOutParams, signOut as signOutLib } from 'next-auth/react';
 

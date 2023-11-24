@@ -6,9 +6,9 @@ type AppToken = TokenType & {
   error?: string | null;
 };
 
-type AppUser = DefaultUser & {
+interface AppUser extends DefaultUser{
   token: AppToken;
-};
+}
 
 declare module 'next-auth' {
   interface Session {
