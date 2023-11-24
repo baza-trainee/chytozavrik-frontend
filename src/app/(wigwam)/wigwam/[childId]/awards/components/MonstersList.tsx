@@ -13,7 +13,7 @@ const MonstersList = ({results}: {results: Monster[]}) => {
     <>
       {!showMonster
       ?<button onClick={showDetailsHandler}>AllMonsters</button>
-      :  <MonsterDetails results={results}/>}
+      :  <MonsterDetails results={results} setShowMonster={setShowMonster}/>}
     </>
   );
 };

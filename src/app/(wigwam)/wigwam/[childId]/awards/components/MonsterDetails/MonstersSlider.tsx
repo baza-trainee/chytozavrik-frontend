@@ -20,10 +20,9 @@ const MonstersSlider = ({ results }: { results: Monster[] }) => {
     setCurrentSlide((prevIndex) => (prevIndex - 1 + results.length) % results.length);
   };
 
-  console.log(results);
   return (
     <div className={styles.slider}>
-      <button className={styles.prev} onClick={goToPrev}><ArrowPrev /></button>
+      {results.length > 1 && <button className={styles.prev} onClick={goToPrev}><ArrowPrev /></button>}
       <div className={styles.images}>
         <Image
           src={results[currentSlide].reward}
@@ -32,7 +31,7 @@ const MonstersSlider = ({ results }: { results: Monster[] }) => {
           style={{objectFit: 'contain'}}
         />
       </div>
-      <button className={styles.next} onClick={goToNext}><ArrowNext /></button>
+      {results.length > 1 && <button className={styles.next} onClick={goToNext}><ArrowNext /></button>}
     </div>
   );
 };

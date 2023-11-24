@@ -5,12 +5,17 @@ import Cloud from '@/app/(wigwam)/wigwam/[childId]/awards/components/Images/Clou
 import Book from '@/app/(wigwam)/wigwam/[childId]/awards/components/Images/Book';
 import MonstersSlider
   from '@/app/(wigwam)/wigwam/[childId]/awards/components/MonsterDetails/MonstersSlider';
-import { Monster, MonstersResponse } from '@/types/MonstersTypes';
+import { Monster} from '@/types/MonstersTypes';
+import { MoveLeft } from 'lucide-react';
 
 
-const MonsterDetails = ({results}: {results: Monster[]}) => {
+const MonsterDetails = ({results, setShowMonster}: {results: Monster[], setShowMonster: React.Dispatch<React.SetStateAction<boolean>>;}) => {
   return (
     <section className={styles.wrapper}>
+      <button className={styles.button} onClick={() => setShowMonster(false)}>
+        <MoveLeft color={'#FFFFFF'}/>
+        До читозавриків
+      </button>
       <LightRays className={styles.rays} />
       <Cloud className={styles.clouds} />
       <Book className={styles.book}/>

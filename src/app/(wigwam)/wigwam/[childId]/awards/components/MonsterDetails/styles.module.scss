@@ -8,6 +8,29 @@
   position: relative;
   width: 100%;
 
+  .button {
+    display: inline-flex;
+    padding: 10px 20px 10px 18px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    color: #FFFFFF;
+    text-align: center;
+    font-family: var(--montserrat-alternates-font);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 120%;
+    position: absolute;
+    top: 24px;
+    border-radius: 8px;
+
+    & svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
   .clouds {
     position: absolute;
     bottom: -10px;
@@ -20,6 +43,7 @@
       height: 285px;
     }
   }
+
   .book {
     position: absolute;
     bottom: 48px;
@@ -29,8 +53,9 @@
     height: 158.41px;
   }
 
-  .slider{
-    .images{
+
+  .slider {
+    .images {
       position: absolute;
       bottom: 105px;
       left: 50%;
@@ -59,123 +84,149 @@
       z-index: 10;
     }
 
-    .prev{
+    .prev {
       left: 15px;
     }
 
-    .next{
+    .next {
       right: 15px;
     }
 
+
   }
+
   @include breakpoint(tablet) {
-    .rays {
-      width: 100%;
-    }
 
-    .slider{
-      .images{
-        bottom: 60px;
-        width: 167px;
-        height: 345px;
-
-      }
-
-      .prev, .next {
-        bottom: 45%;
-        width: 80px;
-        height: 80px;
-        padding: 24px;
-      }
-
-      .prev{
-        left: 40px;
-      }
-
-      .next{
-        right: 40px;
-      }
-    }
-    .book {
-      width: 688px;
-      height: 322.56px;
-    }
-  }
-
-  @include breakpoint(laptop) {
-
-    .book {
-      width: 822.684px;
-      height: 397.789px;
-      bottom: 24px;
-    }
-
-    .clouds{
-      left: 0;
-      transform: translateX(0%);
-    }
-
-    .slider{
-      .images{
-        bottom: 167px;
-        width: 338px;
-        height: 432px;
-
-      }
-
-      .prev, .next {
-        bottom: 50%;
-      }
-
-      .prev{
-        left: 60px;
-      }
-
-      .next{
-        right: 60px;
-      }
-    }
-
-  }
-
-  @include breakpoint(desktop) {
-    .clouds {
-      height: 285px;
+    .button {
+      padding: 16px 28px 16px 24px;
+      font-size: 18px;
+      left: 15px;
 
       & svg {
-        min-width: 1440px;
+        width: 24px;
+        height: 24px;
       }
     }
 
-    .book {
-      width: 1123px;
-      height: 543px;
+      .rays {
+        width: 100%;
+      }
+
+      .slider {
+        .images {
+          bottom: 60px;
+          width: 167px;
+          height: 345px;
+
+        }
+
+        .prev, .next {
+          bottom: 45%;
+          width: 80px;
+          height: 80px;
+          padding: 24px;
+        }
+
+        .prev {
+          left: 40px;
+        }
+
+        .next {
+          right: 40px;
+        }
+      }
+
+      .book {
+        width: 688px;
+        height: 322.56px;
+      }
     }
 
-    .slider{
-      .images{
-        bottom: 216px;
-        width: 432px;
-        height: 552px;
+    @include breakpoint(laptop) {
 
+      .button {
+        left: 35px;
       }
 
-      .prev, .next {
-        bottom: 50%;
-        width: 96px;
-        height: 96px;
+      .book {
+        width: 822.684px;
+        height: 397.789px;
+        bottom: 24px;
       }
 
-      .prev{
-        left: 80px;
+      .clouds {
+        left: 0;
+        transform: translateX(0%);
       }
 
-      .next{
-        right: 80px;
+      .slider {
+        .images {
+          bottom: 167px;
+          width: 338px;
+          height: 432px;
+
+        }
+
+        .prev, .next {
+          bottom: 50%;
+        }
+
+        .prev {
+          left: 60px;
+        }
+
+        .next {
+          right: 60px;
+        }
       }
+
     }
+
+    @include breakpoint(desktop) {
+
+      .button {
+        padding: 20px 36px 20px 28px;
+        font-size: 24px;
+        left: 85px;
+      }
+
+      .clouds {
+        height: 285px;
+
+        & svg {
+          min-width: 1440px;
+        }
+      }
+
+      .book {
+        width: 1123px;
+        height: 543px;
+      }
+
+      .slider {
+        .images {
+          bottom: 216px;
+          width: 432px;
+          height: 552px;
+
+        }
+
+        .prev, .next {
+          bottom: 50%;
+          width: 96px;
+          height: 96px;
+        }
+
+        .prev {
+          left: 80px;
+        }
+
+        .next {
+          right: 80px;
+        }
+      }
+
+    }
+
 
   }
-
-
-}
