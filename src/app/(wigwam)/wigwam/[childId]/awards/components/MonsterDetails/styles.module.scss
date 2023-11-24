@@ -30,21 +30,42 @@
   }
 
   .slider{
-    position: absolute;
-    width: 100%;
-    bottom: 238px;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 15px;
+
+    .images{
+      position: absolute;
+      bottom: 105px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 167px;
+      height: 213px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      flex-shrink: 0;
+    }
 
     .prev, .next {
+      position: absolute;
+      bottom: 238px;
       display: inline-flex;
+      width: 56px;
+      height: 56px;
       padding: 16px;
       justify-content: center;
       align-items: center;
       gap: 8px;
       border-radius: 8px;
       background: $secondary;
+      z-index: 10;
+    }
+
+    .prev{
+      left: 15px;
+    }
+
+    .next{
+      right: 15px;
     }
 
   }

@@ -12,3 +12,8 @@ export interface Monster {
       previous: string | null;
       results: Monster[];
   }
+
+
+  export interface MonstersResults {
+    results: Monster[];
+  }

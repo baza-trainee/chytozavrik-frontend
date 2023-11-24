@@ -5,16 +5,16 @@ import Cloud from '@/app/(wigwam)/wigwam/[childId]/awards/components/Images/Clou
 import Book from '@/app/(wigwam)/wigwam/[childId]/awards/components/Images/Book';
 import MonstersSlider
   from '@/app/(wigwam)/wigwam/[childId]/awards/components/MonsterDetails/MonstersSlider';
+import { Monster, MonstersResponse } from '@/types/MonstersTypes';
 
 
-const MonsterDetails = () => {
-
+const MonsterDetails = ({results}: {results: Monster[]}) => {
   return (
     <section className={styles.wrapper}>
       <LightRays className={styles.rays} />
       <Cloud className={styles.clouds} />
       <Book className={styles.book}/>
-      <MonstersSlider/>
+      <MonstersSlider results={results}/>
     </section>
   );
 };
