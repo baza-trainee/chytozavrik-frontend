@@ -30,7 +30,6 @@
   }
 
   .slider{
-
     .images{
       position: absolute;
       bottom: 105px;
@@ -74,7 +73,29 @@
       width: 100%;
     }
 
+    .slider{
+      .images{
+        bottom: 60px;
+        width: 167px;
+        height: 345px;
 
+      }
+
+      .prev, .next {
+        bottom: 45%;
+        width: 80px;
+        height: 80px;
+        padding: 24px;
+      }
+
+      .prev{
+        left: 40px;
+      }
+
+      .next{
+        right: 40px;
+      }
+    }
     .book {
       width: 688px;
       height: 322.56px;
@@ -93,6 +114,28 @@
       left: 0;
       transform: translateX(0%);
     }
+
+    .slider{
+      .images{
+        bottom: 167px;
+        width: 338px;
+        height: 432px;
+
+      }
+
+      .prev, .next {
+        bottom: 50%;
+      }
+
+      .prev{
+        left: 60px;
+      }
+
+      .next{
+        right: 60px;
+      }
+    }
+
   }
 
   @include breakpoint(desktop) {
@@ -108,6 +151,30 @@
       width: 1123px;
       height: 543px;
     }
+
+    .slider{
+      .images{
+        bottom: 216px;
+        width: 432px;
+        height: 552px;
+
+      }
+
+      .prev, .next {
+        bottom: 50%;
+        width: 96px;
+        height: 96px;
+      }
+
+      .prev{
+        left: 80px;
+      }
+
+      .next{
+        right: 80px;
+      }
+    }
+
   }
 
 
