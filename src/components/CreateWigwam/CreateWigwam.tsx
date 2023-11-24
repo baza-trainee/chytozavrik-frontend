@@ -10,7 +10,9 @@ import Avatar3 from '../../../public/images/kids-avatar3.svg';
 import Avatar4 from '../../../public/images/kids-avatar4.svg';
 import Avatar5 from '../../../public/images/kids-avatar5.svg';
 import Avatar6 from '../../../public/images/kids-avatar6.svg';
+import { useFetch } from '@/hooks';
 import { useEffect } from 'react';
+import { ChildType } from '@/types';
 
 type Props = {
   closeCreateWigwam: () => void;
@@ -34,11 +36,25 @@ export default function CreateWigwam({ closeCreateWigwam }: Props) {
     formState: { errors },
   } = useForm({ defaultValues });
 
-  
-  const onSubmit: SubmitHandler<FormData> = (data) => {
-  data.avatar = Number(data.avatar);
+ const { fetch } = useFetch<ChildType, FormData>(); 
+
+  const onSubmit: SubmitHandler<FormData> = (formData) => {
+  formData.avatar = Number(formData.avatar);
   closeCreateWigwam();
-  console.log(data);
+  createKidProfile(formData);
+  };
+ 
+
+  const createKidProfile = async (formData: FormData) => {
+
+try {
+    await fetch ('users/me/children/', 'POST', {
+        name: formData.name,
+        avatar: formData.avatar,
+      });
+  } catch (err) {
+    console.log(err);
+  }
   }
 
   useEffect(() => {
