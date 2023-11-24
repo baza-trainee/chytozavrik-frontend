@@ -36,26 +36,24 @@ export default function CreateWigwam({ closeCreateWigwam }: Props) {
     formState: { errors },
   } = useForm({ defaultValues });
 
- const { fetch } = useFetch<ChildType, FormData>(); 
+  const { fetch } = useFetch<ChildType, FormData>();
 
-  const onSubmit: SubmitHandler<FormData> = (formData) => {
-  formData.avatar = Number(formData.avatar);
-  closeCreateWigwam();
-  createKidProfile(formData);
+  const onSubmit: SubmitHandler<FormData> = formData => {
+    formData.avatar = Number(formData.avatar);
+    closeCreateWigwam();
+    createKidProfile(formData);
   };
- 
 
   const createKidProfile = async (formData: FormData) => {
-
-try {
-    await fetch ('users/me/children/', 'POST', {
+    try {
+      await fetch('users/me/children/', 'POST', {
         name: formData.name,
         avatar: formData.avatar,
       });
-  } catch (err) {
-    console.log(err);
-  }
-  }
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   useEffect(() => {
     resetField('name');
