@@ -6,20 +6,88 @@
   overflow: hidden;
   height: calc(100vh - 81px);
   position: relative;
+  width: 100%;
 
- .clouds {
-   position: absolute;
-   bottom: 0;
-   left: 0;
- }
+  .clouds {
+    position: absolute;
+    bottom: -10px;
+    left: 45%;
+    transform: translateX(-50%);
+    width: 100%;
 
-  @include breakpoint(tablet) {
-    .rays{
-      width: 100%;
+    & svg {
+      min-width: 1440px;
+      height: 285px;
     }
   }
-  @include breakpoint(desktop) {
+  .book {
+    position: absolute;
+    bottom: 48px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 327.616px;
+    height: 158.41px;
+  }
+
+  .slider{
+    position: absolute;
+    width: 100%;
+    bottom: 238px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 15px;
+
+    .prev, .next {
+      display: inline-flex;
+      padding: 16px;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      border-radius: 8px;
+      background: $secondary;
+    }
 
   }
+  @include breakpoint(tablet) {
+    .rays {
+      width: 100%;
+    }
+
+
+    .book {
+      width: 688px;
+      height: 322.56px;
+    }
+  }
+
+  @include breakpoint(laptop) {
+
+    .book {
+      width: 822.684px;
+      height: 397.789px;
+      bottom: 24px;
+    }
+
+    .clouds{
+      left: 0;
+      transform: translateX(0%);
+    }
+  }
+
+  @include breakpoint(desktop) {
+    .clouds {
+      height: 285px;
+
+      & svg {
+        min-width: 1440px;
+      }
+    }
+
+    .book {
+      width: 1123px;
+      height: 543px;
+    }
+  }
+
 
 }

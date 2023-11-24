@@ -5,7 +5,7 @@ import type { ChildType } from '@/types';
 import { Container, Typography } from 'components/common';
 import { Route } from '@/constants';
 import { Avatar1, Avatar2, Avatar3, Avatar4, Avatar5, Avatar6 } from '../Avatar';
-import catSad from 'public/images/cat-sad.svg';
+import catSad from 'public/images/cat/cat-sad.svg';
 import styles from './Lobby.module.scss';
 
 type Props = {

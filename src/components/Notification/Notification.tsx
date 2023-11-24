@@ -1,7 +1,7 @@
 'use client';
 import React, {useState} from 'react';
 import Image from 'next/image';
-import cat from '../../../public/images/cat.svg';
+import cat from 'public/images/cat/cat.svg';
 import { X } from 'lucide-react';
 import styles from './Notification.module.scss';
 

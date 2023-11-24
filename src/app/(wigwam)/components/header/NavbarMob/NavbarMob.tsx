@@ -14,7 +14,7 @@ const NavbarMob = () => {
       <Container>
         <div className={styles.wrapper}>
           <Image
-            src='/header-logo.svg'
+            src='/images/logo/header-logo.svg'
             width={29}
             height={24}
             alt='Logo'

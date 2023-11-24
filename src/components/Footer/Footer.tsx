@@ -22,14 +22,14 @@ const Footer = () => {
             <div className={styles.footerContainer}>
               <Link href="/" className={styles.logoContainer}>
                 <Image
-                  src="/logo-footer.svg"
+                  src="/images/logo/logo-footer.svg"
                   width={58}
                   height={50}
                   alt="Logo"
                   className={styles.logo}
                 />
                 <Image
-                  src="/chytozavryk-footer.svg"
+                  src="/images/logo/chytozavryk-footer.svg"
                   width={120}
                   height={16}
                   alt="Logo"
