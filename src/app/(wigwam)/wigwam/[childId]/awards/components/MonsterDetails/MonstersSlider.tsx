@@ -9,31 +9,62 @@ import Image from 'next/image';
 
 
 const MonstersSlider = ({ results }: { results: Monster[] }) => {
-
   const [currentSlide, setCurrentSlide] = useState(0)
-
   const goToNext = () => {
-    setCurrentSlide((prevIndex) => (prevIndex + 1) % results.length);
+    setCurrentSlide((prevSlide) => {
+      if (prevSlide === results.length - 1) {
+        return 0;
+      } else {
+        return prevSlide + 1;
+      }
+    });
   };
 
   const goToPrev = () => {
-    setCurrentSlide((prevIndex) => (prevIndex - 1 + results.length) % results.length);
+    setCurrentSlide((prevSlide) => {
+      if (prevSlide === 0) {
+        return results.length - 1;
+      } else {
+        return prevSlide - 1;
+      }
+    });
+  };
+
+  const sliderStyle = {
+    display: 'flex',
+    width: `${results.length * 100}%`,
+    transform: `translateX(-${currentSlide * (100 / results.length)}%)`,
+    transition: 'transform 1s ease',
+  };
+
+  const slideStyle = {
+    width: `${100 / results.length}%`,
+    flexShrink: 0,
   };
 
   return (
     <div className={styles.slider}>
       {results.length > 1 && <button className={styles.prev} onClick={goToPrev}><ArrowPrev /></button>}
-      <div className={styles.images}>
-        <Image
-          src={results[currentSlide].reward}
-          alt='Читозаврик'
-          fill
-          style={{objectFit: 'contain'}}
-        />
+      <div className={styles.slidesContainer} style={{overflow: 'hidden'}}>
+        <div className={styles.slides} style={sliderStyle}>
+         {results.map((result, index) =>
+           <div className={styles.slide} style={slideStyle} key={index}>
+             <Image
+               src={result.reward}
+               alt='Читозаврик'
+               width={100}
+               height={100}
+               style={{objectFit: 'contain', objectPosition: "bottom center", width: "100%", height: "100%"}}
+             />
+           </div>
+         )}
+       </div>
       </div>
+
       {results.length > 1 && <button className={styles.next} onClick={goToNext}><ArrowNext /></button>}
     </div>
   );
 };
 
 export default MonstersSlider;
+
