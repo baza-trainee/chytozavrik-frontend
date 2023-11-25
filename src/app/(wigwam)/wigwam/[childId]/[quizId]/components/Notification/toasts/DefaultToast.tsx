@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { Button, Typography } from '@/components/common';
-import catImage from 'public/images/cat-sad.svg';
+import catImage from 'public/images/cat/cat-sad.svg';
 import styles from './Toast.module.scss';
 
 type Props = {

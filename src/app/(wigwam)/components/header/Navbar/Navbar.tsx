@@ -21,7 +21,7 @@ const Navbar: FC<Props> = ({childId}) => {
         <div className={styles.wrapper}>
           <div className={styles.generalLogo}>
             <Image
-              src='/header-logo.svg'
+              src='/images/logo/header-logo.svg'
               width={40}
               height={40}
               alt='Logo'

@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { Button, Typography } from '@/components/common';
-import catImage from 'public/images/cat-congratulation.svg';
+import catImage from 'public/images/cat/cat-congratulation.svg';
 import styles from './Toast.module.scss';
 import { useConfetti } from '@/hooks';
 
