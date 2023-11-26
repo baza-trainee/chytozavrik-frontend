@@ -54,7 +54,7 @@ const NewPassword = () => {
       // clear error
       if (error) setError(null);
 
-      const result = await newPasswordService(uid, token, data.password, data.confirmPassword);
+      const result = await newPasswordService(data.password, data.confirmPassword, uid, token);
 
       if (result.status === 'fail' && result.data.message) {
         const errorMessages = Object.values(result.data.message).flat().join(', ');
