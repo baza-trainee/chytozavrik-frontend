@@ -1,20 +1,26 @@
 'use client'
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './styles.module.scss';
 import Link from 'next/link';
 import { Button } from 'components/common';
 
-const CookiesPanel = () => {
-  const [showPanel, setShowPanel] = useState(!checkCookiesConsent());
 
-  function checkCookiesConsent() {
+const CookiesPanel = () => {
+  const [showPanel, setShowPanel] = useState(false);
+
+  useEffect(() => {
+    const consentGiven = checkCookiesConsent()
+    setShowPanel(!consentGiven);
+  }, []);
+
+  const checkCookiesConsent = () => {
     const consentCookie = document.cookie
       .split('; ')
       .find(row => row.startsWith('cookies-consent='));
 
     return consentCookie ? consentCookie.split('=')[1] === 'true' : false;
-  }
+  };
 
   const handleOkClick = () => {
     setShowPanel(false);
