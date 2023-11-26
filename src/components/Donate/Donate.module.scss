@@ -3,7 +3,6 @@
 
 .section {
   background-color: $primary;
-
   background-image: url('/images/background-wave-reverse.svg'),
     url('/images/background-donate-wave.svg'), url('/images/background-donate-image.svg');
   background-repeat: repeat-x, no-repeat, no-repeat;
@@ -25,7 +24,6 @@
       url('/images/background-donate-wave.svg'), url('/images/background-donate-image.svg'),
       url('/images/background-donate-plane.svg'), url('/images/background-donate-curve-line.svg');
     background-repeat: repeat-x, no-repeat, no-repeat, no-repeat, no-repeat;
-
     background-position: center top, center calc(100% + 1px), calc(50% - 53px) calc(100% + 176px),
       -100px 178px, calc(100% + 10px) 35px;
     background-size: auto 102px, getBreakpoint(desktop), 1200px auto, 415px, 210px;

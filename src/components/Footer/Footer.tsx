@@ -87,8 +87,6 @@ const Footer = () => {
                       className={styles.informationMail}
                       component="p"
                       variant="footer-mail"
-                      
-                      
                     >
                       <Mail width={18} height={18} className={styles.image} ></Mail>
                       1111111@gmail.com

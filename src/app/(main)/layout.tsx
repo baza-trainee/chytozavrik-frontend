@@ -5,6 +5,7 @@ import '../globals.scss';
 import AppProvider from 'src/app/(main)/components/providers';
 import Header from '@/app/(main)/components/Header';
 import Footer from 'components/Footer/Footer';
+import CookiesPanel from 'components/Cookies/CookiesPanel';
 
 const raleway = Raleway({
   variable: '--raleway-font',
@@ -35,6 +36,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <Header />
       {children}
       <Footer />
+      <CookiesPanel/>
     </AppProvider>
     </body>
     </html>
