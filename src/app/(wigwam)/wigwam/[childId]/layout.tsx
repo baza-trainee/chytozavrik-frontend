@@ -4,6 +4,7 @@ import { Montserrat_Alternates, Raleway } from 'next/font/google';
 import WigwamHeader from '@/app/(wigwam)/components/header/WigwamHeader';
 import '../../../globals.scss';
 import WigwamFooter from '@/app/(wigwam)/components/footer/WigwamFooter';
+import CookiesPanel from 'components/Cookies/CookiesPanel';
 
 
 const raleway = Raleway({
@@ -33,6 +34,7 @@ export default function Layout({ children, params: {childId}}: { children: React
       <WigwamHeader childId={childId} />
       {children}
       <WigwamFooter childId={childId}/>
+      <CookiesPanel/>
     </WigwamProvider>
     </body>
     </html>
