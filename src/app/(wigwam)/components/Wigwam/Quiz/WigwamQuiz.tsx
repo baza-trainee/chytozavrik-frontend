@@ -15,7 +15,7 @@ const WigwamQuiz = () => {
         </div>
         <div className={styles.text_wraper}>
           <p className={styles.text_welcome}>Вітаємо у Вігвамі! </p>
-          <p className={styles.text}>Обери книгу зі списку пройди вікторинута отримай читозаврика</p>
+          <p className={styles.text}>Обери книгу зі списку пройди вікторину та отримай читозаврика</p>
         </div>
       </div>
     </div>
