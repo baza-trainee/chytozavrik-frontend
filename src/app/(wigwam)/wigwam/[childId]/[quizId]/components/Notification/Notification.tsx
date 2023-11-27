@@ -21,16 +21,17 @@ const Notification = ({ type = 'default', backdrop = false, children }: Props) =
     };
   }, []);
 
-  return createPortal(
+  const content = (
     <FocusTrap focusTrapOptions={{ initialFocus: false }}>
       <div className={styles.backdrop} datatype={type} data-backdrop={backdrop}>
         <div className={styles.content}>
           <Container>{children}</Container>
         </div>
       </div>
-    </FocusTrap>,
-    document.body
-  ) as ReactNode;
+    </FocusTrap>
+  );
+
+  return createPortal(content, document.body);
 };
 
 export default Notification;
