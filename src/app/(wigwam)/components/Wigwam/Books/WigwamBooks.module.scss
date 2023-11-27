@@ -216,7 +216,7 @@
 
   @include breakpoint(tablet) {
     margin-bottom: 24px;
-    height: 173px;
+    height: auto;
   }
 }
 
@@ -224,7 +224,6 @@
   display: flex;
   justify-content: space-between;
   width: 278px;
-  height: 74px;
   padding: 7px;
   border-radius: 8px;
   background-color: $primary-next-variant;
@@ -232,12 +231,10 @@
 
   @include breakpoint(tablet) {
     width: 285px;
-    height: 80px;
   }
 
   @include breakpoint(laptop) {
     width: 319px;
-    height: auto;
   }
 
   @include breakpoint(desktop) {
