@@ -30,7 +30,7 @@ const Notification = ({ type = 'default', backdrop = false, children }: Props) =
       </div>
     </FocusTrap>,
     document.body
-  );
+  ) as ReactNode;
 };
 
 export default Notification;
