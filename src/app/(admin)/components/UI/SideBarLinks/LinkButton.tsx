@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import Link from 'next/link';
 import styles from './LinkButton.module.scss';
+import { usePathname } from 'next/navigation';
 
 interface LinkButtonProps {
   href: string,
@@ -11,9 +12,9 @@ interface LinkButtonProps {
 }
 
 const LinkButton = ({ href, anchor, icon, iconOpen }: LinkButtonProps) => {
-
+  const pathname = usePathname();
   return (
-    <Link href={href} className={styles.link}>
+    <Link href={href} className={`${styles.link} ${pathname === href && styles.active}`} >
       <div>
         {icon}
       </div>

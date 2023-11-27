@@ -30,4 +30,17 @@
       stroke: $primary-variant;
     }
   }
+
+  &.active{
+    background: $white;
+    color: $primary;
+
+    & svg{
+      stroke: $primary;
+    }
+
+
+  }
+
+
 }

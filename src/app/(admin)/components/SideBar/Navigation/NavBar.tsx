@@ -16,10 +16,12 @@ import {
   BookMarked,
   ChevronUp, ChevronDown,
 } from 'lucide-react';
+import { usePathname } from 'next/navigation';
 
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(true);
+
 
   const openLinkHandler = (e: React.MouseEvent<SVGSVGElement>) => {
     e.preventDefault();
@@ -29,11 +31,14 @@ const NavBar = () => {
   const arrow = isOpen
     ? <ChevronUp color={'white'} onClick={(e) => openLinkHandler(e)} />
     :
-    <ChevronDown color={'white'} onClick={(e) => openLinkHandler(e)} />
+    <ChevronDown color={'white'} onClick={(e) => openLinkHandler(e)} />;
 
-      return (
-      <nav className={styles.navigation}>
-      <LinkButton href={Route.USERS} anchor={'Користувачі'} icon={<UsersIcon color={'white'} />} />
+  return (
+    <nav className={styles.navigation}>
+      <LinkButton href='/admin'
+                  anchor={'Користувачі'}
+                  icon={<UsersIcon color={'white'}/>}
+      />
       <LinkButton href={Route.BOOKS} anchor={'Книги'} icon={<Book color={'white'} />} iconOpen={arrow} />
       {isOpen &&
         <>
@@ -47,7 +52,7 @@ const NavBar = () => {
       <LinkButton href={Route.STATS} anchor={'Статистика'} icon={<PieChart color={'white'} />} />
       <LinkButton href={Route.CHANGE_PASS} anchor={'Змінити пароль'} icon={<LockKeyhole color={'white'} />} />
     </nav>
-)
+  );
 };
 
 export default NavBar;
