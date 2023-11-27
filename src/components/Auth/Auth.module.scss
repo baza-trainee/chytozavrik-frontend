@@ -15,6 +15,7 @@
   @include breakpoint(tablet) {
     --py: 32px;
     --px: 24px;
+    max-width: 480px;
   }
 }
 
@@ -34,11 +35,9 @@
 
   height: 100%;
 
-  @include breakpoint(tablet) {
-  }
+  @include breakpoint(tablet) {}
 
-  @include breakpoint(desktop) {
-  }
+  @include breakpoint(desktop) {}
 }
 
 .inputs-group {
@@ -84,6 +83,7 @@
 }
 
 .link {
+
   &:hover,
   &:focus {
     text-decoration: underline;
@@ -118,8 +118,7 @@
   height: var(--error-icon-size);
 }
 
-.error-message {
-}
+.error-message {}
 
 .button-submit {
   width: 100%;

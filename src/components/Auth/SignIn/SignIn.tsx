@@ -107,9 +107,9 @@ const SignIn = () => {
           />
         </div>
 
-        {/* <AuthLink className={styles['forgot-password']} href={Route.FORGOT_PASSWORD}>
+        <AuthLink className={styles['forgot-password']} href={Route.RESET_PASSWORD}>
           Забули пароль?
-        </AuthLink> */}
+        </AuthLink>
 
         <div className={styles['checkboxes-groups']}>
           <Checkbox name="rememberMe" control={control}>
