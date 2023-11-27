@@ -23,7 +23,7 @@ const Notification = ({ type = 'default', backdrop = false, children }: Props) =
 
   return createPortal(
     <FocusTrap focusTrapOptions={{ initialFocus: false }}>
-      <div className={styles.backdrop} data-type={type} data-backdrop={backdrop}>
+      <div className={styles.backdrop} datatype={type} data-backdrop={backdrop}>
         <div className={styles.content}>
           <Container>{children}</Container>
         </div>
