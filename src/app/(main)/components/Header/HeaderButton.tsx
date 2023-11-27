@@ -13,18 +13,30 @@ const HeaderButton = () => {
   const path = usePathname();
   const { signOut } = useSignOut();
   const isPartners = path.includes(Route.PARENTS);
+  const isLobby = path.includes(Route.WIGWAM_LOBBY);
 
   if (session.status === 'loading') return null;
 
   if (session.status === 'authenticated') {
-    if (isPartners) {
+    if (isLobby) {
+      return (
+        <Button
+          className={styles.buttonOut}
+          variant="outline"
+          component={'link'}
+          href={Route.PARENTS}
+        >
+          Вихід
+        </Button>
+      );
+    } else if (isPartners) {
       return (
         <Button
           className={styles.buttonOut}
           variant="outline"
           onClick={() => signOut({ callbackUrl: Route.HOME })}
         >
-          Вихід
+          Вийти
         </Button>
       );
     } else {
