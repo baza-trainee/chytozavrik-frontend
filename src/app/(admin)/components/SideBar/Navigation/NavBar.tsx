@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { ReactNode, useState } from 'react';
 import LinkButton from '@/app/(admin)/components/UI/SideBarLinks/LinkButton';
 import { Route } from '@/constants';
 import styles from './NavBar.module.scss';
@@ -16,22 +16,50 @@ import {
   BookMarked,
   ChevronUp, ChevronDown,
 } from 'lucide-react';
-import { usePathname } from 'next/navigation';
+import { useRouter } from 'next/navigation';
+import { MenuItemsType } from '@/types';
 
+type MenuItemNames = 'books' | 'quizzes' | 'recommended';
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(true);
+  const router = useRouter()
+  const [activeMenuItem, setActiveMenuItem] = useState<ActiveMenuItem>('books');
+  const menuItems: MenuItemsType = {
+    books: {
+      href: Route.BOOKS,
+      icon: <Book color={'white'} />,
+      anchor: "Книги"
+    },
+    quizzes: {
+      href: Route.QUIZZES,
+      icon: <Brain strokeWidth={3} color={'white'} />,
+      anchor: "Вікторини"
+    },
+    recommended: {
+      href: Route.RECOMMENDED,
+      icon: <BookMarked color={'white'} />,
+      anchor: "Рекомендовані"
+    },
+  };
 
+  type ActiveMenuItem = keyof typeof menuItems;
 
-  const openLinkHandler = (e: React.MouseEvent<SVGSVGElement>) => {
-    e.preventDefault();
+  const toggleDropdown  = (e: React.MouseEvent<SVGSVGElement>) => {
+    e.stopPropagation();
     setIsOpen(!isOpen);
   };
 
+  const openLinkHandler = (menuItemName: MenuItemNames) => {
+    setActiveMenuItem(menuItemName);
+    router.push(menuItems[menuItemName].href)
+    setIsOpen(false);
+  }
+
   const arrow = isOpen
-    ? <ChevronUp color={'white'} onClick={(e) => openLinkHandler(e)} />
+    ? <ChevronUp color={'white'} onClick={toggleDropdown} />
     :
-    <ChevronDown color={'white'} onClick={(e) => openLinkHandler(e)} />;
+    <ChevronDown color={'white'} onClick={toggleDropdown} />;
 
   return (
     <nav className={styles.navigation}>
@@ -39,13 +67,26 @@ const NavBar = () => {
                   anchor={'Користувачі'}
                   icon={<UsersIcon color={'white'}/>}
       />
-      <LinkButton href={Route.BOOKS} anchor={'Книги'} icon={<Book color={'white'} />} iconOpen={arrow} />
-      {isOpen &&
-        <>
-          <LinkButton href={Route.QUIZZES} anchor={'Вікторини'} icon={<Brain strokeWidth={3} color={'white'} />} />
-          <LinkButton href={Route.RECOMMENDED} anchor={'Рекомендовані'} icon={<BookMarked color={'white'} />} />
-        </>
-      }
+      <LinkButton
+        component={'button'}
+        href={menuItems[activeMenuItem].href}
+        anchor={menuItems[activeMenuItem].anchor}
+        icon={menuItems[activeMenuItem].icon}
+        iconOpen={arrow}
+        onClick={() => openLinkHandler(activeMenuItem)}
+      />
+      {isOpen && (Object.keys(menuItems) as Array<keyof MenuItemsType>).map((itemName) => (
+        itemName !== activeMenuItem && (
+          <LinkButton
+            key={itemName}
+            component={'button'}
+            href={menuItems[itemName].href}
+            anchor={menuItems[itemName].anchor}
+            icon={menuItems[itemName].icon}
+            onClick={() => openLinkHandler(itemName)}
+          />
+        )
+      ))}
       <LinkButton href={Route.DOCUMENTS} anchor={'Документи'} icon={<File color={'white'} />} />
       <LinkButton href={Route.PARTNERS} anchor={'Партнери'} icon={<Briefcase color={'white'} />} />
       <LinkButton href={Route.CONTACTS} anchor={'Контакти'} icon={<UserSquare color={'white'} />} />

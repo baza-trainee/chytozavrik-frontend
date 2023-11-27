@@ -1,31 +1,73 @@
-import React, { ReactNode } from 'react';
+import React, { ButtonHTMLAttributes, MouseEventHandler, ReactNode } from 'react';
 import Link from 'next/link';
 import styles from './LinkButton.module.scss';
 import { usePathname } from 'next/navigation';
+import { LinkProps as NextLinkProps } from 'next/dist/client/link';
 
-interface LinkButtonProps {
+type LinkProps = NextLinkProps & {
+  component?: 'link';
+};
+
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+  component?: 'button';
+};
+
+type LinkButtonProps = {
   href: string,
   anchor: string,
   icon: ReactNode,
-  iconOpen?: ReactNode
+  iconOpen?: ReactNode,
+} & (LinkProps | ButtonProps)
 
-}
-
-const LinkButton = ({ href, anchor, icon, iconOpen }: LinkButtonProps) => {
+const LinkButton = (props : LinkButtonProps) => {
   const pathname = usePathname();
-  return (
-    <Link href={href} className={`${styles.link} ${pathname === href && styles.active}`} >
-      <div>
-        {icon}
-      </div>
-      {anchor}
-      {iconOpen &&
+
+  const children = (
+    <>
+      <div>{props.icon}</div>
+      {props.anchor}
+      {props.iconOpen &&
         <div className={styles.arrow}>
-          {iconOpen}
+          {props.iconOpen}
         </div>
       }
-    </Link>
+    </>
   );
+
+  if (props.component === 'link') {
+    const {
+      href,
+      anchor,
+      icon,
+      iconOpen,
+      ...otherProps
+    } = props;
+
+    return (
+      <Link href={href} className={`${styles.link} ${pathname === href && styles.active}`} {...otherProps}>
+        {children}
+      </Link>
+    )
+
+  } else {
+    const {
+      href,
+      anchor,
+      icon,
+      iconOpen,
+      ...otherProps
+    } = props;
+
+    return (
+      <button
+        type="button"
+        className={`${styles.link} ${pathname === href && styles.active}`}
+        {...(otherProps as ButtonHTMLAttributes<HTMLButtonElement>)}>
+        {children}
+      </button>
+    )
+  }
+
 };
 
 export default LinkButton;
