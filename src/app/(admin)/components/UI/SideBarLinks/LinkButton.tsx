@@ -1,11 +1,11 @@
-import React, { ButtonHTMLAttributes, MouseEventHandler, ReactNode } from 'react';
+import React, { ButtonHTMLAttributes, ReactNode } from 'react';
 import Link from 'next/link';
 import styles from './LinkButton.module.scss';
 import { usePathname } from 'next/navigation';
 import { LinkProps as NextLinkProps } from 'next/dist/client/link';
 
 type LinkProps = NextLinkProps & {
-  component?: 'link';
+  component: 'link';
 };
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {

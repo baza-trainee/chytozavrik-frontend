@@ -23,38 +23,38 @@ type MenuItemNames = 'books' | 'quizzes' | 'recommended';
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(true);
-  const router = useRouter()
+  const router = useRouter();
   const [activeMenuItem, setActiveMenuItem] = useState<ActiveMenuItem>('books');
   const menuItems: MenuItemsType = {
     books: {
       href: Route.BOOKS,
       icon: <Book color={'white'} />,
-      anchor: "Книги"
+      anchor: 'Книги',
     },
     quizzes: {
       href: Route.QUIZZES,
       icon: <Brain strokeWidth={3} color={'white'} />,
-      anchor: "Вікторини"
+      anchor: 'Вікторини',
     },
     recommended: {
       href: Route.RECOMMENDED,
       icon: <BookMarked color={'white'} />,
-      anchor: "Рекомендовані"
+      anchor: 'Рекомендовані',
     },
   };
 
   type ActiveMenuItem = keyof typeof menuItems;
 
-  const toggleDropdown  = (e: React.MouseEvent<SVGSVGElement>) => {
+  const toggleDropdown = (e: React.MouseEvent<SVGSVGElement>) => {
     e.stopPropagation();
     setIsOpen(!isOpen);
   };
 
   const openLinkHandler = (menuItemName: MenuItemNames) => {
     setActiveMenuItem(menuItemName);
-    router.push(menuItems[menuItemName].href)
+    router.push(menuItems[menuItemName].href);
     setIsOpen(false);
-  }
+  };
 
   const arrow = isOpen
     ? <ChevronUp color={'white'} onClick={toggleDropdown} />
@@ -65,7 +65,8 @@ const NavBar = () => {
     <nav className={styles.navigation}>
       <LinkButton href='/admin'
                   anchor={'Користувачі'}
-                  icon={<UsersIcon color={'white'}/>}
+                  icon={<UsersIcon color={'white'} />}
+                  component={'link'}
       />
       <LinkButton
         component={'button'}
@@ -87,11 +88,11 @@ const NavBar = () => {
           />
         )
       ))}
-      <LinkButton href={Route.DOCUMENTS} anchor={'Документи'} icon={<File color={'white'} />} />
-      <LinkButton href={Route.PARTNERS} anchor={'Партнери'} icon={<Briefcase color={'white'} />} />
-      <LinkButton href={Route.CONTACTS} anchor={'Контакти'} icon={<UserSquare color={'white'} />} />
-      <LinkButton href={Route.STATS} anchor={'Статистика'} icon={<PieChart color={'white'} />} />
-      <LinkButton href={Route.CHANGE_PASS} anchor={'Змінити пароль'} icon={<LockKeyhole color={'white'} />} />
+      <LinkButton component={'link'} href={Route.DOCUMENTS} anchor={'Документи'} icon={<File color={'white'} />} />
+      <LinkButton component={'link'} href={Route.PARTNERS} anchor={'Партнери'} icon={<Briefcase color={'white'} />} />
+      <LinkButton component={'link'} href={Route.CONTACTS} anchor={'Контакти'} icon={<UserSquare color={'white'} />} />
+      <LinkButton component={'link'} href={Route.STATS} anchor={'Статистика'} icon={<PieChart color={'white'} />} />
+      <LinkButton component={'link'} href={Route.CHANGE_PASS} anchor={'Змінити пароль'} icon={<LockKeyhole color={'white'} />} />
     </nav>
   );
 };
