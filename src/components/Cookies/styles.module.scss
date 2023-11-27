@@ -2,8 +2,8 @@
 @import 'scss/utils/mixin';
 
 .cookies{
-  position: absolute;
-  top: 252px;
+  position: fixed;
+  bottom: 257px;
   left: 16px;
   right: 16px;
   background: $on-next-primary-variant;
@@ -41,7 +41,7 @@
   }
 
   @include breakpoint(tablet) {
-    top: 346px;
+    bottom: 374px;
     left: 40px;
     right: 40px;
     gap: 44px;
@@ -55,7 +55,7 @@
   }
 
   @include breakpoint(laptop) {
-    top: 574px;
+    bottom: 85px;
     left: 60px;
     right: 60px;
     flex-direction: row;
@@ -70,12 +70,14 @@
   }
 
   @include breakpoint(desktop) {
-    top: 814px;
+    bottom: 60px;
     left: 80px;
     right: 80px;
     flex-direction: row;
     padding: 48px 100px;
     gap: 36px;
+    width: 1280px;
+    height: 167px;
 
     & button {
       align-self: center;
