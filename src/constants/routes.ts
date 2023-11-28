@@ -9,4 +9,13 @@ export enum Route {
   WIGWAM = '/wigwam',
   WIGWAM_LOBBY = '/parents/lobby',
   PARENTS = '/parents',
+  USERS = '/admin/users',
+  BOOKS = '/admin/books',
+  QUIZZES = '/admin/quizzes',
+  RECOMMENDED = '/admin/recommended',
+  DOCUMENTS = '/admin/documents',
+  PARTNERS = '/admin/partners',
+  CONTACTS = '/admin/contacts',
+  STATS = '/admin/statistics',
+  CHANGE_PASS = '/admin/change-password'
 }
