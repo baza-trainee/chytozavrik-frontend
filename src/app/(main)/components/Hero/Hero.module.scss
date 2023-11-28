@@ -31,6 +31,7 @@
     background-position: calc(50% + 50px) calc(100% - 17px);
     background-size: auto 342px;
     vector-effect: non-scaling-stroke;
+    transform: translate3d(0,0,0)
   }
 
   @include breakpoint(tablet) {
