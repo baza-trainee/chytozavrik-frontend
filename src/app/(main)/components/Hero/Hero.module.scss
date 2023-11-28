@@ -21,9 +21,7 @@
 
   &::before {
     bottom: -1px;
-
     height: 76px;
-
     background-color: getColor(blue, 90);
   }
 
@@ -32,6 +30,7 @@
     background-repeat: no-repeat;
     background-position: calc(50% + 50px) calc(100% - 17px);
     background-size: auto 342px;
+    vector-effect: non-scaling-stroke;
   }
 
   @include breakpoint(tablet) {
