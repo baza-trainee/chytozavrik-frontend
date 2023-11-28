@@ -11,13 +11,13 @@ import {
   Briefcase,
   UserSquare,
   PieChart,
-  LockKeyhole,
-  Brain,
   BookMarked,
   ChevronUp, ChevronDown,
 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { MenuItemsType } from '@/types';
+import LockIcon from '@/app/(admin)/components/SideBar/NavIcons/LockIcon';
+import Neurology from '@/app/(admin)/components/SideBar/NavIcons/Neurology';
 
 type MenuItemNames = 'books' | 'quizzes' | 'recommended';
 
@@ -33,7 +33,7 @@ const NavBar = () => {
     },
     quizzes: {
       href: Route.QUIZZES,
-      icon: <Brain strokeWidth={3} color={'white'} />,
+      icon: <Neurology/>,
       anchor: 'Вікторини',
     },
     recommended: {
@@ -92,7 +92,7 @@ const NavBar = () => {
       <LinkButton component={'link'} href={Route.PARTNERS} anchor={'Партнери'} icon={<Briefcase color={'white'} />} />
       <LinkButton component={'link'} href={Route.CONTACTS} anchor={'Контакти'} icon={<UserSquare color={'white'} />} />
       <LinkButton component={'link'} href={Route.STATS} anchor={'Статистика'} icon={<PieChart color={'white'} />} />
-      <LinkButton component={'link'} href={Route.CHANGE_PASS} anchor={'Змінити пароль'} icon={<LockKeyhole color={'white'} />} />
+      <LinkButton component={'link'} href={Route.CHANGE_PASS} anchor={'Змінити пароль'} icon={<LockIcon/>} />
     </nav>
   );
 };
