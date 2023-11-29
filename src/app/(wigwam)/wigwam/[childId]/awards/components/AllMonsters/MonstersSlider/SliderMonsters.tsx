@@ -28,7 +28,7 @@ const SliderMonsters =  ({ results, onMonsterClick }: { results: Monster[]; onMo
   const goToPrev = () => sliderRef.current && sliderRef.current.slickPrev();
 
   const processedResults = results.map(({ id, reward }) => ({ id, reward }));
-  while (processedResults.length % 14 !== 0) {
+  while (processedResults.length % 12 !== 0) {
     processedResults.push({ id: 'placeholder', reward: '/images/monsters/monsters-avatar.svg' });
   }
 

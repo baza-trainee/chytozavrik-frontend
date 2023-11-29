@@ -16,8 +16,8 @@ const MonstersList = ({results}: {results: Monster[]}) => {
   return (
     <>
       {!showMonster
-      ? <AllMonsters results={results} onMonsterClick={showDetailsHandler} />
-      :  <MonsterDetails monsterId={selectedMonsterId} results={results} setShowMonster={setShowMonster}  />}
+        ? <AllMonsters results={results} onMonsterClick={showDetailsHandler} />
+        :  <MonsterDetails monsterId={selectedMonsterId} results={results} setShowMonster={setShowMonster}  />}
     </>
   );
 };

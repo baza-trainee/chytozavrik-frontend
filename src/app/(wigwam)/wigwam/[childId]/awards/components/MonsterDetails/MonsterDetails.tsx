@@ -20,7 +20,6 @@ const MonsterDetails = ({results, setShowMonster, monsterId}: {results: Monster[
       <Cloud className={styles.clouds} />
       <Book className={styles.book}/>
       <MonstersSlider results={results} monsterId={monsterId}/>
-      
     </section>
   );
 };

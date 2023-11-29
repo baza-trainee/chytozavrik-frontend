@@ -9,7 +9,7 @@ const NextArrow: React.FC<CustomArrowProps> = ({ className, style, onClick }) =>
       style={{ ...style}}
       onClick={onClick}
     >
-      <Image src={'/images/monsters/wigwam-next.svg'} alt={'наступний'} width={61} height={64} />
+      <Image src={'/images/monsters/wigwam-next.svg'} quality={100} alt={'наступний'} width={61} height={64} />
     </div>
   );
 };
