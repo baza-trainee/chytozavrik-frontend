@@ -11,10 +11,21 @@ export interface BookType {
   },
 }
 
+
 export interface BooksResponse {
-  data: BookType[];
-  status: string;
+  count: number;
+  next: string | null;
+  previous: string | null;
+  results: BookType[];
+
 }
+
+export interface BooksResults {
+  results: BookType[];
+}
+
+
+
 
 export interface ErrorType {
   message: string;

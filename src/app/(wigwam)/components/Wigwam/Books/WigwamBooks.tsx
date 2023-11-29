@@ -19,21 +19,21 @@ const defaultValues = {
   search: '',
 };
 
-const WigwamBooks = ({ booksReq }: { booksReq: BookType[]}) => {
+const WigwamBooks = ({ booksData }: { booksData: BookType[]}) => {
   const [selectedBooks, setSelectedBooks] = useState<{ [key: string]: boolean }>({});
   const { watch , register, setValue } = useForm({
     defaultValues
   });
 
-  const [filteredBooks, setFilteredBooks] = useState(booksReq);
+  const [filteredBooks, setFilteredBooks] = useState<BookType[]>(booksData);
   const searchTerm = watch('search');
 
   useEffect(() => {
-    const matchedBooks = booksReq.filter((entry) =>
+    const matchedBooks = booksData?.filter((entry) =>
       entry.book.title.toLowerCase().includes(searchTerm?.toLowerCase() || '') || entry.book.author.toLowerCase().includes(searchTerm?.toLowerCase() || '')
     );
     setFilteredBooks(matchedBooks);
-  }, [searchTerm, booksReq]);
+  }, [searchTerm, booksData]);
 
   const setBook = (id: string | number) => {
     setSelectedBooks(prevState => ({
@@ -45,7 +45,7 @@ const WigwamBooks = ({ booksReq }: { booksReq: BookType[]}) => {
 
   const clearSearch = () => {
     setValue('search', '');
-    setFilteredBooks(booksReq);
+    setFilteredBooks(booksData);
   };
 
   return (
@@ -73,9 +73,9 @@ const WigwamBooks = ({ booksReq }: { booksReq: BookType[]}) => {
             </div>}
         </form>
       </div>
-      {filteredBooks.length > 1
+      {filteredBooks?.length > 1
       ? <div className={styles.button_list}>
-          {filteredBooks.map((item: BookType) => (
+          {filteredBooks?.map((item: BookType) => (
             <Fragment key={item.id}>
               <BookItem item={item} selectedBooks={selectedBooks} setBook={setBook} />
             </Fragment>
