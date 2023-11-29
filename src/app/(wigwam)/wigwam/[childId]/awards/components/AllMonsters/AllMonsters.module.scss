@@ -8,6 +8,8 @@
   position: relative;
   overflow: hidden;
 
+
+
   .clouds {
     background-image: url('/images/monsters/clouds-dark.svg'), url('/images/monsters/clouds-light.svg');
     background-repeat: repeat-x, repeat-x;
@@ -78,4 +80,67 @@
   }
 
 
+}
+
+.wrapper{
+
+  margin-top: 98px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  .buttons{
+    position: relative;
+    width: 100vw;
+    height: 64px;
+    z-index: 999;
+    padding-left: 16px;
+    padding-right: 16px;
+
+    .prev{
+      position: absolute;
+      left: 16px;
+      bottom: 0;
+    }
+
+    .next{
+      position: absolute;
+      right: 16px;
+      bottom: 0;
+    }
+  }
+
+  .slide{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-left: 16px;
+    margin-right: 16px;
+    gap: 36px 42px;
+
+    .monsterIcon {
+      width: 80px;
+      height: 80px;
+      border-radius: 100px;
+      background-image: url("/images/monsters/green-bg.svg");
+      background-repeat: no-repeat;
+      background-position: bottom;
+      background-color:  #C7E1FF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .monsterPresent{
+        width: 60px;
+        height: 50px;
+
+        & img{
+          object-fit: contain;
+          object-position: center;
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
 }

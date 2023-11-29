@@ -8,8 +8,11 @@ import { Monster } from '@/types/MonstersTypes';
 import Image from 'next/image';
 
 
-const MonstersSlider = ({ results }: { results: Monster[] }) => {
-  const [currentSlide, setCurrentSlide] = useState(0)
+const MonstersSlider = ({ results, monsterId }: { results: Monster[], monsterId:number | string | null }) => {
+
+  const initialIndex = results.findIndex(monster => monster.id === monsterId);
+  const [currentSlide, setCurrentSlide] = useState(initialIndex >= 0 ? initialIndex : 0);
+
   const goToNext = () => {
     setCurrentSlide((prevSlide) => {
       if (prevSlide === results.length - 1) {

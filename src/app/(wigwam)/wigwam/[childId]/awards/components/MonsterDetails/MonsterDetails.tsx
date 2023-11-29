@@ -9,7 +9,7 @@ import { Monster} from '@/types/MonstersTypes';
 import { MoveLeft } from 'lucide-react';
 
 
-const MonsterDetails = ({results, setShowMonster}: {results: Monster[], setShowMonster: React.Dispatch<React.SetStateAction<boolean>>;}) => {
+const MonsterDetails = ({results, setShowMonster, monsterId}: {results: Monster[], monsterId:number | string | null,  setShowMonster: React.Dispatch<React.SetStateAction<boolean>>;}) => {
   return (
     <section className={styles.wrapper}>
       <button className={styles.button} onClick={() => setShowMonster(false)}>
@@ -19,7 +19,7 @@ const MonsterDetails = ({results, setShowMonster}: {results: Monster[], setShowM
       <LightRays className={styles.rays} />
       <Cloud className={styles.clouds} />
       <Book className={styles.book}/>
-      <MonstersSlider results={results}/>
+      <MonstersSlider results={results} monsterId={monsterId}/>
       
     </section>
   );

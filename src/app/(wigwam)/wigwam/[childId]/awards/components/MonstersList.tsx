@@ -7,14 +7,17 @@ import AllMonsters from '@/app/(wigwam)/wigwam/[childId]/awards/components/AllMo
 
 const MonstersList = ({results}: {results: Monster[]}) => {
   const [showMonster, setShowMonster] = useState(false)
-  const showDetailsHandler = () => {
-    setShowMonster(!showMonster)
-  }
+  const [selectedMonsterId, setSelectedMonsterId] = useState<number | string | null>(null);
+  const showDetailsHandler = (id: number | string) => {
+    setSelectedMonsterId(id);
+    setShowMonster(true)
+  };
+
   return (
     <>
       {!showMonster
-      ? <AllMonsters/>
-      :  <MonsterDetails results={results} setShowMonster={setShowMonster}/>}
+      ? <AllMonsters results={results} onMonsterClick={showDetailsHandler} />
+      :  <MonsterDetails monsterId={selectedMonsterId} results={results} setShowMonster={setShowMonster}  />}
     </>
   );
 };
