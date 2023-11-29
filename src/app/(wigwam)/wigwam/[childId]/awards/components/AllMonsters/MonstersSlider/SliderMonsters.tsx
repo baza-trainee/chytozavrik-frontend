@@ -6,10 +6,12 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import styles from '../AllMonsters.module.scss';
+import { useMedia } from '@/hooks';
 
 
 const SliderMonsters =  ({ results, onMonsterClick }: { results: Monster[]; onMonsterClick: (id: number | string) => void }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const {deviceType} = useMedia()
 
   const sliderRef = useRef<Slider>(null);
   const settings = {
@@ -20,20 +22,30 @@ const SliderMonsters =  ({ results, onMonsterClick }: { results: Monster[]; onMo
     slidesToScroll: 1,
     afterChange: (current: any) => setCurrentSlide(current),
     ref: sliderRef,
+
   };
   const goToNext = () => sliderRef.current && sliderRef.current.slickNext();
   const goToPrev = () => sliderRef.current && sliderRef.current.slickPrev();
 
   const processedResults = results.map(({ id, reward }) => ({ id, reward }));
-  while (processedResults.length % 12 !== 0) {
+  while (processedResults.length % 14 !== 0) {
     processedResults.push({ id: 'placeholder', reward: '/images/monsters/monsters-avatar.svg' });
   }
 
   const slides = [];
-  for (let i = 0; i < processedResults.length; i += 6) {
-    slides.push(processedResults.slice(i, i + 6));
+
+  let count;
+  if (deviceType === 'mobile' ) {
+    count = 6
+  } else if (deviceType === 'tablet') {
+    count = 8
+  } else {
+    count = 12
   }
-  console.log(results);
+
+  for (let i = 0; i < processedResults.length; i += count) {
+    slides.push(processedResults.slice(i, i + count));
+  }
 
   return (
     <div className={styles.wrapper}>
