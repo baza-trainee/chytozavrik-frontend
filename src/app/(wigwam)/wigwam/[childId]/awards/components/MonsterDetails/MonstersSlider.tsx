@@ -42,6 +42,7 @@ const MonstersSlider = ({ results, monsterId }: { results: Monster[], monsterId:
   return (
     <div className={styles.slider}>
       <button
+        style={sliderItems.length < 1 ? {visibility: 'hidden'}  : {visibility: 'visible'}}
         className={styles.prev}
         onClick={goToPrev}>
         <ArrowPrev />
@@ -50,19 +51,22 @@ const MonstersSlider = ({ results, monsterId }: { results: Monster[], monsterId:
         <div className={styles.slides} style={sliderStyle}>
           {sliderItems.map((result, index) =>
             <div className={styles.slide} style={slideStyle} key={index}>
-              <Image
-                src={result.reward}
-                alt='Читозаврик'
-                width={100}
-                height={100}
-                style={{ objectFit: 'contain', objectPosition: 'bottom center', width: '100%', height: '100%' }}
-              />
+              <div className={styles.image}>
+                <Image
+                  src={result.reward}
+                  alt='Читозаврик'
+                  width={100}
+                  height={100}
+                  style={{ objectFit: 'contain', objectPosition: 'bottom center', width: '100%', height: '100%' }}
+                />
+              </div>
             </div>,
           )}
         </div>
       </div>
 
       <button
+        style={sliderItems.length < 1 ? {visibility: 'hidden'}  : {visibility: 'visible'}}
         className={styles.next}
         onClick={goToNext}>
         <ArrowNext />

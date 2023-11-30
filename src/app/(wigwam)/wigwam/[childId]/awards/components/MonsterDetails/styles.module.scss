@@ -72,7 +72,15 @@
 
     .slide {
       width: 167px;
-      height: 213px
+      height: 213px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .image{
+        width: 167px;
+        height: 213px;
+      }
     }
 
 
@@ -107,20 +115,29 @@
 
     .slider {
       height: 432px;
-      bottom: 156px;
+      bottom: 167px;
       padding-left: 40px;
       padding-right: 40px;
 
       .slide {
         width: 338px;
         height: 432px;
+
+        .image{
+          width: 338.087px;
+          height: 432px;
+        }
       }
 
       .prev, .next {
-        width: 80px;
-        height: 80px;
-        padding: 24px;
+        width: 116px;
+        height: 120px;
         margin-top: 86px;
+
+        & img{
+          width: 111.938px;
+          height: 96.206px;
+        }
       }
 
     }
@@ -149,12 +166,19 @@
     }
 
     .slider {
-      bottom: 200px;
+      bottom: 167px;
       padding-left: 60px;
       padding-right: 60px;
 
       .prev, .next {
-        margin-top: 171px;
+        width: 116px;
+        height: 120px;
+        margin-top: 155px;
+
+        & img{
+          width: 111.938px;
+          height: 96.206px;
+        }
       }
 
     }
@@ -190,12 +214,23 @@
       .slide {
         width: 432px;
         height: 552px;
+
+       .image {
+          width: 432px;
+          height: 552px;
+        }
       }
 
       .prev, .next {
-        width: 96px;
-        height: 96px;
-        margin-top: 208px;
+        width: 136px;
+        height: 140px;
+        margin-top: 186px;
+
+        & img{
+          width: 130.963px;
+          height: 112px;
+
+        }
       }
     }
   }
