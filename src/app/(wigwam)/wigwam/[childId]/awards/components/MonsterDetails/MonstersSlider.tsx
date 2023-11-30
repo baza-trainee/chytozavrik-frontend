@@ -12,10 +12,8 @@ const MonstersSlider = ({ results, monsterId }: { results: Monster[], monsterId:
   const initialIndex = results.findIndex(monster => monster.id === monsterId);
   const [currentSlide, setCurrentSlide] = useState(initialIndex >= 0 ? initialIndex : 0);
   const [sliderItems, setSliderItems] = useState(results)
-
-  const goToNext = () => {
-    setCurrentSlide(prevSlide => prevSlide + 1);
-  };
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
   useEffect(() => {
     if (currentSlide === sliderItems.length - 1) {
@@ -23,6 +21,9 @@ const MonstersSlider = ({ results, monsterId }: { results: Monster[], monsterId:
     }
   }, [currentSlide, results]);
 
+  const goToNext = () => {
+    setCurrentSlide(prevSlide => prevSlide + 1);
+  };
   const goToPrev = () => {
     setCurrentSlide(prevSlide => prevSlide - 1);
   };
@@ -39,8 +40,35 @@ const MonstersSlider = ({ results, monsterId }: { results: Monster[], monsterId:
     flexShrink: 0,
   };
 
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isSwipe = Math.abs(distance) > minSwipeDistance;
+    if (isSwipe) {
+      if (distance < 0) {
+        goToPrev();
+      } else {
+        goToNext();
+      }
+    }
+  };
+
   return (
-    <div className={styles.slider}>
+    <div className={styles.slider}
+         onTouchStart={onTouchStart}
+         onTouchMove={onTouchMove}
+         onTouchEnd={onTouchEnd}>
       <button
         style={sliderItems.length < 1 ? {visibility: 'hidden'}  : {visibility: 'visible'}}
         className={styles.prev}
@@ -57,7 +85,7 @@ const MonstersSlider = ({ results, monsterId }: { results: Monster[], monsterId:
                   alt='Читозаврик'
                   width={100}
                   height={100}
-                  style={{ objectFit: 'contain', objectPosition: 'bottom center', width: '100%', height: '100%' }}
+                  style={{ objectFit: 'cover', objectPosition: 'bottom center', width: '100%', height: '100%' }}
                 />
               </div>
             </div>,

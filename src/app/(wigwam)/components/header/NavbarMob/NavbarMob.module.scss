@@ -2,21 +2,22 @@
 @import "@/scss/utils/mixin";
 
 .section {
-    background: getColor(blue, 90);
-    padding-top: 16px;
-    padding-bottom: 16px;
+  background: getColor(blue, 90);
+  padding: 16px;
+  position: sticky;
+  top: 0;
+  z-index: 999;
 }
-
 
 
 .logo {
-    width: 32px;
-    height: 32px;
-    color: rgba(119, 145, 250, 1);
+  width: 32px;
+  height: 32px;
+  color: rgba(119, 145, 250, 1);
 }
 
 .wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

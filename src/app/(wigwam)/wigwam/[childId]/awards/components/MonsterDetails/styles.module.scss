@@ -4,9 +4,9 @@
 .wrapper {
   background: $sys-on-primary-variant;
   overflow: hidden;
-  height: calc(100vh - 81px);
   position: relative;
   width: 100%;
+  height: calc(100vh - 134px);
 
   .button {
     display: inline-flex;
@@ -32,6 +32,12 @@
     }
   }
 
+  .rays {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+  }
+
   .clouds {
     position: absolute;
     bottom: -10px;
@@ -47,18 +53,18 @@
 
   .book {
     position: absolute;
-    bottom: 48px;
+    bottom: 7.2vh;
     left: 50%;
     transform: translateX(-50%);
-    width: 327.616px;
-    height: 158.41px;
+    width: 100vw;
+    height: 25vh;
   }
 
   .slider {
     width: 100%;
     height: 213px;
     position: absolute;
-    bottom: 105px;
+    bottom: 15.6vh;
     display: flex;
     justify-content: space-between;
     padding-left: 15px;
@@ -71,14 +77,14 @@
     }
 
     .slide {
-      width: 167px;
+      width: 169px;
       height: 213px;
       display: flex;
       justify-content: center;
       align-items: center;
 
       .image{
-        width: 167px;
+        width: 192px;
         height: 213px;
       }
     }
@@ -97,6 +103,8 @@
   }
 
   @include breakpoint(tablet) {
+
+    height: calc(100vh - 70px);
 
     .button {
       padding: 16px 28px 16px 24px;
@@ -124,7 +132,7 @@
         height: 432px;
 
         .image{
-          width: 338.087px;
+          width: 395px;
           height: 432px;
         }
       }
@@ -150,13 +158,15 @@
 
   @include breakpoint(laptop) {
 
+    min-height: 700px;
+
     .button {
       left: 35px;
     }
 
     .book {
-      width: 822.684px;
-      height: 397.789px;
+      width: 822px;
+      height: 397px;
       bottom: 24px;
     }
 
@@ -169,6 +179,17 @@
       bottom: 167px;
       padding-left: 60px;
       padding-right: 60px;
+
+      .slide {
+        width: 338px;
+        height: 432px;
+
+        .image{
+          width: 400px;
+          height: 432px;
+        }
+      }
+
 
       .prev, .next {
         width: 116px;
