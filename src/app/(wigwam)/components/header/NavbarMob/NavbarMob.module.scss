@@ -5,6 +5,11 @@
     background: getColor(blue, 90);
     padding-top: 16px;
     padding-bottom: 16px;
+    @include breakpoint(mobile) {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
 }
 
 
