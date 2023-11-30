@@ -1,7 +1,7 @@
 import React from 'react';
 import MonstersList from '@/app/(wigwam)/wigwam/[childId]/awards/components/MonstersList';
 import { fetch } from '@/services/axios';
-import { Monster, MonstersResponse, MonstersResults } from '@/types/MonstersTypes';
+import { MonstersResults } from '@/types/MonstersTypes';
 import { notFound } from 'next/navigation';
 
 

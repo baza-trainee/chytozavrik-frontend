@@ -4,9 +4,9 @@
 .wrapper {
   background: $sys-on-primary-variant;
   overflow: hidden;
-  height: calc(100vh - 81px);
   position: relative;
   width: 100%;
+  height: calc(100vh - 134px);
 
   .button {
     display: inline-flex;
@@ -24,11 +24,18 @@
     position: absolute;
     top: 24px;
     border-radius: 8px;
+    z-index: 999;
 
     & svg {
       width: 16px;
       height: 16px;
     }
+  }
+
+  .rays {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
   }
 
   .clouds {
@@ -46,18 +53,18 @@
 
   .book {
     position: absolute;
-    bottom: 48px;
+    bottom: 7.2vh;
     left: 50%;
     transform: translateX(-50%);
-    width: 327.616px;
-    height: 158.41px;
+    width: 100vw;
+    height: 25vh;
   }
 
   .slider {
     width: 100%;
     height: 213px;
     position: absolute;
-    bottom: 105px;
+    bottom: 15.6vh;
     display: flex;
     justify-content: space-between;
     padding-left: 15px;
@@ -70,21 +77,25 @@
     }
 
     .slide {
-      width: 167px;
-      height: 213px
+      width: 169px;
+      height: 213px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .image{
+        width: 192px;
+        height: 213px;
+      }
     }
 
 
     .prev, .next {
       display: inline-flex;
-      width: 56px;
-      height: 56px;
-      padding: 16px;
+      width: 69px;
+      height: 72px;
       justify-content: center;
       align-items: center;
-      gap: 8px;
-      border-radius: 8px;
-      background: $secondary;
       z-index: 10;
       margin-top: 24px;
       flex-shrink: 0;
@@ -92,6 +103,8 @@
   }
 
   @include breakpoint(tablet) {
+
+    height: calc(100vh - 70px);
 
     .button {
       padding: 16px 28px 16px 24px;
@@ -110,20 +123,29 @@
 
     .slider {
       height: 432px;
-      bottom: 156px;
+      bottom: 167px;
       padding-left: 40px;
       padding-right: 40px;
 
       .slide {
         width: 338px;
         height: 432px;
+
+        .image{
+          width: 395px;
+          height: 432px;
+        }
       }
 
       .prev, .next {
-        width: 80px;
-        height: 80px;
-        padding: 24px;
+        width: 116px;
+        height: 120px;
         margin-top: 86px;
+
+        & img{
+          width: 111.938px;
+          height: 96.206px;
+        }
       }
 
     }
@@ -136,13 +158,15 @@
 
   @include breakpoint(laptop) {
 
+    min-height: 700px;
+
     .button {
       left: 35px;
     }
 
     .book {
-      width: 822.684px;
-      height: 397.789px;
+      width: 822px;
+      height: 397px;
       bottom: 24px;
     }
 
@@ -152,12 +176,30 @@
     }
 
     .slider {
-      bottom: 200px;
+      bottom: 167px;
       padding-left: 60px;
       padding-right: 60px;
 
+      .slide {
+        width: 338px;
+        height: 432px;
+
+        .image{
+          width: 400px;
+          height: 432px;
+        }
+      }
+
+
       .prev, .next {
-        margin-top: 171px;
+        width: 116px;
+        height: 120px;
+        margin-top: 155px;
+
+        & img{
+          width: 111.938px;
+          height: 96.206px;
+        }
       }
 
     }
@@ -193,12 +235,23 @@
       .slide {
         width: 432px;
         height: 552px;
+
+       .image {
+          width: 432px;
+          height: 552px;
+        }
       }
 
       .prev, .next {
-        width: 96px;
-        height: 96px;
-        margin-top: 208px;
+        width: 136px;
+        height: 140px;
+        margin-top: 186px;
+
+        & img{
+          width: 130.963px;
+          height: 112px;
+
+        }
       }
     }
   }

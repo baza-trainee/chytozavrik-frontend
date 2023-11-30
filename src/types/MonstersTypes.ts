@@ -1,5 +1,5 @@
 export interface Monster {
-    id: number;
+  id: number | string;
     reward: string;
     received_at: string;
     child: number;
