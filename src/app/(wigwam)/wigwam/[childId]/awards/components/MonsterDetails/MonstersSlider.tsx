@@ -57,7 +57,7 @@ const MonstersSlider = ({ results, monsterId }: { results: Monster[], monsterId:
                   alt='Читозаврик'
                   width={100}
                   height={100}
-                  style={{ objectFit: 'contain', objectPosition: 'bottom center', width: '100%', height: '100%' }}
+                  style={{ objectFit: 'cover', objectPosition: 'bottom center', width: '100%', height: '100%' }}
                 />
               </div>
             </div>,

@@ -4,7 +4,6 @@
 .wrapper {
   background: $sys-on-primary-variant;
   overflow: hidden;
-  height: calc(100vh - 81px);
   position: relative;
   width: 100%;
 
@@ -30,6 +29,11 @@
       width: 16px;
       height: 16px;
     }
+  }
+
+  .rays {
+    position: absolute;
+    bottom: 0;
   }
 
   .clouds {
@@ -71,14 +75,14 @@
     }
 
     .slide {
-      width: 167px;
+      width: 169px;
       height: 213px;
       display: flex;
       justify-content: center;
       align-items: center;
 
       .image{
-        width: 167px;
+        width: 192px;
         height: 213px;
       }
     }
@@ -97,6 +101,8 @@
   }
 
   @include breakpoint(tablet) {
+
+    height: calc(100vh - 80px);
 
     .button {
       padding: 16px 28px 16px 24px;
@@ -150,9 +156,13 @@
 
   @include breakpoint(laptop) {
 
+    height: 100vh;
+
     .button {
       left: 35px;
     }
+
+
 
     .book {
       width: 822.684px;

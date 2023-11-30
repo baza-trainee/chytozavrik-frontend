@@ -4,11 +4,10 @@
 
 .monsters {
   background: $white;
-  height: calc(100vh - 139px);
+  height: calc(100vh - 134px);
   position: relative;
   overflow: hidden;
-
-
+  padding-top: 12vh;
 
   .clouds {
     background-image: url('/images/monsters/clouds-dark.svg'), url('/images/monsters/clouds-light.svg');
@@ -24,9 +23,11 @@
   .wigwam {
     background-image: url('/images/monsters/wigwam.svg');
     background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center bottom;
     position: absolute;
-    width: 327.519px;
-    height: 260px;
+    width: 90vw;
+    height: 35vh;
     left: 50%;
     transform: translateX(-50%);
     bottom: 8px;
@@ -34,7 +35,8 @@
 
 
   @include breakpoint(tablet) {
-    height: calc(100vh - 80.76px);
+    padding-top: 125px;
+    height: calc(100vh - 70px);
 
     .clouds {
       background-image: url('/images/monsters/clouds-dark-768.svg'), url('/images/monsters/clouds-light.svg');
@@ -44,25 +46,34 @@
     }
 
     .wigwam {
-      background-size: 487px 386px;
-      width: 487.664px;
-      height: 386px;
-      bottom: 32px;
+      width: 64vw;
+      height: 40vh;
+      bottom: 3.5vh;
+      background-size: contain;
     }
 
   }
 
   @include breakpoint(laptop) {
+    min-height: 500px;
+    padding-top: 40px;
 
     .clouds {
       background-size: auto 183px, 1024px 213px;
       height: 213px;
     }
 
+    .wigwam {
+      background-size: contain;
+      width: 47.5vw;
+      height: 50vh;
+      bottom: 3.5vh;
+    }
+
   }
 
   @include breakpoint(desktop) {
-
+    padding-top: 7vh;
     height: calc(100vh - 91px);
 
     .clouds {
@@ -82,40 +93,50 @@
 
 }
 
-.wrapper{
-  margin-top: 98px;
+.wrapper {
   display: flex;
   flex-direction: column;
-  gap: 32px;
 
-  .buttons{
+  gap: 4.8vh;
+
+  .buttons {
     position: relative;
-    width: 328px;
+    width: 91vw;
     height: 64px;
     z-index: 999;
     margin: auto;
 
-    .prev{
+
+    .prev, .next{
       position: absolute;
-      left: 0;
       bottom: 0;
+      width: 16.9vw;
+      height: 9.7vh;
+      z-index: 999;
+
+      & img{
+        width: 16.9vw;
+        height: 9.7vh;
+      }
     }
 
-    .next{
-      position: absolute;
+    .prev {
+      left: 0;
+    }
+
+    .next {
       right: 0;
-      bottom: 0;
     }
   }
 
-  .slide{
+  .slide {
     align-self: center;
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
-    gap: 36px 42px;
-    width: 328px;
+    gap: 5.4vh 12vw;
+    width: 91vw;
     margin: auto;
-
 
 
     .monsterIcon {
@@ -124,18 +145,20 @@
       border-radius: 100px;
       background-image: url("/images/monsters/green-bg.svg");
       background-repeat: no-repeat;
+      background-size: contain;
       background-position: bottom;
-      background-color:  #C7E1FF;
+      background-color: #C7E1FF;
       display: flex;
       align-items: center;
       justify-content: center;
 
-      .monsterPresent{
+
+      .monsterPresent {
         width: 60px;
         height: 50px;
         cursor: pointer;
 
-        & img{
+        & img {
           object-fit: contain;
           object-position: center;
           width: 100%;
@@ -145,22 +168,21 @@
     }
   }
 
-  @include breakpoint(tablet){
-    margin-top: 125px;
+  @include breakpoint(tablet) {
     gap: 48px;
 
-    .buttons{
+    .buttons {
       width: 688px;
       height: 96px;
 
-      .next, .prev{
+      .next, .prev {
         width: 92px;
         height: 96px;
         display: flex;
         justify-content: center;
         align-content: center;
 
-        & img{
+        & img {
           width: 88.778px;
           height: 76.965px;
           flex-shrink: 0;
@@ -168,7 +190,7 @@
       }
     }
 
-    .slide{
+    .slide {
       gap: 48px 74px;
       width: 688px;
 
@@ -177,12 +199,12 @@
         height: 116px;
         background-size: contain;
 
-        & img{
+        & img {
           width: 116px;
           height: 116px;
         }
 
-        .monsterPresent{
+        .monsterPresent {
           width: 86.473px;
           height: 72.061px;
         }
@@ -191,34 +213,32 @@
 
   }
 
-  @include breakpoint(laptop){
-    margin-top: 40px;
+  @include breakpoint(laptop) {
 
-    .buttons{
+    .buttons {
       width: 904px;
     }
 
-    .slide{
-      gap: 48px 24px;
+    .slide {
+      gap: 24px 41px;
       width: 904px;
     }
 
   }
 
-  @include breakpoint(desktop){
-    margin-top: 56px;
+  @include breakpoint(desktop) {
     gap: 54px;
 
-    .buttons{
+    .buttons {
       width: 1280px;
       height: 120px;
 
-      .next, .prev{
+      .next, .prev {
         width: 116px;
         height: 120px;
 
 
-        & img{
+        & img {
           width: 111.938px;
           height: 96.206px;
           flex-shrink: 0;
@@ -226,7 +246,7 @@
       }
     }
 
-    .slide{
+    .slide {
       gap: 48px 64px;
       width: 1280px;
 
@@ -234,12 +254,12 @@
         width: 160px;
         height: 160px;
 
-        & img{
+        & img {
           width: 160px;
           height: 160px;
         }
 
-        .monsterPresent{
+        .monsterPresent {
           width: 120px;
           height: 100px;
         }
