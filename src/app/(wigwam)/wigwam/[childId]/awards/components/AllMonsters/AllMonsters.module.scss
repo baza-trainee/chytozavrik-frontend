@@ -1,0 +1,251 @@
+@import 'scss/utils/variables';
+@import "scss/utils/mixin";
+
+
+.monsters {
+  background: $white;
+  height: calc(100vh - 139px);
+  position: relative;
+  overflow: hidden;
+
+
+
+  .clouds {
+    background-image: url('/images/monsters/clouds-dark.svg'), url('/images/monsters/clouds-light.svg');
+    background-repeat: repeat-x, repeat-x;
+    background-size: 360px 72px, 360px 75px;
+    background-position: bottom, top;
+    height: 75px;
+    width: 100vw;
+    position: absolute;
+    bottom: -1px;
+  }
+
+  .wigwam {
+    background-image: url('/images/monsters/wigwam.svg');
+    background-repeat: no-repeat;
+    position: absolute;
+    width: 327.519px;
+    height: 260px;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 8px;
+  }
+
+
+  @include breakpoint(tablet) {
+    height: calc(100vh - 80.76px);
+
+    .clouds {
+      background-image: url('/images/monsters/clouds-dark-768.svg'), url('/images/monsters/clouds-light.svg');
+      background-size: auto 137px, 768px 160px;
+      height: 160px;
+      bottom: 0;
+    }
+
+    .wigwam {
+      background-size: 487px 386px;
+      width: 487.664px;
+      height: 386px;
+      bottom: 32px;
+    }
+
+  }
+
+  @include breakpoint(laptop) {
+
+    .clouds {
+      background-size: auto 183px, 1024px 213px;
+      height: 213px;
+    }
+
+  }
+
+  @include breakpoint(desktop) {
+
+    height: calc(100vh - 91px);
+
+    .clouds {
+      background-image: url('/images/monsters/clouds-dark-1440.svg'), url('/images/monsters/clouds-light-1440.svg');
+      background-size: auto 285px, 1440px 301px;
+      height: 301px;
+    }
+
+    .wigwam {
+      background-image: url('/images/monsters/wigwam-1440.svg');
+      background-size: 655px 460px;
+      width: 655px;
+      height: 460px;
+    }
+  }
+
+
+}
+
+.wrapper{
+  margin-top: 98px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  .buttons{
+    position: relative;
+    width: 328px;
+    height: 64px;
+    z-index: 999;
+    margin: auto;
+
+    .prev{
+      position: absolute;
+      left: 0;
+      bottom: 0;
+    }
+
+    .next{
+      position: absolute;
+      right: 0;
+      bottom: 0;
+    }
+  }
+
+  .slide{
+    align-self: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 36px 42px;
+    width: 328px;
+    margin: auto;
+
+
+
+    .monsterIcon {
+      width: 80px;
+      height: 80px;
+      border-radius: 100px;
+      background-image: url("/images/monsters/green-bg.svg");
+      background-repeat: no-repeat;
+      background-position: bottom;
+      background-color:  #C7E1FF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .monsterPresent{
+        width: 60px;
+        height: 50px;
+        cursor: pointer;
+
+        & img{
+          object-fit: contain;
+          object-position: center;
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+
+  @include breakpoint(tablet){
+    margin-top: 125px;
+    gap: 48px;
+
+    .buttons{
+      width: 688px;
+      height: 96px;
+
+      .next, .prev{
+        width: 92px;
+        height: 96px;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+
+        & img{
+          width: 88.778px;
+          height: 76.965px;
+          flex-shrink: 0;
+        }
+      }
+    }
+
+    .slide{
+      gap: 48px 74px;
+      width: 688px;
+
+      .monsterIcon {
+        width: 116px;
+        height: 116px;
+        background-size: contain;
+
+        & img{
+          width: 116px;
+          height: 116px;
+        }
+
+        .monsterPresent{
+          width: 86.473px;
+          height: 72.061px;
+        }
+      }
+    }
+
+  }
+
+  @include breakpoint(laptop){
+    margin-top: 40px;
+
+    .buttons{
+      width: 904px;
+    }
+
+    .slide{
+      gap: 48px 24px;
+      width: 904px;
+    }
+
+  }
+
+  @include breakpoint(desktop){
+    margin-top: 56px;
+    gap: 54px;
+
+    .buttons{
+      width: 1280px;
+      height: 120px;
+
+      .next, .prev{
+        width: 116px;
+        height: 120px;
+
+
+        & img{
+          width: 111.938px;
+          height: 96.206px;
+          flex-shrink: 0;
+        }
+      }
+    }
+
+    .slide{
+      gap: 48px 64px;
+      width: 1280px;
+
+      .monsterIcon {
+        width: 160px;
+        height: 160px;
+
+        & img{
+          width: 160px;
+          height: 160px;
+        }
+
+        .monsterPresent{
+          width: 120px;
+          height: 100px;
+        }
+      }
+    }
+
+  }
+
+}
