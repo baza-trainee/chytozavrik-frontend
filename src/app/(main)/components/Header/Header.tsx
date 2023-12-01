@@ -12,7 +12,6 @@ import { useMedia } from '@/hooks';
 const Header = () => {
   const { data: session } = useSession();
   const {deviceType} = useMedia();
-  console.log(session?.user.is_superuser);
 
   return (
     <header>

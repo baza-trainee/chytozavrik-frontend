@@ -50,6 +50,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  font-weight: 400;
 }
 
 .avatar {
@@ -58,13 +59,13 @@
   @include breakpoint(desktop) {
     margin-left: 19px;
     width: 48px;
-        height: 48px;
+    height: 48px;
   }
 }
 
-.generalLogo{
-    display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 103px;
+.generalLogo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 103px;
 }

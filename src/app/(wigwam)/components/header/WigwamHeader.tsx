@@ -1,20 +1,22 @@
 'use client'
 
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC } from 'react';
 import Navbar from '@/app/(wigwam)/components/header/Navbar/Navbar';
 import { useMedia } from '@/hooks';
 import NavbarMob from '@/app/(wigwam)/components/header/NavbarMob/NavbarMob';
 
 
 interface WigwamHeaderProps {
-  childId: string
+  childId: string,
+  name: string,
+  avatar: string
 }
-const WigwamHeader: FC<WigwamHeaderProps> = ({childId} ) => {
+const WigwamHeader: FC<WigwamHeaderProps> = ({childId, name, avatar} ) => {
   const {deviceType} = useMedia()
 
   return (
     <>
-      {deviceType === "mobile" ? <NavbarMob/> : <Navbar childId={childId}/>}
+      {deviceType === "mobile" ? <NavbarMob/> : <Navbar childId={childId} name={name} avatar={avatar}/>}
     </>
   );
 };

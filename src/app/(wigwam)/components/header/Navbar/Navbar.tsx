@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import Link from 'next/link';
 import styles from './Navbar.module.scss';
@@ -10,10 +10,12 @@ import { Typography } from 'components/common';
 import { FC } from 'react';
 
 interface Props {
-  childId: string
+  childId: string,
+  name: string,
+  avatar: string
 }
 
-const Navbar: FC<Props> = ({childId}) => {
+const Navbar: FC<Props> = ({ childId, name, avatar }) => {
 
   return (
     <section className={styles.section}>
@@ -52,22 +54,22 @@ const Navbar: FC<Props> = ({childId}) => {
           </Typography>
 
           <Typography component='p' variant='navbar'>
-            <Link className={styles.link} href='#'>
+            <Link className={styles.link} href={`/parents/lobby`}>
               <LogOut width={32} height={32} className={classNames(styles.logo)} />
               Вихід
             </Link>
-          </Typography>        </div>
+          </Typography>
+        </div>
         <div className={classNames(styles.user)}>
-          <p>Name</p>
+          <p>{name}</p>
           <Image
-            src='/images/avatars/children-avatar-4.svg'
+            src={avatar}
             width={32}
             height={32}
             alt='Logo'
             className={classNames(styles.avatar)}
           />
         </div>
-
 
       </Container>
     </section>
