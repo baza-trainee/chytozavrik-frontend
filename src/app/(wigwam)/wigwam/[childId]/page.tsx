@@ -31,7 +31,7 @@ export default async function Wigwam({ params: { childId } }: WigwamProps) {
       <Container className={styles.layout}>
         <WigwamReadBooks />
         <WigwamQuiz />
-        <WigwamMyMonsters monstersData={monstersData} />
+        <WigwamMyMonsters monstersData={monstersData} childId={childId}/>
         <WigwamBooks booksData={booksData} />
         <div className={styles.test}>
           Recommended
