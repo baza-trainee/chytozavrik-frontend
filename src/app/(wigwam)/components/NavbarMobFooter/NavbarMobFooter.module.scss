@@ -15,13 +15,14 @@
   flex-direction: column;
   align-items: center;
   width: 90px;
+
+  & svg{
+    width: 32px;
+    height: 32px;
+    color: rgba(119, 145, 250, 1);
+  }
 }
 
-.logo {
-  width: 32px;
-  height: 32px;
-  color: rgba(119, 145, 250, 1);
-}
 
 .wrapper {
   display: flex;
