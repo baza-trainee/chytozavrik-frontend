@@ -19,7 +19,6 @@ export default async function Layout({ children, params: {childId}}: { children:
   if (childReq.status === 'fail' || avatarReq.status === 'fail') notFound();
 
   const childAvatar = avatarReq.data.filter((avatar) => avatar.id === childReq.data.avatar)
-  console.log(childAvatar);
 
   return (
     <WigwamProvider>
