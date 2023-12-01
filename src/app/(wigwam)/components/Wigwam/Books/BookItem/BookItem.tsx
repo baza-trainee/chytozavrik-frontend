@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { Dispatch, FC, SetStateAction } from 'react';
 import styles from '../WigwamBooks.module.scss';
 import Image from 'next/image';
 import BrainIcon from 'public/images/brain/brain.svg';
@@ -11,10 +11,10 @@ import { BookType } from '@/types/WigwamBooks';
 interface BookItemProps {
   item: BookType;
   selectedBooks: { [key: string]: boolean };
-  setBook: (id: string | number) => void;
+  setSelectedBooks: Dispatch<SetStateAction<{[p: string]: boolean}>>
 }
 
-const BookItem: FC<BookItemProps> = ({ item, selectedBooks, setBook }) => {
+const BookItem: FC<BookItemProps> = ({ item, selectedBooks, setSelectedBooks }) => {
 
   const firstChar = item.current_score ? item.current_score.charAt(0) : '';
   const colorText = (parseInt(firstChar) > 0 && parseInt(firstChar) < 5) ? '#7791FA' : parseInt(firstChar) === 5 ? '#52C974' : "#B3CDFF";
@@ -23,6 +23,13 @@ const BookItem: FC<BookItemProps> = ({ item, selectedBooks, setBook }) => {
   if ((parseInt(firstChar) > 0 && parseInt(firstChar) < 5)) icon = BrainYellow;
   else if (parseInt(firstChar) === 5) icon = BrainGreen;
   else  icon = BrainIcon
+
+  const setBook = (id: string | number) => {
+    setSelectedBooks(prevState => ({
+      ...prevState,
+      [id]: !prevState[id],
+    }));
+  };
 
   return (
     <div className={styles.book_items}>
