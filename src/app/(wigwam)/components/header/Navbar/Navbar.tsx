@@ -1,22 +1,25 @@
-'use client'
+'use client';
 
+import { FC } from 'react';
 import Link from 'next/link';
-import styles from './Navbar.module.scss';
 import classNames from 'classnames';
 import Image from 'next/image';
 import { LogOut, Tent, Brain } from 'lucide-react';
 import Container from 'components/common/Container/Container';
 import { Typography } from 'components/common';
-import { FC } from 'react';
+import styles from './Navbar.module.scss';
+
 
 interface Props {
-  childId: string
+  childId: string,
+  name: string,
+  avatar: string
 }
 
-const Navbar: FC<Props> = ({childId}) => {
+const Navbar: FC<Props> = ({ childId, name, avatar }) => {
 
   return (
-    <section className={styles.section}>
+    <header className={styles.section}>
       <Container className={styles.container}>
         <div className={styles.wrapper}>
           <div className={styles.generalLogo}>
@@ -52,15 +55,16 @@ const Navbar: FC<Props> = ({childId}) => {
           </Typography>
 
           <Typography component='p' variant='navbar'>
-            <Link className={styles.link} href='#'>
+            <Link className={styles.link} href={`/parents/lobby`}>
               <LogOut width={32} height={32} className={classNames(styles.logo)} />
               Вихід
             </Link>
-          </Typography>        </div>
+          </Typography>
+        </div>
         <div className={classNames(styles.user)}>
-          <p>Name</p>
+          <p>{name}</p>
           <Image
-            src='/images/avatars/children-avatar-4.svg'
+            src={avatar}
             width={32}
             height={32}
             alt='Logo'
@@ -68,9 +72,8 @@ const Navbar: FC<Props> = ({childId}) => {
           />
         </div>
 
-
       </Container>
-    </section>
+    </header>
   );
 };
 

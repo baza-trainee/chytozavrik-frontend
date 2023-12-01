@@ -8,7 +8,7 @@ import WigwamBooks from '@/app/(wigwam)/components/Wigwam/Books';
 import WigwamMyMonsters from '@/app/(wigwam)/components/Wigwam/Monsters';
 import Container from 'components/common/Container/Container';
 import styles from './wigwam.module.scss';
-import { log } from 'next/dist/server/typescript/utils';
+
 
 
 interface WigwamProps {
