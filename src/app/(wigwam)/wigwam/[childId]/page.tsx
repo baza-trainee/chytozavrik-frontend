@@ -1,6 +1,6 @@
 import WigwamReadBooks from '@/app/(wigwam)/components/Wigwam/ReadBooks';
 import WigwamQuiz from '@/app/(wigwam)/components/Wigwam/Quiz';
-import { BooksResponse, BooksResults, BookType } from '@/types/WigwamBooks';
+import { BooksResponse } from '@/types/WigwamBooks';
 import { notFound } from 'next/navigation';
 import { MonstersResponse } from '@/types/MonstersTypes';
 import { fetch } from '@/services/axios';
@@ -32,7 +32,7 @@ export default async function Wigwam({ params: { childId } }: WigwamProps) {
         <WigwamReadBooks />
         <WigwamQuiz />
         <WigwamMyMonsters monstersData={monstersData} childId={childId}/>
-        <WigwamBooks booksData={booksData} />
+        <WigwamBooks booksData={booksData} next={booksRes.data.next}/>
         <div className={styles.test}>
           Recommended
         </div>
