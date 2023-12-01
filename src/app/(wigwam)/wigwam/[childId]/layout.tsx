@@ -14,15 +14,12 @@ export default async function Layout({ children, params: {childId}}: { children:
     childId: string
   } }) {
   const childReq = await fetch<ChildResults>(`/users/me/children/${childId}/`)
-  const avatarReq = await fetch<Avatar[]>(`/avatars/`)
 
-  if (childReq.status === 'fail' || avatarReq.status === 'fail') notFound();
-
-  const childAvatar = avatarReq.data.filter((avatar) => avatar.id === childReq.data.avatar)
+  if (childReq.status === 'fail') notFound();
 
   return (
     <WigwamProvider>
-      <WigwamHeader childId={childId} name={childReq.data.name} avatar={childAvatar[0].avatar} />
+      <WigwamHeader childId={childId} name={childReq.data.name} avatar={childReq.data.avatar_as_url} />
       {children}
       <WigwamFooter childId={childId}/>
       <CookiesPanel/>

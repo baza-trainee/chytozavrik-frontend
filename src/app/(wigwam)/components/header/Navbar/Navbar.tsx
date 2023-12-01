@@ -1,13 +1,14 @@
 'use client';
 
+import { FC } from 'react';
 import Link from 'next/link';
-import styles from './Navbar.module.scss';
 import classNames from 'classnames';
 import Image from 'next/image';
 import { LogOut, Tent, Brain } from 'lucide-react';
 import Container from 'components/common/Container/Container';
 import { Typography } from 'components/common';
-import { FC } from 'react';
+import styles from './Navbar.module.scss';
+
 
 interface Props {
   childId: string,
@@ -18,7 +19,7 @@ interface Props {
 const Navbar: FC<Props> = ({ childId, name, avatar }) => {
 
   return (
-    <section className={styles.section}>
+    <header className={styles.section}>
       <Container className={styles.container}>
         <div className={styles.wrapper}>
           <div className={styles.generalLogo}>
@@ -72,7 +73,7 @@ const Navbar: FC<Props> = ({ childId, name, avatar }) => {
         </div>
 
       </Container>
-    </section>
+    </header>
   );
 };
 

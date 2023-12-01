@@ -16,7 +16,9 @@ const WigwamHeader: FC<WigwamHeaderProps> = ({childId, name, avatar} ) => {
 
   return (
     <>
-      {deviceType === "mobile" ? <NavbarMob/> : <Navbar childId={childId} name={name} avatar={avatar}/>}
+      {deviceType === "mobile"
+        ? <NavbarMob avatar={avatar}/>
+        : <Navbar childId={childId} name={name} avatar={avatar}/>}
     </>
   );
 };

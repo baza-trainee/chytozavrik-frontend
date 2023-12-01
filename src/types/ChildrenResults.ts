@@ -3,6 +3,7 @@ export interface ChildResults{
   name: string,
   registration_date: string,
   avatar: number,
+  avatar_as_url: string,
   unique_quizzes_passed: number,
   total_successful_attempts: number,
   last_quiz_id: number,

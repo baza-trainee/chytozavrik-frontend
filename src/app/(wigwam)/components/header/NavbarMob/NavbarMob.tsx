@@ -6,9 +6,10 @@ import Image from 'next/image';
 import { LogOut } from 'lucide-react';
 import Container from 'components/common/Container/Container';
 import { NextPage } from 'next';
+import Link from 'next/link';
 
 
-const NavbarMob = () => {
+const NavbarMob = ({avatar} : {avatar: string}) => {
   return (
     <section className={styles.section}>
       <Container>
@@ -21,17 +22,19 @@ const NavbarMob = () => {
             className={classNames(styles.log)}
           />
           <Image
-            src='/images/avatars/children-avatar-4.svg'
+            src={avatar}
             width={32}
             height={32}
             alt='Logo'
             className={classNames(styles.log)}
           />
-          <LogOut
-            width={32}
-            height={32}
-            className={classNames(styles.logo)}
-          />
+          <Link href={`/parents/lobby`}>
+            <LogOut
+              width={32}
+              height={32}
+              className={classNames(styles.logo)}
+            />
+          </Link>
         </div>
       </Container>
     </section>
