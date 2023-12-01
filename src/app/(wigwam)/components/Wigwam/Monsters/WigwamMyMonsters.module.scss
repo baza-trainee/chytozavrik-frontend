@@ -21,11 +21,39 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-right: 16px;
+
+  .arrow{
+    width: 56px;
+    height: 56px;
+    display: flex;
+    padding: 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-right: 7px;
+  }
+
+
+  @include breakpoint(tablet) {
+    .arrow{
+      margin-right: 0;
+    }
+  }
+
+  @include breakpoint(laptop) {
+    .arrow{
+      margin-right: 4px;
+    }
+  }
+
 
   @include breakpoint(desktop) {
     padding-top: 16px;
     padding-bottom: 16px;
+
+    .arrow{
+      margin-right: 0;
+    }
   }
 }
 
@@ -79,8 +107,24 @@
   height: 80px;
   overflow: hidden;
   border-radius: 50%;
-  justify-content: center;
+  background-image: url("/images/monsters/green-bg.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom;
+  background-color: #C7E1FF;
+  display: flex;
   align-items: center;
+  justify-content: center;
+
+  .monsterPresent {
+    width: 60px;
+    height: 50px;
+  }
+
+  .monsterEmpty{
+    width: 80px;
+    height: 80px;
+  }
 
   @include breakpoint(mobile) {
     &:nth-child(-n + 6) {
@@ -100,6 +144,17 @@
     }
     width: 56px;
     height: 56px;
+
+
+    .monsterPresent {
+      width: 34px;
+      height: 34px;
+    }
+
+    .monsterEmpty{
+      width: 56px;
+      height: 56px;
+    }
   }
 
   @include breakpoint(desktop) {
@@ -108,11 +163,15 @@
     }
     width: 80px;
     height: 80px;
-  }
-}
 
-.monster {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+    .monsterPresent {
+      width: 60px;
+      height: 50px;
+    }
+
+    .monsterEmpty{
+      width: 80px;
+      height: 80px;
+    }
+  }
 }
