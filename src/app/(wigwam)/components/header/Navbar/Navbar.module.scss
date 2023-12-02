@@ -8,8 +8,10 @@
   height: 70px;
   width: 100vw;
 
+
+
   @include breakpoint(desktop) {
-    height: 100px;
+    min-height: 100px;
   }
 
 }
