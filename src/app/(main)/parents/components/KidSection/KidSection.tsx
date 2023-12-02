@@ -5,11 +5,16 @@ import { useSession } from 'next-auth/react';
 import Link from 'next/link';
 import { Container, Typography, Button } from 'components/common';
 import { Route } from '@/constants';
-import { Avatar1, Avatar2, Avatar3, Avatar4, Avatar5, Avatar6 } from '../lobby/components/Avatar';
-import Edit from '../../../../../public/images/edit.svg';
-import Delete from '../../../../../public/images/delete.svg';
+import { Avatar1, Avatar2, Avatar3, Avatar4, Avatar5, Avatar6 } from '../../lobby/components/Avatar';
+import Edit from '../../../../../../public/images/edit.svg';
+import Delete from '../../../../../../public/images/delete.svg';
 import Image from 'next/image';
 import styles from './KidSection.module.scss';
+
+type Props = {
+  onClick: () => void;
+};
+
 const Avatars = [
   undefined,
   <Avatar1 key="avatar1" />,
@@ -20,7 +25,7 @@ const Avatars = [
   <Avatar6 key="avatar6" />,
 ];
 
-export default function KidSection() {
+export default function KidSection({ onClick }: Props) {
   const [kids, setKids] = useState([]);
   const { status } = useSession();
   const { fetch } = useFetch();
@@ -73,7 +78,9 @@ export default function KidSection() {
             </div>
           </div>
           <div className={styles.buttons}>
-            <Button className={styles.button} onClick={editProfile}>
+            <Button className={styles.button} onClick={() => {
+            onClick();
+          }}>
             <Image src={Edit} alt='кнопка редагування'></Image>
             </Button>
             <Button className={styles.button} onClick={deleteProfile}>
