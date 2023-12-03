@@ -4,17 +4,8 @@ import  { useState } from 'react';
 import Parents from 'src/app/(main)/parents/components/Parents';
 import CreateWigwam from '@/components/CreateWigwam';
 import KidsList from './components/KidsList';
-import EditWigwam from './components/EditWigwam';
-//import { useFetch } from '@/hooks';
-//import { useSession } from 'next-auth/react';
-import { ChildType } from '@/types';
-
 
 export default function ParentsPage() {
-
-  
-  
-  
 
   const [wigwam, setWigwam] = useState(false);
   const [edit, setEdit] = useState(false);
@@ -33,11 +24,7 @@ export default function ParentsPage() {
     <main>
       <Parents handleClick={toggleCreateWigwam} />
       {wigwam && <CreateWigwam closeCreateWigwam={toggleCreateWigwam} />}
-      <KidsList
-      // kids ={kids} 
-      // handleEdit={toggleEditWigwam}
-      //handleDelete={deleteProfile}
-      />
+      <KidsList/>
       {/* {edit && <EditWigwam closeEditWigwam={toggleEditWigwam} />} */}
     </main>
   );

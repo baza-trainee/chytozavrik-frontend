@@ -81,7 +81,8 @@ const KidProfile = ({kid, handleDelete}: {kid: ChildType, handleDelete: (id:numb
             </Button>
           </div>
           </li>
-          {edit && <EditWigwam closeEditWigwam={handleEdit} />}
+          {edit && <EditWigwam closeEditWigwam={handleEdit}
+          id={kid.id} />}
           </> 
   )
 }

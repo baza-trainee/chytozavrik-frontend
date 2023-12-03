@@ -44,7 +44,6 @@ try {
               <KidProfile 
               key={kid.id}
               kid={kid}
-              //handleEdit={handleEdit}
               handleDelete={handleDelete}
               />
   ))}

@@ -28,7 +28,7 @@ const defaultValues: FormData = {
   avatar: 0,
 };
 
-export default function EditWigwam({ closeEditWigwam }: Props) {
+export default function EditWigwam({id, closeEditWigwam }: {id: number, closeEditWigwam: () => void} ) {
   const {
     register,
     handleSubmit,
@@ -36,22 +36,24 @@ export default function EditWigwam({ closeEditWigwam }: Props) {
     formState: { errors },
   } = useForm({ defaultValues });
 
-  const { fetch } = useFetch<ChildType, FormData>();
+  const { fetch } = useFetch();
 
   const onSubmit: SubmitHandler<FormData> = formData => {
     formData.avatar = Number(formData.avatar);
     closeEditWigwam();
-    editKidProfile(formData);
+    editKidProfile(formData, id);
   };
 
-  const editKidProfile = async (formData: FormData) => {
+  const editKidProfile = async (formData: FormData, id: number) => {
     try {
-      await fetch('users/me/children/', 'POST', {
+      await fetch(`users/me/children/${id}/`, 'PATCH', {
         name: formData.name,
         avatar: formData.avatar,
       });
     } catch (err) {
       console.log(err);
+    } finally {
+      console.log(id);
     }
   };
 
