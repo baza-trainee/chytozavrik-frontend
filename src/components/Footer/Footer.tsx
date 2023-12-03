@@ -94,7 +94,7 @@ const Footer = () => {
                       </a>
                   </ul>
 
-                  <ul className={styles.social}>
+                  {/* <ul className={styles.social}>
                     <li>
                       <Link href="https://www.facebook.com/" target="_blank">
                         <Facebook width={32} height={32} className={styles.socialImage}></Facebook>
@@ -109,7 +109,7 @@ const Footer = () => {
                         ></Instagram>
                       </Link>
                     </li>
-                  </ul>
+                  </ul> */}
                 </div>
               </div>
             </div>
