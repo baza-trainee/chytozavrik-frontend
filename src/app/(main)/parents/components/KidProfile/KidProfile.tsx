@@ -1,5 +1,4 @@
-
-import React from 'react'
+import {useState} from 'react';
 import Link from 'next/link';
 import { Typography, Button } from '@/components/common';
 import { Route } from '@/constants';
@@ -9,7 +8,6 @@ import Delete from '../../../../../../public/images/delete.svg';
 import Image from 'next/image';
 import styles from './KidProfile.module.scss';
 import {ChildType} from '@/types';
-import {useState} from 'react';
 import EditWigwam from '../EditWigwam';
 
 // type Props = {
@@ -33,7 +31,7 @@ import EditWigwam from '../EditWigwam';
   ];
 
 
-const KidProfile = ({kid, handleDelete}: {kid: ChildType, handleDelete: () => void }) => {
+const KidProfile = ({kid, handleDelete}: {kid: ChildType, handleDelete: (id:number) => void }) => {
 
     
     const [edit, setEdit] = useState(false);
@@ -41,6 +39,7 @@ const KidProfile = ({kid, handleDelete}: {kid: ChildType, handleDelete: () => vo
         if (!edit) setEdit(true);
         else setEdit(false);
       };
+
 
   return (
       <>
@@ -76,7 +75,7 @@ const KidProfile = ({kid, handleDelete}: {kid: ChildType, handleDelete: () => vo
             <Image src={Edit} alt='кнопка редагування'></Image>
             </Button>
             <Button className={styles.button} onClick={() => {
-            handleDelete();
+            handleDelete(kid.id);
           }}>
             <Image src={Delete} alt='кнопка видалення'></Image>
             </Button>
