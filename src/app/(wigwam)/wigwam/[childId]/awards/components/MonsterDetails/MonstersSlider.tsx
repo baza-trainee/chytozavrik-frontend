@@ -1,33 +1,31 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './styles.module.scss';
-import ArrowPrev from '@/app/(wigwam)/wigwam/[childId]/awards/components/Images/ArrowPrev';
-import ArrowNext from '@/app/(wigwam)/wigwam/[childId]/awards/components/Images/ArrowNext';
 import { Monster } from '@/types/MonstersTypes';
 import Image from 'next/image';
+import ArrowPrev from '@/app/(wigwam)/wigwam/[childId]/awards/components/Images/ArrowPrev';
+import ArrowNext from '@/app/(wigwam)/wigwam/[childId]/awards/components/Images/ArrowNext';
 
+const MonstersSlider = ({ results, monsterId }: { results: Monster[], monsterId: number | string | null }) => {
 
-const MonstersSlider = ({ results }: { results: Monster[] }) => {
-  const [currentSlide, setCurrentSlide] = useState(0)
+  const initialIndex = results.findIndex(monster => monster.id === monsterId);
+  const [currentSlide, setCurrentSlide] = useState(initialIndex >= 0 ? initialIndex : 0);
+  const [sliderItems, setSliderItems] = useState(results)
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (currentSlide === sliderItems.length - 1) {
+      setSliderItems(prevItems => [...prevItems, ...results]);
+    }
+  }, [currentSlide, results]);
+
   const goToNext = () => {
-    setCurrentSlide((prevSlide) => {
-      if (prevSlide === results.length - 1) {
-        return 0;
-      } else {
-        return prevSlide + 1;
-      }
-    });
+    setCurrentSlide(prevSlide => prevSlide + 1);
   };
-
   const goToPrev = () => {
-    setCurrentSlide((prevSlide) => {
-      if (prevSlide === 0) {
-        return results.length - 1;
-      } else {
-        return prevSlide - 1;
-      }
-    });
+    setCurrentSlide(prevSlide => prevSlide - 1);
   };
 
   const sliderStyle = {
@@ -42,26 +40,65 @@ const MonstersSlider = ({ results }: { results: Monster[] }) => {
     flexShrink: 0,
   };
 
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isSwipe = Math.abs(distance) > minSwipeDistance;
+    if (isSwipe) {
+      if (distance < 0) {
+        goToPrev();
+      } else {
+        goToNext();
+      }
+    }
+  };
+
   return (
-    <div className={styles.slider}>
-      {results.length > 1 && <button className={styles.prev} onClick={goToPrev}><ArrowPrev /></button>}
-      <div className={styles.slidesContainer} style={{overflow: 'hidden'}}>
+    <div className={styles.slider}
+         onTouchStart={onTouchStart}
+         onTouchMove={onTouchMove}
+         onTouchEnd={onTouchEnd}>
+      <button
+        style={sliderItems.length < 1 ? {visibility: 'hidden'}  : {visibility: 'visible'}}
+        className={styles.prev}
+        onClick={goToPrev}>
+        <ArrowPrev />
+      </button>
+      <div className={styles.slidesContainer} style={{ overflow: 'hidden' }}>
         <div className={styles.slides} style={sliderStyle}>
-         {results.map((result, index) =>
-           <div className={styles.slide} style={slideStyle} key={index}>
-             <Image
-               src={result.reward}
-               alt='Читозаврик'
-               width={100}
-               height={100}
-               style={{objectFit: 'contain', objectPosition: "bottom center", width: "100%", height: "100%"}}
-             />
-           </div>
-         )}
-       </div>
+          {sliderItems.map((result, index) =>
+            <div className={styles.slide} style={slideStyle} key={index}>
+              <div className={styles.image}>
+                <Image
+                  src={result.reward}
+                  alt='Читозаврик'
+                  width={100}
+                  height={100}
+                  style={{ objectFit: 'cover', objectPosition: 'bottom center', width: '100%', height: '100%' }}
+                />
+              </div>
+            </div>,
+          )}
+        </div>
       </div>
 
-      {results.length > 1 && <button className={styles.next} onClick={goToNext}><ArrowNext /></button>}
+      <button
+        style={sliderItems.length < 1 ? {visibility: 'hidden'}  : {visibility: 'visible'}}
+        className={styles.next}
+        onClick={goToNext}>
+        <ArrowNext />
+      </button>
     </div>
   );
 };

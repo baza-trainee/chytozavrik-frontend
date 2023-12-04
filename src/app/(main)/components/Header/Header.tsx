@@ -6,15 +6,12 @@ import HeaderButton from './HeaderButton';
 import { Button, Container } from 'components/common';
 import styles from './Header.module.scss';
 import { useSession } from 'next-auth/react';
-import * as process from 'process';
 import { useMedia } from '@/hooks';
 
 
 const Header = () => {
   const { data: session } = useSession();
   const {deviceType} = useMedia();
-
-  const adminData = process.env.NEXT_PUBLIC_ADMIN_EMAIL
 
   return (
     <header>
@@ -32,7 +29,7 @@ const Header = () => {
 
         <div className={styles.buttonContainer}>
           {deviceType === "desktop"
-            && session?.user?.email === adminData
+            && session?.user?.is_superuser
             && <Button
               className={styles.buttonAdmin}
               component={'link'}

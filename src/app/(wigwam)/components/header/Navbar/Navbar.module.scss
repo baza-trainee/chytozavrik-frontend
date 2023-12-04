@@ -5,15 +5,25 @@
   background: getColor(blue, 90);
   padding-top: 16px;
   padding-bottom: 16px;
+  height: 70px;
+  width: 100vw;
+
+
+
+  @include breakpoint(desktop) {
+    min-height: 100px;
+  }
+
 }
 
 .container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  width: 100%;
 }
 
-.logo {
+.link svg {
   width: 24px;
   height: 24px;
   color: rgba(119, 145, 250, 1);
@@ -49,6 +59,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  font-weight: 400;
 }
 
 .avatar {
@@ -57,13 +68,13 @@
   @include breakpoint(desktop) {
     margin-left: 19px;
     width: 48px;
-        height: 48px;
+    height: 48px;
   }
 }
 
-.generalLogo{
-    display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 103px;
+.generalLogo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 103px;
 }

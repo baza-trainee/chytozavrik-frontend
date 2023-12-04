@@ -1,22 +1,28 @@
-'use client'
+'use client';
 
+import { FC } from 'react';
 import Link from 'next/link';
-import styles from './Navbar.module.scss';
 import classNames from 'classnames';
 import Image from 'next/image';
 import { LogOut, Tent, Brain } from 'lucide-react';
 import Container from 'components/common/Container/Container';
 import { Typography } from 'components/common';
-import { FC } from 'react';
+import styles from './Navbar.module.scss';
+import { usePathname } from 'next/navigation';
+import Chytozavr from '@/app/(wigwam)/components/header/Chytozavr/Chytozavr';
+
 
 interface Props {
-  childId: string
+  childId: string,
+  name: string,
+  avatar: string
 }
 
-const Navbar: FC<Props> = ({childId}) => {
+const Navbar: FC<Props> = ({ childId, name, avatar }) => {
+  const currentRoute = usePathname();
 
   return (
-    <section className={styles.section}>
+    <header className={styles.section}>
       <Container className={styles.container}>
         <div className={styles.wrapper}>
           <div className={styles.generalLogo}>
@@ -30,37 +36,40 @@ const Navbar: FC<Props> = ({childId}) => {
           </div>
 
           <Typography component='p' variant='navbar'>
-            <Link className={styles.link} href={`/wigwam/${childId}`}>
-              <Tent width={24} height={24} className={classNames(styles.logo)} />
+            <Link className={styles.link} href={`/wigwam/${childId}`}
+                  style={currentRoute === `/wigwam/${childId}` ? { color: '#F2B441' } : undefined}>
+              <Tent width={24} height={24} className={classNames(styles.logo)} color={currentRoute === `/wigwam/${childId}` ? '#F2B441' : "#7791fa" }/>
               Вігвам
             </Link>
           </Typography>
 
           <Typography component='p' variant='navbar'>
-            <Link className={styles.link} href={`/wigwam/${childId}/quizzes`}>
-              <Brain width={24} height={24} className={classNames(styles.logo)} />
+            <Link className={styles.link} href={`/wigwam/${childId}/quizzes`}
+                  style={currentRoute === `/wigwam/${childId}/quizzes` ? { color: '#F2B441' } : undefined}>
+              <Brain width={24} height={24} className={classNames(styles.logo)} color={currentRoute === `/wigwam/${childId}/quizzes` ? '#F2B441' : "#7791fa" } />
               Вікторини
             </Link>
           </Typography>
 
           <Typography component='p' variant='navbar'>
-            <Link className={styles.link} href={`/wigwam/${childId}/awards`}>
-              <Image src='/images/chytozavr.svg' width={24} height={24} alt='Logo'
-                     className={classNames(styles.logo)} />
+            <Link className={styles.link} href={`/wigwam/${childId}/awards`}
+                  style={currentRoute === `/wigwam/${childId}/awards` ? { color: '#F2B441' } : undefined}>
+              <Chytozavr stroke={currentRoute === `/wigwam/${childId}/awards` ? '#F2B441' : '#7791FA'} />
               Читозаврики
             </Link>
           </Typography>
 
           <Typography component='p' variant='navbar'>
-            <Link className={styles.link} href='#'>
+            <Link className={styles.link} href={`/parents/lobby`}>
               <LogOut width={32} height={32} className={classNames(styles.logo)} />
               Вихід
             </Link>
-          </Typography>        </div>
+          </Typography>
+        </div>
         <div className={classNames(styles.user)}>
-          <p>Name</p>
+          <p>{name}</p>
           <Image
-            src='/images/avatars/children-avatar-4.svg'
+            src={avatar}
             width={32}
             height={32}
             alt='Logo'
@@ -68,9 +77,8 @@ const Navbar: FC<Props> = ({childId}) => {
           />
         </div>
 
-
       </Container>
-    </section>
+    </header>
   );
 };
 

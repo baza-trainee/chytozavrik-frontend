@@ -31,16 +31,17 @@ const LightRays = ({className}: { className: string}) => {
        </svg>
      }
 
-     {deviceType === "laptop" && <svg xmlns="http://www.w3.org/2000/svg" width="1024" height="768" viewBox="0 0 1024 768" fill="none">
-       <g opacity="0.05">
-         <path d="M508.918 768L1024 199.875V0H925.867L508.918 768Z" fill="white"/>
-         <path d="M508.918 768L777.244 0H576.711L508.918 768Z" fill="white"/>
-         <path d="M508.918 768L230.044 0H428.089L508.918 768Z" fill="white"/>
-         <path d="M508.918 768L0 199.875V0H81.4222L508.918 768Z" fill="white"/>
-         <path d="M508.918 768L0 586.5V397.125L508.918 768Z" fill="white"/>
-         <path d="M508.918 768L1024 586.5V397.125L508.918 768Z" fill="white"/>
-       </g>
-     </svg>}
+     {deviceType === "laptop" &&
+       <svg xmlns="http://www.w3.org/2000/svg" width="768" height="1024" viewBox="0 0 768 1024" fill="none">
+         <g opacity="0.05">
+           <path d="M379.666 1024L1104 266.5V0H966L379.666 1024Z" fill="white"/>
+           <path d="M379.666 1024L757 0H475L379.666 1024Z" fill="white"/>
+           <path d="M379.666 1024L-12.5 0H266L379.666 1024Z" fill="white"/>
+           <path d="M379.666 1024L-336 266.5V0H-221.5L379.666 1024Z" fill="white"/>
+           <path d="M379.666 1024L-336 782V529.5L379.666 1024Z" fill="white"/>
+           <path d="M379.666 1024L1104 782V529.5L379.666 1024Z" fill="white"/>
+         </g>
+       </svg>}
      {deviceType === "desktop" && <svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1024" viewBox="0 0 1440 1024" fill="none">
        <g opacity="0.05">
          <path d="M715.666 1024L1440 266.5V0H1302L715.666 1024Z" fill="white"/>
