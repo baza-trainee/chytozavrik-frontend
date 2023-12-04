@@ -67,3 +67,9 @@
 .quantity {
     color: getColor(yellow, 40);
 }
+
+.quizzes {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+}

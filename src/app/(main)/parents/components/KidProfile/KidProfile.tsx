@@ -63,11 +63,11 @@ const KidProfile = ({kid, handleDelete }: Props) => {
               <p className={styles.text}>книг</p>
             </div>
           </div>
-          <div className={styles.quizes}>
+          <div className={styles.books}>
             <Typography className={styles.title} component='p' variant='h5'>Вікторин пройдено</Typography>
-            <div>
+            <div className={styles.quizzes}>
               <div className={styles.wrapper}>
-              <Typography className={styles.quantity} component='p'variant='h3'>0</Typography>
+              <p className={styles.quantity}>0</p>
               <p className={styles.text}>Загалом</p>
               </div>
               <div className={styles.wrapper}>

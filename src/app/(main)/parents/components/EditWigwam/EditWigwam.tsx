@@ -61,7 +61,6 @@ export default function EditWigwam({id, closeEditWigwam}: Props) {
 
   useEffect(() => {
     resetField('name');
-    window.location.reload();
   }, [resetField]);
 
   return (

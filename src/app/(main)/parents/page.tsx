@@ -8,7 +8,7 @@ import KidsList from './components/KidsList';
 export default function ParentsPage() {
 
   const [wigwam, setWigwam] = useState(false);
-  const [edit, setEdit] = useState(false);
+  //const [edit, setEdit] = useState(false);
 
   const toggleCreateWigwam = () => {
     if (!wigwam) setWigwam(true);

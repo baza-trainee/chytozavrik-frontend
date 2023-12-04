@@ -36,7 +36,7 @@ export default function CreateWigwam({ closeCreateWigwam }: Props) {
     formState: { errors },
   } = useForm({ defaultValues });
 
-  const { fetch } = useFetch<ChildType, FormData>();
+  const { fetch } = useFetch();
   
 
   const onSubmit: SubmitHandler<FormData> = formData => {
