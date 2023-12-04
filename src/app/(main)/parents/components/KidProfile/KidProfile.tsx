@@ -66,11 +66,7 @@ const KidProfile = ({kid, handleDelete }: Props) => {
           <div className={styles.books}>
             <Typography className={styles.title} component='p' variant='h5'>Вікторин пройдено</Typography>
             <div className={styles.quizzes}>
-<<<<<<< Updated upstream
               <div className={styles.wrapper}>
-=======
-              <div className={styles.wrapper}>checkout 
->>>>>>> Stashed changes
               <p className={styles.quantity}>0</p>
               <p className={styles.text}>Загалом</p>
               </div>
