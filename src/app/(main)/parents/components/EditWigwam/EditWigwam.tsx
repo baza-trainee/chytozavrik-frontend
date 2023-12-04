@@ -1,21 +1,22 @@
 'use client';
 
 import { useForm, SubmitHandler } from 'react-hook-form';
-import styles from './CreateWigwam.module.scss';
+import styles from './EditWigwam.module.scss';
 import { Container, Typography, Button } from 'components/common';
 import Image from 'next/image';
-import Avatar1 from '../../../public/images/kids-avatar1.svg';
-import Avatar2 from '../../../public/images/kids-avatar2.svg';
-import Avatar3 from '../../../public/images/kids-avatar3.svg';
-import Avatar4 from '../../../public/images/kids-avatar4.svg';
-import Avatar5 from '../../../public/images/kids-avatar5.svg';
-import Avatar6 from '../../../public/images/kids-avatar6.svg';
+import Avatar1 from '/public/images/kids-avatar1.svg';
+import Avatar2 from '/public/images/kids-avatar2.svg';
+import Avatar3 from '/public/images/kids-avatar3.svg';
+import Avatar4 from '/public/images/kids-avatar4.svg';
+import Avatar5 from '/public/images/kids-avatar5.svg';
+import Avatar6 from '/public/images/kids-avatar6.svg';
 import { useFetch } from '@/hooks';
 import { useEffect } from 'react';
 import { ChildType } from '@/types';
 
 type Props = {
-  closeCreateWigwam: () => void;
+  closeEditWigwam: () => void;
+  id: number;
 };
 
 type FormData = {
@@ -28,7 +29,8 @@ const defaultValues: FormData = {
   avatar: 0,
 };
 
-export default function CreateWigwam({ closeCreateWigwam }: Props) {
+
+export default function EditWigwam({id, closeEditWigwam}: Props) {
   const {
     register,
     handleSubmit,
@@ -37,23 +39,24 @@ export default function CreateWigwam({ closeCreateWigwam }: Props) {
   } = useForm({ defaultValues });
 
   const { fetch } = useFetch();
-  
+
 
   const onSubmit: SubmitHandler<FormData> = formData => {
     formData.avatar = Number(formData.avatar);
-    closeCreateWigwam();
-    createKidProfile(formData);
+    closeEditWigwam();
+    editKidProfile(formData, id);
+   
   };
 
-  const createKidProfile = async (formData: FormData) => {
+  const editKidProfile = async (formData: FormData, id: number) => {
     try {
-      await fetch('users/me/children/', 'POST', {
+      await fetch(`users/me/children/${id}/`, 'PATCH', {
         name: formData.name,
         avatar: formData.avatar,
       });
     } catch (err) {
       console.log(err);
-    }
+    } 
   };
 
   useEffect(() => {
@@ -65,7 +68,7 @@ export default function CreateWigwam({ closeCreateWigwam }: Props) {
       <Container className={styles.container}>
         <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
           <Typography className={styles.title} component="p" variant="h3">
-            Створити вігвам
+            Редагувати вігвам
           </Typography>
           <div className={styles.formWrapper}>
             <div>
@@ -81,7 +84,7 @@ export default function CreateWigwam({ closeCreateWigwam }: Props) {
               />
               {errors.name && <span>Поле обов&apos;язкове</span>}
               <div className={styles.buttonsWrapper}>
-                <Button variant="outline" className={styles.button} onClick={closeCreateWigwam}>
+                <Button variant="outline" className={styles.button} onClick={closeEditWigwam}>
                   Скасувати
                 </Button>
                 <Button type="submit" color="secondary" className={styles.button}>

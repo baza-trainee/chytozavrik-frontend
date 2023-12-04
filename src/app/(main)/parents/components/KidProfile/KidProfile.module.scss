@@ -1,0 +1,75 @@
+@import '@/scss/utils/func';
+@import '@/scss/utils/variables';
+@import '@/scss/utils/mixin';
+
+
+.item {
+    height: 454px;
+    padding: 24px;
+    background-color: $white;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+    @include breakpoint(desktop) {
+        height: 173px;
+        display: flex;
+        justify-content: space-between;  
+    }
+}
+
+.link {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    
+    align-items: center;
+
+    @include breakpoint(desktop) {
+    
+    justify-content: flex-start;
+    }
+}
+
+.thumb {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+}
+
+.buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.button {
+    height: 56px;
+    width: 56px;
+    background-color: white;
+}
+
+.books {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.quantity {
+    color: getColor(yellow, 40);
+}
+
+.quizzes {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+}
