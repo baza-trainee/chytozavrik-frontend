@@ -57,20 +57,22 @@ const KidProfile = ({kid, handleDelete }: Props) => {
             </Typography>
           </Link>
           <div className={styles.books}>
-            <p>Прочитано</p>
-            <p>0</p>
-            <p>книг</p>
+            <Typography className={styles.title} component='p' variant='h5'>Прочитано</Typography>
+            <div className={styles.wrapper}>
+              <Typography className={styles.quantity} component='p'variant='h3'>0</Typography>
+              <p className={styles.text}>книг</p>
             </div>
+          </div>
           <div className={styles.quizes}>
-            <p>Вікторин пройдено</p>
+            <Typography className={styles.title} component='p' variant='h5'>Вікторин пройдено</Typography>
             <div>
-              <div>
-                <p>0</p>
-                <p>Загалом</p>
+              <div className={styles.wrapper}>
+              <Typography className={styles.quantity} component='p'variant='h3'>0</Typography>
+              <p className={styles.text}>Загалом</p>
               </div>
-              <div>
-                <p>0</p>
-                <p>Сьогодні</p>
+              <div className={styles.wrapper}>
+                <p className={styles.quantity}>0</p>
+                <p className={styles.text}>Сьогодні</p>
               </div>
             </div>
           </div>

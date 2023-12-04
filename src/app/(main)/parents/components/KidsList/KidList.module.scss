@@ -8,6 +8,7 @@
     background-position: center bottom 80px;
     padding-bottom: 144px;
     background-repeat: no-repeat;
+    background-size: 100% auto;
 
     @include breakpoint(tablet) {
         background-image: url('../../../../../../public/images/blue-wave-tab.svg');
@@ -30,37 +31,38 @@
 }
 
 .container {
-    height: 192px;
+    min-width: 360px;
+    min-height: 192px;
     padding-top: 104px;
     background-color: #e3f0ff;
-    background-image:  url('../../../../../../public/images/cloud-mob.svg');// url('../../../../../../public/images/blue-wave-mob.svg'); //linear-gradient(to bottom, #e3f0ff 0%, #e3f0ff 63%, #fdfdfd 43%, #fdfdfd 100%);
-    background-position: center top; //center top 192px;
-    background-size: auto;
-    background-repeat: repeat-x; // no-repeat;
+    // background-image:  url('../../../../../../public/images/cloud-mob.svg');// url('../../../../../../public/images/blue-wave-mob.svg'); //linear-gradient(to bottom, #e3f0ff 0%, #e3f0ff 63%, #fdfdfd 43%, #fdfdfd 100%);
+    // background-position: center top; //center top 192px;
+    // background-size: auto;
+    // background-repeat: repeat-x; // no-repeat;
 
     @include breakpoint(tablet) {
-        height: 270px;
+        min-height: 270px;
         padding-top: 123px;
-        background-image: url('../../../../../../public/images/cloud-tab.svg');
+        //background-image: url('../../../../../../public/images/cloud-tab.svg');
     }
 
     @include breakpoint(laptop) {
-        height: 211px;
+        min-height: 211px;
         padding-top: 109px;
-        background-image: url('../../../../../../public/images/cloud-lap.svg');
+        //background-image: url('../../../../../../public/images/cloud-lap.svg');
     }
 
     @include breakpoint(desktop) {
-        height: 419px;
+        min-height: 419px;
         padding-top: 166px;
-        background-image: url('../../../../../../public/images/cloud-desk.svg');
+        //background-image: url('../../../../../../public/images/cloud-desk.svg');
     }
 }
 
-
-// .list {
-//     width: 1280px;
-// }
+.list {
+    display: flex;
+    gap: 36px;
+}
 
 .title {
     text-align: left;

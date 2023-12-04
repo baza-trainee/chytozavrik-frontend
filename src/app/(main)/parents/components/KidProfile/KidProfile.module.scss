@@ -4,10 +4,19 @@
 
 
 .item {
-    height: 173px;
+    height: 454px;
     padding: 24px;
+    background-color: $white;
+    border-radius: 8px;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+    @include breakpoint(desktop) {
+        height: 173px;
+        display: flex;
+        justify-content: space-between;  
+    }
 }
 
 .link {
@@ -15,7 +24,13 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    
+    align-items: center;
+
+    @include breakpoint(desktop) {
+    
     justify-content: flex-start;
+    }
 }
 
 .thumb {
@@ -35,4 +50,20 @@
     height: 56px;
     width: 56px;
     background-color: white;
+}
+
+.books {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.quantity {
+    color: getColor(yellow, 40);
 }
