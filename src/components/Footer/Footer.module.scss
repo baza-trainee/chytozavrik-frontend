@@ -188,7 +188,7 @@
     margin-left: 101px;
   }
   @include breakpoint(desktop) {
-    margin-left: 56px;
+    margin-left: 170px;
     flex-direction: row;
     gap: 127px;
   }
@@ -231,7 +231,7 @@
   color: $white;
 
   @include breakpoint(tablet) {
-    margin-top: -22px;
+    margin-top: 48px;
   }
   @include breakpoint(desktop) {
     margin-top: 14px;
