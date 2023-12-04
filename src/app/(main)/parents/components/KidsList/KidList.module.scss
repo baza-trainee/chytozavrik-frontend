@@ -1,3 +1,82 @@
-.list {
-    width: 1280px;
+@import '@/scss/utils/func';
+@import '@/scss/utils/variables';
+@import '@/scss/utils/mixin';
+
+.section {
+    background-color: $white;
+    background-image: url('../../../../../../public/images/blue-wave-mob.svg');
+    background-position: center bottom 80px;
+    padding-bottom: 144px;
+    background-repeat: no-repeat;
+
+    @include breakpoint(tablet) {
+        background-image: url('../../../../../../public/images/blue-wave-tab.svg');
+        background-position: center bottom 103px;
+        padding-bottom: 203px;
+    }
+
+    @include breakpoint(laptop) {
+        background-image: url('../../../../../../public/images/blue-wave-lap.svg');
+        background-position: center bottom 72px;
+        padding-bottom: 206px;
+    }
+
+    @include breakpoint(desktop) {
+        background-image: url('../../../../../../public/images/blue-wave-desk.svg');
+        background-position: center bottom 100px;
+        padding-bottom: 200px;
+    }
+    
+}
+
+.container {
+    height: 192px;
+    padding-top: 104px;
+    background-color: #e3f0ff;
+    background-image:  url('../../../../../../public/images/cloud-mob.svg');// url('../../../../../../public/images/blue-wave-mob.svg'); //linear-gradient(to bottom, #e3f0ff 0%, #e3f0ff 63%, #fdfdfd 43%, #fdfdfd 100%);
+    background-position: center top; //center top 192px;
+    background-size: auto;
+    background-repeat: repeat-x; // no-repeat;
+
+    @include breakpoint(tablet) {
+        height: 270px;
+        padding-top: 123px;
+        background-image: url('../../../../../../public/images/cloud-tab.svg');
+    }
+
+    @include breakpoint(laptop) {
+        height: 211px;
+        padding-top: 109px;
+        background-image: url('../../../../../../public/images/cloud-lap.svg');
+    }
+
+    @include breakpoint(desktop) {
+        height: 419px;
+        padding-top: 166px;
+        background-image: url('../../../../../../public/images/cloud-desk.svg');
+    }
+}
+
+
+// .list {
+//     width: 1280px;
+// }
+
+.title {
+    text-align: left;
+    margin-bottom: 24px;
+    @include breakpoint(tablet) {
+        margin-bottom: 36px;
+    }
+}
+
+.text {
+    font-size: 16px;
+    line-height: 1.3;
+    color: getColor(neutral, 40);
+
+    @include breakpoint(tablet) {
+        font-size: 18px;
+        line-height: 1.2;
+    }
 }

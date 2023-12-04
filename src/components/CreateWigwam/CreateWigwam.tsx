@@ -37,6 +37,7 @@ export default function CreateWigwam({ closeCreateWigwam }: Props) {
   } = useForm({ defaultValues });
 
   const { fetch } = useFetch<ChildType, FormData>();
+  
 
   const onSubmit: SubmitHandler<FormData> = formData => {
     formData.avatar = Number(formData.avatar);

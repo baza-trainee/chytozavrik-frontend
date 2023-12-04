@@ -4,6 +4,7 @@ import { useSession } from 'next-auth/react';
 import KidProfile from '../KidProfile';
 import { ChildType } from '@/types';
 import styles from './KidList.module.scss';
+import { Container, Typography } from '@/components/common';
 
 
 const KidslList = () => {
@@ -29,15 +30,14 @@ try {
         await fetch(`users/me/children/${id}/`, 'DELETE');
       } catch (err) {
         console.log(err);
-      } finally {
-          console.log(id)
       }
 }
 
 
   return (
-    <section>
-      <h2>Вігвами дітей</h2>
+    <section className={styles.section}>
+        <Container className={styles.container}>
+      <Typography className={styles.title} component='h2' variant='h2'>Вігвами дітей</Typography>
       {kids.length > 0 ? ( 
         <ul className={styles.list}>
           {kids.map((kid: ChildType) => (
@@ -49,8 +49,9 @@ try {
   ))}
   </ul>
  ) : (
-  <p>У вас поки немає створеного вігваму</p>
+  <p className={styles.text} >У вас поки немає створеного вігваму</p>
 )} 
+</Container>
 </section>
 )}
 

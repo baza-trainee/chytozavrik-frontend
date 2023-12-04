@@ -31,7 +31,13 @@ import EditWigwam from '../EditWigwam';
   ];
 
 
-const KidProfile = ({kid, handleDelete}: {kid: ChildType, handleDelete: (id:number) => void }) => {
+  type Props = {
+    handleDelete: (id: number) => void;
+    kid: ChildType;
+  };
+
+
+const KidProfile = ({kid, handleDelete }: Props) => {
 
     
     const [edit, setEdit] = useState(false);
@@ -82,7 +88,8 @@ const KidProfile = ({kid, handleDelete}: {kid: ChildType, handleDelete: (id:numb
           </div>
           </li>
           {edit && <EditWigwam closeEditWigwam={handleEdit}
-          id={kid.id} />}
+          id={kid.id}
+          />}
           </> 
   )
 }

@@ -16,6 +16,7 @@ import { ChildType } from '@/types';
 
 type Props = {
   closeEditWigwam: () => void;
+  id: number;
 };
 
 type FormData = {
@@ -28,7 +29,8 @@ const defaultValues: FormData = {
   avatar: 0,
 };
 
-export default function EditWigwam({id, closeEditWigwam }: {id: number, closeEditWigwam: () => void} ) {
+
+export default function EditWigwam({id, closeEditWigwam}: Props) {
   const {
     register,
     handleSubmit,
@@ -38,10 +40,12 @@ export default function EditWigwam({id, closeEditWigwam }: {id: number, closeEdi
 
   const { fetch } = useFetch();
 
+
   const onSubmit: SubmitHandler<FormData> = formData => {
     formData.avatar = Number(formData.avatar);
     closeEditWigwam();
     editKidProfile(formData, id);
+   
   };
 
   const editKidProfile = async (formData: FormData, id: number) => {
@@ -52,13 +56,12 @@ export default function EditWigwam({id, closeEditWigwam }: {id: number, closeEdi
       });
     } catch (err) {
       console.log(err);
-    } finally {
-      console.log(id);
-    }
+    } 
   };
 
   useEffect(() => {
     resetField('name');
+    window.location.reload();
   }, [resetField]);
 
   return (
