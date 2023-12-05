@@ -15,7 +15,6 @@ const Admin = () => {
       />
       <div>
         <TableHeader
-          withDelete={true}
           colNames={['Email', 'Профілі дітей', 'Дата  реєстрації']}
         />
       </div>
