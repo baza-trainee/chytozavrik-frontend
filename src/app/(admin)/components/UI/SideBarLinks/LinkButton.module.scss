@@ -26,7 +26,7 @@
   &:hover{
     color: $primary-variant;
 
-    & svg {
+    & svg, & svg path {
       stroke: $primary-variant;
     }
   }
@@ -35,8 +35,9 @@
     background: $white;
     color: $primary;
 
-    & svg{
+    & svg, & svg path{
       stroke: $primary;
+      color: $primary;
     }
 
 

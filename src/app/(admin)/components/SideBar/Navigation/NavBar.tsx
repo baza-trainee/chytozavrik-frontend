@@ -92,7 +92,7 @@ const NavBar = () => {
       <LinkButton component={'link'} href={Route.PARTNERS} anchor={'Партнери'} icon={<Briefcase color={'white'} />} />
       <LinkButton component={'link'} href={Route.CONTACTS} anchor={'Контакти'} icon={<UserSquare color={'white'} />} />
       <LinkButton component={'link'} href={Route.STATS} anchor={'Статистика'} icon={<PieChart color={'white'} />} />
-      <LinkButton component={'link'} href={Route.CHANGE_PASS} anchor={'Змінити пароль'} icon={<LockIcon/>} />
+      <LinkButton component={'link'} href={Route.CHANGE_PASS} anchor={'Змінити пароль'} icon={<LockIcon stroke={'white'} />} />
     </nav>
   );
 };
