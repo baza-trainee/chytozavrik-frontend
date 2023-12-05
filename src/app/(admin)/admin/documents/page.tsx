@@ -1,10 +1,20 @@
 import React from 'react';
+import styles from './Documents.module.scss';
+import AdminHeader from '@/app/(admin)/components/Header/AdminHeader';
 
 const Documents = () => {
   return (
-    <main>
-      Documents
-    </main>
+    <div className={styles.documents}>
+      <AdminHeader
+        withSearch={false}
+        withButton={false}
+        withClose={false}
+        heading='Документи'
+      />
+      <div>
+        Place here another parts
+      </div>
+    </div>
   );
 };
 
