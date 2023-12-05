@@ -15,6 +15,7 @@ const Admin = () => {
       />
       <div>
         <TableHeader
+          variant="users"
           colNames={['Email', 'Профілі дітей', 'Дата  реєстрації']}
         />
       </div>
