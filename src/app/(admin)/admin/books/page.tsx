@@ -16,6 +16,7 @@ const Books = () => {
       />
       <div>
         <TableHeader
+          variant='books'
           colNames={['Назва книги', 'Стан', 'Дата  додавання']}
         />
       </div>

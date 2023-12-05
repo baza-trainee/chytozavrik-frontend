@@ -14,8 +14,8 @@ const Documents = () => {
       />
       <div>
         <TableHeader
+          variant='documents'
           colNames={['Назва документу', 'Дата  оновлення', 'Редагування']}
-          isDocument={true}
         />
       </div>
     </div>
