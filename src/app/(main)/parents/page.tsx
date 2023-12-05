@@ -6,30 +6,25 @@ import CreateWigwam from '@/components/CreateWigwam';
 import KidsList from './components/KidsList';
 import './styles.scss'
 
-export default function ParentsPage() {
+const ParentsPage = () => {
 
   const [wigwam, setWigwam] = useState(false);
-  //const [edit, setEdit] = useState(false);
 
   const toggleCreateWigwam = () => {
     if (!wigwam) setWigwam(true);
     else setWigwam(false);
   };
 
-  // const toggleEditWigwam = () => {
-  //   if (!edit) setEdit(true);
-  //   else setEdit(false);
-  // };
-
   return (
     <main>
       <Parents handleClick={toggleCreateWigwam} />
       <section className="section">
-        {wigwam && <CreateWigwam closeCreateWigwam={toggleCreateWigwam} />}
+        {wigwam && <CreateWigwam setWigwam={setWigwam} />}
         <KidsList/>
       </section>
       <div className='empty'/>
-      {/* {edit && <EditWigwam closeEditWigwam={toggleEditWigwam} />} */}
     </main>
   );
 }
+
+export default ParentsPage;
