@@ -16,7 +16,6 @@ const Partners = () => {
       />
       <div>
         <TableHeader
-          withDelete={true}
           colNames={['Назва', 'Дата  додавання']}
         />
       </div>

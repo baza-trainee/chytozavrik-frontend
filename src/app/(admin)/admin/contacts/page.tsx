@@ -15,7 +15,6 @@ const Contacts = () => {
       />
       <div>
         <TableHeader
-          withDelete={false}
           colNames={['Перелік контактів', 'Дата  оновлення']}
         />
       </div>

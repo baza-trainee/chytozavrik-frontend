@@ -15,7 +15,6 @@ const Page = () => {
       />
       <div>
         <TableHeader
-          withDelete={true}
           colNames={['Назва книги', 'Стан', 'Дата  додавання']}
         />
       </div>

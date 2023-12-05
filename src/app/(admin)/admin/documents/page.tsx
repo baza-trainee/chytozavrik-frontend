@@ -14,7 +14,6 @@ const Documents = () => {
       />
       <div>
         <TableHeader
-          withDelete={false}
           colNames={['Назва документу', 'Дата  оновлення', 'Редагування']}
           isDocument={true}
         />
