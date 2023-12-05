@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Quizzes.module.scss';
 import AdminHeader from '@/app/(admin)/components/Header/AdminHeader';
+import TableHeader from '@/app/(admin)/components/TableHeader/TableHeader';
 
 const Quizzes = () => {
   return (
@@ -14,7 +15,9 @@ const Quizzes = () => {
         searchWord={"value"}
       />
       <div>
-        Place here another parts
+        <TableHeader
+          colNames={['Назва книги', 'Стан', 'Дата  додавання']}
+        />
       </div>
     </div>
   );
