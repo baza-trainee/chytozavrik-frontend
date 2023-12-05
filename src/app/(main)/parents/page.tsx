@@ -4,6 +4,7 @@ import  { useState } from 'react';
 import Parents from 'src/app/(main)/parents/components/Parents';
 import CreateWigwam from '@/components/CreateWigwam';
 import KidsList from './components/KidsList';
+import './styles.scss'
 
 export default function ParentsPage() {
 
@@ -23,8 +24,11 @@ export default function ParentsPage() {
   return (
     <main>
       <Parents handleClick={toggleCreateWigwam} />
-      {wigwam && <CreateWigwam closeCreateWigwam={toggleCreateWigwam} />}
-      <KidsList/>
+      <section className="section">
+        {wigwam && <CreateWigwam closeCreateWigwam={toggleCreateWigwam} />}
+        <KidsList/>
+      </section>
+      <div className='empty'/>
       {/* {edit && <EditWigwam closeEditWigwam={toggleEditWigwam} />} */}
     </main>
   );
