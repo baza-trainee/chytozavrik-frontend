@@ -5,33 +5,36 @@ import classNames from 'classnames';
 import Image from 'next/image';
 import { LogOut } from 'lucide-react';
 import Container from 'components/common/Container/Container';
-import { NextPage } from 'next';
+import Link from 'next/link';
 
 
-const NavbarMob = () => {
+const NavbarMob = ({avatar} : {avatar: string}) => {
+
   return (
     <section className={styles.section}>
       <Container>
         <div className={styles.wrapper}>
           <Image
-            src='/header-logo.svg'
+            src='/images/logo/header-logo.svg'
             width={29}
             height={24}
             alt='Logo'
             className={classNames(styles.log)}
           />
           <Image
-            src='/images/avatars/children-avatar-4.svg'
+            src={avatar}
             width={32}
             height={32}
             alt='Logo'
             className={classNames(styles.log)}
           />
-          <LogOut
-            width={32}
-            height={32}
-            className={classNames(styles.logo)}
-          />
+          <Link href={`/parents/lobby`}>
+            <LogOut
+              width={32}
+              height={32}
+              className={classNames(styles.logo)}
+            />
+          </Link>
         </div>
       </Container>
     </section>

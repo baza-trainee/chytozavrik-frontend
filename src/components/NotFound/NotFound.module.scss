@@ -6,8 +6,8 @@
   background-image: url('/images/background-wave.svg'), url('/images/space-mob.svg'),
     url('/images/stars.svg'), url('/images/path.svg');
   background-repeat: repeat-x, no-repeat, no-repeat, no-repeat;
-  background-position: center top, center bottom, center bottom -20px, left bottom -3px;
-  background-size: auto 27px, auto, auto, 100% 280px;
+  background-position: center top, center bottom, center bottom -20px, left bottom -6px;
+  background-size: auto 27px, auto, auto, contain;
 
   @include breakpoint(tablet) {
     background-image: url('/images/background-wave.svg'), url('/images/space-tab.svg'),

@@ -15,6 +15,7 @@
   @include breakpoint(tablet) {
     --py: 32px;
     --px: 24px;
+    max-width: 480px;
   }
 }
 
@@ -34,11 +35,9 @@
 
   height: 100%;
 
-  @include breakpoint(tablet) {
-  }
+  @include breakpoint(tablet) {}
 
-  @include breakpoint(desktop) {
-  }
+  @include breakpoint(desktop) {}
 }
 
 .inputs-group {
@@ -49,24 +48,34 @@
   margin-bottom: 46px;
 }
 
-.forgot-password {
-  --mb: 32px;
-  margin-bottom: var(--mb);
+.link {
+  font-size: 16px;
+}
+
+.forgot {
+  font-size: 16px;
 
   @include breakpoint(tablet) {
-    --mb: 24px;
+    padding-right: 12px;
   }
+
 }
 
 .checkboxes-groups {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   gap: 24px;
 
   @include breakpoint(tablet) {
     margin-bottom: 24px;
+
   }
 }
+
+.checkbox label {
+  font-size: 16px;
+}
+
 
 .signup-group {
   display: flex;
@@ -84,6 +93,7 @@
 }
 
 .link {
+
   &:hover,
   &:focus {
     text-decoration: underline;
@@ -118,8 +128,7 @@
   height: var(--error-icon-size);
 }
 
-.error-message {
-}
+.error-message {}
 
 .button-submit {
   width: 100%;

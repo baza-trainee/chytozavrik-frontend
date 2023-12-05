@@ -51,7 +51,7 @@
   @include breakpoint(desktop) {
     width: 410px;
     height: 279px;
-    margin-top: 200px;
+    margin-top: 247px;
     margin-bottom: 0;
   }
 }
@@ -85,7 +85,7 @@
   }
 
   @include breakpoint(desktop) {
-    bottom: 249px;
+    bottom: 253px;
 
     & svg{
       width: 206.14px;

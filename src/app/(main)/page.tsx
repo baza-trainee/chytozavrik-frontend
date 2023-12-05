@@ -9,6 +9,7 @@ import AboutDetail from '@/components/AboutDetail/AboutDetail';
 import Partners from 'src/app/(main)/components/Partners';
 import Auth from '@/components/Auth';
 import { Refresh } from '@/components/Refresh/Refresh';
+import GratitudeForDonate from 'components/Donate/Gratitude/GratitudeForDonate';
 
 export default async function Home() {
   const session = await getServerSession(authOptions);
@@ -35,6 +36,7 @@ export default async function Home() {
           <AdditionalInfo />
         </>
       )}
+
 
       <Auth />
       <Refresh />

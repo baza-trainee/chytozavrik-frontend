@@ -6,6 +6,7 @@ type Props = HTMLAttributes<HTMLButtonElement> & {
 };
 
 const ClearButtonIcon = ({ icon, ...props }: Props) => {
+
   return (
     <button className={styles.button} type="button" {...props}>
       {icon}

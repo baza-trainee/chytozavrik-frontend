@@ -22,14 +22,14 @@ const Footer = () => {
             <div className={styles.footerContainer}>
               <Link href="/" className={styles.logoContainer}>
                 <Image
-                  src="/logo-footer.svg"
+                  src="/images/logo/logo-footer.svg"
                   width={58}
                   height={50}
                   alt="Logo"
                   className={styles.logo}
                 />
                 <Image
-                  src="/chytozavryk-footer.svg"
+                  src="/images/logo/chytozavryk-footer.svg"
                   width={120}
                   height={16}
                   alt="Logo"
@@ -87,8 +87,6 @@ const Footer = () => {
                       className={styles.informationMail}
                       component="p"
                       variant="footer-mail"
-                      
-                      
                     >
                       <Mail width={18} height={18} className={styles.image} ></Mail>
                       1111111@gmail.com
@@ -96,22 +94,7 @@ const Footer = () => {
                       </a>
                   </ul>
 
-                  <ul className={styles.social}>
-                    <li>
-                      <Link href="https://www.facebook.com/" target="_blank">
-                        <Facebook width={32} height={32} className={styles.socialImage}></Facebook>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="https://www.instagram.com/" target="_blank">
-                        <Instagram
-                          width={32}
-                          height={32}
-                          className={styles.socialImage}
-                        ></Instagram>
-                      </Link>
-                    </li>
-                  </ul>
+                  
                 </div>
               </div>
             </div>

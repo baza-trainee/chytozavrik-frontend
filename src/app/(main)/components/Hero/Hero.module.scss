@@ -21,9 +21,7 @@
 
   &::before {
     bottom: -1px;
-
     height: 76px;
-
     background-color: getColor(blue, 90);
   }
 
@@ -31,7 +29,9 @@
     background-image: url('/images/hero-background-image.svg');
     background-repeat: no-repeat;
     background-position: calc(50% + 50px) calc(100% - 17px);
-    background-size: auto 342px;
+    background-size: 428px 342px;
+    vector-effect: non-scaling-stroke;
+    transform: translate3d(0,0,0)
   }
 
   @include breakpoint(tablet) {
@@ -41,7 +41,7 @@
 
     &::after {
       background-position: calc(50% + 218px) bottom;
-      background-size: auto 432px;
+      background-size: 555px 445px;
     }
   }
 
@@ -52,7 +52,7 @@
 
     &::after {
       background-position: calc(50% + 290px) bottom;
-      background-size: auto 592px;
+      background-size: 738px 592px;
     }
   }
 
@@ -63,7 +63,7 @@
 
     &::after {
       background-position: calc(50% + 404px) calc(100% - 9px);
-      background-size: auto 848px;
+      background-size: 1055px 848px;
     }
   }
 }

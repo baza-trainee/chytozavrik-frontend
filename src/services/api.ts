@@ -9,6 +9,8 @@ import {
   UserType,
   UsersQuizzesResponse,
   QuizCategory,
+  sendPasswordResetEmailType,
+  resetPasswordType,
 } from '@/types';
 
 const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || '';
@@ -158,6 +160,44 @@ export const sendSelectedAnswerService = async (
     body: JSON.stringify({
       child_id: childId,
       answer_id: answerId,
+    }),
+  });
+
+  return await result.json();
+};
+
+export const sendPasswordResetEmailService = async (
+  email: string
+): Promise<FetchResponseType<sendPasswordResetEmailType>> => {
+  const result = await fetch(`${baseUrl}/users/password/reset/`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      email,
+    }),
+  });
+
+  return await result.json();
+};
+
+export const newPasswordService = async (
+  new_password1: string,
+  new_password2: string,
+  uid: string,
+  token: string
+): Promise<FetchResponseType<resetPasswordType>> => {
+  const result = await fetch(`${baseUrl}/users/password/reset/confirm/`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      new_password1,
+      new_password2,
+      uid,
+      token,
     }),
   });
 

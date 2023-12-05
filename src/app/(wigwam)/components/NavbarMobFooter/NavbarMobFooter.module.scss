@@ -2,26 +2,30 @@
 @import "scss/utils/mixin";
 
 .section {
-    background: getColor(blue, 90);
-    padding-top: 16px;
-    padding-bottom: 16px;
+  background: getColor(blue, 90);
+  padding: 8px 16px;
+  position: sticky;
+  bottom: 0;
+  z-index: 999;
+  min-height: 70px;
 }
 
 .link {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 90px;
-}
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90px;
 
-.logo {
+  & svg{
     width: 32px;
     height: 32px;
     color: rgba(119, 145, 250, 1);
+  }
 }
 
+
 .wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

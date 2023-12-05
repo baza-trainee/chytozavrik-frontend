@@ -1,0 +1,35 @@
+@import "../../../../scss/utils/variables";
+
+.header{
+  display: flex;
+  width: 1048px;
+  padding: 16px 24px;
+  align-items: center;
+  gap: 32px;
+  border-radius: 8px 8px 0px 0px;
+  background: $primary-next-variant;
+  color: $black;
+  font-family: var(--montserrat-alternates-font);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 120%;
+
+
+  .names{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    & div:nth-child(1){
+      width: 280px;
+    }
+
+    &.lastName div:last-child{
+      width: 214px;
+    }
+
+  }
+
+}
+

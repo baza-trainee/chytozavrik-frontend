@@ -3,6 +3,8 @@ import { useController, UseControllerProps, FieldValues } from 'react-hook-form'
 import { AlertCircle, XCircle } from 'lucide-react';
 import IconButton from '@/components/common/IconButton';
 import styles from './Input.module.scss';
+import { mockProviders } from 'next-auth/client/__tests__/helpers/mocks';
+import type = mockProviders.github.type;
 
 export type InputProps<T extends FieldValues> = InputHTMLAttributes<HTMLInputElement> &
   UseControllerProps<T> & {
@@ -45,6 +47,8 @@ const Input = <T extends FieldValues>({
       );
     } else if (icon) {
       return icon;
+    } else if (field.value.length > 0 && props.type  === "email") {
+      return <IconButton onClick={resetField} icon={<XCircle  />} />
     }
 
     return null;

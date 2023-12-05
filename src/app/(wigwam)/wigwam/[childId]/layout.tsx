@@ -1,26 +1,13 @@
 import WigwamProvider from '@/app/(wigwam)/components/Provider/WigmawProvider';
-import { Montserrat_Alternates, Raleway } from 'next/font/google';
 import WigwamHeader from '@/app/(wigwam)/components/header/WigwamHeader';
-import '../../../globals.scss';
 import WigwamFooter from '@/app/(wigwam)/components/footer/WigwamFooter';
+import CookiesPanel from 'components/Cookies/CookiesPanel';
+import { fetch } from '@/services/axios';
+import { notFound } from 'next/navigation';
+import { Avatar, ChildResults } from '@/types/ChildrenResults';
+import '../../../globals.scss';
 
-const raleway = Raleway({
-  variable: '--raleway-font',
-  weight: ['300', '400', '500', '800'],
-  style: 'normal',
-  subsets: ['latin'],
-  display: 'swap',
-});
-
-const montserratAlternates = Montserrat_Alternates({
-  variable: '--montserrat-alternates-font',
-  weight: ['400', '600'],
-  style: 'normal',
-  subsets: ['latin'],
-  display: 'swap',
-});
-
-export default function Layout({
+export default async function Layout({
   children,
   params: { childId },
 }: {
@@ -29,15 +16,20 @@ export default function Layout({
     childId: string;
   };
 }) {
+  const childReq = await fetch<ChildResults>(`/users/me/children/${childId}/`);
+
+  if (childReq.status === 'fail') notFound();
+
   return (
-    <html lang="uk" className={`${raleway.variable} ${montserratAlternates.variable}`}>
-      <body>
-        <WigwamProvider>
-          <WigwamHeader childId={childId} />
-          <main>{children}</main>
-          <WigwamFooter childId={childId} />
-        </WigwamProvider>
-      </body>
-    </html>
+    <WigwamProvider>
+      <WigwamHeader
+        childId={childId}
+        name={childReq.data.name}
+        avatar={childReq.data.avatar_as_url}
+      />
+      {children}
+      <WigwamFooter childId={childId} />
+      <CookiesPanel />
+    </WigwamProvider>
   );
 }

@@ -107,21 +107,22 @@ const SignIn = () => {
           />
         </div>
 
-        {/* <AuthLink className={styles['forgot-password']} href={Route.FORGOT_PASSWORD}>
-          Забули пароль?
-        </AuthLink> */}
-
         <div className={styles['checkboxes-groups']}>
-          <Checkbox name="rememberMe" control={control}>
+          <Checkbox className={styles.checkbox} name="rememberMe" control={control}>
             Запам&apos;ятати мене
           </Checkbox>
+          <AuthLink className={(styles['link'], styles.forgot)} href={Route.RESET_PASSWORD}>
+            Забули пароль?
+          </AuthLink>
         </div>
 
         <div className={styles['signup-group']}>
           <Typography component="p" variant="body">
             Ви ще не зареєстровані?
           </Typography>
-          <AuthLink href={Route.SIGN_UP}>Зареєструватися</AuthLink>
+          <AuthLink className={styles['link']} href={Route.SIGN_UP}>
+            Зареєструватися
+          </AuthLink>
         </div>
 
         <div className={styles['form-footer']}>

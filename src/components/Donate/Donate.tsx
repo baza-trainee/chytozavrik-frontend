@@ -9,6 +9,7 @@ import styles from './Donate.module.scss';
 const Donate = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+
   const closeModalHandler = () => {
     setIsModalOpen(false);
   };
@@ -35,6 +36,7 @@ const Donate = () => {
           <DonateDialog onClose={closeModalHandler} />
         </Modal>
       )}
+
     </>
   );
 };
