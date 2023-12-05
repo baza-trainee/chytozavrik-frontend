@@ -1,0 +1,33 @@
+@import 'scss/utils/variables';
+@import 'scss/utils/mixin';
+
+.notFoundContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  justify-content: center;
+  .imageContainer {
+    margin-top: 63px;
+    @include breakpoint(mobile) {
+    }
+    @include breakpoint(tablet) {
+    }
+    @include breakpoint(laptop) {
+    }
+  }
+  .noBooksContainer {
+    text-align: center;
+    font-family: Montserrat Alternates;
+    color: #5d5d5d;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 21.6px;
+    margin-bottom: 40px;
+    @include breakpoint(mobile) {
+    }
+    @include breakpoint(tablet) {
+    }
+    @include breakpoint(laptop) {
+    }
+  }
+}
