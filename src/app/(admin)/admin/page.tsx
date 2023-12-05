@@ -1,5 +1,7 @@
 import AdminHeader from '@/app/(admin)/components/Header/AdminHeader';
 import styles from './Admin.module.scss'
+import TableHeader from '@/app/(admin)/components/TableHeader/TableHeader';
+import React from 'react';
 
 const Admin = () => {
   return (
@@ -12,7 +14,10 @@ const Admin = () => {
         searchWord={"value"}
       />
       <div>
-        Place here another parts
+        <TableHeader
+          withDelete={true}
+          colNames={['Email', 'Профілі дітей', 'Дата  реєстрації']}
+        />
       </div>
     </div>
   )

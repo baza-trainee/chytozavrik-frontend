@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Partners.module.scss';
 import AdminHeader from '@/app/(admin)/components/Header/AdminHeader';
+import TableHeader from '@/app/(admin)/components/TableHeader/TableHeader';
 
 const Partners = () => {
   return (
@@ -14,7 +15,10 @@ const Partners = () => {
         searchWord={"value"}
       />
       <div>
-        Place here another parts
+        <TableHeader
+          withDelete={true}
+          colNames={['Назва', 'Дата  додавання']}
+        />
       </div>
     </div>
   );
