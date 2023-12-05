@@ -8,12 +8,9 @@
   height: 70px;
   width: 100vw;
 
-
-
   @include breakpoint(desktop) {
     min-height: 100px;
   }
-
 }
 
 .container {
@@ -23,15 +20,32 @@
   width: 100%;
 }
 
-.link svg {
-  width: 24px;
-  height: 24px;
-  color: rgba(119, 145, 250, 1);
-  margin-bottom: 8px;
+.link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 103px;
 
-  @include breakpoint(desktop) {
-    width: 32px;
-    height: 32px;
+
+  &:hover{
+    color: rgba(255, 200, 85, 1);
+  }
+
+  &:hover svg,  &:hover svg path{
+    color: rgba(255, 200, 85, 1);
+    stroke: rgba(255, 200, 85, 1);
+  }
+
+  & svg {
+    width: 24px;
+    height: 24px;
+    color: rgba(119, 145, 250, 1);
+    margin-bottom: 8px;
+
+    @include breakpoint(desktop) {
+      width: 32px;
+      height: 32px;
+    }
   }
 }
 
@@ -48,12 +62,7 @@
   }
 }
 
-.link {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 103px;
-}
+
 
 .user {
   display: flex;
