@@ -9,13 +9,11 @@ import WigwamMyMonsters from '@/app/(wigwam)/components/Wigwam/Monsters';
 import Container from 'components/common/Container/Container';
 import styles from './wigwam.module.scss';
 
-
 interface WigwamProps {
   params: { childId: string };
 }
 
 export default async function Wigwam({ params: { childId } }: WigwamProps) {
-
   const booksReq = fetch<BookType[]>(`users/me/children/${childId}/quizzes`);
   const [booksRes] = await Promise.all([booksReq]);
   if (booksRes.status === 'fail') notFound();
@@ -26,16 +24,12 @@ export default async function Wigwam({ params: { childId } }: WigwamProps) {
   const { results: monstersData } = monstersRes.data;
 
   return (
-    <main>
-      <Container className={styles.layout}>
-        <WigwamReadBooks />
-        <WigwamQuiz />
-        <WigwamMyMonsters monstersData={monstersData} />
-        <WigwamBooks booksReq={booksData} />
-        <div className={styles.test}>
-          Recommended
-        </div>
-      </Container>
-    </main>
+    <Container className={styles.layout}>
+      <WigwamReadBooks />
+      <WigwamQuiz />
+      <WigwamMyMonsters monstersData={monstersData} />
+      <WigwamBooks booksReq={booksData} />
+      <div className={styles.test}>Recommended</div>
+    </Container>
   );
 }

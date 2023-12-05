@@ -30,13 +30,13 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="uk" className={`${raleway.variable} ${montserratAlternates.variable}`}>
-    <body>
-    <AppProvider>
-      <Header />
-      {children}
-      <Footer />
-    </AppProvider>
-    </body>
+      <body>
+        <AppProvider>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+        </AppProvider>
+      </body>
     </html>
   );
 }

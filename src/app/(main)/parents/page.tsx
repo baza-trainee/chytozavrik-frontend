@@ -13,9 +13,9 @@ export default function ParentsPage() {
   };
 
   return (
-    <main>
+    <>
       <Parents handleClick={toggleCreateWigwam} />
       {isShown && <CreateWigwam closeCreateWigwam={toggleCreateWigwam} />}
-    </main>
+    </>
   );
 }
