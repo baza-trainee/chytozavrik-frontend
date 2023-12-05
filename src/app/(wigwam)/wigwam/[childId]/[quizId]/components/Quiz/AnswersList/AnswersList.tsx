@@ -11,6 +11,7 @@ import styles from './AnswersList.module.scss';
 type Props = {
   questionId: number;
   answers: QuestionAnswerType[] | undefined;
+  // eslint-disable-next-line no-unused-vars
   onNext: (prize?: string) => void;
 };
 
@@ -29,13 +30,18 @@ const AnswersList = ({ questionId, answers, onNext }: Props) => {
     setSelectAnswer(answerId);
 
     try {
-      await fetch(`quizzes/question/${questionId}/submit-answer/`, 'POST', {
-        child_id: Number(childId),
-        answer_id: answerId,
-      });
+      await fetch(
+        `quizzes/question/${questionId}/submit-answer/`,
+        {
+          child_id: Number(childId),
+          answer_id: answerId,
+        },
+        'POST'
+      );
 
       setIsShowNotification(true);
     } catch (err) {
+      // eslint-disable-next-line no-console
       console.log(err);
     }
   };
@@ -46,7 +52,7 @@ const AnswersList = ({ questionId, answers, onNext }: Props) => {
   };
 
   const nextStep = () => {
-    onNext(answerResult?.child_reward_url as string);
+    if (answerResult?.child_reward_url) onNext(answerResult?.child_reward_url);
     closeNotification();
   };
 

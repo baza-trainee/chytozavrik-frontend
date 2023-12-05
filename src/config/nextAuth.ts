@@ -3,7 +3,9 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 import jwtDecode, { JwtPayload } from 'jwt-decode';
 import { getUserInfoService, signInService, token as apiToken } from '@/services/api';
 import { Route } from '@/constants';
-import { signOut } from 'next-auth/react';
+
+/* eslint-disable prefer-arrow/prefer-arrow-functions */
+/* eslint-disable no-param-reassign */
 
 const getMaxAge = () => {
   const isRememberMe = true;
@@ -66,6 +68,7 @@ export const authOptions: NextAuthOptions = {
   ],
   callbacks: {
     async session({ session, token }) {
+      // eslint-disable-next-line no-param-reassign
       if (token.user) {
         session.user = { ...token.user };
       }

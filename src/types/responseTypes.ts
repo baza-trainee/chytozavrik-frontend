@@ -2,7 +2,6 @@ export type AttemptsInfoType = {
   score: number;
 };
 
-
 export type sendPasswordResetEmailType = {
   email: string;
 };

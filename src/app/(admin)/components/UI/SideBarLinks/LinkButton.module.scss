@@ -1,6 +1,6 @@
 @import 'scss/utils/variables';
 
-.link{
+.link {
   display: flex;
   width: 240px;
   padding: 12px 8px 12px 12px;
@@ -15,7 +15,7 @@
   line-height: 120%;
   position: relative;
 
-  .arrow{
+  .arrow {
     position: absolute;
     right: 8px;
     width: 24px;
@@ -23,7 +23,7 @@
     z-index: 10;
   }
 
-  &:hover{
+  &:hover {
     color: $primary-variant;
 
     & svg {
@@ -31,16 +31,12 @@
     }
   }
 
-  &.active{
+  &.active {
     background: $white;
     color: $primary;
 
-    & svg{
+    & svg {
       stroke: $primary;
     }
-
-
   }
-
-
 }

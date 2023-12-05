@@ -2,7 +2,6 @@
 @import 'scss/utils/mixin';
 @import '@/scss/utils/func';
 
-
 .section {
   background-color: getColor(blue, 90);
   @include addWaveBackground('/images/bg-wave-blue.svg');
@@ -155,7 +154,7 @@
     border: 3px solid #455fc8;
     border-radius: 100px;
   }
-  
+
   @include breakpoint(tablet) {
     margin-left: -28px;
   }

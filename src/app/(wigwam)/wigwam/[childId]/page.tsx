@@ -9,34 +9,31 @@ import WigwamMyMonsters from '@/app/(wigwam)/components/Wigwam/Monsters';
 import Container from 'components/common/Container/Container';
 import styles from './wigwam.module.scss';
 
-
-
 interface WigwamProps {
   params: { childId: string };
 }
 
-export default async function Wigwam({ params: { childId } }: WigwamProps) {
-
+const Wigwam = async ({ params: { childId } }: WigwamProps) => {
   const booksReq = fetch<BooksResponse>(`users/me/children/${childId}/quizzes`);
   const monstersReq = fetch<MonstersResponse>(`users/me/children/${childId}/rewards/?page_size=8`);
   const [booksRes, monstersRes] = await Promise.all([booksReq, monstersReq]);
 
   if (booksRes.status === 'fail' || monstersRes.status === 'fail') notFound();
 
-  const {results:  booksData} = booksRes.data
-  const {results: monstersData } = monstersRes.data;
+  const { results: booksData } = booksRes.data;
+  const { results: monstersData } = monstersRes.data;
 
   return (
     <main>
       <Container className={styles.layout}>
         <WigwamReadBooks />
         <WigwamQuiz />
-        <WigwamMyMonsters monstersData={monstersData} childId={childId}/>
-        <WigwamBooks booksData={booksData} next={booksRes.data.next}/>
-        <div className={styles.test}>
-          Recommended
-        </div>
+        <WigwamMyMonsters monstersData={monstersData} childId={childId} />
+        <WigwamBooks booksData={booksData} next={booksRes.data.next} />
+        <div className={styles.test}>Recommended</div>
       </Container>
     </main>
   );
-}
+};
+
+export default Wigwam;

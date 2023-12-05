@@ -16,7 +16,7 @@
     width: 332px;
     margin-bottom: 0;
 
-    & img{
+    & img {
       width: 38.402px;
       height: 28px;
     }
@@ -26,7 +26,7 @@
     height: 64px;
     padding: 8px 16px;
 
-    & img{
+    & img {
       width: 78.834px;
       height: 48px;
     }
@@ -35,7 +35,6 @@
   @include breakpoint(desktop) {
     width: 411px;
     padding: 24px;
-
   }
 }
 

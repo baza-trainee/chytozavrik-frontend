@@ -1,20 +1,16 @@
 import AdminProvider from '@/app/(admin)/components/Provider/AdminProvider';
-import styles from './Admin.module.scss';
 import SideBar from '@/app/(admin)/components/SideBar/SideBar';
-import '../../globals.scss'
+import '../../globals.scss';
+import { ReactNode } from 'react';
+import styles from './Admin.module.scss';
 
-export default function Layout({ children, params: { childId } }: {
-  children: React.ReactNode, params: {
-    childId: string
-  }
-}) {
+const Layout = ({ children }: { children: ReactNode }) => (
+  <AdminProvider>
+    <div className={styles.container}>
+      <SideBar />
+      {children}
+    </div>
+  </AdminProvider>
+);
 
-  return (
-    <AdminProvider>
-      <div className={styles.container}>
-        <SideBar />
-        {children}
-      </div>
-    </AdminProvider>
-  );
-}
+export default Layout;

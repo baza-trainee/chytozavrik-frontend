@@ -2,57 +2,57 @@
 @import 'scss/utils/mixin';
 
 .section {
-    background-color: $primary;
-    @include addWaveBackground('/images/background-wave.svg');
-    padding: 68px 0 28px;
-    @include breakpoint(tablet) {
-        padding: 118px 0 8px;
-      }
-    @include breakpoint(laptop) {
-        padding: 109px 0 0;
-    }
-    @include breakpoint(desktop) {
-        padding: 166px 0 64px;
-    }
+  background-color: $primary;
+  @include addWaveBackground('/images/background-wave.svg');
+  padding: 68px 0 28px;
+  @include breakpoint(tablet) {
+    padding: 118px 0 8px;
+  }
+  @include breakpoint(laptop) {
+    padding: 109px 0 0;
+  }
+  @include breakpoint(desktop) {
+    padding: 166px 0 64px;
+  }
 }
 
 .container {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    align-items: center;
-    position: relative;
-    @include breakpoint(tablet) {
-        flex-direction: row;
-        justify-content: space-between;
-    }
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+  position: relative;
+  @include breakpoint(tablet) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }
 
 .image {
   margin: 0 auto;
   @include breakpoint(tablet) {
-      margin: 0;
-  }  
+    margin: 0;
+  }
 }
 
 .button {
-    width: 328px;
-    height: 56px;
-    padding: 16px 28px 16px 24px;
-    display: flex;
-    gap: 8px;
-    @include breakpoint(tablet) {
-        width: 263px;
-    }
-    @include breakpoint(desktop) {
-        width: 334px;
-        height: 64px;
-        padding: 20px 36px 20px 28px;
-    }
+  width: 328px;
+  height: 56px;
+  padding: 16px 28px 16px 24px;
+  display: flex;
+  gap: 8px;
+  @include breakpoint(tablet) {
+    width: 263px;
+  }
+  @include breakpoint(desktop) {
+    width: 334px;
+    height: 64px;
+    padding: 20px 36px 20px 28px;
+  }
 
-    .text {
-        @include breakpoint(desktop) {
-            font-size: 24px;
-        }
+  .text {
+    @include breakpoint(desktop) {
+      font-size: 24px;
     }
+  }
 }

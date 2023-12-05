@@ -6,13 +6,13 @@
   padding: 48px 0;
   background-color: getColor(blue, 90);
   @include addWaveBackground('/images/background-wave-reverse.svg');
-  
+
   @include breakpoint(tablet) {
     padding: 72px 0;
   }
-  
+
   @include breakpoint(laptop) {
-  padding: 100px 0;
+    padding: 100px 0;
   }
   @include breakpoint(desktop) {
     padding: 136px 0;
@@ -41,9 +41,9 @@
     margin: 0;
     padding: 24px 0;
   }
-    @include breakpoint(laptop) {
-      width: 440px;
-    }
+  @include breakpoint(laptop) {
+    width: 440px;
+  }
   @include breakpoint(desktop) {
     width: 520px;
     min-height: 320px;
@@ -68,10 +68,10 @@
   @include breakpoint(tablet) {
     margin-bottom: 64px;
   }
-    @include breakpoint(laptop) {
-      margin-bottom: 40px;
-      letter-spacing: inherit;
-    }
+  @include breakpoint(laptop) {
+    margin-bottom: 40px;
+    letter-spacing: inherit;
+  }
   @include breakpoint(desktop) {
     font-size: 20px;
     margin-bottom: 76px;
@@ -85,14 +85,14 @@
   align-items: baseline;
   height: 32px;
   @include breakpoint(desktop) {
-  height: 40px;
+    height: 40px;
   }
 }
 
 .socialIcon {
   width: 32px;
   height: 32px;
-@include breakpoint(desktop) {
+  @include breakpoint(desktop) {
     width: 40px;
     height: 40px;
   }
@@ -109,9 +109,9 @@
   @include breakpoint(tablet) {
     width: 330px;
   }
-    @include breakpoint(laptop) {
-      width: 440px;
-    }
+  @include breakpoint(laptop) {
+    width: 440px;
+  }
   @include breakpoint(desktop) {
     width: 625px;
     min-height: 320px;

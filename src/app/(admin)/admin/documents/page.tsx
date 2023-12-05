@@ -1,11 +1,5 @@
 import React from 'react';
 
-const Documents = () => {
-  return (
-    <main>
-      Documents
-    </main>
-  );
-};
+const Documents = () => <main>Documents</main>;
 
 export default Documents;

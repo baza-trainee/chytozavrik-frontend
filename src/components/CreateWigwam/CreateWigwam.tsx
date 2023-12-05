@@ -1,18 +1,18 @@
 'use client';
 
 import { useForm, SubmitHandler } from 'react-hook-form';
-import styles from './CreateWigwam.module.scss';
 import { Container, Typography, Button } from 'components/common';
 import Image from 'next/image';
+import { useFetch } from '@/hooks';
+import { useEffect } from 'react';
+import { ChildType } from '@/types';
+import styles from './CreateWigwam.module.scss';
 import Avatar1 from '../../../public/images/kids-avatar1.svg';
 import Avatar2 from '../../../public/images/kids-avatar2.svg';
 import Avatar3 from '../../../public/images/kids-avatar3.svg';
 import Avatar4 from '../../../public/images/kids-avatar4.svg';
 import Avatar5 from '../../../public/images/kids-avatar5.svg';
 import Avatar6 from '../../../public/images/kids-avatar6.svg';
-import { useFetch } from '@/hooks';
-import { useEffect } from 'react';
-import { ChildType } from '@/types';
 
 type Props = {
   closeCreateWigwam: () => void;
@@ -28,7 +28,7 @@ const defaultValues: FormData = {
   avatar: 0,
 };
 
-export default function CreateWigwam({ closeCreateWigwam }: Props) {
+const CreateWigwam = ({ closeCreateWigwam }: Props) => {
   const {
     register,
     handleSubmit,
@@ -38,21 +38,36 @@ export default function CreateWigwam({ closeCreateWigwam }: Props) {
 
   const { fetch } = useFetch<ChildType, FormData>();
 
-  const onSubmit: SubmitHandler<FormData> = formData => {
-    formData.avatar = Number(formData.avatar);
-    closeCreateWigwam();
-    createKidProfile(formData);
-  };
-
   const createKidProfile = async (formData: FormData) => {
     try {
-      await fetch('users/me/children/', 'POST', {
-        name: formData.name,
-        avatar: formData.avatar,
-      });
+      await fetch(
+        'users/me/children/',
+        {
+          name: formData.name,
+          avatar: formData.avatar,
+        },
+        'POST'
+      );
     } catch (err) {
+      // eslint-disable-next-line no-console
       console.log(err);
     }
+  };
+
+  // const onSubmit: SubmitHandler<FormData> = formData => {
+  //   formData.avatar = Number(formData.avatar);
+  //   closeCreateWigwam();
+  //   createKidProfile(formData);
+  // };
+
+  const onSubmit: SubmitHandler<FormData> = formData => {
+    const updatedFormData = {
+      ...formData,
+      avatar: Number(formData.avatar),
+    };
+
+    closeCreateWigwam();
+    createKidProfile(updatedFormData);
   };
 
   useEffect(() => {
@@ -168,4 +183,6 @@ export default function CreateWigwam({ closeCreateWigwam }: Props) {
       </Container>
     </section>
   );
-}
+};
+
+export default CreateWigwam;

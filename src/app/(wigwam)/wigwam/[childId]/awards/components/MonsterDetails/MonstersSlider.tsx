@@ -1,17 +1,22 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import styles from './styles.module.scss';
 import { Monster } from '@/types/MonstersTypes';
 import Image from 'next/image';
 import ArrowPrev from '@/app/(wigwam)/wigwam/[childId]/awards/components/Images/ArrowPrev';
 import ArrowNext from '@/app/(wigwam)/wigwam/[childId]/awards/components/Images/ArrowNext';
+import styles from './styles.module.scss';
 
-const MonstersSlider = ({ results, monsterId }: { results: Monster[], monsterId: number | string | null }) => {
-
+const MonstersSlider = ({
+  results,
+  monsterId,
+}: {
+  results: Monster[];
+  monsterId: number | string | null;
+}) => {
   const initialIndex = results.findIndex(monster => monster.id === monsterId);
   const [currentSlide, setCurrentSlide] = useState(initialIndex >= 0 ? initialIndex : 0);
-  const [sliderItems, setSliderItems] = useState(results)
+  const [sliderItems, setSliderItems] = useState(results);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
@@ -19,7 +24,7 @@ const MonstersSlider = ({ results, monsterId }: { results: Monster[], monsterId:
     if (currentSlide === sliderItems.length - 1) {
       setSliderItems(prevItems => [...prevItems, ...results]);
     }
-  }, [currentSlide, results]);
+  }, [currentSlide, results, sliderItems.length]);
 
   const goToNext = () => {
     setCurrentSlide(prevSlide => prevSlide + 1);
@@ -65,38 +70,49 @@ const MonstersSlider = ({ results, monsterId }: { results: Monster[], monsterId:
   };
 
   return (
-    <div className={styles.slider}
-         onTouchStart={onTouchStart}
-         onTouchMove={onTouchMove}
-         onTouchEnd={onTouchEnd}>
+    <div
+      className={styles.slider}
+      onTouchStart={onTouchStart}
+      onTouchMove={onTouchMove}
+      onTouchEnd={onTouchEnd}
+    >
       <button
-        style={sliderItems.length < 1 ? {visibility: 'hidden'}  : {visibility: 'visible'}}
+        style={sliderItems.length < 1 ? { visibility: 'hidden' } : { visibility: 'visible' }}
         className={styles.prev}
-        onClick={goToPrev}>
+        onClick={goToPrev}
+        aria-label="попередній слайд"
+      >
         <ArrowPrev />
       </button>
       <div className={styles.slidesContainer} style={{ overflow: 'hidden' }}>
         <div className={styles.slides} style={sliderStyle}>
-          {sliderItems.map((result, index) =>
+          {sliderItems.map((result, index) => (
             <div className={styles.slide} style={slideStyle} key={index}>
               <div className={styles.image}>
                 <Image
                   src={result.reward}
-                  alt='Читозаврик'
+                  alt="Читозаврик"
                   width={100}
                   height={100}
-                  style={{ objectFit: 'cover', objectPosition: 'bottom center', width: '100%', height: '100%' }}
+                  style={{
+                    objectFit: 'cover',
+                    objectPosition: 'bottom center',
+                    width: '100%',
+                    height: '100%',
+                  }}
                 />
               </div>
-            </div>,
-          )}
+            </div>
+          ))}
         </div>
       </div>
 
       <button
-        style={sliderItems.length < 1 ? {visibility: 'hidden'}  : {visibility: 'visible'}}
+        style={sliderItems.length < 1 ? { visibility: 'hidden' } : { visibility: 'visible' }}
         className={styles.next}
-        onClick={goToNext}>
+        onClick={goToNext}
+        aria-label="наступний слайд"
+      >
         <ArrowNext />
       </button>
     </div>
@@ -104,4 +120,3 @@ const MonstersSlider = ({ results, monsterId }: { results: Monster[], monsterId:
 };
 
 export default MonstersSlider;
-

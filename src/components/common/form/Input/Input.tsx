@@ -3,8 +3,6 @@ import { useController, UseControllerProps, FieldValues } from 'react-hook-form'
 import { AlertCircle, XCircle } from 'lucide-react';
 import IconButton from '@/components/common/IconButton';
 import styles from './Input.module.scss';
-import { mockProviders } from 'next-auth/client/__tests__/helpers/mocks';
-import type = mockProviders.github.type;
 
 export type InputProps<T extends FieldValues> = InputHTMLAttributes<HTMLInputElement> &
   UseControllerProps<T> & {
@@ -31,7 +29,8 @@ const Input = <T extends FieldValues>({
   const status = useMemo<InputStatus>(() => {
     if (error) {
       return 'error';
-    } else if (field.value) {
+    }
+    if (field.value) {
       return 'filled';
     }
     return 'normal';
@@ -44,18 +43,21 @@ const Input = <T extends FieldValues>({
       ) : (
         <AlertCircle />
       );
-    } else if (icon) {
+    }
+    if (icon) {
       return icon;
-    } else if (field.value.length > 0 && props.type  === "email") {
-      return <IconButton onClick={resetField} icon={<XCircle  />} />
+    }
+    if (field.value.length > 0 && props.type === 'email') {
+      return <IconButton onClick={resetField} icon={<XCircle />} />;
     }
 
     return null;
-  }, [field.value.length, icon, resetField, status]);
+  }, [field.value.length, icon, resetField, status, props.type]);
 
+  const inputId = `checkbox-${name}`;
   return (
     <div className={styles.group} data-status={status}>
-      <label className={styles.label}>
+      <label className={styles.label} htmlFor={inputId}>
         {label && <span className={styles['label-text']}>{label}</span>}
         <span className={styles['input-group']}>
           <input className={styles.input} {...field} {...props} />

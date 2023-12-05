@@ -1,4 +1,5 @@
 'use client';
+
 import classNames from 'classnames';
 import { Button, Typography } from '@/components/common';
 import { useConfetti } from '@/hooks';
@@ -28,7 +29,7 @@ const SignUpSuccess = () => {
           component="link"
           color="secondary"
           href={Route.PARENTS}
-          replace={true}
+          replace
         >
           Перейти до кабінету
         </Button>

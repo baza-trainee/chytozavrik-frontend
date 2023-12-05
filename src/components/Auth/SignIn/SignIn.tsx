@@ -9,8 +9,8 @@ import * as yup from 'yup';
 import { AlertCircle } from 'lucide-react';
 import { Button, Typography } from '@/components/common';
 import { Checkbox, Input, PasswordInput, validation } from '@/components/common/form';
-import AuthLink from '../AuthLink';
 import { Route } from '@/constants';
+import AuthLink from '../AuthLink';
 import { isJson } from '../../../utils/isJson';
 import styles from '../Auth.module.scss';
 
@@ -111,7 +111,7 @@ const SignIn = () => {
           <Checkbox className={styles.checkbox} name="rememberMe" control={control}>
             Запам&apos;ятати мене
           </Checkbox>
-          <AuthLink className={(styles['link'], styles.forgot)} href={Route.RESET_PASSWORD}>
+          <AuthLink className={(styles.link, styles.forgot)} href={Route.RESET_PASSWORD}>
             Забули пароль?
           </AuthLink>
         </div>
@@ -120,7 +120,7 @@ const SignIn = () => {
           <Typography component="p" variant="body">
             Ви ще не зареєстровані?
           </Typography>
-          <AuthLink className={styles['link']} href={Route.SIGN_UP}>
+          <AuthLink className={styles.link} href={Route.SIGN_UP}>
             Зареєструватися
           </AuthLink>
         </div>

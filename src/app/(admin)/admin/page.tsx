@@ -1,11 +1,3 @@
-
-
-const Admin = () => {
-  return (
-    <main>
-      gbvbvbvb
-    </main>
-  )
-}
+const Admin = () => <main>gbvbvbvb</main>;
 
 export default Admin;

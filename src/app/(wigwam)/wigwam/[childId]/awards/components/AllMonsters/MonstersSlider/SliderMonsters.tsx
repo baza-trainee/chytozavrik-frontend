@@ -5,13 +5,20 @@ import NextArrow from '@/app/(wigwam)/wigwam/[childId]/awards/components/AllMons
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import styles from '../AllMonsters.module.scss';
 import { useMedia } from '@/hooks';
+import Image from 'next/image';
+import styles from '../AllMonsters.module.scss';
 
-
-const SliderMonsters =  ({ results, onMonsterClick }: { results: Monster[]; onMonsterClick: (id: number | string) => void }) => {
+const SliderMonsters = ({
+  results,
+  onMonsterClick,
+}: {
+  results: Monster[];
+  // eslint-disable-next-line no-unused-vars
+  onMonsterClick: (id: number | string) => void;
+}) => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const {deviceType} = useMedia()
+  const { deviceType } = useMedia();
 
   const sliderRef = useRef<Slider>(null);
   const settings = {
@@ -20,27 +27,26 @@ const SliderMonsters =  ({ results, onMonsterClick }: { results: Monster[]; onMo
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    afterChange: (current: any) => setCurrentSlide(current),
+    afterChange: (current: number) => setCurrentSlide(current),
     ref: sliderRef,
-
   };
   const goToNext = () => sliderRef.current && sliderRef.current.slickNext();
   const goToPrev = () => sliderRef.current && sliderRef.current.slickPrev();
 
   const processedResults = results.map(({ id, reward }) => ({ id, reward }));
-  while ((processedResults.length === 0) || (processedResults.length % 12 !== 0)) {
+  while (processedResults.length === 0 || processedResults.length % 12 !== 0) {
     processedResults.push({ id: 'placeholder', reward: '/images/monsters/monsters-avatar.svg' });
   }
 
   const slides = [];
 
   let count;
-  if (deviceType === 'mobile' ) {
-    count = 6
+  if (deviceType === 'mobile') {
+    count = 6;
   } else if (deviceType === 'tablet') {
-    count = 8
+    count = 8;
   } else {
-    count = 12
+    count = 12;
   }
 
   for (let i = 0; i < processedResults.length; i += count) {
@@ -55,11 +61,19 @@ const SliderMonsters =  ({ results, onMonsterClick }: { results: Monster[]; onMo
             <div className={styles.slide}>
               {slideImages.map((item, imgIndex) => (
                 <div className={styles.monsterIcon} key={imgIndex}>
-                  {item.id === 'placeholder'
-                    ? <img key={imgIndex} src={'/images/monsters/monsters-avatar.svg'} alt={`Placeholder`} />
-                    : <div className={styles.monsterPresent} onClick={() => onMonsterClick(item.id)}>
-                      <img src={item.reward} alt={`Monster ${item.id}`}/>
-                    </div>}
+                  {item.id === 'placeholder' ? (
+                    <Image
+                      key={imgIndex}
+                      src="/images/monsters/monsters-avatar.svg"
+                      alt="Placeholder"
+                      width={80}
+                      height={80}
+                    />
+                  ) : (
+                    <div className={styles.monsterPresent} onClick={() => onMonsterClick(item.id)}>
+                      <Image src={item.reward} alt={`Monster ${item.id}`} width={60} height={50} />
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
@@ -68,7 +82,9 @@ const SliderMonsters =  ({ results, onMonsterClick }: { results: Monster[]; onMo
       </Slider>
       <div className={styles.buttons}>
         {currentSlide > 0 && <PrevArrow onClick={goToPrev} className={styles.prev} />}
-        {currentSlide < slides.length - 1 && <NextArrow onClick={goToNext} className={styles.next} />}
+        {currentSlide < slides.length - 1 && (
+          <NextArrow onClick={goToNext} className={styles.next} />
+        )}
       </div>
     </div>
   );

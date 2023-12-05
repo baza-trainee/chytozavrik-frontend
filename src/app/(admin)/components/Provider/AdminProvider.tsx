@@ -7,8 +7,6 @@ type Props = {
   children?: ReactNode;
 };
 
-const AdminProvider = ({ children }: Props) => {
-  return <SessionProvider>{children}</SessionProvider>;
-};
+const AdminProvider = ({ children }: Props) => <SessionProvider>{children}</SessionProvider>;
 
 export default AdminProvider;

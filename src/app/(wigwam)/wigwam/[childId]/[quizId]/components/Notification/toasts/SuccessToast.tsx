@@ -3,8 +3,8 @@
 import Image from 'next/image';
 import { Button, Typography } from '@/components/common';
 import catImage from 'public/images/cat/cat-congratulation.svg';
-import styles from './Toast.module.scss';
 import { useConfetti } from '@/hooks';
+import styles from './Toast.module.scss';
 
 type Props = {
   onAction: () => void;

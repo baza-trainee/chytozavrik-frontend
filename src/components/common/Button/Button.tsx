@@ -27,6 +27,7 @@ type Props = {
 } & (LinkProps | ButtonProps);
 
 const Button = (props: Props) => {
+  // eslint-disable-next-line react/destructuring-assignment
   if (props.component === 'link') {
     const {
       children,
@@ -61,42 +62,41 @@ const Button = (props: Props) => {
         )}
       </Link>
     );
-  } else {
-    const {
-      children,
-      variant = 'filled',
-      color = 'primary',
-      isLoading,
-      selected,
-      startIcon,
-      endIcon,
-      className,
-      ...otherProps
-    } = props;
-
-    return (
-      <button
-        type="button"
-        className={classNames(
-          className,
-          styles.button,
-          styles[`button--${variant}`],
-          styles[`button--${color}`]
-        )}
-        data-selected={selected}
-        {...otherProps}
-      >
-        {startIcon && <span className={styles['button-icon']}>{startIcon}</span>}
-        {children}
-        {endIcon && <span className={styles['button-icon']}>{endIcon}</span>}
-        {isLoading === true && (
-          <span className={styles.spinner}>
-            <Spinner />
-          </span>
-        )}
-      </button>
-    );
   }
+  const {
+    children,
+    variant = 'filled',
+    color = 'primary',
+    isLoading,
+    selected,
+    startIcon,
+    endIcon,
+    className,
+    ...otherProps
+  } = props;
+
+  return (
+    <button
+      type="button"
+      className={classNames(
+        className,
+        styles.button,
+        styles[`button--${variant}`],
+        styles[`button--${color}`]
+      )}
+      data-selected={selected}
+      {...otherProps}
+    >
+      {startIcon && <span className={styles['button-icon']}>{startIcon}</span>}
+      {children}
+      {endIcon && <span className={styles['button-icon']}>{endIcon}</span>}
+      {isLoading === true && (
+        <span className={styles.spinner}>
+          <Spinner />
+        </span>
+      )}
+    </button>
+  );
 };
 
 export default Button;

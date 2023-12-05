@@ -1,8 +1,8 @@
 'use client';
 
 import { FieldValues, useController } from 'react-hook-form';
-import Input, { InputProps } from '../Input';
 import { ChangeEvent } from 'react';
+import Input, { InputProps } from '../Input';
 
 const NumberInput = <T extends FieldValues>(props: InputProps<T>) => {
   const { name, control } = props;

@@ -1,5 +1,5 @@
-@import "@/scss/utils/func";
-@import "@/scss/utils/mixin";
+@import '@/scss/utils/func';
+@import '@/scss/utils/mixin';
 
 .section {
   background: getColor(blue, 90);
@@ -8,7 +8,6 @@
   top: 0;
   z-index: 999;
 }
-
 
 .logo {
   width: 32px;

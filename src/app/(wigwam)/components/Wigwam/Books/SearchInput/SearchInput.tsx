@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import React, { Dispatch, SetStateAction, useEffect } from 'react';
 import styles from '@/app/(wigwam)/components/Wigwam/Books/WigwamBooks.module.scss';
@@ -6,16 +6,16 @@ import { Search, XCircle } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 
 interface SearchInputProps {
-  setSearchValue: Dispatch<SetStateAction<string>>,
+  setSearchValue: Dispatch<SetStateAction<string>>;
 }
 
 const defaultValues = {
   search: '',
 };
 
-const SearchInput = ({setSearchValue} : SearchInputProps) => {
-  const { watch , register, setValue } = useForm({
-    defaultValues
+const SearchInput = ({ setSearchValue }: SearchInputProps) => {
+  const { watch, register, setValue } = useForm({
+    defaultValues,
   });
   const searchTerm = watch('search');
 
@@ -31,7 +31,7 @@ const SearchInput = ({setSearchValue} : SearchInputProps) => {
     <div className={styles.search_wraper}>
       <form autoComplete="off" className={styles.form}>
         <div className={styles.icon_wraper}>
-          <Search className={styles.icon} stroke={"#7791FA"} />
+          <Search className={styles.icon} stroke="#7791FA" />
         </div>
         <input
           {...register('search', {
@@ -40,12 +40,12 @@ const SearchInput = ({setSearchValue} : SearchInputProps) => {
           name="search"
           className={styles.input}
           placeholder="Швидкий пошук книги"
-          autoFocus
         />
-        {searchTerm &&
+        {searchTerm && (
           <div className={styles.icon_circle} onClick={clearSearch}>
-            <XCircle className={styles.icon} stroke={"#7791FA"} />
-          </div>}
+            <XCircle className={styles.icon} stroke="#7791FA" />
+          </div>
+        )}
       </form>
     </div>
   );

@@ -1,11 +1,5 @@
 import React from 'react';
 
-const Page = () => {
-  return (
-    <main>
-      Recommended
-    </main>
-  );
-};
+const Page = () => <main>Recommended</main>;
 
 export default Page;

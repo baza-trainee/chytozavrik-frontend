@@ -1,6 +1,14 @@
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/config';
-import { AnswerType, FetchResponseType, QuizType, TokenType, UserType, sendPasswordResetEmailType, resetPasswordType } from '@/types';
+import {
+  AnswerType,
+  FetchResponseType,
+  QuizType,
+  TokenType,
+  UserType,
+  sendPasswordResetEmailType,
+  resetPasswordType,
+} from '@/types';
 
 const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || '';
 
@@ -13,11 +21,11 @@ export const privateFetch = async (
   input: RequestInfo | URL,
   options: RequestInit | undefined = undefined
 ) => {
-  const sesstion = await getServerSession(authOptions);
+  const session = await getServerSession(authOptions);
 
-  return await fetch(input, {
+  return fetch(input, {
     headers: {
-      Authorization: 'Bearer ' + sesstion?.user.token.access,
+      Authorization: `Bearer ${session?.user.token.access}`,
     },
     ...options,
   });
@@ -38,7 +46,7 @@ export const signInService = async (
     }),
   });
 
-  return await result.json();
+  return result.json();
 };
 
 export const signUpService = async (
@@ -58,29 +66,29 @@ export const signUpService = async (
     }),
   });
 
-  return await result.json();
+  return result.json();
 };
 
 export const getUserInfoService = async (): Promise<FetchResponseType<UserType>> => {
   const result = await fetch(`${baseUrl}/users/me/`, {
     headers: {
-      Authorization: 'Bearer ' + token.access,
+      Authorization: `Bearer ${token.access}`,
     },
   });
 
-  return await result.json();
+  return result.json();
 };
 
 export const getChildrenService = async () => {
   const result = await privateFetch(`${baseUrl}/users/me/children/`);
 
-  return await result.json();
+  return result.json();
 };
 
 export const getQuizByIdService = async (id: number): Promise<FetchResponseType<QuizType>> => {
   const result = await privateFetch(`${baseUrl}/quizzes/${id}`);
 
-  return await result.json();
+  return result.json();
 };
 
 export const sendSelectedAnswerService = async (
@@ -92,7 +100,7 @@ export const sendSelectedAnswerService = async (
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: 'Bearer ' + token.access,
+      Authorization: `Bearer ${token.access}`,
     },
     body: JSON.stringify({
       child_id: childId,
@@ -100,12 +108,12 @@ export const sendSelectedAnswerService = async (
     }),
   });
 
-  return await result.json();
+  return result.json();
 };
 
-
-
-export const sendPasswordResetEmailService = async (email: string): Promise<FetchResponseType<sendPasswordResetEmailType>> => {
+export const sendPasswordResetEmailService = async (
+  email: string
+): Promise<FetchResponseType<sendPasswordResetEmailType>> => {
   const result = await fetch(`${baseUrl}/users/password/reset/`, {
     method: 'POST',
     headers: {
@@ -116,26 +124,27 @@ export const sendPasswordResetEmailService = async (email: string): Promise<Fetc
     }),
   });
 
-  return await result.json();
+  return result.json();
 };
 
-export const newPasswordService = async (  new_password1: string,
-  new_password2: string,
+export const newPasswordService = async (
+  newPassword1: string,
+  newPassword2: string,
   uid: string,
-  token: string): Promise<FetchResponseType<resetPasswordType>> => {
+  token: string
+): Promise<FetchResponseType<resetPasswordType>> => {
   const result = await fetch(`${baseUrl}/users/password/reset/confirm/`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      new_password1,
-      new_password2,
+      newPassword1,
+      newPassword2,
       uid,
       token,
     }),
   });
 
-  return await result.json();
+  return result.json();
 };
-

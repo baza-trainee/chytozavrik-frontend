@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Parents from 'src/app/(main)/parents/components/Parents';
 import CreateWigwam from '@/components/CreateWigwam';
 
-export default function ParentsPage() {
+const ParentsPage = () => {
   const [isShown, setIsShown] = useState(false);
 
   const toggleCreateWigwam = () => {
@@ -18,4 +18,6 @@ export default function ParentsPage() {
       {isShown && <CreateWigwam closeCreateWigwam={toggleCreateWigwam} />}
     </main>
   );
-}
+};
+
+export default ParentsPage;

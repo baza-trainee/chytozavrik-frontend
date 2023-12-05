@@ -19,7 +19,11 @@ const QuizPage = async ({ params: { quizId, childId } }: Props) => {
 
   const quiz: QuizType = { ...quizRes.data, ...questionRes.data };
 
-  return <main>{<Quiz quiz={quiz} />}</main>;
+  return (
+    <main>
+      <Quiz quiz={quiz} />
+    </main>
+  );
 };
 
 export default QuizPage;

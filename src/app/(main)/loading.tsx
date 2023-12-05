@@ -1,7 +1,7 @@
-export default function Loading() {
-  return (
-    <main>
-      <p>Loading...</p>
-    </main>
-  );
-}
+const Loading = () => (
+  <main>
+    <p>Loading...</p>
+  </main>
+);
+
+export default Loading;

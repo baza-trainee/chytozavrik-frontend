@@ -5,12 +5,10 @@ import styles from './AuthLink.module.scss';
 
 type Props = { children?: ReactNode; className?: string } & LinkProps;
 
-const AuthLink = ({ children, className, ...props }: Props) => {
-  return (
-    <Link className={classNames(styles.link, className)} {...props}>
-      {children}
-    </Link>
-  );
-};
+const AuthLink = ({ children, className, ...props }: Props) => (
+  <Link className={classNames(styles.link, className)} {...props}>
+    {children}
+  </Link>
+);
 
 export default AuthLink;

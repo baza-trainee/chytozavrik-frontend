@@ -6,28 +6,60 @@
   background-image: url('/images/background-wave.svg'), url('/images/space-mob.svg'),
     url('/images/stars.svg'), url('/images/path.svg');
   background-repeat: repeat-x, no-repeat, no-repeat, no-repeat;
-  background-position: center top, center bottom, center bottom -20px, left bottom -6px;
-  background-size: auto 27px, auto, auto, contain;
+  background-position:
+    center top,
+    center bottom,
+    center bottom -20px,
+    left bottom -6px;
+  background-size:
+    auto 27px,
+    auto,
+    auto,
+    contain;
 
   @include breakpoint(tablet) {
     background-image: url('/images/background-wave.svg'), url('/images/space-tab.svg'),
       url('/images/stars-tab.svg'), url('/images/path-tab.svg');
-    background-position: center top, right bottom, center top 40px, left bottom;
-    background-size: auto 54px, auto, auto, 100% auto;
+    background-position:
+      center top,
+      right bottom,
+      center top 40px,
+      left bottom;
+    background-size:
+      auto 54px,
+      auto,
+      auto,
+      100% auto;
   }
 
   @include breakpoint(laptop) {
     background-image: url('/images/cloud-laptop.svg'), url('/images/space-laptop.svg'),
       url('/images/stars-laptop.svg'), url('/images/path-laptop.svg');
-    background-position: center top, right bottom, center top 72px, left bottom 134px;
-    background-size: auto, auto, auto, 100% auto;
+    background-position:
+      center top,
+      right bottom,
+      center top 72px,
+      left bottom 134px;
+    background-size:
+      auto,
+      auto,
+      auto,
+      100% auto;
   }
 
   @include breakpoint(desktop) {
     background-image: url('/images/cloud-desktop.svg'), url('/images/space-desktop.svg'),
       url('/images/stars-desktop.svg'), url('/images/path-desktop.svg');
-    background-position: center top, right bottom, center top 72px, left top 74px;
-    background-size: auto, auto, auto, 100% auto;
+    background-position:
+      center top,
+      right bottom,
+      center top 72px,
+      left top 74px;
+    background-size:
+      auto,
+      auto,
+      auto,
+      100% auto;
   }
 }
 
@@ -38,7 +70,6 @@
   flex-direction: column;
   align-items: center;
   margin: 52px auto 302px;
-  
 
   @include breakpoint(tablet) {
     margin: 167px 397px 137px 40px;

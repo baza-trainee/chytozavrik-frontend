@@ -2,9 +2,9 @@
 
 import { useState, type ButtonHTMLAttributes } from 'react';
 import { useParams, useRouter } from 'next/navigation';
-import { Notification, DefaultToast } from '../Notification';
 import { XButton } from '@/components/common';
 import { Route } from '@/constants';
+import { Notification, DefaultToast } from '../Notification';
 
 type Props = ButtonHTMLAttributes<HTMLButtonElement>;
 

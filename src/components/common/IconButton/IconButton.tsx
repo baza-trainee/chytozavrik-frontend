@@ -5,13 +5,10 @@ type Props = HTMLAttributes<HTMLButtonElement> & {
   icon: ReactNode;
 };
 
-const ClearButtonIcon = ({ icon, ...props }: Props) => {
-
-  return (
-    <button className={styles.button} type="button" {...props}>
-      {icon}
-    </button>
-  );
-};
+const ClearButtonIcon = ({ icon, ...props }: Props) => (
+  <button className={styles.button} type="button" {...props}>
+    {icon}
+  </button>
+);
 
 export default ClearButtonIcon;

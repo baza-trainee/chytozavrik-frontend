@@ -4,13 +4,13 @@ import React, { useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import { useSignOut } from '@/hooks';
+import { Route } from '@/constants';
 import Modal from '../common/Modal';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 import SignUpSuccess from './SignUpSuccess';
 import ResetPassword from './ResetPassword';
 import NewPassword from './NewPassword';
-import { Route } from '@/constants';
 
 type AuthType =
   | 'signin'
@@ -55,23 +55,33 @@ const Auth = () => {
   return (
     <>
       {isModalOpen && session.status !== 'authenticated' && authType === 'signin' && (
-        <Modal onClose={closeModal}>{<SignIn />}</Modal>
+        <Modal onClose={closeModal}>
+          <SignIn />
+        </Modal>
       )}
 
       {isModalOpen && session.status !== 'authenticated' && authType === 'signup' && (
-        <Modal onClose={closeModal}>{<SignUp />}</Modal>
+        <Modal onClose={closeModal}>
+          <SignUp />
+        </Modal>
       )}
 
       {isModalOpen && session.status === 'authenticated' && authType === 'signup-success' && (
-        <Modal onClose={closeModal}>{<SignUpSuccess />}</Modal>
+        <Modal onClose={closeModal}>
+          <SignUpSuccess />
+        </Modal>
       )}
 
       {isModalOpen && authType === 'reset-password' && (
-        <Modal onClose={closeModal}>{<ResetPassword />}</Modal>
+        <Modal onClose={closeModal}>
+          <ResetPassword />
+        </Modal>
       )}
 
       {isModalOpen && authType === 'new-password' && (
-        <Modal onClose={closeModal}>{<NewPassword />}</Modal>
+        <Modal onClose={closeModal}>
+          <NewPassword />
+        </Modal>
       )}
     </>
   );

@@ -1,11 +1,12 @@
 'use client';
-import React, {useState} from 'react';
-import {Container, Button, Typography} from 'components/common';
+
+import React, { useState } from 'react';
+import { Container, Button, Typography } from 'components/common';
 import Image from 'next/image';
-import styles from './Parents.module.scss';
 import avatar from 'public/images/avatar-parents.svg';
 import wigwam from 'public/images/wigwam.svg';
 import Notification from 'components/Notification/Notification';
+import styles from './Parents.module.scss';
 
 type Props = {
   handleClick: () => void;

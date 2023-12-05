@@ -1,3 +1,4 @@
+/* eslint-disable-next-line no-unused-vars */
 export enum Route {
   HOME = '/',
   SIGN_UP = '/?auth=signup',
@@ -17,5 +18,5 @@ export enum Route {
   PARTNERS = '/admin/partners',
   CONTACTS = '/admin/contacts',
   STATS = '/admin/statistics',
-  CHANGE_PASS = '/admin/change-password'
+  CHANGE_PASS = '/admin/change-password',
 }
