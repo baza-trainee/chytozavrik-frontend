@@ -3,24 +3,6 @@
 @import '@/scss/utils/func';
 
 
-.section {
-  background-color: getColor(blue, 90);
-  @include addWaveBackground('/images/bg-wave-blue.svg');
-  padding-top: 72px;
-
-  @include breakpoint(tablet) {
-    padding-top: 91px;
-  }
-
-  @include breakpoint(laptop) {
-    padding-top: 109px;
-  }
-
-  @include breakpoint(desktop) {
-    padding-top: 138px;
-  }
-}
-
 .form {
   background-color: $white;
   min-width: 328px;
