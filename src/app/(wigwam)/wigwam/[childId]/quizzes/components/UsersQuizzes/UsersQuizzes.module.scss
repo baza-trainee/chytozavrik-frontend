@@ -1,0 +1,12 @@
+@import 'scss/utils/variables';
+@import 'scss/utils/mixin';
+
+.quizzesContainer {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+
+  @include breakpoint(tablet) {
+    flex-direction: row;
+  }
+}

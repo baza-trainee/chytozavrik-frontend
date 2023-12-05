@@ -1,0 +1,41 @@
+import React from 'react';
+import QuizCard from '../QuizCard/QuizCard';
+import { UsersQuizzesResponse, UsersQuiz, QuizCategory } from '@/types';
+import styles from './UsersQuizzes.module.scss';
+import Pagination from '../Pagination/Pagination';
+import NotFoundPage from '../NotFoundPage/NotFoundPage';
+
+interface UsersQuizzesProps {
+  usersQuizzes: UsersQuizzesResponse;
+  childId: string;
+  category: QuizCategory;
+}
+
+const UsersQuizzes = async ({ usersQuizzes, childId, category }: UsersQuizzesProps) => {
+  console.log(usersQuizzes);
+  const hasQuizzes = usersQuizzes.results && usersQuizzes.results.length > 0;
+
+  return (
+    <div>
+      <div className={styles.quizzesContainer}>
+        {hasQuizzes ? (
+          usersQuizzes.results.map((quiz: UsersQuiz) => (
+            <QuizCard key={quiz.id} quiz={quiz} childId={childId} />
+          ))
+        ) : (
+          <NotFoundPage category={category} />
+        )}
+      </div>
+      {hasQuizzes && (
+        <Pagination
+          next={usersQuizzes.next}
+          previous={usersQuizzes.previous}
+          count={usersQuizzes.count}
+          childId={childId}
+        />
+      )}
+    </div>
+  );
+};
+
+export default UsersQuizzes;
