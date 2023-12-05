@@ -15,6 +15,7 @@ const Contacts = () => {
       />
       <div>
         <TableHeader
+          variant='contacts'
           colNames={['Перелік контактів', 'Дата  оновлення']}
         />
       </div>

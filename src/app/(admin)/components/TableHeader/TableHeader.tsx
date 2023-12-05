@@ -5,7 +5,7 @@ import classNames from 'classnames';
 interface TableHeaderProps {
   colNames:string[],
   isDocument?: boolean,
-  variant: "users" | "books" | "documents" | "partners"
+  variant: "users" | "books" | "documents" | "partners" | 'contacts'
 }
 
 const TableHeader = ({colNames, variant } : TableHeaderProps) => {
@@ -14,6 +14,7 @@ const TableHeader = ({colNames, variant } : TableHeaderProps) => {
     books: styles.books,
     documents: styles.documents,
     partners: styles.partners,
+    contacts: null
   }
 
   return (
