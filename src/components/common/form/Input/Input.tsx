@@ -19,6 +19,7 @@ const Input = <T extends FieldValues>({
   control,
   icon,
   resetField,
+  className,
   ...props
 }: InputProps<T>) => {
   const {
@@ -37,7 +38,7 @@ const Input = <T extends FieldValues>({
 
   const renderIcon = useMemo(() => {
     if (status === 'error') {
-      return field.value.length > 0 ? (
+      return field.value?.length > 0 ? (
         <IconButton onClick={resetField} icon={<XCircle />} />
       ) : (
         <AlertCircle />
@@ -47,10 +48,10 @@ const Input = <T extends FieldValues>({
     }
 
     return null;
-  }, [field.value.length, icon, resetField, status]);
+  }, [field.value?.length, icon, resetField, status]);
 
   return (
-    <div className={styles.group} data-status={status}>
+    <div className={`${styles.group} ${className || ''}`} data-status={status}>
       <label className={styles.label}>
         {label && <span className={styles['label-text']}>{label}</span>}
         <span className={styles['input-group']}>
