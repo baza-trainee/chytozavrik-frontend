@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './Books.module.scss';
 import AdminHeader from '@/app/(admin)/components/Header/AdminHeader';
 import TableHeader from '@/app/(admin)/components/TableHeader/TableHeader';
+import BookItem from '@/app/(admin)/components/TableItems/BookItem/BookItem';
 
 const Books = () => {
   return (
@@ -19,6 +20,9 @@ const Books = () => {
           variant='books'
           colNames={['Назва книги', 'Стан', 'Дата  додавання']}
         />
+        <div>
+          <BookItem/>
+        </div>
       </div>
     </div>
   );
