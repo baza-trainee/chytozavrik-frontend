@@ -21,6 +21,7 @@
     justify-content: space-between;
     width: 100%;
 
+
     &.users div:last-child{
       padding-right: 68px;
     }
@@ -29,8 +30,15 @@
       padding-left: 52px;
     }
 
+    &.users div:first-child, &.books div:first-child{
+      width: 320px;
+    }
+    &.documents div:first-child, &.partners div:first-child{
+      padding-left: 52px;
+    }
+
     &.books div:last-child{
-      width: 303px;
+      width: 250px;
     }
 
     &.documents div:last-child{
