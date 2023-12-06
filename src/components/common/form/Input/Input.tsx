@@ -10,7 +10,7 @@ export type InputProps<T extends FieldValues> = InputHTMLAttributes<HTMLInputEle
   UseControllerProps<T> & {
     icon?: ReactNode;
     label?: string;
-    resetField: () => void;
+    resetField?: () => void;
   };
 
 export type InputStatus = 'normal' | 'filled' | 'error';

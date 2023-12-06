@@ -1,3 +1,5 @@
+"use client"
+
 import React from 'react';
 import styles from './Books.module.scss';
 import AdminHeader from '@/app/(admin)/components/Header/AdminHeader';
@@ -22,7 +24,11 @@ const Books = () => {
         />
         <div>
           <BookItem/>
+          <BookItem/>
+          <BookItem/>
+          <BookItem/>
         </div>
+
       </div>
     </div>
   );

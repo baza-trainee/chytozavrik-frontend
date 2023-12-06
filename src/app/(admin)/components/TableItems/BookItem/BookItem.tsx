@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './BookItem.module.scss';
 import Image from 'next/image';
 import { PenLine, Trash2 } from 'lucide-react';
+import AdminCheckBox from '@/app/(admin)/components/UI/AdminCheckBox/AdminCheckBox';
 
 
 const state = [
@@ -25,7 +26,9 @@ const BookItem = () => {
 
   return (
     <div className={styles.bookItem}>
-      <div className={styles.checkbox}>C</div>
+      <div className={styles.checkbox}>
+        <AdminCheckBox/>
+      </div>
       <div className={styles.info}>
         <div className={styles.title}>
           <div className={styles.image}>
