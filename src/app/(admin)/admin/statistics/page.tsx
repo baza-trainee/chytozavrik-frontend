@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Statistics.module.scss';
-import AdminHeader from '@/app/(admin)/components/Header/AdminHeader';
+import { AdminHeader } from '@/app/(admin)/components';
+
 
 const Statistics = () => {
   return (

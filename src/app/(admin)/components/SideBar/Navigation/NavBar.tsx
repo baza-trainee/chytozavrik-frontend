@@ -1,9 +1,7 @@
 'use client';
 
-import React, { ReactNode, useState } from 'react';
-import LinkButton from '@/app/(admin)/components/UI/SideBarLinks/LinkButton';
+import React, { useState } from 'react';
 import { Route } from '@/constants';
-import styles from './NavBar.module.scss';
 import {
   Book,
   UsersIcon,
@@ -16,8 +14,9 @@ import {
 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { MenuItemsType } from '@/types';
-import LockIcon from '@/app/(admin)/components/SideBar/NavIcons/LockIcon';
-import Neurology from '@/app/(admin)/components/SideBar/NavIcons/Neurology';
+import { LinkButton, LockIcon, Neurology } from '@/app/(admin)/components';
+import styles from './NavBar.module.scss';
+
 
 type MenuItemNames = 'books' | 'quizzes' | 'recommended';
 

@@ -1,15 +1,12 @@
 'use client'
 
-
 import React from 'react';
 import { Button } from 'components/common';
-import AddIcon from '@/app/(admin)/components/Header/Icons/AddIcon';
-import CloseIcon from '@/app/(admin)/components/Header/Icons/CloseIcon';
 import style from './Header.module.scss'
 import { useForm } from 'react-hook-form';
 import { Input } from 'components/common/form';
 import { SearchIcon } from 'lucide-react';
-
+import { AddIcon, CloseIcon } from '@/app/(admin)/components';
 
 interface AdminHeaderProps {
   withSearch: boolean,

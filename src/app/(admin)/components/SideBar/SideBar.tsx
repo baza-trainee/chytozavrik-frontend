@@ -1,7 +1,8 @@
 import React from 'react';
 import styles from './SideBar.module.scss';
 import Image from 'next/image';
-import NavBar from '@/app/(admin)/components/SideBar/Navigation/NavBar';
+import { NavBar } from '@/app/(admin)/components';
+
 
 const SideBar = () => {
   return (
