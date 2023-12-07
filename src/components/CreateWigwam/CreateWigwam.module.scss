@@ -6,18 +6,16 @@
 .section {
   background-color: getColor(blue, 90);
   @include addWaveBackground('/images/bg-wave-blue.svg');
-  padding-top: 72px;
+  padding-top: 28px;
 
   @include breakpoint(tablet) {
-    padding-top: 91px;
+    padding-top: 36px;
   }
 
-  @include breakpoint(laptop) {
-    padding-top: 109px;
-  }
+  
 
   @include breakpoint(desktop) {
-    padding-top: 138px;
+    padding-top: 36px;
   }
 }
 

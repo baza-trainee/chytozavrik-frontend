@@ -9,21 +9,21 @@
 .container {
   min-width: 360px;
   min-height: 192px;
-  padding-top: 64px;
+  padding-top: 60px;
 
   @include breakpoint(tablet) {
     min-height: 270px;
-    padding-top: 123px;
+    padding-top: 62px;
   }
 
   @include breakpoint(laptop) {
     min-height: 211px;
-    padding-top: 109px;
+    padding-top: 36px;
   }
 
   @include breakpoint(desktop) {
     min-height: 419px;
-    padding-top: 166px;
+    padding-top: 64px;
   }
 }
 
