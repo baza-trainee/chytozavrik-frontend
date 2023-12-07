@@ -9,7 +9,7 @@ import Tick from 'public/images/tick.svg';
 import { BookType } from '@/types/WigwamBooks';
 import { LastquizType } from '@/types/WigwamQuiz';
 
-interface BookItemProps {
+interface BookItemMobileProps {
   item: BookType;
   selectedBooks: { [key: string]: boolean };
   booksData?: BookType[] | undefined;
@@ -17,7 +17,7 @@ interface BookItemProps {
   index: number;
 }
 
-const BookItem: FC<BookItemProps> = ({
+const BookItemMobile: FC<BookItemMobileProps> = ({
   item,
   selectedBooks,
   wigwamQuizData,
@@ -54,7 +54,12 @@ const BookItem: FC<BookItemProps> = ({
   else icon = BrainIcon;
 
   return (
-    <div className={styles.book_items}>
+    <div
+      className={styles.book_items_mobile}
+      onClick={() => {
+        handleClick(index);
+      }}
+    >
       <div className={styles.book_about}>
         <p className={styles.book_name}>{item.book.title}</p>
         <p className={styles.book_author}>{item.book.author}</p>
@@ -65,12 +70,7 @@ const BookItem: FC<BookItemProps> = ({
           </p>
         </div>
       </div>
-      <div
-        className={styles.book_items_icon_wraper}
-        onClick={() => {
-          handleClick(index);
-        }}
-      >
+      <div className={styles.book_items_icon_wraper}>
         {selectedBooks[item.id] || item.current_score === '5/5' ? (
           <Image priority src={Tick} alt="tick icon" width={24} height={24} />
         ) : (
@@ -83,4 +83,4 @@ const BookItem: FC<BookItemProps> = ({
   );
 };
 
-export default BookItem;
+export default BookItemMobile;

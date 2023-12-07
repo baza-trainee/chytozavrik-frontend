@@ -12,7 +12,6 @@
   border-radius: 8px;
   grid-area: books;
 
-
   @include breakpoint(tablet) {
     width: 333px;
     height: 414px;
@@ -29,7 +28,7 @@
   }
 }
 
-.form{
+.form {
   display: flex;
   gap: 10px;
 }
@@ -48,7 +47,7 @@
   gap: 16px;
   align-items: center;
 
-  & img{
+  & img {
     width: 212px;
     height: 128px;
   }
@@ -59,7 +58,7 @@
     height: 265px;
     margin-top: 86px;
 
-    & img{
+    & img {
       width: 269px;
       height: 179px;
     }
@@ -68,7 +67,6 @@
   @include breakpoint(desktop) {
     margin-top: 90px;
   }
-
 }
 
 .title {
@@ -131,7 +129,7 @@
   }
 }
 
-.icon_circle{
+.icon_circle {
   position: absolute;
   top: 15px;
   right: 16px;
@@ -223,7 +221,8 @@
   }
 }
 
-.book_items {
+.book_items,
+.book_items_mobile {
   display: flex;
   justify-content: space-between;
   width: 278px;
@@ -245,7 +244,11 @@
   }
 }
 
-.book_about{
+.book_items_mobile {
+  cursor: pointer;
+}
+
+.book_about {
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -270,6 +273,14 @@
   width: 20px;
   height: 20px;
   color: $primary;
+
+  &:hover {
+    color: getColor(blue, 50);
+  }
+
+  &:active {
+    color: getColor(blue, 30);
+  }
 }
 
 .book_items_icon_wraper {
@@ -286,8 +297,6 @@
   }
 }
 
-
-
 .book_counter {
   margin-left: 8px;
   font-family: var(--montserrat-alternates-font);
@@ -298,7 +307,4 @@
 
 .book_counter_wraper {
   display: flex;
-
-
 }
-

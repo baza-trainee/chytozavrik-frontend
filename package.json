@@ -25,6 +25,7 @@
     "next": "13.4.6",
     "next-auth": "^4.22.4",
     "react": "18.2.0",
+    "react-device-detect": "^2.2.3",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.45.1",
     "react-responsive": "^9.0.2",
