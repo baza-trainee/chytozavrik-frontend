@@ -34,18 +34,23 @@
     justify-content: space-between;
     gap: 24px;
 
-    & .test{
-      display: flex;
-      padding: 16px;
-      justify-content: flex-end;
-      align-items: center;
-      gap: 10px;
-      align-self: stretch;
-      border-radius: 8px;
-      border: 2px solid var(--sys-primary, #7791FA);
-      background: var(--Search-background, #F6FAFF);
+    & .search{
       width: 411px;
       height: 56px;
+
+      & span:first-child{
+        flex-direction: row-reverse;
+        background-color: #f6faff;
+        border: 2px solid #7791fa;
+        font-size: 16px;
+        height: 56px;
+
+      }
+
+      & input{
+        line-height: 130%;
+      }
+
     }
 
     & button {
