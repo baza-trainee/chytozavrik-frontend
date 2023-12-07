@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './PartnerItem.module.scss'
-import AdminCheckBox from '@/app/(admin)/components/UI/AdminCheckBox/AdminCheckBox';
 import { PenLine, Trash2 } from 'lucide-react';
+import { AdminCheckBox } from '@/app/(admin)/components';
 
 const PartnerItem = () => {
   return (

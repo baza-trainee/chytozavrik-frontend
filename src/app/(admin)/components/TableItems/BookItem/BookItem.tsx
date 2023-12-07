@@ -2,7 +2,8 @@ import React from 'react';
 import styles from './BookItem.module.scss';
 import Image from 'next/image';
 import { PenLine, Trash2 } from 'lucide-react';
-import AdminCheckBox from '@/app/(admin)/components/UI/AdminCheckBox/AdminCheckBox';
+import { AdminCheckBox } from '@/app/(admin)/components';
+
 
 
 const state = [
