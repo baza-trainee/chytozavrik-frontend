@@ -1,7 +1,6 @@
-export type AttemptsInfoType = {
+export type AttemptsInfoResponse = {
   score: number;
 };
-
 
 export type sendPasswordResetEmailType = {
   email: string;

@@ -1,13 +1,12 @@
 'use client';
 
-import  { useState } from 'react';
+import { useState } from 'react';
 import Parents from 'src/app/(main)/parents/components/Parents';
 import CreateWigwam from '@/components/CreateWigwam';
 import KidsList from './components/KidsList';
-import './styles.scss'
+import './styles.scss';
 
 const ParentsPage = () => {
-
   const [wigwam, setWigwam] = useState(false);
 
   const toggleCreateWigwam = () => {
@@ -16,15 +15,15 @@ const ParentsPage = () => {
   };
 
   return (
-    <main>
+    <>
       <Parents handleClick={toggleCreateWigwam} />
       <section className="section">
         {wigwam && <CreateWigwam setWigwam={setWigwam} />}
-        <KidsList/>
+        <KidsList />
       </section>
-      <div className='empty'/>
-    </main>
+      <div className="empty" />
+    </>
   );
-}
+};
 
 export default ParentsPage;
