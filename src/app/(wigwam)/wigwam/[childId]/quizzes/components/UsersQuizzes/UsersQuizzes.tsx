@@ -12,8 +12,8 @@ interface UsersQuizzesProps {
 }
 
 const UsersQuizzes = async ({ usersQuizzes, childId, category }: UsersQuizzesProps) => {
-  console.log(usersQuizzes);
   const hasQuizzes = usersQuizzes.results && usersQuizzes.results.length > 0;
+  const isPagination = usersQuizzes.count && usersQuizzes.count > 12;
 
   return (
     <div>
@@ -26,7 +26,7 @@ const UsersQuizzes = async ({ usersQuizzes, childId, category }: UsersQuizzesPro
           <NotFoundPage category={category} />
         )}
       </div>
-      {hasQuizzes && (
+      {isPagination && (
         <Pagination
           next={usersQuizzes.next}
           previous={usersQuizzes.previous}

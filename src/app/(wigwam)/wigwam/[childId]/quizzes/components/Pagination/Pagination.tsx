@@ -2,8 +2,7 @@
 
 import React, { FC, useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { page_size as pageSize } from '../../page';
-import { Route } from '@/constants';
+import { PAGE_SIZE, Route } from '@/constants';
 import { Button, Typography } from '@/components/common';
 import { ChevronRight, ChevronLeft } from 'lucide-react';
 import { useMedia } from '@/hooks';
@@ -24,7 +23,7 @@ const Pagination: FC<PaginationProps> = ({ count, next, previous, childId }) => 
   const [pageList, setPageList] = useState<(string | number)[]>([]);
 
   useEffect(() => {
-    const totalPages = Math.ceil(count / pageSize);
+    const totalPages = Math.ceil(count / PAGE_SIZE);
     const newPageList = [];
 
     if (totalPages <= 5) {
