@@ -4,6 +4,7 @@ import { Fragment, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Search, MoveRight, XCircle } from 'lucide-react';
 import styles from './WigwamBooks.module.scss';
+import wigwamTextData from '../wigwamTextData.json';
 import { BookType } from '@/types/WigwamBooks';
 import { Button, Typography } from 'components/common';
 import BookItem from '@/app/(wigwam)/components/Wigwam/Books/BookItem/BookItem';
@@ -11,7 +12,6 @@ import BookItemMobile from '@/app/(wigwam)/components/Wigwam/Books/BookItem/Book
 import NotFoundBook from '@/app/(wigwam)/components/Wigwam/Books/NotFound/NotFoundBook';
 import { LastquizType } from '@/types/WigwamQuiz';
 import { useMedia } from '@/hooks';
-import wigwamTextData from '../wigwamTextData.json';
 
 const WigwamBooks: React.FC<{
   booksData: BookType[];
