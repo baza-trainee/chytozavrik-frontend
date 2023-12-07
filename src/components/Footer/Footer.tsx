@@ -1,14 +1,13 @@
 'use client';
 
 import Link from 'next/link';
+import { Route } from '@/constants';
 import classNames from 'classnames';
 import Image from 'next/image';
-
-import { Facebook, Instagram, Phone, Mail } from 'lucide-react';
 import { usePathname } from 'next/navigation';
-import { Route } from '@/constants';
-import Typography from '../common/Typography/Typography';
+import { Phone, Mail } from 'lucide-react';
 import Container from '../common/Container/Container';
+import Typography from '../common/Typography/Typography';
 import styles from './Footer.module.scss';
 
 const Footer = () => {
@@ -95,19 +94,6 @@ const Footer = () => {
                       1111111@gmail.com
                     </Typography>
                   </a>
-                </ul>
-
-                <ul className={styles.social}>
-                  <li>
-                    <Link href="https://www.facebook.com/" target="_blank">
-                      <Facebook width={32} height={32} className={styles.socialImage} />
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="https://www.instagram.com/" target="_blank">
-                      <Instagram width={32} height={32} className={styles.socialImage} />
-                    </Link>
-                  </li>
                 </ul>
               </div>
             </div>

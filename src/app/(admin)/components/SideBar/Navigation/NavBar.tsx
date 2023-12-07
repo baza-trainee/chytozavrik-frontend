@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import LinkButton from '@/app/(admin)/components/UI/SideBarLinks/LinkButton';
 import { Route } from '@/constants';
 import {
   Book,
@@ -16,33 +15,32 @@ import {
 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { MenuItemsType } from '@/types';
-import LockIcon from '@/app/(admin)/components/SideBar/NavIcons/LockIcon';
-import Neurology from '@/app/(admin)/components/SideBar/NavIcons/Neurology';
+import { LinkButton, LockIcon, Neurology } from '@/app/(admin)/components';
 import styles from './NavBar.module.scss';
 
 type MenuItemNames = 'books' | 'quizzes' | 'recommended';
+
+const menuItems: MenuItemsType = {
+  books: {
+    href: Route.BOOKS,
+    icon: <Book color="white" />,
+    anchor: 'Книги',
+  },
+  quizzes: {
+    href: Route.QUIZZES,
+    icon: <Neurology />,
+    anchor: 'Вікторини',
+  },
+  recommended: {
+    href: Route.RECOMMENDED,
+    icon: <BookMarked color="white" />,
+    anchor: 'Рекомендовані',
+  },
+};
+
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(true);
   const router = useRouter();
-
-  const menuItems: MenuItemsType = {
-    books: {
-      href: Route.BOOKS,
-      icon: <Book color="white" />,
-      anchor: 'Книги',
-    },
-    quizzes: {
-      href: Route.QUIZZES,
-      icon: <Neurology />,
-      anchor: 'Вікторини',
-    },
-    recommended: {
-      href: Route.RECOMMENDED,
-      icon: <BookMarked color="white" />,
-      anchor: 'Рекомендовані',
-    },
-  };
-
   type ActiveMenuItem = keyof typeof menuItems;
   const [activeMenuItem, setActiveMenuItem] = useState<ActiveMenuItem>('books');
 
@@ -121,7 +119,7 @@ const NavBar = () => {
         component="link"
         href={Route.CHANGE_PASS}
         anchor="Змінити пароль"
-        icon={<LockIcon />}
+        icon={<LockIcon stroke="white" />}
       />
     </nav>
   );

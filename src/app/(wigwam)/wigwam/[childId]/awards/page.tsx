@@ -1,7 +1,7 @@
 import React from 'react';
 import MonstersList from '@/app/(wigwam)/wigwam/[childId]/awards/components/MonstersList';
 import { fetch } from '@/services/axios';
-import { MonstersResults } from '@/types/MonstersTypes';
+import { MonstersResults } from '@/types/Monsters';
 import { notFound } from 'next/navigation';
 
 type Props = {
@@ -18,11 +18,7 @@ const Awards = async ({ params: { childId } }: Props) => {
 
   const monstersData = monsters.data;
 
-  return (
-    <main>
-      <MonstersList results={monstersData.results} />
-    </main>
-  );
+  return <MonstersList results={monstersData.results} />;
 };
 
 export default Awards;

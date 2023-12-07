@@ -3,7 +3,7 @@ import LightRays from '@/app/(wigwam)/wigwam/[childId]/awards/components/Images/
 import Cloud from '@/app/(wigwam)/wigwam/[childId]/awards/components/Images/Cloud';
 import Book from '@/app/(wigwam)/wigwam/[childId]/awards/components/Images/Book';
 import MonstersSlider from '@/app/(wigwam)/wigwam/[childId]/awards/components/MonsterDetails/MonstersSlider';
-import { Monster } from '@/types/MonstersTypes';
+import { Monster } from '@/types/Monsters';
 import { MoveLeft } from 'lucide-react';
 import styles from './styles.module.scss';
 

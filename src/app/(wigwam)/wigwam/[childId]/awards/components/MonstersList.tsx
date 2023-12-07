@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import MonsterDetails from '@/app/(wigwam)/wigwam/[childId]/awards/components/MonsterDetails/MonsterDetails';
-import { Monster } from '@/types/MonstersTypes';
+import { Monster, MonstersResponse } from '@/types/Monsters';
 import AllMonsters from '@/app/(wigwam)/wigwam/[childId]/awards/components/AllMonsters/AllMonsters';
 
 const MonstersList = ({ results }: { results: Monster[] }) => {

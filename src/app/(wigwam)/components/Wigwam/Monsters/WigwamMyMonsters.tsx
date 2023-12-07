@@ -4,8 +4,8 @@ import Image from 'next/image';
 import moveRight from 'public/images/move-right.svg';
 import { Typography } from 'components/common';
 import lockedIcon from 'public/images/locked.svg';
-import { useState, useEffect, FC } from 'react';
-import { Monster } from '@/types/MonstersTypes';
+import { useState, useEffect } from 'react';
+import { Monster } from '@/types/Monsters';
 import { useMedia } from '@/hooks';
 import Link from 'next/link';
 import styles from './WigwamMyMonsters.module.scss';
@@ -15,7 +15,7 @@ type WigwamMyMonstersProps = {
   childId: string;
 };
 
-const WigwamMyMonsters: FC<WigwamMyMonstersProps> = ({ monstersData, childId }) => {
+const WigwamMyMonsters: React.FC<WigwamMyMonstersProps> = ({ monstersData, childId }) => {
   const [monsters, setMonsters] = useState<Monster[]>([]);
   const { deviceType } = useMedia();
 

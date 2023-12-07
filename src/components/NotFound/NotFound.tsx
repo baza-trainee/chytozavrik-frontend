@@ -2,11 +2,11 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from 'components/common';
-import styles from './NotFound.module.scss';
 import page404 from '../../../public/images/page404.svg';
+import styles from './NotFound.module.scss';
 
 const NotFound = () => (
-  <main className={styles.section}>
+  <section className={styles.section}>
     <div className={styles.container}>
       <Image className={styles.image} src={page404} alt="404" />
       <p className={styles.text}>Сторінка, яку Ви шукаєте, переміщена або її не існує</p>
@@ -16,7 +16,6 @@ const NotFound = () => (
         </Button>
       </Link>
     </div>
-  </main>
+  </section>
 );
-
 export default NotFound;

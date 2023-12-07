@@ -38,7 +38,11 @@ const Navbar: FC<Props> = ({ childId, name, avatar }) => {
             <Link
               className={styles.link}
               href={`/wigwam/${childId}`}
-              style={currentRoute === `/wigwam/${childId}` ? { color: '#F2B441' } : undefined}
+              style={
+                currentRoute === `/wigwam/${childId}`
+                  ? { pointerEvents: 'none', color: '#F2B441' }
+                  : {}
+              }
             >
               <Tent
                 width={24}
@@ -55,7 +59,9 @@ const Navbar: FC<Props> = ({ childId, name, avatar }) => {
               className={styles.link}
               href={`/wigwam/${childId}/quizzes`}
               style={
-                currentRoute === `/wigwam/${childId}/quizzes` ? { color: '#F2B441' } : undefined
+                currentRoute === `/wigwam/${childId}/quizzes`
+                  ? { pointerEvents: 'none', color: '#F2B441' }
+                  : {}
               }
             >
               <Brain
@@ -73,7 +79,9 @@ const Navbar: FC<Props> = ({ childId, name, avatar }) => {
               className={styles.link}
               href={`/wigwam/${childId}/awards`}
               style={
-                currentRoute === `/wigwam/${childId}/awards` ? { color: '#F2B441' } : undefined
+                currentRoute === `/wigwam/${childId}/awards`
+                  ? { pointerEvents: 'none', color: '#F2B441' }
+                  : {}
               }
             >
               <Chytozavr

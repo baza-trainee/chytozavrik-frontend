@@ -2,20 +2,15 @@
 
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { Container, Typography, Button } from 'components/common';
-import Image from 'next/image';
 import { useFetch } from '@/hooks';
-import { useEffect } from 'react';
-import { ChildType } from '@/types';
+import { Dispatch, SetStateAction, useEffect } from 'react';
+import AvatarFields from '@/app/(main)/parents/components/FormFields/AvaratsFields/AvatarFields';
+import NameInput from '@/app/(main)/parents/components/FormFields/NameInput/NameInput';
+import Buttons from '@/app/(main)/parents/components/FormFields/Buttons/Buttons';
 import styles from './CreateWigwam.module.scss';
-import Avatar1 from '../../../public/images/kids-avatar1.svg';
-import Avatar2 from '../../../public/images/kids-avatar2.svg';
-import Avatar3 from '../../../public/images/kids-avatar3.svg';
-import Avatar4 from '../../../public/images/kids-avatar4.svg';
-import Avatar5 from '../../../public/images/kids-avatar5.svg';
-import Avatar6 from '../../../public/images/kids-avatar6.svg';
 
 type Props = {
-  closeCreateWigwam: () => void;
+  setWigwam: Dispatch<SetStateAction<boolean>>;
 };
 
 type FormData = {
@@ -28,7 +23,7 @@ const defaultValues: FormData = {
   avatar: 0,
 };
 
-const CreateWigwam = ({ closeCreateWigwam }: Props) => {
+const CreateWigwam = ({ setWigwam }: Props) => {
   const {
     register,
     handleSubmit,
@@ -36,7 +31,7 @@ const CreateWigwam = ({ closeCreateWigwam }: Props) => {
     formState: { errors },
   } = useForm({ defaultValues });
 
-  const { fetch } = useFetch<ChildType, FormData>();
+  const { fetch } = useFetch();
 
   const createKidProfile = async (formData: FormData) => {
     try {
@@ -49,25 +44,17 @@ const CreateWigwam = ({ closeCreateWigwam }: Props) => {
         'POST'
       );
     } catch (err) {
-      // eslint-disable-next-line no-console
       console.log(err);
     }
   };
 
-  // const onSubmit: SubmitHandler<FormData> = formData => {
-  //   formData.avatar = Number(formData.avatar);
-  //   closeCreateWigwam();
-  //   createKidProfile(formData);
-  // };
-
   const onSubmit: SubmitHandler<FormData> = formData => {
-    const updatedFormData = {
+    const modifiedFormData = {
       ...formData,
       avatar: Number(formData.avatar),
     };
-
-    closeCreateWigwam();
-    createKidProfile(updatedFormData);
+    setWigwam(false);
+    createKidProfile(modifiedFormData);
   };
 
   useEffect(() => {
@@ -83,101 +70,10 @@ const CreateWigwam = ({ closeCreateWigwam }: Props) => {
           </Typography>
           <div className={styles.formWrapper}>
             <div>
-              <label htmlFor="name" className={styles.label}>
-                Введіть ім&apos;я дитини
-              </label>
-              <input
-                {...register('name', { required: true, maxLength: 100 })}
-                type="text"
-                name="name"
-                placeholder="Ім'я"
-                className={styles.input}
-              />
-              {errors.name && <span>Поле обов&apos;язкове</span>}
-              <div className={styles.buttonsWrapper}>
-                <Button variant="outline" className={styles.button} onClick={closeCreateWigwam}>
-                  Скасувати
-                </Button>
-                <Button type="submit" color="secondary" className={styles.button}>
-                  Створити
-                </Button>
-              </div>
+              <NameInput register={register} errors={errors} />
+              <Buttons onClick={() => setWigwam(false)} secondBtnText="Створити" />
             </div>
-            <fieldset className={styles.fieldset}>
-              <legend className={styles.text}>Оберіть аватар</legend>
-              <div className={styles.radioWrapper}>
-                <input
-                  {...register('avatar', { required: true })}
-                  type="radio"
-                  id="1"
-                  name="avatar"
-                  className={styles.radio}
-                  value=" 1"
-                />
-                <label htmlFor="1">
-                  <Image src={Avatar1} alt="аватар дитини" className={styles.image} />
-                </label>
-                <input
-                  {...register('avatar', { required: true })}
-                  type="radio"
-                  id="2"
-                  name="avatar"
-                  className={styles.radio}
-                  value="2"
-                />
-                <label htmlFor="2">
-                  <Image src={Avatar2} alt="аватар дитини" className={styles.image} />
-                </label>
-                <input
-                  {...register('avatar', { required: true })}
-                  type="radio"
-                  id="3"
-                  name="avatar"
-                  className={styles.radio}
-                  value="3"
-                />
-                <label htmlFor="3">
-                  <Image src={Avatar3} alt="аватар дитини" className={styles.image} />
-                </label>
-
-                <input
-                  {...register('avatar', { required: true })}
-                  type="radio"
-                  id="4"
-                  name="avatar"
-                  className={styles.radio}
-                  value="4"
-                />
-                <label htmlFor="4">
-                  <Image src={Avatar4} alt="аватар дитини" className={styles.image} />
-                </label>
-
-                <input
-                  {...register('avatar', { required: true })}
-                  type="radio"
-                  id="5"
-                  name="avatar"
-                  className={styles.radio}
-                  value="5"
-                />
-                <label htmlFor="5">
-                  <Image src={Avatar5} alt="аватар дитини" className={styles.image} />
-                </label>
-
-                <input
-                  {...register('avatar', { required: true })}
-                  type="radio"
-                  id="6"
-                  name="avatar"
-                  className={styles.radio}
-                  value="6"
-                />
-                <label htmlFor="6">
-                  <Image src={Avatar6} alt="аватар дитини" className={styles.image} />
-                </label>
-              </div>
-            </fieldset>
-            {errors.avatar && <span>Оберіть аватар</span>}
+            <AvatarFields register={register} errors={errors} />
           </div>
         </form>
       </Container>

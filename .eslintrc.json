@@ -29,7 +29,12 @@
     }
   },
   "rules": {
+    "no-param-reassign": "off",
+    "default-param-last": "off",
+    "no-lonely-if": "off",
+    "react-hooks/exhaustive-deps": "off",
     "@typescript-eslint/no-unused-vars": "off",
+    "@typescript-eslint/no-explicit-any": "off",
     "react/function-component-definition": "off",
     "react/destructuring-assignment": "off",
     "react/react-in-jsx-scope": "off",
@@ -41,6 +46,8 @@
     "no-prototype-builtins": "off",
     "no-shadow": "off",
     "no-restricted-exports": "off",
+    "no-plusplus": "off",
+    "no-console": "off",
     "react/no-danger": "off",
     "jsx-a11y/anchor-is-valid": "off",
     "jsx-a11y/click-events-have-key-events": "off",
@@ -50,7 +57,7 @@
       2,
       {
         "controlComponents": ["Input"],
-        "requireForNonFormControls": true,
+        "requireForNonFormControls": false,
         "assert": "either"
       }
     ],

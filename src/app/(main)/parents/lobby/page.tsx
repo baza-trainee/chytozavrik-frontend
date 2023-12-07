@@ -7,11 +7,7 @@ const LobbyPage = async () => {
   // eslint-disable-next-line no-console
   if (!users || users.status === 'fail') return console.error('Unauthorized user.');
 
-  return (
-    <main>
-      <Lobby users={users.data} />
-    </main>
-  );
+  return <Lobby users={users.data} />;
 };
 
 export default LobbyPage;

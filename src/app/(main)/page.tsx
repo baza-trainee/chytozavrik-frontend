@@ -14,7 +14,7 @@ const Home = async () => {
   const session = await getServerSession(authOptions);
 
   return (
-    <main>
+    <>
       {session ? (
         <>
           <Hero />
@@ -38,7 +38,7 @@ const Home = async () => {
 
       <Auth />
       <Refresh />
-    </main>
+    </>
   );
 };
 

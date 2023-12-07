@@ -1,15 +1,21 @@
-import AdminProvider from '@/app/(admin)/components/Provider/AdminProvider';
-import SideBar from '@/app/(admin)/components/SideBar/SideBar';
-import '../../globals.scss';
-import { ReactNode } from 'react';
+import { AdminProvider, SideBar } from '@/app/(admin)/components';
 import styles from './Admin.module.scss';
+import '../../globals.scss';
 
-const Layout = ({ children }: { children: ReactNode }) => (
+const Layout = ({
+  children,
+  params: { childId },
+}: {
+  children: React.ReactNode;
+  params: {
+    childId: string;
+  };
+}) => (
   <AdminProvider>
-    <div className={styles.container}>
+    <main className={styles.container}>
       <SideBar />
-      {children}
-    </div>
+      <section className={styles.section}>{children}</section>
+    </main>
   </AdminProvider>
 );
 

@@ -1,4 +1,4 @@
-export type AttemptsInfoType = {
+export type AttemptsInfoResponse = {
   score: number;
 };
 

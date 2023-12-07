@@ -2,7 +2,7 @@ import WigwamReadBooks from '@/app/(wigwam)/components/Wigwam/ReadBooks';
 import WigwamQuiz from '@/app/(wigwam)/components/Wigwam/Quiz';
 import { BooksResponse } from '@/types/WigwamBooks';
 import { notFound } from 'next/navigation';
-import { MonstersResponse } from '@/types/MonstersTypes';
+import { MonstersResponse } from '@/types/Monsters';
 import { fetch } from '@/services/axios';
 import WigwamBooks from '@/app/(wigwam)/components/Wigwam/Books';
 import WigwamMyMonsters from '@/app/(wigwam)/components/Wigwam/Monsters';
@@ -24,15 +24,13 @@ const Wigwam = async ({ params: { childId } }: WigwamProps) => {
   const { results: monstersData } = monstersRes.data;
 
   return (
-    <main>
-      <Container className={styles.layout}>
-        <WigwamReadBooks />
-        <WigwamQuiz />
-        <WigwamMyMonsters monstersData={monstersData} childId={childId} />
-        <WigwamBooks booksData={booksData} next={booksRes.data.next} />
-        <div className={styles.test}>Recommended</div>
-      </Container>
-    </main>
+    <Container className={styles.layout}>
+      <WigwamReadBooks />
+      <WigwamQuiz />
+      <WigwamMyMonsters monstersData={monstersData} childId={childId} />
+      <WigwamBooks booksData={booksData} next={booksRes.data.next} />
+      <div className={styles.test}>Recommended</div>
+    </Container>
   );
 };
 

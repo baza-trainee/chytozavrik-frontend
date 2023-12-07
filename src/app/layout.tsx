@@ -1,5 +1,4 @@
-import { Montserrat_Alternates as MontserratAlternates, Raleway } from 'next/font/google';
-import { ReactNode } from 'react';
+import { Montserrat_Alternates as Montserrat, Raleway } from 'next/font/google';
 
 const raleway = Raleway({
   variable: '--raleway-font',
@@ -9,7 +8,7 @@ const raleway = Raleway({
   display: 'swap',
 });
 
-const montserratAlternates = MontserratAlternates({
+const montserratAlternates = Montserrat({
   variable: '--montserrat-alternates-font',
   weight: ['400', '600'],
   style: 'normal',
@@ -17,7 +16,7 @@ const montserratAlternates = MontserratAlternates({
   display: 'swap',
 });
 
-const RootLayout = ({ children }: { children: ReactNode }) => (
+const RootLayout = ({ children }: { children: React.ReactNode }) => (
   <html lang="uk" className={`${raleway.variable} ${montserratAlternates.variable}`}>
     <body>{children}</body>
   </html>

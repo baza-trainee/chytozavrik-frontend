@@ -1,0 +1,54 @@
+@import '../../../../scss/utils/variables';
+
+.header {
+  display: flex;
+  width: 1048px;
+  padding: 16px 24px;
+  align-items: center;
+  gap: 32px;
+  border-radius: 8px 8px 0px 0px;
+  background: $primary-next-variant;
+  color: $black;
+  font-family: var(--montserrat-alternates-font);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 120%;
+
+  .names {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    &.users div:last-child {
+      padding-right: 68px;
+    }
+
+    &.users div:first-child,
+    &.books div:first-child,
+    &.partners div:first-child {
+      padding-left: 52px;
+    }
+
+    &.users div:first-child,
+    &.books div:first-child {
+      width: 320px;
+    }
+    &.documents div:first-child,
+    &.partners div:first-child {
+      padding-left: 52px;
+    }
+
+    &.books div:last-child {
+      width: 250px;
+    }
+
+    &.documents div:last-child {
+      width: 214px;
+    }
+
+    &.partners div:last-child {
+      width: 251px;
+    }
+  }
+}

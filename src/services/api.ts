@@ -3,18 +3,44 @@ import { authOptions } from '@/config';
 import {
   AnswerType,
   FetchResponseType,
-  QuizType,
+  QuizInfoResponse,
+  AllQuizzesResponse,
   TokenType,
   UserType,
+  UsersQuizzesResponse,
+  QuizCategory,
   sendPasswordResetEmailType,
   resetPasswordType,
 } from '@/types';
+import { IS_REVERSED, PAGE_SIZE } from '@/constants';
 
 const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || '';
 
 export const token: { access: string | null; refresh: string | null } = {
   access: null,
   refresh: null,
+};
+
+export const refreshTokenService = async (refreshToken: string) => {
+  try {
+    const response = await fetch(`${baseUrl}/auth/token/refresh/`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ refresh: refreshToken }),
+    });
+    if (!response.ok) {
+      throw new Error(`Refresh token error: ${response.status}`);
+    }
+    const data = await response.json();
+    token.access = data.access;
+    token.refresh = refreshToken; // assuming the refresh token remains the same
+    return data;
+  } catch (error) {
+    console.error('Error in refreshTokenService:', error);
+    throw error;
+  }
 };
 
 export const privateFetch = async (
@@ -85,9 +111,39 @@ export const getChildrenService = async () => {
   return result.json();
 };
 
-export const getQuizByIdService = async (id: number): Promise<FetchResponseType<QuizType>> => {
+export const getQuizInfoByIdService = async (
+  id: number
+): Promise<FetchResponseType<QuizInfoResponse>> => {
   const result = await privateFetch(`${baseUrl}/quizzes/${id}`);
 
+  return result.json();
+};
+
+// export const getQuizzesService = async (
+//   search: string = '',
+//   page: string = '1',
+//   page_size: number
+// ): Promise<FetchResponseType<AllQuizzesResponse>> => {
+//   const result = await privateFetch(
+//     `${baseUrl}/quizzes/?search=${search}&page=${page}&page_size=${page_size}`
+//   );
+//
+//   return await result.json();
+// };
+
+export const getUsersQuizzesService = async (
+  search: string = '',
+  page: string = '1',
+  category: QuizCategory = QuizCategory.All,
+  IS_REVERSED: boolean = true,
+  PAGE_SIZE: number = 12,
+  childId: string
+): Promise<FetchResponseType<UsersQuizzesResponse>> => {
+  const selectedCategory = category ? `&${category}` : '';
+
+  const result = await privateFetch(
+    `${baseUrl}/users/me/children/${childId}/quizzes/?page=${page}&page_size=${PAGE_SIZE}&reverse=${IS_REVERSED}&search=${search}${selectedCategory}`
+  );
   return result.json();
 };
 

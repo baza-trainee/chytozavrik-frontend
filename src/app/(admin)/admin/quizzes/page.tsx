@@ -1,5 +1,22 @@
 import React from 'react';
+import { AdminHeader, BookItem, TableHeader } from '@/app/(admin)/components';
+import styles from './Quizzes.module.scss';
 
-const Quizzes = () => <div>Quizzes</div>;
+const Quizzes = () => (
+  <div className={styles.quizzes}>
+    <AdminHeader
+      withSearch
+      withButton
+      buttonText="Додати вікторину"
+      withClose={false}
+      heading="Вікторини"
+      searchWord="value"
+    />
+    <div>
+      <TableHeader variant="books" colNames={['Назва книги', 'Стан', 'Дата  додавання']} />
+      <BookItem />
+    </div>
+  </div>
+);
 
 export default Quizzes;

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import type { QuizType } from '@/types';
+import type { QuizInfoResponse } from '@/types';
 import questionImage from 'public/images/quiz-page/quiz-question-image.svg';
 import { Container, Typography } from '@/components/common';
 import CloseQuizButton from '@/app/(wigwam)/wigwam/[childId]/[quizId]/components/CloseQuizButton/CloseQuizButton';
@@ -10,16 +10,16 @@ import AnswersList from './AnswersList';
 import QuizPrize from '../QuizPrize';
 import styles from './Quiz.module.scss';
 
-type Props = {
-  quiz: QuizType;
-};
+interface QuizProps {
+  quizInfo: QuizInfoResponse;
+}
 
-const Quiz = ({ quiz }: Props) => {
+const Quiz = ({ quizInfo }: QuizProps) => {
   const {
     questions,
     book_info: { author: bookAuthor, name: bookName },
     score,
-  } = quiz;
+  } = quizInfo;
   const [questionNumber, setQuestionNumber] = useState(() =>
     score >= questions.length ? 0 : score
   );

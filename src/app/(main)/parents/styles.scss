@@ -1,0 +1,45 @@
+@import '../../../scss/utils/variables';
+@import '../../../scss/utils/mixin';
+
+.section {
+  background-image: url('/images/parents/dark-blue-wave.svg');
+  padding-bottom: 80px;
+  background-repeat: repeat-x;
+  background-color: $primary-next-variant;
+  width: 100vw;
+
+  @include breakpoint(tablet) {
+    background-image: url('/images/parents/dark-blue-wave-760.svg');
+  }
+
+  @include breakpoint(laptop) {
+    background-size: auto 73px;
+  }
+
+  @include breakpoint(desktop) {
+    background-size: auto 102px;
+  }
+}
+
+.empty {
+  height: 144px;
+  width: 100vw;
+  background-color: $white;
+  background-image: url('/images/blue-wave-mob.svg');
+  background-repeat: repeat-x;
+
+  @include breakpoint(tablet) {
+    background-image: url('/images/blue-wave-tab.svg');
+    height: 203px;
+  }
+
+  @include breakpoint(laptop) {
+    background-image: url('/images/blue-wave-lap.svg');
+    height: 206px;
+  }
+
+  @include breakpoint(desktop) {
+    background-image: url('/images/blue-wave-desk.svg');
+    height: 200px;
+  }
+}

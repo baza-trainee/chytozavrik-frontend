@@ -4,15 +4,14 @@ import WigwamFooter from '@/app/(wigwam)/components/footer/WigwamFooter';
 import CookiesPanel from 'components/Cookies/CookiesPanel';
 import { fetch } from '@/services/axios';
 import { notFound } from 'next/navigation';
-import { ChildResults } from '@/types/ChildrenResults';
+import { Avatar, ChildResults } from '@/types/ChildrenResults';
 import '../../../globals.scss';
-import { ReactNode } from 'react';
 
 const Layout = async ({
   children,
   params: { childId },
 }: {
-  children: ReactNode;
+  children: React.ReactNode;
   params: {
     childId: string;
   };

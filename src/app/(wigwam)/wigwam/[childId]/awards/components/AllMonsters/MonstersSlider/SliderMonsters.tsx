@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Monster } from '@/types/MonstersTypes';
+import { Monster } from '@/types/Monsters';
 import PrevArrow from '@/app/(wigwam)/wigwam/[childId]/awards/components/AllMonsters/Buttons/PrevArrow';
 import NextArrow from '@/app/(wigwam)/wigwam/[childId]/awards/components/AllMonsters/Buttons/NextArrow';
 import Slider from 'react-slick';
@@ -14,7 +14,6 @@ const SliderMonsters = ({
   onMonsterClick,
 }: {
   results: Monster[];
-  // eslint-disable-next-line no-unused-vars
   onMonsterClick: (id: number | string) => void;
 }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -27,7 +26,7 @@ const SliderMonsters = ({
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    afterChange: (current: number) => setCurrentSlide(current),
+    afterChange: (current: any) => setCurrentSlide(current),
     ref: sliderRef,
   };
   const goToNext = () => sliderRef.current && sliderRef.current.slickNext();

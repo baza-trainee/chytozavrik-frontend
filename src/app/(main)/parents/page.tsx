@@ -1,22 +1,28 @@
 'use client';
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Parents from 'src/app/(main)/parents/components/Parents';
 import CreateWigwam from '@/components/CreateWigwam';
+import KidsList from './components/KidsList';
+import './styles.scss';
 
 const ParentsPage = () => {
-  const [isShown, setIsShown] = useState(false);
+  const [wigwam, setWigwam] = useState(false);
 
   const toggleCreateWigwam = () => {
-    if (!isShown) setIsShown(true);
-    else setIsShown(false);
+    if (!wigwam) setWigwam(true);
+    else setWigwam(false);
   };
 
   return (
-    <main>
+    <>
       <Parents handleClick={toggleCreateWigwam} />
-      {isShown && <CreateWigwam closeCreateWigwam={toggleCreateWigwam} />}
-    </main>
+      <section className="section">
+        {wigwam && <CreateWigwam setWigwam={setWigwam} />}
+        <KidsList />
+      </section>
+      <div className="empty" />
+    </>
   );
 };
 

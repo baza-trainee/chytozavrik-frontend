@@ -8,7 +8,7 @@ const NumberInput = <T extends FieldValues>(props: InputProps<T>) => {
   const { name, control } = props;
   const { field } = useController<T>({ name, control });
 
-  const changeHandler = (evt: ChangeEvent<HTMLInputElement>) => {
+  const changeHandler = (evt: any) => {
     field.onChange(evt.target.value.toString().replace(/((\D+)|(^(?:0+(?=[1-9])|0+(?=0$))))/g, ''));
   };
 

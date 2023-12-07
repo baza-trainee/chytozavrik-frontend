@@ -127,11 +127,16 @@ $tertiary: getColor(green, 40);
 $on-tertiary: getColor(green, 100);
 $tertiary-variant: getColor(green, 70);
 $on-tertiary-variant: getColor(green, 10);
+$ref-green-green-90: getColor(green, 90);
 
 $quaternary: getColor(rose, 40);
 $on-quaternary: getColor(rose, 100);
 $quaternary-variant: getColor(rose, 90);
 $on-quaternary-variant: getColor(rose, 20);
+
+$ref-neutral-neutral-20: getColor(neutral, 20);
+$ref-neutral-neutral-30: getColor(neutral, 30);
+$ref-neutral-neutral-50: getColor(neutral, 50);
 
 $error: getColor(error, 40);
 $on-error: getColor(error, 100);

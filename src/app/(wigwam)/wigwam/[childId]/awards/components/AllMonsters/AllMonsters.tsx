@@ -1,5 +1,5 @@
 import React from 'react';
-import { Monster } from '@/types/MonstersTypes';
+import { Monster } from '@/types/Monsters';
 import SliderMonsters from '@/app/(wigwam)/wigwam/[childId]/awards/components/AllMonsters/MonstersSlider/SliderMonsters';
 import styles from './AllMonsters.module.scss';
 
@@ -8,7 +8,6 @@ const AllMonsters = ({
   onMonsterClick,
 }: {
   results: Monster[];
-  // eslint-disable-next-line no-unused-vars
   onMonsterClick: (id: number | string) => void;
 }) => (
   <section className={styles.monsters}>
