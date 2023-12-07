@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Contacts.module.scss';
-import AdminHeader from '@/app/(admin)/components/Header/AdminHeader';
-import TableHeader from '@/app/(admin)/components/TableHeader/TableHeader';
+import { AdminHeader, TableHeader } from '@/app/(admin)/components';
+
 
 const Contacts = () => {
   return (
@@ -15,6 +15,7 @@ const Contacts = () => {
       />
       <div>
         <TableHeader
+          variant='contacts'
           colNames={['Перелік контактів', 'Дата  оновлення']}
         />
       </div>

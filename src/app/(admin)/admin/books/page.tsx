@@ -1,7 +1,9 @@
+"use client"
+
 import React from 'react';
 import styles from './Books.module.scss';
-import AdminHeader from '@/app/(admin)/components/Header/AdminHeader';
-import TableHeader from '@/app/(admin)/components/TableHeader/TableHeader';
+import { AdminHeader, BookItem, TableHeader } from '@/app/(admin)/components';
+
 
 const Books = () => {
   return (
@@ -16,8 +18,16 @@ const Books = () => {
       />
       <div>
         <TableHeader
+          variant='books'
           colNames={['Назва книги', 'Стан', 'Дата  додавання']}
         />
+        <div>
+          <BookItem/>
+          <BookItem/>
+          <BookItem/>
+          <BookItem/>
+        </div>
+
       </div>
     </div>
   );

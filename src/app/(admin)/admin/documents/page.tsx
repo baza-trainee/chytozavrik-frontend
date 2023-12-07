@@ -1,7 +1,7 @@
 import React from 'react';
+import { AdminHeader, TableHeader } from '@/app/(admin)/components';
 import styles from './Documents.module.scss';
-import AdminHeader from '@/app/(admin)/components/Header/AdminHeader';
-import TableHeader from '@/app/(admin)/components/TableHeader/TableHeader';
+
 
 const Documents = () => {
   return (
@@ -14,8 +14,8 @@ const Documents = () => {
       />
       <div>
         <TableHeader
+          variant='documents'
           colNames={['Назва документу', 'Дата  оновлення', 'Редагування']}
-          isDocument={true}
         />
       </div>
     </div>

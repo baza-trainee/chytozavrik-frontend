@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Recommended.module.scss';
-import AdminHeader from '@/app/(admin)/components/Header/AdminHeader';
-import TableHeader from '@/app/(admin)/components/TableHeader/TableHeader';
+import { AdminHeader, BookItem, TableHeader } from '@/app/(admin)/components';
+
 
 const Page = () => {
   return (
@@ -15,8 +15,10 @@ const Page = () => {
       />
       <div>
         <TableHeader
+          variant='books'
           colNames={['Назва книги', 'Стан', 'Дата  додавання']}
         />
+        <BookItem/>
       </div>
     </div>
   );
