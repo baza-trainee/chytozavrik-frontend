@@ -71,7 +71,8 @@ const ResetPassword = () => {
             Електронний лист надіслано!
           </Typography>
           <Typography className={(authStyles.text, styles.textDone)} component="p" variant="body">
-            Введіть свою електронну пошту, і ми надішлемо вам посилання для відновлення пароля.
+            Перевірте свою електронну пошту та перейдіть за посиланням, яке ми надіслали, щоб
+            продовжити.
           </Typography>
         </>
       ) : (
