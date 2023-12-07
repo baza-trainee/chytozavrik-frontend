@@ -1,6 +1,7 @@
 import React from 'react';
-import styles from '@/app/(admin)/admin/statistics/Statistics.module.scss';
-import AdminHeader from '@/app/(admin)/components/Header/AdminHeader';
+import styles from './Password.module.scss';
+import { AdminHeader } from '@/app/(admin)/components';
+
 
 const ChangePassword = () => {
   return (

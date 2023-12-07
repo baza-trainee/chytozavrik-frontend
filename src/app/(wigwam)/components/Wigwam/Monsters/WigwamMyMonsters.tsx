@@ -6,13 +6,13 @@ import moveRight from 'public/images/move-right.svg';
 import { Typography } from 'components/common';
 import lockedIcon from 'public/images/locked.svg';
 import { useState, useEffect } from 'react';
-import { Monster } from '@/types/MonstersTypes';
+import { Monster } from '@/types/Monsters';
 import { useMedia } from '@/hooks';
 import Link from 'next/link';
 
 type WigwamMyMonstersProps = {
-  monstersData: Monster[],
-  childId:string
+  monstersData: Monster[];
+  childId: string;
 };
 
 const WigwamMyMonsters: React.FC<WigwamMyMonstersProps> = ({ monstersData, childId }) => {
@@ -25,22 +25,22 @@ const WigwamMyMonsters: React.FC<WigwamMyMonstersProps> = ({ monstersData, child
 
   let length;
   if (deviceType === 'mobile' || deviceType === 'tablet') {
-    length = 6
+    length = 6;
   } else if (deviceType === 'laptop') {
-    length = 7
-  } else{
-    length = 8
+    length = 7;
+  } else {
+    length = 8;
   }
 
   return (
     <>
       <div className={styles.wrapper}>
         <div className={styles.headlineWrapper}>
-          <Typography component='h2' variant='h2' className={styles.title}>
+          <Typography component="h2" variant="h2" className={styles.title}>
             Мої Читозаври
           </Typography>
           <Link href={`/wigwam/${childId}/awards`} className={styles.arrow}>
-            <Image priority src={moveRight} alt='arrow' width={24} height={24} />
+            <Image priority src={moveRight} alt="arrow" width={24} height={24} />
           </Link>
         </div>
         <div className={styles.monstersContainer}>
@@ -51,11 +51,11 @@ const WigwamMyMonsters: React.FC<WigwamMyMonstersProps> = ({ monstersData, child
                   width={60}
                   height={50}
                   src={monsters[i].reward}
-                  alt='Читозаврик'
+                  alt="Читозаврик"
                   className={styles.monsterPresent}
                 />
               ) : (
-                <Image src={lockedIcon} alt='icon locked' className={styles.monsterEmpty} />
+                <Image src={lockedIcon} alt="icon locked" className={styles.monsterEmpty} />
               )}
             </div>
           ))}

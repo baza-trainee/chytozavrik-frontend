@@ -1,25 +1,31 @@
 import { notFound } from 'next/navigation';
-import type { AttemptsInfoType, QuizType } from '@/types';
+import type { AttemptsInfoResponse, QuizInfoResponse } from '@/types';
 import { fetch } from '@/services/axios';
 import Quiz from './components/Quiz';
 
-type Props = {
+interface QuizPageProps {
   params: {
     quizId: string;
     childId: string;
   };
-};
+}
 
-const QuizPage = async ({ params: { quizId, childId } }: Props) => {
-  const quizReq = fetch<QuizType>(`/quizzes/${quizId}`);
-  const questionReq = fetch<AttemptsInfoType>(`/users/me/children/${childId}/attempts/${quizId}/`);
-  const [quizRes, questionRes] = await Promise.all([quizReq, questionReq]);
+const QuizPage = async ({ params: { quizId, childId } }: QuizPageProps) => {
+  const quizInfoReq = fetch<QuizInfoResponse>(`/quizzes/${quizId}`);
+  const attemptsInfoReq = fetch<AttemptsInfoResponse>(
+    `/users/me/children/${childId}/attempts/${quizId}/`
+  );
+  const [quizInfoRes, attemptsInfoRes] = await Promise.all([quizInfoReq, attemptsInfoReq]);
 
-  if (quizRes.status === 'fail' || questionRes.status === 'fail') notFound();
+  if (quizInfoRes.status === 'fail' || attemptsInfoRes.status === 'fail') notFound();
 
-  const quiz: QuizType = { ...quizRes.data, ...questionRes.data };
+  const quizInfo: QuizInfoResponse = { ...quizInfoRes.data, ...attemptsInfoRes.data };
 
-  return <main>{<Quiz quiz={quiz} />}</main>;
+  return (
+    <>
+      <Quiz quizInfo={quizInfo} />
+    </>
+  );
 };
 
 export default QuizPage;

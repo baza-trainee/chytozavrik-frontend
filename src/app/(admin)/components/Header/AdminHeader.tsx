@@ -1,9 +1,12 @@
+'use client'
+
 import React from 'react';
 import { Button } from 'components/common';
-import AddIcon from '@/app/(admin)/components/Header/Icons/AddIcon';
-import CloseIcon from '@/app/(admin)/components/Header/Icons/CloseIcon';
 import style from './Header.module.scss'
-
+import { useForm } from 'react-hook-form';
+import { Input } from 'components/common/form';
+import { SearchIcon } from 'lucide-react';
+import { AddIcon, CloseIcon } from '@/app/(admin)/components';
 
 interface AdminHeaderProps {
   withSearch: boolean,
@@ -30,6 +33,15 @@ const AdminHeader = ({
                        buttonFunc,
                        closeFunc,
                      }: AdminHeaderProps) => {
+
+  const { control, setValue, watch } = useForm({
+    defaultValues: {
+      search: "",
+    },
+  });
+  const resetField = () => setValue('search', '');
+
+
   return (
     <div className={style.header}>
       <div>
@@ -42,7 +54,15 @@ const AdminHeader = ({
       </div>
       <div className={style.header__content}>
         {withSearch ? (
-         <p className={style.test}>Search input</p>
+         <div className={style.search}>
+           <Input
+             name="search"
+             control={control}
+             icon={<SearchIcon />}
+             resetField={resetField}
+             placeholder="Введіть ключове слово для пошуку"
+           />
+         </div>
         ) : null}
         {withButton ? (
           <Button variant="filled" color="secondary" startIcon={<AddIcon/>}

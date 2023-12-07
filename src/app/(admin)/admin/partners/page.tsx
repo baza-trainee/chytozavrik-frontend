@@ -1,7 +1,8 @@
+'use client'
+
 import React from 'react';
 import styles from './Partners.module.scss';
-import AdminHeader from '@/app/(admin)/components/Header/AdminHeader';
-import TableHeader from '@/app/(admin)/components/TableHeader/TableHeader';
+import { AdminHeader, PartnerItem, TableHeader } from '@/app/(admin)/components';
 
 const Partners = () => {
   return (
@@ -19,6 +20,7 @@ const Partners = () => {
           variant='partners'
           colNames={['Назва', 'Дата  додавання']}
         />
+        <PartnerItem/>
       </div>
     </div>
   );

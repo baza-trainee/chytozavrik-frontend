@@ -6,11 +6,7 @@ const LobbyPage = async () => {
 
   if (!users || users.status === 'fail') return console.error('Unauthorized user.');
 
-  return (
-    <main>
-      <Lobby users={users.data} />
-    </main>
-  );
+  return <Lobby users={users.data} />;
 };
 
 export default LobbyPage;

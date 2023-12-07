@@ -1,8 +1,6 @@
 import React from 'react';
 import styles from './Quizzes.module.scss';
-import AdminHeader from '@/app/(admin)/components/Header/AdminHeader';
-import TableHeader from '@/app/(admin)/components/TableHeader/TableHeader';
-import BookItem from '@/app/(admin)/components/TableItems/BookItem/BookItem';
+import { AdminHeader, BookItem, TableHeader } from '@/app/(admin)/components';
 
 const Quizzes = () => {
   return (

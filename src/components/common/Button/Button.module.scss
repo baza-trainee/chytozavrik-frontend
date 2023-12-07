@@ -4,7 +4,7 @@
 :where(.button) {
   --button-bg-color: transparent;
   --button-text-color: $black;
-  --button-disabled-opcity: 0.4;
+  --button-disabled-opacity: 0.4;
 
   position: relative;
 
@@ -30,8 +30,6 @@
 .button {
   &:disabled {
     cursor: not-allowed;
-
-    // opacity: var(--button-disabled-opcity);
   }
 
   // color scheme
@@ -50,8 +48,8 @@
     }
 
     &:disabled {
-      --button-bg-color: #{rgba($primary, var(--button-disabled-opcity))};
-      --button-text-color: #{rgba($on-primary, var(--button-disabled-opcity))};
+      --button-bg-color: #{rgba($primary, var(--button-disabled-opacity))};
+      --button-text-color: #{rgba($on-primary, var(--button-disabled-opacity))};
     }
   }
 
@@ -70,7 +68,7 @@
     }
 
     &:disabled {
-      --button-bg-color: #{rgba($secondary, var(--button-disabled-opcity))};
+      --button-bg-color: #{rgba($secondary, var(--button-disabled-opacity))};
       --button-text-color: #{getColor(neutral, 40)};
     }
   }
@@ -91,8 +89,8 @@
     }
 
     &:disabled {
-      --button-bg-color: #{rgba($tertiary, var(--button-disabled-opcity))};
-      --button-text-color: #{rgba($on-tertiary, var(--button-disabled-opcity))};
+      --button-bg-color: #{rgba($tertiary, var(--button-disabled-opacity))};
+      --button-text-color: #{rgba($on-tertiary, var(--button-disabled-opacity))};
     }
   }
 
@@ -112,9 +110,22 @@
     }
 
     &:disabled {
-      --button-bg-color: #{rgba($quaternary, var(--button-disabled-opcity))};
-      --button-text-color: #{rgba($on-quaternary, var(--button-disabled-opcity))};
+      --button-bg-color: #{rgba($quaternary, var(--button-disabled-opacity))};
+      --button-text-color: #{rgba($on-quaternary, var(--button-disabled-opacity))};
     }
+  }
+
+  // size
+  &--small {
+    padding: 10px 20px;
+    width: 100%;
+    font-size: 14px;
+    line-height: 16px;
+  }
+
+  &--default {
+    padding: 20px 36px;
+    line-height: inherit;
   }
 
   // variants
@@ -137,11 +148,11 @@
     }
 
     &:disabled {
-      background-color: rgba($white, var(--button-disabled-opcity));
+      background-color: rgba($white, var(--button-disabled-opacity));
     }
 
     &:disabled[data-selected='true'] {
-      color: rgba($white, var(--button-disabled-opcity));
+      color: rgba($white, var(--button-disabled-opacity));
       background-color: var(--button-bg-color);
     }
   }
@@ -166,6 +177,4 @@
 
   width: 100%;
   height: 100%;
-
-  // background-color: rgba($black, 0.4);
 }
