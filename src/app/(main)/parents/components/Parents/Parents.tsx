@@ -12,7 +12,8 @@ type Props = {
 const Parents = ({ handleClick }: Props) => {
   const [showNote, setShowNote] = useState(true);
   const closeNote = () => {
-    setShowNote(false);
+    setShowNote(false)
+      console.log('hello');
   };
 
   return (
