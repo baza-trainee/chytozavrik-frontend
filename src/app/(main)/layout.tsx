@@ -12,14 +12,12 @@ export const metadata: Metadata = {
 };
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => (
-  <main>
-    <AppProvider>
-      <Header />
-      {children}
-      <Footer />
-      <CookiesPanel />
-    </AppProvider>
-  </main>
+  <AppProvider>
+    <Header />
+    <main>{children}</main>
+    <Footer />
+    <CookiesPanel />
+  </AppProvider>
 );
 
 export default RootLayout;
