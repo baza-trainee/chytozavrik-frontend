@@ -18,4 +18,3 @@ export type MenuItemsType = {
     anchor: string;
   };
 };
-

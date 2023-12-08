@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -8,11 +8,10 @@ import { newPasswordService } from '@/services/api';
 import { Button, Typography } from '@/components/common';
 import { PasswordInput, validation } from '@/components/common/form';
 import { AlertCircle } from 'lucide-react';
-import authStyles from '../Auth.module.scss';
-import styles from '../ResetPassword/ResetPassword.module.scss';
-import { useSearchParams } from 'next/navigation';
 import iconDone from 'public/images/iconDone.svg';
 import { Route } from '@/constants';
+import authStyles from '../Auth.module.scss';
+import styles from '../ResetPassword/ResetPassword.module.scss';
 
 const schema = yup.object({
   password: validation.password,
@@ -27,11 +26,11 @@ const defaultValues: FormData = {
 };
 
 const NewPassword = () => {
+  // eslint-disable-next-line no-unused-vars
   const {
     control,
     handleSubmit,
     resetField,
-    setError: setFormError,
     formState: { isSubmitting },
   } = useForm({
     defaultValues,
@@ -59,7 +58,6 @@ const NewPassword = () => {
       if (result.status === 'fail' && result.data.message) {
         const errorMessages = Object.values(result.data.message).flat().join(', ');
         setError(errorMessages);
-        return;
       }
 
       setIsSuccess(true);

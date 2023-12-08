@@ -23,13 +23,14 @@ const HeaderButton = () => {
         <Button
           className={styles.buttonOut}
           variant="outline"
-          component={'link'}
+          component="link"
           href={Route.PARENTS}
         >
           Вихід
         </Button>
       );
-    } else if (isPartners) {
+    }
+    if (isPartners) {
       return (
         <Button
           className={styles.buttonOut}
@@ -39,26 +40,24 @@ const HeaderButton = () => {
           Вийти
         </Button>
       );
-    } else {
-      return (
-        <Button
-          component="link"
-          href={Route.PARENTS}
-          className={styles.button}
-          variant="outline"
-          startIcon={<User2 className={styles.userLogo} />}
-        >
-          Кабінет
-        </Button>
-      );
     }
-  } else {
     return (
-      <Button component="link" href={Route.SIGN_IN} className={styles.buttonIn} variant="outline">
-        Вхід
+      <Button
+        component="link"
+        href={Route.PARENTS}
+        className={styles.button}
+        variant="outline"
+        startIcon={<User2 className={styles.userLogo} />}
+      >
+        Кабінет
       </Button>
     );
   }
+  return (
+    <Button component="link" href={Route.SIGN_IN} className={styles.buttonIn} variant="outline">
+      Вхід
+    </Button>
+  );
 };
 
 export default HeaderButton;

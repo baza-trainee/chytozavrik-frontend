@@ -28,19 +28,25 @@
   @include breakpoint(tablet) {
     background-image: url('/images/entrance-page/entrance-books-bottom-bg-tablet.svg'),
       url('/images/entrance-page/entrance-books-top-bg-tablet.svg');
-    background-position: center bottom, center 53px;
+    background-position:
+      center bottom,
+      center 53px;
   }
 
   @include breakpoint(laptop) {
     background-image: url('/images/entrance-page/entrance-books-bottom-bg-laptop.svg'),
       url('/images/entrance-page/entrance-books-top-bg-laptop.svg');
-    background-position: center bottom, center 74px;
+    background-position:
+      center bottom,
+      center 74px;
   }
 
   @include breakpoint(desktop) {
     background-image: url('/images/entrance-page/entrance-books-bottom-bg-desktop.svg'),
       url('/images/entrance-page/entrance-books-top-bg-desktop.svg');
-    background-position: center bottom, center 94px;
+    background-position:
+      center bottom,
+      center 94px;
   }
 }
 

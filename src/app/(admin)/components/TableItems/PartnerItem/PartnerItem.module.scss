@@ -1,6 +1,6 @@
 @import '../../../../../scss/utils/variables';
 
-.partner{
+.partner {
   display: flex;
   align-items: center;
   width: 1048px;
@@ -8,15 +8,14 @@
   gap: 32px;
   border-bottom: 1px solid $primary-next-variant;
 
-  .info{
+  .info {
     width: 880px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     font-size: 14px;
 
-
-    .title{
+    .title {
       width: 278px;
       overflow: hidden;
       color: $secondary-black;
@@ -27,7 +26,7 @@
       line-height: 120%;
     }
 
-    .date{
+    .date {
       width: 180px;
       color: $black;
       font-family: var(--raleway-font);

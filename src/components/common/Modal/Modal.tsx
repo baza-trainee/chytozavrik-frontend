@@ -3,8 +3,8 @@
 import { MouseEvent, ReactNode, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { XButton } from '@/components/common';
-import styles from './Modal.module.scss';
 import FocusTrap from 'focus-trap-react';
+import styles from './Modal.module.scss';
 
 type Props = {
   children?: ReactNode;

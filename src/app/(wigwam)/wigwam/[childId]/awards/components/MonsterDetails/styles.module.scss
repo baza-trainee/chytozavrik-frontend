@@ -14,7 +14,7 @@
     justify-content: center;
     align-items: center;
     gap: 8px;
-    color: #FFFFFF;
+    color: #ffffff;
     text-align: center;
     font-family: var(--montserrat-alternates-font);
     font-size: 14px;
@@ -70,7 +70,6 @@
     padding-left: 15px;
     padding-right: 15px;
 
-
     .slides {
       display: flex;
       flex-direction: row;
@@ -83,14 +82,14 @@
       justify-content: center;
       align-items: center;
 
-      .image{
+      .image {
         width: 192px;
         height: 213px;
       }
     }
 
-
-    .prev, .next {
+    .prev,
+    .next {
       display: inline-flex;
       width: 69px;
       height: 72px;
@@ -103,7 +102,6 @@
   }
 
   @include breakpoint(tablet) {
-
     height: calc(100vh - 70px);
 
     .button {
@@ -131,23 +129,23 @@
         width: 338px;
         height: 432px;
 
-        .image{
+        .image {
           width: 395px;
           height: 432px;
         }
       }
 
-      .prev, .next {
+      .prev,
+      .next {
         width: 116px;
         height: 120px;
         margin-top: 86px;
 
-        & img{
+        & img {
           width: 111.938px;
           height: 96.206px;
         }
       }
-
     }
 
     .book {
@@ -157,7 +155,6 @@
   }
 
   @include breakpoint(laptop) {
-
     min-height: 700px;
 
     .button {
@@ -184,29 +181,27 @@
         width: 338px;
         height: 432px;
 
-        .image{
+        .image {
           width: 400px;
           height: 432px;
         }
       }
 
-
-      .prev, .next {
+      .prev,
+      .next {
         width: 116px;
         height: 120px;
         margin-top: 155px;
 
-        & img{
+        & img {
           width: 111.938px;
           height: 96.206px;
         }
       }
-
     }
   }
 
   @include breakpoint(desktop) {
-
     .button {
       padding: 20px 36px 20px 28px;
       font-size: 24px;
@@ -236,21 +231,21 @@
         width: 514px;
         height: 552px;
 
-       .image {
+        .image {
           width: 432px;
           height: 552px;
         }
       }
 
-      .prev, .next {
+      .prev,
+      .next {
         width: 136px;
         height: 140px;
         margin-top: 186px;
 
-        & img{
+        & img {
           width: 130.963px;
           height: 112px;
-
         }
       }
     }

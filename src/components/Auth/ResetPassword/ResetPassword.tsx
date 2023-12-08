@@ -7,9 +7,9 @@ import { Button, Typography } from '@/components/common';
 import { Input, validation } from '@/components/common/form';
 import { AlertCircle } from 'lucide-react';
 import { sendPasswordResetEmailService } from '@/services/api';
+import iconDone from 'public/images/iconDone.svg';
 import authStyles from '../Auth.module.scss';
 import styles from './ResetPassword.module.scss';
-import iconDone from 'public/images/iconDone.svg';
 
 const schema = yup.object({
   email: validation.email,
@@ -29,6 +29,7 @@ const ResetPassword = () => {
     control,
     handleSubmit,
     resetField,
+    // eslint-disable-next-line no-unused-vars
     setError: setFormError,
     formState: { isSubmitting },
   } = useForm({

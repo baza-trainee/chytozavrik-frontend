@@ -26,12 +26,12 @@
   align-items: center;
   width: 103px;
 
-
-  &:hover{
+  &:hover {
     color: rgba(255, 200, 85, 1);
   }
 
-  &:hover svg,  &:hover svg path{
+  &:hover svg,
+  &:hover svg path {
     color: rgba(255, 200, 85, 1);
     stroke: rgba(255, 200, 85, 1);
   }
@@ -61,8 +61,6 @@
     gap: 70px;
   }
 }
-
-
 
 .user {
   display: flex;

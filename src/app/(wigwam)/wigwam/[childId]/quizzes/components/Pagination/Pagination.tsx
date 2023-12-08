@@ -63,8 +63,8 @@ const Pagination: FC<PaginationProps> = ({ count, next, previous, childId }) => 
         className={!previous ? styles.linkDisabled : null}
         component="link"
         href={`${Route.WIGWAM}/${childId}/quizzes?search=${search}&page=${currentPage - 1}`}
-        size={'default'}
-        variant={'outline'}
+        size="default"
+        variant="outline"
         endIcon={deviceType === 'mobile' && <ChevronLeft />}
       >
         {deviceType !== 'mobile' && 'Назад'}
@@ -76,8 +76,8 @@ const Pagination: FC<PaginationProps> = ({ count, next, previous, childId }) => 
               <Button
                 component="link"
                 href={`${Route.WIGWAM}/${childId}/quizzes?search=${search}&page=${pageNumber}`}
-                size={'default'}
-                variant={'outline'}
+                size="default"
+                variant="outline"
                 selected={pageNumber === currentPage}
               >
                 {pageNumber}
@@ -96,8 +96,8 @@ const Pagination: FC<PaginationProps> = ({ count, next, previous, childId }) => 
         className={!next ? styles.linkDisabled : null}
         component="link"
         href={`${Route.WIGWAM}/${childId}/quizzes?search=${search}&page=${currentPage + 1}`}
-        size={'default'}
-        variant={'outline'}
+        size="default"
+        variant="outline"
         endIcon={deviceType === 'mobile' && <ChevronRight />}
       >
         {deviceType !== 'mobile' && 'Вперед'}

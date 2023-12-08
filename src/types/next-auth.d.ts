@@ -1,14 +1,15 @@
-import NextAuth, { DefaultUser } from 'next-auth';
-import { JWT } from 'next-auth/jwt';
-import type { UserType, TokenType } from '@/types';
+import { DefaultUser } from 'next-auth';
+import type { TokenType } from '@/types';
+
+/* eslint-disable no-unused-vars */
 
 type AppToken = TokenType & {
   error?: string | null;
 };
 
-interface AppUser extends DefaultUser{
+interface AppUser extends DefaultUser {
   token: AppToken;
-  is_superuser: boolean
+  is_superuser: boolean;
 }
 
 declare module 'next-auth' {

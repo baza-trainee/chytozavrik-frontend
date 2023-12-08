@@ -1,5 +1,7 @@
-'use client'
+'use client';
 
+/* eslint-disable dot-notation */
+/* eslint-disable no-param-reassign */
 import { useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import { axiosClient } from '@/services/axios';
@@ -11,36 +13,32 @@ export const useAuthAxiosInstance = () => {
 
   useEffect(() => {
     const requestIntercept = axiosClient.interceptors.request.use(
-      async config => {
-        if (session?.user?.token.access) {
-          // Refresh token if needed before making the request
-          await refreshToken();
-          config.headers['Authorization'] = `Bearer ${session.user.token.access}`;
+      config => {
+        if (!config.headers['Authorization']) {
+          config.headers['Authorization'] = `Bearer ${session?.user?.token.access}`;
         }
         return config;
       },
       error => Promise.reject(error)
     );
-
     const responseIntercept = axiosClient.interceptors.response.use(
       response => response,
       async error => {
-        const originalRequest = error.config;
-        if (error.response?.status === 401 && !originalRequest._retry) {
-          originalRequest._retry = true;
-          await refreshToken(); // This may be redundant if the request interceptor is working correctly
-          originalRequest.headers['Authorization'] = `Bearer ${session?.user?.token.access}`;
-          return axiosClient(originalRequest);
+        const prevRequest = error.config;
+        if (error.response.status === 401 && !prevRequest.sent) {
+          prevRequest.sent = true;
+          await refreshToken();
+          prevRequest.headers['Authorization'] = `Bearer ${session?.user?.token.access}`;
+          return axiosClient(prevRequest);
         }
         return Promise.reject(error);
       }
     );
-
     return () => {
       axiosClient.interceptors.request.eject(requestIntercept);
       axiosClient.interceptors.response.eject(responseIntercept);
     };
-  }, [session, refreshToken]);
+  }, [session]);
 
   return axiosClient;
 };

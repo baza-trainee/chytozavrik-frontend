@@ -35,9 +35,11 @@
 
   height: 100%;
 
-  @include breakpoint(tablet) {}
+  @include breakpoint(tablet) {
+  }
 
-  @include breakpoint(desktop) {}
+  @include breakpoint(desktop) {
+  }
 }
 
 .inputs-group {
@@ -58,7 +60,6 @@
   @include breakpoint(tablet) {
     padding-right: 12px;
   }
-
 }
 
 .checkboxes-groups {
@@ -68,14 +69,12 @@
 
   @include breakpoint(tablet) {
     margin-bottom: 24px;
-
   }
 }
 
 .checkbox label {
   font-size: 16px;
 }
-
 
 .signup-group {
   display: flex;
@@ -93,7 +92,6 @@
 }
 
 .link {
-
   &:hover,
   &:focus {
     text-decoration: underline;
@@ -128,7 +126,8 @@
   height: var(--error-icon-size);
 }
 
-.error-message {}
+.error-message {
+}
 
 .button-submit {
   width: 100%;

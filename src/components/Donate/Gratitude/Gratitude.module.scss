@@ -1,6 +1,5 @@
-@import "scss/utils/variables";
-@import "scss/utils/mixin";
-
+@import 'scss/utils/variables';
+@import 'scss/utils/mixin';
 
 .gratitude {
   padding-top: 40px;
@@ -10,7 +9,7 @@
   flex-direction: column;
   gap: 24px;
 
-  .text{
+  .text {
     display: flex;
     flex-direction: column;
     gap: 24px;
@@ -49,7 +48,7 @@
     padding-top: 32px;
     padding-bottom: 32px;
 
-    .image{
+    .image {
       & img {
         width: 211px;
         height: 194px;

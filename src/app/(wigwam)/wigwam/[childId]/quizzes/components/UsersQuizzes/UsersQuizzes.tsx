@@ -1,6 +1,6 @@
 import React from 'react';
-import QuizCard from '../QuizCard/QuizCard';
 import { UsersQuizzesResponse, UsersQuiz, QuizCategory } from '@/types';
+import QuizCard from '../QuizCard/QuizCard';
 import styles from './UsersQuizzes.module.scss';
 import Pagination from '../Pagination/Pagination';
 import NotFoundPage from '../NotFoundPage/NotFoundPage';

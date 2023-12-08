@@ -1,4 +1,5 @@
 'use client';
+
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDebounce } from 'use-debounce';
@@ -7,7 +8,7 @@ import { Search as SearchIcon } from 'lucide-react';
 import { useSearchParams, usePathname, useRouter } from 'next/navigation';
 import styles from './Search.module.scss';
 
-function Search() {
+const Search = () => {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
@@ -28,7 +29,7 @@ function Search() {
       params.delete('search');
     }
     replace(`${pathname}?${params.toString()}`);
-  }, [debouncedSearchTerm]);
+  }, [debouncedSearchTerm, pathname]);
 
   const resetField = () => setValue('search', '');
 
@@ -44,6 +45,6 @@ function Search() {
       />
     </div>
   );
-}
+};
 
 export default Search;

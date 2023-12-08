@@ -17,5 +17,5 @@ export enum Route {
   PARTNERS = '/admin/partners',
   CONTACTS = '/admin/contacts',
   STATS = '/admin/statistics',
-  CHANGE_PASS = '/admin/password'
+  CHANGE_PASS = '/admin/password',
 }

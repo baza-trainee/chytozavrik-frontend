@@ -1,7 +1,7 @@
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/config';
 
-export async function getAccessToken() {
+export const getAccessToken = async () => {
   const session = await getServerSession(authOptions);
 
   if (session) {
@@ -9,4 +9,4 @@ export async function getAccessToken() {
   }
 
   return null;
-}
+};

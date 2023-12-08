@@ -21,11 +21,7 @@ const QuizPage = async ({ params: { quizId, childId } }: QuizPageProps) => {
 
   const quizInfo: QuizInfoResponse = { ...quizInfoRes.data, ...attemptsInfoRes.data };
 
-  return (
-    <>
-      <Quiz quizInfo={quizInfo} />
-    </>
-  );
+  return <Quiz quizInfo={quizInfo} />;
 };
 
 export default QuizPage;

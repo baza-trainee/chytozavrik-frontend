@@ -28,8 +28,6 @@
     right: 320px;
   }
 
-
-
   &::before {
     content: '';
     position: absolute;
@@ -40,7 +38,7 @@
     height: 20px;
 
     @include breakpoint(tablet) {
-        bottom: 91px;
+      bottom: 91px;
     }
   }
 }
