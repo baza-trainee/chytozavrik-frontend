@@ -38,7 +38,7 @@ const NewPassword = () => {
   });
 
   const [error, setError] = useState<string | null>(null);
-  const [isSuccess] = useState<boolean>(false);
+  const [isSuccess, setIsSuccess] = useState<boolean>(false);
   const router = useRouter();
 
   const searchParams = useSearchParams();
@@ -59,6 +59,8 @@ const NewPassword = () => {
         const errorMessages = Object.values(result.data.message).flat().join(', ');
         setError(errorMessages);
       }
+
+      setIsSuccess(true);
     } catch (error) {
       setError('Упс. Щось пішло не так. Спробуйте ще раз.');
     }

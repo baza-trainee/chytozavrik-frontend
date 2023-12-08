@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import Image from 'next/image';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import Image from 'next/image';
 import { Button, Typography } from '@/components/common';
 import { Input, validation } from '@/components/common/form';
 import { AlertCircle } from 'lucide-react';
@@ -72,14 +72,12 @@ const ResetPassword = () => {
             Електронний лист надіслано!
           </Typography>
           <Typography className={(authStyles.text, styles.textDone)} component="p" variant="body">
-            Введіть свою електронну пошту, і ми надішлемо вам посилання для відновлення пароля.
+            Перевірте свою електронну пошту та перейдіть за посиланням, яке ми надіслали, щоб
+            продовжити.
           </Typography>
         </>
       ) : (
         <>
-          <Typography className={authStyles.title} component="h3" variant="h3">
-            Забули пароль?
-          </Typography>
           <Typography className={(authStyles.text, styles.text)} component="p" variant="body">
             Введіть свою електронну пошту, і ми надішлемо вам посилання для відновлення пароля.
           </Typography>
