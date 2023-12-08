@@ -17,11 +17,11 @@ const ParentsPage = () => {
   return (
     <>
       <Parents handleClick={toggleCreateWigwam} />
-      <section className="section">
+      
         {wigwam && <CreateWigwam setWigwam={setWigwam} />}
-        <KidsList />
-      </section>
-      <div className="empty" />
+        <KidsList/>
+     
+      <div className='empty'/>
     </>
   );
 };
