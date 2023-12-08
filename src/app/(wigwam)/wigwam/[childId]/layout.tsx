@@ -27,7 +27,7 @@ const Layout = async ({
         name={childReq.data.name}
         avatar={childReq.data.avatar_as_url}
       />
-      {children}
+      <main>{children}</main>
       <WigwamFooter childId={childId} />
       <CookiesPanel />
     </WigwamProvider>
