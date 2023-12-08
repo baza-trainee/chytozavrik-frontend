@@ -78,7 +78,7 @@
 
   @include breakpoint(desktop) {
     padding-top: 7vh;
-    height: calc(100vh - 91px);
+    min-height: 850px;
 
     .clouds {
       background-image: url('/images/monsters/clouds-dark-1440.svg'),
