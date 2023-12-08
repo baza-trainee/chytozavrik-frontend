@@ -61,6 +61,8 @@ const NewPassword = () => {
         setError(errorMessages);
         return;
       }
+
+      setIsSuccess(true);
     } catch (error) {
       setError('Упс. Щось пішло не так. Спробуйте ще раз.');
     }
