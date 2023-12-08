@@ -37,7 +37,7 @@ const Header = () => {
             <Button
               className={styles.buttonAdmin}
               component="link"
-              href="admin"
+              href="/admin"
               variant="filled"
               color="primary"
             >
