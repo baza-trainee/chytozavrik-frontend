@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
-import { Facebook, Instagram } from 'lucide-react';
+import Image from 'next/image';
+import { Facebook, Linkedin } from 'lucide-react';
 import { Container, Typography } from 'components/common';
 
 import styles from './AdditionalInfo.module.scss';
@@ -16,25 +17,6 @@ const AdditionalInfo = () => (
           Ми цінуємо ваш зворотній зв&apos;язок! Ми готові відповісти на ваші питання, вислухати
           ваші пропозиції та разом з вами побудувати захопливий світ читання для дітей!
         </Typography>
-        <div className={styles.socialWrapper}>
-          <Link
-            className={styles.socialLink}
-            href="https://www.facebook.com/"
-            target="_blank"
-            rel="nofollow noreferrer noopener"
-          >
-            <Facebook className={styles.socialIcon} size="32" />
-          </Link>
-
-          <Link
-            className={styles.socialLink}
-            href="https://www.instagram.com/"
-            target="_blank"
-            rel="nofollow noreferrer noopener"
-          >
-            <Instagram className={styles.socialIcon} size="32" />
-          </Link>
-        </div>
       </div>
       <div className={styles.bazaContainer}>
         <Typography component="h2" variant="h2" className={styles.bazaTitle}>
@@ -46,17 +28,29 @@ const AdditionalInfo = () => (
             набути практики в ІТ сфері, взяти участь у створенні реальних проєктів для
             громадськості.
           </Typography>
-          <Typography component="p" variant="body" className={styles.bazaText}>
-            Дізнайтесь більше про нас на нашому сайті:
-            <br />
-            <Link
-              href="https://baza-trainee.tech"
-              target="_blank"
-              rel="nofollow noreferrer noopener"
-            >
-              https://baza-trainee.tech
-            </Link>
+          <Typography component="p" variant="h5" className={styles.bazaText}>
+            Дізнайтесь більше про нас
           </Typography>
+</div>
+          <div className={styles.socialWrapper}>
+          <Link
+            className={styles.socialLink}
+            href="https://baza-trainee.tech/"
+            target="_blank"
+            rel="nofollow noreferrer noopener"
+          >
+            <Image src='/images/logo-baza.svg' width={40} height={40} alt='logo' className={styles.socialIcon}  />
+          </Link>
+
+          <Link
+            className={styles.socialLink}
+            href="https://www.linkedin.com/company/baza-trainee-ukraine/"
+            target="_blank"
+            rel="nofollow noreferrer noopener"
+          >
+            <Linkedin className={styles.socialIcon} size="40" />
+          </Link>
+        
         </div>
       </div>
     </Container>
