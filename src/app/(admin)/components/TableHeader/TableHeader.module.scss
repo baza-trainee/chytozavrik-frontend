@@ -34,13 +34,22 @@
     &.books div:first-child {
       width: 320px;
     }
-    &.documents div:first-child,
+
     &.partners div:first-child {
       padding-left: 52px;
     }
 
     &.books div:last-child {
       width: 250px;
+    }
+
+    &.documents div:first-child {
+      width: 280px;
+    }
+
+    &.documents div:nth-child(2) {
+      width: 228px;
+      text-align: right;
     }
 
     &.documents div:last-child {
