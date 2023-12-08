@@ -47,7 +47,7 @@
   @include breakpoint(desktop) {
     width: 520px;
     min-height: 320px;
-    padding: 32px 0 0;
+    padding: 88px 0 32px;
   }
 }
 
@@ -131,17 +131,26 @@
   }
 }
 
-.textWrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  margin-bottom: 8px;
-}
+// .textWrapper {
+//   display: flex;
+//   flex-direction: column;
+//   gap: 24px;
+//   margin-bottom: 8px;
+// }
 
 .bazaText {
   text-align: left;
+  margin-bottom: 24px;
   @include breakpoint(desktop) {
     font-size: 20px;
+  }
+}
+
+.bazaCTA {
+  text-align: left;
+  margin-bottom: 8px;
+  @include breakpoint(desktop) {
+    margin-bottom: 0;
   }
 }
 
@@ -150,16 +159,17 @@
   gap: 24px;
   align-items: baseline;
   height: 40px;
-  @include breakpoint(desktop) {
-    height: 40px;
-  }
 }
 
 .socialIcon {
   width: 40px;
   height: 40px;
+}
+.bazaWrapper {
   @include breakpoint(desktop) {
-    width: 40px;
-    height: 40px;
+    display: flex;
+    gap: 24px;
+    align-items: baseline;
+      height: 40px;
   }
 }

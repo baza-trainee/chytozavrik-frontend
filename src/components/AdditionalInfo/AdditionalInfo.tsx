@@ -28,10 +28,13 @@ const AdditionalInfo = () => (
             набути практики в ІТ сфері, взяти участь у створенні реальних проєктів для
             громадськості.
           </Typography>
-          <Typography component="p" variant="h5" className={styles.bazaText}>
+        </div>
+          <div className={styles.bazaWrapper}>
+          <Typography component="p" variant="h5" className={styles.bazaCTA}>
             Дізнайтесь більше про нас
-          </Typography>
-</div>
+            </Typography>
+          
+        
           <div className={styles.socialWrapper}>
           <Link
             className={styles.socialLink}
@@ -50,7 +53,7 @@ const AdditionalInfo = () => (
           >
             <Linkedin className={styles.socialIcon} size="40" />
           </Link>
-        
+        </div>
         </div>
       </div>
     </Container>
