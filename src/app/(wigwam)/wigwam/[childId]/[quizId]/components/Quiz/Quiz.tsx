@@ -5,10 +5,10 @@ import Image from 'next/image';
 import type { QuizInfoResponse } from '@/types';
 import questionImage from 'public/images/quiz-page/quiz-question-image.svg';
 import { Container, Typography } from '@/components/common';
+import CloseQuizButton from '@/app/(wigwam)/wigwam/[childId]/[quizId]/components/CloseQuizButton/CloseQuizButton';
 import AnswersList from './AnswersList';
 import QuizPrize from '../QuizPrize';
 import styles from './Quiz.module.scss';
-import CloseQuizButton from '@/app/(wigwam)/wigwam/[childId]/[quizId]/components/CloseQuizButton/CloseQuizButton';
 
 interface QuizProps {
   quizInfo: QuizInfoResponse;
@@ -43,7 +43,7 @@ const Quiz = ({ quizInfo }: QuizProps) => {
     <section className={styles.section}>
       <Container className={styles.container}>
         {quizPrize ? (
-          <>{<QuizPrize prize={quizPrize} onReplyQuiz={replyQuiz} />}</>
+          <QuizPrize prize={quizPrize} onReplyQuiz={replyQuiz} />
         ) : (
           <>
             <CloseQuizButton className={styles['close-button']} />

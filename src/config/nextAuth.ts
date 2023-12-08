@@ -8,7 +8,9 @@ import {
   refreshTokenService,
 } from '@/services/api';
 import { Route } from '@/constants';
-import { signOut } from 'next-auth/react';
+
+/* eslint-disable prefer-arrow/prefer-arrow-functions */
+/* eslint-disable no-param-reassign */
 
 const getMaxAge = (isRememberMe: boolean = true) =>
   isRememberMe ? 30 * 24 * 60 * 60 : 2 * 60 * 60; // 30 days : 2 hours
@@ -68,6 +70,7 @@ export const authOptions: NextAuthOptions = {
   ],
   callbacks: {
     async session({ session, token }) {
+      // eslint-disable-next-line no-param-reassign
       if (token.user) {
         session.user = { ...token.user };
       }

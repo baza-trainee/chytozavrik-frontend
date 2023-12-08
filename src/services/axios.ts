@@ -3,9 +3,11 @@ import { FetchResponseType } from '@/types';
 import axios, { AxiosError, Method } from 'axios';
 import { authOptions } from '@/config';
 
+/* eslint-disable no-param-reassign */
+
 const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || '';
 
-// Axios instanse for client components
+// Axios instance for client components
 export const axiosClient = axios.create({
   baseURL: baseUrl,
   headers: {
@@ -13,7 +15,7 @@ export const axiosClient = axios.create({
   },
 });
 
-// Axios instanse for server components
+// Axios instance for server components
 const axiosServer = axios.create({
   baseURL: baseUrl,
   headers: {
@@ -25,8 +27,8 @@ axiosServer.interceptors.request.use(
   async config => {
     const session = await getServerSession(authOptions);
 
-    if (!config.headers['Authorization']) {
-      config.headers['Authorization'] = `Bearer ${session?.user?.token.access}`;
+    if (!config.headers.Authorization) {
+      config.headers.Authorization = `Bearer ${session?.user?.token.access}`;
     }
 
     return config;
@@ -34,11 +36,11 @@ axiosServer.interceptors.request.use(
   error => Promise.reject(error)
 );
 
-export async function fetch<T, B = undefined>(
+export const fetch = async <T, B = undefined>(
   url: string,
-  method: Method = 'GET',
-  data?: B
-): Promise<FetchResponseType<T>> {
+  data?: B,
+  method: Method = 'GET'
+): Promise<FetchResponseType<T>> => {
   try {
     const { data: result } = await axiosServer.request<FetchResponseType<T>>({
       url,
@@ -58,4 +60,4 @@ export async function fetch<T, B = undefined>(
       },
     };
   }
-}
+};

@@ -42,7 +42,6 @@
 }
 
 :where(.text-h6) {
-  
   @extend %title;
   font-weight: 400;
   font-size: 16px;
@@ -64,8 +63,8 @@
   @extend %title-footer;
   font-size: 12px;
   @include breakpoint(desktop) {
-      font-size: 16px;
-    }
+    font-size: 16px;
+  }
 }
 
 :where(.text-navbar) {
@@ -73,9 +72,9 @@
   color: #{getColor(blue, 40)};
   font-size: 12px;
   font-weight: 500;
-    @include breakpoint(tablet) {
-      font-size: 14px;
-    }
+  @include breakpoint(tablet) {
+    font-size: 14px;
+  }
 
   @include breakpoint(desktop) {
     font-size: 16px;

@@ -15,19 +15,17 @@ const MonsterDetails = ({
   results: Monster[];
   monsterId: number | string | null;
   setShowMonster: React.Dispatch<React.SetStateAction<boolean>>;
-}) => {
-  return (
-    <section className={styles.wrapper}>
-      <button className={styles.button} onClick={() => setShowMonster(false)}>
-        <MoveLeft color={'#FFFFFF'} />
-        До читозавриків
-      </button>
-      <LightRays className={styles.rays} />
-      <Cloud className={styles.clouds} />
-      <Book className={styles.book} />
-      <MonstersSlider results={results} monsterId={monsterId} />
-    </section>
-  );
-};
+}) => (
+  <section className={styles.wrapper}>
+    <button className={styles.button} onClick={() => setShowMonster(false)}>
+      <MoveLeft color="#FFFFFF" />
+      До читозавриків
+    </button>
+    <LightRays className={styles.rays} />
+    <Cloud className={styles.clouds} />
+    <Book className={styles.book} />
+    <MonstersSlider results={results} monsterId={monsterId} />
+  </section>
+);
 
 export default MonsterDetails;

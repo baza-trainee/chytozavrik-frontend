@@ -1,7 +1,6 @@
 @import 'scss/utils/mixin';
 @import 'scss/utils/mixin';
 
-
 .layout {
   //display: flex;
   //align-items: center;
@@ -10,8 +9,7 @@
   padding-bottom: 32px;
   gap: 24px;
   display: grid;
-  grid-template-areas: "readedbooks" "monster" "books" "monsters" "recommended";
-
+  grid-template-areas: 'readedbooks' 'monster' 'books' 'monsters' 'recommended';
 
   @include breakpoint(tablet) {
     display: grid;
@@ -19,15 +17,15 @@
     padding-bottom: 50px;
     flex-wrap: wrap;
     grid-template-areas:
-            "books readedbooks"
-            "books monster"
-            "monsters monsters"
-            "recommended recommended";
+      'books readedbooks'
+      'books monster'
+      'monsters monsters'
+      'recommended recommended';
 
     @include breakpoint(laptop) {
       padding-top: 24px;
       padding-bottom: 45px;
-      grid-template-areas: "books readedbooks" "books monster" "books monsters" "books recommended";
+      grid-template-areas: 'books readedbooks' 'books monster' 'books monsters' 'books recommended';
     }
   }
 
@@ -35,7 +33,7 @@
     padding-top: 80px;
     padding-bottom: 120px;
     grid-template-rows: 80px 300px auto;
-    grid-template-areas: "books monster readedbooks" "books monster monsters" "books recommended recommended";
+    grid-template-areas: 'books monster readedbooks' 'books monster monsters' 'books recommended recommended';
   }
 }
 

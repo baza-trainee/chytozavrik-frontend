@@ -16,10 +16,10 @@
     max-width: getBreakpoint(tablet);
   }
 
-    @include breakpoint(laptop) {
-      --padding-x: 60px;
-      max-width: getBreakpoint(laptop);
-    }
+  @include breakpoint(laptop) {
+    --padding-x: 60px;
+    max-width: getBreakpoint(laptop);
+  }
 
   @include breakpoint(desktop) {
     --padding-x: 80px;

@@ -2,7 +2,6 @@
 @import '@/scss/utils/variables';
 @import '@/scss/utils/mixin';
 
-
 .item {
   height: 454px;
   width: 328px;
@@ -51,8 +50,6 @@
   @include breakpoint(desktop) {
     justify-content: flex-start;
   }
-
-
 }
 
 .name {
@@ -88,7 +85,6 @@
       width: 56px;
       height: 56px;
 
-
       & img {
         width: 56px;
         height: 56px;
@@ -102,7 +98,6 @@
     transform: translateY(-50%);
     right: 24px;
   }
-
 }
 
 .books {
@@ -138,7 +133,6 @@
   }
 }
 
-
 .quizzes {
   display: flex;
   flex-direction: row;
@@ -160,5 +154,4 @@
   align-items: center;
   width: 94px;
   gap: 12px;
-
 }

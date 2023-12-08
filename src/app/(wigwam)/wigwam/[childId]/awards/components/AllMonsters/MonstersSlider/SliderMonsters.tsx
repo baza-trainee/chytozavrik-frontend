@@ -5,8 +5,9 @@ import NextArrow from '@/app/(wigwam)/wigwam/[childId]/awards/components/AllMons
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import styles from '../AllMonsters.module.scss';
 import { useMedia } from '@/hooks';
+import Image from 'next/image';
+import styles from '../AllMonsters.module.scss';
 
 const SliderMonsters = ({
   results,
@@ -60,14 +61,16 @@ const SliderMonsters = ({
               {slideImages.map((item, imgIndex) => (
                 <div className={styles.monsterIcon} key={imgIndex}>
                   {item.id === 'placeholder' ? (
-                    <img
+                    <Image
                       key={imgIndex}
-                      src={'/images/monsters/monsters-avatar.svg'}
-                      alt={`Placeholder`}
+                      src="/images/monsters/monsters-avatar.svg"
+                      alt="Placeholder"
+                      width={80}
+                      height={80}
                     />
                   ) : (
                     <div className={styles.monsterPresent} onClick={() => onMonsterClick(item.id)}>
-                      <img src={item.reward} alt={`Monster ${item.id}`} />
+                      <Image src={item.reward} alt={`Monster ${item.id}`} width={60} height={50} />
                     </div>
                   )}
                 </div>

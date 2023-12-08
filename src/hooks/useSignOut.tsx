@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { useState } from 'react';
 import { type SignOutParams, signOut as signOutLib } from 'next-auth/react';
@@ -11,9 +11,9 @@ export const useSignOut = () => {
 
     try {
       await signOutLib(options);
-
-      console.log('Signout completed successfully.');
     } catch (error) {
+      // eslint-disable-next-line no-console
+      console.log(error);
     } finally {
       setIsLoading(false);
     }

@@ -1,5 +1,5 @@
-@import "scss/utils/func";
-@import "scss/utils/mixin";
+@import 'scss/utils/func';
+@import 'scss/utils/mixin';
 
 .section {
   background: getColor(blue, 90);
@@ -17,13 +17,12 @@
   align-items: center;
   width: 90px;
 
-  & svg{
+  & svg {
     width: 32px;
     height: 32px;
     color: rgba(119, 145, 250, 1);
   }
 }
-
 
 .wrapper {
   display: flex;

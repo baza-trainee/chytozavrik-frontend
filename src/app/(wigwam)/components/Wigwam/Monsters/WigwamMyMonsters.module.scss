@@ -22,7 +22,7 @@
   justify-content: space-between;
   align-items: center;
 
-  .arrow{
+  .arrow {
     width: 56px;
     height: 56px;
     display: flex;
@@ -33,25 +33,23 @@
     margin-right: 7px;
   }
 
-
   @include breakpoint(tablet) {
-    .arrow{
+    .arrow {
       margin-right: 0;
     }
   }
 
   @include breakpoint(laptop) {
-    .arrow{
+    .arrow {
       margin-right: 4px;
     }
   }
-
 
   @include breakpoint(desktop) {
     padding-top: 16px;
     padding-bottom: 16px;
 
-    .arrow{
+    .arrow {
       margin-right: 0;
     }
   }
@@ -90,16 +88,13 @@
   @include breakpoint(laptop) {
     flex-wrap: wrap;
     gap: 20px;
-
   }
 
   @include breakpoint(desktop) {
     flex-wrap: wrap;
     gap: 24px;
   }
-
 }
-
 
 .monsterWrapper {
   display: none;
@@ -107,11 +102,11 @@
   height: 80px;
   overflow: hidden;
   border-radius: 50%;
-  background-image: url("/images/monsters/green-bg.svg");
+  background-image: url('/images/monsters/green-bg.svg');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: bottom;
-  background-color: #C7E1FF;
+  background-color: #c7e1ff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -121,7 +116,7 @@
     height: 50px;
   }
 
-  .monsterEmpty{
+  .monsterEmpty {
     width: 80px;
     height: 80px;
   }
@@ -145,13 +140,12 @@
     width: 56px;
     height: 56px;
 
-
     .monsterPresent {
       width: 34px;
       height: 34px;
     }
 
-    .monsterEmpty{
+    .monsterEmpty {
       width: 56px;
       height: 56px;
     }
@@ -169,7 +163,7 @@
       height: 50px;
     }
 
-    .monsterEmpty{
+    .monsterEmpty {
       width: 80px;
       height: 80px;
     }

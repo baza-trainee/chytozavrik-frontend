@@ -12,6 +12,7 @@ import {
   sendPasswordResetEmailType,
   resetPasswordType,
 } from '@/types';
+import { IS_REVERSED, PAGE_SIZE } from '@/constants';
 
 const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || '';
 
@@ -48,9 +49,9 @@ export const privateFetch = async (
 ) => {
   const session = await getServerSession(authOptions);
 
-  return await fetch(input, {
+  return fetch(input, {
     headers: {
-      Authorization: 'Bearer ' + session?.user.token.access,
+      Authorization: `Bearer ${session?.user.token.access}`,
     },
     ...options,
   });
@@ -71,7 +72,7 @@ export const signInService = async (
     }),
   });
 
-  return await result.json();
+  return result.json();
 };
 
 export const signUpService = async (
@@ -91,23 +92,23 @@ export const signUpService = async (
     }),
   });
 
-  return await result.json();
+  return result.json();
 };
 
 export const getUserInfoService = async (): Promise<FetchResponseType<UserType>> => {
   const result = await fetch(`${baseUrl}/users/me/`, {
     headers: {
-      Authorization: 'Bearer ' + token.access,
+      Authorization: `Bearer ${token.access}`,
     },
   });
 
-  return await result.json();
+  return result.json();
 };
 
 export const getChildrenService = async () => {
   const result = await privateFetch(`${baseUrl}/users/me/children/`);
 
-  return await result.json();
+  return result.json();
 };
 
 export const getQuizInfoByIdService = async (
@@ -115,35 +116,35 @@ export const getQuizInfoByIdService = async (
 ): Promise<FetchResponseType<QuizInfoResponse>> => {
   const result = await privateFetch(`${baseUrl}/quizzes/${id}`);
 
-  return await result.json();
+  return result.json();
 };
 
-export const getQuizzesService = async (
-  search: string = '',
-  page: string = '1',
-  page_size: number
-): Promise<FetchResponseType<AllQuizzesResponse>> => {
-  const result = await privateFetch(
-    `${baseUrl}/quizzes/?search=${search}&page=${page}&page_size=${page_size}`
-  );
-
-  return await result.json();
-};
+// export const getQuizzesService = async (
+//   search: string = '',
+//   page: string = '1',
+//   page_size: number
+// ): Promise<FetchResponseType<AllQuizzesResponse>> => {
+//   const result = await privateFetch(
+//     `${baseUrl}/quizzes/?search=${search}&page=${page}&page_size=${page_size}`
+//   );
+//
+//   return await result.json();
+// };
 
 export const getUsersQuizzesService = async (
   search: string = '',
   page: string = '1',
   category: QuizCategory = QuizCategory.All,
-  is_reversed: boolean = true,
-  page_size: number = 12,
+  IS_REVERSED: boolean = true,
+  PAGE_SIZE: number = 12,
   childId: string
 ): Promise<FetchResponseType<UsersQuizzesResponse>> => {
   const selectedCategory = category ? `&${category}` : '';
 
   const result = await privateFetch(
-    `${baseUrl}/users/me/children/${childId}/quizzes/?page=${page}&page_size=${page_size}&reverse=${is_reversed}&search=${search}${selectedCategory}`
+    `${baseUrl}/users/me/children/${childId}/quizzes/?page=${page}&page_size=${PAGE_SIZE}&reverse=${IS_REVERSED}&search=${search}${selectedCategory}`
   );
-  return await result.json();
+  return result.json();
 };
 
 export const sendSelectedAnswerService = async (
@@ -155,7 +156,7 @@ export const sendSelectedAnswerService = async (
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: 'Bearer ' + token.access,
+      Authorization: `Bearer ${token.access}`,
     },
     body: JSON.stringify({
       child_id: childId,
@@ -163,7 +164,7 @@ export const sendSelectedAnswerService = async (
     }),
   });
 
-  return await result.json();
+  return result.json();
 };
 
 export const sendPasswordResetEmailService = async (
@@ -179,12 +180,12 @@ export const sendPasswordResetEmailService = async (
     }),
   });
 
-  return await result.json();
+  return result.json();
 };
 
 export const newPasswordService = async (
-  new_password1: string,
-  new_password2: string,
+  newPassword1: string,
+  newPassword2: string,
   uid: string,
   token: string
 ): Promise<FetchResponseType<resetPasswordType>> => {
@@ -194,12 +195,12 @@ export const newPasswordService = async (
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      new_password1,
-      new_password2,
+      newPassword1,
+      newPassword2,
       uid,
       token,
     }),
   });
 
-  return await result.json();
+  return result.json();
 };

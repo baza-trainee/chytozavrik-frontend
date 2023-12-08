@@ -1,9 +1,9 @@
-'use client'
+'use client';
 
 import { useState } from 'react';
 import { AxiosError, Method } from 'axios';
-import { useAuthAxiosInstance } from './useAuthAxiosInstance';
 import { FetchResponseType } from '@/types';
+import { useAuthAxiosInstance } from './useAuthAxiosInstance';
 
 export const useFetch = <T, B>() => {
   const axios = useAuthAxiosInstance();
@@ -17,8 +17,8 @@ export const useFetch = <T, B>() => {
     error,
     fetch: async (
       url: string,
-      method: Method = 'GET',
-      data?: B
+      data?: B,
+      method: Method = 'GET'
     ): Promise<FetchResponseType<T> | undefined> => {
       setIsLoading(true);
       setError(null);

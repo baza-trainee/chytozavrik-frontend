@@ -1,6 +1,6 @@
-@import "../../../../scss/utils/variables";
+@import '../../../../scss/utils/variables';
 
-.header{
+.header {
   display: flex;
   width: 1048px;
   padding: 16px 24px;
@@ -15,42 +15,40 @@
   font-weight: 600;
   line-height: 120%;
 
-
-  .names{
+  .names {
     display: flex;
     justify-content: space-between;
     width: 100%;
 
-
-    &.users div:last-child{
+    &.users div:last-child {
       padding-right: 68px;
     }
 
-    &.users div:first-child, &.books div:first-child, &.partners div:first-child{
+    &.users div:first-child,
+    &.books div:first-child,
+    &.partners div:first-child {
       padding-left: 52px;
     }
 
-    &.users div:first-child, &.books div:first-child{
+    &.users div:first-child,
+    &.books div:first-child {
       width: 320px;
     }
-    &.documents div:first-child, &.partners div:first-child{
+    &.documents div:first-child,
+    &.partners div:first-child {
       padding-left: 52px;
     }
 
-    &.books div:last-child{
+    &.books div:last-child {
       width: 250px;
     }
 
-    &.documents div:last-child{
+    &.documents div:last-child {
       width: 214px;
     }
 
-    &.partners div:last-child{
+    &.partners div:last-child {
       width: 251px;
     }
-
   }
-
-
 }
-

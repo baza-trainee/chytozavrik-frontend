@@ -4,8 +4,8 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Button, Typography } from '@/components/common';
+import { NumberInput, validation } from '@/components/common/form';
 import styles from './DonateDialog.module.scss';
-import { Input, NumberInput, validation } from '@/components/common/form';
 
 type Props = {
   onClose: () => void;
@@ -33,8 +33,8 @@ const DonateDialog = ({ onClose }: Props) => {
     setValue(name, value, { shouldValidate: true, shouldDirty: true, shouldTouch: true });
 
   const submit = (data: FormData) => {
+    // eslint-disable-next-line no-console
     console.log(data);
-
     // Close modal
     onClose();
   };

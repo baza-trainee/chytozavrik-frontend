@@ -3,61 +3,64 @@ import Link from 'next/link';
 import { Facebook, Instagram } from 'lucide-react';
 import { Container, Typography } from 'components/common';
 
-
 import styles from './AdditionalInfo.module.scss';
 
-export default function AdditionalInfo() {
-  return (
-    <section className={styles.section}>
-      <Container className={styles.container}>
-        <div className={styles.feedbackContainer}>
-          <Typography component="h2" variant="h2" className={styles.feedbackTitle}>
-            Залиште свій слід у світі читання
-          </Typography>
-          <Typography component="p" variant="body" className={styles.feedbackText}>
-            Ми цінуємо ваш зворотній зв&apos;язок! Ми готові відповісти на ваші питання, вислухати
-            ваші пропозиції та разом з вами побудувати захопливий світ читання для дітей!
-          </Typography>
-          <div className={styles.socialWrapper}>
-            <Link
-              className={styles.socialLink}
-              href="https://www.facebook.com/"
-              target="_blank"
-              rel="nofollow noreferrer noopener"
-            >
-              <Facebook className={styles.socialIcon} size="32" />
-            </Link>
+const AdditionalInfo = () => (
+  <section className={styles.section}>
+    <Container className={styles.container}>
+      <div className={styles.feedbackContainer}>
+        <Typography component="h2" variant="h2" className={styles.feedbackTitle}>
+          Залиште свій слід у світі читання
+        </Typography>
+        <Typography component="p" variant="body" className={styles.feedbackText}>
+          Ми цінуємо ваш зворотній зв&apos;язок! Ми готові відповісти на ваші питання, вислухати
+          ваші пропозиції та разом з вами побудувати захопливий світ читання для дітей!
+        </Typography>
+        <div className={styles.socialWrapper}>
+          <Link
+            className={styles.socialLink}
+            href="https://www.facebook.com/"
+            target="_blank"
+            rel="nofollow noreferrer noopener"
+          >
+            <Facebook className={styles.socialIcon} size="32" />
+          </Link>
 
+          <Link
+            className={styles.socialLink}
+            href="https://www.instagram.com/"
+            target="_blank"
+            rel="nofollow noreferrer noopener"
+          >
+            <Instagram className={styles.socialIcon} size="32" />
+          </Link>
+        </div>
+      </div>
+      <div className={styles.bazaContainer}>
+        <Typography component="h2" variant="h2" className={styles.bazaTitle}>
+          Про Ba<span className={styles.z}>z</span>a Trainee Ukraine
+        </Typography>
+        <div className={styles.textWrapper}>
+          <Typography component="p" variant="body" className={styles.bazaText}>
+            Навчальний проєкт-платформа Baza Trainee Ukraine надає можливість кожному, хто хоче
+            набути практики в ІТ сфері, взяти участь у створенні реальних проєктів для
+            громадськості.
+          </Typography>
+          <Typography component="p" variant="body" className={styles.bazaText}>
+            Дізнайтесь більше про нас на нашому сайті:
+            <br />
             <Link
-              className={styles.socialLink}
-              href="https://www.instagram.com/"
+              href="https://baza-trainee.tech"
               target="_blank"
               rel="nofollow noreferrer noopener"
             >
-              <Instagram className={styles.socialIcon} size="32" />
+              https://baza-trainee.tech
             </Link>
-          </div>
+          </Typography>
         </div>
-        <div className={styles.bazaContainer}>
-            <Typography component="h2" variant="h2" className={styles.bazaTitle}>
-              Про Ba<span className={styles.z}>z</span>a Trainee Ukraine
-            </Typography>
-          <div className={styles.textWrapper}>
-            <Typography component="p" variant="body" className={styles.bazaText}>
-              Навчальний проєкт-платформа Baza Trainee Ukraine надає можливість кожному, хто хоче
-              набути практики в ІТ сфері, взяти участь у створенні реальних проєктів для
-              громадськості.
-            </Typography>
-            <Typography component="p" variant="body" className={styles.bazaText}>
-              Дізнайтесь більше про нас на нашому сайті:
-              <br />
-              <Link href="https://baza-trainee.tech" target="_blank" rel="nofollow noreferrer noopener">
-                https://baza-trainee.tech
-              </Link>
-            </Typography>
-          </div>
-        </div>
-      </Container>
-    </section>
-  );
-}
+      </div>
+    </Container>
+  </section>
+);
+
+export default AdditionalInfo;

@@ -1,9 +1,9 @@
 import React from 'react';
-import styles from './CategoryTabs.module.scss';
 import { Typography } from '@/components/common';
 import Link from 'next/link';
 import { Route } from '@/constants';
 import { QuizCategory } from '@/types';
+import styles from './CategoryTabs.module.scss';
 
 interface CategoryTabsProps {
   childId: string;
@@ -19,13 +19,12 @@ const CategoryTabs: React.FC<CategoryTabsProps> = ({
   selectedCategory = QuizCategory.All,
 }) => {
   // Utility function to generate class names
-  const getTabClassName = (category: QuizCategory) => {
-    return selectedCategory === category ? `${styles.tab} ${styles.selected}` : styles.tab;
-  };
+  const getTabClassName = (category: QuizCategory) =>
+    selectedCategory === category ? `${styles.tab} ${styles.selected}` : styles.tab;
 
   // Utility function to generate url
   const generateUrl = (category: QuizCategory) => {
-    let queryParams = [];
+    const queryParams = [];
 
     if (search) queryParams.push(`search=${encodeURIComponent(search)}`);
     if (page) queryParams.push(`page=${page}`);

@@ -1,14 +1,14 @@
 import React from 'react';
 import Image from 'next/image';
 import { Typography } from '@/components/common';
-import styles from './NotFoundPage.module.scss';
 import { QuizCategory } from '@/types';
+import styles from './NotFoundPage.module.scss';
 
 interface NotFoundPageProps {
   category: QuizCategory;
 }
 
-function NotFoundPage({ category }: NotFoundPageProps) {
+const NotFoundPage = ({ category }: NotFoundPageProps) => {
   let message = '';
 
   switch (category) {
@@ -39,6 +39,6 @@ function NotFoundPage({ category }: NotFoundPageProps) {
       </Typography>
     </div>
   );
-}
+};
 
 export default NotFoundPage;

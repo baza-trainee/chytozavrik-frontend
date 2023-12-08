@@ -13,7 +13,7 @@ interface WigwamProps {
   params: { childId: string };
 }
 
-export default async function Wigwam({ params: { childId } }: WigwamProps) {
+const Wigwam = async ({ params: { childId } }: WigwamProps) => {
   const booksReq = fetch<BooksResponse>(`users/me/children/${childId}/quizzes`);
   const monstersReq = fetch<MonstersResponse>(`users/me/children/${childId}/rewards/?page_size=8`);
   const [booksRes, monstersRes] = await Promise.all([booksReq, monstersReq]);
@@ -32,4 +32,6 @@ export default async function Wigwam({ params: { childId } }: WigwamProps) {
       <div className={styles.test}>Recommended</div>
     </Container>
   );
-}
+};
+
+export default Wigwam;

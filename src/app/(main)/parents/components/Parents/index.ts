@@ -1,1 +1,1 @@
-export {default} from './Parents';
+export { default } from './Parents';

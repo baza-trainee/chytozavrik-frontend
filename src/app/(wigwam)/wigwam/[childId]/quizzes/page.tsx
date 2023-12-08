@@ -3,11 +3,10 @@ import UsersQuizzes from '@/app/(wigwam)/wigwam/[childId]/quizzes/components/Use
 import { getUsersQuizzesService } from '@/services/api';
 import { QuizCategory, UsersQuizzesResponse } from '@/types';
 import { notFound } from 'next/navigation';
+import { IS_REVERSED, PAGE_SIZE } from '@/constants';
 import Search from './components/Search/Search';
 import CategoryTabs from './components/CategoryTabs/CategoryTabs';
 import Banner from './components/Banner/Banner';
-import { IS_REVERSED, PAGE_SIZE } from '@/constants';
-
 
 type SearchParams = {
   search?: string;
@@ -26,7 +25,7 @@ interface QuizzesPageProps {
 
 export const revalidate = 0;
 
-export default async function QuizzesPage({ searchParams, params: { childId } }: QuizzesPageProps) {
+const QuizzesPage = async ({ searchParams, params: { childId } }: QuizzesPageProps) => {
   const usersQuizzesResponse = await getUsersQuizzesService(
     searchParams.search,
     searchParams.page,
@@ -57,4 +56,6 @@ export default async function QuizzesPage({ searchParams, params: { childId } }:
       />
     </Container>
   );
-}
+};
+
+export default QuizzesPage;

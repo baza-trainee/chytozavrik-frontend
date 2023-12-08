@@ -1,1 +1,1 @@
-export {default} from './KidslList';
+export { default } from './KidslList';

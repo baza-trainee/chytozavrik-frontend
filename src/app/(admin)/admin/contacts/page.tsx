@@ -1,26 +1,14 @@
 import React from 'react';
-import styles from './Contacts.module.scss';
 import { AdminHeader, TableHeader } from '@/app/(admin)/components';
+import styles from './Contacts.module.scss';
 
-
-const Contacts = () => {
-  return (
-    <div className={styles.contacts}>
-      <AdminHeader
-        withSearch={false}
-        withButton={false}
-        withClose={false}
-        heading='Контакти'
-
-      />
-      <div>
-        <TableHeader
-          variant='contacts'
-          colNames={['Перелік контактів', 'Дата  оновлення']}
-        />
-      </div>
+const Contacts = () => (
+  <div className={styles.contacts}>
+    <AdminHeader withSearch={false} withButton={false} withClose={false} heading="Контакти" />
+    <div>
+      <TableHeader variant="contacts" colNames={['Перелік контактів', 'Дата  оновлення']} />
     </div>
-  );
-};
+  </div>
+);
 
 export default Contacts;

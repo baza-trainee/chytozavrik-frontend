@@ -1,9 +1,9 @@
-'use client'
+'use client';
 
 import { useEffect, useRef } from 'react';
 import JSConfetti from 'js-confetti';
 
-export default function useConfetti({ className }: { className: string }) {
+const useConfetti = ({ className }: { className: string }) => {
   const ref = useRef(null);
   const canvas = <canvas className={className} style={{ pointerEvents: 'none' }} ref={ref} />;
 
@@ -19,4 +19,6 @@ export default function useConfetti({ className }: { className: string }) {
   }, [ref]);
 
   return canvas;
-}
+};
+
+export default useConfetti;

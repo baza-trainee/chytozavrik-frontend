@@ -1,4 +1,4 @@
-@import "../../../../../scss/utils/variables";
+@import '../../../../../scss/utils/variables';
 
 .bookItem {
   display: flex;
@@ -7,7 +7,6 @@
   padding: 12px 24px;
   gap: 32px;
   border-bottom: 1px solid $primary-next-variant;
-
 
   .checkbox {
     display: flex;
@@ -41,7 +40,8 @@
         flex-direction: column;
         gap: 10px;
 
-        .name, .author {
+        .name,
+        .author {
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
@@ -69,7 +69,8 @@
       align-items: center;
       width: 426px;
 
-      .state, .date {
+      .state,
+      .date {
         font-family: var(--raleway-font);
         font-size: 14px;
         font-weight: 400;
@@ -97,12 +98,11 @@
       }
 
       .date {
-        color: #1E1E1E;
+        color: #1e1e1e;
         font-variant-numeric: lining-nums proportional-nums;
         width: 180px;
       }
     }
-
   }
 
   .actions {
@@ -120,5 +120,4 @@
       cursor: pointer;
     }
   }
-
 }

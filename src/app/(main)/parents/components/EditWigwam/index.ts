@@ -1,1 +1,1 @@
-export {default} from './EditWigwam';
+export { default } from './EditWigwam';

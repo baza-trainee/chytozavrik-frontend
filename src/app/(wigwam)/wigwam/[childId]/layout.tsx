@@ -7,7 +7,7 @@ import { notFound } from 'next/navigation';
 import { Avatar, ChildResults } from '@/types/ChildrenResults';
 import '../../../globals.scss';
 
-export default async function Layout({
+const Layout = async ({
   children,
   params: { childId },
 }: {
@@ -15,7 +15,7 @@ export default async function Layout({
   params: {
     childId: string;
   };
-}) {
+}) => {
   const childReq = await fetch<ChildResults>(`/users/me/children/${childId}/`);
 
   if (childReq.status === 'fail') notFound();
@@ -32,4 +32,6 @@ export default async function Layout({
       <CookiesPanel />
     </WigwamProvider>
   );
-}
+};
+
+export default Layout;

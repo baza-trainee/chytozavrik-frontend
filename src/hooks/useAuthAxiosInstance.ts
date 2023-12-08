@@ -1,5 +1,7 @@
-'use client'
+'use client';
 
+/* eslint-disable dot-notation */
+/* eslint-disable no-param-reassign */
 import { useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import { axiosClient } from '@/services/axios';
@@ -17,12 +19,12 @@ export const useAuthAxiosInstance = () => {
         }
         return config;
       },
-      error => Promise.reject(error),
+      error => Promise.reject(error)
     );
 
     const responseIntercept = axiosClient.interceptors.response.use(
-      (response) => response,
-      async (error) => {
+      response => response,
+      async error => {
         const prevRequest = error.config;
         if (error.response.status === 401 && !prevRequest.sent) {
           prevRequest.sent = true;
@@ -31,7 +33,7 @@ export const useAuthAxiosInstance = () => {
           return axiosClient(prevRequest);
         }
         return Promise.reject(error);
-      },
+      }
     );
 
     return () => {

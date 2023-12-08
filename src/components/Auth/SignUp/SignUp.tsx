@@ -7,9 +7,9 @@ import * as yup from 'yup';
 import { Button, Typography } from '@/components/common';
 import { Checkbox, Input, PasswordInput, validation } from '@/components/common/form';
 import { AlertCircle } from 'lucide-react';
-import AuthLink from '../AuthLink';
 import { signUpService } from '@/services/api';
 import { Route } from '@/constants';
+import AuthLink from '../AuthLink';
 import styles from '../Auth.module.scss';
 
 const schema = yup.object({
@@ -79,6 +79,7 @@ const SignUp = () => {
 
       // Show server errors
       if (user?.error) {
+        // eslint-disable-next-line no-console
         console.log(user?.error);
       }
       // Redirect to the page, if the login was a success.

@@ -13,18 +13,14 @@ const MonstersList = ({ results }: { results: Monster[] }) => {
     setShowMonster(true);
   };
 
-  return (
-    <>
-      {!showMonster ? (
-        <AllMonsters results={results} onMonsterClick={showDetailsHandler} />
-      ) : (
-        <MonsterDetails
-          monsterId={selectedMonsterId}
-          results={results}
-          setShowMonster={setShowMonster}
-        />
-      )}
-    </>
+  return !showMonster ? (
+    <AllMonsters results={results} onMonsterClick={showDetailsHandler} />
+  ) : (
+    <MonsterDetails
+      monsterId={selectedMonsterId}
+      results={results}
+      setShowMonster={setShowMonster}
+    />
   );
 };
 

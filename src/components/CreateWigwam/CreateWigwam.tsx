@@ -1,16 +1,16 @@
 'use client';
 
 import { useForm, SubmitHandler } from 'react-hook-form';
-import styles from './CreateWigwam.module.scss';
 import { Container, Typography, Button } from 'components/common';
 import { useFetch } from '@/hooks';
 import { Dispatch, SetStateAction, useEffect } from 'react';
 import AvatarFields from '@/app/(main)/parents/components/FormFields/AvaratsFields/AvatarFields';
 import NameInput from '@/app/(main)/parents/components/FormFields/NameInput/NameInput';
 import Buttons from '@/app/(main)/parents/components/FormFields/Buttons/Buttons';
+import styles from './CreateWigwam.module.scss';
 
 type Props = {
-  setWigwam:  Dispatch<SetStateAction<boolean>>;
+  setWigwam: Dispatch<SetStateAction<boolean>>;
 };
 
 type FormData = {
@@ -23,7 +23,7 @@ const defaultValues: FormData = {
   avatar: 0,
 };
 
-export default function CreateWigwam({ setWigwam }: Props) {
+const CreateWigwam = ({ setWigwam }: Props) => {
   const {
     register,
     handleSubmit,
@@ -32,23 +32,29 @@ export default function CreateWigwam({ setWigwam }: Props) {
   } = useForm({ defaultValues });
 
   const { fetch } = useFetch();
-  
-
-  const onSubmit: SubmitHandler<FormData> = formData => {
-    formData.avatar = Number(formData.avatar);
-    setWigwam(false);
-    createKidProfile(formData);
-  };
 
   const createKidProfile = async (formData: FormData) => {
     try {
-      await fetch('users/me/children/', 'POST', {
-        name: formData.name,
-        avatar: formData.avatar,
-      });
+      await fetch(
+        'users/me/children/',
+        {
+          name: formData.name,
+          avatar: formData.avatar,
+        },
+        'POST'
+      );
     } catch (err) {
       console.log(err);
     }
+  };
+
+  const onSubmit: SubmitHandler<FormData> = formData => {
+    const modifiedFormData = {
+      ...formData,
+      avatar: Number(formData.avatar),
+    };
+    setWigwam(false);
+    createKidProfile(modifiedFormData);
   };
 
   useEffect(() => {
@@ -65,7 +71,7 @@ export default function CreateWigwam({ setWigwam }: Props) {
           <div className={styles.formWrapper}>
             <div>
               <NameInput register={register} errors={errors} />
-              <Buttons onClick={() => setWigwam(false)} secondBtnText='Створити'/>
+              <Buttons onClick={() => setWigwam(false)} secondBtnText="Створити" />
             </div>
             <AvatarFields register={register} errors={errors} />
           </div>
@@ -73,4 +79,6 @@ export default function CreateWigwam({ setWigwam }: Props) {
       </Container>
     </section>
   );
-}
+};
+
+export default CreateWigwam;

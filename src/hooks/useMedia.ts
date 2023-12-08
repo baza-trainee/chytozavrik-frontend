@@ -1,20 +1,20 @@
-'use client'
+'use client';
 
-import { useMediaQuery } from "react-responsive";
+import { useMediaQuery } from 'react-responsive';
 import { useEffect, useState } from 'react';
 
 export const useMedia = () => {
   const isDesktop = useMediaQuery({
-    query: "(min-width: 1440px) and (max-width: 2559px)",
+    query: '(min-width: 1440px) and (max-width: 2559px)',
   });
   const isLaptop = useMediaQuery({
-    query: "(min-width: 1024px) and (max-width: 1439px)",
+    query: '(min-width: 1024px) and (max-width: 1439px)',
   });
   const isTablet = useMediaQuery({
-    query: "(min-width: 768px) and (max-width: 1023px)",
+    query: '(min-width: 768px) and (max-width: 1023px)',
   });
   const isMobile = useMediaQuery({
-    query: "(max-width: 767px)",
+    query: '(max-width: 767px)',
   });
 
   const [deviceType, setDeviceType] = useState('mobile');

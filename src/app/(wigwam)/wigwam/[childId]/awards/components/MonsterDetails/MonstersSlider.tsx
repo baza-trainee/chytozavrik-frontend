@@ -1,11 +1,11 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import styles from './styles.module.scss';
 import { Monster } from '@/types/Monsters';
 import Image from 'next/image';
 import ArrowPrev from '@/app/(wigwam)/wigwam/[childId]/awards/components/Images/ArrowPrev';
 import ArrowNext from '@/app/(wigwam)/wigwam/[childId]/awards/components/Images/ArrowNext';
+import styles from './styles.module.scss';
 
 const MonstersSlider = ({
   results,
@@ -80,6 +80,7 @@ const MonstersSlider = ({
         style={sliderItems.length < 1 ? { visibility: 'hidden' } : { visibility: 'visible' }}
         className={styles.prev}
         onClick={goToPrev}
+        aria-label="Попередній"
       >
         <ArrowPrev />
       </button>
@@ -110,6 +111,7 @@ const MonstersSlider = ({
         style={sliderItems.length < 1 ? { visibility: 'hidden' } : { visibility: 'visible' }}
         className={styles.next}
         onClick={goToNext}
+        aria-label="Наступний"
       >
         <ArrowNext />
       </button>

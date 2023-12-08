@@ -1,7 +1,7 @@
 @import 'scss/utils/variables';
 @import 'scss/utils/mixin';
 
-.cookies{
+.cookies {
   position: fixed;
   bottom: 257px;
   left: 16px;
@@ -18,8 +18,7 @@
   flex-shrink: 0;
   z-index: 5;
 
-
-  & p{
+  & p {
     color: $black;
     font-family: var(--raleway-font);
     font-size: 20px;
@@ -28,11 +27,11 @@
     line-height: 120%;
   }
 
-  & span{
+  & span {
     font-weight: 600;
   }
 
-  & a{
+  & a {
     text-decoration-line: underline;
   }
 
@@ -51,7 +50,6 @@
       width: 216px;
       align-self: flex-start;
     }
-
   }
 
   @include breakpoint(laptop) {
