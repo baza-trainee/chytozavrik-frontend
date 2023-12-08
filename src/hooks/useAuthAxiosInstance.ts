@@ -21,6 +21,7 @@ export const useAuthAxiosInstance = () => {
       },
       error => Promise.reject(error)
     );
+
     const responseIntercept = axiosClient.interceptors.response.use(
       response => response,
       async error => {
@@ -34,11 +35,12 @@ export const useAuthAxiosInstance = () => {
         return Promise.reject(error);
       }
     );
+
     return () => {
       axiosClient.interceptors.request.eject(requestIntercept);
       axiosClient.interceptors.response.eject(responseIntercept);
     };
-  }, [session]);
+  }, [session, refreshToken]);
 
   return axiosClient;
 };
