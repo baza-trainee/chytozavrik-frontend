@@ -3,7 +3,7 @@
 @import 'scss/utils/mixin';
 
 .section {
-  padding: 48px 0;
+  padding: 48px 0 21px;
   background-color: getColor(blue, 90);
   @include addWaveBackground('/images/background-wave-reverse.svg');
 
@@ -47,7 +47,7 @@
   @include breakpoint(desktop) {
     width: 520px;
     min-height: 320px;
-    padding: 32px 0 0;
+    padding: 88px 0 32px;
   }
 }
 
@@ -63,7 +63,6 @@
 }
 
 .feedbackText {
-  margin-bottom: 24px;
   letter-spacing: -0.72px;
   @include breakpoint(tablet) {
     margin-bottom: 64px;
@@ -79,24 +78,7 @@
   }
 }
 
-.socialWrapper {
-  display: flex;
-  gap: 24px;
-  align-items: baseline;
-  height: 32px;
-  @include breakpoint(desktop) {
-    height: 40px;
-  }
-}
 
-.socialIcon {
-  width: 32px;
-  height: 32px;
-  @include breakpoint(desktop) {
-    width: 40px;
-    height: 40px;
-  }
-}
 
 .bazaContainer {
   min-width: 328px;
@@ -149,14 +131,45 @@
   }
 }
 
-.textWrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
+// .textWrapper {
+//   display: flex;
+//   flex-direction: column;
+//   gap: 24px;
+//   margin-bottom: 8px;
+// }
 
 .bazaText {
+  text-align: left;
+  margin-bottom: 24px;
   @include breakpoint(desktop) {
     font-size: 20px;
+  }
+}
+
+.bazaCTA {
+  text-align: left;
+  margin-bottom: 8px;
+  @include breakpoint(desktop) {
+    margin-bottom: 0;
+  }
+}
+
+.socialWrapper {
+  display: flex;
+  gap: 24px;
+  align-items: baseline;
+  height: 40px;
+}
+
+.socialIcon {
+  width: 40px;
+  height: 40px;
+}
+.bazaWrapper {
+  @include breakpoint(desktop) {
+    display: flex;
+    gap: 24px;
+    align-items: baseline;
+      height: 40px;
   }
 }
