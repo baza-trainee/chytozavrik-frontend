@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 const RootLayout = ({ children }: { children: React.ReactNode }) => (
   <AppProvider>
     <Header />
-    {children}
+    <main>{children}</main>
     <Footer />
     <CookiesPanel />
   </AppProvider>
