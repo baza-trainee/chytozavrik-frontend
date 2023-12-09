@@ -30,13 +30,8 @@ const Quiz = ({ quizInfo }: QuizProps) => {
     if (prize) {
       return setQuizPrize(prize);
     }
-    console.log(`Викликана`);
     setQuestionNumber(prev => prev + 1);
   };
-
-  useEffect(() => {
-    console.log(`Перехід до питання № ${questionNumber}`);
-  }, [questionNumber]);
 
   const replyQuiz = () => {
     setQuestionNumber(0);
