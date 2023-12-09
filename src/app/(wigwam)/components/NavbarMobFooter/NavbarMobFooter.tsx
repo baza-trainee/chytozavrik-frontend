@@ -19,7 +19,7 @@ const NavbarMobFooter: NextPage<Props> = ({ childId }) => {
   const currentRoute = usePathname();
 
   return (
-    <section className={styles.section}>
+    <footer className={styles.section}>
       <Container>
         <div className={styles.wrapper}>
           <Typography component="p" variant="navbar">
@@ -71,7 +71,7 @@ const NavbarMobFooter: NextPage<Props> = ({ childId }) => {
           </Typography>
         </div>
       </Container>
-    </section>
+    </footer>
   );
 };
 

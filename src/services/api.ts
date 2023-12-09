@@ -119,18 +119,6 @@ export const getQuizInfoByIdService = async (
   return result.json();
 };
 
-// export const getQuizzesService = async (
-//   search: string = '',
-//   page: string = '1',
-//   page_size: number
-// ): Promise<FetchResponseType<AllQuizzesResponse>> => {
-//   const result = await privateFetch(
-//     `${baseUrl}/quizzes/?search=${search}&page=${page}&page_size=${page_size}`
-//   );
-//
-//   return await result.json();
-// };
-
 export const getUsersQuizzesService = async (
   search: string = '',
   page: string = '1',

@@ -5,8 +5,8 @@
   --toast-px: 0;
 
   @include breakpoint(tablet) {
-    [data-type='success'] &,
-    [data-type='error'] & {
+    [data-result='success'] &,
+    [data-result='error'] & {
       display: flex;
       align-items: center;
       gap: 40px;
@@ -17,7 +17,7 @@
     padding-left: var(--toast-px);
     padding-right: var(--toast-px);
 
-    [data-type='default'] & {
+    [data-result='default'] & {
       display: flex;
       align-items: center;
       gap: 40px;
@@ -25,12 +25,12 @@
   }
 
   @include breakpoint(desktop) {
-    [data-type='success'] &,
-    [data-type='error'] & {
+    [data-result='success'] &,
+    [data-result='error'] & {
       --toast-px: 217px;
     }
 
-    [data-type='default'] & {
+    [data-result='default'] & {
       --toast-px: 109px;
     }
   }
@@ -39,8 +39,8 @@
 .body {
   margin-bottom: 16px;
 
-  [data-type='success'] &,
-  [data-type='error'] & {
+  [data-result='success'] &,
+  [data-result='error'] & {
     display: flex;
     align-items: center;
     gap: 24px;
@@ -53,7 +53,7 @@
     }
   }
 
-  [data-type='default'] & {
+  [data-result='default'] & {
     @include breakpoint(tablet) {
       display: flex;
       align-items: center;
@@ -83,14 +83,14 @@
   border-radius: 50%;
   background-color: $white;
 
-  [data-type='default'] & {
+  [data-result='default'] & {
     @include breakpoint(false, tablet) {
       margin-bottom: 24px;
     }
   }
 
-  [data-type='success'] &,
-  [data-type='error'] & {
+  [data-result='success'] &,
+  [data-result='error'] & {
     @include breakpoint(false, tablet) {
       --thumb-size: 56px;
     }
@@ -111,8 +111,8 @@
 
   transform: translateX(-50%);
 
-  [data-type='success'] &,
-  [data-type='error'] & {
+  [data-result='success'] &,
+  [data-result='error'] & {
     --image-width: 62px;
 
     @include breakpoint(tablet) {
@@ -120,7 +120,7 @@
     }
   }
 
-  [data-type='default'] & {
+  [data-result='default'] & {
     --image-width: 124px;
   }
 }
@@ -130,8 +130,8 @@
 
   text-align: center;
 
-  [data-type='success'] &,
-  [data-type='error'] & {
+  [data-result='success'] &,
+  [data-result='error'] & {
     text-align: left;
   }
 
@@ -158,8 +158,8 @@
   flex-direction: column;
   gap: 16px;
 
-  [data-type='success'] &,
-  [data-type='error'] & {
+  [data-result='success'] &,
+  [data-result='error'] & {
     @include breakpoint(tablet) {
       justify-content: flex-end;
     }
@@ -186,14 +186,14 @@
   }
 
   @include breakpoint(tablet) {
-    [data-type='success'] &,
-    [data-type='error'] & {
+    [data-result='success'] &,
+    [data-result='error'] & {
       width: fit-content;
     }
   }
 
   @include breakpoint(tablet, laptop) {
-    [data-type='default'] & {
+    [data-result='default'] & {
       width: calc((100% - 24px) / 2);
     }
   }

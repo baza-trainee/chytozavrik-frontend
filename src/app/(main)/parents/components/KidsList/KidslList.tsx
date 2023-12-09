@@ -12,7 +12,7 @@ const KidslList = () => {
   const [kids, setKids] = useState([]);
   const { status } = useSession();
   const { fetch } = useFetch();
-  console.log(kids);
+
   useEffect(() => {
     const getKidProfile = async () => {
       const response = await fetch('users/me/children/');

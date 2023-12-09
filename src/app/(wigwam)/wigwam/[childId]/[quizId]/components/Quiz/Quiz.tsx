@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import type { QuizInfoResponse } from '@/types';
 import questionImage from 'public/images/quiz-page/quiz-question-image.svg';
@@ -30,7 +30,6 @@ const Quiz = ({ quizInfo }: QuizProps) => {
     if (prize) {
       return setQuizPrize(prize);
     }
-
     setQuestionNumber(prev => prev + 1);
   };
 
