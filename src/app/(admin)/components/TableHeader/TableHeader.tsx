@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import { Trash2 } from 'lucide-react';
 import styles from './TableHeader.module.scss';
 
 interface TableHeaderProps {
@@ -23,6 +24,11 @@ const TableHeader = ({ colNames, variant }: TableHeaderProps) => {
           <div key={index}>{item}</div>
         ))}
       </div>
+      {variant === 'users' || variant === 'books' || variant === 'partners' ? (
+        <div className={styles.icon}>
+          <Trash2 width={16} height={16} />
+        </div>
+      ) : null}
     </div>
   );
 };

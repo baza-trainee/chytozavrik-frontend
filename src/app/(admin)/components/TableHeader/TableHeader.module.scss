@@ -21,7 +21,7 @@
     width: 100%;
 
     &.users div:last-child {
-      padding-right: 68px;
+      width: 183px;
     }
 
     &.users div:first-child,
@@ -40,7 +40,7 @@
     }
 
     &.books div:last-child {
-      width: 250px;
+      width: 183px;
     }
 
     &.documents div:first-child {
@@ -57,7 +57,17 @@
     }
 
     &.partners div:last-child {
-      width: 251px;
+      width: 183px;
     }
+  }
+
+  .icon {
+    display: flex;
+    width: 36px;
+    height: 36px;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
   }
 }
