@@ -7,7 +7,7 @@
   position: fixed;
   left: 0;
   top: 0;
-
+  z-index: 1000;
   width: 100%;
   height: 100%;
 
@@ -15,15 +15,15 @@
     background-color: rgba($color: $black, $alpha: 0.6);
   }
 
-  &[data-type='default'] {
+  &[data-result='default'] {
     --background-color: #{getNotificationColor(default)};
   }
 
-  &[data-type='success'] {
+  &[data-result='success'] {
     --background-color: #{getNotificationColor(success)};
   }
 
-  &[data-type='error'] {
+  &[data-result='error'] {
     --background-color: #{getNotificationColor(error)};
   }
 }

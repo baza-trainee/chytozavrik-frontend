@@ -2,23 +2,26 @@
 @import 'scss/utils/mixin';
 
 .section {
-  height: 100%;
-
+  height: calc(100vh - 138px);
   background-image: url('/images/quiz-page-cloud.svg');
   background-repeat: repeat-x;
   background-position: center bottom;
-  background-size: auto 103px;
+  background-size: auto 48px;
 
   @include breakpoint(tablet) {
-    background-size: auto 180px;
+    min-height: 800px;
+    height: calc(100vh - 70px);
+    background-size: auto 102px;
   }
 
   @include breakpoint(laptop) {
-    background-size: auto 142px;
+    min-height: 600px;
+    background-size: auto 136px;
   }
 
   @include breakpoint(desktop) {
-    background-size: auto 200px;
+    min-height: 540px;
+    background-size: auto 192px;
   }
 }
 
@@ -159,7 +162,6 @@
 
 .footer {
   position: relative;
-
   width: 100%;
   padding-top: 24px;
 

@@ -29,31 +29,36 @@ const AdditionalInfo = () => (
             громадськості.
           </Typography>
         </div>
-          <div className={styles.bazaWrapper}>
+        <div className={styles.bazaWrapper}>
           <Typography component="p" variant="h5" className={styles.bazaCTA}>
             Дізнайтесь більше про нас
-            </Typography>
-          
-        
-          <div className={styles.socialWrapper}>
-          <Link
-            className={styles.socialLink}
-            href="https://baza-trainee.tech/"
-            target="_blank"
-            rel="nofollow noreferrer noopener"
-          >
-            <Image src='/images/logo-baza.svg' width={40} height={40} alt='logo' className={styles.socialIcon}  />
-          </Link>
+          </Typography>
 
-          <Link
-            className={styles.socialLink}
-            href="https://www.linkedin.com/company/baza-trainee-ukraine/"
-            target="_blank"
-            rel="nofollow noreferrer noopener"
-          >
-            <Linkedin className={styles.socialIcon} size="40" />
-          </Link>
-        </div>
+          <div className={styles.socialWrapper}>
+            <Link
+              className={styles.socialLink}
+              href="https://baza-trainee.tech/"
+              target="_blank"
+              rel="nofollow noreferrer noopener"
+            >
+              <Image
+                src="/images/logo-baza.svg"
+                width={40}
+                height={40}
+                alt="logo"
+                className={styles.socialIcon}
+              />
+            </Link>
+
+            <Link
+              className={styles.socialLink}
+              href="https://www.linkedin.com/company/baza-trainee-ukraine/"
+              target="_blank"
+              rel="nofollow noreferrer noopener"
+            >
+              <Linkedin className={styles.socialIcon} size="40" />
+            </Link>
+          </div>
         </div>
       </div>
     </Container>

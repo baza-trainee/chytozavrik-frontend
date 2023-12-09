@@ -23,7 +23,7 @@ const Notification = ({ type = 'default', backdrop = false, children }: Props) =
 
   const content = (
     <FocusTrap focusTrapOptions={{ initialFocus: false }}>
-      <div className={styles.backdrop} datatype={type} data-backdrop={backdrop}>
+      <div className={styles.backdrop} data-result={type} data-backdrop={backdrop}>
         <div className={styles.content}>
           <Container>{children}</Container>
         </div>
