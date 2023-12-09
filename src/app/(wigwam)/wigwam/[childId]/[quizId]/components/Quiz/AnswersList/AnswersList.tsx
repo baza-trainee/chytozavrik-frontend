@@ -53,6 +53,7 @@ const AnswersList = ({ questionId, answers, onNext }: Props) => {
 
   const nextStep = () => {
     if (answerResult?.child_reward_url) onNext(answerResult?.child_reward_url);
+    onNext();
     closeNotification();
   };
 
