@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
 
 import '../globals.scss';
-import AppProvider from 'src/app/(main)/components/providers';
 import Header from '@/app/(main)/components/Header/Header';
 import Footer from 'components/Footer/Footer';
 import CookiesPanel from 'components/Cookies/CookiesPanel';
@@ -12,12 +11,12 @@ export const metadata: Metadata = {
 };
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => (
-  <AppProvider>
+  <>
     <Header />
     <main>{children}</main>
     <Footer />
     <CookiesPanel />
-  </AppProvider>
+  </>
 );
 
 export default RootLayout;

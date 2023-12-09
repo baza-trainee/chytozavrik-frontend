@@ -192,3 +192,9 @@ export const newPasswordService = async (
 
   return result.json();
 };
+
+export const getDocumentsService = async () => {
+  const result = await privateFetch(`${baseUrl}/documents/`);
+
+  return result.json();
+};

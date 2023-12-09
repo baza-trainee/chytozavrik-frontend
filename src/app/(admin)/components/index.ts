@@ -1,8 +1,7 @@
 export { default as AdminHeader } from './Header/AdminHeader';
-export { default as Modal } from './Modal/Modal';
-export { default as Question } from './Modal/Question';
-export { default as Success } from './Modal/Success';
-export { default as AdminProvider } from './Provider/AdminProvider';
+export { default as Modal } from 'components/common/ModalActions/Modal';
+export { default as Question } from 'components/common/ModalActions/Question';
+export { default as Success } from 'components/common/ModalActions/Success';
 export { default as TableHeader } from './TableHeader/TableHeader';
 export { default as PartnerItem } from './TableItems/PartnerItem/PartnerItem';
 export { default as BookItem } from './TableItems/BookItem/BookItem';

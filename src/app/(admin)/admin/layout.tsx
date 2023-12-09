@@ -1,4 +1,4 @@
-import { AdminProvider, SideBar } from '@/app/(admin)/components';
+import { SideBar } from '@/app/(admin)/components';
 import styles from './Admin.module.scss';
 import '../../globals.scss';
 
@@ -11,12 +11,10 @@ const Layout = ({
     childId: string;
   };
 }) => (
-  <AdminProvider>
-    <main className={styles.container}>
-      <SideBar />
-      <section className={styles.section}>{children}</section>
-    </main>
-  </AdminProvider>
+  <main className={styles.container}>
+    <SideBar />
+    <section className={styles.section}>{children}</section>
+  </main>
 );
 
 export default Layout;
