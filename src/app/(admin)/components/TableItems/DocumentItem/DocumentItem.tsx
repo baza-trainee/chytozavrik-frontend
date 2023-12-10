@@ -1,7 +1,7 @@
 'use client';
 
 import React, { ChangeEvent, useRef, useState } from 'react';
-import { File as FileIcon } from 'lucide-react';
+import { AlertCircle, File as FileIcon } from 'lucide-react';
 import { Button } from 'components/common';
 import { Document } from '@/types/Documents';
 import { formattedDate } from '@/utils/formatDate';
@@ -9,19 +9,16 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useSession } from 'next-auth/react';
 import axios from 'axios';
 import Modal from 'components/common/ModalActions/Modal';
-import { useRouter } from 'next/navigation';
-import { Route } from '@/constants';
 import styles from './DocumentItem.module.scss';
 
 const DocumentItem = ({ id, name, updated_at: updated }: Document) => {
   const queryClient = useQueryClient();
-  const route = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [file, setFile] = useState<File | null>(null);
+  const [errorFile, setErrorFile] = useState('');
   const [isSuccess, setIsSuccess] = useState(false);
   const [isDiscard, setIsDiscard] = useState(false);
   const { data: session } = useSession();
-
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const {
@@ -45,14 +42,19 @@ const DocumentItem = ({ id, name, updated_at: updated }: Document) => {
       setIsSuccess(true);
     },
   });
-
+  const MAX_SIZE = 2 * 1024 * 1024;
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files ? event.target.files[0] : null;
     if (file) {
-      setFile(file);
+      setErrorFile('');
+
+      if (file.size > MAX_SIZE) {
+        setErrorFile('Максимальний ліміт розміру файлу 2 Мб');
+      } else {
+        setFile(file);
+      }
     }
   };
-
   const openFileSelector = () => {
     fileInputRef.current?.click();
     setIsOpen(true);
@@ -61,14 +63,24 @@ const DocumentItem = ({ id, name, updated_at: updated }: Document) => {
   return (
     <div className={`${styles.wrapper} ${isOpen ? styles.active : ''}`}>
       <div className={styles.document}>
-        <div className={styles.info}>
-          <div className={styles.icon}>
-            <FileIcon />
+        <div>
+          <div className={styles.info}>
+            <div className={styles.icon}>
+              <FileIcon />
+            </div>
+            <p className={styles.title}>{file ? file.name : name}</p>
           </div>
-          <p className={styles.title}>{file ? file.name : name}</p>
+          {errorFile && (
+            <div className={styles.error}>
+              <div>
+                <AlertCircle color="#F40000" size={14} />
+              </div>
+              {errorFile}
+            </div>
+          )}
         </div>
         <div className={styles.date}>{formattedDate(updated)}</div>
-        <Button variant="outline" onClick={openFileSelector} disabled={isOpen}>
+        <Button variant="outline" onClick={openFileSelector} disabled={isOpen && !errorFile}>
           Замінити файл
         </Button>
         <input
@@ -88,7 +100,7 @@ const DocumentItem = ({ id, name, updated_at: updated }: Document) => {
             type="submit"
             variant="filled"
             color="secondary"
-            disabled={isPending}
+            disabled={isPending || !!errorFile}
             onClick={() => submitDocument()}
           >
             Оновити
@@ -110,7 +122,11 @@ const DocumentItem = ({ id, name, updated_at: updated }: Document) => {
             setIsDiscard(false);
             setIsOpen(false);
           }}
-          successFnc={() => route.push(Route.USERS)}
+          successFnc={() => {
+            setIsOpen(false);
+            setFile(null);
+            setErrorFile('');
+          }}
         />
       )}
       {error && <div style={{ color: '#F40000', fontSize: '16px' }}>Помилка: {error.message}</div>}
