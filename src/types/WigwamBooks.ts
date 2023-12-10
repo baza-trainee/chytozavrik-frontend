@@ -14,6 +14,7 @@ export interface BooksResponse {
   next: string | null;
   previous: string | null;
   results: BookType[];
+  message: string;
 }
 
 export interface BooksResults {

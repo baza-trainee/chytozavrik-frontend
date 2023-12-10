@@ -1,10 +1,17 @@
+import React, { FC } from 'react';
 import { BookOpen } from 'lucide-react';
 import Image from 'next/image';
+import { LastquizType } from '@/types/WigwamQuiz';
 import Sticker from 'public/images/sticker.svg';
 import styles from './WigwamReadBooks.module.scss';
 
-const WigwamReadBooks = () => {
-  const counter = 0;
+interface WigwamReadBooksProps {
+  wigwamQuizItem?: LastquizType;
+}
+
+const WigwamReadBooks: FC<WigwamReadBooksProps> = ({ wigwamQuizItem }) => {
+  let counter = '0';
+  counter = wigwamQuizItem?.unique_quizzes_passed || '0';
 
   return (
     <div className={styles.wraper}>
