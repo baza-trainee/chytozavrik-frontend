@@ -131,9 +131,9 @@ const SignUp = () => {
         </div>
 
         <div className={styles['checkboxes-groups']}>
-          {/* <Checkbox name="rememberMe" control={control}>
+          <Checkbox name="rememberMe" control={control}>
             Запам&apos;ятати мене
-          </Checkbox> */}
+          </Checkbox>
 
           <Checkbox name="acceptedRules" control={control}>
             Я згоден з{' '}

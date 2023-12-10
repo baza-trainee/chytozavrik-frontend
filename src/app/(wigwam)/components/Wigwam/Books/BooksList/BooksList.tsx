@@ -72,7 +72,7 @@ const BooksList = ({
 
   return (
     <>
-      {filteredBooks?.length > 1 ? (
+      {filteredBooks?.length > 1 && (
         <div className={styles.button_list}>
           {filteredBooks?.map((item: BookType, index: number) =>
             deviceType === 'mobile' || deviceType === 'tablet' ? (
@@ -97,9 +97,8 @@ const BooksList = ({
           )}
           <div ref={node => setLastElement(node)} />
         </div>
-      ) : (
-        <NotFoundBook />
       )}
+      {filteredBooks?.length <= 1 && <NotFoundBook />}
     </>
   );
 };

@@ -27,12 +27,15 @@ const BookItem: FC<BookItemProps> = ({
   index,
 }) => {
   const firstChar = item.current_score ? item.current_score.charAt(0) : '';
-  const colorText =
-    parseInt(firstChar, 10) > 0 && parseInt(firstChar, 10) < 5
-      ? '#7791FA'
-      : parseInt(firstChar, 10) === 5
-        ? '#52C974'
-        : '#B3CDFF';
+  const numericScore = parseInt(firstChar, 10);
+
+  let colorText = '#B3CDFF';
+
+  if (numericScore > 0 && numericScore < 5) {
+    colorText = '#7791FA';
+  } else if (numericScore === 5) {
+    colorText = '#52C974';
+  }
 
   const { book } = booksData[index];
   const { id: quizId } = booksData[index];
@@ -47,9 +50,9 @@ const BookItem: FC<BookItemProps> = ({
   };
 
   let icon: IconType;
-  if (parseInt(firstChar, 10) > 0 && parseInt(firstChar, 10) < 5) {
+  if (numericScore > 0 && numericScore < 5) {
     icon = BrainYellow;
-  } else if (parseInt(firstChar, 10) === 5) {
+  } else if (numericScore === 5) {
     icon = BrainGreen;
   } else {
     icon = BrainIcon;
@@ -64,22 +67,19 @@ const BookItem: FC<BookItemProps> = ({
     </div>
   );
 
-  const renderIcon = () => (
-    <div
-      className={styles.book_items_icon_wraper}
-      onClick={() => {
-        handleClick();
-      }}
-    >
-      {selectedBooks[item.id] || item.current_score === '5/5' ? (
-        <Image priority src={Tick} alt="tick icon" width={24} height={24} />
-      ) : (
-        <span className={styles.arrow}>
-          <MoveRight />
-        </span>
-      )}
-    </div>
-  );
+  const renderIcon = () => {
+    const isBookSelected = selectedBooks[item.id] || item.current_score === '5/5';
+
+    if (isBookSelected) {
+      return <Image priority src={Tick} alt="tick icon" width={24} height={24} />;
+    }
+
+    return (
+      <span className={styles.arrow} onClick={() => handleClick()}>
+        <MoveRight />
+      </span>
+    );
+  };
 
   return (
     <div className={styles.book_items}>

@@ -25,8 +25,15 @@ const BookItemMobile: FC<BookItemMobileProps> = ({
   index,
 }) => {
   const firstChar = item.current_score ? parseInt(item.current_score.charAt(0), 10) : 0;
-  const colorText =
-    firstChar > 0 && firstChar < 5 ? '#7791FA' : firstChar === 5 ? '#52C974' : '#B3CDFF';
+  let colorText: string;
+
+  if (firstChar > 0 && firstChar < 5) {
+    colorText = '#7791FA';
+  } else if (firstChar === 5) {
+    colorText = '#52C974';
+  } else {
+    colorText = '#B3CDFF';
+  }
 
   const { book } = booksData[index];
   const { id: quizId } = booksData[index];

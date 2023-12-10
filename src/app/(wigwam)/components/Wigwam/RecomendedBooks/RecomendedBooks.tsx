@@ -3,11 +3,11 @@
 import React, { useState } from 'react';
 import Slider from 'react-slick';
 import { Typography } from 'components/common';
-import ArrowLeft from './icons/ArrowLeft';
-import ArrowRight from './icons/ArrowRight';
 import { RecBookType } from '@/types/RecomendedBooks';
 import { BookType } from '@/types/WigwamBooks';
 import { LastquizType } from '@/types/WigwamQuiz';
+import ArrowLeft from './icons/ArrowLeft';
+import ArrowRight from './icons/ArrowRight';
 import wigwamTextData from '../wigwamTextData.json';
 import './slick.css';
 import './slick-theme.css';
@@ -20,28 +20,24 @@ interface RecomendedBooksProps {
   items: string[];
 }
 
+const NextArrow: React.FC<{ onClick: () => void }> = ({ onClick }) => (
+  <div className={`${styles.arrow} ${styles.next}`} onClick={onClick}>
+    <ArrowRight />
+  </div>
+);
+
+const PrevArrow: React.FC<{ onClick: () => void }> = ({ onClick }) => (
+  <div className={`${styles.arrow} ${styles.prev}`} onClick={onClick}>
+    <ArrowLeft />
+  </div>
+);
+
 const RecomendedBooks: React.FC<RecomendedBooksProps> = ({
   items,
   wigwamQuizData,
   booksData = [],
   recBooksData = [],
 }) => {
-  const NextArrow: React.FC<{ onClick: () => void }> = ({ onClick }) => {
-    return (
-      <div className={`${styles.arrow} ${styles.next}`} onClick={onClick}>
-        <ArrowRight />
-      </div>
-    );
-  };
-
-  const PrevArrow: React.FC<{ onClick: () => void }> = ({ onClick }) => {
-    return (
-      <div className={`${styles.arrow} ${styles.prev}`} onClick={onClick}>
-        <ArrowLeft />
-      </div>
-    );
-  };
-
   const [imageIndex, setImageIndex] = useState(0);
 
   const handleCardClick = (index: number) => {
@@ -49,11 +45,11 @@ const RecomendedBooks: React.FC<RecomendedBooksProps> = ({
     const quiz = booksData[index];
 
     if (book?.id && quiz?.book?.id && wigwamQuizData) {
-      const child_id = wigwamQuizData.id;
-      const quiz_id = quiz.id;
+      const childId = wigwamQuizData.id;
+      const quizId = quiz.id;
 
       if (book?.state && book.state.includes('Вікторина')) {
-        window.location.href = `/wigwam/${child_id}/${quiz_id}`;
+        window.location.href = `/wigwam/${childId}/${quizId}`;
       } else {
         window.location.href = `/*`;
       }
