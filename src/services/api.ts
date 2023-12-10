@@ -198,3 +198,9 @@ export const getDocumentsService = async () => {
 
   return result.json();
 };
+
+export const getContactsService = async () => {
+  const result = await privateFetch(`${baseUrl}/contacts/`);
+
+  return result.json();
+};
