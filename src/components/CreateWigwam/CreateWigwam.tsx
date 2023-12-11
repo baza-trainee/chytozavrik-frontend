@@ -46,10 +46,7 @@ const onSubmit: SubmitHandler<FormData> = formData => {
   setWigwam(false);
   submitData(modifiedFormData);
 };
-const headers = {
-  'Authorization': `Bearer ${session?.user.token.access}`
-}
-  // const { fetch } = useFetch();
+
 const { mutate: submitData } = useMutation({
   
   mutationFn: async (formData: FormData) => {
@@ -67,25 +64,6 @@ const { mutate: submitData } = useMutation({
     },
   });    
   
-  // const createKidProfile = async () => {
-  //   try {
-  //     await fetch(
-  //       'users/me/children/',
-  //       {
-  //         name: formData.name,
-  //         avatar: formData.avatar,
-  //       },
-  //       'POST'
-  //     );
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
-
-  
-  // useEffect(() => {
-  //   resetField('name');
-  // }, [resetField]);
 
   return (
     <section className={styles.section}>

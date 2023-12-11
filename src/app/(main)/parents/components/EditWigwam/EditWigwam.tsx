@@ -2,12 +2,13 @@
 
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { Typography } from 'components/common';
-import { useFetch } from '@/hooks';
-import { useEffect } from 'react';
 import AvatarFields from '@/app/(main)/parents/components/FormFields/AvaratsFields/AvatarFields';
 import NameInput from '@/app/(main)/parents/components/FormFields/NameInput/NameInput';
 import Buttons from '@/app/(main)/parents/components/FormFields/Buttons/Buttons';
 import styles from './EditWigwam.module.scss';
+import { useQueryClient, useMutation } from '@tanstack/react-query';
+import axios from 'axios';
+import { useSession } from 'next-auth/react';
 
 type Props = {
   closeEditWigwam: () => void;
@@ -32,36 +33,36 @@ const EditWigwam = ({ id, closeEditWigwam }: Props) => {
     formState: { errors },
   } = useForm({ defaultValues });
 
-  const { fetch } = useFetch();
-
-  const editKidProfile = async (formData: FormData, id: number) => {
-    try {
-      await fetch(
-        `users/me/children/${id}/`,
-        {
-          name: formData.name,
-          avatar: formData.avatar,
-        },
-        'PATCH'
-      );
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
+  const queryClient = useQueryClient();
+  const { data: session } = useSession();
+  const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || '';
+  
   const onSubmit: SubmitHandler<FormData> = formData => {
     const modifiedFormData = {
       ...formData,
       avatar: Number(formData.avatar),
     };
-
     closeEditWigwam();
-    editKidProfile(modifiedFormData, id);
+    submitData(modifiedFormData);
   };
 
-  useEffect(() => {
-    resetField('name');
-  }, [resetField]);
+  const { mutate: submitData } = useMutation({
+  
+    mutationFn: async (formData: FormData) => {
+      
+      await axios.patch(`${baseUrl}/users/me/children/${id}/`, 
+      formData, {
+        headers: {
+          Authorization: `Bearer ${session?.user.token.access}`,
+        },
+      });
+    },
+      onSuccess: () => {
+        resetField('name')
+        queryClient.invalidateQueries(["kids"]);
+      },
+    });    
+
 
   return (
     <section>

@@ -6,18 +6,37 @@ import Image from 'next/image';
 import { ChildType } from '@/types';
 import EditWigwam from '../EditWigwam';
 import styles from './KidProfile.module.scss';
+import { useQueryClient, useMutation } from '@tanstack/react-query';
+import axios from 'axios';
+import { useSession } from 'next-auth/react';
+import { number } from 'yup';
 
 type Props = {
-  // handleDelete: (id: number) => void;
   kid: ChildType;
 };
 
 const KidProfile = ({ kid }: Props) => {
+  const queryClient = useQueryClient();
+  const { data: session } = useSession();
+const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || '';
   const [edit, setEdit] = useState(false);
   const handleEdit = () => {
     if (!edit) setEdit(true);
     else setEdit(false);
   };
+
+  const {mutate: handleDelete} = useMutation({
+    mutationFn: async (id) => {
+      await axios.delete(`${baseUrl}/users/me/children/${id}/`, 
+    { headers: {
+        Authorization: `Bearer ${session?.user.token.access}`,
+      },
+    });
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries(['kids'])
+    },
+  })
 
   return (
     <>
@@ -66,9 +85,9 @@ const KidProfile = ({ kid }: Props) => {
           </div>
           <div
             className={styles.button}
-            // onClick={() => {
-            //   handleDelete(kid.id);
-            // }}
+            onClick={() => {
+              handleDelete(kid.id);
+            }}
           >
             <Image src="/images/delete.svg" alt="кнопка видалення" width={36} height={36} />
           </div>
