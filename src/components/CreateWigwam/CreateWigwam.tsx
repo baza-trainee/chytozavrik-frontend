@@ -8,6 +8,9 @@ import AvatarFields from '@/app/(main)/parents/components/FormFields/AvaratsFiel
 import NameInput from '@/app/(main)/parents/components/FormFields/NameInput/NameInput';
 import Buttons from '@/app/(main)/parents/components/FormFields/Buttons/Buttons';
 import styles from './CreateWigwam.module.scss';
+import { useQueryClient, useMutation } from '@tanstack/react-query';
+import axios from 'axios';
+import { useSession } from 'next-auth/react';
 
 type Props = {
   setWigwam: Dispatch<SetStateAction<boolean>>;
@@ -31,35 +34,58 @@ const CreateWigwam = ({ setWigwam }: Props) => {
     formState: { errors },
   } = useForm({ defaultValues });
 
-  const { fetch } = useFetch();
+const queryClient = useQueryClient();
+const { data: session } = useSession();
+const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || '';
 
-  const createKidProfile = async (formData: FormData) => {
-    try {
-      await fetch(
-        'users/me/children/',
-        {
-          name: formData.name,
-          avatar: formData.avatar,
-        },
-        'POST'
-      );
-    } catch (err) {
-      console.log(err);
-    }
+const onSubmit: SubmitHandler<FormData> = formData => {
+  const modifiedFormData = {
+    ...formData,
+    avatar: Number(formData.avatar),
   };
+  setWigwam(false);
+  submitData(modifiedFormData);
+};
+const headers = {
+  'Authorization': `Bearer ${session?.user.token.access}`
+}
+  // const { fetch } = useFetch();
+const { mutate: submitData } = useMutation({
+  
+  mutationFn: async (formData: FormData) => {
+    
+    await axios.post(`${baseUrl}/users/me/children/`, 
+    formData, {
+      headers: {
+        Authorization: `Bearer ${session?.user.token.access}`,
+      },
+    });
+  },
+    onSuccess: () => {
+      resetField('name')
+      queryClient.invalidateQueries(["kids"]);
+    },
+  });    
+  
+  // const createKidProfile = async () => {
+  //   try {
+  //     await fetch(
+  //       'users/me/children/',
+  //       {
+  //         name: formData.name,
+  //         avatar: formData.avatar,
+  //       },
+  //       'POST'
+  //     );
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
-  const onSubmit: SubmitHandler<FormData> = formData => {
-    const modifiedFormData = {
-      ...formData,
-      avatar: Number(formData.avatar),
-    };
-    setWigwam(false);
-    createKidProfile(modifiedFormData);
-  };
-
-  useEffect(() => {
-    resetField('name');
-  }, [resetField]);
+  
+  // useEffect(() => {
+  //   resetField('name');
+  // }, [resetField]);
 
   return (
     <section className={styles.section}>

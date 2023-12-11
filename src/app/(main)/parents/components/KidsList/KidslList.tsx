@@ -59,7 +59,7 @@ const { data: session, status } = useSession();
 const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || '';
 
   const {data: kids} = useQuery({
-    queryKey: ['kids'],
+    queryKey: ["kids"],
     enabled: status === 'authenticated',
     queryFn: async () => {
       const response = await axios(`${baseUrl}/users/me/children/`, {
