@@ -8,11 +8,11 @@ import EditWigwam from '../EditWigwam';
 import styles from './KidProfile.module.scss';
 
 type Props = {
-  handleDelete: (id: number) => void;
+  // handleDelete: (id: number) => void;
   kid: ChildType;
 };
 
-const KidProfile = ({ kid, handleDelete }: Props) => {
+const KidProfile = ({ kid }: Props) => {
   const [edit, setEdit] = useState(false);
   const handleEdit = () => {
     if (!edit) setEdit(true);
@@ -66,9 +66,9 @@ const KidProfile = ({ kid, handleDelete }: Props) => {
           </div>
           <div
             className={styles.button}
-            onClick={() => {
-              handleDelete(kid.id);
-            }}
+            // onClick={() => {
+            //   handleDelete(kid.id);
+            // }}
           >
             <Image src="/images/delete.svg" alt="кнопка видалення" width={36} height={36} />
           </div>

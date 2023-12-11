@@ -7,30 +7,69 @@ import { ChildType } from '@/types';
 import { Container, Typography } from '@/components/common';
 import KidProfile from '../KidProfile';
 import styles from './KidList.module.scss';
+import {useQuery} from '@tanstack/react-query';
+import axios from 'axios';
 
+
+// const KidslList = () => {
+//   const [kids, setKids] = useState([]);
+//   const { status } = useSession();
+//   const { fetch } = useFetch();
+
+//   useEffect(() => {
+//     const getKidProfile = async () => {
+//       const response = await fetch('users/me/children/');
+//       const kids = (await response?.data) as [];
+//       setKids(kids);
+//     };
+//     if (status === 'authenticated') getKidProfile();
+//   }, [status]);
+
+//   const handleDelete = async (id: number) => {
+//     const validKids = kids.filter((kid: ChildType) => kid.id !== id);
+//     setKids(validKids);
+//     try {
+//       await fetch(`users/me/children/${id}/`, 'DELETE');
+//     } catch (err) {
+//       console.log(err);
+//     }
+//   };
+
+//   return (
+//     <div className={styles.section}>
+//       <Container className={styles.container}>
+//         <Typography className={styles.title} component="h2" variant="h2">
+//           Вігвами дітей
+//         </Typography>
+//         {kids.length > 0 ? (
+//           <ul className={styles.list}>
+//             {kids.map((kid: ChildType) => (
+//               <KidProfile key={kid.id} kid={kid} handleDelete={handleDelete} />
+//             ))}
+//           </ul>
+//         ) : (
+//           <p className={styles.text}>У вас поки немає створеного вігваму</p>
+//         )}
+//       </Container>
+//     </div>
+//   );
+// };
 const KidslList = () => {
-  const [kids, setKids] = useState([]);
-  const { status } = useSession();
-  const { fetch } = useFetch();
+const { data: session, status } = useSession();
+const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || '';
 
-  useEffect(() => {
-    const getKidProfile = async () => {
-      const response = await fetch('users/me/children/');
-      const kids = (await response?.data) as [];
-      setKids(kids);
-    };
-    if (status === 'authenticated') getKidProfile();
-  }, [status]);
-
-  const handleDelete = async (id: number) => {
-    const validKids = kids.filter((kid: ChildType) => kid.id !== id);
-    setKids(validKids);
-    try {
-      await fetch(`users/me/children/${id}/`, 'DELETE');
-    } catch (err) {
-      console.log(err);
+  const {data: kids} = useQuery({
+    queryKey: ['kids'],
+    enabled: status === 'authenticated',
+    queryFn: async () => {
+      const response = await axios(`${baseUrl}/users/me/children/`, {
+        headers: {
+          'Authorization': `Bearer ${session?.user.token.access}`
+        }
+      });
+      return response.data.data;
     }
-  };
+  })
 
   return (
     <div className={styles.section}>
@@ -38,10 +77,10 @@ const KidslList = () => {
         <Typography className={styles.title} component="h2" variant="h2">
           Вігвами дітей
         </Typography>
-        {kids.length > 0 ? (
+        {kids ? (
           <ul className={styles.list}>
             {kids.map((kid: ChildType) => (
-              <KidProfile key={kid.id} kid={kid} handleDelete={handleDelete} />
+              <KidProfile key={kid.id} kid={kid}/>
             ))}
           </ul>
         ) : (
@@ -51,5 +90,6 @@ const KidslList = () => {
     </div>
   );
 };
+
 
 export default KidslList;
