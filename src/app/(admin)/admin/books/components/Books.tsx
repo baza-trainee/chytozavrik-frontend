@@ -1,7 +1,7 @@
 'use client';
 
 import React, { Fragment, useState } from 'react';
-import { BookItem, TableHeader } from '@/app/(admin)/components';
+import { BookItem, NotFound, TableHeader } from '@/app/(admin)/components';
 import { useQueryBooks } from '@/hooks/Books/useQueryBooks';
 import { BookAdmin } from '@/types';
 import { Spinner } from 'components/common';
@@ -20,6 +20,14 @@ const Books = ({ searchValue = '' }: { searchValue: string | null }) => {
         {booksLoading && <Spinner className={styles.spinner} />}
         {fetchError && (
           <div className={styles.error}>Упс... Щось пішло не так: {fetchError.message}</div>
+        )}
+        {books && books.count === 0 && (
+          <div>
+            <NotFound
+              text="У вас ще немає доданих книг"
+              image="/images/admin/books-no-results.svg"
+            />
+          </div>
         )}
         <div>
           {books?.results?.map((book: BookAdmin) => (
