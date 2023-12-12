@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import AdminHeader from '@/app/(admin)/components/Header/AdminHeader';
 import TableHeader from '@/app/(admin)/components/TableHeader/TableHeader';

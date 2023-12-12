@@ -15,8 +15,8 @@ interface AdminHeaderProps {
   heading: string;
   buttonText?: string;
   subHeading?: string[];
-  searchWord?: string;
-  // setSearchWord,
+  searchWord?: string | null;
+  setSearchWord?: React.Dispatch<React.SetStateAction<string | null>>;
   buttonFunc?: () => void;
   closeFunc?: () => void;
 }
@@ -29,7 +29,7 @@ const AdminHeader = ({
   buttonText = '',
   searchWord = '',
   subHeading,
-  // setSearchWord,
+  setSearchWord,
   buttonFunc,
   closeFunc,
 }: AdminHeaderProps) => {
@@ -39,7 +39,13 @@ const AdminHeader = ({
     },
   });
   const resetField = () => setValue('search', '');
+  const searchValue = watch('search');
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter' && setSearchWord) {
+      setSearchWord(searchValue);
+    }
+  };
   return (
     <div className={style.header}>
       <div>
@@ -56,9 +62,19 @@ const AdminHeader = ({
             <Input
               name="search"
               control={control}
-              icon={<SearchIcon />}
+              icon={
+                <SearchIcon
+                  style={{ cursor: 'pointer' }}
+                  onClick={() => {
+                    if (setSearchWord) {
+                      setSearchWord(searchValue);
+                    }
+                  }}
+                />
+              }
               resetField={resetField}
               placeholder="Введіть ключове слово для пошуку"
+              handleKeyDown={handleKeyDown}
             />
           </div>
         ) : null}

@@ -1,4 +1,4 @@
-import { InputHTMLAttributes, ReactNode, useMemo } from 'react';
+import React, { InputHTMLAttributes, ReactNode, useMemo } from 'react';
 import { useController, UseControllerProps, FieldValues } from 'react-hook-form';
 import { AlertCircle, XCircle } from 'lucide-react';
 import IconButton from '@/components/common/IconButton';
@@ -9,6 +9,7 @@ export type InputProps<T extends FieldValues> = InputHTMLAttributes<HTMLInputEle
     icon?: ReactNode;
     label?: string;
     resetField?: () => void;
+    handleKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   };
 
 export type InputStatus = 'normal' | 'filled' | 'error';
@@ -20,6 +21,7 @@ const Input = <T extends FieldValues>({
   icon,
   resetField,
   className,
+  handleKeyDown,
   ...props
 }: InputProps<T>) => {
   const {
@@ -62,7 +64,12 @@ const Input = <T extends FieldValues>({
       <label className={styles.label}>
         {label && <span className={styles['label-text']}>{label}</span>}
         <span className={styles['input-group']}>
-          <input className={styles.input} {...field} {...props} />
+          <input
+            className={styles.input}
+            {...field}
+            onKeyDown={handleKeyDown && handleKeyDown}
+            {...props}
+          />
           {renderIcon && <span className={styles.icon}>{renderIcon}</span>}
         </span>
       </label>

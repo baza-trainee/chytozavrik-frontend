@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { AdminHeader, BookItem, TableHeader } from '@/app/(admin)/components';
 import styles from './Recommended.module.scss';
@@ -13,7 +15,6 @@ const Page = () => (
     />
     <div>
       <TableHeader variant="books" colNames={['Назва книги', 'Стан', 'Дата  додавання']} />
-      <BookItem />
     </div>
   </div>
 );

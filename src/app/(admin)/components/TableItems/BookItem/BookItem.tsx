@@ -1,60 +1,81 @@
+'use client';
+
 import React from 'react';
 import Image from 'next/image';
 import { PenLine, Trash2 } from 'lucide-react';
 import { AdminCheckBox } from '@/app/(admin)/components';
+import { BookAdminProps } from '@/types';
+import { formattedDate } from '@/utils/formatDate';
+import Link from 'next/link';
+import { Route } from '@/constants';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useAuthAxiosInstance } from '@/hooks';
+import { Spinner } from 'components/common';
 import styles from './BookItem.module.scss';
 
-const state = ['Рекомедована', 'Вікторина'];
-// const state: string = "Рекомедована"
-// const state: string = "Вікторина"
-const BookItem = () => {
+const BookItem = ({ book }: BookAdminProps) => {
+  const axios = useAuthAxiosInstance();
+  const queryClient = useQueryClient();
+  const { mutate: deleteBook, isPending } = useMutation({
+    mutationFn: async (id: number) => {
+      await axios.delete(`books/${id}/`);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['books'] });
+    },
+  });
+
   let stateToRender;
-  if (Array.isArray(state)) {
+  if (Array.isArray(book.state)) {
     stateToRender = (
       <p className={styles.blue}>
-        {state[0]}/{state[1]}
+        {book.state[0]}/{book.state[1]}
       </p>
     );
   } else {
-    if (state === 'Рекомедована') {
-      stateToRender = <p className={styles.blue}>{state}</p>;
+    if (book.state === 'Рекомедована') {
+      stateToRender = <p className={styles.blue}>{book.state}</p>;
     } else {
-      stateToRender = <p className={styles.green}>{state}</p>;
+      stateToRender = <p className={styles.green}>{book.state}</p>;
     }
   }
 
   return (
     <div className={styles.bookItem}>
       <div className={styles.checkbox}>
-        <AdminCheckBox />
+        <AdminCheckBox onChange={e => console.log(e.target.checked)} />
       </div>
       <div className={styles.info}>
         <div className={styles.title}>
           <div className={styles.image}>
-            <Image
-              src="https://res.cloudinary.com/dxy59ulvk/raw/upload/v1/media/books/book9_tgvqrj.jpg"
-              width={40}
-              height={60}
-              alt="name"
-            />
+            <Image src={book.cover_image} width={40} height={60} alt={book.title} />
           </div>
           <div className={styles.bookInfo}>
-            <h2 className={styles.name}>Івасик Телесик</h2>
-            <p className={styles.author}>Українська народка казка</p>
+            <h2 className={styles.name}>{book.title}</h2>
+            <p className={styles.author}>{book.author}</p>
           </div>
         </div>
         <div className={styles.infoBlock}>
           <div className={styles.state}>{stateToRender}</div>
-          <p className={styles.date}>08.08.2023</p>
+          <p className={styles.date}>{formattedDate(book.updated_at)}</p>
         </div>
       </div>
       <div className={styles.actions}>
-        <div>
-          <PenLine />
-        </div>
-        <div>
-          <Trash2 />
-        </div>
+        {isPending ? (
+          <Spinner />
+        ) : (
+          <>
+            <div>
+              <Link href={`${Route.BOOKS_EDIT}/${book.id}`}>
+                {' '}
+                <PenLine />
+              </Link>
+            </div>
+            <div onClick={() => deleteBook(book.id)}>
+              <Trash2 />
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

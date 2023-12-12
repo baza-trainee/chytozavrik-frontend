@@ -5,3 +5,4 @@ export * from './Quiz';
 export * from './Child';
 export * from './Attempt';
 export * from './AdminNavigation';
+export * from './admin/BooksType';
