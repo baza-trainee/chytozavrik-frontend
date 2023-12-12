@@ -1,17 +1,29 @@
 'use client';
 
 import React, { Fragment, useState } from 'react';
-import { BookItem, NotFound, TableHeader } from '@/app/(admin)/components';
+import { BookItem, NoResults, TableHeader } from '@/app/(admin)/components';
 import { useQueryBooks } from '@/hooks/Books/useQueryBooks';
 import { BookAdmin } from '@/types';
 import { Spinner } from 'components/common';
 import Pagination from 'components/Pagination/Pagination';
-import styles from '../Books.module.scss';
+import styles from '../../admin/books/Books.module.scss';
 
-const Books = ({ searchValue = '' }: { searchValue: string | null }) => {
+const Books = ({
+  searchValue = '',
+  page,
+}: {
+  searchValue: string | null;
+  page: 'books' | 'quizzes' | 'recommended';
+}) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const { books, booksLoading, fetchError } = useQueryBooks({ currentPage, searchValue });
+  const { books, booksLoading, fetchError } = useQueryBooks({ page, currentPage, searchValue });
   const count = books?.count ? Math.ceil(books.count / 7) : 0;
+
+  const noResultsText = {
+    books: 'У вас ще немає доданих книг',
+    quizzes: 'У вас ще немає доданих вікторин',
+    recommended: 'У вас ще немає доданих рекомендованих книжок',
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -23,16 +35,13 @@ const Books = ({ searchValue = '' }: { searchValue: string | null }) => {
         )}
         {books && books.count === 0 && (
           <div>
-            <NotFound
-              text="У вас ще немає доданих книг"
-              image="/images/admin/books-no-results.svg"
-            />
+            <NoResults text={noResultsText[page]} image="/images/admin/books-no-results.svg" />
           </div>
         )}
         <div>
           {books?.results?.map((book: BookAdmin) => (
             <Fragment key={book.id}>
-              <BookItem book={book} />
+              <BookItem book={book} page={page} />
             </Fragment>
           ))}
         </div>

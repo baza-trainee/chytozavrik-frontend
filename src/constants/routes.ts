@@ -14,6 +14,8 @@ export enum Route {
   BOOKS_ADD = '/admin/books/add',
   BOOKS_EDIT = '/admin/books/edit',
   QUIZZES = '/admin/quizzes',
+  QUIZZES_ADD = '/admin/quizzes/add',
+  QUIZZES_EDIT = '/admin/quizzes/edit',
   RECOMMENDED = '/admin/recommended',
   DOCUMENTS = '/admin/documents',
   PARTNERS = '/admin/partners',

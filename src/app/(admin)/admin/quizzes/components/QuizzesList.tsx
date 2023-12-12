@@ -1,11 +1,11 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Route } from '@/constants';
 import { AdminHeader, Books } from '@/app/(admin)/components';
+import { Route } from '@/constants';
 import styles from '@/app/(admin)/admin/books/Books.module.scss';
 
-const BooksList = () => {
+const QuizzesList = () => {
   const [searchValue, setSearchValue] = useState<string | null>(null);
 
   return (
@@ -13,15 +13,15 @@ const BooksList = () => {
       <AdminHeader
         withSearch
         withButton
-        buttonText="Додати книгу"
+        buttonText="Додати вікторину"
         withClose={false}
-        heading="Книги"
+        heading="Вікторини"
         setSearchWord={setSearchValue}
-        href={Route.BOOKS_ADD}
+        href={Route.QUIZZES_ADD}
       />
-      <Books searchValue={searchValue} page="books" />
+      <Books searchValue={searchValue} page="quizzes" />
     </div>
   );
 };
 
-export default BooksList;
+export default QuizzesList;

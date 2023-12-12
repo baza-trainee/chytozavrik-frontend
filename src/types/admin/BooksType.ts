@@ -11,4 +11,5 @@ export interface BookAdmin {
 
 export interface BookAdminProps {
   book: BookAdmin;
+  page: 'books' | 'quizzes' | 'recommended';
 }

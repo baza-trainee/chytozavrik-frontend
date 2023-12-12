@@ -13,5 +13,6 @@ export { default as SideBar } from './SideBar/SideBar';
 export { default as LockIcon } from './SideBar/NavIcons/LockIcon';
 export { default as Neurology } from './SideBar/NavIcons/Neurology';
 export { default as NavBar } from './SideBar/Navigation/NavBar';
-export { default as NotFound } from './NoResults/NoResults';
+export { default as NoResults } from './NoResults/NoResults';
 export { default as AdminSearch } from './Search/AdminSearch';
+export { default as Books } from './BooksComponent/Books';

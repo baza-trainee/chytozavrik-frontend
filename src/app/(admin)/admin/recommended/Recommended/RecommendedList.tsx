@@ -1,27 +1,24 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Route } from '@/constants';
 import { AdminHeader, Books } from '@/app/(admin)/components';
-import styles from '@/app/(admin)/admin/books/Books.module.scss';
+import styles from '../../books/Books.module.scss';
 
-const BooksList = () => {
+const RecommendedList = () => {
   const [searchValue, setSearchValue] = useState<string | null>(null);
 
   return (
     <div className={styles.books}>
       <AdminHeader
         withSearch
-        withButton
-        buttonText="Додати книгу"
+        withButton={false}
         withClose={false}
-        heading="Книги"
+        heading="Рекомендовані книжки"
         setSearchWord={setSearchValue}
-        href={Route.BOOKS_ADD}
       />
-      <Books searchValue={searchValue} page="books" />
+      <Books searchValue={searchValue} page="recommended" />
     </div>
   );
 };
 
-export default BooksList;
+export default RecommendedList;

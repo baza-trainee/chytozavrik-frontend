@@ -15,7 +15,7 @@ interface AdminHeaderProps {
   buttonText?: string;
   subHeading?: string[];
   setSearchWord?: React.Dispatch<React.SetStateAction<string | null>>;
-  buttonFunc?: () => void;
+  href?: string;
   closeFunc?: () => void;
 }
 
@@ -27,7 +27,7 @@ const AdminHeader = ({
   buttonText = '',
   subHeading,
   setSearchWord,
-  buttonFunc,
+  href,
   closeFunc,
 }: AdminHeaderProps) => {
   const { control, setValue, watch } = useForm({
@@ -82,7 +82,13 @@ const AdminHeader = ({
           </div>
         ) : null}
         {withButton ? (
-          <Button variant="filled" color="secondary" startIcon={<AddIcon />} onClick={buttonFunc}>
+          <Button
+            variant="filled"
+            color="secondary"
+            startIcon={<AddIcon />}
+            href={href || ''}
+            component="link"
+          >
             {buttonText}
           </Button>
         ) : null}

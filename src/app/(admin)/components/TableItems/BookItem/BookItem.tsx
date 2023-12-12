@@ -8,22 +8,12 @@ import { BookAdminProps } from '@/types';
 import { formattedDate } from '@/utils/formatDate';
 import Link from 'next/link';
 import { Route } from '@/constants';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { useAuthAxiosInstance } from '@/hooks';
 import { Spinner } from 'components/common';
+import { useDeleteBooks } from '@/hooks/Books/useDeleteBooks';
 import styles from './BookItem.module.scss';
 
-const BookItem = ({ book }: BookAdminProps) => {
-  const axios = useAuthAxiosInstance();
-  const queryClient = useQueryClient();
-  const { mutate: deleteBook, isPending } = useMutation({
-    mutationFn: async (id: number) => {
-      await axios.delete(`books/${id}/`);
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['books'] });
-    },
-  });
+const BookItem = ({ book, page }: BookAdminProps) => {
+  const { deleteBook, isPending } = useDeleteBooks();
 
   let stateToRender;
   if (Array.isArray(book.state)) {
@@ -39,6 +29,18 @@ const BookItem = ({ book }: BookAdminProps) => {
       stateToRender = <p className={styles.green}>{book.state}</p>;
     }
   }
+
+  const state = {
+    books: stateToRender,
+    quizzes: <p className={styles.green}>Вікторина</p>,
+    recommended: <p className={styles.blue}>Рекомедована</p>,
+  };
+
+  const redirectRoute = {
+    books: Route.BOOKS_EDIT,
+    recommended: Route.BOOKS_EDIT,
+    quizzes: Route.QUIZZES_EDIT,
+  };
 
   return (
     <div className={styles.bookItem}>
@@ -56,7 +58,7 @@ const BookItem = ({ book }: BookAdminProps) => {
           </div>
         </div>
         <div className={styles.infoBlock}>
-          <div className={styles.state}>{stateToRender}</div>
+          <div className={styles.state}>{state[page]}</div>
           <p className={styles.date}>{formattedDate(book.updated_at)}</p>
         </div>
       </div>
@@ -66,8 +68,7 @@ const BookItem = ({ book }: BookAdminProps) => {
         ) : (
           <>
             <div>
-              <Link href={`${Route.BOOKS_EDIT}/${book.id}`}>
-                {' '}
+              <Link href={`${redirectRoute[page]}/${book.id}`}>
                 <PenLine />
               </Link>
             </div>
