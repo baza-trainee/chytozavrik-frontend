@@ -3,9 +3,8 @@
 import React from 'react';
 import { Button } from 'components/common';
 import { useForm } from 'react-hook-form';
-import { Input } from 'components/common/form';
 import { SearchIcon } from 'lucide-react';
-import { AddIcon, CloseIcon } from '@/app/(admin)/components';
+import { AddIcon, AdminSearch, CloseIcon } from '@/app/(admin)/components';
 import style from './Header.module.scss';
 
 interface AdminHeaderProps {
@@ -15,8 +14,7 @@ interface AdminHeaderProps {
   heading: string;
   buttonText?: string;
   subHeading?: string[];
-  searchWord?: string;
-  // setSearchWord,
+  setSearchWord?: React.Dispatch<React.SetStateAction<string | null>>;
   buttonFunc?: () => void;
   closeFunc?: () => void;
 }
@@ -27,9 +25,8 @@ const AdminHeader = ({
   withClose = false,
   heading = '',
   buttonText = '',
-  searchWord = '',
   subHeading,
-  // setSearchWord,
+  setSearchWord,
   buttonFunc,
   closeFunc,
 }: AdminHeaderProps) => {
@@ -38,7 +35,19 @@ const AdminHeader = ({
       search: '',
     },
   });
-  const resetField = () => setValue('search', '');
+  const resetField = () => {
+    setValue('search', '');
+    if (setSearchWord) {
+      setSearchWord('');
+    }
+  };
+  const searchValue = watch('search');
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter' && setSearchWord) {
+      setSearchWord(searchValue);
+    }
+  };
 
   return (
     <div className={style.header}>
@@ -53,12 +62,22 @@ const AdminHeader = ({
       <div className={style.header__content}>
         {withSearch ? (
           <div className={style.search}>
-            <Input
+            <AdminSearch
               name="search"
               control={control}
-              icon={<SearchIcon />}
+              icon={
+                <SearchIcon
+                  style={{ cursor: 'pointer' }}
+                  onClick={() => {
+                    if (setSearchWord) {
+                      setSearchWord(searchValue);
+                    }
+                  }}
+                />
+              }
               resetField={resetField}
               placeholder="Введіть ключове слово для пошуку"
+              handleKeyDown={handleKeyDown}
             />
           </div>
         ) : null}

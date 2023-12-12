@@ -1,21 +1,21 @@
+'use client';
+
 import React, { InputHTMLAttributes, ReactNode, useMemo } from 'react';
-import { useController, UseControllerProps, FieldValues } from 'react-hook-form';
-import { AlertCircle, XCircle } from 'lucide-react';
-import IconButton from '@/components/common/IconButton';
-import styles from './Input.module.scss';
+import { FieldValues, useController, UseControllerProps } from 'react-hook-form';
+import IconButton from 'components/common/IconButton/IconButton';
+import { XCircle } from 'lucide-react';
+import styles from './AdminSearch.module.scss';
 
 export type InputProps<T extends FieldValues> = InputHTMLAttributes<HTMLInputElement> &
   UseControllerProps<T> & {
     icon?: ReactNode;
-    label?: string;
     resetField?: () => void;
     handleKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   };
 
 export type InputStatus = 'normal' | 'filled' | 'error';
 
-const Input = <T extends FieldValues>({
-  label,
+const AdminSearch = <T extends FieldValues>({
   name,
   control,
   icon,
@@ -24,46 +24,27 @@ const Input = <T extends FieldValues>({
   handleKeyDown,
   ...props
 }: InputProps<T>) => {
-  const {
-    field,
-    fieldState: { error },
-  } = useController<T>({ name, control });
+  const { field } = useController<T>({ name, control });
 
   const status = useMemo<InputStatus>(() => {
-    if (error) {
-      return 'error';
-    }
     if (field.value) {
       return 'filled';
     }
     return 'normal';
-  }, [error, field.value]);
+  }, [field.value]);
 
   const renderIcon = useMemo(() => {
-    if (status === 'error') {
-      return field.value?.length > 0 ? (
-        <IconButton onClick={resetField} icon={<XCircle />} />
-      ) : (
-        <AlertCircle />
-      );
+    if (field.value?.length > 0) {
+      return <IconButton onClick={resetField} icon={<XCircle width={24} />} />;
     }
-
-    if (icon) {
-      return icon;
-    }
-
-    if (field.value.length > 0 && props.type === 'email') {
-      return <IconButton onClick={resetField} icon={<XCircle />} />;
-    }
-
     return null;
   }, [field.value?.length, icon, resetField, status, props.type]);
 
   return (
     <div className={`${styles.group} ${className || ''}`} data-status={status}>
       <label className={styles.label}>
-        {label && <span className={styles['label-text']}>{label}</span>}
         <span className={styles['input-group']}>
+          {icon && <span className={styles.icon}>{icon}</span>}
           <input
             className={styles.input}
             {...field}
@@ -73,9 +54,8 @@ const Input = <T extends FieldValues>({
           {renderIcon && <span className={styles.icon}>{renderIcon}</span>}
         </span>
       </label>
-      {error && <span className={styles.message}>{error.message}</span>}
     </div>
   );
 };
 
-export default Input;
+export default AdminSearch;

@@ -12,7 +12,7 @@ import {
   sendPasswordResetEmailType,
   resetPasswordType,
 } from '@/types';
-import { IS_REVERSED, PAGE_SIZE } from '@/constants';
+import { fetch as axiosServerFetch } from '@/services/axios';
 
 const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || '';
 
@@ -195,6 +195,10 @@ export const newPasswordService = async (
 
 export const getDocumentsService = async () => {
   const result = await privateFetch(`${baseUrl}/documents/`);
-
   return result.json();
+};
+
+export const getBooksService = async () => {
+  const result = await axiosServerFetch(`${baseUrl}/books?page=1&page_size=7`);
+  return result.data;
 };
