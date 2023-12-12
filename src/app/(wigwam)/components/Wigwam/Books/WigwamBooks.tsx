@@ -1,21 +1,43 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { MoveRight } from 'lucide-react';
 import { BookType } from '@/types/WigwamBooks';
 import { Button, Typography } from 'components/common';
 import SearchInput from '@/app/(wigwam)/components/Wigwam/Books/SearchInput/SearchInput';
 import BooksList from '@/app/(wigwam)/components/Wigwam/Books/BooksList/BooksList';
+import { LastquizType } from '@/types/WigwamQuiz';
+import wigwamTextData from '../wigwamTextData.json';
 import styles from './WigwamBooks.module.scss';
 
-const WigwamBooks = ({ booksData, next }: { booksData: BookType[]; next: string | null }) => {
+const WigwamBooks = ({
+  booksData,
+  next,
+  wigwamQuizData,
+}: {
+  booksData: BookType[];
+  next: string | null;
+  wigwamQuizData?: LastquizType;
+}) => {
   const [selectedBooks, setSelectedBooks] = useState<{ [key: string]: boolean }>({});
   const [searchValue, setSearchValue] = useState('');
+
+  const router = useRouter();
+
+  const handleButtonClick = () => {
+    if (wigwamQuizData && wigwamQuizData.id) {
+      const childId = wigwamQuizData.id;
+      router.push(`/wigwam/${childId}/quizzes`);
+    } else {
+      console.error('Invalid wigwamQuizData or childId');
+    }
+  };
 
   return (
     <div className={styles.books_container}>
       <Typography component="h2" variant="h2" className={styles.title}>
-        Обери книгу для вікторини
+        {wigwamTextData[7]}
       </Typography>
       <SearchInput setSearchValue={setSearchValue} />
       <BooksList
@@ -24,9 +46,15 @@ const WigwamBooks = ({ booksData, next }: { booksData: BookType[]; next: string 
         searchValue={searchValue}
         setSelectedBooks={setSelectedBooks}
         selectedBooks={selectedBooks}
+        wigwamQuizData={wigwamQuizData}
       />
-      <Button className={styles.button} endIcon={<MoveRight />} variant="outline">
-        Подивитися всі книжки
+      <Button
+        className={styles.button}
+        endIcon={<MoveRight />}
+        variant="outline"
+        onClick={handleButtonClick}
+      >
+        {wigwamTextData[8]}
       </Button>
     </div>
   );

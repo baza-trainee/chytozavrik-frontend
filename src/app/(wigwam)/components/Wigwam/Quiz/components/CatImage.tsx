@@ -4,7 +4,10 @@ interface CatImageProps {
   width: number;
   height: number;
   viewBox: string;
+  className?: string;
+  alt: string;
 }
+
 const CatImage: FC<CatImageProps> = ({ width, height, ...props }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={width} height={height} fill="none" {...props}>
     <path

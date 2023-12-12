@@ -221,7 +221,8 @@
   }
 }
 
-.book_items {
+.book_items,
+.book_items_mobile {
   display: flex;
   justify-content: space-between;
   width: 278px;
@@ -241,6 +242,10 @@
   @include breakpoint(desktop) {
     width: 364px;
   }
+}
+
+.book_items_mobile {
+  cursor: pointer;
 }
 
 .book_about {
@@ -268,6 +273,14 @@
   width: 20px;
   height: 20px;
   color: $primary;
+
+  &:hover {
+    color: getColor(blue, 50);
+  }
+
+  &:active {
+    color: getColor(blue, 30);
+  }
 }
 
 .book_items_icon_wraper {
