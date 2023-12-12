@@ -6,13 +6,7 @@ import styles from './Recommended.module.scss';
 
 const Page = () => (
   <div className={styles.recommended}>
-    <AdminHeader
-      withSearch
-      withButton={false}
-      withClose={false}
-      heading="Рекомендовані книжки"
-      searchWord="value"
-    />
+    <AdminHeader withSearch withButton={false} withClose={false} heading="Рекомендовані книжки" />
     <div>
       <TableHeader variant="books" colNames={['Назва книги', 'Стан', 'Дата  додавання']} />
     </div>

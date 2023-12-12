@@ -10,7 +10,6 @@ const Quizzes = () => (
       buttonText="Додати вікторину"
       withClose={false}
       heading="Вікторини"
-      searchWord="value"
     />
     <div>
       <TableHeader variant="books" colNames={['Назва книги', 'Стан', 'Дата  додавання']} />
