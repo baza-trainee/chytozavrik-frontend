@@ -28,4 +28,9 @@ export const validation = {
     .typeError('Сума донату повинна бути більша за 0.')
     .positive('Сума донату повинна бути більша за 0.')
     .required(),
+  bookInput: yup
+    .string()
+    .min(2, 'Ьінімальна кількість символів 2')
+    .required('Будь ласка, заповніть поле'),
+  recommended: yup.boolean(),
 };
