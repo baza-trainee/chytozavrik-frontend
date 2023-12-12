@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { PenLine, Trash2 } from 'lucide-react';
 import { AdminCheckBox } from '@/app/(admin)/components';
@@ -10,10 +10,12 @@ import Link from 'next/link';
 import { Route } from '@/constants';
 import { Spinner } from 'components/common';
 import { useDeleteBooks } from '@/hooks/Books/useDeleteBooks';
+import Modal from 'components/common/ModalActions/Modal';
 import styles from './BookItem.module.scss';
 
 const BookItem = ({ book, page }: BookAdminProps) => {
   const { deleteBook, isPending } = useDeleteBooks();
+  const [isOpen, setIsOpen] = useState(false);
 
   let stateToRender;
   if (Array.isArray(book.state)) {
@@ -23,7 +25,7 @@ const BookItem = ({ book, page }: BookAdminProps) => {
       </p>
     );
   } else {
-    if (book.state === 'Рекомедована') {
+    if (book.state === 'Рекомендована') {
       stateToRender = <p className={styles.blue}>{book.state}</p>;
     } else {
       stateToRender = <p className={styles.green}>{book.state}</p>;
@@ -72,12 +74,22 @@ const BookItem = ({ book, page }: BookAdminProps) => {
                 <PenLine />
               </Link>
             </div>
-            <div onClick={() => deleteBook(book.id)}>
+            <div onClick={() => setIsOpen(true)}>
               <Trash2 />
             </div>
           </>
         )}
       </div>
+      {isOpen && (
+        <Modal
+          type="question"
+          message="Ви точно хочете видалити книгу?"
+          title={`Видалити “${book.title}”`}
+          active={isOpen}
+          setActive={() => setIsOpen(false)}
+          successFnc={() => deleteBook(book.id)}
+        />
+      )}
     </div>
   );
 };

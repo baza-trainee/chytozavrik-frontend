@@ -1,5 +1,6 @@
 import React from 'react';
+import AddBook from './component/AddBook';
 
-const AddPage = () => <div>bvbvbvbvb</div>;
+const AddPage = () => <AddBook />;
 
 export default AddPage;
