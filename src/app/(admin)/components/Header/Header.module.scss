@@ -19,6 +19,7 @@
 
   &__subheading {
     color: $ref-neutral-neutral-20;
+    margin-top: 8px;
     font-family: var(--raleway-font);
     font-size: 12px;
     font-style: normal;
@@ -36,14 +37,6 @@
     & .search {
       width: 411px;
       height: 56px;
-
-      & span:first-child {
-        flex-direction: row-reverse;
-        background-color: #f6faff;
-        border: 2px solid #7791fa;
-        font-size: 16px;
-        height: 56px;
-      }
 
       & input {
         line-height: 130%;

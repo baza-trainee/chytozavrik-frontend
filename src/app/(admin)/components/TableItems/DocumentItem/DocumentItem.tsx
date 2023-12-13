@@ -112,10 +112,10 @@ const DocumentItem = ({ id, name, updated_at: updated }: Document) => {
           type={isDiscard ? 'question' : 'success'}
           message={
             isDiscard
-              ? 'Ви точно хочете залишити сторінку? Процес редагування буде втрачено'
+              ? 'Ви точно хочете скасувати зміни? Вони не будуть збережені'
               : 'Ваші зміни успішно збережено!'
           }
-          title={isDiscard ? 'Залишити сторінку ' : 'Збережено!'}
+          title={isDiscard ? 'Повернутись' : 'Збережено!'}
           active={isDiscard || isSuccess}
           setActive={() => {
             setIsSuccess(false);

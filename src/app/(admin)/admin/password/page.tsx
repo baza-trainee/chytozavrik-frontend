@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { AdminHeader } from '@/app/(admin)/components';
 import styles from './Password.module.scss';
