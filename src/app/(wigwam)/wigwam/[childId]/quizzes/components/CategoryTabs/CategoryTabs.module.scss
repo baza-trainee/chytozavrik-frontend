@@ -33,6 +33,11 @@
     }
   }
 
+  .tab:not(.selected):hover {
+    border-color: #fff07d;
+    transition: border-color linear 0.4s;
+  }
+
   .selected {
     border-bottom: solid 6px $secondary;
     transition: linear 1s all;

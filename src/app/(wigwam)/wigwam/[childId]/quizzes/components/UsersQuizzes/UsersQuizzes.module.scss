@@ -15,3 +15,9 @@
     width: 1280px;
   }
 }
+
+.quizzesContainer:last-child {
+  @include breakpoint(mobile) {
+    margin-bottom: calc(16px + 70px);
+  }
+}

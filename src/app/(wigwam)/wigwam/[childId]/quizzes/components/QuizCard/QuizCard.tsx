@@ -1,5 +1,5 @@
 import React from 'react';
-import { UsersQuiz } from '@/types';
+import { UsersQuiz, QuizCategory } from '@/types';
 import Image from 'next/image';
 import { Route } from '@/constants';
 import { Typography, Button } from '@/components/common';
@@ -11,9 +11,10 @@ import styles from './QuizCard.module.scss';
 interface QuizCardProps {
   quiz: UsersQuiz;
   childId: string;
+  category: QuizCategory;
 }
 
-const QuizCard: React.FC<QuizCardProps> = ({ quiz, childId }) => {
+const QuizCard: React.FC<QuizCardProps> = ({ quiz, childId, category }) => {
   const firstChar = quiz.current_score ? quiz.current_score.charAt(0) : '';
   const firstCharInt = parseInt(firstChar, 10);
 
@@ -33,6 +34,14 @@ const QuizCard: React.FC<QuizCardProps> = ({ quiz, childId }) => {
   if (firstCharInt > 0 && firstCharInt < 5) icon = BrainYellow;
   else if (firstCharInt === 5) icon = BrainGreen;
   else icon = BrainIcon;
+  let buttonTitle = 'Пройти вікторину';
+  if (category === '') {
+    buttonTitle = 'Пройти вікторину';
+  } else if (category === 'is_started=true') {
+    buttonTitle = 'Продовжити вікторину';
+  } else {
+    buttonTitle = 'Пройти ще раз';
+  }
 
   return (
     <div className={styles.quizCard}>
@@ -65,7 +74,7 @@ const QuizCard: React.FC<QuizCardProps> = ({ quiz, childId }) => {
           size="small"
           variant="outline"
         >
-          Пройти вікторину
+          {buttonTitle}
         </Button>
       </div>
     </div>
