@@ -9,7 +9,7 @@ import styles from './KidProfile.module.scss';
 import { useQueryClient, useMutation } from '@tanstack/react-query';
 import axios from 'axios';
 import { useSession } from 'next-auth/react';
-import { number } from 'yup';
+import Modal from 'components/common/ModalActions/Modal';
 
 type Props = {
   kid: ChildType;
@@ -18,25 +18,29 @@ type Props = {
 const KidProfile = ({ kid }: Props) => {
   const queryClient = useQueryClient();
   const { data: session } = useSession();
-const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || '';
+  const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || '';
   const [edit, setEdit] = useState(false);
+  //const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [isDiscard, setIsDiscard] = useState(false);
+
   const handleEdit = () => {
     if (!edit) setEdit(true);
     else setEdit(false);
   };
 
-  const {mutate: handleDelete} = useMutation({
-    mutationFn: async (id) => {
-      await axios.delete(`${baseUrl}/users/me/children/${id}/`, 
-    { headers: {
-        Authorization: `Bearer ${session?.user.token.access}`,
-      },
-    });
+  const { mutate: handleDelete } = useMutation({
+    mutationFn: async id => {
+      await axios.delete(`${baseUrl}/users/me/children/${id}/`, {
+        headers: {
+          Authorization: `Bearer ${session?.user.token.access}`,
+        },
+      });
     },
     onSuccess: () => {
-      queryClient.invalidateQueries(['kids'])
+      queryClient.invalidateQueries({queryKey: ['kids']});
     },
-  })
+  });
 
   return (
     <>
@@ -85,15 +89,36 @@ const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || '';
           </div>
           <div
             className={styles.button}
-            onClick={() => {
-              handleDelete(kid.id);
-            }}
+            // onClick={() => {
+            //   handleDelete(kid.id);
+            // }}
+            onClick={()=> setIsDiscard(true)}
           >
             <Image src="/images/delete.svg" alt="кнопка видалення" width={36} height={36} />
           </div>
         </div>
       </li>
       {edit && <EditWigwam closeEditWigwam={handleEdit} id={kid.id} />}
+    {(isSuccess || isDiscard) && (
+      <Modal 
+      type={isDiscard ? 'question' : 'success'}
+      message={
+        isDiscard
+        ? 'Ви дійсно хочете видалити вігвам дитини?'
+        : 'Вігвам дитини видалено'
+      } 
+      title={isDiscard ? 'Видалити вігвам' : ''}
+      active={() => {
+        setIsSuccess(false);
+        setIsDiscard(false);
+      }}
+      successFnc={()=> {
+        handleDelete(kid.id);
+        
+        
+      }}
+      />
+    )}
     </>
   );
 };
