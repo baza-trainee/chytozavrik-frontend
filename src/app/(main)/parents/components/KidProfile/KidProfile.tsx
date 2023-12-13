@@ -39,6 +39,7 @@ const KidProfile = ({ kid }: Props) => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({queryKey: ['kids']});
+      setIsSuccess(true);
     },
   });
 
@@ -108,14 +109,17 @@ const KidProfile = ({ kid }: Props) => {
         : 'Вігвам дитини видалено'
       } 
       title={isDiscard ? 'Видалити вігвам' : ''}
-      active={() => {
-        setIsSuccess(false);
-        setIsDiscard(false);
-      }}
+      active={isDiscard || isSuccess}
+        
+        setActive={() => {
+          setIsSuccess(false);
+          setIsDiscard(false);
+          
+        }}
       successFnc={()=> {
-        handleDelete(kid.id);
-        
-        
+      handleDelete(kid.id);
+      setIsSuccess(true);
+      setIsDiscard(false);
       }}
       />
     )}
