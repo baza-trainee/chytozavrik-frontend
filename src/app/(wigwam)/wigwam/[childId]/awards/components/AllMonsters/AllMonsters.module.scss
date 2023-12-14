@@ -3,7 +3,7 @@
 
 .monsters {
   background: $white;
-  height: calc(100vh - 134px);
+  min-height: calc(100vh - 134px);
   position: relative;
   overflow: hidden;
   padding-top: 12vh;
