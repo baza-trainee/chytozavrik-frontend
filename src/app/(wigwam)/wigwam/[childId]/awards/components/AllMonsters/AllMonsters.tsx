@@ -12,8 +12,10 @@ const AllMonsters = ({
 }) => (
   <section className={styles.monsters}>
     <SliderMonsters results={results} onMonsterClick={onMonsterClick} />
-    <div className={styles.clouds} />
-    <div className={styles.wigwam} />
+    <div className={styles.bgWrapper}>
+      <div className={styles.clouds} />
+      <div className={styles.wigwam} />
+    </div>
   </section>
 );
 

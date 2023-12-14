@@ -3,56 +3,70 @@
 
 .monsters {
   background: $white;
-  height: calc(100vh - 138px);
+  height: calc(100vh - 136px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   padding-top: 12vh;
   position: relative;
 
-  .clouds {
-    background-image: url('/images/monsters/clouds-dark.svg'),
+  .bgWrapper {
+    position: relative;
+    height: 32.5vh;
+
+
+    .clouds {
+      background-image: url('/images/monsters/clouds-dark.svg'),
       url('/images/monsters/clouds-light.svg');
-    background-repeat: repeat-x, repeat-x;
-    background-size:
-      360px 72px,
+      background-repeat: repeat-x, repeat-x;
+      background-size: 360px 72px,
       360px 75px;
-    background-position: bottom, top;
-    height: 75px;
-    width: 100vw;
-    position: absolute;
-    bottom: -1px;
+      background-position: bottom, top;
+      height: 75px;
+      width: 100vw;
+      position: absolute;
+      bottom: -1px;
+    }
+
+    .wigwam {
+      background-image: url('/images/monsters/wigwam.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center bottom;
+      position: absolute;
+      width: 90vw;
+      height: 35vh;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 8px;
+    }
   }
 
-  .wigwam {
-    background-image: url('/images/monsters/wigwam.svg');
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center bottom;
-    position: absolute;
-    width: 90vw;
-    height: 35vh;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 8px;
-  }
 
   @include breakpoint(tablet) {
     padding-top: 125px;
     height: calc(100vh - 70px);
 
-    .clouds {
-      background-image: url('/images/monsters/clouds-dark-768.svg'),
-        url('/images/monsters/clouds-light.svg');
-      background-size:
-        auto 137px,
-        768px 160px;
-      height: 160px;
-      bottom: 0;
-    }
 
-    .wigwam {
-      width: 64vw;
-      height: 40vh;
-      bottom: 3.5vh;
-      background-size: contain;
+    .bgWrapper {
+      height: 39.61vh;
+      margin-bottom: 0;
+
+      .clouds {
+        background-image: url('/images/monsters/clouds-dark-768.svg'),
+        url('/images/monsters/clouds-light.svg');
+        background-size: auto 137px,
+        768px 160px;
+        height: 160px;
+        bottom: 0;
+      }
+
+      .wigwam {
+        width: 64vw;
+        height: 40vh;
+        bottom: 3.5vh;
+        background-size: contain;
+      }
     }
   }
 
@@ -60,19 +74,23 @@
     min-height: 500px;
     padding-top: 40px;
 
-    .clouds {
-      background-size:
-        auto 183px,
-        1024px 213px;
-      height: 213px;
-    }
+    .bgWrapper {
+      height: 33.5vh;
 
-    .wigwam {
-      background-size: contain;
-      width: 47.5vw;
-      height: 50vh;
-      bottom: 3.5vh;
+      .clouds {
+        background-size: auto 183px,
+        1024px 213px;
+        height: 213px;
+      }
+
+      .wigwam {
+        background-size: contain;
+        width: 47.5vw;
+        height: 50vh;
+        bottom: 3.5vh;
+      }
     }
+  ;
   }
 
   @include breakpoint(desktop) {
@@ -81,10 +99,9 @@
 
     .clouds {
       background-image: url('/images/monsters/clouds-dark-1440.svg'),
-        url('/images/monsters/clouds-light-1440.svg');
-      background-size:
-        auto 285px,
-        1440px 301px;
+      url('/images/monsters/clouds-light-1440.svg');
+      background-size: auto 285px,
+      1440px 301px;
       height: 301px;
     }
 
