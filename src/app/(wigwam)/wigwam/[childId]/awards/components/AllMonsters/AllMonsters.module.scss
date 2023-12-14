@@ -9,6 +9,7 @@
   justify-content: space-between;
   padding-top: 12vh;
   position: relative;
+  overflow-x: hidden;
 
   .bgWrapper {
     position: relative;
@@ -97,19 +98,22 @@
     padding-top: 7vh;
     min-height: 850px;
 
-    .clouds {
-      background-image: url('/images/monsters/clouds-dark-1440.svg'),
-      url('/images/monsters/clouds-light-1440.svg');
-      background-size: auto 285px,
-      1440px 301px;
-      height: 301px;
-    }
+    .bgWrapper{
 
-    .wigwam {
-      background-image: url('/images/monsters/wigwam-1440.svg');
-      background-size: 655px 460px;
-      width: 655px;
-      height: 460px;
+      .clouds {
+        background-image: url('/images/monsters/clouds-dark-1440.svg'),
+        url('/images/monsters/clouds-light-1440.svg');
+        background-size: auto 285px,
+        1440px 301px;
+        height: 301px;
+      }
+
+      .wigwam {
+        background-image: url('/images/monsters/wigwam-1440.svg');
+        background-size: 655px 460px;
+        width: 655px;
+        height: 460px;
+      }
     }
   }
 }

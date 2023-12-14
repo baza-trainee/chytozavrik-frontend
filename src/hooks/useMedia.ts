@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 
 export const useMedia = () => {
   const isDesktop = useMediaQuery({
-    query: '(min-width: 1440px) and (max-width: 2559px)',
+    query: '(min-width: 1440px)'
   });
   const isLaptop = useMediaQuery({
     query: '(min-width: 1024px) and (max-width: 1439px)',
