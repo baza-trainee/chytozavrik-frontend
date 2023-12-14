@@ -82,7 +82,11 @@ const Input = <T extends FieldValues>({
             {...props}
           />
           {renderIcon && <span className={styles.icon}>{renderIcon}</span>}
-          {renderAdditionalIcon && <span className={styles.icon}>{renderAdditionalIcon}</span>}
+          {renderAdditionalIcon && (
+            <span className={`${styles.icon} ${styles.additionalIcon}`}>
+              {renderAdditionalIcon}
+            </span>
+          )}
         </span>
       </label>
       {error && <span className={styles.message}>{error.message}</span>}

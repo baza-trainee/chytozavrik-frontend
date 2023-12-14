@@ -19,7 +19,7 @@ const NavbarMobFooter: NextPage<Props> = ({ childId }) => {
   const currentRoute = usePathname();
 
   return (
-    <footer className={styles.section}>
+    <footer className={styles.footer}>
       <Container>
         <div className={styles.wrapper}>
           <Typography component="p" variant="navbar">
