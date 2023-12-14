@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { FieldValues } from 'react-hook-form';
 import { Eye, EyeOff } from 'lucide-react';
 import IconButton from '@/components/common/IconButton';
-import Input, { InputProps } from '../Input';
+import Input, { InputProps } from '../Input/Input';
 
 const PasswordInput = <T extends FieldValues>(props: InputProps<T>) => {
   const [isShowPassword, setIsShowPassword] = useState(false);

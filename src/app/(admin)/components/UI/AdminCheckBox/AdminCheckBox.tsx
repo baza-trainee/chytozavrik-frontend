@@ -7,30 +7,22 @@ import { Check } from 'lucide-react';
 interface AdminCheckBoxProps {
   color?: 'primary' | 'secondary';
   className?: string;
-  checked?: boolean;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  id: number;
 }
 
-const AdminCheckBox = ({
-  color = 'primary',
-  className,
-  checked = false,
-  onChange,
-}: AdminCheckBoxProps) => (
-  <div className={classNames(className)}>
-    <label className={styles.label} htmlFor="checkbox">
-      <span className={classNames(styles['input-group'], styles[`input-group--${color}`])}>
-        <Check className={styles['input-checked-icon']} strokeWidth={4} />
-        <input
-          id="checkbox"
-          className={styles.input}
-          type="checkbox"
-          checked={checked}
-          onChange={onChange}
-        />
-      </span>
-    </label>
-  </div>
-);
+const AdminCheckBox = ({ color = 'primary', className, onChange, id }: AdminCheckBoxProps) => {
+  const inputId = `checkbox-${id}`;
+  return (
+    <div className={classNames(className)}>
+      <label className={styles.label} htmlFor={inputId}>
+        <span className={classNames(styles['input-group'], styles[`input-group--${color}`])}>
+          <Check className={styles['input-checked-icon']} strokeWidth={4} />
+          <input id={inputId} className={styles.input} type="checkbox" onChange={onChange} />
+        </span>
+      </label>
+    </div>
+  );
+};
 
 export default AdminCheckBox;

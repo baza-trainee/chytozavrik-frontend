@@ -6,6 +6,7 @@ import { useQueryBooks } from '@/hooks/Books/useQueryBooks';
 import { BookAdmin } from '@/types';
 import { Spinner } from 'components/common';
 import Pagination from 'components/Pagination/Pagination';
+import { useDeleteChosenBooks } from '@/hooks/Books/useDeleteChosenBooks';
 import styles from '../../admin/books/Books.module.scss';
 
 const Books = ({
@@ -16,7 +17,10 @@ const Books = ({
   page: 'books' | 'quizzes' | 'recommended';
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
+  const [selected, setSelected] = useState<number[]>([]);
   const { books, booksLoading, fetchError } = useQueryBooks({ page, currentPage, searchValue });
+  const { handleDeleteBooks, deletingBooks } = useDeleteChosenBooks();
+
   const count = books?.count ? Math.ceil(books.count / 7) : 0;
 
   const noResultsText = {
@@ -25,10 +29,22 @@ const Books = ({
     recommended: 'У вас ще немає доданих рекомендованих книжок',
   };
 
+  const handleCheckboxChange = (checked: boolean, bookId: number) => {
+    if (checked) {
+      setSelected(prev => [...prev, bookId]);
+    } else {
+      setSelected(prev => prev.filter(id => id !== bookId));
+    }
+  };
+
   return (
     <div className={styles.wrapper}>
       <div>
-        <TableHeader variant="books" colNames={['Назва книги', 'Стан', 'Дата  додавання']} />
+        <TableHeader
+          handleDelete={() => handleDeleteBooks(selected)}
+          variant="books"
+          colNames={['Назва книги', 'Стан', 'Дата  додавання']}
+        />
         {booksLoading && <Spinner className={styles.spinner} />}
         {fetchError && (
           <div className={styles.error}>Упс... Щось пішло не так: {fetchError.message}</div>
@@ -41,7 +57,12 @@ const Books = ({
         <div>
           {books?.results?.map((book: BookAdmin) => (
             <Fragment key={book.id}>
-              <BookItem book={book} page={page} />
+              <BookItem
+                book={book}
+                page={page}
+                onCheckboxChange={handleCheckboxChange}
+                isDeleting={deletingBooks?.includes(book.id)}
+              />
             </Fragment>
           ))}
         </div>

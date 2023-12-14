@@ -5,7 +5,7 @@ import styles from './PartnerItem.module.scss';
 
 const PartnerItem = () => (
   <div className={styles.partner}>
-    <AdminCheckBox />
+    <AdminCheckBox id={1} />
     <div className={styles.info}>
       <p className={styles.title}>Назва партнера</p>
       <p className={styles.date}>08.08.2023</p>

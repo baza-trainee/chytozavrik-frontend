@@ -13,7 +13,7 @@ import { useDeleteBooks } from '@/hooks/Books/useDeleteBooks';
 import Modal from 'components/common/ModalActions/Modal';
 import styles from './BookItem.module.scss';
 
-const BookItem = ({ book, page }: BookAdminProps) => {
+const BookItem = ({ book, page, onCheckboxChange, isDeleting }: BookAdminProps) => {
   const { deleteBook, isPending } = useDeleteBooks();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -47,7 +47,7 @@ const BookItem = ({ book, page }: BookAdminProps) => {
   return (
     <div className={styles.bookItem}>
       <div className={styles.checkbox}>
-        <AdminCheckBox onChange={e => console.log(e.target.checked)} />
+        <AdminCheckBox id={book.id} onChange={e => onCheckboxChange(e.target.checked, book.id)} />
       </div>
       <div className={styles.info}>
         <div className={styles.title}>
@@ -65,7 +65,7 @@ const BookItem = ({ book, page }: BookAdminProps) => {
         </div>
       </div>
       <div className={styles.actions}>
-        {isPending ? (
+        {isPending || isDeleting ? (
           <Spinner />
         ) : (
           <>

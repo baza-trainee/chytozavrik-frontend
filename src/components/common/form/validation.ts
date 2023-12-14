@@ -30,7 +30,7 @@ export const validation = {
     .required(),
   bookInput: yup
     .string()
-    .min(2, 'Ьінімальна кількість символів 2')
+    .min(2, 'Мінімальна кількість символів 2')
     .required('Будь ласка, заповніть поле'),
-  recommended: yup.boolean(),
+  recommended: yup.boolean().required(),
 };
