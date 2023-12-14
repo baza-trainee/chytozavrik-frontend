@@ -3,10 +3,9 @@
 
 .monsters {
   background: $white;
-  min-height: 500px;
-  height: calc(100vh - 130px);
+  height: calc(100vh - 134px);
   position: relative;
-  overflow: hidden;
+  overflow-y: hidden;
   padding-top: 12vh;
 
   .clouds {
