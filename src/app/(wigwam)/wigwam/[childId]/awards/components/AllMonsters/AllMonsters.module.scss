@@ -3,10 +3,9 @@
 
 .monsters {
   background: $white;
-  height: calc(100vh - 134px);
-  position: relative;
-  overflow-x: hidden;
+  height: calc(100vh - 138px);
   padding-top: 12vh;
+  position: relative;
 
   .clouds {
     background-image: url('/images/monsters/clouds-dark.svg'),
@@ -102,7 +101,6 @@
   display: flex;
   flex-direction: column;
   gap: 4.8vh;
-  min-height: 300px;
 
   .buttons {
     position: relative;
