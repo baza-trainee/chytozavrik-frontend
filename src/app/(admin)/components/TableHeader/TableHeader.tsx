@@ -6,9 +6,10 @@ import styles from './TableHeader.module.scss';
 interface TableHeaderProps {
   colNames: string[];
   variant: 'users' | 'books' | 'documents' | 'partners' | 'contacts';
+  handleDelete?: () => void;
 }
 
-const TableHeader = ({ colNames, variant }: TableHeaderProps) => {
+const TableHeader = ({ colNames, variant, handleDelete }: TableHeaderProps) => {
   const styleNames = {
     users: styles.users,
     books: styles.books,
@@ -25,7 +26,7 @@ const TableHeader = ({ colNames, variant }: TableHeaderProps) => {
         ))}
       </div>
       {variant === 'users' || variant === 'books' || variant === 'partners' ? (
-        <div className={styles.icon}>
+        <div className={styles.icon} onClick={handleDelete}>
           <Trash2 width={16} height={16} />
         </div>
       ) : null}

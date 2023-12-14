@@ -1,3 +1,5 @@
+'use client';
+
 import React, { InputHTMLAttributes, ReactNode, useMemo } from 'react';
 import { useController, UseControllerProps, FieldValues } from 'react-hook-form';
 import { AlertCircle, XCircle } from 'lucide-react';

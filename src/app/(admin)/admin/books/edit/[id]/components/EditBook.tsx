@@ -1,13 +1,13 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { AdminHeader } from '@/app/(admin)/components';
 import BooksForm from '@/app/(admin)/admin/books/components/BooksForm/BooksForm';
 import Modal from 'components/common/ModalActions/Modal';
-import { useRouter } from 'next/navigation';
-import styles from '../AddBooks.module.scss';
+import styles from '@/app/(admin)/admin/books/add/AddBooks.module.scss';
 
-const AddBook = () => {
+const EditBook = ({ id }: { id: number }) => {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
 
@@ -17,11 +17,11 @@ const AddBook = () => {
         withSearch={false}
         withButton={false}
         withClose
-        heading="Додати книгу"
-        subHeading={['Книги', 'Додати книгу']}
+        heading="Редагувати книгу"
+        subHeading={['Книги', 'Редагувати книгу']}
         closeFunc={() => setIsOpen(true)}
       />
-      <BooksForm />
+      <BooksForm id={id} />
 
       {isOpen && (
         <Modal
@@ -37,4 +37,4 @@ const AddBook = () => {
   );
 };
 
-export default AddBook;
+export default EditBook;
