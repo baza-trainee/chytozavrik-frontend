@@ -60,16 +60,16 @@ import NoteKid from '../NoteKid';
 const KidslList = () => {
 
   const [showNote, setShowNote] = useState(true);
-  const [firstChild, setFirstChild] = useState('');
+  // const [firstChild, setFirstChild] = useState('');
   const closeNote = () => {
     setShowNote(false);
-    localStorage.setItem('item', 'true');
+    // localStorage.setItem('item', '');
   };
 
-  useEffect(() => {
-  const item = localStorage.getItem('item')
-  setFirstChild('item');
-}, [])
+//   useEffect(() => {
+//   const item = localStorage.getItem('item');
+//   setFirstChild('item');
+// }, [])
 
 const { data: session, status } = useSession();
 const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || '';
@@ -100,7 +100,9 @@ const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || '';
               <KidProfile key={kid.id} kid={kid}/>
             ))}
           </ul>
-          { firstChild && showNote &&
+          {/* { firstChild
+           &&  */
+           showNote &&
           <NoteKid closeNote={closeNote}/> 
 }
           </>

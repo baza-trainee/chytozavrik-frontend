@@ -1,11 +1,11 @@
 import React from 'react';
 import Image from 'next/image';
-import Avatar1 from 'public/images/kids-avatar1.svg';
-import Avatar2 from 'public/images/kids-avatar2.svg';
-import Avatar3 from 'public/images/kids-avatar3.svg';
-import Avatar4 from 'public/images/kids-avatar4.svg';
-import Avatar5 from 'public/images/kids-avatar5.svg';
-import Avatar6 from 'public/images/kids-avatar6.svg';
+import Avatar1 from 'public/images/kids-avatar3.svg';
+import Avatar2 from 'public/images/kids-avatar5.svg';
+import Avatar3 from 'public/images/kids-avatar4.svg';
+import Avatar4 from 'public/images/kids-avatar1.svg';
+import Avatar5 from 'public/images/kids-avatar6.svg';
+import Avatar6 from 'public/images/kids-avatar2.svg';
 import { FieldErrors, UseFormRegister } from 'react-hook-form';
 import styles from './AvatarFields.module.scss';
 
