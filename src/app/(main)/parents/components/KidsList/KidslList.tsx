@@ -10,6 +10,8 @@ import styles from './KidList.module.scss';
 import {useQuery} from '@tanstack/react-query';
 import axios from 'axios';
 
+import NoteKid from '../NoteKid';
+
 
 // const KidslList = () => {
 //   const [kids, setKids] = useState([]);
@@ -54,7 +56,21 @@ import axios from 'axios';
 //     </div>
 //   );
 // };
+
 const KidslList = () => {
+
+  const [showNote, setShowNote] = useState(true);
+  const [firstChild, setFirstChild] = useState('');
+  const closeNote = () => {
+    setShowNote(false);
+    localStorage.setItem('item', 'true');
+  };
+
+  useEffect(() => {
+  const item = localStorage.getItem('item')
+  setFirstChild('item');
+}, [])
+
 const { data: session, status } = useSession();
 const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || '';
 
@@ -78,14 +94,20 @@ const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || '';
           Вігвами дітей
         </Typography>
         {kids ? (
+          <>
           <ul className={styles.list}>
             {kids.map((kid: ChildType) => (
               <KidProfile key={kid.id} kid={kid}/>
             ))}
           </ul>
+          { firstChild && showNote &&
+          <NoteKid closeNote={closeNote}/> 
+}
+          </>
         ) : (
           <p className={styles.text}>У вас поки немає створеного вігваму</p>
         )}
+        
       </Container>
     </div>
   );
