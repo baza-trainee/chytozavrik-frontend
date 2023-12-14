@@ -27,14 +27,7 @@ const NotFoundPage = ({ category }: NotFoundPageProps) => {
   }
   return (
     <div className={styles.notFoundContainer}>
-      <Image
-        src="/images/all-quizzes/book1440.svg"
-        alt="book image"
-        width={397}
-        height={240}
-        className={styles.imageContainer}
-      />
-      <Typography component="h5" variant="h5" className={styles.noBooksContainer}>
+      <Typography component="h5" variant="body" className={styles.messageTitle}>
         {message}
       </Typography>
     </div>

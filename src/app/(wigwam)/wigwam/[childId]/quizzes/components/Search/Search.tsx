@@ -4,8 +4,9 @@ import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDebounce } from 'use-debounce';
 import { Input } from '@/components/common/form';
-import { Search as SearchIcon } from 'lucide-react';
+import { Search as SearchIcon, XCircle } from 'lucide-react';
 import { useSearchParams, usePathname, useRouter } from 'next/navigation';
+import ClearButtonIcon from '@/components/common/IconButton/IconButton';
 import styles from './Search.module.scss';
 
 const Search = () => {
@@ -41,7 +42,12 @@ const Search = () => {
         control={control}
         icon={<SearchIcon />}
         resetField={resetField}
-        placeholder="Search for quizzes"
+        placeholder="Знайти книгу для вікторини"
+        additionalIcon={
+          searchTerm && searchTerm.length > 0 ? (
+            <ClearButtonIcon onClick={resetField} icon={<XCircle />} />
+          ) : null
+        }
       />
     </div>
   );

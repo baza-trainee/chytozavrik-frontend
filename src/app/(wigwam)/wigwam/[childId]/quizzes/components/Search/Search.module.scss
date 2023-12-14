@@ -8,10 +8,14 @@
       background-color: #f6faff;
       border: 2px solid #7791fa;
       display: flex;
+      order: 1;
 
       input {
         order: 2;
       }
+    }
+    span:last-child {
+      order: 3;
     }
   }
 }
