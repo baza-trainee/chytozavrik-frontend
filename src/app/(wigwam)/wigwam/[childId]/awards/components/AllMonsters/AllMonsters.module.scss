@@ -16,13 +16,13 @@
     position: relative;
     height: 32.5vh;
 
-
     .clouds {
       background-image: url('/images/monsters/clouds-dark.svg'),
-      url('/images/monsters/clouds-light.svg');
+        url('/images/monsters/clouds-light.svg');
       background-repeat: repeat-x, repeat-x;
-      background-size: 360px 72px,
-      360px 75px;
+      background-size:
+        360px 72px,
+        360px 75px;
       background-position: bottom, top;
       height: 75px;
       width: 100vw;
@@ -44,21 +44,20 @@
     }
   }
 
-
   @include breakpoint(tablet) {
     padding-top: 125px;
     height: calc(100vh - 70px);
     margin-bottom: 0;
-
 
     .bgWrapper {
       height: 39.61vh;
 
       .clouds {
         background-image: url('/images/monsters/clouds-dark-768.svg'),
-        url('/images/monsters/clouds-light.svg');
-        background-size: auto 137px,
-        768px 160px;
+          url('/images/monsters/clouds-light.svg');
+        background-size:
+          auto 137px,
+          768px 160px;
         height: 160px;
         bottom: 0;
       }
@@ -80,8 +79,9 @@
       height: 33.5vh;
 
       .clouds {
-        background-size: auto 183px,
-        1024px 213px;
+        background-size:
+          auto 183px,
+          1024px 213px;
         height: 213px;
       }
 
@@ -92,7 +92,6 @@
         bottom: 3.5vh;
       }
     }
-  ;
   }
 
   @include breakpoint(desktop) {
@@ -100,12 +99,12 @@
     min-height: 850px;
 
     .bgWrapper {
-
       .clouds {
         background-image: url('/images/monsters/clouds-dark-1440.svg'),
-        url('/images/monsters/clouds-light-1440.svg');
-        background-size: auto 285px,
-        1440px 301px;
+          url('/images/monsters/clouds-light-1440.svg');
+        background-size:
+          auto 285px,
+          1440px 301px;
         height: 301px;
       }
 

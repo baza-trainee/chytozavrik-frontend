@@ -1,6 +1,6 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { MoveRight } from 'lucide-react';
 import { BookType } from '@/types/WigwamBooks';
@@ -22,17 +22,8 @@ const WigwamBooks = ({
 }) => {
   const [selectedBooks, setSelectedBooks] = useState<{ [key: string]: boolean }>({});
   const [searchValue, setSearchValue] = useState('');
-
   const router = useRouter();
-
-  const handleButtonClick = () => {
-    if (wigwamQuizData && wigwamQuizData.id) {
-      const childId = wigwamQuizData.id;
-      router.push(`/wigwam/${childId}/quizzes`);
-    } else {
-      console.error('Invalid wigwamQuizData or childId');
-    }
-  };
+  const pathname = usePathname();
 
   return (
     <div className={styles.books_container}>
@@ -50,9 +41,8 @@ const WigwamBooks = ({
       />
       <Button
         className={styles.button}
-        endIcon={<MoveRight />}
         variant="outline"
-        onClick={handleButtonClick}
+        onClick={() => router.push(`${pathname}/quizzes`)}
       >
         {wigwamTextData[8]}
       </Button>

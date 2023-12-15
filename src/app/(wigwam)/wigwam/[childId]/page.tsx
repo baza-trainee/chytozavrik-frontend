@@ -62,7 +62,7 @@ const Wigwam = async ({ params: { childId } }: WigwamProps) => {
     <main>
       <Container className={styles.layout}>
         <WigwamReadBooks wigwamQuizItem={wigwamQuizData} />
-        {booksData.length > 0 && wigwamQuizData?.last_quiz_id && (
+        {booksData.length > 0 && wigwamQuizData && (
           <WigwamQuiz wigwamQuizItem={wigwamQuizData} booksItem={selectedBook} />
         )}
         <WigwamMyMonsters monstersData={monstersData} />
