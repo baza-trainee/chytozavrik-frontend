@@ -60,7 +60,7 @@ const { mutate: submitData } = useMutation({
   },
     onSuccess: () => {
       resetField('name')
-      queryClient.invalidateQueries(["kids"]);
+      queryClient.invalidateQueries({queryKey: ['kids']});
     },
   });    
   

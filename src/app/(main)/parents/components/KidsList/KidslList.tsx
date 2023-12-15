@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useFetch } from '@/hooks';
+
 import { useSession } from 'next-auth/react';
 import { ChildType } from '@/types';
 import { Container, Typography } from '@/components/common';
@@ -9,58 +9,13 @@ import KidProfile from '../KidProfile';
 import styles from './KidList.module.scss';
 import {useQuery} from '@tanstack/react-query';
 import axios from 'axios';
-
 import NoteKid from '../NoteKid';
-
-
-// const KidslList = () => {
-//   const [kids, setKids] = useState([]);
-//   const { status } = useSession();
-//   const { fetch } = useFetch();
-
-//   useEffect(() => {
-//     const getKidProfile = async () => {
-//       const response = await fetch('users/me/children/');
-//       const kids = (await response?.data) as [];
-//       setKids(kids);
-//     };
-//     if (status === 'authenticated') getKidProfile();
-//   }, [status]);
-
-//   const handleDelete = async (id: number) => {
-//     const validKids = kids.filter((kid: ChildType) => kid.id !== id);
-//     setKids(validKids);
-//     try {
-//       await fetch(`users/me/children/${id}/`, 'DELETE');
-//     } catch (err) {
-//       console.log(err);
-//     }
-//   };
-
-//   return (
-//     <div className={styles.section}>
-//       <Container className={styles.container}>
-//         <Typography className={styles.title} component="h2" variant="h2">
-//           Вігвами дітей
-//         </Typography>
-//         {kids.length > 0 ? (
-//           <ul className={styles.list}>
-//             {kids.map((kid: ChildType) => (
-//               <KidProfile key={kid.id} kid={kid} handleDelete={handleDelete} />
-//             ))}
-//           </ul>
-//         ) : (
-//           <p className={styles.text}>У вас поки немає створеного вігваму</p>
-//         )}
-//       </Container>
-//     </div>
-//   );
-// };
+import {Spinner} from 'components/common';
 
 const KidslList = () => {
 
   const [showNote, setShowNote] = useState(true);
-  // const [firstChild, setFirstChild] = useState('');
+ // const [firstChild, setFirstChild] = useState('');
   const closeNote = () => {
     setShowNote(false);
     // localStorage.setItem('item', '');
@@ -74,7 +29,7 @@ const KidslList = () => {
 const { data: session, status } = useSession();
 const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || '';
 
-  const {data: kids} = useQuery({
+  const {data: kids, isLoading } = useQuery({
     queryKey: ["kids"],
     enabled: status === 'authenticated',
     queryFn: async () => {
@@ -86,6 +41,8 @@ const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || '';
       return response.data.data;
     }
   })
+
+  if (isLoading) return <Spinner/>
 
   return (
     <div className={styles.section}>
@@ -100,9 +57,8 @@ const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || '';
               <KidProfile key={kid.id} kid={kid}/>
             ))}
           </ul>
-          {/* { firstChild
-           &&  */
-           showNote &&
+          {//firstChild && 
+          showNote &&
           <NoteKid closeNote={closeNote}/> 
 }
           </>

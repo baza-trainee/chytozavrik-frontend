@@ -1,11 +1,11 @@
 import React from 'react';
 import Image from 'next/image';
-import Avatar1 from 'public/images/kids-avatar3.svg';
-import Avatar2 from 'public/images/kids-avatar5.svg';
-import Avatar3 from 'public/images/kids-avatar4.svg';
-import Avatar4 from 'public/images/kids-avatar1.svg';
-import Avatar5 from 'public/images/kids-avatar6.svg';
-import Avatar6 from 'public/images/kids-avatar2.svg';
+import Avatar1 from 'public/images/kids-avatar1.svg';
+import Avatar2 from 'public/images/kids-avatar2.svg';
+import Avatar3 from 'public/images/kids-avatar3.svg';
+import Avatar4 from 'public/images/kids-avatar4.svg';
+import Avatar5 from 'public/images/kids-avatar5.svg';
+import Avatar6 from 'public/images/kids-avatar6.svg';
 import { FieldErrors, UseFormRegister } from 'react-hook-form';
 import styles from './AvatarFields.module.scss';
 
@@ -15,7 +15,7 @@ interface AvatarFieldsetProps {
 }
 
 const AvatarFields = ({ register, errors }: AvatarFieldsetProps) => (
-  <>
+  <div className = {styles.container}>
     <fieldset className={styles.fieldset}>
       <legend className={styles.text}>Оберіть аватар</legend>
       <div className={styles.radioWrapper}>
@@ -90,8 +90,8 @@ const AvatarFields = ({ register, errors }: AvatarFieldsetProps) => (
         </label>
       </div>
     </fieldset>
-    {errors.avatar && <span>Оберіть аватар</span>}
-  </>
+    {errors.avatar && <span className = {styles.error}>Оберіть аватар</span>}
+  </div>
 );
 
 export default AvatarFields;

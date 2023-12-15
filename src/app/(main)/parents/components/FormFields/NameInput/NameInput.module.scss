@@ -1,6 +1,10 @@
 @import '../../../../../../scss/utils/variables';
 @import '../../../../../../scss/utils/mixin';
 
+.container {
+  position: relative;
+}
+
 .label {
   margin-bottom: 8px;
   font-family: var(--montserrat-alternates-font);
@@ -17,4 +21,11 @@
   border: 1px solid $neutral;
   border-radius: 8px;
   color: $neutral;
+}
+
+.name {
+  position: absolute;
+top: 70px;
+left: 0;
+color: getColor(error, 40); 
 }

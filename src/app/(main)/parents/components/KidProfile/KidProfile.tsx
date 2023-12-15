@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { Typography } from '@/components/common';
 import { Route } from '@/constants';
@@ -20,7 +21,6 @@ const KidProfile = ({ kid }: Props) => {
   const { data: session } = useSession();
   const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || '';
   const [edit, setEdit] = useState(false);
-  //const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [isDiscard, setIsDiscard] = useState(false);
 
@@ -42,7 +42,7 @@ const KidProfile = ({ kid }: Props) => {
       setIsSuccess(true);
     },
   });
-
+  
   return (
     <>
       <li key={kid.id} className={styles.item}>
@@ -60,7 +60,7 @@ const KidProfile = ({ kid }: Props) => {
           </Typography>
           <div className={styles.wrapper}>
             <Typography className={styles.quantity} component="p" variant="h3">
-              0
+                 {kid.unique_quizzes_passed}
             </Typography>
             <p className={styles.text}>книг</p>
           </div>
@@ -71,11 +71,11 @@ const KidProfile = ({ kid }: Props) => {
           </Typography>
           <div className={styles.quizzes}>
             <div className={styles.wrapper}>
-              <p className={styles.quantity}>0</p>
+              <p className={styles.quantity}>{kid.unique_quizzes_passed}</p>
               <p className={styles.text}>Загалом</p>
             </div>
             <div className={styles.wrapper}>
-              <p className={styles.quantity}>0</p>
+              <p className={styles.quantity}>{kid.quizzes_passed_today_max_score}</p>
               <p className={styles.text}>Сьогодні</p>
             </div>
           </div>
@@ -90,9 +90,6 @@ const KidProfile = ({ kid }: Props) => {
           </div>
           <div
             className={styles.button}
-            // onClick={() => {
-            //   handleDelete(kid.id);
-            // }}
             onClick={()=> setIsDiscard(true)}
           >
             <Image src="/images/delete.svg" alt="кнопка видалення" width={36} height={36} />
