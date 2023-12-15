@@ -12,4 +12,6 @@ export interface BookAdmin {
 export interface BookAdminProps {
   book: BookAdmin;
   page: 'books' | 'quizzes' | 'recommended';
+  onCheckboxChange: (checked: boolean, bookId: number) => void;
+  isDeleting: boolean;
 }

@@ -1,3 +1,5 @@
+'use client';
+
 import React, { InputHTMLAttributes, ReactNode, useMemo } from 'react';
 import { useController, UseControllerProps, FieldValues } from 'react-hook-form';
 import { AlertCircle, XCircle } from 'lucide-react';
@@ -7,6 +9,7 @@ import styles from './Input.module.scss';
 export type InputProps<T extends FieldValues> = InputHTMLAttributes<HTMLInputElement> &
   UseControllerProps<T> & {
     icon?: ReactNode;
+    additionalIcon?: ReactNode;
     label?: string;
     resetField?: () => void;
     handleKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
@@ -22,6 +25,7 @@ const Input = <T extends FieldValues>({
   resetField,
   className,
   handleKeyDown,
+  additionalIcon,
   ...props
 }: InputProps<T>) => {
   const {
@@ -59,6 +63,13 @@ const Input = <T extends FieldValues>({
     return null;
   }, [field.value?.length, icon, resetField, status, props.type]);
 
+  const renderAdditionalIcon = useMemo(() => {
+    if (additionalIcon && field.value.length > 0) {
+      return additionalIcon;
+    }
+    return null;
+  }, [additionalIcon, field.value]);
+
   return (
     <div className={`${styles.group} ${className || ''}`} data-status={status}>
       <label className={styles.label}>
@@ -71,6 +82,11 @@ const Input = <T extends FieldValues>({
             {...props}
           />
           {renderIcon && <span className={styles.icon}>{renderIcon}</span>}
+          {renderAdditionalIcon && (
+            <span className={`${styles.icon} ${styles.additionalIcon}`}>
+              {renderAdditionalIcon}
+            </span>
+          )}
         </span>
       </label>
       {error && <span className={styles.message}>{error.message}</span>}

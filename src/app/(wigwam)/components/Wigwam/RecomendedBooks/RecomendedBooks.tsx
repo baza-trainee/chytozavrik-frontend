@@ -1,16 +1,16 @@
 'use client';
 
 import React, { useState } from 'react';
-import Slider from 'react-slick';
 import { Typography } from 'components/common';
 import { RecBookType } from '@/types/RecomendedBooks';
 import { BookType } from '@/types/WigwamBooks';
 import { LastquizType } from '@/types/WigwamQuiz';
+import Slider from 'react-slick';
+import './slick.css';
+import './slick-theme.css';
 import ArrowLeft from './icons/ArrowLeft';
 import ArrowRight from './icons/ArrowRight';
 import wigwamTextData from '../wigwamTextData.json';
-import './slick.css';
-import './slick-theme.css';
 import styles from './RecomendedBooks.module.scss';
 
 interface RecomendedBooksProps {
@@ -79,7 +79,7 @@ const RecomendedBooks: React.FC<RecomendedBooksProps> = ({
         },
       },
       {
-        breakpoint: 1024,
+        breakpoint: 1023,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 1,
@@ -87,7 +87,7 @@ const RecomendedBooks: React.FC<RecomendedBooksProps> = ({
         },
       },
       {
-        breakpoint: 768,
+        breakpoint: 767,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,

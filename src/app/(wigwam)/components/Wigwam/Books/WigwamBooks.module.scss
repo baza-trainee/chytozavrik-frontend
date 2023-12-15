@@ -221,8 +221,7 @@
   }
 }
 
-.book_items,
-.book_items_mobile {
+.book_items {
   display: flex;
   justify-content: space-between;
   width: 278px;
@@ -242,10 +241,6 @@
   @include breakpoint(desktop) {
     width: 364px;
   }
-}
-
-.book_items_mobile {
-  cursor: pointer;
 }
 
 .book_about {
@@ -270,9 +265,25 @@
 }
 
 .arrow {
-  width: 20px;
-  height: 20px;
+  display: flex;
+  padding: 16px;
+  justify-content: center;
+  align-items: center;
   color: $primary;
+  cursor: pointer;
+  width: 56px;
+  height: 56px;
+
+  & svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  @include breakpoint(tablet) {
+    padding: 20px;
+    width: 64px;
+    height: 64px;
+  }
 
   &:hover {
     color: getColor(blue, 50);
@@ -280,20 +291,6 @@
 
   &:active {
     color: getColor(blue, 30);
-  }
-}
-
-.book_items_icon_wraper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 56px;
-  height: 56px;
-  cursor: pointer;
-
-  @include breakpoint(tablet) {
-    width: 64px;
-    height: 64px;
   }
 }
 

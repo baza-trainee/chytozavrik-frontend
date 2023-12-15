@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from 'components/common';
 import { useForm } from 'react-hook-form';
 import { SearchIcon } from 'lucide-react';
@@ -93,7 +93,7 @@ const AdminHeader = ({
           </Button>
         ) : null}
         {withClose ? (
-          <div onClick={closeFunc} onKeyDown={closeFunc}>
+          <div onClick={closeFunc} onKeyDown={closeFunc} style={{ cursor: 'pointer' }}>
             <CloseIcon />
           </div>
         ) : null}
