@@ -51,40 +51,77 @@
   padding: 0;
   position: relative;
 
+  :global .slick-slide {
+    width: 145px !important;
+    height: 173px !important;
+    flex-shrink: 0;
+  }
+
   @include breakpoint(tablet) {
     width: 685px;
     height: 173px;
+
+    :global .slick-slide {
+      width: 148px !important;
+      height: 158px !important;
+      flex-shrink: 0;
+    }
   }
 
   @include breakpoint(laptop) {
     width: 100%;
     height: 128px;
+
+    :global .slick-slide {
+      width: 115px !important;
+      height: 127px !important;
+      flex-shrink: 0;
+      margin: 0 6px;
+    }
   }
 
   @include breakpoint(desktop) {
     width: 100%;
     height: 173px;
+
+    :global .slick-slide {
+      width: 145px !important;
+      height: 173px !important;
+      margin: 0 5px;
+    }
+
+    :global .slick-slide > div {
+      display: flex;
+      justify-content: center;
+    }
   }
 }
 
 .card {
+  display: flex;
+  justify-content: center;
   align-items: center;
   width: 145px;
-  height: 173px;
+  height: 168px;
   overflow: hidden;
   cursor: pointer;
   position: relative;
   padding: 7px;
   margin: 0 5px 0 5px;
 
+  @include breakpoint(tablet) {
+    width: 145px !important;
+    height: 173px !important;
+  }
+
   @include breakpoint(laptop) {
-    width: 115px;
-    height: 127px;
+    width: 115px !important;
+    height: 127px !important;
   }
 
   @include breakpoint(desktop) {
-    width: 145px;
-    height: 173px;
+    width: 145px !important;
+    height: 173px !important;
   }
 
   .card_image {
@@ -94,13 +131,28 @@
     width: 100%;
     height: 100%;
     z-index: 2;
+    margin: 0 10px;
 
-    img {
+    & img {
       position: absolute;
-      width: 100%;
-      height: 173px;
-      object-fit: contain;
+      width: 128px;
+      height: 158px;
       transition: 0.3s;
+
+      @include breakpoint(tablet) {
+        width: 125px;
+        height: 158px;
+      }
+
+      @include breakpoint(laptop) {
+        width: 90px;
+        height: 114px;
+      }
+
+      @include breakpoint(desktop) {
+        width: 130px;
+        height: 159px;
+      }
 
       &:hover {
         transform: scale(1.05);
