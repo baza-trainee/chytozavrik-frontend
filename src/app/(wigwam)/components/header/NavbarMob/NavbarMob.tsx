@@ -8,7 +8,7 @@ import Link from 'next/link';
 import styles from './NavbarMob.module.scss';
 
 const NavbarMob = ({ avatar }: { avatar: string }) => (
-  <section className={styles.section}>
+  <header className={styles.section}>
     <Container>
       <div className={styles.wrapper}>
         <Image
@@ -24,7 +24,7 @@ const NavbarMob = ({ avatar }: { avatar: string }) => (
         </Link>
       </div>
     </Container>
-  </section>
+  </header>
 );
 
 export default NavbarMob;
