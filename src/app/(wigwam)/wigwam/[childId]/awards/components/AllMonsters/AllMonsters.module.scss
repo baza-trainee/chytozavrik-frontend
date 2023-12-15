@@ -9,7 +9,8 @@
   justify-content: space-between;
   padding-top: 12vh;
   position: relative;
-  overflow-x: hidden;
+  overflow: hidden;
+  margin-bottom: 59px;
 
   .bgWrapper {
     position: relative;
@@ -47,11 +48,11 @@
   @include breakpoint(tablet) {
     padding-top: 125px;
     height: calc(100vh - 70px);
+    margin-bottom: 0;
 
 
     .bgWrapper {
       height: 39.61vh;
-      margin-bottom: 0;
 
       .clouds {
         background-image: url('/images/monsters/clouds-dark-768.svg'),
@@ -98,7 +99,7 @@
     padding-top: 7vh;
     min-height: 850px;
 
-    .bgWrapper{
+    .bgWrapper {
 
       .clouds {
         background-image: url('/images/monsters/clouds-dark-1440.svg'),
