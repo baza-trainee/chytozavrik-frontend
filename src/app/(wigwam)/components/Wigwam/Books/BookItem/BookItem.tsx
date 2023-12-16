@@ -1,9 +1,8 @@
-import React, { FC, ReactNode } from 'react';
+import React, { FC } from 'react';
 import Image from 'next/image';
 import { MoveRight } from 'lucide-react';
 import Tick from 'public/images/tick.svg';
-import { BookType } from '@/types/WigwamBooks';
-import { LastquizType } from '@/types/WigwamQuiz';
+import { BookType, LastquizType } from '@/types';
 import { useRouter } from 'next/navigation';
 import { useIconAndColor } from '@/app/(wigwam)/wigwam/hooks/useIconAndColor';
 import { useMedia } from '@/hooks';

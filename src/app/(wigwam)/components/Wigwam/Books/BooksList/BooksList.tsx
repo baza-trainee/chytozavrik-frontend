@@ -1,10 +1,10 @@
+'use client';
+
 import React, { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
-import { BookType } from '@/types/WigwamBooks';
-import BookItem from '@/app/(wigwam)/components/Wigwam/Books/BookItem/BookItem';
-import NotFoundBook from '@/app/(wigwam)/components/Wigwam/Books/NotFound/NotFoundBook';
+import { BookType, LastquizType } from '@/types';
+import { NotFoundBook, BookItem } from '@/app/(wigwam)/components/Wigwam';
 import { useSession } from 'next-auth/react';
 import axios from 'axios';
-import { LastquizType } from '@/types/WigwamQuiz';
 import styles from '@/app/(wigwam)/components/Wigwam/Books/WigwamBooks.module.scss';
 
 interface BooksListProps {

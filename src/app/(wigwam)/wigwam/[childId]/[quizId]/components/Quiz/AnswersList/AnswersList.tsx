@@ -5,6 +5,7 @@ import { useParams } from 'next/navigation';
 import { AnswerType, QuestionAnswerType } from '@/types';
 import { useFetch } from '@/hooks';
 import { Button } from '@/components/common';
+import { useQueryClient } from '@tanstack/react-query';
 import { ErrorToast, Notification, SuccessToast } from '../../Notification';
 import styles from './AnswersList.module.scss';
 
@@ -25,7 +26,7 @@ const AnswersList = ({ questionId, answers, onNext }: Props) => {
   const [isShowNotification, setIsShowNotification] = useState(false);
   const [selectAnswer, setSelectAnswer] = useState<number | null>(null);
   const { data: answerResult, isLoading, fetch } = useFetch<AnswerType, AnswerRequestType>();
-
+  const queryClient = useQueryClient();
   const clickHandler = (answerId: number) => async () => {
     setSelectAnswer(answerId);
 
@@ -52,7 +53,11 @@ const AnswersList = ({ questionId, answers, onNext }: Props) => {
   };
 
   const nextStep = () => {
-    if (answerResult?.child_reward_url) onNext(answerResult?.child_reward_url);
+    if (answerResult?.child_reward_url) {
+      onNext(answerResult?.child_reward_url);
+      queryClient.invalidateQueries({ queryKey: ['monsters'] });
+      queryClient.invalidateQueries({ queryKey: ['wigwamQuiz'] });
+    }
     onNext();
     closeNotification();
   };

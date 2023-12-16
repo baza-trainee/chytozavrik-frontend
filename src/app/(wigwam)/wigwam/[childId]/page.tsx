@@ -1,15 +1,19 @@
-import { notFound } from 'next/navigation';
-import WigwamReadBooks from '@/app/(wigwam)/components/Wigwam/ReadBooks';
-import WigwamQuiz from '@/app/(wigwam)/components/Wigwam/Quiz';
-import { BooksResponse, BookType } from '@/types/WigwamBooks';
-import { MonstersResponse } from '@/types/Monsters';
-import { LastquizType } from '@/types/WigwamQuiz';
-import { RecBookType, RecBooksResponse } from '@/types/RecomendedBooks';
-import { fetch } from '@/services/axios';
-import WigwamBooks from '@/app/(wigwam)/components/Wigwam/Books';
-import WigwamMyMonsters from '@/app/(wigwam)/components/Wigwam/Monsters';
-import RecomendedBooks from '@/app/(wigwam)/components/Wigwam/RecomendedBooks/RecomendedBooks';
+import { BooksResponse, BookType, LastquizType, RecBooksResponse } from '@/types';
 import Container from 'components/common/Container/Container';
+import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
+import {
+  getChildBooksService,
+  getMonstersService,
+  getRecommendationBooksService,
+  getWigwamQuizService,
+} from '@/services/api';
+import {
+  RecommendedBooks,
+  WigwamBooks,
+  WigwamMyMonsters,
+  WigwamQuiz,
+  WigwamReadBooks,
+} from '../../components/Wigwam';
 import styles from './wigwam.module.scss';
 
 interface WigwamProps {
@@ -17,70 +21,53 @@ interface WigwamProps {
 }
 
 const Wigwam = async ({ params: { childId } }: WigwamProps) => {
-  const booksReq = fetch<BooksResponse>(`users/me/children/${childId}/quizzes`);
-  const monstersReq = fetch<MonstersResponse>(`users/me/children/${childId}/rewards/?page_size=8`);
-  const wigwamQuizReq = fetch<LastquizType>(`users/me/children/${childId}`);
-  const recBooksReq = fetch<RecBooksResponse>(`recommendation-books`);
+  const queryClient = new QueryClient();
 
-  const [booksRes, monstersRes, wigwamQuizRes, recBooksRes] = await Promise.all([
-    booksReq,
-    monstersReq,
-    wigwamQuizReq,
-    recBooksReq,
-  ]);
+  await queryClient.prefetchQuery({
+    queryKey: ['monsters', childId],
+    queryFn: () => getMonstersService(childId),
+  });
 
-  if (booksRes.status === 'fail' || monstersRes.status === 'fail') notFound();
+  const childBooks: BooksResponse = await queryClient.fetchQuery({
+    queryKey: ['childBooks', childId],
+    queryFn: () => getChildBooksService(childId),
+  });
 
-  const { results: booksData } = booksRes.data;
-  const { results: monstersData } = monstersRes.data;
+  const recommendedBooks: RecBooksResponse = await queryClient.fetchQuery({
+    queryKey: ['recommendedBooks', childId],
+    queryFn: getRecommendationBooksService,
+  });
 
-  let wigwamQuizData: LastquizType | undefined;
-
-  if ('id' in wigwamQuizRes.data) {
-    wigwamQuizData = wigwamQuizRes.data;
-  } else {
-    console.error('Error fetching last quiz data', wigwamQuizRes.data.message);
-  }
-
-  if (recBooksRes.status === 'fail') {
-    console.error('Error fetching recommended books', recBooksRes.data.message);
-  }
-
-  let recBooksData: RecBookType[] = [];
-
-  if ('results' in recBooksRes.data) {
-    recBooksData = recBooksRes.data.results as RecBookType[];
-  } else {
-    console.error('Error fetching recommended books:', recBooksRes.data.message);
-  }
+  const wigwamQuiz: LastquizType = await queryClient.fetchQuery({
+    queryKey: ['wigwamQuiz', childId],
+    queryFn: () => getWigwamQuizService(childId),
+  });
 
   const selectedBook =
-    booksData.find(book => book.id === parseInt(wigwamQuizData?.last_quiz_id || '', 10)) ||
+    childBooks.results.find(book => book.id === parseInt(wigwamQuiz?.last_quiz_id || '', 10)) ||
     ({} as BookType);
 
   return (
-    <main>
+    <HydrationBoundary state={dehydrate(queryClient)}>
       <Container className={styles.layout}>
-        <WigwamReadBooks wigwamQuizItem={wigwamQuizData} />
-        {booksData.length > 0 && wigwamQuizData && (
-          <WigwamQuiz wigwamQuizItem={wigwamQuizData} booksItem={selectedBook} />
+        <WigwamReadBooks wigwamQuizItem={wigwamQuiz} />
+        {childBooks.results.length > 0 && wigwamQuiz && (
+          <WigwamQuiz wigwamQuizItem={wigwamQuiz} booksItem={selectedBook} />
         )}
-        <WigwamMyMonsters monstersData={monstersData} />
+        <WigwamMyMonsters childId={childId} />
         <WigwamBooks
-          booksData={booksData}
-          wigwamQuizData={wigwamQuizData}
-          next={booksRes.data.next}
+          booksData={childBooks.results}
+          wigwamQuizData={wigwamQuiz}
+          next={childBooks.next}
         />
         <div className={styles.test}>
-          <RecomendedBooks
-            items={recBooksData.map(item => item.cover_image)}
-            recBooksData={recBooksData}
-            booksData={booksData}
-            wigwamQuizData={wigwamQuizData}
+          <RecommendedBooks
+            recBooksData={recommendedBooks.results}
+            booksData={childBooks.results}
           />
         </div>
       </Container>
-    </main>
+    </HydrationBoundary>
   );
 };
 
