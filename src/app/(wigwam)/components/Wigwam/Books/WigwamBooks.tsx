@@ -2,12 +2,9 @@
 
 import { usePathname, useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { MoveRight } from 'lucide-react';
-import { BookType } from '@/types/WigwamBooks';
 import { Button, Typography } from 'components/common';
-import SearchInput from '@/app/(wigwam)/components/Wigwam/Books/SearchInput/SearchInput';
-import BooksList from '@/app/(wigwam)/components/Wigwam/Books/BooksList/BooksList';
-import { LastquizType } from '@/types/WigwamQuiz';
+import { BooksList, SearchInput } from '@/app/(wigwam)/components/Wigwam';
+import { LastquizType, BookType } from '@/types';
 import wigwamTextData from '../wigwamTextData.json';
 import styles from './WigwamBooks.module.scss';
 

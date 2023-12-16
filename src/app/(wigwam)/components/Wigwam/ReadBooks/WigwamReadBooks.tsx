@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { BookOpen } from 'lucide-react';
 import Image from 'next/image';
-import { LastquizType } from '@/types/WigwamQuiz';
+import { LastquizType } from '@/types';
 import Sticker from 'public/images/sticker.svg';
 import styles from './WigwamReadBooks.module.scss';
 

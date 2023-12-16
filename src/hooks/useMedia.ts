@@ -17,7 +17,7 @@ export const useMedia = () => {
     query: '(max-width: 767px)',
   });
 
-  const [deviceType, setDeviceType] = useState('mobile');
+  const [deviceType, setDeviceType] = useState('');
 
   useEffect(() => {
     if (isDesktop) setDeviceType('desktop');
