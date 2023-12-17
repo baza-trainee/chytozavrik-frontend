@@ -1,16 +1,15 @@
 import { useState } from 'react';
-import React from 'react';
 import Link from 'next/link';
 import { Typography } from '@/components/common';
 import { Route } from '@/constants';
 import Image from 'next/image';
 import { ChildType } from '@/types';
+import Modal from 'components/common/ModalActions/Modal';
 import EditWigwam from '../EditWigwam';
 import styles from './KidProfile.module.scss';
 import { useQueryClient, useMutation } from '@tanstack/react-query';
 import axios from 'axios';
 import { useSession } from 'next-auth/react';
-import Modal from 'components/common/ModalActions/Modal';
 
 type Props = {
   kid: ChildType;
@@ -38,11 +37,11 @@ const KidProfile = ({ kid }: Props) => {
       });
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({queryKey: ['kids']});
+      queryClient.invalidateQueries({ queryKey: ['kids'] });
       setIsSuccess(true);
     },
   });
-  
+
   return (
     <>
       <li key={kid.id} className={styles.item}>
@@ -60,7 +59,7 @@ const KidProfile = ({ kid }: Props) => {
           </Typography>
           <div className={styles.wrapper}>
             <Typography className={styles.quantity} component="p" variant="h3">
-                 {kid.unique_quizzes_passed}
+              {kid.unique_quizzes_passed}
             </Typography>
             <p className={styles.text}>книг</p>
           </div>
@@ -88,38 +87,31 @@ const KidProfile = ({ kid }: Props) => {
           >
             <Image src="/images/edit.svg" alt="кнопка редагування" width={36} height={36} />
           </div>
-          <div
-            className={styles.button}
-            onClick={()=> setIsDiscard(true)}
-          >
+          <div className={styles.button} onClick={() => setIsDiscard(true)}>
             <Image src="/images/delete.svg" alt="кнопка видалення" width={36} height={36} />
           </div>
         </div>
       </li>
       {edit && <EditWigwam closeEditWigwam={handleEdit} id={kid.id} />}
-    {(isSuccess || isDiscard) && (
-      <Modal 
-      type={isDiscard ? 'question' : 'success'}
-      message={
-        isDiscard
-        ? 'Ви дійсно хочете видалити вігвам дитини?'
-        : 'Вігвам дитини видалено'
-      } 
-      title={isDiscard ? 'Видалити вігвам' : ''}
-      active={isDiscard || isSuccess}
-        
-        setActive={() => {
-          setIsSuccess(false);
-          setIsDiscard(false);
-          
-        }}
-      successFnc={()=> {
-      handleDelete(kid.id);
-      setIsSuccess(true);
-      setIsDiscard(false);
-      }}
-      />
-    )}
+      {(isSuccess || isDiscard) && (
+        <Modal
+          type={isDiscard ? 'question' : 'success'}
+          message={
+            isDiscard ? 'Ви дійсно хочете видалити вігвам дитини?' : 'Вігвам дитини видалено'
+          }
+          title={isDiscard ? 'Видалити вігвам' : ''}
+          active={isDiscard || isSuccess}
+          setActive={() => {
+            setIsSuccess(false);
+            setIsDiscard(false);
+          }}
+          successFnc={() => {
+            handleDelete(kid.id);
+            setIsSuccess(true);
+            setIsDiscard(false);
+          }}
+        />
+      )}
     </>
   );
 };

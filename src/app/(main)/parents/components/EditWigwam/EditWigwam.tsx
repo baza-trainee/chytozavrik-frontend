@@ -5,10 +5,10 @@ import { Typography } from 'components/common';
 import AvatarFields from '@/app/(main)/parents/components/FormFields/AvaratsFields/AvatarFields';
 import NameInput from '@/app/(main)/parents/components/FormFields/NameInput/NameInput';
 import Buttons from '@/app/(main)/parents/components/FormFields/Buttons/Buttons';
-import styles from './EditWigwam.module.scss';
 import { useQueryClient, useMutation } from '@tanstack/react-query';
 import axios from 'axios';
 import { useSession } from 'next-auth/react';
+import styles from './EditWigwam.module.scss';
 
 type Props = {
   closeEditWigwam: () => void;
@@ -36,7 +36,21 @@ const EditWigwam = ({ id, closeEditWigwam }: Props) => {
   const queryClient = useQueryClient();
   const { data: session } = useSession();
   const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || '';
-  
+
+  const { mutate: submitData } = useMutation({
+    mutationFn: async (formData: FormData) => {
+      await axios.patch(`${baseUrl}/users/me/children/${id}/`, formData, {
+        headers: {
+          Authorization: `Bearer ${session?.user.token.access}`,
+        },
+      });
+    },
+    onSuccess: () => {
+      resetField('name');
+      queryClient.invalidateQueries({ queryKey: ['kids'] });
+    },
+  });
+
   const onSubmit: SubmitHandler<FormData> = formData => {
     const modifiedFormData = {
       ...formData,
@@ -45,24 +59,6 @@ const EditWigwam = ({ id, closeEditWigwam }: Props) => {
     closeEditWigwam();
     submitData(modifiedFormData);
   };
-
-  const { mutate: submitData } = useMutation({
-  
-    mutationFn: async (formData: FormData) => {
-      
-      await axios.patch(`${baseUrl}/users/me/children/${id}/`, 
-      formData, {
-        headers: {
-          Authorization: `Bearer ${session?.user.token.access}`,
-        },
-      });
-    },
-      onSuccess: () => {
-        resetField('name')
-        queryClient.invalidateQueries(["kids"]);
-      },
-    });    
-
 
   return (
     <section>

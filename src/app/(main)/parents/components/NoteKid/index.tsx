@@ -1,1 +1,1 @@
-export {default} from './NoteKid';
+export { default } from './NoteKid';
