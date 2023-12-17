@@ -16,11 +16,3 @@ export interface BooksResponse {
   results: BookType[];
   message: string;
 }
-
-export interface BooksResults {
-  results: BookType[];
-}
-
-export interface ErrorType {
-  message: string;
-}

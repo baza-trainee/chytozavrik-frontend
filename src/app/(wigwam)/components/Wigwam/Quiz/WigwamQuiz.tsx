@@ -1,11 +1,8 @@
 'use client';
 
 import React from 'react';
-import { BookType } from '@/types/WigwamBooks';
-import { LastquizType } from '@/types/WigwamQuiz';
-import WelcomeWigwam from '@/app/(wigwam)/components/Wigwam/Quiz/components/WelcomeWigwam';
-import NoLastQuiz from '@/app/(wigwam)/components/Wigwam/Quiz/components/NoLastQuiz';
-import LastQuiz from '@/app/(wigwam)/components/Wigwam/Quiz/components/LastQuiz';
+import { BookType, LastquizType } from '@/types';
+import { WelcomeWigwam, LastQuiz, NoLastQuiz } from '@/app/(wigwam)/components/Wigwam';
 
 export interface WigwamQuizProps {
   booksItem: BookType;

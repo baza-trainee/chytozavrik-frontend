@@ -1,9 +1,9 @@
 'use client';
 
 import React, { Dispatch, SetStateAction, useEffect } from 'react';
-import styles from '@/app/(wigwam)/components/Wigwam/Books/WigwamBooks.module.scss';
 import { Search, XCircle } from 'lucide-react';
 import { useForm } from 'react-hook-form';
+import styles from '@/app/(wigwam)/components/Wigwam/Books/WigwamBooks.module.scss';
 
 interface SearchInputProps {
   setSearchValue: Dispatch<SetStateAction<string>>;

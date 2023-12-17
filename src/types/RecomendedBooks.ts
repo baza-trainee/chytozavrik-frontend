@@ -10,10 +10,10 @@ export interface RecBookType {
 }
 
 export interface RecBooksResponse {
-  data: {
-    results: RecBookType[];
-  };
-  status: string;
+  count: number;
+  next: string | null;
+  previous: string | null;
+  results: RecBookType[];
   message: string;
 }
 

@@ -14,7 +14,7 @@ const LastQuiz: React.FC<WigwamQuizProps> = ({ booksItem, wigwamQuizItem }) => {
   const lastQuizScore = booksItem.current_score;
   let lastQuizTitle: string | undefined;
   let lastQuizAuthor: string | undefined;
-  console.log(lastQuizScore);
+
   if (booksItem.id === parseInt(wigwamQuizItem?.last_quiz_id || '', 10)) {
     lastQuizTitle = booksItem?.book?.title;
     lastQuizAuthor = booksItem?.book?.author;

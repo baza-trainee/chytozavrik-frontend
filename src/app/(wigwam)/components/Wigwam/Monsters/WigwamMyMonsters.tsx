@@ -1,38 +1,31 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Typography } from 'components/common';
+import { Spinner, Typography } from 'components/common';
 import Image from 'next/image';
 import moveRight from 'public/images/move-right.svg';
 import lockedIcon from 'public/images/locked.svg';
-import { Monster } from '@/types/Monsters';
 import { usePathname, useRouter } from 'next/navigation';
-import { useMedia } from '@/hooks';
+import { useMedia, useFetchMonsters } from '@/hooks';
 import wigwamTextData from '../wigwamTextData.json';
 import styles from './WigwamMyMonsters.module.scss';
 
-type WigwamMyMonstersProps = {
-  monstersData: Monster[];
-};
-
-const WigwamMyMonsters: React.FC<WigwamMyMonstersProps> = ({ monstersData }) => {
+const WigwamMyMonsters = ({ childId }: { childId: string }) => {
   const router = useRouter();
   const pathname = usePathname();
   const { deviceType } = useMedia();
-
-  const [monsters, setMonsters] = useState<Monster[]>([]);
-  let count;
-  if (deviceType === 'desktop') {
-    count = 8;
-  } else if (deviceType === 'laptop') {
-    count = 7;
-  } else {
-    count = 6;
-  }
+  const [count, setCount] = useState(0);
+  const { monsters, isLoading, error } = useFetchMonsters(childId);
 
   useEffect(() => {
-    setMonsters(monstersData);
-  }, [monstersData]);
+    if (deviceType === 'desktop') {
+      setCount(8);
+    } else if (deviceType === 'laptop') {
+      setCount(7);
+    } else {
+      setCount(6);
+    }
+  }, [deviceType]);
 
   return (
     <div className={styles.wrapper}>
@@ -51,21 +44,29 @@ const WigwamMyMonsters: React.FC<WigwamMyMonstersProps> = ({ monstersData }) => 
         />
       </div>
       <div className={styles.monstersContainer}>
-        {Array.from({ length: count }).map((_, i) => (
-          <div key={i} className={styles.monsterWrapper}>
-            {monsters && monsters[i] ? (
-              <Image
-                width={80}
-                height={80}
-                src={monsters[i].reward}
-                alt="Читозаврик"
-                className={styles.monsterPresent}
-              />
-            ) : (
-              <Image src={lockedIcon} alt="icon locked" className={styles.monsterEmpty} />
-            )}
+        {isLoading ? (
+          <div className={styles.spinner}>
+            <Spinner />
           </div>
-        ))}
+        ) : (
+          <>
+            {Array.from({ length: count }).map((_, i) => (
+              <div key={i} className={styles.monsterWrapper}>
+                {monsters && monsters[i] ? (
+                  <Image
+                    width={80}
+                    height={80}
+                    src={monsters[i].reward}
+                    alt="Читозаврик"
+                    className={styles.monsterPresent}
+                  />
+                ) : (
+                  <Image src={lockedIcon} alt="icon locked" className={styles.monsterEmpty} />
+                )}
+              </div>
+            ))}
+          </>
+        )}
       </div>
     </div>
   );
