@@ -5,11 +5,15 @@ import { useSession } from 'next-auth/react';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
+
 import { AdminHeader } from '@/app/(admin)/components';
 import { Button } from '@/components/common';
 import { PasswordInput, validation } from '@/components/common/form';
 import { changePasswordService } from '@/services/api';
 import Modal from '@/components/common/ModalActions/Modal';
+
+import { FetchResponseType, resetPasswordType } from '@/types';
+
 import styles from './Password.module.scss';
 
 const schema = yup.object({
@@ -24,6 +28,7 @@ type Token = {
   refresh: string | undefined;
   access: string | undefined;
 };
+
 const defaultValues: FormData = {
   oldPassword: '',
   password: '',
@@ -48,7 +53,7 @@ const ChangePassword = () => {
     resolver: yupResolver(schema),
   });
 
-  const handleErrors = (result: any) => {
+  const handleErrors = (result: FetchResponseType<resetPasswordType>) => {
     if (result.status === 'fail' && result.data.message) {
       const errorMessages = Object.values(result.data.message).flat().join(', ');
       setError(errorMessages);
