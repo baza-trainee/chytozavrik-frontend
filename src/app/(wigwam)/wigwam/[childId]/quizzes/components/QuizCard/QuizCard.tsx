@@ -3,9 +3,7 @@ import { UsersQuiz, QuizCategory } from '@/types';
 import Image from 'next/image';
 import { Route } from '@/constants';
 import { Typography, Button } from '@/components/common';
-import BrainIcon from 'public/images/brain/brain.svg';
-import BrainYellow from 'public/images/brain/brain_yellow.svg';
-import BrainGreen from 'public/images/brain/brain_green.svg';
+import { useIconAndColor } from '@/app/(wigwam)/wigwam/hooks/useIconAndColor';
 import styles from './QuizCard.module.scss';
 
 interface QuizCardProps {
@@ -17,23 +15,8 @@ interface QuizCardProps {
 const QuizCard: React.FC<QuizCardProps> = ({ quiz, childId, category }) => {
   const firstChar = quiz.current_score ? quiz.current_score.charAt(0) : '';
   const firstCharInt = parseInt(firstChar, 10);
+  const { colorText, icon } = useIconAndColor(firstCharInt);
 
-  const determineColor = (firstCharInt: number) => {
-    if (firstCharInt > 0 && firstCharInt < 5) {
-      return '#7791FA';
-    }
-    if (firstCharInt === 5) {
-      return '#52C974';
-    }
-    return '#B3CDFF';
-  };
-
-  const colorText = determineColor(firstCharInt);
-
-  let icon;
-  if (firstCharInt > 0 && firstCharInt < 5) icon = BrainYellow;
-  else if (firstCharInt === 5) icon = BrainGreen;
-  else icon = BrainIcon;
   let buttonTitle = 'Пройти вікторину';
   if (category === '') {
     buttonTitle = 'Пройти вікторину';

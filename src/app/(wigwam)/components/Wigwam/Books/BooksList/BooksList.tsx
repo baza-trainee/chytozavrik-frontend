@@ -1,14 +1,11 @@
+'use client';
+
 import React, { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
-import styles from '@/app/(wigwam)/components/Wigwam/Books/WigwamBooks.module.scss';
-import { BookType } from '@/types/WigwamBooks';
-import BookItem from '@/app/(wigwam)/components/Wigwam/Books/BookItem/BookItem';
-import BookItemMobile from '@/app/(wigwam)/components/Wigwam/Books/BookItem/BookItemMobile';
-import NotFoundBook from '@/app/(wigwam)/components/Wigwam/Books/NotFound/NotFoundBook';
+import { BookType, LastquizType } from '@/types';
+import { NotFoundBook, BookItem } from '@/app/(wigwam)/components/Wigwam';
 import { useSession } from 'next-auth/react';
 import axios from 'axios';
-
-import { LastquizType } from '@/types/WigwamQuiz';
-import { useMedia } from '@/hooks';
+import styles from '@/app/(wigwam)/components/Wigwam/Books/WigwamBooks.module.scss';
 
 interface BooksListProps {
   booksData: BookType[];
@@ -68,33 +65,20 @@ const BooksList = ({
     setFilteredBooks(matchedBooks);
   }, [searchValue, booksData]);
 
-  const { deviceType } = useMedia();
-
   return (
     <>
       {filteredBooks?.length > 1 && (
         <div className={styles.button_list}>
-          {filteredBooks?.map((item: BookType, index: number) =>
-            deviceType === 'mobile' || deviceType === 'tablet' ? (
-              <BookItemMobile
-                key={item.id}
-                item={item}
-                selectedBooks={selectedBooks}
-                booksData={booksData}
-                wigwamQuizData={wigwamQuizData}
-                index={index}
-              />
-            ) : (
-              <BookItem
-                key={item.id}
-                item={item}
-                selectedBooks={selectedBooks}
-                booksData={booksData}
-                wigwamQuizData={wigwamQuizData}
-                index={index}
-              />
-            )
-          )}
+          {filteredBooks?.map((item: BookType, index: number) => (
+            <BookItem
+              key={item.id}
+              item={item}
+              selectedBooks={selectedBooks}
+              booksData={booksData}
+              wigwamQuizData={wigwamQuizData}
+              index={index}
+            />
+          ))}
           <div ref={node => setLastElement(node)} />
         </div>
       )}

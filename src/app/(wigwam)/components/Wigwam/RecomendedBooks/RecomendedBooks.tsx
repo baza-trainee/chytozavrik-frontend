@@ -1,23 +1,20 @@
 'use client';
 
 import React, { useState } from 'react';
-import Slider from 'react-slick';
+import { usePathname, useRouter } from 'next/navigation';
 import { Typography } from 'components/common';
-import { RecBookType } from '@/types/RecomendedBooks';
-import { BookType } from '@/types/WigwamBooks';
-import { LastquizType } from '@/types/WigwamQuiz';
+import { RecBookType, BookType } from '@/types';
+import Slider from 'react-slick';
+import './slick.css';
+import './slick-theme.css';
 import ArrowLeft from './icons/ArrowLeft';
 import ArrowRight from './icons/ArrowRight';
 import wigwamTextData from '../wigwamTextData.json';
-import './slick.css';
-import './slick-theme.css';
 import styles from './RecomendedBooks.module.scss';
 
 interface RecomendedBooksProps {
   booksData?: BookType[] | undefined;
-  wigwamQuizData?: LastquizType | undefined;
   recBooksData: RecBookType[] | undefined;
-  items: string[];
 }
 
 const NextArrow: React.FC<{ onClick: () => void }> = ({ onClick }) => (
@@ -32,30 +29,19 @@ const PrevArrow: React.FC<{ onClick: () => void }> = ({ onClick }) => (
   </div>
 );
 
-const RecomendedBooks: React.FC<RecomendedBooksProps> = ({
-  items,
-  wigwamQuizData,
-  booksData = [],
-  recBooksData = [],
-}) => {
+const RecomendedBooks: React.FC<RecomendedBooksProps> = ({ booksData = [], recBooksData = [] }) => {
   const [imageIndex, setImageIndex] = useState(0);
+  const router = useRouter();
+  const pathname = usePathname();
 
-  const handleCardClick = (index: number) => {
-    const book = recBooksData[index];
-    const quiz = booksData[index];
+  const handleCardClick = (id: number) => {
+    const quiz = booksData.find(quiz => quiz.book?.id === id);
 
-    if (book?.id && quiz?.book?.id && wigwamQuizData) {
-      const childId = wigwamQuizData.id;
+    if (quiz) {
       const quizId = quiz.id;
-
-      if (book?.state && book.state.includes('Вікторина')) {
-        window.location.href = `/wigwam/${childId}/${quizId}`;
-      } else {
-        window.location.href = `/*`;
-      }
+      router.push(`${pathname}/${quizId}`);
     } else {
-      console.error('Error: Missing book or quiz data');
-      window.location.href = `/*`;
+      router.push(`${pathname}/${id}`);
     }
   };
 
@@ -79,7 +65,7 @@ const RecomendedBooks: React.FC<RecomendedBooksProps> = ({
         },
       },
       {
-        breakpoint: 1024,
+        breakpoint: 1023,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 1,
@@ -87,7 +73,7 @@ const RecomendedBooks: React.FC<RecomendedBooksProps> = ({
         },
       },
       {
-        breakpoint: 768,
+        breakpoint: 767,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
@@ -96,7 +82,6 @@ const RecomendedBooks: React.FC<RecomendedBooksProps> = ({
       },
     ],
   };
-
   return (
     <section className={styles.slider}>
       <Typography component="h2" variant="h2" className={styles.rec_title}>
@@ -104,10 +89,10 @@ const RecomendedBooks: React.FC<RecomendedBooksProps> = ({
       </Typography>
       <div className={styles.slider_container}>
         <Slider {...settings}>
-          {items.map((image, index) => (
-            <div key={index} className={styles.card} onClick={() => handleCardClick(index)}>
+          {recBooksData?.map(({ title, cover_image: coverImage, id }, index) => (
+            <div key={id} className={styles.card} onClick={() => handleCardClick(id)}>
               <div className={styles.card_image}>
-                <img src={image} alt={`book_image_${index}`} />
+                <img src={coverImage} alt={title} />
               </div>
               {recBooksData[index].state.includes('Вікторина') && (
                 <div className={styles.quiz_marker}>{wigwamTextData[6]}</div>
