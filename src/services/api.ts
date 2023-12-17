@@ -1,4 +1,5 @@
 import { getServerSession } from 'next-auth';
+import { useSession } from 'next-auth/react';
 import { authOptions } from '@/config';
 import {
   AnswerType,
@@ -120,12 +121,12 @@ export const getQuizInfoByIdService = async (
 };
 
 export const getUsersQuizzesService = async (
+  childId: string,
   search: string = '',
   page: string = '1',
   category: QuizCategory = QuizCategory.All,
   IS_REVERSED: boolean = true,
   PAGE_SIZE: number = 12,
-  childId: string
 ): Promise<FetchResponseType<UsersQuizzesResponse>> => {
   const selectedCategory = category ? `&${category}` : '';
 
@@ -201,4 +202,29 @@ export const getDocumentsService = async () => {
 export const getBooksService = async () => {
   const result = await axiosServerFetch(`${baseUrl}/books?page=1&page_size=7`);
   return result.data;
+};
+
+export const changePasswordService = async (
+  oldPassword: string,
+  password: string,
+  confirmPassword: string,
+  access: string | undefined,
+): Promise<FetchResponseType<resetPasswordType>> => {
+
+
+  const result = await fetch(`${baseUrl}/users/password/change/`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${access}`,
+ },
+    body: JSON.stringify({
+      old_password: oldPassword,
+      new_password1: password,
+      new_password2: confirmPassword,
+
+    }),
+  });
+
+  return result.json();
 };
