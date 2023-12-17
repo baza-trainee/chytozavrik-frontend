@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Link from 'next/link';
+import { useSession } from 'next-auth/react';
 import { Typography } from '@/components/common';
 import { Route } from '@/constants';
 import Image from 'next/image';
@@ -9,7 +10,7 @@ import EditWigwam from '../EditWigwam';
 import styles from './KidProfile.module.scss';
 import { useQueryClient, useMutation } from '@tanstack/react-query';
 import axios from 'axios';
-import { useSession } from 'next-auth/react';
+
 
 type Props = {
   kid: ChildType;
@@ -97,9 +98,9 @@ const KidProfile = ({ kid }: Props) => {
         <Modal
           type={isDiscard ? 'question' : 'success'}
           message={
-            isDiscard ? 'Ви дійсно хочете видалити вігвам дитини?' : 'Вігвам дитини видалено'
+            isDiscard ? 'Ви дійсно хочете видалити вігвам дитини?' : 'дитини видалено'
           }
-          title={isDiscard ? 'Видалити вігвам' : ''}
+          title={isDiscard ? 'Видалити вігвам' : 'Вігвам'}
           active={isDiscard || isSuccess}
           setActive={() => {
             setIsSuccess(false);
