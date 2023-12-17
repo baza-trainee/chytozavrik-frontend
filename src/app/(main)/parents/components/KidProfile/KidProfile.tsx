@@ -29,7 +29,7 @@ const KidProfile = ({ kid }: Props) => {
   };
 
   const { mutate: handleDelete } = useMutation({
-    mutationFn: async id => {
+    mutationFn: async (id: number) => {
       await axios.delete(`${baseUrl}/users/me/children/${id}/`, {
         headers: {
           Authorization: `Bearer ${session?.user.token.access}`,
@@ -104,7 +104,7 @@ const KidProfile = ({ kid }: Props) => {
             setIsDiscard(false);
           }}
           successFnc={() => {
-            handleDelete: (kid.id);
+            handleDelete(kid.id);
             setIsSuccess(true);
             setIsDiscard(false);
           }}
