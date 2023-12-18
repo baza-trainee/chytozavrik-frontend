@@ -1,3 +1,5 @@
+'use client'
+
 import { InputHTMLAttributes, ReactNode } from 'react';
 import { FieldValues, useController, UseControllerProps } from 'react-hook-form';
 import { Check } from 'lucide-react';
@@ -19,6 +21,7 @@ const Checkbox = <T extends FieldValues>({
   ...props
 }: InputProps<T>) => {
   const { field } = useController<T>({ name, control });
+
   return (
     <div className={classNames(className)}>
       <label className={styles.label}>
