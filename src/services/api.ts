@@ -258,14 +258,3 @@ export const getChildrenService = async () => {
   return response.data;
 };
 
-export const getChildrenService = async () => {
-  const response = await axiosServerFetch(`${baseUrl}/users/me/children/`);
-
-  return response.data;
-};
-
-export const getChildrenService = async () => {
-  const response = await axiosServerFetch(`${baseUrl}/users/me/children/`);
-
-  return response.data;
-};
