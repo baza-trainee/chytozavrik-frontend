@@ -14,6 +14,7 @@ import {
 } from '@/types';
 import { fetch as axiosServerFetch } from '@/services/axios';
 import { Monster, MonstersResponse, MonstersResults } from '@/types/Monsters';
+import { ChildProp } from 'next/dist/server/app-render/types';
 
 const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || '';
 
@@ -102,12 +103,6 @@ export const getUserInfoService = async (): Promise<FetchResponseType<UserType>>
       Authorization: `Bearer ${token.access}`,
     },
   });
-
-  return result.json();
-};
-
-export const getChildrenService = async () => {
-  const result = await privateFetch(`${baseUrl}/users/me/children/`);
 
   return result.json();
 };
@@ -229,4 +224,10 @@ export const getRecommendationBooksService = async () => {
 export const getWigwamQuizService = async (childId: string) => {
   const { data } = await axiosServerFetch(`${baseUrl}/users/me/children/${childId}`);
   return data;
+};
+
+export const getChildrenService = async () => {
+  const response = await axiosServerFetch(`${baseUrl}/users/me/children/`);
+
+  return response.data;
 };

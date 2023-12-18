@@ -63,7 +63,6 @@ const BooksList = ({
         entry.book.author.toLowerCase().includes(searchValue.toLowerCase() || '')
     );
     setFilteredBooks(matchedBooks);
-
   }, [searchValue, booksData]);
 
   return (
