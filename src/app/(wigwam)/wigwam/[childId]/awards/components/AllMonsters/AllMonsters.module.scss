@@ -12,6 +12,23 @@
   overflow: hidden;
   margin-bottom: 59px;
 
+  & :global .slick-list {
+    height: 100% !important;
+    width: 100vw !important;
+  }
+
+  .spinner {
+    position: absolute;
+    top: 30%;
+    left: 51%;
+    transform: translate(-60%, -80%);
+
+    & span {
+      width: 60px;
+      height: 60px;
+    }
+  }
+
   .bgWrapper {
     position: relative;
     height: 32.5vh;

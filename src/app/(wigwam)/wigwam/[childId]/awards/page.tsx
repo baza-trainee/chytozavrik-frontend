@@ -1,8 +1,8 @@
 import React from 'react';
 import MonstersList from '@/app/(wigwam)/wigwam/[childId]/awards/components/MonstersList';
-import { fetch } from '@/services/axios';
-import { MonstersResults } from '@/types/Monsters';
-import { notFound } from 'next/navigation';
+import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
+import { getMonstersService } from '@/services/api';
+import { Metadata } from 'next';
 
 type Props = {
   params: {
@@ -10,15 +10,23 @@ type Props = {
   };
 };
 
+export const metadata: Metadata = {
+  title: 'Твої Читозаврики',
+};
+
 const Awards = async ({ params: { childId } }: Props) => {
-  const requestMonsters = fetch<MonstersResults>(`/users/me/children/${childId}/rewards/`);
-  const [monsters] = await Promise.all([requestMonsters]);
+  const queryClient = new QueryClient();
 
-  if (monsters.status === 'fail') notFound();
+  await queryClient.prefetchQuery({
+    queryKey: ['monsters', childId],
+    queryFn: () => getMonstersService(childId),
+  });
 
-  const monstersData = monsters.data;
-
-  return <MonstersList results={monstersData.results} />;
+  return (
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <MonstersList childId={childId} />
+    </HydrationBoundary>
+  );
 };
 
 export default Awards;

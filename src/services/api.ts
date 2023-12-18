@@ -13,7 +13,7 @@ import {
   resetPasswordType,
 } from '@/types';
 import { fetch as axiosServerFetch } from '@/services/axios';
-import { Monster } from '@/types/Monsters';
+import { Monster, MonstersResponse, MonstersResults } from '@/types/Monsters';
 
 const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || '';
 
@@ -205,10 +205,15 @@ export const getBooksService = async () => {
 };
 
 export const getMonstersService = async (childId: string) => {
-  const { data } = await axiosServerFetch(
-    `${baseUrl}/users/me/children/${childId}/rewards/?page_size=8`
+  const { data } = await axiosServerFetch<MonstersResponse>(
+    `${baseUrl}/users/me/children/${childId}/rewards`
   );
-  return data;
+
+  if ('results' in data) {
+    return data.results;
+  }
+
+  throw new Error(data.message);
 };
 
 export const getChildBooksService = async (childId: string) => {
