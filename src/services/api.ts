@@ -122,7 +122,7 @@ export const getUsersQuizzesService = async (
   page: string = '1',
   category: QuizCategory = QuizCategory.All,
   IS_REVERSED: boolean = true,
-  PAGE_SIZE: number = 12,
+  PAGE_SIZE: number = 12
 ): Promise<FetchResponseType<UsersQuizzesResponse>> => {
   const selectedCategory = category ? `&${category}` : '';
 
@@ -231,21 +231,18 @@ export const changePasswordService = async (
   oldPassword: string,
   password: string,
   confirmPassword: string,
-  access: string | undefined,
+  access: string | undefined
 ): Promise<FetchResponseType<resetPasswordType>> => {
-
-
   const result = await fetch(`${baseUrl}/users/password/change/`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${access}`,
- },
+    },
     body: JSON.stringify({
       old_password: oldPassword,
       new_password1: password,
       new_password2: confirmPassword,
-
     }),
   });
 
@@ -257,4 +254,3 @@ export const getChildrenService = async () => {
 
   return response.data;
 };
-
