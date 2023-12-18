@@ -16,8 +16,6 @@ import {
 import { fetch as axiosServerFetch } from '@/services/axios';
 import { Monster, MonstersResponse, MonstersResults } from '@/types/Monsters';
 import { ChildProp } from 'next/dist/server/app-render/types';
-import { Monster, MonstersResponse, MonstersResults } from '@/types/Monsters';
-import { ChildProp } from 'next/dist/server/app-render/types';
 
 const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || '';
 
@@ -205,15 +203,7 @@ export const getBooksService = async () => {
 export const getMonstersService = async (childId: string) => {
   const { data } = await axiosServerFetch<MonstersResponse>(
     `${baseUrl}/users/me/children/${childId}/rewards`
-  const { data } = await axiosServerFetch<MonstersResponse>(
-    `${baseUrl}/users/me/children/${childId}/rewards`
   );
-
-  if ('results' in data) {
-    return data.results;
-  }
-
-  throw new Error(data.message);
 
   if ('results' in data) {
     return data.results;
@@ -260,6 +250,12 @@ export const changePasswordService = async (
   });
 
   return result.json();
+};
+
+export const getChildrenService = async () => {
+  const response = await axiosServerFetch(`${baseUrl}/users/me/children/`);
+
+  return response.data;
 };
 
 export const getChildrenService = async () => {
