@@ -1,13 +1,20 @@
+import React from 'react';
+import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
 import { getChildrenService } from '@/services/api';
 import Lobby from './components/Lobby';
 
 const LobbyPage = async () => {
-  const users = await getChildrenService();
+  const queryClient = new QueryClient();
+  await queryClient.prefetchQuery({
+    queryKey: ['children'],
+    queryFn: getChildrenService,
+  });
 
-  // eslint-disable-next-line no-console
-  if (!users || users.status === 'fail') return console.error('Unauthorized user.');
-
-  return <Lobby users={users.data} />;
+  return (
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <Lobby />
+    </HydrationBoundary>
+  );
 };
 
 export default LobbyPage;
