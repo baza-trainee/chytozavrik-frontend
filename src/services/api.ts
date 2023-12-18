@@ -211,9 +211,9 @@ export const getMonstersService = async (childId: string) => {
 
   if ('results' in data) {
     return data.results;
-  } else {
-    throw new Error(data.message);
   }
+
+  throw new Error(data.message);
 };
 
 export const getChildBooksService = async (childId: string) => {

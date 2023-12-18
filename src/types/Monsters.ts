@@ -20,5 +20,5 @@ export interface MonstersResults {
 export interface AllMonstersProps {
   results: Monster[];
   onMonsterClick: (id: number | string) => void;
-  isLoading: Boolean;
+  isLoading: boolean;
 }
