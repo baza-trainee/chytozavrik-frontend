@@ -10,7 +10,7 @@ export interface WigwamQuizProps {
 }
 
 const WigwamQuiz: React.FC<WigwamQuizProps> = ({ booksItem, wigwamQuizItem }) => {
-  const uniqueQuizzes = wigwamQuizItem?.unique_quizzes_passed;
+  const uniqueQuizzes = wigwamQuizItem?.last_quiz_id;
 
   if (!uniqueQuizzes) {
     return <WelcomeWigwam />;
