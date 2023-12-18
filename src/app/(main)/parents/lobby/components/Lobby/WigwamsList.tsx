@@ -13,6 +13,7 @@ import {
 } from '@/app/(main)/parents/lobby/components/Avatar';
 import styles from '@/app/(main)/parents/lobby/components/Lobby/Lobby.module.scss';
 
+
 type WigwamsListProps = {
   users: ChildType[];
 };
@@ -28,7 +29,6 @@ const Avatars = [
 ];
 
 const WigwamsList = ({ users }: WigwamsListProps) => (
-
   <>
     <Typography className={styles.title} component="h1" variant="h2">
       Привіт! <br /> Ми за тобою сумували

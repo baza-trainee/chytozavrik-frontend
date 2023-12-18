@@ -227,7 +227,7 @@ export const getWigwamQuizService = async (childId: string) => {
 };
 
 export const getChildrenService = async () => {
-  const { data } = await axiosServerFetch(`${baseUrl}/users/me/children/`);
+  const response = await axiosServerFetch(`${baseUrl}/users/me/children/`);
 
-  return data;
+  return response.data;
 };
