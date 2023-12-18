@@ -1,4 +1,5 @@
 import { BooksResponse, BookType, LastquizType, RecBooksResponse } from '@/types';
+import { Metadata } from 'next';
 import Container from 'components/common/Container/Container';
 import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
 import {
@@ -15,6 +16,10 @@ import {
   WigwamReadBooks,
 } from '../../components/Wigwam';
 import styles from './wigwam.module.scss';
+
+export const metadata: Metadata = {
+  title: 'Твій вігвам - Читозаврик',
+};
 
 interface WigwamProps {
   params: { childId: string };

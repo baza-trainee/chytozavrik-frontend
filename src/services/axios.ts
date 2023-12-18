@@ -10,9 +10,9 @@ const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || '';
 // Axios instance for client components
 export const axiosClient = axios.create({
   baseURL: baseUrl,
-  // headers: {
-  //   'Content-Type': 'application/json',
-  // },
+  headers: {
+    'Content-Type': 'application/json',
+  },
 });
 
 // Axios instance for server components

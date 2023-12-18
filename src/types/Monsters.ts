@@ -16,3 +16,9 @@ export interface MonstersResponse {
 export interface MonstersResults {
   results: Monster[];
 }
+
+export interface AllMonstersProps {
+  results: Monster[];
+  onMonsterClick: (id: number | string) => void;
+  isLoading: Boolean;
+}
