@@ -28,12 +28,13 @@ const Avatars = [
 ];
 
 const WigwamsList = ({ users }: WigwamsListProps) => (
+
   <>
     <Typography className={styles.title} component="h1" variant="h2">
       Привіт! <br /> Ми за тобою сумували
     </Typography>
     <ul className={styles.list}>
-      {users?.map(({ id, name, avatar }) => (
+      {users && users.map(({ id, name, avatar }) => (
         <li key={id} className={styles.item}>
           <Link className={styles.link} href={`${Route.WIGWAM}/${id}`} data-avatar>
             <div className={styles.thumb}>{Avatars.at(avatar)}</div>
