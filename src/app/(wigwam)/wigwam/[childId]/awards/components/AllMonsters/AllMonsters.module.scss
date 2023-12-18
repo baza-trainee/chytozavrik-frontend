@@ -192,6 +192,14 @@
       align-items: center;
       justify-content: center;
 
+      &:hover .monsterPresent img {
+        transform: scale(1.1);
+      }
+
+      &:hover {
+        border: 8px solid #455fc8;
+      }
+
       .monsterPresent {
         width: 60px;
         height: 50px;
