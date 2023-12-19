@@ -179,8 +179,8 @@ export const newPasswordService = async (
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      newPassword1,
-      newPassword2,
+      new_password1: newPassword1,
+      new_password2: newPassword2,
       uid,
       token,
     }),
