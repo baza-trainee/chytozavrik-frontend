@@ -200,7 +200,9 @@ export const getDocumentsService = async () => {
 };
 
 export const getContactsService = async () => {
-  const result = await privateFetch(`${baseUrl}/contacts/`);
+  const result = await privateFetch(`${baseUrl}/contact-info/`);
 
   return result.json();
 };
+
+

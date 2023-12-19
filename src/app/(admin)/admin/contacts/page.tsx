@@ -10,10 +10,11 @@ const ContactsPage = async () => {
    const queryClient = new QueryClient();
 
   const contacts = await queryClient.fetchQuery({
-    queryKey: ['contacts'],
+    queryKey: ['contact-info'],
     queryFn: getContactsService,
+    
   });
-
+console.log('aaa')
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
   <div className={styles.contacts}>
