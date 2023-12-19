@@ -9,6 +9,7 @@ import { Button, Checkbox, Modal, Spinner } from 'components/common';
 import { useRouter } from 'next/navigation';
 import { useQueryBookById } from '@/hooks/Books/useQueryBookById';
 import Input from 'components/common/form/Input/Input';
+import UploadImage from '@/app/(admin)/components/UploadImageComponent/UploadImage';
 import styles from './BooksFrom.module.scss';
 
 const schema = yup.object({
@@ -21,6 +22,12 @@ type FormDatas = yup.InferType<typeof schema>;
 
 const BooksForm = ({ id }: { id?: number }) => {
   const { bookById, bookLoading, fetchError } = useQueryBookById(id);
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+
+  const handleFileChange = (file: File | null) => {
+    //
+    setSelectedFile(file);
+  };
 
   const defaultValues: FormDatas = {
     title: '',
@@ -79,8 +86,8 @@ const BooksForm = ({ id }: { id?: number }) => {
             Рекомендовані книжки
           </Checkbox>
         </div>
-        <div style={{ width: '302px' }} className={styles.image}>
-          image input
+        <div style={{ width: '30%' }} className={styles.image}>
+          <UploadImage onFileChange={handleFileChange} file={selectedFile} />
         </div>
       </div>
       <div className={styles.actions}>
