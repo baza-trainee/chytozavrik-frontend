@@ -1,4 +1,5 @@
 import { getServerSession } from 'next-auth';
+import { useSession } from 'next-auth/react';
 import { authOptions } from '@/config';
 import {
   AnswerType,
@@ -14,6 +15,7 @@ import {
 } from '@/types';
 import { fetch as axiosServerFetch } from '@/services/axios';
 import { Monster, MonstersResponse, MonstersResults } from '@/types/Monsters';
+import { ChildProp } from 'next/dist/server/app-render/types';
 
 const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || '';
 
@@ -106,12 +108,6 @@ export const getUserInfoService = async (): Promise<FetchResponseType<UserType>>
   return result.json();
 };
 
-export const getChildrenService = async () => {
-  const result = await privateFetch(`${baseUrl}/users/me/children/`);
-
-  return result.json();
-};
-
 export const getQuizInfoByIdService = async (
   id: number
 ): Promise<FetchResponseType<QuizInfoResponse>> => {
@@ -121,12 +117,12 @@ export const getQuizInfoByIdService = async (
 };
 
 export const getUsersQuizzesService = async (
+  childId: string,
   search: string = '',
   page: string = '1',
   category: QuizCategory = QuizCategory.All,
   IS_REVERSED: boolean = true,
-  PAGE_SIZE: number = 12,
-  childId: string
+  PAGE_SIZE: number = 12
 ): Promise<FetchResponseType<UsersQuizzesResponse>> => {
   const selectedCategory = category ? `&${category}` : '';
 
@@ -184,8 +180,8 @@ export const newPasswordService = async (
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      newPassword1,
-      newPassword2,
+      new_password1: newPassword1,
+      new_password2: newPassword2,
       uid,
       token,
     }),
@@ -229,4 +225,32 @@ export const getRecommendationBooksService = async () => {
 export const getWigwamQuizService = async (childId: string) => {
   const { data } = await axiosServerFetch(`${baseUrl}/users/me/children/${childId}`);
   return data;
+};
+
+export const changePasswordService = async (
+  oldPassword: string,
+  password: string,
+  confirmPassword: string,
+  access: string | undefined
+): Promise<FetchResponseType<resetPasswordType>> => {
+  const result = await fetch(`${baseUrl}/users/password/change/`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${access}`,
+    },
+    body: JSON.stringify({
+      old_password: oldPassword,
+      new_password1: password,
+      new_password2: confirmPassword,
+    }),
+  });
+
+  return result.json();
+};
+
+export const getChildrenService = async () => {
+  const response = await axiosServerFetch(`${baseUrl}/users/me/children/`);
+
+  return response.data;
 };

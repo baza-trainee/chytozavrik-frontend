@@ -1,5 +1,3 @@
-'use client'
-
 import { InputHTMLAttributes, ReactNode } from 'react';
 import { FieldValues, useController, UseControllerProps } from 'react-hook-form';
 import { Check } from 'lucide-react';
