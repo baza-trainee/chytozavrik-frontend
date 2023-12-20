@@ -31,8 +31,6 @@ const ResetPassword = () => {
     control,
     handleSubmit,
     resetField,
-    // eslint-disable-next-line no-unused-vars
-    setError: setFormError,
     formState: { isSubmitting },
   } = useForm({
     defaultValues,
