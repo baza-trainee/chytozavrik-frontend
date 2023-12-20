@@ -1,4 +1,5 @@
 import { getServerSession } from 'next-auth';
+import { useSession } from 'next-auth/react';
 import { authOptions } from '@/config';
 import {
   AnswerType,
@@ -116,12 +117,12 @@ export const getQuizInfoByIdService = async (
 };
 
 export const getUsersQuizzesService = async (
+  childId: string,
   search: string = '',
   page: string = '1',
   category: QuizCategory = QuizCategory.All,
   IS_REVERSED: boolean = true,
-  PAGE_SIZE: number = 12,
-  childId: string
+  PAGE_SIZE: number = 12
 ): Promise<FetchResponseType<UsersQuizzesResponse>> => {
   const selectedCategory = category ? `&${category}` : '';
 
@@ -224,6 +225,28 @@ export const getRecommendationBooksService = async () => {
 export const getWigwamQuizService = async (childId: string) => {
   const { data } = await axiosServerFetch(`${baseUrl}/users/me/children/${childId}`);
   return data;
+};
+
+export const changePasswordService = async (
+  oldPassword: string,
+  password: string,
+  confirmPassword: string,
+  access: string | undefined
+): Promise<FetchResponseType<resetPasswordType>> => {
+  const result = await fetch(`${baseUrl}/users/password/change/`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${access}`,
+    },
+    body: JSON.stringify({
+      old_password: oldPassword,
+      new_password1: password,
+      new_password2: confirmPassword,
+    }),
+  });
+
+  return result.json();
 };
 
 export const getChildrenService = async () => {
