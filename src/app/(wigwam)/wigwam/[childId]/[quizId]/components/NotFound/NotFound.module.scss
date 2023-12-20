@@ -1,0 +1,138 @@
+@import '@/scss/utils/func';
+@import '@/scss/utils/mixin';
+@import '@/scss/utils/variables';
+
+$ratio-image2: 1.24;
+$ratio-image3: 3.09;
+
+.notFoundContainer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: calc(100vh - 134px);
+  background-image: url('/images/wigwam/NoQuizPage/Cloud-mobile.svg'),
+    url('/images/wigwam/NoQuizPage/hero-mobile.svg');
+  background-color: #7791fa;
+  background-repeat: no-repeat;
+  background-size:
+    100% auto,
+    100% auto;
+  background-position:
+    center top,
+    center bottom;
+
+  @include breakpoint(475px) {
+    background-image: url('/images/wigwam/NoQuizPage/Cloud-tablet.svg'),
+      url('/images/wigwam/NoQuizPage/hero-tablet.svg');
+    background-repeat: no-repeat;
+    background-size:
+      100% auto,
+      100% auto;
+    background-position:
+      center top,
+      center bottom 71px;
+  }
+
+  @include breakpoint(700px) {
+    background-image: url('/images/wigwam/NoQuizPage/Cloud-tablet.svg'),
+      url('/images/wigwam/NoQuizPage/hero-laptop.svg');
+    background-position:
+      center top,
+      center bottom 70px;
+  }
+
+  @include breakpoint(768px) {
+    background-position:
+      center top,
+      center bottom;
+    height: calc(100vh - 64px);
+  }
+
+  @include breakpoint(laptop) {
+    background-image: url('/images/wigwam/NoQuizPage/Cloud-laptop.svg'),
+      url('/images/wigwam/NoQuizPage/hero-laptop.svg');
+    background-position:
+      center top,
+      center bottom;
+    height: calc(100vh - 100px);
+  }
+
+  @include breakpoint(desktop) {
+    background-image: url('/images/wigwam/NoQuizPage/Cloud-desktop.svg'),
+      url('/images/wigwam/NoQuizPage/hero-laptop.svg');
+    background-position:
+      center top,
+      center;
+  }
+
+  .Container {
+    display: flex;
+    align-items: flex-end;
+  }
+
+  a {
+    padding: 16px 94px;
+    margin-top: 36px;
+
+    @include breakpoint(tablet) {
+      padding: 16px 87px;
+    }
+    @include breakpoint(laptop) {
+      padding: 16px 83px;
+    }
+    @include breakpoint(desktop) {
+      padding: 17px 128px;
+    }
+  }
+
+  p {
+    color: white;
+    text-align: center;
+    line-height: 24px;
+    font-weight: 400;
+    font-size: 18px;
+    @include breakpoint(mobile) {
+      font-size: 18px;
+    }
+    @include breakpoint(tablet) {
+      font-size: 18px;
+    }
+    @include breakpoint(laptop) {
+      line-height: 21.6px;
+      font-size: 20px;
+    }
+    @include breakpoint(desktop) {
+      line-height: 24px;
+    }
+  }
+
+  p.textContainer {
+    padding-top: 15px;
+    @include breakpoint(tablet) {
+      padding-top: 0;
+    }
+  }
+
+  .infoContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+    max-width: 310px;
+
+    @include breakpoint(tablet) {
+      max-width: 100%;
+      margin-bottom: 30px;
+    }
+
+    @include breakpoint(laptop) {
+      margin-bottom: 90px;
+    }
+
+    .homeButton {
+      // a {
+      //   padding: 17px 128px;
+      // }
+    }
+  }
+}

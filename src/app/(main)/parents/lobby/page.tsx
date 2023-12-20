@@ -1,13 +1,7 @@
-import { getChildrenService } from '@/services/api';
+import React from 'react';
 import Lobby from './components/Lobby';
 
-const LobbyPage = async () => {
-  const users = await getChildrenService();
+const LobbyPage = async () => <Lobby />
 
-  // eslint-disable-next-line no-console
-  if (!users || users.status === 'fail') return console.error('Unauthorized user.');
-
-  return <Lobby users={users.data} />;
-};
 
 export default LobbyPage;

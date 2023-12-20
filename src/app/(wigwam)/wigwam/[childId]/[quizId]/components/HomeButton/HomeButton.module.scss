@@ -1,0 +1,22 @@
+@import '@/scss/utils/func';
+@import '@/scss/utils/mixin';
+@import '@/scss/utils/variables';
+
+.HomeButton {
+  a {
+    // padding: 16px 94px;
+    margin-top: 36px;
+    @include breakpoint(mobile) {
+      // padding: 16px 94px;
+    }
+    @include breakpoint(tablet) {
+      // padding: 16px 87px;
+    }
+    @include breakpoint(laptop) {
+      // padding: 16px 83px;
+    }
+    @include breakpoint(desktop) {
+      // padding: 17px 128px;
+    }
+  }
+}

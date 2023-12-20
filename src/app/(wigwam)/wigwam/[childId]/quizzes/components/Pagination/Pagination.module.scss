@@ -10,6 +10,11 @@
   margin-bottom: 48px;
   margin-top: 36px;
 
+  @include breakpoint(mobile) {
+    margin-top: 32px;
+    margin-bottom: calc(32px + 70px);
+  }
+
   a {
     font-size: 18px;
     padding: 14.5px 26px;

@@ -21,7 +21,7 @@ const MonstersSlider = ({
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
   useEffect(() => {
-    if (currentSlide === sliderItems.length - 1) {
+    if (currentSlide === sliderItems.length - 1 && results.length > 1) {
       setSliderItems(prevItems => [...prevItems, ...results]);
     }
   }, [currentSlide, results]);
@@ -69,6 +69,8 @@ const MonstersSlider = ({
     }
   };
 
+  console.log(sliderItems);
+
   return (
     <div
       className={styles.slider}
@@ -77,7 +79,7 @@ const MonstersSlider = ({
       onTouchEnd={onTouchEnd}
     >
       <button
-        style={sliderItems.length < 1 ? { visibility: 'hidden' } : { visibility: 'visible' }}
+        style={sliderItems.length === 1 ? { visibility: 'hidden' } : { visibility: 'visible' }}
         className={styles.prev}
         onClick={goToPrev}
         aria-label="Попередній"
@@ -95,7 +97,7 @@ const MonstersSlider = ({
                   width={100}
                   height={100}
                   style={{
-                    objectFit: 'cover',
+                    objectFit: 'contain',
                     objectPosition: 'bottom center',
                     width: '100%',
                     height: '100%',
@@ -108,7 +110,7 @@ const MonstersSlider = ({
       </div>
 
       <button
-        style={sliderItems.length < 1 ? { visibility: 'hidden' } : { visibility: 'visible' }}
+        style={sliderItems.length === 1 ? { visibility: 'hidden' } : { visibility: 'visible' }}
         className={styles.next}
         onClick={goToNext}
         aria-label="Наступний"

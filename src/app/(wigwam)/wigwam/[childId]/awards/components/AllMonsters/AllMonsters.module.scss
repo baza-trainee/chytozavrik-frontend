@@ -3,57 +3,88 @@
 
 .monsters {
   background: $white;
-  height: calc(100vh - 134px);
+  height: calc(100vh - 136px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 12vh;
   position: relative;
   overflow: hidden;
-  padding-top: 12vh;
+  margin-bottom: 59px;
 
-  .clouds {
-    background-image: url('/images/monsters/clouds-dark.svg'),
-      url('/images/monsters/clouds-light.svg');
-    background-repeat: repeat-x, repeat-x;
-    background-size:
-      360px 72px,
-      360px 75px;
-    background-position: bottom, top;
-    height: 75px;
-    width: 100vw;
-    position: absolute;
-    bottom: -1px;
+  & :global .slick-list {
+    height: 100% !important;
+    width: 100vw !important;
   }
 
-  .wigwam {
-    background-image: url('/images/monsters/wigwam.svg');
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center bottom;
+  .spinner {
     position: absolute;
-    width: 90vw;
-    height: 35vh;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 8px;
+    top: 30%;
+    left: 51%;
+    transform: translate(-60%, -80%);
+
+    & span {
+      width: 60px;
+      height: 60px;
+    }
+  }
+
+  .bgWrapper {
+    position: relative;
+    height: 32.5vh;
+
+    .clouds {
+      background-image: url('/images/monsters/clouds-dark.svg'),
+        url('/images/monsters/clouds-light.svg');
+      background-repeat: repeat-x, repeat-x;
+      background-size:
+        360px 72px,
+        360px 75px;
+      background-position: bottom, top;
+      height: 75px;
+      width: 100vw;
+      position: absolute;
+      bottom: -1px;
+    }
+
+    .wigwam {
+      background-image: url('/images/monsters/wigwam.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center bottom;
+      position: absolute;
+      width: 90vw;
+      height: 35vh;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 8px;
+    }
   }
 
   @include breakpoint(tablet) {
     padding-top: 125px;
     height: calc(100vh - 70px);
+    margin-bottom: 0;
 
-    .clouds {
-      background-image: url('/images/monsters/clouds-dark-768.svg'),
-        url('/images/monsters/clouds-light.svg');
-      background-size:
-        auto 137px,
-        768px 160px;
-      height: 160px;
-      bottom: 0;
-    }
+    .bgWrapper {
+      height: 39.61vh;
 
-    .wigwam {
-      width: 64vw;
-      height: 40vh;
-      bottom: 3.5vh;
-      background-size: contain;
+      .clouds {
+        background-image: url('/images/monsters/clouds-dark-768.svg'),
+          url('/images/monsters/clouds-light.svg');
+        background-size:
+          auto 137px,
+          768px 160px;
+        height: 160px;
+        bottom: 0;
+      }
+
+      .wigwam {
+        width: 64vw;
+        height: 40vh;
+        bottom: 3.5vh;
+        background-size: contain;
+      }
     }
   }
 
@@ -61,18 +92,22 @@
     min-height: 500px;
     padding-top: 40px;
 
-    .clouds {
-      background-size:
-        auto 183px,
-        1024px 213px;
-      height: 213px;
-    }
+    .bgWrapper {
+      height: 33.5vh;
 
-    .wigwam {
-      background-size: contain;
-      width: 47.5vw;
-      height: 50vh;
-      bottom: 3.5vh;
+      .clouds {
+        background-size:
+          auto 183px,
+          1024px 213px;
+        height: 213px;
+      }
+
+      .wigwam {
+        background-size: contain;
+        width: 47.5vw;
+        height: 50vh;
+        bottom: 3.5vh;
+      }
     }
   }
 
@@ -80,20 +115,22 @@
     padding-top: 7vh;
     min-height: 850px;
 
-    .clouds {
-      background-image: url('/images/monsters/clouds-dark-1440.svg'),
-        url('/images/monsters/clouds-light-1440.svg');
-      background-size:
-        auto 285px,
-        1440px 301px;
-      height: 301px;
-    }
+    .bgWrapper {
+      .clouds {
+        background-image: url('/images/monsters/clouds-dark-1440.svg'),
+          url('/images/monsters/clouds-light-1440.svg');
+        background-size:
+          auto 285px,
+          1440px 301px;
+        height: 301px;
+      }
 
-    .wigwam {
-      background-image: url('/images/monsters/wigwam-1440.svg');
-      background-size: 655px 460px;
-      width: 655px;
-      height: 460px;
+      .wigwam {
+        background-image: url('/images/monsters/wigwam-1440.svg');
+        background-size: 655px 460px;
+        width: 655px;
+        height: 460px;
+      }
     }
   }
 }
@@ -101,7 +138,6 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-
   gap: 4.8vh;
 
   .buttons {
@@ -155,6 +191,14 @@
       display: flex;
       align-items: center;
       justify-content: center;
+
+      &:hover .monsterPresent img {
+        transform: scale(1.1);
+      }
+
+      &:hover {
+        border: 8px solid #455fc8;
+      }
 
       .monsterPresent {
         width: 60px;

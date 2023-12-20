@@ -1,10 +1,11 @@
-import React, { Dispatch, SetStateAction, useCallback, useEffect, useRef, useState } from 'react';
-import styles from '@/app/(wigwam)/components/Wigwam/Books/WigwamBooks.module.scss';
-import { BookType } from '@/types/WigwamBooks';
-import BookItem from '@/app/(wigwam)/components/Wigwam/Books/BookItem/BookItem';
-import NotFoundBook from '@/app/(wigwam)/components/Wigwam/Books/NotFound/NotFoundBook';
+'use client';
+
+import React, { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
+import { BookType, LastquizType } from '@/types';
+import { NotFoundBook, BookItem } from '@/app/(wigwam)/components/Wigwam';
 import { useSession } from 'next-auth/react';
 import axios from 'axios';
+import styles from '@/app/(wigwam)/components/Wigwam/Books/WigwamBooks.module.scss';
 
 interface BooksListProps {
   booksData: BookType[];
@@ -12,6 +13,7 @@ interface BooksListProps {
   searchValue: string;
   selectedBooks: { [p: string]: boolean };
   setSelectedBooks: Dispatch<SetStateAction<{ [p: string]: boolean }>>;
+  wigwamQuizData?: LastquizType;
 }
 
 const BooksList = ({
@@ -20,6 +22,7 @@ const BooksList = ({
   searchValue,
   selectedBooks,
   setSelectedBooks,
+  wigwamQuizData,
 }: BooksListProps) => {
   const [filteredBooks, setFilteredBooks] = useState<BookType[]>(booksData);
   const [nextPageUrl, setNextPageUrl] = useState(next);
@@ -27,7 +30,7 @@ const BooksList = ({
   const observer = useRef<IntersectionObserver | null>(null);
   const [lastElement, setLastElement] = useState<HTMLElement | null>(null);
 
-  const loadMoreBooks = useCallback(async () => {
+  const loadMoreBooks = async () => {
     if (!nextPageUrl) return;
     const response = await axios(nextPageUrl, {
       headers: {
@@ -37,7 +40,7 @@ const BooksList = ({
     const newBooksData = response.data.data;
     setFilteredBooks(prevBooks => [...prevBooks, ...newBooksData.results]);
     setNextPageUrl(newBooksData.next);
-  }, [nextPageUrl, session, setFilteredBooks, setNextPageUrl]);
+  };
 
   useEffect(() => {
     if (observer.current) observer.current.disconnect();
@@ -51,27 +54,36 @@ const BooksList = ({
     return () => {
       if (observer.current) observer.current.disconnect();
     };
-  }, [lastElement, nextPageUrl, status, loadMoreBooks]);
+  }, [lastElement, nextPageUrl, status]);
 
   useEffect(() => {
     const matchedBooks = booksData?.filter(
       entry =>
-        entry.book.title.toLowerCase().includes(searchValue?.toLowerCase() || '') ||
-        entry.book.author.toLowerCase().includes(searchValue?.toLowerCase() || '')
+        entry.book.title.toLowerCase().includes(searchValue.toLowerCase() || '') ||
+        entry.book.author.toLowerCase().includes(searchValue.toLowerCase() || '')
     );
     setFilteredBooks(matchedBooks);
   }, [searchValue, booksData]);
 
-  return filteredBooks?.length > 1 ? (
-    <div className={styles.button_list}>
-      {filteredBooks?.map((item: BookType, index) => (
-        <div key={item.id} ref={index === filteredBooks.length - 1 ? setLastElement : null}>
-          <BookItem item={item} selectedBooks={selectedBooks} setSelectedBooks={setSelectedBooks} />
+  return (
+    <>
+      {filteredBooks?.length > 0 && (
+        <div className={styles.button_list}>
+          {filteredBooks?.map((item: BookType, index: number) => (
+            <BookItem
+              key={item.id}
+              item={item}
+              selectedBooks={selectedBooks}
+              booksData={booksData}
+              wigwamQuizData={wigwamQuizData}
+              index={index}
+            />
+          ))}
+          <div ref={node => setLastElement(node)} />
         </div>
-      ))}
-    </div>
-  ) : (
-    <NotFoundBook />
+      )}
+      {filteredBooks?.length < 1 && <NotFoundBook />}
+    </>
   );
 };
 

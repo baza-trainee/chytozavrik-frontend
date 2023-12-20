@@ -12,7 +12,9 @@ import {
   sendPasswordResetEmailType,
   resetPasswordType,
 } from '@/types';
-import { IS_REVERSED, PAGE_SIZE } from '@/constants';
+import { fetch as axiosServerFetch } from '@/services/axios';
+import { Monster, MonstersResponse, MonstersResults } from '@/types/Monsters';
+import { ChildProp } from 'next/dist/server/app-render/types';
 
 const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || '';
 
@@ -105,12 +107,6 @@ export const getUserInfoService = async (): Promise<FetchResponseType<UserType>>
   return result.json();
 };
 
-export const getChildrenService = async () => {
-  const result = await privateFetch(`${baseUrl}/users/me/children/`);
-
-  return result.json();
-};
-
 export const getQuizInfoByIdService = async (
   id: number
 ): Promise<FetchResponseType<QuizInfoResponse>> => {
@@ -195,14 +191,48 @@ export const newPasswordService = async (
 
 export const getDocumentsService = async () => {
   const result = await privateFetch(`${baseUrl}/documents/`);
-
   return result.json();
+};
+
+export const getBooksService = async () => {
+  const result = await axiosServerFetch(`${baseUrl}/books?page=1&page_size=7`);
+  return result.data;
+};
+
+export const getMonstersService = async (childId: string) => {
+  const { data } = await axiosServerFetch<MonstersResponse>(
+    `${baseUrl}/users/me/children/${childId}/rewards`
+  );
+
+  if ('results' in data) {
+    return data.results;
+  }
+
+  throw new Error(data.message);
+};
+
+export const getChildBooksService = async (childId: string) => {
+  const { data } = await axiosServerFetch(`${baseUrl}/users/me/children/${childId}/quizzes`);
+  return data;
+};
+
+export const getRecommendationBooksService = async () => {
+  const { data } = await axiosServerFetch(`${baseUrl}/recommendation-books`);
+  return data;
+};
+
+export const getWigwamQuizService = async (childId: string) => {
+  const { data } = await axiosServerFetch(`${baseUrl}/users/me/children/${childId}`);
+  return data;
+};
+
+export const getChildrenService = async () => {
+  const response = await axiosServerFetch(`${baseUrl}/users/me/children/`);
+
+  return response.data;
 };
 
 export const getContactsService = async () => {
   const result = await privateFetch(`${baseUrl}/contact-info/`);
-
   return result.json();
 };
-
-

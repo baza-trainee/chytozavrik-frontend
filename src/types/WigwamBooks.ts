@@ -14,12 +14,5 @@ export interface BooksResponse {
   next: string | null;
   previous: string | null;
   results: BookType[];
-}
-
-export interface BooksResults {
-  results: BookType[];
-}
-
-export interface ErrorType {
   message: string;
 }

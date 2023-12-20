@@ -1,5 +1,7 @@
+'use client';
+
 import { InputHTMLAttributes, ReactNode } from 'react';
-import { FieldValues, UseControllerProps, useController } from 'react-hook-form';
+import { FieldValues, useController, UseControllerProps } from 'react-hook-form';
 import { Check } from 'lucide-react';
 import classNames from 'classnames';
 import styles from './Checkbox.module.scss';
@@ -19,13 +21,18 @@ const Checkbox = <T extends FieldValues>({
   ...props
 }: InputProps<T>) => {
   const { field } = useController<T>({ name, control });
-  const inputId = `input-${name}`;
   return (
     <div className={classNames(className)}>
-      <label className={styles.label} htmlFor={inputId}>
+      <label className={styles.label}>
         <span className={classNames(styles['input-group'], styles[`input-group--${color}`])}>
           <Check className={styles['input-checked-icon']} strokeWidth={4} />
-          <input className={styles.input} {...field} {...props} type="checkbox" />
+          <input
+            type="checkbox"
+            className={styles.input}
+            {...field}
+            checked={field.value}
+            {...props}
+          />
         </span>
         {children && <span className={styles['label-text']}>{children}</span>}
       </label>

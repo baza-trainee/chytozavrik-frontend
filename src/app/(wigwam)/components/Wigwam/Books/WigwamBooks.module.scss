@@ -265,22 +265,32 @@
 }
 
 .arrow {
-  width: 20px;
-  height: 20px;
-  color: $primary;
-}
-
-.book_items_icon_wraper {
   display: flex;
-  align-items: center;
+  padding: 16px;
   justify-content: center;
+  align-items: center;
+  color: $primary;
+  cursor: pointer;
   width: 56px;
   height: 56px;
-  cursor: pointer;
+
+  & svg {
+    width: 24px;
+    height: 24px;
+  }
 
   @include breakpoint(tablet) {
+    padding: 20px;
     width: 64px;
     height: 64px;
+  }
+
+  &:hover {
+    color: getColor(blue, 50);
+  }
+
+  &:active {
+    color: getColor(blue, 30);
   }
 }
 

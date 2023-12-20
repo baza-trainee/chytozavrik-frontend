@@ -1,21 +1,26 @@
 'use client';
 
 import React from 'react';
-import CatImage from '@/app/(wigwam)/components/Wigwam/Quiz/components/CatImage';
-import styles from './WigwamQuiz.module.scss';
+import { BookType, LastquizType } from '@/types';
+import { WelcomeWigwam, LastQuiz, NoLastQuiz } from '@/app/(wigwam)/components/Wigwam';
 
-const WigwamQuiz = () => (
-  <div className={styles.wraper}>
-    <div className={styles.box}>
-      <div className={styles.image}>
-        <CatImage width={140} height={90} viewBox="0 0 140 90" />
-      </div>
-      <div className={styles.text_wraper}>
-        <p className={styles.text_welcome}>Вітаємо у Вігвамі! </p>
-        <p className={styles.text}>Обери книгу зі списку пройди вікторину та отримай читозаврика</p>
-      </div>
-    </div>
-  </div>
-);
+export interface WigwamQuizProps {
+  booksItem: BookType;
+  wigwamQuizItem?: LastquizType;
+}
+
+const WigwamQuiz: React.FC<WigwamQuizProps> = ({ booksItem, wigwamQuizItem }) => {
+  const uniqueQuizzes = wigwamQuizItem?.last_quiz_id;
+
+  if (!uniqueQuizzes) {
+    return <WelcomeWigwam />;
+  }
+
+  if (booksItem?.current_score === '5/5') {
+    return <NoLastQuiz />;
+  }
+
+  return <LastQuiz wigwamQuizItem={wigwamQuizItem} booksItem={booksItem} />;
+};
 
 export default WigwamQuiz;

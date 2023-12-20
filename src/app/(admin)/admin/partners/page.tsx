@@ -12,7 +12,6 @@ const Partners = () => (
       withClose={false}
       buttonText="Додати партнера"
       heading="Партнери"
-      searchWord="value"
     />
     <div>
       <TableHeader variant="partners" colNames={['Назва', 'Дата  додавання']} />
