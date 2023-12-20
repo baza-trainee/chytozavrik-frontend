@@ -30,6 +30,7 @@
     "next-auth": "^4.22.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-drag-drop-files": "^2.3.10",
     "react-hook-form": "^7.45.1",
     "react-paginate": "^8.2.0",
     "react-responsive": "^9.0.2",

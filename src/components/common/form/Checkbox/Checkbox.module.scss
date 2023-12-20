@@ -23,20 +23,15 @@
   --checkbox-hover-color: #{rgba($primary, 0.16)};
 
   cursor: pointer;
-
   position: relative;
-
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
-
   width: 18px;
   height: 18px;
   padding: 3px;
-
   color: var(--checkbox-color);
-
   border-radius: 5px;
 
   @include setTransition(background-color);
@@ -64,14 +59,31 @@
     }
   }
 
-  &:has(input:not(:checked)) .input-checked-icon {
+  //&:has(input:not(:checked)) .input-checked-icon {
+  //  @include visibilityHidden();
+  //}
+
+  //&:has(input:disabled) {
+  //  cursor: not-allowed;
+  //  opacity: 0.4;
+  //}
+
+  & .input:disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+  }
+
+  .input {
     @include visibilityHidden();
   }
 
-  &:has(input:disabled) {
-    cursor: not-allowed;
+  .input-checked-icon {
+    width: 100%;
+    height: 100%;
+  }
 
-    opacity: 0.4;
+  & .input:not(:checked) + .input-checked-icon {
+    @include visibilityHidden();
   }
 
   &--primary {
@@ -88,13 +100,4 @@
     width: 20px;
     height: 20px;
   }
-}
-
-.input {
-  @include visibilityHidden();
-}
-
-.input-checked-icon {
-  width: 100%;
-  height: 100%;
 }

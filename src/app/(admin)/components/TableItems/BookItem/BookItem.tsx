@@ -11,11 +11,13 @@ import { Route } from '@/constants';
 import { Spinner } from 'components/common';
 import { useDeleteBooks } from '@/hooks/Books/useDeleteBooks';
 import Modal from 'components/common/ModalActions/Modal';
+import { useQueryClient } from '@tanstack/react-query';
 import styles from './BookItem.module.scss';
 
 const BookItem = ({ book, page, onCheckboxChange, isDeleting }: BookAdminProps) => {
-  const { deleteBook, isPending } = useDeleteBooks();
+  const { deleteBook, isPending, setIsDeleted, isDeleted } = useDeleteBooks();
   const [isOpen, setIsOpen] = useState(false);
+  const queryClient = useQueryClient();
 
   let stateToRender;
   if (Array.isArray(book.state)) {
@@ -87,7 +89,21 @@ const BookItem = ({ book, page, onCheckboxChange, isDeleting }: BookAdminProps) 
           title={`Видалити “${book.title}”`}
           active={isOpen}
           setActive={() => setIsOpen(false)}
-          successFnc={() => deleteBook(book.id)}
+          successFnc={() => {
+            deleteBook(book.id);
+          }}
+        />
+      )}
+      {isDeleted && (
+        <Modal
+          type="success"
+          message={`Книгу “${book.title}” видалено`}
+          title="Успіх!"
+          active={isDeleted}
+          setActive={() => {
+            setIsDeleted(false);
+            queryClient.invalidateQueries({ queryKey: ['books'] });
+          }}
         />
       )}
     </div>

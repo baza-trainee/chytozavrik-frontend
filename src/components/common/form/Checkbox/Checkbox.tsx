@@ -21,6 +21,7 @@ const Checkbox = <T extends FieldValues>({
   ...props
 }: InputProps<T>) => {
   const { field } = useController<T>({ name, control });
+
   return (
     <div className={classNames(className)}>
       <label className={styles.label}>

@@ -22,7 +22,7 @@ const QuizCard: React.FC<QuizCardProps> = ({ quiz, childId, category }) => {
     buttonTitle = 'Пройти вікторину';
   } else if (category === 'is_started=true') {
     buttonTitle = 'Продовжити вікторину';
-  } else {
+  } else if (category === 'is_completed=true') {
     buttonTitle = 'Пройти ще раз';
   }
 

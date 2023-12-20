@@ -7,8 +7,9 @@ import * as yup from 'yup';
 import { validation } from 'components/common/form';
 import { Button, Checkbox, Modal, Spinner } from 'components/common';
 import { useRouter } from 'next/navigation';
-import { useQueryBookById } from '@/hooks/Books/useQueryBookById';
 import Input from 'components/common/form/Input/Input';
+import UploadImage from '@/app/(admin)/components/UploadImageComponent/UploadImage';
+import { useAddBook, useEditBook, useQueryBookById } from '@/hooks';
 import styles from './BooksFrom.module.scss';
 
 const schema = yup.object({
@@ -21,6 +22,19 @@ type FormDatas = yup.InferType<typeof schema>;
 
 const BooksForm = ({ id }: { id?: number }) => {
   const { bookById, bookLoading, fetchError } = useQueryBookById(id);
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [initialImg, setInitialImg] = useState('');
+  const { addBook, isPendingAdd, isAddSuccess, setIsAddSuccess } = useAddBook();
+  const { editBook, isEditSuccess, setIsEditSuccess, isPendingEdit } = useEditBook();
+  useEffect(() => {
+    if (bookById) {
+      setInitialImg(bookById.cover_image);
+    }
+  }, [bookById]);
+
+  const handleFileChange = (file: File | null) => {
+    setSelectedFile(file);
+  };
 
   const defaultValues: FormDatas = {
     title: '',
@@ -28,15 +42,16 @@ const BooksForm = ({ id }: { id?: number }) => {
     is_recommended: false,
   };
 
-  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const { control, reset, handleSubmit, resetField, setValue } = useForm({
     defaultValues,
     resolver: yupResolver(schema),
     mode: 'onChange',
   });
-  const { errors, isDirty, isValid } = useFormState({ control });
-  const isDisabled = Object.keys(errors).length > 0 || !isValid;
+  const { errors, isDirty, isValid, dirtyFields } = useFormState({ control });
+  const isImage = initialImg || selectedFile;
+  const isDisabled = Object.keys(errors).length > 0 || !isValid || !isImage;
+  const router = useRouter();
 
   useEffect(() => {
     if (bookById) {
@@ -50,9 +65,28 @@ const BooksForm = ({ id }: { id?: number }) => {
 
   const submit = (data: FormDatas) => {
     const formData = new FormData();
-    formData.append('title', data.title);
-    formData.append('author', data.author);
-    formData.append('is_recommended', data.is_recommended.toString());
+    if (id) {
+      formData.append('id', id.toString());
+      if (dirtyFields.title) {
+        formData.append('title', data.title);
+      }
+      if (dirtyFields.author) {
+        formData.append('author', data.author);
+      }
+      if (dirtyFields.is_recommended) {
+        formData.append('is_recommended', data.is_recommended.toString());
+      }
+      if (selectedFile) {
+        formData.append('cover_image', selectedFile);
+      }
+      editBook({ id, formData });
+    } else {
+      formData.append('title', data.title);
+      formData.append('author', data.author);
+      formData.append('is_recommended', data.is_recommended.toString());
+      if (selectedFile) formData.append('cover_image', selectedFile);
+      addBook(formData);
+    }
   };
 
   return bookLoading ? (
@@ -79,8 +113,12 @@ const BooksForm = ({ id }: { id?: number }) => {
             Рекомендовані книжки
           </Checkbox>
         </div>
-        <div style={{ width: '302px' }} className={styles.image}>
-          image input
+        <div style={{ width: '30%' }} className={styles.image}>
+          <UploadImage
+            onFileChange={handleFileChange}
+            file={selectedFile}
+            initialImg={initialImg}
+          />
         </div>
       </div>
       <div className={styles.actions}>
@@ -89,11 +127,18 @@ const BooksForm = ({ id }: { id?: number }) => {
           color="primary"
           size="small"
           onClick={() => setIsOpen(true)}
-          disabled={isDisabled}
+          disabled={isDisabled || isPendingAdd || isPendingEdit}
         >
           Скасувати
         </Button>
-        <Button type="submit" variant="filled" color="secondary" size="small" disabled={isDisabled}>
+        <Button
+          type="submit"
+          variant="filled"
+          color="secondary"
+          size="small"
+          disabled={isDisabled || isPendingAdd || isPendingEdit}
+          isLoading={isPendingAdd || isPendingEdit}
+        >
           Додати
         </Button>
       </div>
@@ -106,6 +151,22 @@ const BooksForm = ({ id }: { id?: number }) => {
           active={isOpen}
           setActive={() => setIsOpen(false)}
           successFnc={() => router.back()}
+        />
+      )}
+      {(isAddSuccess || isEditSuccess) && (
+        <Modal
+          type="success"
+          message="Книгу додано"
+          title="Успіх!"
+          active={isAddSuccess || isEditSuccess}
+          setActive={() => {
+            if (isAddSuccess) {
+              setIsAddSuccess(false);
+            } else {
+              setIsEditSuccess(false);
+            }
+            router.back();
+          }}
         />
       )}
     </form>
