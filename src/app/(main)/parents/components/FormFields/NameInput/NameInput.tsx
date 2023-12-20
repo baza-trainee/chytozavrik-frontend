@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { FieldErrors, UseFormRegister } from 'react-hook-form';
 import styles from './NameInput.module.scss';
