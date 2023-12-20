@@ -9,7 +9,7 @@ interface SuccessProps {
 }
 const Success = ({ title, message, closeModal }: SuccessProps) => (
   <div className={styles.success}>
-    <div className={styles.closeBtn} onClick={() => closeModal()}>
+    <div className={styles.closeBtn} onClick={closeModal}>
       <X />
     </div>
     <div className={styles.content}>

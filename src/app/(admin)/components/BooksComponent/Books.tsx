@@ -8,6 +8,7 @@ import { Spinner } from 'components/common';
 import Pagination from 'components/Pagination/Pagination';
 import { useDeleteChosenBooks } from '@/hooks/Books/useDeleteChosenBooks';
 import styles from '../../admin/books/Books.module.scss';
+import Modal from 'components/common/ModalActions/Modal';
 
 const Books = ({
   searchValue = '',

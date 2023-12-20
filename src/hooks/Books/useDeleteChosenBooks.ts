@@ -29,5 +29,5 @@ export const useDeleteChosenBooks = () => {
     deleteChosenBooks(selectedBooks);
   };
 
-  return { handleDeleteBooks, deletingBooks };
+  return { handleDeleteBooks, deletingBooks};
 };
