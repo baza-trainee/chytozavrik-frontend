@@ -15,29 +15,29 @@ import Input from '../../../../../components/common/form/Input/Input';
 import { useForm } from 'react-hook-form';
 import { createContext } from 'react';
 
-const ContactItem = ({ id,first_phone,second_phone,email, updated_at: updated }: Contact) => {
+const ContactItem = ({ id, first_phone, second_phone, email, updated_at: updated }: Contact) => {
   const queryClient = useQueryClient();
   const [isOpen, setIsOpen] = useState(false);
   const [inputValue, setInputValue] = useState(first_phone);
   const [newPhoneNumber, setNewPhoneNumber] = useState(first_phone);
 
-    const [inputValue2, setInputValue2] = useState(second_phone);
+  const [inputValue2, setInputValue2] = useState(second_phone);
   const [newPhoneNumber2, setNewPhoneNumber2] = useState(second_phone);
 
-    const [inputValue3, setInputValue3] = useState(email);
+  const [inputValue3, setInputValue3] = useState(email);
   const [newPhoneNumber3, setNewPhoneNumber3] = useState(email);
 
   const [isSuccess, setIsSuccess] = useState(false);
   const [isDiscard, setIsDiscard] = useState(false);
   const { data: session } = useSession();
 
- const { mutate, error, isPending } = useMutation({
+  const { mutate, error, isPending } = useMutation({
     mutationFn: async () => {
       const formData = new FormData();
       formData.append('id', String(id));
-     formData.append('first_phone', String(newPhoneNumber));
-     formData.append('second_phone', String(newPhoneNumber2));
-          formData.append('email', String(newPhoneNumber3));// Send the updated phone number in the request
+      formData.append('first_phone', String(newPhoneNumber));
+      formData.append('second_phone', String(newPhoneNumber2));
+      formData.append('email', String(newPhoneNumber3)); // Send the updated phone number in the request
 
       await axios.patch(`contact-info/`, formData, {
         headers: {
@@ -65,127 +65,125 @@ const ContactItem = ({ id,first_phone,second_phone,email, updated_at: updated }:
     },
   });
 
-const { control, setValue, watch } = useForm({
-  defaultValues: {
-    input: '',
-  },
-});
-const resetField = () => setValue('input', '');
+  const { control, setValue, handleSubmit } = useForm({
+    defaultValues: {
+      input: '',
+    },
+  });
+  // const resetField = () => setValue('input', '');
+
+  const onSubmit = async (data: { input: string }) => {
+    setNewPhoneNumber(data.input);
+    setNewPhoneNumber2(data.input);
+    setNewPhoneNumber3(data.input);
+    await mutate();
+  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    // Convert the value to a number if it's supposed to be a number
     setNewPhoneNumber(value);
     setNewPhoneNumber2(value);
     setNewPhoneNumber3(value);
   };
 
- 
-
-
-  
-
   return (
     <div className={`${styles.wrapper} ${isOpen ? styles.active : ''}`}>
-      <div className={styles.document}>
-        <div >
-          <div className={styles.inf}>
-            <div className={styles.ico}>
-              <div className={styles.input_wrapper}>
-                <div>
-              <p className={styles.text_container}>Номер телефону 1</p>
-                  <div className={styles.data_wrapper}>
-              <Input 
-              name="input"
-                control={control}
-                value={inputValue} // Use the state value for the input value
-                onChange={handleInputChange} // Handle input changes
-                  placeholder="+380675681788"
-                      className={styles.input_container}
-                      
-                    />
-                    
-                    <div className={styles.date}>{formattedDate(updated)}</div>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className={styles.document}>
+          <div>
+            <div className={styles.inf}>
+              <div className={styles.ico}>
+                <div className={styles.input_wrapper}>
+                  <div>
+                    <p className={styles.text_container}>Номер телефону 1</p>
+                    <div className={styles.data_wrapper}>
+                      <Input
+                        name="input"
+                        control={control}
+                        value={inputValue} // Use the state value for the input value
+                        onChange={handleInputChange} // Handle input changes
+                        placeholder="+380675681788"
+                        className={styles.input_container}
+                      />
+
+                      <div className={styles.date}>{formattedDate(updated)}</div>
                     </div>
-                </div>
-                <div>
-                  <p className={styles.text_container}>Номер телефону 2</p>
-                  <div className={styles.data_wrapper}>
-              <Input
-              name="input"
-                control={control}
-                value={inputValue2} // Use the state value for the input value
-                onChange={handleInputChange} // Handle input changes
-                  placeholder="+380685817899"
-                      className={styles.input_container}
-                      icon={<XCircle/>}
-                    />
-                    <div className={styles.date}>{formattedDate(updated)}</div>
+                  </div>
+                  <div>
+                    <p className={styles.text_container}>Номер телефону 2</p>
+                    <div className={styles.data_wrapper}>
+                      <Input
+                        name="input"
+                        control={control}
+                        value={inputValue2} // Use the state value for the input value
+                        onChange={handleInputChange} // Handle input changes
+                        placeholder="+380685817899"
+                        className={styles.input_container}
+                        icon={<XCircle />}
+                      />
+                      <div className={styles.date}>{formattedDate(updated)}</div>
                     </div>
-                </div>
-                <div>
-                  <p className={styles.text_container}>Email</p>
-                  <div className={styles.data_wrapper}>
-              <Input
-              name="input"
-                control={control}
-                value={inputValue3} // Use the state value for the input value
-                onChange={handleInputChange} // Handle input changes
-                  placeholder="1234hello@gmail.com"
-                  className={styles.input_container}
-                    />
-                    <div className={styles.date}>{formattedDate(updated)}</div>
+                  </div>
+                  <div>
+                    <p className={styles.text_container}>Email</p>
+                    <div className={styles.data_wrapper}>
+                      <Input
+                        name="input"
+                        control={control}
+                        value={inputValue3} // Use the state value for the input value
+                        onChange={handleInputChange} // Handle input changes
+                        placeholder="1234hello@gmail.com"
+                        className={styles.input_container}
+                      />
+                      <div className={styles.date}>{formattedDate(updated)}</div>
                     </div>
+                  </div>
+                  <div className={styles.buttons}>
+                    <Button
+                      variant="outline"
+                      onClick={() => setIsDiscard(true)}
+                      disabled={isPending}
+                    >
+                      Скасувати
+                    </Button>
+                    <Button
+                      type="submit"
+                      variant="filled"
+                      color="secondary"
+                      disabled={isPending}
+                      onClick={() => mutate()}
+                    >
+                      Оновити
+                    </Button>
+                  </div>
                 </div>
-                 <div className={styles.buttons}>
-          <Button variant="outline" onClick={() => setIsDiscard(true)} disabled={isPending}>
-            Скасувати
-          </Button>
-          <Button
-            type="submit"
-            variant="filled"
-            color="secondary"
-            disabled={isPending }
-            onClick={() => mutate()}
-          >
-            Оновити
-          </Button>
-        </div>
-                </div>
+              </div>
+
+              {(isSuccess || isDiscard) && (
+                <Modal
+                  type={isDiscard ? 'question' : 'success'}
+                  message={
+                    isDiscard
+                      ? 'Ви точно хочете залишити сторінку? Процес редагування буде втрачено'
+                      : 'Ваші зміни успішно збережено!'
+                  }
+                  title={isDiscard ? 'Залишити сторінку ' : 'Збережено!'}
+                  active={isDiscard || isSuccess}
+                  setActive={() => {
+                    setIsSuccess(false);
+                    setIsDiscard(false);
+                    setIsOpen(false);
+                  }}
+                  successFnc={() => {
+                    setIsOpen(false);
+                  }}
+                />
+              )}
             </div>
-             
-       
-      {(isSuccess || isDiscard) && (
-        <Modal
-          type={isDiscard ? 'question' : 'success'}
-          message={
-            isDiscard
-              ? 'Ви точно хочете залишити сторінку? Процес редагування буде втрачено'
-              : 'Ваші зміни успішно збережено!'
-          }
-          title={isDiscard ? 'Залишити сторінку ' : 'Збережено!'}
-          active={isDiscard || isSuccess}
-          setActive={() => {
-            setIsSuccess(false);
-            setIsDiscard(false);
-            setIsOpen(false);
-          }}
-          successFnc={() => {
-            setIsOpen(false);
-            
-          }}
-        />
-      )}
-            
           </div>
-        
         </div>
-        
-      </div>
-      <div>
-        {/* <p >Номер телефона: {inputValue}</p> */}
-    </div>
-     
+        <div>{/* <p >Номер телефона: {inputValue}</p> */}</div>
+      </form>
       {error && <div style={{ color: '#F40000', fontSize: '16px' }}>Помилка: {error.message}</div>}
     </div>
   );
@@ -193,7 +191,7 @@ const resetField = () => setValue('input', '');
 
 export default ContactItem;
 
- //   const queryClient = useQueryClient();
+//   const queryClient = useQueryClient();
 //   const [isOpen, setIsOpen] = useState(false);
 //   const [inputValue, setInputValue] = useState(number);
 //   const [newPhoneNumber, setNewPhoneNumber] = useState(number)
@@ -202,7 +200,6 @@ export default ContactItem;
 //   const [isDiscard, setIsDiscard] = useState(false);
 //   const { data: session } = useSession();
 
-
 //   const {
 //     mutate: submitDocument,
 //     error,
@@ -210,8 +207,7 @@ export default ContactItem;
 //   } = useMutation({
 //     mutationFn: async () => {
 //       const formData = new FormData();
-       
-      
+
 //       await axios.patch(`contacts/${id}/`, formData, {
 //         headers: {
 //           Authorization: `Bearer ${session?.user.token.access}`,
@@ -226,7 +222,7 @@ export default ContactItem;
 //       setIsSuccess(true);
 //     },
 //   });
-  
+
 //  const { control, setValue, watch } = useForm({
 //     defaultValues: {
 //       search: '',

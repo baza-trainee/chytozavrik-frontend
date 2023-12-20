@@ -7,7 +7,6 @@ import WigwamsList from '@/app/(main)/parents/lobby/components/Lobby/WigwamsList
 import { useFetchChildren } from '@/hooks/Lobby/useFetchChildrens';
 import styles from './Lobby.module.scss';
 
-
 const Lobby = () => {
   const { children, isLoading } = useFetchChildren();
   const [isFetchingStarted, setIsFetchingStarted] = useState(false);
@@ -19,7 +18,11 @@ const Lobby = () => {
   let content;
 
   if (isLoading) {
-    content = <div className={styles.spinner}><Spinner /></div>;
+    content = (
+      <div className={styles.spinner}>
+        <Spinner />
+      </div>
+    );
   } else if (isFetchingStarted && !children) {
     content = <NoWigwams />;
   } else if (children) {

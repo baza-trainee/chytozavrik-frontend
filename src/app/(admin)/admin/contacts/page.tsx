@@ -6,26 +6,24 @@ import { dehydrate, QueryClient, HydrationBoundary } from '@tanstack/react-query
 import Contacts from '@/app/(admin)/admin/contacts/components/Contacts';
 
 const ContactsPage = async () => {
-
-   const queryClient = new QueryClient();
+  const queryClient = new QueryClient();
 
   const contacts = await queryClient.fetchQuery({
     queryKey: ['contact-info'],
     queryFn: getContactsService,
-    
   });
-console.log('aaa')
+  console.log('aaa');
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-  <div className={styles.contacts}>
-    <AdminHeader withSearch={false} withButton={false} withClose={false} heading="Контакти" />
-    <div>
+      <div className={styles.contacts}>
+        <AdminHeader withSearch={false} withButton={false} withClose={false} heading="Контакти" />
+        <div>
           <TableHeader variant="contacts" colNames={['Перелік контактів', 'Дата  оновлення']} />
           <Contacts contacts={contacts.data.data} />
-    </div>
+        </div>
       </div>
-      </HydrationBoundary>
-);
-}
+    </HydrationBoundary>
+  );
+};
 
 export default ContactsPage;

@@ -41,4 +41,3 @@ export interface ContactsResponse {
 export interface ContactsFormProps {
   contacts: Contact[];
 }
-

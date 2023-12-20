@@ -13,7 +13,6 @@ import {
 } from '@/app/(main)/parents/lobby/components/Avatar';
 import styles from '@/app/(main)/parents/lobby/components/Lobby/Lobby.module.scss';
 
-
 type WigwamsListProps = {
   users: ChildType[];
 };
@@ -34,16 +33,17 @@ const WigwamsList = ({ users }: WigwamsListProps) => (
       Привіт! <br /> Ми за тобою сумували
     </Typography>
     <ul className={styles.list}>
-      {users && users.map(({ id, name, avatar }) => (
-        <li key={id} className={styles.item}>
-          <Link className={styles.link} href={`${Route.WIGWAM}/${id}`} data-avatar>
-            <div className={styles.thumb}>{Avatars.at(avatar)}</div>
-            <Typography className={styles.name} component="p" variant="h2">
-              {name}
-            </Typography>
-          </Link>
-        </li>
-      ))}
+      {users &&
+        users.map(({ id, name, avatar }) => (
+          <li key={id} className={styles.item}>
+            <Link className={styles.link} href={`${Route.WIGWAM}/${id}`} data-avatar>
+              <div className={styles.thumb}>{Avatars.at(avatar)}</div>
+              <Typography className={styles.name} component="p" variant="h2">
+                {name}
+              </Typography>
+            </Link>
+          </li>
+        ))}
     </ul>
   </>
 );
