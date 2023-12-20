@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
 import { useQueryClient, useMutation } from '@tanstack/react-query';
@@ -96,8 +96,8 @@ const KidProfile = ({ kid }: Props) => {
       {(isSuccess || isDiscard) && (
         <Modal
           type={isDiscard ? 'question' : 'success'}
-          message={isDiscard ? 'Ви дійсно хочете видалити вігвам дитини?' : 'дитини видалено'}
-          title={isDiscard ? 'Видалити вігвам' : 'Вігвам'}
+          message={isDiscard ? 'Ви дійсно хочете видалити вігвам дитини?' : 'Вігвам дитини було успішно видалено. Всі дані, пов&apos;язані з цим аккаунтом більше не доступні і були назавжди видалені.'}
+          title={isDiscard ? 'Видалити вігвам' : 'Видалення аккаунту завершено!'}
           active={isDiscard || isSuccess}
           setActive={() => {
             setIsSuccess(false);
