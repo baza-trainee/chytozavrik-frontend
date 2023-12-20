@@ -11,18 +11,15 @@ interface AdminCheckBoxProps {
   id: number;
 }
 
-const AdminCheckBox = ({ color = 'primary', className, onChange, id }: AdminCheckBoxProps) => {
-  const inputId = `checkbox-${id}`;
-  return (
-    <div className={classNames(className)}>
-      <label className={styles.label} htmlFor={inputId}>
+const AdminCheckBox = ({ color = 'primary', className, onChange, id }: AdminCheckBoxProps) => (
+  <div className={classNames(className)}>
+    <label className={styles.label}>
         <span className={classNames(styles['input-group'], styles[`input-group--${color}`])}>
           <Check className={styles['input-checked-icon']} strokeWidth={4} />
-          <input id={inputId} className={styles.input} type="checkbox" onChange={onChange} />
+          <input className={styles.input} type="checkbox" onChange={onChange} />
         </span>
-      </label>
-    </div>
-  );
-};
+    </label>
+  </div>
+);
 
 export default AdminCheckBox;
