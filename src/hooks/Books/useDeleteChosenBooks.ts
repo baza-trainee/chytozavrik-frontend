@@ -8,6 +8,7 @@ export const useDeleteChosenBooks = () => {
   const axios = useAuthAxiosInstance();
   const queryClient = useQueryClient();
   const [deletingBooks, setDeletingBooks] = useState<number[]>([]);
+  const [isDeleted, setIsDeleted] = useState(false);
 
   const { mutate: deleteChosenBooks } = useMutation({
     mutationFn: async (selected: number[]) => {
@@ -20,6 +21,7 @@ export const useDeleteChosenBooks = () => {
     },
     onSettled: () => setDeletingBooks([]),
     onSuccess: () => {
+      setIsDeleted(true);
       queryClient.invalidateQueries({ queryKey: ['books'] });
     },
   });
@@ -29,5 +31,5 @@ export const useDeleteChosenBooks = () => {
     deleteChosenBooks(selectedBooks);
   };
 
-  return { handleDeleteBooks, deletingBooks};
+  return { handleDeleteBooks, deletingBooks, isDeleted, setIsDeleted };
 };

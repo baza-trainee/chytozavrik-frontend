@@ -11,14 +11,14 @@ import { Route } from '@/constants';
 import { Spinner } from 'components/common';
 import { useDeleteBooks } from '@/hooks/Books/useDeleteBooks';
 import Modal from 'components/common/ModalActions/Modal';
-import styles from './BookItem.module.scss';
 import { useQueryClient } from '@tanstack/react-query';
+import styles from './BookItem.module.scss';
 
 const BookItem = ({ book, page, onCheckboxChange, isDeleting }: BookAdminProps) => {
-  const { deleteBook, isPending } = useDeleteBooks();
+  const { deleteBook, isPending, setIsDeleted, isDeleted } = useDeleteBooks();
   const [isOpen, setIsOpen] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false)
   const queryClient = useQueryClient();
+
   let stateToRender;
   if (Array.isArray(book.state)) {
     stateToRender = (
@@ -90,22 +90,22 @@ const BookItem = ({ book, page, onCheckboxChange, isDeleting }: BookAdminProps) 
           active={isOpen}
           setActive={() => setIsOpen(false)}
           successFnc={() => {
-            setIsSuccess(true)
-            deleteBook(book.id)
+            deleteBook(book.id);
           }}
         />
       )}
-      {isSuccess &&
+      {isDeleted && (
         <Modal
           type="success"
           message={`Книгу “${book.title}” видалено`}
           title="Успіх!"
-          active={isSuccess}
+          active={isDeleted}
           setActive={() => {
-            setIsSuccess(false)
+            setIsDeleted(false);
             queryClient.invalidateQueries({ queryKey: ['books'] });
           }}
-        />}
+        />
+      )}
     </div>
   );
 };

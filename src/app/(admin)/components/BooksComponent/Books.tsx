@@ -9,7 +9,6 @@ import Pagination from 'components/Pagination/Pagination';
 import { useDeleteChosenBooks } from '@/hooks/Books/useDeleteChosenBooks';
 import styles from '../../admin/books/Books.module.scss';
 
-
 const Books = ({
   searchValue = '',
   page,
