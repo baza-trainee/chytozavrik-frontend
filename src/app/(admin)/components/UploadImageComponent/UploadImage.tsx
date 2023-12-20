@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react';
 import { FileUploader } from 'react-drag-drop-files';
-import Image from 'next/image';
-import { Typography } from '@/components/common';
+import FileInput from '@/app/(admin)/components/UploadImageComponent/components/FileInput';
+import EmptyInput from '@/app/(admin)/components/UploadImageComponent/components/EmptyInput';
 import styles from './UploadImage.module.scss';
 
 interface UploadImageProps {
@@ -11,6 +11,7 @@ interface UploadImageProps {
   file: File | null;
   maxSize?: number;
   allowedTypes?: string[];
+  initialImg: string;
 }
 
 const twoMB = 2 * 1024 * 1024;
@@ -21,6 +22,7 @@ const UploadImage: React.FC<UploadImageProps> = ({
   maxSize = twoMB,
   allowedTypes = fileTypes,
   file,
+  initialImg,
 }) => {
   const [sizeErrorMessage, setSizeErrorMessage] = useState<string>('');
   const [formatErrorMessage, setFormatErrorMessage] = useState<string>('');
@@ -65,10 +67,6 @@ const UploadImage: React.FC<UploadImageProps> = ({
     }
   };
 
-  const handleRemoveFile = () => {
-    onFileChange(null);
-  };
-
   return (
     <FileUploader
       classes={styles.imageInput}
@@ -76,68 +74,10 @@ const UploadImage: React.FC<UploadImageProps> = ({
       handleChange={handleChange}
       fileOrFiles={file}
     >
-      {file ? (
-        <div className={styles.uploadedImageContainer}>
-          <Image
-            className={styles.uploadedImage}
-            src={URL.createObjectURL(file)}
-            alt="Uploaded Image"
-            width={120}
-            height={175}
-          />
-          <button className={styles.closeButton} onClick={handleRemoveFile}>
-            <Image src="/images/admin/x.svg" alt="close icon" height={16} width={16} />
-          </button>
-        </div>
+      {file || initialImg ? (
+        <FileInput initialImg={initialImg} file={file} onFileChange={onFileChange} />
       ) : (
-        <div className={styles.uploadInfoContainer}>
-          <Image src="/images/admin/Image-icon.svg" alt="image icon" width={51} height={43} />
-          <Typography component="span" variant="body">
-            Перетягніть свій файл сюди або
-          </Typography>
-          <Typography component="span" variant="body" className={styles.blueText}>
-            натисніть щоб завантажити
-          </Typography>
-
-          {/* Showing error messages */}
-          {(sizeErrorMessage || formatErrorMessage) && (
-            <div className={styles.errorMessageContainer}>
-              {sizeErrorMessage && (
-                <Typography component="span" variant="body" className={styles.errorMessage}>
-                  {sizeErrorMessage}
-                </Typography>
-              )}
-              {formatErrorMessage && (
-                <Typography component="span" variant="body" className={styles.errorMessage}>
-                  {formatErrorMessage}
-                </Typography>
-              )}
-            </div>
-          )}
-
-          {/* Displaying info upload reminder depending on the error message */}
-          {(sizeErrorMessage && formatErrorMessage) ||
-          (!sizeErrorMessage && !formatErrorMessage) ? (
-            <div className={styles.formatAndSizeWarning}>
-              <Typography component="span" variant="body">
-                Формат зображення: JPG, PNG
-              </Typography>
-              <Typography component="span" variant="body">
-                Максимальний розмір: 2 MB
-              </Typography>
-            </div>
-          ) : null}
-          {sizeErrorMessage && !formatErrorMessage && (
-            <Typography component="span" variant="body">
-              Максимальний розмір: 2 MB
-            </Typography>
-          )}
-          {!sizeErrorMessage && formatErrorMessage && (
-            <Typography component="span" variant="body">
-              Формат зображення: JPG, PNG
-            </Typography>
-          )}
-        </div>
+        <EmptyInput sizeErrorMessage={sizeErrorMessage} formatErrorMessage={formatErrorMessage} />
       )}
     </FileUploader>
   );

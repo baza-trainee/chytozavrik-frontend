@@ -1,8 +1,11 @@
-'use client';
-
 import React from 'react';
 import { AdminHeader, PartnerItem, TableHeader } from '@/app/(admin)/components';
+import { Metadata } from 'next';
 import styles from './Partners.module.scss';
+
+export const metadata: Metadata = {
+  title: 'Партнери - Читозаврик',
+};
 
 const Partners = () => (
   <div className={styles.partners}>
