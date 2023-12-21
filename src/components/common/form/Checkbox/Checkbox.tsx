@@ -21,13 +21,14 @@ const Checkbox = <T extends FieldValues>({
   ...props
 }: InputProps<T>) => {
   const { field } = useController<T>({ name, control });
-
+const id = `checkbox-${name}`
   return (
     <div className={classNames(className)}>
-      <label className={styles.label}>
+      <label className={styles.label} htmlFor={id}>
         <span className={classNames(styles['input-group'], styles[`input-group--${color}`])}>
           <Check className={styles['input-checked-icon']} strokeWidth={4} />
           <input
+            id={id}
             type="checkbox"
             className={styles.input}
             {...field}
