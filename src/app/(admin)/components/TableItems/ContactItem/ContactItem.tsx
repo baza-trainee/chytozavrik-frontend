@@ -15,30 +15,22 @@ import Input from '../../../../../components/common/form/Input/Input';
 import { useForm } from 'react-hook-form';
 import { createContext } from 'react';
 
+export interface FormDataType{
+  id: number;
+  first_phone: string;
+  second_phone?: string;
+  email: string;
+}
+
 const ContactItem = ({ id, first_phone, second_phone, email, updated_at: updated }: Contact) => {
   const queryClient = useQueryClient();
   const [isOpen, setIsOpen] = useState(false);
-  const [inputValue, setInputValue] = useState(first_phone);
-  const [newPhoneNumber, setNewPhoneNumber] = useState(first_phone);
-
-  const [inputValue2, setInputValue2] = useState(second_phone);
-  const [newPhoneNumber2, setNewPhoneNumber2] = useState(second_phone);
-
-  const [inputValue3, setInputValue3] = useState(email);
-  const [newPhoneNumber3, setNewPhoneNumber3] = useState(email);
-
   const [isSuccess, setIsSuccess] = useState(false);
   const [isDiscard, setIsDiscard] = useState(false);
   const { data: session } = useSession();
 
-  const { mutate, error, isPending } = useMutation({
-    mutationFn: async () => {
-      const formData = new FormData();
-      formData.append('id', String(id));
-      formData.append('first_phone', String(newPhoneNumber));
-      formData.append('second_phone', String(newPhoneNumber2));
-      formData.append('email', String(newPhoneNumber3)); // Send the updated phone number in the request
-
+   const { mutate, error, isPending } = useMutation({
+    mutationFn: async (formData: FormData) => {
       await axios.patch(`contact-info/`, formData, {
         headers: {
           Authorization: `Bearer ${session?.user.token.access}`,
@@ -46,47 +38,34 @@ const ContactItem = ({ id, first_phone, second_phone, email, updated_at: updated
       });
     },
     onSuccess: async () => {
-      // Invalidate and refetch the data to update the cache
       await queryClient.invalidateQueries({ queryKey: ['contact-info'] });
-
-      // Retrieve the updated data from the backend (optional, depends on your backend implementation)
-      const response = await axios.get(`contact-info/`, {
-        headers: {
-          Authorization: `Bearer ${session?.user.token.access}`,
-        },
-      });
-
-      // Update the displayed phone number with the retrieved data
-      setInputValue(response.data.first_phone);
-      setInputValue2(response.data.second_phone);
-      setInputValue3(response.data.email);
-
       setIsSuccess(true);
     },
   });
 
-  const { control, setValue, handleSubmit } = useForm({
+  const { control, resetField, setValue, handleSubmit, register, formState: { errors,isValid },reset
+ } = useForm({mode:'onBlur',
     defaultValues: {
-      input: '',
+      id: id || 0,
+      first_phone: first_phone || '',
+      second_phone: second_phone || '',
+     email: email || '',
+      
     },
   });
-  // const resetField = () => setValue('input', '');
 
-  const onSubmit = async (data: { input: string }) => {
-    setNewPhoneNumber(data.input);
-    setNewPhoneNumber2(data.input);
-    setNewPhoneNumber3(data.input);
-    await mutate();
+const onSubmit = (data: FormDataType) => {
+    const formData = new FormData();
+    formData.append('id', String(id));
+    formData.append('first_phone', String(data.first_phone));
+    formData.append('second_phone', String(data.second_phone));
+    formData.append('email', String(data.email));
+  mutate(formData);
+  alert(JSON.stringify(data))
+  reset()
   };
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setNewPhoneNumber(value);
-    setNewPhoneNumber2(value);
-    setNewPhoneNumber3(value);
-  };
-
-  return (
+  
+return (
     <div className={`${styles.wrapper} ${isOpen ? styles.active : ''}`}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.document}>
@@ -98,12 +77,20 @@ const ContactItem = ({ id, first_phone, second_phone, email, updated_at: updated
                     <p className={styles.text_container}>Номер телефону 1</p>
                     <div className={styles.data_wrapper}>
                       <Input
-                        name="input"
+                      // name="first_phone"
+                    type='number'
+                      {...register('first_phone', {
+                        required: true,
+                        min: {
+                          value: 9,
+                          message: 'Мінімум 9 цифр'
+                        },
+                      maxLength: {value:128,message:'Максимум 128 цифр'}})}
                         control={control}
-                        value={inputValue} // Use the state value for the input value
-                        onChange={handleInputChange} // Handle input changes
+                        icon={<XCircle onClick={() => resetField("first_phone" )}/>}
                         placeholder="+380675681788"
-                        className={styles.input_container}
+                      className={styles.input_container}
+                      onChange={(e) => setValue("first_phone", e.target.value)}
                       />
 
                       <div className={styles.date}>{formattedDate(updated)}</div>
@@ -113,13 +100,12 @@ const ContactItem = ({ id, first_phone, second_phone, email, updated_at: updated
                     <p className={styles.text_container}>Номер телефону 2</p>
                     <div className={styles.data_wrapper}>
                       <Input
-                        name="input"
+                        name="second_phone"
                         control={control}
-                        value={inputValue2} // Use the state value for the input value
-                        onChange={handleInputChange} // Handle input changes
+                    icon={<XCircle onClick={() => resetField("second_phone" )}/>}
                         placeholder="+380685817899"
                         className={styles.input_container}
-                        icon={<XCircle />}
+                        
                       />
                       <div className={styles.date}>{formattedDate(updated)}</div>
                     </div>
@@ -128,10 +114,9 @@ const ContactItem = ({ id, first_phone, second_phone, email, updated_at: updated
                     <p className={styles.text_container}>Email</p>
                     <div className={styles.data_wrapper}>
                       <Input
-                        name="input"
+                        name="email"
                         control={control}
-                        value={inputValue3} // Use the state value for the input value
-                        onChange={handleInputChange} // Handle input changes
+                    icon={<XCircle onClick={() => resetField("email" )}/>}
                         placeholder="1234hello@gmail.com"
                         className={styles.input_container}
                       />
@@ -150,8 +135,9 @@ const ContactItem = ({ id, first_phone, second_phone, email, updated_at: updated
                       type="submit"
                       variant="filled"
                       color="secondary"
-                      disabled={isPending}
-                      onClick={() => mutate()}
+                    // disabled={isPending}
+                    disabled={!isValid}
+                      
                     >
                       Оновити
                     </Button>
@@ -182,9 +168,10 @@ const ContactItem = ({ id, first_phone, second_phone, email, updated_at: updated
             </div>
           </div>
         </div>
-        <div>{/* <p >Номер телефона: {inputValue}</p> */}</div>
+        
       </form>
-      {error && <div style={{ color: '#F40000', fontSize: '16px' }}>Помилка: {error.message}</div>}
+    {/* {error && <div style={{ color: '#F40000', fontSize: '16px' }}>Помилка: {error.message}</div>} */}
+    <div style={{ color: '#F40000', fontSize: '16px' }}>{errors?.first_phone && <p>{errors?.first_phone.message || 'Введіть номер телефону'}</p>}</div>
     </div>
   );
 };

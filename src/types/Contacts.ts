@@ -22,22 +22,22 @@ export interface Contact {
   updated_at: string;
 }
 
-export interface CustomResponse_ContactSerializer {
-  status: string;
-  title: string;
-  data: {
-    id: number;
-    first_phone: string;
-    second_phone?: string;
-    email: string;
-    updated_at: string;
-  };
-}
+// export interface CustomResponse_ContactSerializer {
+//   status: string;
+//   title: string;
+//   data: {
+//     id: number;
+//     first_phone: string;
+//     second_phone?: string;
+//     email: string;
+//     updated_at: string;
+//   };
+// }
 
-export interface ContactsResponse {
-  data: Contact[];
-}
+// export interface ContactsResponse {
+//   data: Contact[];
+// }
 
 export interface ContactsFormProps {
-  contacts: Contact[];
+  contacts: Contact;
 }

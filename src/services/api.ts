@@ -256,6 +256,6 @@ export const getChildrenService = async () => {
 };
 
 export const getContactsService = async () => {
-  const result = await privateFetch(`${baseUrl}/contact-info/`);
-  return result.json();
+  const result = await axiosServerFetch(`${baseUrl}/contact-info/`);
+  return result.data;
 };
