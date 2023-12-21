@@ -113,13 +113,13 @@ const BooksForm = ({ id }: { id?: number }) => {
             Рекомендовані книжки
           </Checkbox>
         </div>
-        <div style={{ width: '30%' }} className={styles.image}>
-          <UploadImage
-            onFileChange={handleFileChange}
-            file={selectedFile}
-            initialImg={initialImg}
-          />
-        </div>
+        <UploadImage
+          onFileChange={handleFileChange}
+          file={selectedFile}
+          initialImg={initialImg}
+          setInitialImg={setInitialImg}
+          page="books"
+        />
       </div>
       <div className={styles.actions}>
         <Button

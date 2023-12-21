@@ -8,18 +8,18 @@ import styles from './Checkbox.module.scss';
 
 export type InputProps<T extends FieldValues> = InputHTMLAttributes<HTMLInputElement> &
   UseControllerProps<T> & {
-  children?: ReactNode;
-  color?: 'primary' | 'secondary';
-};
+    children?: ReactNode;
+    color?: 'primary' | 'secondary';
+  };
 
 const Checkbox = <T extends FieldValues>({
-                                           name,
-                                           control,
-                                           color = 'primary',
-                                           className,
-                                           children,
-                                           ...props
-                                         }: InputProps<T>) => {
+  name,
+  control,
+  color = 'primary',
+  className,
+  children,
+  ...props
+}: InputProps<T>) => {
   const { field } = useController<T>({ name, control });
   const id = `checkbox-${name}`;
   return (
@@ -28,7 +28,7 @@ const Checkbox = <T extends FieldValues>({
         <span className={classNames(styles['input-group'], styles[`input-group--${color}`])}>
           <input
             id={id}
-            type='checkbox'
+            type="checkbox"
             className={styles.input}
             {...field}
             checked={field.value}
