@@ -33,6 +33,10 @@
         width: 39.252px;
         height: 60px;
         flex-shrink: 0;
+
+        & img {
+          object-fit: cover;
+        }
       }
 
       .bookInfo {
