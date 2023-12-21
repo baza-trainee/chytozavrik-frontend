@@ -59,14 +59,14 @@
     }
   }
 
-  //&:has(input:not(:checked)) .input-checked-icon {
-  //  @include visibilityHidden();
-  //}
+  &:has(input:not(:checked)) .input-checked-icon {
+    @include visibilityHidden();
+  }
 
-  //&:has(input:disabled) {
-  //  cursor: not-allowed;
-  //  opacity: 0.4;
-  //}
+  &:has(input:disabled) {
+    cursor: not-allowed;
+    opacity: 0.4;
+  }
 
   & .input:disabled {
     cursor: not-allowed;
