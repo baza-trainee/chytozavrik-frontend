@@ -7,17 +7,15 @@ import KidProfile from '../KidProfile';
 import styles from './KidList.module.scss';
 import NoteKid from '../NoteKid';
 
-
 type Props = {
   kids: ChildType[];
 };
 
-const KidslList = ({kids}: Props) => {
+const KidslList = ({ kids }: Props) => {
   const [showNote, setShowNote] = useState(true);
   const closeNote = () => {
-    setShowNote(false); 
+    setShowNote(false);
   };
-  
 
   return (
     <div className={styles.section}>
@@ -25,19 +23,20 @@ const KidslList = ({kids}: Props) => {
         <Typography className={styles.title} component="h2" variant="h2">
           Вігвами дітей
         </Typography>
-        {kids && (kids.length >= 1) &&
+        {kids && kids.length >= 1 && (
           <>
             <ul className={styles.list}>
               {kids.map((kid: ChildType) => (
                 <KidProfile key={kid.id} kid={kid} />
               ))}
             </ul>
-            {(kids.length === 1) && showNote && <NoteKid closeNote={closeNote} />}
+            {kids.length === 1 && showNote && <NoteKid closeNote={closeNote} />}
           </>
-        }
-        
-          {kids && (kids.length ===0) && <p className={styles.text}>У вас поки немає створеного вігваму</p>}
-       
+        )}
+
+        {kids && kids.length === 0 && (
+          <p className={styles.text}>У вас поки немає створеного вігваму</p>
+        )}
       </Container>
     </div>
   );

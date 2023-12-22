@@ -4,8 +4,8 @@ import React, { useState, useEffect } from 'react';
 import { Container, Button, Typography } from 'components/common';
 import Image from 'next/image';
 import Notification from 'components/Notification/Notification';
-import styles from './Parents.module.scss';
 import { ChildType } from '@/types';
+import styles from './Parents.module.scss';
 
 type Props = {
   handleClick: () => void;
@@ -14,12 +14,11 @@ type Props = {
 
 const Parents = ({ handleClick, kids }: Props) => {
   const [showNote, setShowNote] = useState(true);
-  
+
   const closeNote = () => {
     setShowNote(false);
   };
 
-  
   return (
     <section className={styles.section}>
       <Container className={styles.container}>
@@ -43,7 +42,7 @@ const Parents = ({ handleClick, kids }: Props) => {
             Створити вігвам
           </Typography>
         </Button>
-        {kids && (kids.length === 0) && showNote && <Notification closeNote={closeNote} />}
+        {kids && kids.length === 0 && showNote && <Notification closeNote={closeNote} />}
       </Container>
     </section>
   );

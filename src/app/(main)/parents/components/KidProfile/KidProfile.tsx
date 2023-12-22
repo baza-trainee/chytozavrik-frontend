@@ -47,7 +47,13 @@ const KidProfile = ({ kid }: Props) => {
       <li key={kid.id} className={styles.item}>
         <Link className={styles.link} href={`${Route.WIGWAM}/${kid.id}`} data-avatar>
           <div className={styles.thumb}>
-            <Image src={kid.avatar_as_url} width={80} height={80} alt={kid.name} />
+            <Image
+              src={kid.avatar_as_url}
+              className={styles.image}
+              width={80}
+              height={80}
+              alt={kid.name}
+            />
           </div>
           <Typography component="p" variant="body" className={styles.name}>
             {kid.name}
@@ -96,7 +102,11 @@ const KidProfile = ({ kid }: Props) => {
       {(isSuccess || isDiscard) && (
         <Modal
           type={isDiscard ? 'question' : 'success'}
-          message={isDiscard ? 'Ви дійсно хочете видалити вігвам дитини?' : 'Вігвам дитини було успішно видалено. Всі дані, пов&apos;язані з цим аккаунтом більше не доступні і були назавжди видалені.'}
+          message={
+            isDiscard
+              ? 'Ви дійсно хочете видалити вігвам дитини?'
+              : "Вігвам дитини було успішно видалено. Всі дані, пов'язані з цим аккаунтом більше не доступні і були назавжди видалені."
+          }
           title={isDiscard ? 'Видалити вігвам' : 'Видалення аккаунту завершено!'}
           active={isDiscard || isSuccess}
           setActive={() => {

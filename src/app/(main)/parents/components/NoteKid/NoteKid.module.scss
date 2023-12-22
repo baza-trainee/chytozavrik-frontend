@@ -32,13 +32,14 @@
   &::before {
     content: '';
     position: absolute;
-    left: 26px;
+    right: 15px;
     bottom: 78px;
     background-image: url('../../../../../../public/images/polygon.svg');
     width: 44px;
     height: 20px;
 
     @include breakpoint(tablet) {
+     left: 26px; 
       bottom: 91px;
     }
   }

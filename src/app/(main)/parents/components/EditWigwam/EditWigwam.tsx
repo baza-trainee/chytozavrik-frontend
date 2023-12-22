@@ -30,7 +30,7 @@ const EditWigwam = ({ id, closeEditWigwam }: Props) => {
     register,
     handleSubmit,
     resetField,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm({ defaultValues });
 
   const queryClient = useQueryClient();
