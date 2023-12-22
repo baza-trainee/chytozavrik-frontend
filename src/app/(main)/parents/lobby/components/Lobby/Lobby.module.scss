@@ -53,6 +53,26 @@
 .container {
   padding-top: 90px;
   padding-bottom: 190px;
+  min-height: 70vh;
+  position: relative;
+
+  & .spinner {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    & span {
+      width: 80px;
+      height: 80px;
+
+      & svg {
+        fill: #8ba5ff;
+      }
+    }
+  }
 
   @include breakpoint(tablet) {
     padding-top: 102px;

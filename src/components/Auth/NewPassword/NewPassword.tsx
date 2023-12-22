@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import Image from 'next/image';
 import { useRouter, useSearchParams } from 'next/navigation';
@@ -26,7 +28,6 @@ const defaultValues: FormData = {
 };
 
 const NewPassword = () => {
-  // eslint-disable-next-line no-unused-vars
   const {
     control,
     handleSubmit,
@@ -58,6 +59,7 @@ const NewPassword = () => {
       if (result.status === 'fail' && result.data.message) {
         const errorMessages = Object.values(result.data.message).flat().join(', ');
         setError(errorMessages);
+        return;
       }
 
       setIsSuccess(true);

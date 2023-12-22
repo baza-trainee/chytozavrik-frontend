@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import Image from 'next/image';
 import Avatar1 from 'public/images/kids-avatar1.svg';
