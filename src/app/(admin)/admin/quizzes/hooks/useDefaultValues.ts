@@ -17,10 +17,11 @@ export const useDefaultValues = (quizById?: QuizInfoResponse) => {
     if (!quizById || !quizById.questions || !quizById.questions[questionIndex]) {
       return null;
     }
-
-    for (let i = 0; i < answers.length; i++) {
-      if (answers[i].is_true) {
-        return `answer_${i}`;
+    if (answers) {
+      for (let i = 0; i < answers.length; i++) {
+        if (answers[i].is_true) {
+          return `answer_${i}`;
+        }
       }
     }
 
