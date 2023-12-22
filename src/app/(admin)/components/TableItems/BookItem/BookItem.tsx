@@ -21,11 +21,15 @@ const BookItem = ({ book, page, onCheckboxChange, isDeleting }: BookAdminProps) 
 
   let stateToRender;
   if (Array.isArray(book.state)) {
-    stateToRender = (
-      <p className={styles.blue}>
-        {book.state[0]}/{book.state[1]}
-      </p>
-    );
+    if (book.state.length > 1) {
+      stateToRender = (
+        <p className={styles.blue}>
+          {book.state[0]}/{book.state[1]}
+        </p>
+      );
+    } else {
+      stateToRender = null;
+    }
   } else {
     if (book.state === 'Рекомендована') {
       stateToRender = <p className={styles.blue}>{book.state}</p>;
@@ -49,7 +53,10 @@ const BookItem = ({ book, page, onCheckboxChange, isDeleting }: BookAdminProps) 
   return (
     <div className={styles.bookItem}>
       <div className={styles.checkbox}>
-        <AdminCheckBox id={book.id} onChange={e => onCheckboxChange(e.target.checked, book.id)} />
+        <AdminCheckBox
+          id={book.id || book.book_id}
+          onChange={e => onCheckboxChange(e.target.checked, book.id)}
+        />
       </div>
       <div className={styles.info}>
         <div className={styles.title}>
@@ -72,7 +79,7 @@ const BookItem = ({ book, page, onCheckboxChange, isDeleting }: BookAdminProps) 
         ) : (
           <>
             <div>
-              <Link href={`${redirectRoute[page]}/${book.id}`}>
+              <Link href={`${redirectRoute[page]}/${book.id || book.book_id}`}>
                 <PenLine />
               </Link>
             </div>

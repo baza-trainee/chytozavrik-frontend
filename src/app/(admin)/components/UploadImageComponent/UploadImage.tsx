@@ -77,7 +77,7 @@ const UploadImage: React.FC<UploadImageProps> = ({
     partners: styles.partners,
     quizzes: styles.quizzes,
   };
-  console.log(pageClass[page]);
+
   return (
     <FileUploader
       classes={`${styles.imageInput} ${pageClass[page]}`}

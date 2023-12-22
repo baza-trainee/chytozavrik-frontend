@@ -24,8 +24,10 @@ const BooksForm = ({ id }: { id?: number }) => {
   const { bookById, bookLoading, fetchError } = useQueryBookById(id);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [initialImg, setInitialImg] = useState('');
+  const [isOpen, setIsOpen] = useState(false);
   const { addBook, isPendingAdd, isAddSuccess, setIsAddSuccess } = useAddBook();
   const { editBook, isEditSuccess, setIsEditSuccess, isPendingEdit } = useEditBook();
+
   useEffect(() => {
     if (bookById) {
       setInitialImg(bookById.cover_image);
@@ -42,7 +44,6 @@ const BooksForm = ({ id }: { id?: number }) => {
     is_recommended: false,
   };
 
-  const [isOpen, setIsOpen] = useState(false);
   const { control, reset, handleSubmit, resetField, setValue } = useForm({
     defaultValues,
     resolver: yupResolver(schema),
