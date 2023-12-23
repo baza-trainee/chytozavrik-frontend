@@ -5,7 +5,6 @@ import { useSession } from 'next-auth/react';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { Spinner } from '@/components/common';
-import { Container } from '@/components/common';
 import Parents from 'src/app/(main)/parents/components/Parents';
 import CreateWigwam from '@/components/CreateWigwam';
 import KidsList from './components/KidsList';
@@ -33,8 +32,6 @@ const ParentsPage = () => {
       return response.data.data;
     },
   });
-
-  
 
   return (
     <>
