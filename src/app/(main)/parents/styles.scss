@@ -21,6 +21,14 @@
 //  }
 //}
 
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 70px;
+  height: 70px;
+}
+
 .empty {
   height: 144px;
   width: 100vw;

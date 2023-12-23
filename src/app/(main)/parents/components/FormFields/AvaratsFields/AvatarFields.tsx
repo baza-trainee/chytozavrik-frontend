@@ -17,7 +17,7 @@ interface AvatarFieldsetProps {
 }
 
 const AvatarFields = ({ register, errors }: AvatarFieldsetProps) => (
-  <>
+  <div className={styles.container}>
     <fieldset className={styles.fieldset}>
       <legend className={styles.text}>Оберіть аватар</legend>
       <div className={styles.radioWrapper}>
@@ -92,8 +92,8 @@ const AvatarFields = ({ register, errors }: AvatarFieldsetProps) => (
         </label>
       </div>
     </fieldset>
-    {errors.avatar && <span>Оберіть аватар</span>}
-  </>
+    {errors.avatar && <span className={styles.error}>Оберіть аватар</span>}
+  </div>
 );
 
 export default AvatarFields;
