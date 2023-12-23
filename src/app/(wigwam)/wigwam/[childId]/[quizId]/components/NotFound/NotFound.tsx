@@ -5,7 +5,7 @@ import styles from './NotFound.module.scss';
 
 const NotFound = () => (
   <div className={styles.notFoundContainer}>
-    <Container className={styles.Container}>
+    <Container className={styles.container}>
       <div className={styles.infoContainer}>
         <Typography variant="h4" component="p">
           До данної книги ще немає вікторини.

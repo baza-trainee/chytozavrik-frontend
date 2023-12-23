@@ -27,12 +27,12 @@ export const revalidate = 0;
 
 const QuizzesPage = async ({ searchParams, params: { childId } }: QuizzesPageProps) => {
   const usersQuizzesResponse = await getUsersQuizzesService(
-    searchParams.search,
+    childId,
+    searchParams.search || '',
     searchParams.page,
     searchParams.category || QuizCategory.All,
     IS_REVERSED,
-    PAGE_SIZE,
-    childId
+    PAGE_SIZE
   );
 
   if (usersQuizzesResponse.status === 'fail') notFound();

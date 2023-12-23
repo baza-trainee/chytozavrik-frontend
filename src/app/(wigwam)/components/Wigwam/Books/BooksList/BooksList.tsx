@@ -59,15 +59,15 @@ const BooksList = ({
   useEffect(() => {
     const matchedBooks = booksData?.filter(
       entry =>
-        entry.book.title.toLowerCase().includes(searchValue?.toLowerCase() || '') ||
-        entry.book.author.toLowerCase().includes(searchValue?.toLowerCase() || '')
+        entry.book.title.toLowerCase().includes(searchValue.toLowerCase() || '') ||
+        entry.book.author.toLowerCase().includes(searchValue.toLowerCase() || '')
     );
     setFilteredBooks(matchedBooks);
   }, [searchValue, booksData]);
 
   return (
     <>
-      {filteredBooks?.length > 1 && (
+      {filteredBooks?.length > 0 && (
         <div className={styles.button_list}>
           {filteredBooks?.map((item: BookType, index: number) => (
             <BookItem
@@ -82,7 +82,7 @@ const BooksList = ({
           <div ref={node => setLastElement(node)} />
         </div>
       )}
-      {filteredBooks?.length <= 1 && <NotFoundBook />}
+      {filteredBooks?.length < 1 && <NotFoundBook />}
     </>
   );
 };
