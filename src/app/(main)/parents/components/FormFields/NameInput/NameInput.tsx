@@ -10,7 +10,7 @@ interface NameInputProps {
 }
 
 const NameInput = ({ register, errors }: NameInputProps) => (
-  <>
+  <div className={styles.container}>
     <label htmlFor="name" className={styles.label}>
       Введіть ім&apos;я дитини
     </label>
@@ -21,8 +21,8 @@ const NameInput = ({ register, errors }: NameInputProps) => (
       placeholder="Ім'я"
       className={styles.input}
     />
-    {errors.name && <span>Поле обов&apos;язкове</span>}
-  </>
+    {errors.name && <span className={styles.name}>Поле обов&apos;язкове</span>}
+  </div>
 );
 
 export default NameInput;

@@ -2,11 +2,12 @@
 
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { Typography } from 'components/common';
-import { useFetch } from '@/hooks';
-import { useEffect } from 'react';
 import AvatarFields from '@/app/(main)/parents/components/FormFields/AvaratsFields/AvatarFields';
 import NameInput from '@/app/(main)/parents/components/FormFields/NameInput/NameInput';
 import Buttons from '@/app/(main)/parents/components/FormFields/Buttons/Buttons';
+import { useQueryClient, useMutation } from '@tanstack/react-query';
+import axios from 'axios';
+import { useSession } from 'next-auth/react';
 import styles from './EditWigwam.module.scss';
 
 type Props = {
@@ -29,39 +30,35 @@ const EditWigwam = ({ id, closeEditWigwam }: Props) => {
     register,
     handleSubmit,
     resetField,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm({ defaultValues });
 
-  const { fetch } = useFetch();
+  const queryClient = useQueryClient();
+  const { data: session } = useSession();
+  const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || '';
 
-  const editKidProfile = async (formData: FormData, id: number) => {
-    try {
-      await fetch(
-        `users/me/children/${id}/`,
-        {
-          name: formData.name,
-          avatar: formData.avatar,
+  const { mutate: submitData } = useMutation({
+    mutationFn: async (formData: FormData) => {
+      await axios.patch(`${baseUrl}/users/me/children/${id}/`, formData, {
+        headers: {
+          Authorization: `Bearer ${session?.user.token.access}`,
         },
-        'PATCH'
-      );
-    } catch (err) {
-      console.log(err);
-    }
-  };
+      });
+    },
+    onSuccess: () => {
+      resetField('name');
+      queryClient.invalidateQueries({ queryKey: ['kids'] });
+    },
+  });
 
   const onSubmit: SubmitHandler<FormData> = formData => {
     const modifiedFormData = {
       ...formData,
       avatar: Number(formData.avatar),
     };
-
     closeEditWigwam();
-    editKidProfile(modifiedFormData, id);
+    submitData(modifiedFormData);
   };
-
-  useEffect(() => {
-    resetField('name');
-  }, [resetField]);
 
   return (
     <section>
