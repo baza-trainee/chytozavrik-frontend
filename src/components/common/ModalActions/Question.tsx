@@ -7,16 +7,23 @@ interface QuestionProps {
   title: string;
   closeModal: () => void;
   successFnc: (() => void) | undefined;
+  cancelButtonText?: string;
 }
 
-const Question = ({ title, message, closeModal, successFnc }: QuestionProps) => (
+const Question = ({
+  title,
+  message,
+  closeModal,
+  successFnc,
+  cancelButtonText = 'Скасувати',
+}: QuestionProps) => (
   <div className={styles.question}>
     <div className={styles.content}>
       <h5 className={styles.title}>{title}</h5>
       <p className={styles.message}>{message}</p>
       <div className={styles.buttons}>
         <Button variant="outline" onClick={() => closeModal()}>
-          Скасувати
+          {cancelButtonText}
         </Button>
         <Button
           variant="filled"

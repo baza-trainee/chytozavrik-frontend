@@ -153,6 +153,7 @@ const ChangePassword = () => {
               active={isOpen}
               setActive={() => setIsOpen(false)}
               successFnc={handleSubmit(formSubmit)}
+              cancelButtonText="Скасувати"
             />
           )}
           {isSuccess && (
