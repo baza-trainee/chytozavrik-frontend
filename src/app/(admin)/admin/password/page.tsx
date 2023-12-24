@@ -16,6 +16,17 @@ import { FetchResponseType, resetPasswordType } from '@/types';
 
 import styles from './Password.module.scss';
 
+type Token = {
+  refresh: string;
+  access: string;
+};
+type User = {
+  email: string;
+  id: string;
+  is_superuser: boolean;
+  token: Token;
+};
+
 const schema = yup.object({
   oldPassword: validation.password,
   password: validation.password,
@@ -23,11 +34,6 @@ const schema = yup.object({
 });
 
 type FormData = yup.InferType<typeof schema>;
-
-type Token = {
-  refresh: string | undefined;
-  access: string | undefined;
-};
 
 const defaultValues: FormData = {
   oldPassword: '',
@@ -37,7 +43,7 @@ const defaultValues: FormData = {
 
 const ChangePassword = () => {
   const { data: session } = useSession();
-  const [token, setToken] = useState<Token | null>(null);
+  const [user, setUser] = useState<User>();
   const [error, setError] = useState<string | null>(null);
   const [isOpen, setIsOpen] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -49,8 +55,10 @@ const ChangePassword = () => {
     reset,
     formState: { isSubmitting, errors },
   } = useForm({
+    mode: 'all',
     defaultValues,
     resolver: yupResolver(schema),
+    context: { user },
   });
 
   const handleErrors = (result: FetchResponseType<resetPasswordType>) => {
@@ -76,7 +84,7 @@ const ChangePassword = () => {
         data.oldPassword,
         data.password,
         data.confirmPassword,
-        token?.access
+        user?.token?.access
       );
 
       handleErrors(result);
@@ -93,7 +101,7 @@ const ChangePassword = () => {
 
   useEffect(() => {
     if (session) {
-      setToken(session.user.token);
+      setUser(session.user as User);
     }
   }, [session]);
 
