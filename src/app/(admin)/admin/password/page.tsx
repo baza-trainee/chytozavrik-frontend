@@ -55,6 +55,7 @@ const ChangePassword = () => {
     reset,
     formState: { isSubmitting, errors },
   } = useForm({
+    mode: 'all',
     defaultValues,
     resolver: yupResolver(schema),
     context: { user },
