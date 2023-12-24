@@ -140,7 +140,7 @@ const BooksForm = ({ id }: { id?: number }) => {
           disabled={isDisabled || isPendingAdd || isPendingEdit}
           isLoading={isPendingAdd || isPendingEdit}
         >
-          Додати
+          {id ? 'Зберегти' : 'Додати'}
         </Button>
       </div>
 
@@ -157,8 +157,8 @@ const BooksForm = ({ id }: { id?: number }) => {
       {(isAddSuccess || isEditSuccess) && (
         <Modal
           type="success"
-          message="Книгу додано"
-          title="Успіх!"
+          message={isAddSuccess ? 'Книгу додано' : 'Ваші зміни успішно збережено'}
+          title={isAddSuccess ? 'Успіх!' : 'Збережено!'}
           active={isAddSuccess || isEditSuccess}
           setActive={() => {
             if (isAddSuccess) {
