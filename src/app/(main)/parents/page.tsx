@@ -33,10 +33,9 @@ const ParentsPage = () => {
     },
   });
 
-  if (isLoading) return <Spinner className="spinner" />;
-
   return (
     <>
+      {isLoading && <Spinner className="spinner" />}
       <Parents handleClick={toggleCreateWigwam} kids={kids} />
       {wigwam && <CreateWigwam setWigwam={setWigwam} />}
       <KidsList kids={kids} />

@@ -39,7 +39,7 @@
     height: 20px;
 
     @include breakpoint(tablet) {
-     left: 26px; 
+      left: 26px;
       bottom: 91px;
     }
   }
