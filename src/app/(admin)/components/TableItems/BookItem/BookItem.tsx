@@ -41,7 +41,7 @@ const BookItem = ({ book, page, onCheckboxChange, isDeleting }: BookAdminProps) 
   const state = {
     books: stateToRender,
     quizzes: <p className={styles.green}>Вікторина</p>,
-    recommended: <p className={styles.blue}>Рекомедована</p>,
+    recommended: <p className={styles.blue}>Рекомендована</p>,
   };
 
   const redirectRoute = {
