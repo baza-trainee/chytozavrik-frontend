@@ -64,8 +64,9 @@
 
 .checkboxes-groups {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  gap: 24px;
+  gap: 16px;
 
   @include breakpoint(tablet) {
     margin-bottom: 24px;
@@ -88,6 +89,7 @@
   @include breakpoint(tablet) {
     flex-direction: row;
     justify-content: space-between;
+    margin-bottom: 24px;
   }
 }
 
@@ -124,9 +126,6 @@
 
   width: var(--error-icon-size);
   height: var(--error-icon-size);
-}
-
-.error-message {
 }
 
 .button-submit {
