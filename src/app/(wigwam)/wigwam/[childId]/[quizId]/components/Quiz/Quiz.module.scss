@@ -2,11 +2,12 @@
 @import 'scss/utils/mixin';
 
 .section {
-  height: calc(100vh - 138px);
+  height: calc(100vh - 135px);
   background-image: url('/images/quiz-page-cloud.svg');
   background-repeat: repeat-x;
   background-position: center bottom;
   background-size: auto 48px;
+  overflow-y: scroll;
 
   @include breakpoint(tablet) {
     min-height: 800px;
