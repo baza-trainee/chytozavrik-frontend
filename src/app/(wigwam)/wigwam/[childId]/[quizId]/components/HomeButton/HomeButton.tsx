@@ -7,15 +7,6 @@ import styles from './HomeButton.module.scss';
 
 const HomeButton = () => {
   const { deviceType } = useMedia();
-  // const [buttonText, setButtonText] = useState('На головну');
-  //
-  // useEffect(() => {
-  //   if (deviceType === 'mobile' || deviceType === 'tablet') {
-  //     setButtonText('Повернутись');
-  //   } else {
-  //     setButtonText('На головну');
-  //   }
-  // }, [deviceType]);
 
   return (
     <Button
