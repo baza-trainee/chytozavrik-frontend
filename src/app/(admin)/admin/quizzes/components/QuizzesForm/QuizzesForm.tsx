@@ -119,7 +119,7 @@ const QuizzesForm = ({ id }: { id?: number }) => {
           onInputChange={debouncedHandleInputChange}
           selected={selectedValue}
           inputValue={searchValue}
-          label={'Назва книги'}
+          label="Назва книги"
         />
         <div className={styles.questions}>
           <Typography component="h2" variant="h5">

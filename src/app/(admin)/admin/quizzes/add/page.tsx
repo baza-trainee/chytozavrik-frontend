@@ -5,8 +5,6 @@ export const metadata: Metadata = {
   title: 'Додати вікторину - Читозаврик',
 };
 
-const AddQuizzesPage = () => {
-  return <AddQuiz />;
-};
+const AddQuizzesPage = () => <AddQuiz />;
 
 export default AddQuizzesPage;

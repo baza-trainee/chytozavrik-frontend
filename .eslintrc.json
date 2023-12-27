@@ -35,6 +35,7 @@
     "react-hooks/exhaustive-deps": "off",
     "@typescript-eslint/no-unused-vars": "off",
     "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/ban-ts-comment": "warn",
     "react/function-component-definition": "off",
     "react/destructuring-assignment": "off",
     "react/react-in-jsx-scope": "off",
@@ -47,7 +48,8 @@
     "no-shadow": "off",
     "no-restricted-exports": "off",
     "no-plusplus": "off",
-    "no-console": "off",
+    "no-console": "warn",
+    "no-nested-ternary": "warn",
     "react/no-danger": "off",
     "jsx-a11y/anchor-is-valid": "off",
     "jsx-a11y/click-events-have-key-events": "off",
@@ -81,7 +83,6 @@
     "consistent-return": "off",
     "quote-props": ["error", "as-needed"],
     "jsx-quotes": "off",
-    "no-nested-ternary": "warn",
     "prefer-arrow/prefer-arrow-functions": [
       "warn",
       {
