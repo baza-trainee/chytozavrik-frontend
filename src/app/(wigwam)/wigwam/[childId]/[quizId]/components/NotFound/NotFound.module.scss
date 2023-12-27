@@ -21,6 +21,11 @@ $ratio-image3: 3.09;
     align-items: flex-end;
     height: calc(100vh - 134px);
     max-width: 100%;
+    z-index: 999;
+
+    @media screen and (max-height: 600px) {
+      align-items: center;
+    }
 
     .infoContainer {
       display: flex;
@@ -57,17 +62,20 @@ $ratio-image3: 3.09;
         }
 
         @include breakpoint(tablet) {
-          width: 328px;
+          width: 40vw;
           height: 96px;
           gap: 20px;
         }
 
         @include breakpoint(laptop) {
-          width: 328px;
           height: 35px;
           gap: 0;
         }
 
+        @include breakpoint(desktop) {
+          height: 48px;
+          width: 395px;
+        }
       }
 
       & a {
@@ -75,39 +83,46 @@ $ratio-image3: 3.09;
         height: 54px;
       }
 
-      @media screen and (max-height: 700px) {
-        margin-bottom: 10px;
-      }
-
-
       @include breakpoint(tablet) {
         max-width: 100%;
-        margin-bottom: 89px;
+        margin-bottom: 9%;
       }
 
       @include breakpoint(laptop) {
         margin-bottom: 90px;
         gap: 36px;
       }
-
-      @media screen and (min-width: 1024px) and (max-height: 700px){
-        margin-bottom: 10px;
-      }
     }
 
     @include breakpoint(tablet) {
       max-width: 100%;
     }
-
   }
 
   .background {
     width: 100vw;
-    height: calc(100vh - 134px);
+    height: 42vh;
+    background-image: url('/images/wigwam/NoQuizPage/cloud-big-mob.svg'),
+      url('/images/wigwam/NoQuizPage/cloud-small-mobile.svg');
+    background-color: #7791fa;
+    background-repeat: no-repeat;
+    background-position:
+      center bottom,
+      center 25%;
+    background-size:
+      auto 100%,
+      auto 26%;
+    position: relative;
 
-
-    & img {
-      width: 100%
+    .hero {
+      width: 100vw;
+      height: 30vh;
+      position: absolute;
+      top: -67%;
+      background-image: url('/images/wigwam/NoQuizPage/hero-mobile.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: auto 100%;
     }
   }
 
@@ -117,76 +132,70 @@ $ratio-image3: 3.09;
     }
   }
 
-  @media screen and (max-width: 768px) and (min-height: 601px) {
-    .background {
-
-      & img {
-        width: 100vw;
-        height: 100vh;
-      }
-    }
-  }
-
-
   @include breakpoint(tablet) {
     background-image: url('/images/wigwam/NoQuizPage/Cloud-tablet.svg');
     height: calc(100vh - 66px);
 
     .background {
       width: 100vw;
-      height: 95vh;
-      display: flex;
-      align-items: flex-end;
+      height: 42vh;
+      background-image: url('/images/wigwam/NoQuizPage/cloud-big-tablet.svg'),
+        url('/images/wigwam/NoQuizPage/cloud-small-tablet.svg');
+      background-position:
+        center bottom,
+        center 82%;
+      background-size:
+        auto 100%,
+        auto 47%;
+      background-repeat: repeat-x;
 
-      & img {
-        width: 100vw;
-        height: auto;
+      .hero {
+        height: 43vh;
+        top: -99%;
+        background-image: url('/images/wigwam/NoQuizPage/hero-mobile.svg');
       }
     }
-
   }
 
   @include breakpoint(laptop) {
     background-image: url('/images/wigwam/NoQuizPage/Cloud-laptop.svg');
     height: calc(100vh - 70px);
+    overflow-y: hidden;
 
     .background {
+      height: 38vh;
+      background-image: url('/images/wigwam/NoQuizPage/cloud-big-laptop.svg'),
+        url('/images/wigwam/NoQuizPage/cloud-small-laptop.svg');
+      background-size:
+        auto 100%,
+        auto 46%;
 
-      & img {
-        width: 100vw;
-        height: auto;
+      .hero {
+        height: 44vh;
+        top: -110%;
+        background-image: url('/images/wigwam/NoQuizPage/hero-mobile.svg');
       }
     }
   }
 
-  @media screen and (min-width: 1024px) and (max-height: 700px){
+  @include breakpoint(desktop) {
+    background-image: url('/images/wigwam/NoQuizPage/Cloud-desktop.svg');
+    height: calc(100vh - 100px);
+    overflow-y: hidden;
 
     .background {
+      height: 33vh;
+      background-image: url('/images/wigwam/NoQuizPage/cloud-big-laptop.svg'),
+        url('/images/wigwam/NoQuizPage/cloud-small-laptop.svg');
+      background-size:
+        auto 100%,
+        auto 42%;
 
-      & img {
-        width: 100vw;
-        height: calc(100vh - 70px);
+      .hero {
+        height: 46.5vh;
+        top: -138%;
+        background-image: url('/images/wigwam/NoQuizPage/hero-mobile.svg');
       }
-
     }
   }
-
-  //@include breakpoint(laptop) {
-  //  background-image: url('/images/wigwam/NoQuizPage/Cloud-laptop.svg'),
-  //    url('/images/wigwam/NoQuizPage/hero-laptop.svg');
-  //  background-position:
-  //    center top,
-  //    center bottom;
-  //  height: calc(100vh - 100px);
-  //}
-  //
-  //@include breakpoint(desktop) {
-  //  background-image: url('/images/wigwam/NoQuizPage/Cloud-desktop.svg'),
-  //    url('/images/wigwam/NoQuizPage/hero-laptop.svg');
-  //  background-position:
-  //    center top,
-  //    center;
-  //}
-
-
 }
