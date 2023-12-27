@@ -51,14 +51,12 @@ const QuizzesForm = ({ id }: { id?: number }) => {
     currentPage: 1,
     page: 'books',
     searchValue,
-    select: data => {
-      console.log(data);
-      return data.results.map((book: BookAdmin) => ({
+    select: data =>
+      data.results.map((book: BookAdmin) => ({
         value: book.id,
         label: book.title,
         author: book.author,
-      }));
-    },
+      })),
   });
   const defaultValues = useDefaultValues(quizById);
 
@@ -93,7 +91,6 @@ const QuizzesForm = ({ id }: { id?: number }) => {
       questions: transformedData,
       book: '0',
     };
-    console.log(dataToUse);
   };
 
   if (fetchErrorQuiz || fetchErrorBooks) {
