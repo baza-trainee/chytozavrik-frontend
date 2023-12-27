@@ -20,7 +20,7 @@ const UsersQuizzes = async ({ usersQuizzes, childId, category }: UsersQuizzesPro
       <div className={styles.quizzesContainer}>
         {hasQuizzes ? (
           usersQuizzes.results.map((quiz: UsersQuiz) => (
-            <QuizCard key={quiz.id} quiz={quiz} childId={childId} category={category} />
+            <QuizCard key={quiz.id} quiz={quiz} childId={childId} />
           ))
         ) : (
           <NotFoundPage category={category} />
