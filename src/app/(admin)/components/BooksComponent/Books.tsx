@@ -7,6 +7,7 @@ import { BookAdmin } from '@/types';
 import { Spinner } from 'components/common';
 import Pagination from 'components/Pagination/Pagination';
 import { useDeleteChosenBooks } from '@/hooks/Books/useDeleteChosenBooks';
+import NoSearchResults from '@/app/(admin)/components/NoResults/NoSearchResults';
 import styles from '../../admin/books/Books.module.scss';
 
 const Books = ({
@@ -48,11 +49,13 @@ const Books = ({
         {fetchError && (
           <div className={styles.error}>Упс... Щось пішло не так: {fetchError.message}</div>
         )}
-        {books && books.count === 0 && (
-          <div>
+        {books &&
+          books.count === 0 &&
+          (searchValue ? (
+            <NoSearchResults />
+          ) : (
             <NoResults text={noResultsText[page]} image="/images/admin/books-no-results.svg" />
-          </div>
-        )}
+          ))}
         <div>
           {books?.results?.map((book: BookAdmin) => {
             const bookId = book.id ? book.id : book.book_id;

@@ -12,7 +12,7 @@ const BooksPage = async () => {
   const queryClient = new QueryClient();
   await queryClient.prefetchQuery({
     queryKey: ['books'],
-    // @ts-ignore
+    // @ts-expect-error
     queryFn: getBooksService,
   });
 
