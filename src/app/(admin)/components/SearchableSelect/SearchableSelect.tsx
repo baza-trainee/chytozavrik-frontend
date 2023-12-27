@@ -56,7 +56,7 @@ const Option = (props: any) => {
   );
 };
 
-interface SearchableSelectProps {
+export interface SearchableSelectProps {
   onChange: ((newValue: SingleValue<string>, actionMeta: ActionMeta<string>) => void) | undefined;
   onInputChange: ((newValue: string, actionMeta: InputActionMeta) => void) | undefined;
   clearInput: () => void;

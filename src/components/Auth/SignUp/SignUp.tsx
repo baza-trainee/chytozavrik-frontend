@@ -77,7 +77,12 @@ const SignUp = () => {
       }
 
       // Signin request
-      const user = await signIn('credentials', { redirect: false, ...data });
+      // const user = await signIn('credentials', { redirect: false, ...data });
+      const user = await signIn('credentials', {
+        redirect: false,
+        ...data,
+        rememberMe: rememberMe ? '1' : '0',
+      });
 
       // Show server errors
       if (user?.error) {

@@ -36,7 +36,6 @@ const Books = ({
       setSelected(prev => prev.filter(id => id !== bookId));
     }
   };
-
   return (
     <div className={styles.wrapper}>
       <div>
@@ -55,16 +54,19 @@ const Books = ({
           </div>
         )}
         <div>
-          {books?.results?.map((book: BookAdmin) => (
-            <Fragment key={book.id}>
-              <BookItem
-                book={book}
-                page={page}
-                onCheckboxChange={handleCheckboxChange}
-                isDeleting={deletingBooks?.includes(book.id)}
-              />
-            </Fragment>
-          ))}
+          {books?.results?.map((book: BookAdmin) => {
+            const bookId = book.id ? book.id : book.book_id;
+            return (
+              <Fragment key={bookId}>
+                <BookItem
+                  book={book}
+                  page={page}
+                  onCheckboxChange={handleCheckboxChange}
+                  isDeleting={deletingBooks?.includes(bookId)}
+                />
+              </Fragment>
+            );
+          })}
         </div>
       </div>
       {books && !booksLoading && books.count > 7 && (

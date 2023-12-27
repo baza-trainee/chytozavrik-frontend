@@ -10,6 +10,7 @@ type AppToken = TokenType & {
 interface AppUser extends DefaultUser {
   token: AppToken;
   is_superuser: boolean;
+  rememberMe: boolean;
 }
 
 declare module 'next-auth' {

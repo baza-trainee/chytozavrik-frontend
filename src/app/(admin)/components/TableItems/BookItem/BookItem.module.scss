@@ -33,12 +33,17 @@
         width: 39.252px;
         height: 60px;
         flex-shrink: 0;
+
+        & img {
+          object-fit: cover;
+        }
       }
 
       .bookInfo {
         display: flex;
         flex-direction: column;
         gap: 10px;
+        width: 278px;
 
         .name,
         .author {
