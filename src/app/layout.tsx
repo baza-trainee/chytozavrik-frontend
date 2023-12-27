@@ -5,15 +5,15 @@ const raleway = Raleway({
   variable: '--raleway-font',
   weight: ['300', '400', '500', '800'],
   style: 'normal',
-  subsets: ['latin'],
+  subsets: ['cyrillic'],
   display: 'swap',
 });
 
 const montserratAlternates = Montserrat({
   variable: '--montserrat-alternates-font',
-  weight: ['400', '600'],
+  weight: ['300', '400', '600'],
   style: 'normal',
-  subsets: ['latin'],
+  subsets: ['cyrillic'],
   display: 'swap',
 });
 
