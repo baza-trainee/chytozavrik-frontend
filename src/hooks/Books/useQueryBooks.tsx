@@ -3,15 +3,14 @@ import { useAuthAxiosInstance } from '@/hooks';
 import { useQuery } from '@tanstack/react-query';
 import { BASE_URL } from '@/constants/api';
 
-export const useQueryBooks = ({
-  currentPage,
-  searchValue,
-  page,
-}: {
+interface useQueryBooks {
   currentPage: number;
   searchValue: string | null;
   page: 'books' | 'quizzes' | 'recommended';
-}) => {
+  select?: ((data: any) => any) | undefined;
+}
+
+export const useQueryBooks = ({ currentPage, searchValue, page, ...rest }: useQueryBooks) => {
   const { status } = useSession();
   const axios = useAuthAxiosInstance();
 
@@ -28,6 +27,7 @@ export const useQueryBooks = ({
       return res.data.data;
     },
     enabled: status === 'authenticated',
+    ...rest,
   });
 
   return { books, booksLoading, fetchError };

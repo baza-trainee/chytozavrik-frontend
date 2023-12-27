@@ -9,6 +9,7 @@ export const useRefreshToken = () => {
       try {
         const res = await axiosClient.post('/auth/token/refresh/', {
           refresh: session.user.token.refresh,
+          rememberMe: session.user.rememberMe, // Pass rememberMe flag
         });
 
         const newAccessToken = res.data.access;

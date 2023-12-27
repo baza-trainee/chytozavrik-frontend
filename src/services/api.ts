@@ -195,8 +195,8 @@ export const getDocumentsService = async () => {
   return result.json();
 };
 
-export const getBooksService = async () => {
-  const result = await axiosServerFetch(`${baseUrl}/books?page=1&page_size=7`);
+export const getBooksService = async (search: string = '') => {
+  const result = await axiosServerFetch(`${baseUrl}/books?page=1&page_size=7&search=${search}`);
   return result.data;
 };
 
