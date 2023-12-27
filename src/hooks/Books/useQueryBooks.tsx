@@ -7,10 +7,12 @@ export const useQueryBooks = ({
   currentPage,
   searchValue,
   page,
+  ...rest
 }: {
   currentPage: number;
   searchValue: string | null;
   page: 'books' | 'quizzes' | 'recommended';
+  select: ((data: any) => any) | undefined;
 }) => {
   const { status } = useSession();
   const axios = useAuthAxiosInstance();
@@ -28,6 +30,7 @@ export const useQueryBooks = ({
       return res.data.data;
     },
     enabled: status === 'authenticated',
+    ...rest,
   });
 
   return { books, booksLoading, fetchError };
