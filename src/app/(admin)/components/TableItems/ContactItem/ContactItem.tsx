@@ -41,6 +41,9 @@ const ContactItem = ({ id, first_phone, second_phone, email, updated_at: updated
   const [isSuccess, setIsSuccess] = useState(false);
   const [isDiscard, setIsDiscard] = useState(false);
   const { data: session } = useSession();
+  const [isEmptySecondPhone, setIsEmptySecondPhone] = useState(false);
+  const [successModalMessage, setSuccessModalMessage] = useState('');
+const [successModalActive, setSuccessModalActive] = useState(false);
   // const [isFocused, setIsFocused] = useState(false);
 
   // const handleFocus = () => {
@@ -51,19 +54,63 @@ const ContactItem = ({ id, first_phone, second_phone, email, updated_at: updated
   //   setIsFocused(false);
   // };
 
+  // const handleModalClose = () => {
+  //   setIsEmptySecondPhone(false);
+  //   setIsOpen(false);
+  // };
   const { mutate, error, isPending } = useMutation({
     mutationFn: async (formData: FormData) => {
-      await axios.patch(`contact-info/`, formData, {
-        headers: {
-          Authorization: `Bearer ${session?.user.token.access}`,
-        },
-      });
-    },
-    onSuccess: async () => {
-      await queryClient.invalidateQueries({ queryKey: ['contact-info'] });
-      setIsSuccess(true);
+      console.log("Starting PATCH request...");
+      console.log("Authorization token:", session?.user.token.access);
+
+      
+        await axios.patch(`contact-info/`, formData, {
+          headers: {
+            Authorization: `Bearer ${session?.user.token.access}`,
+          },
+          
+        });
+
+        console.log("PATCH request successful!");
+  },
+  onSuccess: () => {
+    queryClient.invalidateQueries({ queryKey: ['contact-info'] });
+    setIsSuccess(true); // Ensure this state update triggers a re-render
+
+    
+  },
+
+    
+  })
+
+  const fetchContactInfo = async () => {
+  const response = await axios.get('contact-info', {
+    headers: {
+      Authorization: `Bearer ${session?.user.token.access}`,
     },
   });
+  return response.data;
+};
+
+// ...
+
+
+
+  // const { mutate, error, isPending } = useMutation({
+  //   mutationFn: async (formData: FormData) => {
+  //     await axios.patch(`contact-info/`, formData, {
+  //       headers: {
+  //         Authorization: `Bearer ${session?.user.token.access}`,
+  //       },
+  //     });
+  //   },
+    
+  //   onSuccess: async () => {
+  //     await queryClient.invalidateQueries({ queryKey: ['contact-info'] });
+  //     setIsSuccess(true);
+  //   },
+  // });
+  console.log(mutate)
 
   const {
     control,
@@ -90,22 +137,61 @@ const ContactItem = ({ id, first_phone, second_phone, email, updated_at: updated
   //   console.log(data)
   // }
 
-  const a = () => {
-    console.log('ff')
-  }
-a()
-  const onSubmit = (data: FormDataType) => {
+  // const a = () => {
+  //   console.log('ff')
+  // }
+  // a()
+
+  const onSubmit = async(data: FormDataType) => {
+    if (data.second_phone === '') {
+    setIsEmptySecondPhone(true);
+  setIsOpen(true);
+    // Second phone is empty, proceed without second_phone
+    const formData = new FormData();
+    formData.append('id', String(id));
+    formData.append('first_phone', String(data.first_phone));
+    formData.append('email', String(data.email));
+
+    // Добавьте другую логику, если необходимо
+
+   await mutate(formData);
+    // alert(JSON.stringify(data));
+    // reset();
+    console.log(data);
+  } else {
+    // Second phone is not empty, proceed with backend request
     const formData = new FormData();
     formData.append('id', String(id));
     formData.append('first_phone', String(data.first_phone));
     formData.append('second_phone', String(data.second_phone));
     formData.append('email', String(data.email));
-    mutate(formData);
-    
+
+    await mutate(formData);
     alert(JSON.stringify(data));
-    reset();
-    console.log(data)
-  };
+    // reset();
+    console.log(data);
+  }
+};
+  
+  // const onSubmit = (data: FormDataType) => {
+  //   if (data.second_phone === '') {
+  //     // Second phone is empty, show modal
+  //     setIsEmptySecondPhone(true);
+  //     setIsOpen(true);
+  //   } else {
+  //     // Second phone is not empty, proceed with backend request
+  //     const formData = new FormData();
+  //     formData.append('id', String(id));
+  //     formData.append('first_phone', String(data.first_phone));
+  //     formData.append('second_phone', String(data.second_phone));
+  //     formData.append('email', String(data.email));
+
+  //      mutate(formData);
+  //     alert(JSON.stringify(data));
+  //     reset();
+  //     console.log(data)
+  //   }
+  // };
 
   
 
@@ -195,7 +281,46 @@ a()
                 </div>
               </div>
 
-              {(isSuccess || isDiscard) && (
+              {(isSuccess || isDiscard || (isOpen && isEmptySecondPhone)) && (
+  <Modal
+    type={isDiscard || (isOpen && isEmptySecondPhone) ? 'question' : 'success'}
+    message={
+      isDiscard
+        ? 'Ви точно хочете скасувати зміни? Вони не будуть збережені'
+        : isEmptySecondPhone
+        ? 'Ви точно хочете залишити тільки один номер телефону?'
+        : 'Ваші зміни успішно збережено!'
+    }
+    title={
+      isDiscard
+        ? 'Скасувати зміни '
+        : isEmptySecondPhone
+        ? 'Залишити один номер телефону'
+        : 'Збережено!'
+    }
+    active={isDiscard || isSuccess || (isOpen && isEmptySecondPhone)}
+    setActive={() => {
+      setIsSuccess(false);
+      setIsDiscard(false);
+      setIsOpen(false);
+    }}
+    successFnc={async () => {
+      if (isEmptySecondPhone) {
+            setSuccessModalMessage('dddd')
+      // Handle the case when the user wants to proceed with one phone number
+    } else {
+      // Handle the case when the user clicks "Cancel" and enters data in second_phone
+      setIsOpen(false); // Close the current modal
+
+      // Display a success modal with a different message
+      setSuccessModalMessage('Збережено! Ваші зміни успішно збережено!');
+      setSuccessModalActive(true);
+    }
+  }}
+  />
+)}
+
+              {/* {(isSuccess || isDiscard) && (
                 <Modal
                   type={isDiscard ? 'question' : 'success'}
                   message={
@@ -214,7 +339,7 @@ a()
                     setIsOpen(false);
                   }}
                 />
-              )}
+              )} */}
             </div>
           </div>
         </div>
