@@ -62,10 +62,20 @@
   align-items: baseline;
   justify-content: flex-end;
 
-  @include breakpoint(desktop) {
+  @include breakpoint(laptop) {
     justify-content: space-between;
     align-items: center;
     gap: 32px;
+
+    & a {
+      height: 52px;
+    }
+  }
+
+  @include breakpoint(desktop) {
+    & a {
+      height: 60px;
+    }
   }
 }
 
@@ -81,6 +91,7 @@ a.button {
     padding: 16px 28px;
   }
 }
+
 .userLogo {
   width: 16px;
   height: 100%;
@@ -89,6 +100,7 @@ a.button {
     width: 24px;
   }
 }
+
 a.buttonIn,
 .buttonOut {
   width: 128px;

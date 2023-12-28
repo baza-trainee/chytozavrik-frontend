@@ -9,20 +9,19 @@ import styles from './QuizCard.module.scss';
 interface QuizCardProps {
   quiz: UsersQuiz;
   childId: string;
-  category: QuizCategory;
 }
 
-const QuizCard: React.FC<QuizCardProps> = ({ quiz, childId, category }) => {
+const QuizCard: React.FC<QuizCardProps> = ({ quiz, childId }) => {
   const firstChar = quiz.current_score ? quiz.current_score.charAt(0) : '';
   const firstCharInt = parseInt(firstChar, 10);
   const { colorText, icon } = useIconAndColor(firstCharInt);
 
   let buttonTitle = 'Пройти вікторину';
-  if (category === '') {
+  if (!quiz.current_score) {
     buttonTitle = 'Пройти вікторину';
-  } else if (category === 'is_started=true') {
+  } else if (firstCharInt >= 0 && firstCharInt < 5) {
     buttonTitle = 'Продовжити вікторину';
-  } else if (category === 'is_completed=true') {
+  } else if (firstCharInt === 5) {
     buttonTitle = 'Пройти ще раз';
   }
 

@@ -69,8 +69,6 @@ const MonstersSlider = ({
     }
   };
 
-  console.log(sliderItems);
-
   return (
     <div
       className={styles.slider}

@@ -39,6 +39,7 @@ const AnswerInput = ({ answerIndex, questionIndex }: AnswerInputProps) => {
         placeholder="Введіть відповідь"
         label={`Варіант відповіді ${answerIndex + 1}`}
         resetField={() => resetField(`question_${questionIndex}_answer_${answerIndex}`)}
+        usage="admin"
       />
     </>
   );

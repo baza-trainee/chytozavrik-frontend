@@ -33,7 +33,7 @@ const Header = () => {
         </Link>
 
         <div className={styles.buttonContainer}>
-          {deviceType === 'desktop' && session?.user?.is_superuser && (
+          {deviceType !== 'mobile' && session?.user?.is_superuser && (
             <Button
               className={styles.buttonAdmin}
               component="link"

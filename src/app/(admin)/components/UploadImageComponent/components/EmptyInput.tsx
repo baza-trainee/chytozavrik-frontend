@@ -39,7 +39,7 @@ const EmptyInput = ({
     {(sizeErrorMessage && formatErrorMessage) || (!sizeErrorMessage && !formatErrorMessage) ? (
       <div className={styles.formatAndSizeWarning}>
         <Typography component="span" variant="body">
-          Формат зображення: JPG, PNG
+          Формат зображення: JPG, PNG, SVG
         </Typography>
         <Typography component="span" variant="body">
           Максимальний розмір: 2 MB
@@ -53,7 +53,7 @@ const EmptyInput = ({
     )}
     {!sizeErrorMessage && formatErrorMessage && (
       <Typography component="span" variant="body">
-        Формат зображення: JPG, PNG
+        Формат зображення: JPG, PNG, SVG
       </Typography>
     )}
   </div>

@@ -1,10 +1,12 @@
 import * as yup from 'yup';
 
-export const notEmailMatch: yup.TestFunction<string | undefined, Record<string, any>> = (value, context) => {
+export const notEmailMatch: yup.TestFunction<string | undefined, Record<string, any>> = (
+  value,
+  context
+) => {
   const emailPart = context?.options?.context?.user?.email?.split('@')[0];
   return !value || value.toLowerCase() !== emailPart?.toLowerCase();
 };
-
 
 const emailRegex =
   // eslint-disable-next-line no-control-regex
@@ -15,19 +17,15 @@ export const validation = {
   email: yup.string().lowercase().matches(emailRegex, 'Не вірна email адреса.').required(),
   signUpPassword: yup.string().required('Пароль не може бути порожнім.'),
   password: yup
-  .string()
-  .min(8, ({ min }) => `Пароль має бути не менше ${min} символів.`)
-  .max(64, ({ max }) => `Пароль має бути не більше ніж ${max} символів.`)
-  .matches(passworsRegex, 'Пароль повинен бути латиницею та містити хоча б 1 цифру.')
-  .matches(/[A-Z]/, 'Пароль повинен містити хоча б одну велику літеру.')
-  .matches(/[a-z]/, 'Пароль повинен містити хоча б одну маленьку літеру.')
-  .matches(/[@#$%^&+=!]/, 'Пароль повинен містити хоча б один символ з перелічених: "@#$%^&+=!".')
-  .test(
-    'notEmailMatch',
-    'Пароль надто схожий на email',
-    notEmailMatch
-  )
-  .required('Пароль не може бути порожнім.'),
+    .string()
+    .min(8, ({ min }) => `Пароль має бути не менше ${min} символів.`)
+    .max(64, ({ max }) => `Пароль має бути не більше ніж ${max} символів.`)
+    .matches(passworsRegex, 'Пароль повинен бути латиницею та містити хоча б 1 цифру.')
+    .matches(/[A-Z]/, 'Пароль повинен містити хоча б одну велику літеру.')
+    .matches(/[a-z]/, 'Пароль повинен містити хоча б одну маленьку літеру.')
+    .matches(/[@#$%^&+=!]/, 'Пароль повинен містити хоча б один символ з перелічених: "@#$%^&+=!".')
+    .test('notEmailMatch', 'Пароль надто схожий на email', notEmailMatch)
+    .required('Пароль не може бути порожнім.'),
   confirmPassword: yup
     .string()
     .oneOf([yup.ref('password')], 'Пароль не співпадає.')
@@ -48,4 +46,3 @@ export const validation = {
     .required('Будь ласка, заповніть поле'),
   recommended: yup.boolean().required(),
 };
-

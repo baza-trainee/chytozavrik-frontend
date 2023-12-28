@@ -44,6 +44,7 @@ const SignUp = () => {
   } = useForm({
     defaultValues,
     resolver: yupResolver(schema),
+    mode: 'onChange',
   });
   const router = useRouter();
   const [error, setError] = useState<string | null>(null);
@@ -77,7 +78,12 @@ const SignUp = () => {
       }
 
       // Signin request
-      const user = await signIn('credentials', { redirect: false, ...data });
+      // const user = await signIn('credentials', { redirect: false, ...data });
+      const user = await signIn('credentials', {
+        redirect: false,
+        ...data,
+        rememberMe: rememberMe ? '1' : '0',
+      });
 
       // Show server errors
       if (user?.error) {
@@ -132,7 +138,7 @@ const SignUp = () => {
           />
         </div>
 
-        <div className={styles['checkboxes-groups']}>
+        <div className={styles['checkboxes-groups-signup']}>
           <Checkbox name="rememberMe" control={control}>
             Запам&apos;ятати мене
           </Checkbox>

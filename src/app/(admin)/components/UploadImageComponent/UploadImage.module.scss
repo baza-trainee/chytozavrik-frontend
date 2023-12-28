@@ -65,14 +65,14 @@
     align-items: center;
 
     .uploadedImageContainer {
-      width: 91px;
+      width: 95px;
       height: 182px;
       display: flex;
       justify-content: center;
       align-items: center;
 
       .uploadedImage {
-        width: 91px;
+        max-width: 102px;
         height: 182px;
         flex-shrink: 0;
         object-fit: cover;
