@@ -18,6 +18,10 @@
   justify-content: center;
   margin: 0 auto;
 
+  & label {
+    cursor: pointer;
+  }
+
   @include breakpoint(tablet) {
     gap: 28px;
     width: 201px;
