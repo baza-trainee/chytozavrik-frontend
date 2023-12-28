@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { ChildType } from '@/types';
 import { Container, Typography, Spinner } from '@/components/common';
 import KidProfile from '../KidProfile';
@@ -9,9 +9,10 @@ import NoteKid from '../NoteKid';
 
 type Props = {
   kids: ChildType[];
+  isLoading: boolean;
 };
 
-const KidslList = ({ kids }: Props) => {
+const KidslList = ({ kids, isLoading }: Props) => {
   const [showNote, setShowNote] = useState(true);
   const closeNote = () => {
     setShowNote(false);
@@ -19,6 +20,7 @@ const KidslList = ({ kids }: Props) => {
 
   return (
     <div className={styles.section}>
+      {isLoading && <Spinner className="spinner" />}
       <Container className={styles.container}>
         <Typography className={styles.title} component="h2" variant="h2">
           Вігвами дітей
