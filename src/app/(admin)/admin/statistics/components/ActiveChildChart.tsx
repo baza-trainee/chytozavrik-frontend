@@ -1,4 +1,3 @@
-
 import Typography from '@/components/common/Typography/Typography';
 import React from 'react';
 import { ChartActiveChilds } from '@/types';
