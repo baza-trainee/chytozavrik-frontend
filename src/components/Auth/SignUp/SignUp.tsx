@@ -44,6 +44,7 @@ const SignUp = () => {
   } = useForm({
     defaultValues,
     resolver: yupResolver(schema),
+    mode: 'onChange',
   });
   const router = useRouter();
   const [error, setError] = useState<string | null>(null);
