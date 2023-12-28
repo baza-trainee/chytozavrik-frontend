@@ -49,13 +49,14 @@ const BookItem = ({ book, page, onCheckboxChange, isDeleting }: BookAdminProps) 
     recommended: Route.BOOKS_EDIT,
     quizzes: Route.QUIZZES_EDIT,
   };
+  const editorLinkProps = page === 'quizzes' ? book.quizz_id : book.id || book.book_id;
 
   return (
     <div className={styles.bookItem}>
       <div className={styles.checkbox}>
         <AdminCheckBox
           id={book.id || book.book_id}
-          onChange={e => onCheckboxChange(e.target.checked, book.id)}
+          onChange={e => onCheckboxChange(e.target.checked, book.id || book.book_id)}
         />
       </div>
       <div className={styles.info}>
@@ -79,7 +80,7 @@ const BookItem = ({ book, page, onCheckboxChange, isDeleting }: BookAdminProps) 
         ) : (
           <>
             <div>
-              <Link href={`${redirectRoute[page]}/${book.id || book.book_id}`}>
+              <Link href={`${redirectRoute[page]}/${editorLinkProps}`}>
                 <PenLine />
               </Link>
             </div>
@@ -97,7 +98,7 @@ const BookItem = ({ book, page, onCheckboxChange, isDeleting }: BookAdminProps) 
           active={isOpen}
           setActive={() => setIsOpen(false)}
           successFnc={() => {
-            deleteBook(book.id);
+            deleteBook(book.id || book.book_id);
           }}
         />
       )}

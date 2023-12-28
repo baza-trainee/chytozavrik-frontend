@@ -10,7 +10,7 @@ import Select, {
   StylesConfig,
 } from 'react-select';
 import IconButton from '@/components/common/IconButton';
-import { ChevronUp, ChevronDown, XCircle } from 'lucide-react';
+import { ChevronUp, ChevronDown, XCircle, AlertCircle } from 'lucide-react';
 import styles from './SearchableSelect.module.scss';
 
 const DropdownIndicator = (props: any) => {
@@ -58,12 +58,13 @@ const Option = (props: any) => {
 
 export interface SearchableSelectProps {
   onChange: ((newValue: SingleValue<string>, actionMeta: ActionMeta<string>) => void) | undefined;
-  onInputChange: ((newValue: string, actionMeta: InputActionMeta) => void) | undefined;
+  onInputChange?: ((newValue: string, actionMeta: InputActionMeta) => void) | undefined;
   clearInput: () => void;
   options: GroupBase<string>[];
   selected: SingleValue<string>;
-  inputValue: SingleValue<string>;
+  inputValue?: SingleValue<string>;
   label: string;
+  error?: string;
 }
 
 const SearchableSelect: React.FC<SearchableSelectProps> = ({
@@ -74,6 +75,7 @@ const SearchableSelect: React.FC<SearchableSelectProps> = ({
   selected,
   inputValue,
   label,
+  error,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -134,7 +136,7 @@ const SearchableSelect: React.FC<SearchableSelectProps> = ({
         ...provided,
         padding: !inputValue && !selected ? '8px' : inputValue ? '8px' : '0px',
       }),
-      indicatorSeparator: (provided: any) => ({
+      indicatorSeparator: () => ({
         display: 'none',
       }),
     }),
@@ -178,6 +180,12 @@ const SearchableSelect: React.FC<SearchableSelectProps> = ({
         onMenuClose={() => handleMenuIsOpen(false)}
         classNamePrefix="select"
       />
+      {error && (
+        <div className={styles.error}>
+          <AlertCircle size={14} />
+          <span>{error}</span>
+        </div>
+      )}
     </div>
   );
 };

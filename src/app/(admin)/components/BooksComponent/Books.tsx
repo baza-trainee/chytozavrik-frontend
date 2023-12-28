@@ -1,6 +1,7 @@
 'use client';
 
 import React, { Fragment, useState } from 'react';
+import { useQueryClient } from '@tanstack/react-query';
 import { BookItem, NoResults, TableHeader } from '@/app/(admin)/components';
 import { useQueryBooks } from '@/hooks/Books/useQueryBooks';
 import { BookAdmin } from '@/types';
@@ -8,6 +9,7 @@ import { Spinner } from 'components/common';
 import Pagination from 'components/Pagination/Pagination';
 import { useDeleteChosenBooks } from '@/hooks/Books/useDeleteChosenBooks';
 import NoSearchResults from '@/app/(admin)/components/NoResults/NoSearchResults';
+import Modal from '../../../../components/common/ModalActions/Modal';
 import styles from '../../admin/books/Books.module.scss';
 
 const Books = ({
@@ -20,8 +22,8 @@ const Books = ({
   const [currentPage, setCurrentPage] = useState(1);
   const [selected, setSelected] = useState<number[]>([]);
   const { books, booksLoading, fetchError } = useQueryBooks({ page, currentPage, searchValue });
-  const { handleDeleteBooks, deletingBooks } = useDeleteChosenBooks();
-
+  const { handleDeleteBooks, deletingBooks, isDeleted, setIsDeleted } = useDeleteChosenBooks();
+  const queryClient = useQueryClient();
   const count = books?.count ? Math.ceil(books.count / 7) : 0;
 
   const noResultsText = {
@@ -58,7 +60,7 @@ const Books = ({
           ))}
         <div>
           {books?.results?.map((book: BookAdmin) => {
-            const bookId = book.id ? book.id : book.book_id;
+            const bookId = book.id || book.book_id;
             return (
               <Fragment key={bookId}>
                 <BookItem
@@ -77,6 +79,18 @@ const Books = ({
           currentPage={currentPage}
           onPageChange={page => setCurrentPage(page)}
           count={count}
+        />
+      )}
+      {isDeleted && (
+        <Modal
+          type="success"
+          message="Обрані книги видалено"
+          title="Успіх!"
+          active={isDeleted}
+          setActive={() => {
+            setIsDeleted(false);
+            queryClient.invalidateQueries({ queryKey: ['books'] });
+          }}
         />
       )}
     </div>
