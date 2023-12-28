@@ -51,7 +51,7 @@ const BookItem = ({ book, page, onCheckboxChange, isDeleting }: BookAdminProps) 
   };
 
   const editorLinkProps = page === 'quizzes' ? book.quizz_id : book.id || book.book_id;
-  console.log(editorLinkProps);
+
   return (
     <div className={styles.bookItem}>
       <div className={styles.checkbox}>
