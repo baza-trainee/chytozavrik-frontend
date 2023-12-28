@@ -20,6 +20,7 @@ const QuestionsList = () => {
               label={`Питання ${questionIndex + 1}`}
               placeholder="Введіть питання для вікторини"
               resetField={() => resetField(`question_${questionIndex}`)}
+              usage="admin"
             />
           </div>
           <div className={styles.answers}>

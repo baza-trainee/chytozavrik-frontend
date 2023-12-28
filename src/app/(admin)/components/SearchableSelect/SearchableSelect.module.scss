@@ -58,3 +58,20 @@
     margin-top: 12px;
   }
 }
+
+.error {
+  color: $error;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 8px;
+
+  & svg {
+    width: 14px;
+    height: 14px;
+  }
+}

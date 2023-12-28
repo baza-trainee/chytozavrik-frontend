@@ -24,6 +24,8 @@
   &[data-status='error'] {
     --text-color: #{$error};
     --border-color: #{$error};
+    font-weight: 400;
+    font-size: 14px;
   }
 
   &:hover:not([data-status='error']),
@@ -130,4 +132,15 @@
 
 .additionalIcon {
   order: 3;
+}
+
+.errorMessage {
+  display: flex;
+  gap: 9px;
+  margin-top: 8px;
+
+  & svg {
+    width: 14px;
+    height: 14px;
+  }
 }

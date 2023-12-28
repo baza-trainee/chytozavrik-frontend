@@ -5,7 +5,7 @@ type AnswerData = {
   text: string;
 };
 
-type QuestionData = {
+export type QuestionData = {
   text: string;
   answers: AnswerData[];
 };

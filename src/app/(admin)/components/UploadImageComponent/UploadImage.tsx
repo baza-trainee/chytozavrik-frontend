@@ -17,7 +17,7 @@ interface UploadImageProps {
 }
 
 const twoMB = 2 * 1024 * 1024;
-const fileTypes = ['image/png', 'image/jpeg'];
+const fileTypes = ['image/png', 'image/jpeg', 'image/svg+xml', 'image/jpg', 'image/webp'];
 
 const UploadImage: React.FC<UploadImageProps> = ({
   onFileChange,
@@ -40,7 +40,6 @@ const UploadImage: React.FC<UploadImageProps> = ({
       );
       return false;
     }
-
     return true;
   };
 
@@ -51,7 +50,6 @@ const UploadImage: React.FC<UploadImageProps> = ({
       setFormatErrorMessage(`${file.name} не відповідний формат завантаженого файлу.`);
       return false;
     }
-
     return true;
   };
 

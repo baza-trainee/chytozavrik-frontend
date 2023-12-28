@@ -19,6 +19,7 @@ export const useDeleteChosenBooks = () => {
         })
       );
     },
+
     onSettled: () => setDeletingBooks([]),
     onSuccess: () => {
       setIsDeleted(true);
