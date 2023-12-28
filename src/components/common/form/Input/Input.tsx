@@ -13,6 +13,7 @@ export type InputProps<T extends FieldValues> = InputHTMLAttributes<HTMLInputEle
     label?: string;
     resetField?: () => void;
     handleKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+    usage?: string;
   };
 
 export type InputStatus = 'normal' | 'filled' | 'error';
@@ -26,6 +27,7 @@ const Input = <T extends FieldValues>({
   className,
   handleKeyDown,
   additionalIcon,
+  usage,
   ...props
 }: InputProps<T>) => {
   const {
@@ -89,7 +91,15 @@ const Input = <T extends FieldValues>({
           )}
         </span>
       </label>
-      {error && <span className={styles.message}>{error.message}</span>}
+      {error &&
+        (usage === 'admin' ? (
+          <div className={styles.errorMessage}>
+            <AlertCircle width={14} height={14} />
+            <span>{error.message}</span>
+          </div>
+        ) : (
+          <span className={styles.message}>{error.message}</span>
+        ))}
     </div>
   );
 };

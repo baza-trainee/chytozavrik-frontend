@@ -47,7 +47,7 @@
   flex-direction: column;
   gap: 38px;
 
-  margin-bottom: 46px;
+  margin-bottom: 32px;
 }
 
 .link {
@@ -65,10 +65,29 @@
 .checkboxes-groups {
   display: flex;
   justify-content: space-between;
-  gap: 24px;
+  align-items: center;
+  color: #000000;
 
   @include breakpoint(tablet) {
-    margin-bottom: 24px;
+    margin-bottom: 13px;
+    padding: 10px 0;
+  }
+}
+
+.checkboxes-groups-signup {
+  display: flex;
+  flex-direction: column;
+  gap: 19px;
+  font-size: 12px;
+  color: #000;
+
+  & label span {
+    color: #000;
+  }
+
+  & a {
+    font-size: 16px;
+    text-decoration: underline;
   }
 }
 
@@ -80,7 +99,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 24px;
+  gap: 8px;
 
   margin-top: 32px;
   margin-bottom: 76px;
@@ -88,6 +107,8 @@
   @include breakpoint(tablet) {
     flex-direction: row;
     justify-content: space-between;
+    margin-top: 23px;
+    margin-bottom: 24px;
   }
 }
 
@@ -107,16 +128,15 @@
 }
 
 .error {
-  position: absolute;
-  top: -24px;
-
   display: flex;
   gap: 5px;
-
   font-size: 14px;
   color: $error;
-
   transform: translateY(-100%);
+
+  @include breakpoint(tablet) {
+    margin-top: 24px;
+  }
 }
 
 .error-icon {
@@ -124,9 +144,6 @@
 
   width: var(--error-icon-size);
   height: var(--error-icon-size);
-}
-
-.error-message {
 }
 
 .button-submit {

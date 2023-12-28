@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { Dispatch, useState } from 'react';
 import { FileUploader } from 'react-drag-drop-files';
 import FileInput from '@/app/(admin)/components/UploadImageComponent/components/FileInput';
 import EmptyInput from '@/app/(admin)/components/UploadImageComponent/components/EmptyInput';
@@ -12,10 +12,12 @@ interface UploadImageProps {
   maxSize?: number;
   allowedTypes?: string[];
   initialImg: string;
+  setInitialImg?: Dispatch<React.SetStateAction<string>>;
+  page: 'books' | 'partners' | 'quizzes';
 }
 
 const twoMB = 2 * 1024 * 1024;
-const fileTypes = ['image/png', 'image/jpeg'];
+const fileTypes = ['image/png', 'image/jpeg', 'image/svg+xml', 'image/jpg', 'image/webp'];
 
 const UploadImage: React.FC<UploadImageProps> = ({
   onFileChange,
@@ -23,6 +25,8 @@ const UploadImage: React.FC<UploadImageProps> = ({
   allowedTypes = fileTypes,
   file,
   initialImg,
+  setInitialImg,
+  page,
 }) => {
   const [sizeErrorMessage, setSizeErrorMessage] = useState<string>('');
   const [formatErrorMessage, setFormatErrorMessage] = useState<string>('');
@@ -36,7 +40,6 @@ const UploadImage: React.FC<UploadImageProps> = ({
       );
       return false;
     }
-
     return true;
   };
 
@@ -47,7 +50,6 @@ const UploadImage: React.FC<UploadImageProps> = ({
       setFormatErrorMessage(`${file.name} не відповідний формат завантаженого файлу.`);
       return false;
     }
-
     return true;
   };
 
@@ -61,21 +63,33 @@ const UploadImage: React.FC<UploadImageProps> = ({
   const handleChange = (file: File) => {
     setSizeErrorMessage('');
     setFormatErrorMessage('');
+    onFileChange(null);
 
     if (validateImage(file)) {
       onFileChange(file);
     }
   };
 
+  const pageClass = {
+    books: styles.books,
+    partners: styles.partners,
+    quizzes: styles.quizzes,
+  };
+
   return (
     <FileUploader
-      classes={styles.imageInput}
+      classes={`${styles.imageInput} ${pageClass[page]}`}
       name="file"
       handleChange={handleChange}
       fileOrFiles={file}
     >
       {file || initialImg ? (
-        <FileInput initialImg={initialImg} file={file} onFileChange={onFileChange} />
+        <FileInput
+          initialImg={initialImg}
+          file={file}
+          onFileChange={onFileChange}
+          setInitialImg={setInitialImg}
+        />
       ) : (
         <EmptyInput sizeErrorMessage={sizeErrorMessage} formatErrorMessage={formatErrorMessage} />
       )}

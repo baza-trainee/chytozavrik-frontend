@@ -1,4 +1,6 @@
 export interface BookAdmin {
+  book_id: number;
+  quizz_id: number;
   id: number;
   state: string | string[];
   created_at: string;

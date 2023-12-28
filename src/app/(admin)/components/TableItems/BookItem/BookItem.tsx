@@ -15,17 +15,21 @@ import { useQueryClient } from '@tanstack/react-query';
 import styles from './BookItem.module.scss';
 
 const BookItem = ({ book, page, onCheckboxChange, isDeleting }: BookAdminProps) => {
-  const { deleteBook, isPending, setIsDeleted, isDeleted } = useDeleteBooks();
+  const { deleteBook, isPending, setIsDeleted, isDeleted } = useDeleteBooks(page);
   const [isOpen, setIsOpen] = useState(false);
   const queryClient = useQueryClient();
 
   let stateToRender;
   if (Array.isArray(book.state)) {
-    stateToRender = (
-      <p className={styles.blue}>
-        {book.state[0]}/{book.state[1]}
-      </p>
-    );
+    if (book.state.length > 1) {
+      stateToRender = (
+        <p className={styles.blue}>
+          {book.state[0]}/{book.state[1]}
+        </p>
+      );
+    } else {
+      stateToRender = null;
+    }
   } else {
     if (book.state === 'Рекомендована') {
       stateToRender = <p className={styles.blue}>{book.state}</p>;
@@ -37,7 +41,7 @@ const BookItem = ({ book, page, onCheckboxChange, isDeleting }: BookAdminProps) 
   const state = {
     books: stateToRender,
     quizzes: <p className={styles.green}>Вікторина</p>,
-    recommended: <p className={styles.blue}>Рекомедована</p>,
+    recommended: <p className={styles.blue}>Рекомендована</p>,
   };
 
   const redirectRoute = {
@@ -46,10 +50,15 @@ const BookItem = ({ book, page, onCheckboxChange, isDeleting }: BookAdminProps) 
     quizzes: Route.QUIZZES_EDIT,
   };
 
+  const editorLinkProps = page === 'quizzes' ? book.quizz_id : book.id || book.book_id;
+
   return (
     <div className={styles.bookItem}>
       <div className={styles.checkbox}>
-        <AdminCheckBox id={book.id} onChange={e => onCheckboxChange(e.target.checked, book.id)} />
+        <AdminCheckBox
+          id={editorLinkProps}
+          onChange={e => onCheckboxChange(e.target.checked, editorLinkProps)}
+        />
       </div>
       <div className={styles.info}>
         <div className={styles.title}>
@@ -72,7 +81,7 @@ const BookItem = ({ book, page, onCheckboxChange, isDeleting }: BookAdminProps) 
         ) : (
           <>
             <div>
-              <Link href={`${redirectRoute[page]}/${book.id}`}>
+              <Link href={`${redirectRoute[page]}/${editorLinkProps}`}>
                 <PenLine />
               </Link>
             </div>
@@ -90,14 +99,18 @@ const BookItem = ({ book, page, onCheckboxChange, isDeleting }: BookAdminProps) 
           active={isOpen}
           setActive={() => setIsOpen(false)}
           successFnc={() => {
-            deleteBook(book.id);
+            deleteBook(editorLinkProps);
           }}
         />
       )}
       {isDeleted && (
         <Modal
           type="success"
-          message={`Книгу “${book.title}” видалено`}
+          message={
+            page === 'quizzes'
+              ? `Вікторину “${book.title}” видалено`
+              : `Книгу “${book.title}” видалено`
+          }
           title="Успіх!"
           active={isDeleted}
           setActive={() => {

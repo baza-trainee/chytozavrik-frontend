@@ -1,5 +1,10 @@
-import React from 'react';
+import { Metadata } from 'next';
+import AddQuiz from '@/app/(admin)/admin/quizzes/add/components/AddQuiz';
 
-const Page = () => <div>add</div>;
+export const metadata: Metadata = {
+  title: 'Додати вікторину - Читозаврик',
+};
 
-export default Page;
+const AddQuizzesPage = () => <AddQuiz />;
+
+export default AddQuizzesPage;

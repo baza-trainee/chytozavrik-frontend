@@ -1,17 +1,20 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Button, Typography } from 'components/common';
 import Image from 'next/image';
 import Notification from 'components/Notification/Notification';
+import { ChildType } from '@/types';
 import styles from './Parents.module.scss';
 
 type Props = {
   handleClick: () => void;
+  kids: ChildType[];
 };
 
-const Parents = ({ handleClick }: Props) => {
+const Parents = ({ handleClick, kids }: Props) => {
   const [showNote, setShowNote] = useState(true);
+
   const closeNote = () => {
     setShowNote(false);
   };
@@ -39,7 +42,7 @@ const Parents = ({ handleClick }: Props) => {
             Створити вігвам
           </Typography>
         </Button>
-        {showNote && <Notification closeNote={closeNote} />}
+        {kids && kids.length === 0 && showNote && <Notification closeNote={closeNote} />}
       </Container>
     </section>
   );

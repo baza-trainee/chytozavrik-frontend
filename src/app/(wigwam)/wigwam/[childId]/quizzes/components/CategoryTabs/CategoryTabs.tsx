@@ -31,7 +31,6 @@ const CategoryTabs: React.FC<CategoryTabsProps> = ({
     if (category) queryParams.push(`category=${category}`);
 
     const queryString = queryParams.length > 0 ? `?${queryParams.join('&')}` : '';
-    console.log(queryParams, queryString);
     return `${Route.WIGWAM}/${childId}/quizzes${queryString}`;
   };
 

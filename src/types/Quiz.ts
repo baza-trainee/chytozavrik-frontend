@@ -11,6 +11,7 @@ export type BookInfoType = {
 export type QuestionAnswerType = {
   id: number;
   text: string;
+  is_true: boolean;
 };
 
 export type QuestionType = {

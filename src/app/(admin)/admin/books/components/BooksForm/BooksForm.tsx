@@ -24,8 +24,10 @@ const BooksForm = ({ id }: { id?: number }) => {
   const { bookById, bookLoading, fetchError } = useQueryBookById(id);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [initialImg, setInitialImg] = useState('');
+  const [isOpen, setIsOpen] = useState(false);
   const { addBook, isPendingAdd, isAddSuccess, setIsAddSuccess } = useAddBook();
   const { editBook, isEditSuccess, setIsEditSuccess, isPendingEdit } = useEditBook();
+
   useEffect(() => {
     if (bookById) {
       setInitialImg(bookById.cover_image);
@@ -42,7 +44,6 @@ const BooksForm = ({ id }: { id?: number }) => {
     is_recommended: false,
   };
 
-  const [isOpen, setIsOpen] = useState(false);
   const { control, reset, handleSubmit, resetField, setValue } = useForm({
     defaultValues,
     resolver: yupResolver(schema),
@@ -113,13 +114,13 @@ const BooksForm = ({ id }: { id?: number }) => {
             Рекомендовані книжки
           </Checkbox>
         </div>
-        <div style={{ width: '30%' }} className={styles.image}>
-          <UploadImage
-            onFileChange={handleFileChange}
-            file={selectedFile}
-            initialImg={initialImg}
-          />
-        </div>
+        <UploadImage
+          onFileChange={handleFileChange}
+          file={selectedFile}
+          initialImg={initialImg}
+          setInitialImg={setInitialImg}
+          page="books"
+        />
       </div>
       <div className={styles.actions}>
         <Button
@@ -139,7 +140,7 @@ const BooksForm = ({ id }: { id?: number }) => {
           disabled={isDisabled || isPendingAdd || isPendingEdit}
           isLoading={isPendingAdd || isPendingEdit}
         >
-          Додати
+          {id ? 'Зберегти' : 'Додати'}
         </Button>
       </div>
 
@@ -156,8 +157,8 @@ const BooksForm = ({ id }: { id?: number }) => {
       {(isAddSuccess || isEditSuccess) && (
         <Modal
           type="success"
-          message="Книгу додано"
-          title="Успіх!"
+          message={isAddSuccess ? 'Книгу додано' : 'Ваші зміни успішно збережено'}
+          title={isAddSuccess ? 'Успіх!' : 'Збережено!'}
           active={isAddSuccess || isEditSuccess}
           setActive={() => {
             if (isAddSuccess) {

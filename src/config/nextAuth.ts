@@ -55,6 +55,7 @@ export const authOptions: NextAuthOptions = {
             ...userInfo.data,
             token: serverToken.data,
             id: userInfo.data.id.toString(),
+            rememberMe: true,
           };
 
           if (user) {

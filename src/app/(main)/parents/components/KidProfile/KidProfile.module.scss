@@ -51,6 +51,14 @@
     justify-content: flex-start;
   }
 }
+.link:hover .image {
+  border: 3px solid #7791fa;
+  border-radius: 100px;
+}
+.link:active .image {
+  border: 3px solid #455fc8;
+  border-radius: 100px;
+}
 
 .name {
   font-family: var(--montserrat-alternates-font);
@@ -75,6 +83,10 @@
   top: 24px;
   right: 24px;
   z-index: 10;
+
+  & img {
+    cursor: pointer;
+  }
 
   @include breakpoint(tablet) {
     flex-direction: column;

@@ -11,8 +11,17 @@ interface ModalProps {
   active: boolean;
   setActive: Dispatch<React.SetStateAction<boolean>>;
   successFnc?: () => void;
+  cancelButtonText?: string;
 }
-const Modal = ({ type, message, title, active, setActive, successFnc }: ModalProps) => {
+const Modal = ({
+  type,
+  message,
+  title,
+  active,
+  setActive,
+  successFnc,
+  cancelButtonText,
+}: ModalProps) => {
   const closeModal = () => {
     setActive(false);
   };
@@ -30,7 +39,13 @@ const Modal = ({ type, message, title, active, setActive, successFnc }: ModalPro
     content = <Success closeModal={closeModal} title={title} message={message} />;
   } else {
     content = (
-      <Question closeModal={closeModal} title={title} message={message} successFnc={successFnc} />
+      <Question
+        closeModal={closeModal}
+        title={title}
+        message={message}
+        successFnc={successFnc}
+        cancelButtonText={cancelButtonText}
+      />
     );
   }
 

@@ -1,12 +1,14 @@
 'use client';
 
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { Container, Typography, Button } from 'components/common';
-import { useFetch } from '@/hooks';
-import { Dispatch, SetStateAction, useEffect } from 'react';
+import { Container, Typography } from 'components/common';
+import { Dispatch, SetStateAction } from 'react';
 import AvatarFields from '@/app/(main)/parents/components/FormFields/AvaratsFields/AvatarFields';
 import NameInput from '@/app/(main)/parents/components/FormFields/NameInput/NameInput';
 import Buttons from '@/app/(main)/parents/components/FormFields/Buttons/Buttons';
+import { useQueryClient, useMutation } from '@tanstack/react-query';
+import axios from 'axios';
+import { useSession } from 'next-auth/react';
 import styles from './CreateWigwam.module.scss';
 
 type Props = {
@@ -31,22 +33,23 @@ const CreateWigwam = ({ setWigwam }: Props) => {
     formState: { errors },
   } = useForm({ defaultValues });
 
-  const { fetch } = useFetch();
+  const queryClient = useQueryClient();
+  const { data: session } = useSession();
+  const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || '';
 
-  const createKidProfile = async (formData: FormData) => {
-    try {
-      await fetch(
-        'users/me/children/',
-        {
-          name: formData.name,
-          avatar: formData.avatar,
+  const { mutate: submitData } = useMutation({
+    mutationFn: async (formData: FormData) => {
+      await axios.post(`${baseUrl}/users/me/children/`, formData, {
+        headers: {
+          Authorization: `Bearer ${session?.user.token.access}`,
         },
-        'POST'
-      );
-    } catch (err) {
-      console.log(err);
-    }
-  };
+      });
+    },
+    onSuccess: () => {
+      resetField('name');
+      queryClient.invalidateQueries({ queryKey: ['kids'] });
+    },
+  });
 
   const onSubmit: SubmitHandler<FormData> = formData => {
     const modifiedFormData = {
@@ -54,12 +57,8 @@ const CreateWigwam = ({ setWigwam }: Props) => {
       avatar: Number(formData.avatar),
     };
     setWigwam(false);
-    createKidProfile(modifiedFormData);
+    submitData(modifiedFormData);
   };
-
-  useEffect(() => {
-    resetField('name');
-  }, [resetField]);
 
   return (
     <section className={styles.section}>
