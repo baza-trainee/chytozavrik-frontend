@@ -22,7 +22,7 @@ const Books = ({
   const [currentPage, setCurrentPage] = useState(1);
   const [selected, setSelected] = useState<number[]>([]);
   const { books, booksLoading, fetchError } = useQueryBooks({ page, currentPage, searchValue });
-  const { handleDeleteBooks, deletingBooks, isDeleted, setIsDeleted } = useDeleteChosenBooks();
+  const { handleDeleteBooks, deletingBooks, isDeleted, setIsDeleted } = useDeleteChosenBooks(page);
   const queryClient = useQueryClient();
   const count = books?.count ? Math.ceil(books.count / 7) : 0;
 
@@ -39,6 +39,7 @@ const Books = ({
       setSelected(prev => prev.filter(id => id !== bookId));
     }
   };
+
   return (
     <div className={styles.wrapper}>
       <div>
@@ -60,7 +61,7 @@ const Books = ({
           ))}
         <div>
           {books?.results?.map((book: BookAdmin) => {
-            const bookId = book.id || book.book_id;
+            const bookId = page === 'quizzes' ? book.quizz_id : book.id || book.book_id;
             return (
               <Fragment key={bookId}>
                 <BookItem
