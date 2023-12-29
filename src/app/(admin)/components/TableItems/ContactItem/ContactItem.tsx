@@ -1,6 +1,6 @@
 'use client';
 
-import React, { ChangeEvent, useRef, useState, useContext } from 'react';
+import React, { useState } from 'react';
 
 import { Button } from 'components/common';
 import { Contact } from '@/types/Contacts';
@@ -11,22 +11,19 @@ import axios from 'axios';
 import Modal from 'components/common/ModalActions/Modal';
 import styles from './ContactItem.module.scss';
 import { XCircle, icons } from 'lucide-react';
-// import Input from '../../../../../components/common/form/Input/Input';
-import { Input,validation } from '@/components/common/form';
+
+import { Input, validation } from '@/components/common/form';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { createContext } from 'react';
+
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
-
-
 const schema = yup.object({
-  id:validation.id,
+  id: validation.id,
   first_phone: validation.first_phone,
   second_phone: validation.second_phone,
   email: validation.email,
 });
-// type FormData = yup.InferType<typeof schema>;
 
 export interface FormDataType {
   id?: string | undefined;
@@ -42,75 +39,28 @@ const ContactItem = ({ id, first_phone, second_phone, email, updated_at: updated
   const [isDiscard, setIsDiscard] = useState(false);
   const { data: session } = useSession();
   const [isEmptySecondPhone, setIsEmptySecondPhone] = useState(false);
-  const [successModalMessage, setSuccessModalMessage] = useState('');
-const [successModalActive, setSuccessModalActive] = useState(false);
-  // const [isFocused, setIsFocused] = useState(false);
+  
+  
 
-  // const handleFocus = () => {
-  //   setIsFocused(true);
-  // };
 
-  // const handleBlur = () => {
-  //   setIsFocused(false);
-  // };
-
-  // const handleModalClose = () => {
-  //   setIsEmptySecondPhone(false);
-  //   setIsOpen(false);
-  // };
   const { mutate, error, isPending } = useMutation({
     mutationFn: async (formData: FormData) => {
-      console.log("Starting PATCH request...");
-      console.log("Authorization token:", session?.user.token.access);
+      console.log('Starting PATCH request...');
+      console.log('Authorization token:', session?.user.token.access);
 
-      
-        await axios.patch(`contact-info/`, formData, {
-          headers: {
-            Authorization: `Bearer ${session?.user.token.access}`,
-          },
-          
-        });
+      await axios.patch(`contact-info/`, formData, {
+        headers: {
+          Authorization: `Bearer ${session?.user.token.access}`,
+        },
+      });
+      console.log('PATCH request successful!');
+    },
 
-        console.log("PATCH request successful!");
-  },
-  onSuccess: () => {
-    queryClient.invalidateQueries({ queryKey: ['contact-info'] });
-    setIsSuccess(true); // Ensure this state update triggers a re-render
-
-    
-  },
-
-    
-  })
-
-  const fetchContactInfo = async () => {
-  const response = await axios.get('contact-info', {
-    headers: {
-      Authorization: `Bearer ${session?.user.token.access}`,
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({ queryKey: ['contact-info'] });
+      setIsSuccess(true);
     },
   });
-  return response.data;
-};
-
-// ...
-
-
-
-  // const { mutate, error, isPending } = useMutation({
-  //   mutationFn: async (formData: FormData) => {
-  //     await axios.patch(`contact-info/`, formData, {
-  //       headers: {
-  //         Authorization: `Bearer ${session?.user.token.access}`,
-  //       },
-  //     });
-  //   },
-    
-  //   onSuccess: async () => {
-  //     await queryClient.invalidateQueries({ queryKey: ['contact-info'] });
-  //     setIsSuccess(true);
-  //   },
-  // });
-  console.log(mutate)
 
   const {
     control,
@@ -122,7 +72,7 @@ const [successModalActive, setSuccessModalActive] = useState(false);
     reset,
   } = useForm({
     mode: 'onBlur',
-   
+
     resolver: yupResolver(schema),
     defaultValues: {
       id: id !== undefined ? String(id) : '',
@@ -130,70 +80,36 @@ const [successModalActive, setSuccessModalActive] = useState(false);
       second_phone: second_phone || '',
       email: email || '',
     },
-    
   });
 
-  // const submit: SubmitHandler<MyForm> = data => {
-  //   console.log(data)
-  // }
-
-  // const a = () => {
-  //   console.log('ff')
-  // }
-  // a()
-
-  const onSubmit = async(data: FormDataType) => {
+  const onSubmit = async (data: FormDataType) => {
     if (data.second_phone === '') {
-    setIsEmptySecondPhone(true);
-  setIsOpen(true);
-    // Second phone is empty, proceed without second_phone
-    const formData = new FormData();
-    formData.append('id', String(id));
-    formData.append('first_phone', String(data.first_phone));
-    formData.append('email', String(data.email));
+      setIsEmptySecondPhone(true);
+      setIsOpen(true);
 
-    // Добавьте другую логику, если необходимо
+      const formData = new FormData();
+      formData.append('id', String(id));
+      formData.append('first_phone', String(data.first_phone));
+      formData.append('email', String(data.email));
 
-   await mutate(formData);
-    // alert(JSON.stringify(data));
-    // reset();
-    console.log(data);
-  } else {
-    // Second phone is not empty, proceed with backend request
-    const formData = new FormData();
-    formData.append('id', String(id));
-    formData.append('first_phone', String(data.first_phone));
-    formData.append('second_phone', String(data.second_phone));
-    formData.append('email', String(data.email));
+      await mutate(formData);
+      // alert(JSON.stringify(data));
+      // reset();
+      console.log(data);
+    } else {
+      const formData = new FormData();
+      formData.append('id', String(id));
+      formData.append('first_phone', String(data.first_phone));
+      formData.append('second_phone', String(data.second_phone));
+      formData.append('email', String(data.email));
 
-    await mutate(formData);
-    alert(JSON.stringify(data));
-    // reset();
-    console.log(data);
-  }
-};
-  
-  // const onSubmit = (data: FormDataType) => {
-  //   if (data.second_phone === '') {
-  //     // Second phone is empty, show modal
-  //     setIsEmptySecondPhone(true);
-  //     setIsOpen(true);
-  //   } else {
-  //     // Second phone is not empty, proceed with backend request
-  //     const formData = new FormData();
-  //     formData.append('id', String(id));
-  //     formData.append('first_phone', String(data.first_phone));
-  //     formData.append('second_phone', String(data.second_phone));
-  //     formData.append('email', String(data.email));
-
-  //      mutate(formData);
-  //     alert(JSON.stringify(data));
-  //     reset();
-  //     console.log(data)
-  //   }
-  // };
-
-  
+      await mutate(formData);
+      
+      alert(JSON.stringify(data));
+      reset();
+      console.log(data);
+    }
+  };
 
   return (
     <div className={`${styles.wrapper} ${isOpen ? styles.active : ''}`}>
@@ -209,23 +125,10 @@ const [successModalActive, setSuccessModalActive] = useState(false);
                       <Input
                         name="first_phone"
                         type="text"
-                        
-                         
-                          
-                       
-                        // {...register('first_phone', {
-                        //   required: true,
-                        //   min: {
-                        //     value: 9,
-                        //     message: 'Мінімум 9 цифр',
-                        //   },
-                        //   maxLength: { value: 128, message: 'Максимум 128 цифр' },
-                        // })}
                         control={control}
                         icon={<XCircle onClick={() => resetField('first_phone')} />}
                         placeholder="+380675681788"
                         className={styles.input_container}
-                        // onChange={e => setValue('first_phone', e.target.value)}
                       />
 
                       <div className={styles.date}>{formattedDate(updated)}</div>
@@ -240,9 +143,6 @@ const [successModalActive, setSuccessModalActive] = useState(false);
                         icon={<XCircle onClick={() => resetField('second_phone')} />}
                         placeholder="+380685817899"
                         className={styles.input_container}
-                        // onFocus={handleFocus}
-                        // onBlur={handleBlur}
-               
                       />
                       <div className={styles.date}>{formattedDate(updated)}</div>
                     </div>
@@ -272,8 +172,8 @@ const [successModalActive, setSuccessModalActive] = useState(false);
                       type="submit"
                       variant="filled"
                       color="secondary"
-                      // disabled={isPending}
-                      disabled={!isValid}
+                      disabled={isPending}
+                      // disabled={!isValid}
                     >
                       Оновити
                     </Button>
@@ -282,119 +182,36 @@ const [successModalActive, setSuccessModalActive] = useState(false);
               </div>
 
               {(isSuccess || isDiscard || (isOpen && isEmptySecondPhone)) && (
-  <Modal
-    type={isDiscard || (isOpen && isEmptySecondPhone) ? 'question' : 'success'}
-    message={
-      isDiscard
-        ? 'Ви точно хочете скасувати зміни? Вони не будуть збережені'
-        : isEmptySecondPhone
-        ? 'Ви точно хочете залишити тільки один номер телефону?'
-        : 'Ваші зміни успішно збережено!'
-    }
-    title={
-      isDiscard
-        ? 'Скасувати зміни '
-        : isEmptySecondPhone
-        ? 'Залишити один номер телефону'
-        : 'Збережено!'
-    }
-    active={isDiscard || isSuccess || (isOpen && isEmptySecondPhone)}
-    setActive={() => {
-      setIsSuccess(false);
-      setIsDiscard(false);
-      setIsOpen(false);
-    }}
-    successFnc={async () => {
-      if (isEmptySecondPhone) {
-            setSuccessModalMessage('dddd')
-      // Handle the case when the user wants to proceed with one phone number
-    } else {
-      // Handle the case when the user clicks "Cancel" and enters data in second_phone
-      setIsOpen(false); // Close the current modal
-
-      // Display a success modal with a different message
-      setSuccessModalMessage('Збережено! Ваші зміни успішно збережено!');
-      setSuccessModalActive(true);
-    }
-  }}
-  />
-)}
-
-              {/* {(isSuccess || isDiscard) && (
                 <Modal
-                  type={isDiscard ? 'question' : 'success'}
+                  type={isDiscard || (isOpen && isEmptySecondPhone) ? 'question' : 'success'}
                   message={
                     isDiscard
                       ? 'Ви точно хочете скасувати зміни? Вони не будуть збережені'
-                      : 'Ваші зміни успішно збережено!'
+                      : isEmptySecondPhone
+                        ? 'Ви точно хочете залишити тільки один номер телефону?'
+                        : 'Ваші зміни успішно збережено!'
                   }
-                  title={isDiscard ? 'Скасувати зміни ' : 'Збережено!'}
-                  active={isDiscard || isSuccess}
+                  title={
+                    isDiscard
+                      ? 'Скасувати зміни '
+                      : isEmptySecondPhone
+                        ? 'Залишити один номер телефону'
+                        : 'Збережено!'
+                  }
+                  active={isDiscard || isSuccess || (isOpen && isEmptySecondPhone)}
                   setActive={() => {
                     setIsSuccess(false);
                     setIsDiscard(false);
                     setIsOpen(false);
                   }}
-                  successFnc={() => {
-                    setIsOpen(false);
-                  }}
                 />
-              )} */}
+              )}
             </div>
           </div>
         </div>
       </form>
-      {/* {error && <div style={{ color: '#F40000', fontSize: '16px' }}>Помилка: {error.message}</div>} */}
-      {/* <div style={{ color: '#F40000', fontSize: '16px' }}> */}
-        {/* {errors?.first_phone && <p>{errors?.first_phone.message || 'Введіть номер телефону'}</p>} */}
-      </div>
-    // </div>
+    </div>
   );
 };
 
 export default ContactItem;
-
-//   const queryClient = useQueryClient();
-//   const [isOpen, setIsOpen] = useState(false);
-//   const [inputValue, setInputValue] = useState(number);
-//   const [newPhoneNumber, setNewPhoneNumber] = useState(number)
-
-//   const [isSuccess, setIsSuccess] = useState(false);
-//   const [isDiscard, setIsDiscard] = useState(false);
-//   const { data: session } = useSession();
-
-//   const {
-//     mutate: submitDocument,
-//     error,
-//     isPending,
-//   } = useMutation({
-//     mutationFn: async () => {
-//       const formData = new FormData();
-
-//       await axios.patch(`contacts/${id}/`, formData, {
-//         headers: {
-//           Authorization: `Bearer ${session?.user.token.access}`,
-//         },
-//       });
-//     },
-//     onSuccess: () => {
-//       // Update the displayed phone number on success
-//       setInputValue(newPhoneNumber);
-
-//       queryClient.invalidateQueries({ queryKey: ['contacts'] });
-//       setIsSuccess(true);
-//     },
-//   });
-
-//  const { control, setValue, watch } = useForm({
-//     defaultValues: {
-//       search: '',
-//     },
-//   });
-//   const resetField = () => setValue('search', '');
-
-// const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-//   const value = e.target.value;
-//   // Convert the value to a number if it's supposed to be a number
-//   setNewPhoneNumber(Number(value));
-// };

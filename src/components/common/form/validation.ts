@@ -45,12 +45,7 @@ export const validation = {
     .min(2, 'Мінімальна кількість символів 2')
     .required('Будь ласка, заповніть поле'),
   recommended: yup.boolean().required(),
-   first_phone: yup
-    .string()
-    .required('Введіть номер телефону '),
-   second_phone: yup
-    .string(),
-   id: yup
-    .string(),
-    
+  first_phone: yup.string().required('Введіть номер телефону '),
+  second_phone: yup.string(),
+  id: yup.string(),
 };

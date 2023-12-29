@@ -20,12 +20,12 @@ export const metadata: Metadata = {
 //   </div>
 // );
 
-interface ContactsResponse{
+interface ContactsResponse {
   id: number;
   first_phone: '3333';
   second_phone: '';
   email: '';
-  updated_at:''
+  updated_at: '';
 }
 
 const ContactsPage = async () => {
