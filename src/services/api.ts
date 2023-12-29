@@ -259,3 +259,20 @@ export const getContactsService = async () => {
   const result = await axiosServerFetch(`${baseUrl}/contact-info/`);
   return result.data;
 };
+
+export const getUsersService = async () => {
+  const { data } = await axiosServerFetch(`${baseUrl}/statistics/users/`);
+  return data;
+};
+export const getChildsService = async () => {
+  const { data } = await axiosServerFetch(`${baseUrl}/statistics/child/`);
+  return data;
+};
+export const getActiveChildsService = async () => {
+  const { data } = await axiosServerFetch(`${baseUrl}/statistics/active-child/`);
+  return data;
+};
+export const getQuizzesService = async () => {
+  const { data } = await axiosServerFetch(`${baseUrl}/statistics/quizzes/`);
+  return data;
+};

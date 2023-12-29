@@ -10,3 +10,4 @@ export * from './WigwamQuiz';
 export * from './WigwamBooks';
 export * from './RecomendedBooks';
 export * from './Monsters';
+export * from './admin/Statistics';
