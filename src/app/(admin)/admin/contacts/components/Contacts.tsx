@@ -14,10 +14,3 @@ const Contacts = ({ contacts }: ContactsFormProps) => (
   </Fragment>
 );
 export default Contacts;
-
-// const Contacts = ({ contacts = [] }: ContactsFormProps) => (
-//   <Fragment>
-//     <ContactItem />
-//   </Fragment>
-// );
-// export default Contacts;

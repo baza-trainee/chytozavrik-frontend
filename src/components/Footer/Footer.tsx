@@ -79,15 +79,17 @@ const Footer = () => {
                     {contacts && formatPhoneNumber(contacts.first_phone)}
                   </Typography>
 
-                  <Typography
-                    className={styles.informationContactSecond}
-                    component="p"
-                    variant="h6"
-                  >
-                    <Phone width={18} height={18} className={styles.image} />
-                    {contacts && formatPhoneNumber(contacts.second_phone)}
-                  </Typography>
-                  <a href="mailto:1111111@gmail.com">
+                  {contacts && contacts.second_phone && (
+                    <Typography
+                      className={styles.informationContactSecond}
+                      component="p"
+                      variant="h6"
+                    >
+                      <Phone width={18} height={18} className={styles.image} />
+                      {contacts && formatPhoneNumber(contacts.second_phone)}
+                    </Typography>
+                  )}
+                  <a href={`mailto:${contacts && contacts.email}`}>
                     <Typography
                       className={styles.informationMail}
                       component="p"

@@ -6,70 +6,30 @@
   gap: 32px;
 
   .document {
-    // display: flex;
+    display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    // align-items: center;
-    padding: 12px 24px;
-    // width: 1048px;
-    height: 124px;
-    border-bottom: 1px solid $primary-next-variant;
-    font-variant-numeric: lining-nums proportional-nums;
-
-    .info {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-
-      .icon {
-        width: 24px;
-        height: 24px;
-        flex-shrink: 0;
-      }
-
-      .title {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        color: $ref-neutral-neutral-30;
-        font-size: 16px;
-        font-weight: 400;
-        line-height: 130%;
-        width: 304px;
-      }
-    }
+    gap: 32px;
 
     .date {
       color: $black;
       font-size: 14px;
       font-weight: 400;
       line-height: 120%;
-      // width: 170px;
-    }
-
-    & button {
-      height: 54px;
-      font-size: 18px;
-      padding: 16px 28px;
-      font-weight: 600;
+      font-variant-numeric: lining-nums proportional-nums;
     }
   }
 
   .buttons {
     display: flex;
-    // padding: 0 24px;
     align-items: flex-start;
     gap: 24px;
-    // margin-bottom: 35px;
 
     & button {
       height: 54px;
       width: 170px;
       font-size: 18px;
     }
-  }
-
-  &.active {
-    background: $search-background;
   }
 }
 
@@ -94,23 +54,18 @@
 
 .input_wrapper {
   display: grid;
-  gap: 50px;
   margin-top: 24px;
 }
 
 .input_container {
   width: 364px;
 }
-.text_container {
-  margin-bottom: 8px;
-}
-
-// .date {
-//   display: flex;
-// }
 
 .data_wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: 124px;
+  border-bottom: 1px solid #e3f0ff;
+  padding: 12px 24px;
 }
