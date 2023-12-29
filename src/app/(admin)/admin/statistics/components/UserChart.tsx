@@ -1,15 +1,5 @@
 import Typography from '@/components/common/Typography/Typography';
 import React from 'react';
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-} from 'recharts';
 import LineChartCommon from './LineChartCommon';
 import styles from '../Statistics.module.scss';
 
