@@ -49,7 +49,6 @@ const QuizzesForm = ({ id }: { id?: number }) => {
   const methods = useForm({
     defaultValues,
     resolver: yupResolver(validationSchema),
-    mode: 'onChange',
   });
 
   useEffect(() => {
