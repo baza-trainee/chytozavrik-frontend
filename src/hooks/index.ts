@@ -9,3 +9,6 @@ export * from './Books/useEditBook';
 export * from './Books/useQueryBookById';
 export * from './Books/useQueryQuizById';
 export * from './Books/useQueryQuizBooksAdmin';
+export * from './Partners/useAddPartner';
+export * from './Partners/useEditPartner';
+export * from './Partners/useQueryPartnerById';

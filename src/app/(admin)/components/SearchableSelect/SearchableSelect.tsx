@@ -65,12 +65,14 @@ export interface SearchableSelectProps {
   inputValue?: SingleValue<string>;
   label: string;
   error?: string;
+  loading: boolean;
 }
 
 const SearchableSelect: React.FC<SearchableSelectProps> = ({
   onChange,
   onInputChange,
   clearInput,
+  loading,
   options,
   selected,
   inputValue,
@@ -94,6 +96,8 @@ const SearchableSelect: React.FC<SearchableSelectProps> = ({
         color: isOpen ? '#7791fa' : '#727272',
         border: '1px solid #e3f0ff',
         minWidth: '722px',
+        borderRadius: '8px',
+        backgroundColor: '#FDFDFD',
       }),
       placeholder: (provided: any) => ({
         ...provided,
@@ -156,6 +160,7 @@ const SearchableSelect: React.FC<SearchableSelectProps> = ({
       }
     >
       <label className={styles.label}>{label}</label>
+
       <Select
         className={styles.searchableSelect}
         styles={customStyles}
