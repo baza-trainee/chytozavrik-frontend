@@ -255,6 +255,11 @@ export const getChildrenService = async () => {
   return response.data;
 };
 
+export const getContactsService = async () => {
+  const result = await axiosServerFetch(`${baseUrl}/contact-info/`);
+  return result.data;
+};
+
 export const getUsersService = async () => {
   const { data } = await axiosServerFetch(`${baseUrl}/statistics/users/`);
   return data;

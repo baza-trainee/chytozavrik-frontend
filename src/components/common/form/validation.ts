@@ -1,5 +1,6 @@
 import * as yup from 'yup';
 
+const phoneRegExp = /^[0-9+]+$/;
 export const notEmailMatch: yup.TestFunction<string | undefined, Record<string, any>> = (
   value,
   context
@@ -45,4 +46,10 @@ export const validation = {
     .min(2, 'Мінімальна кількість символів 2')
     .required('Будь ласка, заповніть поле'),
   recommended: yup.boolean().required(),
+  first_phone: yup
+    .string()
+    .matches(phoneRegExp, 'Дозволені тільки цифри та знак плюс')
+    .required('Введіть номер телефону '),
+  second_phone: yup.string().matches(phoneRegExp, 'Дозволені тільки цифри та знак плюс'),
+  id: yup.string(),
 };
