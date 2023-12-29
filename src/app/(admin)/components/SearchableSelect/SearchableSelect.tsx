@@ -85,6 +85,10 @@ const SearchableSelect: React.FC<SearchableSelectProps> = ({
 
   const customStyles: StylesConfig<string, false, GroupBase<string>> = useMemo(
     () => ({
+      input: (provided: any) => ({
+        ...provided,
+        color: isOpen ? '#7791fa' : '#000',
+      }),
       control: (provided: any) => ({
         ...provided,
         color: isOpen ? '#7791fa' : '#727272',
@@ -97,11 +101,11 @@ const SearchableSelect: React.FC<SearchableSelectProps> = ({
       }),
       singleValue: (provided: any) => ({
         ...provided,
-        color: isOpen ? '#7791fa' : '#727272',
+        color: isOpen ? '#7791fa' : '#000',
       }),
       valueContainer: (provided: any) => ({
         ...provided,
-        color: isOpen ? '#7791fa' : '#727272',
+        color: isOpen ? '#7791fa' : '#000',
       }),
       menuList: (provided: any) => ({
         ...provided,
