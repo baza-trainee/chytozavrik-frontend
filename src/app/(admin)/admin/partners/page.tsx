@@ -1,6 +1,7 @@
 import React from 'react';
-import { AdminHeader, PartnerItem, TableHeader } from '@/app/(admin)/components';
+import { AdminHeader, TableHeader } from '@/app/(admin)/components';
 import { Metadata } from 'next';
+import PartnersList from './components/PartnersList/PartnersList';
 import styles from './Partners.module.scss';
 
 export const metadata: Metadata = {
@@ -18,7 +19,7 @@ const Partners = () => (
     />
     <div>
       <TableHeader variant="partners" colNames={['Назва', 'Дата  додавання']} />
-      <PartnerItem />
+      <PartnersList />
     </div>
   </div>
 );
