@@ -93,7 +93,7 @@ const RecomendedBooks: React.FC<RecomendedBooksProps> = ({ booksData = [], recBo
           {recBooksData?.map(({ title, cover_image: coverImage, id }, index) => (
             <div key={id} className={styles.card} onClick={() => handleCardClick(id)}>
               <div className={styles.card_image}>
-                <Image src={coverImage} alt={title} />
+                <Image src={coverImage} alt={title} width={128} height={158} />
               </div>
               {recBooksData[index].state.includes('Вікторина') && (
                 <div className={styles.quiz_marker}>{wigwamTextData[6]}</div>
