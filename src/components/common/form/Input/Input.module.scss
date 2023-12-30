@@ -143,3 +143,20 @@
     height: 14px;
   }
 }
+
+.info {
+  font-size: 14px;
+  padding-top: 8px;
+  display: block;
+
+  &.red {
+    color: $error;
+    font-size: 12px;
+    font-weight: 400;
+    font-family: var(--montserrat-alternates-font);
+
+    @include breakpoint(tablet) {
+      font-size: 14px;
+    }
+  }
+}
