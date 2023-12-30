@@ -2,7 +2,7 @@
 
 import React, { InputHTMLAttributes, ReactNode, useMemo } from 'react';
 import { useController, UseControllerProps, FieldValues } from 'react-hook-form';
-import { AlertCircle, XCircle } from 'lucide-react';
+import { AlertCircle, BadgeInfo, XCircle } from 'lucide-react';
 import IconButton from '@/components/common/IconButton';
 import styles from './Input.module.scss';
 
@@ -14,6 +14,8 @@ export type InputProps<T extends FieldValues> = InputHTMLAttributes<HTMLInputEle
     resetField?: () => void;
     handleKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
     usage?: string;
+    isPass?: boolean;
+    isShowMessage?: boolean;
   };
 
 export type InputStatus = 'normal' | 'filled' | 'error';
@@ -28,6 +30,7 @@ const Input = <T extends FieldValues>({
   handleKeyDown,
   additionalIcon,
   usage,
+  isPass = false,
   ...props
 }: InputProps<T>) => {
   const {
@@ -46,7 +49,7 @@ const Input = <T extends FieldValues>({
   }, [error, field.value]);
 
   const renderIcon = useMemo(() => {
-    if (status === 'error') {
+    if (status === 'error' && props.type !== 'password' && props.type !== 'text') {
       return field.value?.length > 0 ? (
         <IconButton onClick={resetField} icon={<XCircle />} />
       ) : (
@@ -91,7 +94,9 @@ const Input = <T extends FieldValues>({
           )}
         </span>
       </label>
+
       {error &&
+        !isPass &&
         (usage === 'admin' ? (
           <div className={styles.errorMessage}>
             <AlertCircle width={14} height={14} />
