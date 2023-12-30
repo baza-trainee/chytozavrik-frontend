@@ -46,7 +46,7 @@ const Input = <T extends FieldValues>({
   }, [error, field.value]);
 
   const renderIcon = useMemo(() => {
-    if (status === 'error') {
+    if (status === 'error' && props.type !== 'password' && props.type !== 'text') {
       return field.value?.length > 0 ? (
         <IconButton onClick={resetField} icon={<XCircle />} />
       ) : (

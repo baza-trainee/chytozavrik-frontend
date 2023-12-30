@@ -117,13 +117,11 @@
 }
 
 .message {
-  position: absolute;
-
-  bottom: calc(-1 * var(--group-gap));
-
+  margin-top: 14px;
+  //bottom: calc(-1 * var(--group-gap));
   font-size: 12px;
 
-  transform: translateY(100%);
+  //transform: translateY(100%);
 
   @include breakpoint(tablet) {
     font-size: 14px;
