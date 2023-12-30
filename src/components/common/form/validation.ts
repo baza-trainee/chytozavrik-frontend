@@ -52,4 +52,9 @@ export const validation = {
     .required('Введіть номер телефону '),
   second_phone: yup.string().matches(phoneRegExp, 'Дозволені тільки цифри та знак плюс'),
   id: yup.string(),
+  partnerInput: yup.string().required('Будь ласка, заповніть поле'),
+  url: yup
+    .string()
+    .required()
+    .matches(/^https:\/\//, 'URL повинен починатися з https://'),
 };

@@ -1,26 +1,11 @@
 import React from 'react';
-import { AdminHeader, PartnerItem, TableHeader } from '@/app/(admin)/components';
 import { Metadata } from 'next';
-import styles from './Partners.module.scss';
+import PartnersList from './components/PartnersList/PartnersList';
 
 export const metadata: Metadata = {
   title: 'Партнери - Читозаврик',
 };
 
-const Partners = () => (
-  <div className={styles.partners}>
-    <AdminHeader
-      withSearch
-      withButton
-      withClose={false}
-      buttonText="Додати партнера"
-      heading="Партнери"
-    />
-    <div>
-      <TableHeader variant="partners" colNames={['Назва', 'Дата  додавання']} />
-      <PartnerItem />
-    </div>
-  </div>
-);
+const Partners = () => <PartnersList />;
 
 export default Partners;

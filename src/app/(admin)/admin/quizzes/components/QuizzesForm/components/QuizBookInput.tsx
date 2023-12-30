@@ -45,6 +45,7 @@ const QuizBookInput: React.FC<QuizBookInputProps> = ({
         inputValue={inputValue}
         label={label}
         error={error}
+        loading
       />
     )}
   </div>

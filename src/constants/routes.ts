@@ -19,6 +19,8 @@ export enum Route {
   RECOMMENDED = '/admin/recommended',
   DOCUMENTS = '/admin/documents',
   PARTNERS = '/admin/partners',
+  PARTNERS_ADD = '/admin/partners/add',
+  PARTNERS_EDIT = '/admin/partners/edit',
   CONTACTS = '/admin/contacts',
   STATS = '/admin/statistics',
   CHANGE_PASS = '/admin/password',
