@@ -4,6 +4,7 @@
   display: flex;
   align-items: center;
   width: 1048px;
+  min-height: 101px;
   padding: 12px 24px;
   gap: 32px;
   border-bottom: 1px solid $primary-next-variant;
@@ -41,7 +42,11 @@
     flex-direction: column;
     gap: 4px;
 
-    & > div {
+    .spinner {
+      margin-left: 12px;
+    }
+
+    & > .actionItem {
       display: flex;
       width: 36px;
       height: 36px;

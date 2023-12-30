@@ -6,13 +6,15 @@ import { AdminCheckBox } from '@/app/(admin)/components';
 import { useDeletePartners } from '@/hooks/Partners/useDeletePartners';
 import { useQueryClient } from '@tanstack/react-query';
 import { Spinner } from 'components/common';
+import { formattedDate } from '@/utils/formatDate';
+import { Partner } from '@/types/admin/PartnersType';
 import Modal from 'components/common/ModalActions/Modal';
 import Link from 'next/link';
 import { Route } from '@/constants';
 import styles from './PartnerItem.module.scss';
 
 interface PartnerItemProps {
-  partner: any;
+  partner: Partner;
   page: number | string;
   onCheckboxChange: (checked: boolean, partnerId: number) => void;
   isDeleting: boolean;
@@ -27,25 +29,29 @@ const PartnerItem: React.FC<PartnerItemProps> = ({
   const { deletePartner, isPending, setIsDeleted, isDeleted } = useDeletePartners();
   const [isOpen, setIsOpen] = useState(false);
   const queryClient = useQueryClient();
+  const createdDate = formattedDate(partner.created_at);
 
   return (
     <div className={styles.partner}>
-      <AdminCheckBox id={1} />
+      <AdminCheckBox
+        id={partner.id}
+        onChange={e => onCheckboxChange(e.target.checked, partner.id)}
+      />
       <div className={styles.info}>
         <p className={styles.title}>{partner.name}</p>
-        <p className={styles.date}>08.08.2023</p>
+        <p className={styles.date}>{createdDate}</p>
       </div>
       <div className={styles.actions}>
         {isPending || isDeleting ? (
-          <Spinner />
+          <Spinner className={styles.spinner} />
         ) : (
           <>
-            <div>
+            <div className={styles.actionItem}>
               <Link href={`${Route.PARTNERS_EDIT}/${partner.id}`}>
                 <PenLine />
               </Link>
             </div>
-            <div onClick={() => setIsOpen(true)}>
+            <div className={styles.actionItem} onClick={() => setIsOpen(true)}>
               <Trash2 />
             </div>
           </>
@@ -54,7 +60,7 @@ const PartnerItem: React.FC<PartnerItemProps> = ({
           <Modal
             type="question"
             message="Ви точно хочете видалити партнера?"
-            title={`Видалити “${partner.title}”`}
+            title={`Видалити “${partner.name}”`}
             active={isOpen}
             setActive={() => setIsOpen(false)}
             successFnc={() => {
