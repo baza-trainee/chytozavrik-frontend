@@ -85,7 +85,6 @@ const ContactItem = ({
                 name="second_phone"
                 control={control}
                 icon={<XCircle onClick={() => setValue('second_phone', '')} />}
-                placeholder="+380685817899"
                 className={styles.input_container}
                 label="Номер телефону 2"
                 resetField={() => setValue('second_phone', '')}

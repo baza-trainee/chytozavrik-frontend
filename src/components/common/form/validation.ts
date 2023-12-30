@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-const phoneRegExp = /^[0-9+]+$/;
+const phoneRegExp = /^\+\d{1,12}$/;
 export const notEmailMatch: yup.TestFunction<string | undefined, Record<string, any>> = (
   value,
   context
@@ -48,9 +48,33 @@ export const validation = {
   recommended: yup.boolean().required(),
   first_phone: yup
     .string()
-    .matches(phoneRegExp, 'Дозволені тільки цифри та знак плюс')
+    .max(13, 'Введіть коректний номер телефону')
+    .test('starts-with-plus', 'Номер телефону має починатися з +', value => {
+      if (!value) return false;
+      if (!value.startsWith('+38'))
+        throw new yup.ValidationError('Номер телефону має починатися з +38');
+      return true;
+    })
+    .test('format-plus380', 'Номер телефону в форматі +380XXXXXXXXX', value => {
+      if (!value) return false;
+      if (value === '+') return true;
+      return phoneRegExp.test(value);
+    })
     .required('Введіть номер телефону '),
-  second_phone: yup.string().matches(phoneRegExp, 'Дозволені тільки цифри та знак плюс'),
+  second_phone: yup
+    .string()
+    .max(13, 'Введіть коректний номер телефону')
+    .test('starts-with-plus', 'Номер телефону має починатися з +', value => {
+      if (!value) return false;
+      if (!value.startsWith('+38'))
+        throw new yup.ValidationError('Номер телефону має починатися з +38');
+      return true;
+    })
+    .test('format-plus380', 'Номер телефону в форматі +380XXXXXXXXX', value => {
+      if (!value) return false;
+      if (value === '+') return true;
+      return phoneRegExp.test(value);
+    }),
   id: yup.string(),
   partnerInput: yup.string().required('Будь ласка, заповніть поле'),
   url: yup
