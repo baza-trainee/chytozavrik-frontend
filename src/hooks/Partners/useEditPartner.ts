@@ -19,7 +19,7 @@ export const useEditPartner = () => {
     },
     onSuccess: () => {
       setIsEditSuccess(true);
-      queryClient.invalidateQueries({ queryKey: ['books'] });
+      queryClient.invalidateQueries({ queryKey: ['partners'] });
     },
   });
 

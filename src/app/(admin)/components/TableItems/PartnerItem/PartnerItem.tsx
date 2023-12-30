@@ -15,21 +15,14 @@ import styles from './PartnerItem.module.scss';
 
 interface PartnerItemProps {
   partner: Partner;
-  page: number | string;
   onCheckboxChange: (checked: boolean, partnerId: number) => void;
   isDeleting: boolean;
 }
 
-const PartnerItem: React.FC<PartnerItemProps> = ({
-  partner,
-  page,
-  onCheckboxChange,
-  isDeleting,
-}) => {
+const PartnerItem: React.FC<PartnerItemProps> = ({ partner, onCheckboxChange, isDeleting }) => {
   const { deletePartner, isPending, setIsDeleted, isDeleted } = useDeletePartners();
   const [isOpen, setIsOpen] = useState(false);
   const queryClient = useQueryClient();
-  const createdDate = formattedDate(partner.created_at);
 
   return (
     <div className={styles.partner}>
@@ -39,7 +32,7 @@ const PartnerItem: React.FC<PartnerItemProps> = ({
       />
       <div className={styles.info}>
         <p className={styles.title}>{partner.name}</p>
-        <p className={styles.date}>{createdDate}</p>
+        <p className={styles.date}>{formattedDate(partner.created_at)}</p>
       </div>
       <div className={styles.actions}>
         {isPending || isDeleting ? (
@@ -56,31 +49,31 @@ const PartnerItem: React.FC<PartnerItemProps> = ({
             </div>
           </>
         )}
-        {isOpen && (
-          <Modal
-            type="question"
-            message="Ви точно хочете видалити партнера?"
-            title={`Видалити “${partner.name}”`}
-            active={isOpen}
-            setActive={() => setIsOpen(false)}
-            successFnc={() => {
-              deletePartner(partner.id);
-            }}
-          />
-        )}
-        {isDeleted && (
-          <Modal
-            type="success"
-            message={`Партнера “${partner.name}” видалено`}
-            title="Успіх!"
-            active={isDeleted}
-            setActive={() => {
-              setIsDeleted(false);
-              queryClient.invalidateQueries({ queryKey: ['partners'] });
-            }}
-          />
-        )}
       </div>
+      {isOpen && (
+        <Modal
+          type="question"
+          message="Ви точно хочете видалити партнера?"
+          title={`Видалити “${partner.name}”`}
+          active={isOpen}
+          setActive={() => setIsOpen(false)}
+          successFnc={() => {
+            deletePartner(partner.id);
+          }}
+        />
+      )}
+      {isDeleted && (
+        <Modal
+          type="success"
+          message={`Партнера “${partner.name}” видалено`}
+          title="Успіх!"
+          active={isDeleted}
+          setActive={() => {
+            setIsDeleted(false);
+            queryClient.invalidateQueries({ queryKey: ['partners'] });
+          }}
+        />
+      )}
     </div>
   );
 };

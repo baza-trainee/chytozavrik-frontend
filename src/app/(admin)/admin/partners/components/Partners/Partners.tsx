@@ -7,27 +7,23 @@ import { useQueryPartners } from '@/hooks/Partners/useQueryPartners';
 import { Spinner } from '@/components/common';
 import NoSearchResults from '@/app/(admin)/components/NoResults/NoSearchResults';
 import Pagination from '@/components/Pagination/Pagination';
-import { Route } from '@/constants';
 import { Partner } from '@/types/admin/PartnersType';
+import Modal from 'components/common/ModalActions/Modal';
 import styles from './Partners.module.scss';
 
 const Partners = ({ searchValue = '' }: { searchValue: string | null }) => {
   const [selected, setSelected] = useState<number[]>([]);
-  const { handleDeletePartners, deletingPartners } = useDeleteChosenPartners();
+  const { handleDeletePartners, deletingPartners, setIsDeleted, isDeleted } =
+    useDeleteChosenPartners();
+  const [isOpen, setIsOpen] = useState(false);
   const [page, setPage] = useState(1);
   const { partners, partnersLoading, fetchError } = useQueryPartners({
     currentPage: page,
     searchValue,
   });
-  if (partnersLoading) {
-    console.log('Loading partners...');
-  } else if (partners) {
-    console.log(partners.results);
-  }
+
   const count = partners?.count ? Math.ceil(partners.count / 8) : 0;
-  const noResultsText = {
-    partners: 'У вас ще немає доданих партнерів',
-  };
+
   const handleCheckboxChange = (checked: boolean, partnerId: number) => {
     if (checked) {
       setSelected(prev => [...prev, partnerId]);
@@ -37,43 +33,69 @@ const Partners = ({ searchValue = '' }: { searchValue: string | null }) => {
   };
 
   return (
-    <div className={styles.wrapper}>
-      <div>
-        <TableHeader
-          variant="partners"
-          colNames={['Назва', 'Дата  додавання']}
-          handleDelete={() => handleDeletePartners(selected)}
-        />
-        {partnersLoading && <Spinner className={styles.spinner} />}
-        {fetchError && (
-          <div className={styles.error}>Упс... Щось пішло не так: {fetchError.message}</div>
-        )}
-        {partners &&
-          partners.count === 0 &&
-          (searchValue ? (
-            <NoSearchResults />
-          ) : (
-            <NoResults
-              text="По вашому запиту нічого не знайдено. Спробуйте сформулювати запит інакше або скористайтеся іншими ключовими словами "
-              image="/images/admin/briefcase.svg"
-            />
-          ))}
+    <>
+      <div className={styles.wrapper}>
         <div>
-          {partners?.results?.map((partner: Partner) => (
-            <PartnerItem
-              key={partner.id}
-              partner={partner}
-              page={page}
-              onCheckboxChange={handleCheckboxChange}
-              isDeleting={deletingPartners?.includes(partner.id)}
-            />
-          ))}
+          <TableHeader
+            variant="partners"
+            colNames={['Назва', 'Дата  додавання']}
+            handleDelete={() => setIsOpen(true)}
+          />
+          {partnersLoading && <Spinner className={styles.spinner} />}
+          {fetchError && (
+            <div className={styles.error}>Упс... Щось пішло не так: {fetchError.message}</div>
+          )}
+          {partners &&
+            partners.count === 0 &&
+            (searchValue ? (
+              <NoSearchResults />
+            ) : (
+              <NoResults
+                text="По вашому запиту нічого не знайдено. Спробуйте сформулювати запит інакше або скористайтеся іншими ключовими словами "
+                image="/images/admin/briefcase.svg"
+              />
+            ))}
+          <div>
+            {partners?.results
+              ?.sort((a: Partner, b: Partner) => {
+                const dateA = new Date(a.created_at).getTime();
+                const dateB = new Date(b.created_at).getTime();
+                return dateB - dateA;
+              })
+              .map((partner: Partner) => (
+                <PartnerItem
+                  key={partner.id}
+                  partner={partner}
+                  onCheckboxChange={handleCheckboxChange}
+                  isDeleting={deletingPartners?.includes(partner.id)}
+                />
+              ))}
+          </div>
         </div>
+        {partners && !partnersLoading && partners.count > 8 && (
+          <Pagination currentPage={page} onPageChange={page => setPage(page)} count={count} />
+        )}
       </div>
-      {partners && !partnersLoading && partners.count > 8 && (
-        <Pagination currentPage={page} onPageChange={page => setPage(page)} count={count} />
+      {isOpen && (
+        <Modal
+          type="question"
+          message="Ви точно бажаєте видалити обраних партнерів?"
+          title="Видалити партнерів"
+          active={isOpen}
+          setActive={() => setIsOpen(false)}
+          successFnc={() => handleDeletePartners(selected)}
+        />
       )}
-    </div>
+      {isDeleted && (
+        <Modal
+          type="success"
+          message="Обрані партнери успішно видалені"
+          title="Успіх"
+          active={isDeleted}
+          setActive={() => setIsDeleted(false)}
+        />
+      )}
+    </>
   );
 };
 

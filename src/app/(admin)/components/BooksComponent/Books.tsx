@@ -25,7 +25,7 @@ const Books = ({
   const { handleDeleteBooks, deletingBooks, isDeleted, setIsDeleted } = useDeleteChosenBooks(page);
   const queryClient = useQueryClient();
   const count = books?.count ? Math.ceil(books.count / 7) : 0;
-
+  const [isOpen, setIsOpen] = useState(false);
   const noResultsText = {
     books: 'У вас ще немає доданих книг',
     quizzes: 'У вас ще немає доданих вікторин',
@@ -44,7 +44,7 @@ const Books = ({
     <div className={styles.wrapper}>
       <div>
         <TableHeader
-          handleDelete={() => handleDeleteBooks(selected)}
+          handleDelete={() => setIsOpen(true)}
           variant="books"
           colNames={['Назва книги', 'Стан', 'Дата  додавання']}
         />
@@ -92,6 +92,16 @@ const Books = ({
             setIsDeleted(false);
             queryClient.invalidateQueries({ queryKey: ['books'] });
           }}
+        />
+      )}
+      {isOpen && (
+        <Modal
+          type="question"
+          message="Ви точно бажаєте видалити обрані книги?"
+          title="Видалити книги"
+          active={isOpen}
+          setActive={() => setIsOpen(false)}
+          successFnc={() => handleDeleteBooks(selected)}
         />
       )}
     </div>

@@ -14,7 +14,7 @@ import styles from './PartnersForm.module.scss';
 
 const schema = yup.object({
   name: validation.partnerInput,
-  link: validation.partnerInput,
+  link: validation.url,
 });
 
 type FormDatas = yup.InferType<typeof schema>;
@@ -29,7 +29,7 @@ const PartnersForm = ({ id }: { id?: number }) => {
 
   useEffect(() => {
     if (partnerById) {
-      setInitialImg(partnerById.cover_image);
+      setInitialImg(partnerById.img);
     }
   }, [partnerById]);
 
@@ -39,7 +39,7 @@ const PartnersForm = ({ id }: { id?: number }) => {
 
   const defaultValues: FormDatas = {
     name: '',
-    link: '',
+    link: 'https://',
   };
 
   const { control, reset, handleSubmit, resetField, setValue } = useForm({
@@ -63,19 +63,16 @@ const PartnersForm = ({ id }: { id?: number }) => {
 
   const submit = (data: FormDatas) => {
     const formData = new FormData();
-
     if (id) {
-      formData.append('id', id.toString());
       if (dirtyFields.name) formData.append('name', data.name);
       if (dirtyFields.link) formData.append('link', data.link);
-      if (selectedFile) formData.append('cover_image', selectedFile);
+      if (selectedFile) formData.append('img', selectedFile);
 
       editPartner({ id, formData });
     } else {
       formData.append('name', data.name);
       formData.append('link', data.link);
-      if (selectedFile) formData.append('cover_image', selectedFile);
-
+      if (selectedFile) formData.append('img', selectedFile);
       addPartner(formData);
     }
   };
