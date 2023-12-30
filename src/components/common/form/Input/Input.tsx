@@ -31,6 +31,7 @@ const Input = <T extends FieldValues>({
   additionalIcon,
   usage,
   isPass = false,
+  isShowMessage = false,
   ...props
 }: InputProps<T>) => {
   const {
@@ -76,36 +77,43 @@ const Input = <T extends FieldValues>({
   }, [additionalIcon, field.value]);
 
   return (
-    <div className={`${styles.group} ${className || ''}`} data-status={status}>
-      <label className={styles.label}>
-        {label && <span className={styles['label-text']}>{label}</span>}
-        <span className={styles['input-group']}>
-          <input
-            className={styles.input}
-            {...field}
-            onKeyDown={handleKeyDown && handleKeyDown}
-            {...props}
-          />
-          {renderIcon && <span className={styles.icon}>{renderIcon}</span>}
-          {renderAdditionalIcon && (
-            <span className={`${styles.icon} ${styles.additionalIcon}`}>
-              {renderAdditionalIcon}
-            </span>
-          )}
+    <>
+      <div className={`${styles.group} ${className || ''}`} data-status={status}>
+        <label className={styles.label}>
+          {label && <span className={styles['label-text']}>{label}</span>}
+          <span className={styles['input-group']}>
+            <input
+              className={styles.input}
+              {...field}
+              onKeyDown={handleKeyDown && handleKeyDown}
+              {...props}
+            />
+            {renderIcon && <span className={styles.icon}>{renderIcon}</span>}
+            {renderAdditionalIcon && (
+              <span className={`${styles.icon} ${styles.additionalIcon}`}>
+                {renderAdditionalIcon}
+              </span>
+            )}
+          </span>
+        </label>
+        {error &&
+          !isPass &&
+          (usage === 'admin' ? (
+            <div className={styles.errorMessage}>
+              <AlertCircle width={14} height={14} />
+              <span>{error.message}</span>
+            </div>
+          ) : (
+            <span className={styles.message}>{error.message}</span>
+          ))}
+      </div>
+      {isShowMessage && (
+        <span className={`${styles.info} ${error ? styles.red : ''} `}>
+          Пароль повинен містити мінімум 8 символів, латиницею, у якому є хоча б 1 велика літера, 1
+          цифра та 1 спецсимвол.
         </span>
-      </label>
-
-      {error &&
-        !isPass &&
-        (usage === 'admin' ? (
-          <div className={styles.errorMessage}>
-            <AlertCircle width={14} height={14} />
-            <span>{error.message}</span>
-          </div>
-        ) : (
-          <span className={styles.message}>{error.message}</span>
-        ))}
-    </div>
+      )}
+    </>
   );
 };
 
