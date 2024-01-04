@@ -55,7 +55,9 @@
       }
     }
     .ellipsis {
-      width: 18px;
+      display: flex;
+      margin-right: 9px;
+      align-self: flex-end;
       color: $primary;
     }
   }
