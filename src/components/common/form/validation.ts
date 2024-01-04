@@ -10,7 +10,8 @@ export const notEmailMatch: yup.TestFunction<string | undefined, Record<string, 
 };
 
 const HttpUrlRegex =
-  /^(http(s):\/\/.)[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$/;
+  /^(http(s):\/\/.)[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)$/;
+// /^(http(s):\/\/.)[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$/;
 
 const emailRegex =
   // eslint-disable-next-line no-control-regex
@@ -84,5 +85,8 @@ export const validation = {
     .string()
     .required('Будь ласка, заповніть поле')
     .min(2, 'Мінімальна кількість символів 2'),
-  url: yup.string().required().matches(HttpUrlRegex, 'Невірний формат посилання'),
+  url: yup
+    .string()
+    .required('Будь ласка, заповніть поле')
+    .matches(HttpUrlRegex, 'Невірний формат посилання'),
 };
