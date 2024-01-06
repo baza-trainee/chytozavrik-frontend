@@ -9,15 +9,18 @@ import styles from './Parents.module.scss';
 
 type Props = {
   handleClick: () => void;
+
   kids: ChildType[];
 };
 
 const Parents = ({ handleClick, kids }: Props) => {
   const [showNote, setShowNote] = useState(true);
+  const [showLimit, setShowLimit] = useState(false);
 
   const closeNote = () => {
     setShowNote(false);
   };
+
 
   return (
     <section className={styles.section}>
@@ -32,10 +35,14 @@ const Parents = ({ handleClick, kids }: Props) => {
         <Button
           color="secondary"
           className={styles.button}
+          // disabled={kids && kids.length===6}
           onClick={() => {
-            handleClick();
             closeNote();
-          }}
+            if (kids.length >= 6) {setShowLimit(true)}
+          else 
+            handleClick()}
+            
+          }
         >
           <Image src="/images/wigwam.svg" width={24} height={24} alt="іконка вігваму" />
           <Typography className={styles.text} component="span" variant="h5">
@@ -43,6 +50,7 @@ const Parents = ({ handleClick, kids }: Props) => {
           </Typography>
         </Button>
         {kids && kids.length === 0 && showNote && <Notification closeNote={closeNote} />}
+        { (showLimit) && <Notification closeNote={closeNote} />}
       </Container>
     </section>
   );

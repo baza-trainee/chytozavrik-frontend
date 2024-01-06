@@ -13,7 +13,7 @@ const ParentsPage = () => {
   const [wigwam, setWigwam] = useState(false);
 
   const toggleCreateWigwam = () => {
-    if (!wigwam) setWigwam(true);
+    if ((!wigwam) && kids.length <=6) setWigwam(true);
     else setWigwam(false);
   };
   const { data: session, status } = useSession();
