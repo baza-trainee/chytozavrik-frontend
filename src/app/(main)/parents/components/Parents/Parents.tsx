@@ -19,6 +19,7 @@ const Parents = ({ handleClick, kids }: Props) => {
 
   const closeNote = () => {
     setShowNote(false);
+    setShowLimit(false);
   };
 
 
