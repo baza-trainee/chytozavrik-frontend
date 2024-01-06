@@ -71,7 +71,10 @@ const Pagination: FC<PaginationProps> = ({ count, next, previous, childId }) => 
       </Button>
       <ul className={styles.buttonNumbers}>
         {pageList.map(pageNumber => (
-          <li key={pageNumber} className={styles.buttonNumber}>
+          <li
+            key={pageNumber}
+            className={pageNumber !== '...' ? styles.buttonNumber : styles.ellipsis}
+          >
             {pageNumber !== '...' ? (
               <Button
                 component="link"

@@ -51,7 +51,7 @@ const Partners = ({ searchValue = '' }: { searchValue: string | null }) => {
               <NoSearchResults />
             ) : (
               <NoResults
-                text="По вашому запиту нічого не знайдено. Спробуйте сформулювати запит інакше або скористайтеся іншими ключовими словами "
+                text="У вас ще немає доданих партнерів"
                 image="/images/admin/briefcase.svg"
               />
             ))}

@@ -39,7 +39,7 @@ const PartnersForm = ({ id }: { id?: number }) => {
 
   const defaultValues: FormDatas = {
     name: '',
-    link: 'https://',
+    link: '',
   };
 
   const { control, reset, handleSubmit, resetField, setValue } = useForm({
