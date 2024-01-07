@@ -98,10 +98,16 @@
     height: 64px;
     padding: 20px 36px 20px 28px;
   }
+}
 
   .text {
     @include breakpoint(desktop) {
       font-size: 24px;
     }
   }
-}
+      .button:disabled .icon{
+        display: none;
+        }
+
+  
+

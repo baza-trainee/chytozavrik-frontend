@@ -36,7 +36,6 @@ const Parents = ({ handleClick, kids }: Props) => {
         <Button
           color="secondary"
           className={styles.button}
-          // disabled={kids && kids.length===6}
           onClick={(event) => {
             closeNote();
             if (kids.length >= 6) {
@@ -45,10 +44,9 @@ const Parents = ({ handleClick, kids }: Props) => {
             }
           else 
             handleClick()}
-            
           }
         >
-          <Image src="/images/wigwam.svg" width={24} height={24} alt="іконка вігваму" />
+          <Image src="/images/wigwam.svg" width={24} height={24} alt="іконка вігваму" className={styles.icon}/>
           <Typography className={styles.text} component="span" variant="h5">
             Створити вігвам
           </Typography>
