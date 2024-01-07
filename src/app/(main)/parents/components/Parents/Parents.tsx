@@ -37,9 +37,12 @@ const Parents = ({ handleClick, kids }: Props) => {
           color="secondary"
           className={styles.button}
           // disabled={kids && kids.length===6}
-          onClick={() => {
+          onClick={(event) => {
             closeNote();
-            if (kids.length >= 6) {setShowLimit(true)}
+            if (kids.length >= 6) {
+              setShowLimit(true);
+              event.currentTarget.disabled = true;
+            }
           else 
             handleClick()}
             
@@ -50,8 +53,8 @@ const Parents = ({ handleClick, kids }: Props) => {
             Створити вігвам
           </Typography>
         </Button>
-        {kids && kids.length === 0 && showNote && <Notification closeNote={closeNote} />}
-        { (showLimit) && <Notification closeNote={closeNote} />}
+        {kids && kids.length === 0 && showNote && <Notification text='Натисніть сюди, щоб створити ігровий простір для своєї дитини' closeNote={closeNote} />}
+        { (showLimit) && <Notification closeNote={closeNote} text='Вибачте, ви вже створили максимально дозволену кількість вігвамів'/>}
       </Container>
     </section>
   );
