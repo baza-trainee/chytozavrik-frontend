@@ -12,10 +12,6 @@ import './styles.scss';
 const ParentsPage = () => {
   const [wigwam, setWigwam] = useState(false);
 
-  const toggleCreateWigwam = () => {
-    if ((!wigwam) && kids.length <=6) setWigwam(true);
-    else setWigwam(false);
-  };
   const { data: session, status } = useSession();
   const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || '';
 
@@ -31,6 +27,10 @@ const ParentsPage = () => {
       return response.data.data;
     },
   });
+  const toggleCreateWigwam = () => {
+    if (!wigwam && kids.length <= 6) setWigwam(true);
+    else setWigwam(false);
+  };
 
   return (
     <>

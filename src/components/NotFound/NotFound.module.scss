@@ -16,8 +16,8 @@
     auto,
     auto,
     contain;
-    padding-top: 52px;
-    height: 726px;
+  padding-top: 52px;
+  height: 726px;
 
   @include breakpoint(tablet) {
     background-image: url('/images/background-wave.svg'), url('/images/space-tab.svg'),
@@ -32,9 +32,9 @@
       auto,
       auto,
       100% auto;
-      padding-top: 167px;
-      padding-left: 40px;
-      height: 674px;
+    padding-top: 167px;
+    padding-left: 40px;
+    height: 674px;
   }
 
   @include breakpoint(laptop) {
@@ -50,9 +50,9 @@
       auto,
       auto,
       100% auto;
-      padding-top: 177px;
-      padding-left: 68px;
-      height: 681px;
+    padding-top: 177px;
+    padding-left: 68px;
+    height: 681px;
   }
 
   @include breakpoint(desktop) {
@@ -68,9 +68,9 @@
       auto,
       auto,
       100% auto;
-      padding-top: 230px;
-      padding-left: 130px;
-      height: 872px;
+    padding-top: 230px;
+    padding-left: 130px;
+    height: 872px;
   }
 }
 

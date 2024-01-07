@@ -100,14 +100,11 @@
   }
 }
 
-  .text {
-    @include breakpoint(desktop) {
-      font-size: 24px;
-    }
+.text {
+  @include breakpoint(desktop) {
+    font-size: 24px;
   }
-      .button:disabled .icon{
-        display: none;
-        }
-
-  
-
+}
+.button:disabled .icon {
+  display: none;
+}

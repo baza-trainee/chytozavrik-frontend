@@ -11,7 +11,7 @@ type Props = {
   closeNote: () => void;
 };
 
-const Notification = ({ text, closeNote}: Props) => (
+const Notification = ({ text, closeNote }: Props) => (
   <div className={styles.container}>
     <button className={styles.button} type="button" onClick={closeNote} aria-label="Закрити">
       <X size={16} />

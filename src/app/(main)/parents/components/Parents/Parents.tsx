@@ -22,7 +22,6 @@ const Parents = ({ handleClick, kids }: Props) => {
     setShowLimit(false);
   };
 
-
   return (
     <section className={styles.section}>
       <Container className={styles.container}>
@@ -36,23 +35,37 @@ const Parents = ({ handleClick, kids }: Props) => {
         <Button
           color="secondary"
           className={styles.button}
-          onClick={(event) => {
+          onClick={event => {
             closeNote();
             if (kids.length >= 6) {
               setShowLimit(true);
               event.currentTarget.disabled = true;
-            }
-          else 
-            handleClick()}
-          }
+            } else handleClick();
+          }}
         >
-          <Image src="/images/wigwam.svg" width={24} height={24} alt="іконка вігваму" className={styles.icon}/>
+          <Image
+            src="/images/wigwam.svg"
+            width={24}
+            height={24}
+            alt="іконка вігваму"
+            className={styles.icon}
+          />
           <Typography className={styles.text} component="span" variant="h5">
             Створити вігвам
           </Typography>
         </Button>
-        {kids && kids.length === 0 && showNote && <Notification text='Натисніть сюди, щоб створити ігровий простір для своєї дитини' closeNote={closeNote} />}
-        { (showLimit) && <Notification closeNote={closeNote} text='Вибачте, ви вже створили максимально дозволену кількість вігвамів'/>}
+        {kids && kids.length === 0 && showNote && (
+          <Notification
+            text="Натисніть сюди, щоб створити ігровий простір для своєї дитини"
+            closeNote={closeNote}
+          />
+        )}
+        {showLimit && (
+          <Notification
+            closeNote={closeNote}
+            text="Вибачте, ви вже створили максимально дозволену кількість вігвамів"
+          />
+        )}
       </Container>
     </section>
   );
