@@ -106,5 +106,5 @@
   }
 }
 .button:disabled .icon {
-  display: none;
+  filter: contrast(0);
 }
