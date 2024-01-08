@@ -5,6 +5,7 @@
 .section {
   background-color: $primary-next-variant;
   position: relative;
+  z-index: -1;
 }
 
 .container {
