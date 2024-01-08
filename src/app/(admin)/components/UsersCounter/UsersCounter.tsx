@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import usersTextData from '@/app/(admin)/admin/UserList/usersTextData.json';
+import usersTextData from '@/constants/usersTextData.json';
 import { UserType } from '@/types/User';
 import styles from './UsersCounter.module.scss';
 
@@ -8,7 +8,7 @@ interface UsersCounterProps {
 }
 
 const UsersCounter: FC<UsersCounterProps> = ({ users }) => {
-  const counter = users.length || 0;
+  const counter = users?.length || 0;
 
   return (
     <div className={styles.wrapper}>

@@ -1,11 +1,11 @@
 'use client';
 
 import React, { useState } from 'react';
+import Users from '@/app/(admin)/admin/components/Users';
 import styles from '@/app/(admin)/admin/Admin.module.scss';
-import UserItem from '@/app/(admin)/components/TableItems/UserItem/UserItem';
-import AdminHeader from '../../../components/Header/AdminHeader';
+import AdminHeader from '../../components/Header/AdminHeader';
 
-const User: React.FC = () => {
+const UsersList = () => {
   const [searchValue, setSearchValue] = useState<string | null>(null);
 
   return (
@@ -17,9 +17,9 @@ const User: React.FC = () => {
         heading="Користувачі"
         setSearchWord={setSearchValue}
       />
-      <UserItem searchValue={searchValue} />
+      <Users searchValue={searchValue} />
     </div>
   );
 };
 
-export default User;
+export default UsersList;
