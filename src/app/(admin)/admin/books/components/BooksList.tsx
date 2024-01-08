@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import { Route } from '@/constants';
 import { AdminHeader, Books } from '@/app/(admin)/components';
 import styles from '@/app/(admin)/admin/books/Books.module.scss';
-import Modal from 'components/common/ModalActions/Modal';
 
 const BooksList = () => {
   const [searchValue, setSearchValue] = useState<string | null>(null);

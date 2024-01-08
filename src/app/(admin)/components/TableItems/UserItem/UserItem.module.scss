@@ -41,12 +41,10 @@
       gap: 16px;
       color: $black;
 
-      & span {
-        font-family: var(--raleway-font);
-        font-size: 14px;
-        font-weight: 400;
-        line-height: 120%;
-      }
+      font-family: var(--raleway-font);
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 120%;
     }
 
     .date {
@@ -69,4 +67,38 @@
     align-items: center;
     cursor: pointer;
   }
+}
+
+.noResults {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  top: 50%;
+  left: 57%;
+}
+
+.usersWrapper {
+  position: relative;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.paginationWrapper {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.spinner {
+  position: absolute;
+  width: 75px;
+  height: 75px;
+  top: 50%;
+  left: 50%;
 }

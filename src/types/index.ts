@@ -6,6 +6,7 @@ export * from './Child';
 export * from './Attempt';
 export * from './AdminNavigation';
 export * from './admin/BooksType';
+export * from './admin/UserType';
 export * from './WigwamQuiz';
 export * from './WigwamBooks';
 export * from './RecomendedBooks';

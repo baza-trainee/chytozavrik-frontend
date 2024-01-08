@@ -1,6 +1,6 @@
 import React from 'react';
-import UserList from '@/app/(admin)/admin/UserList/UserList';
+import UsersList from '@/app/(admin)/admin/components/UsersList';
 
-const Admin = () => <UserList />;
+const Admin = () => <UsersList />;
 
 export default Admin;

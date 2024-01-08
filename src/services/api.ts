@@ -1,5 +1,6 @@
 import { getServerSession } from 'next-auth';
 import { useSession } from 'next-auth/react';
+import axios from 'axios';
 import { authOptions } from '@/config';
 import {
   AnswerType,
