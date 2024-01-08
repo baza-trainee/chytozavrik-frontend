@@ -1,5 +1,5 @@
 import React from 'react';
-import UserList from '@/app/(admin)/admin/UserList/UserList';
+import UserList from '@/app/(admin)/admin/UserList/page';
 
 const Admin = () => <UserList />;
 

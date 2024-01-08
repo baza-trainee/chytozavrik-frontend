@@ -5,8 +5,7 @@ import BookSearchEdit from '@/app/(admin)/admin/quizzes/components/QuizzesForm/c
 import { ActionMeta, GroupBase, InputActionMeta, SingleValue } from 'react-select';
 import styles from '@/app/(admin)/admin/quizzes/components/QuizzesForm/QuizForm.module.scss';
 
-
-interface QuizBookInputProps{
+interface QuizBookInputProps {
   onChange: ((newValue: SingleValue<string>, actionMeta: ActionMeta<string>) => void) | undefined;
   onInputChange?: ((newValue: string, actionMeta: InputActionMeta) => void) | undefined;
   clearInput: () => void;

@@ -1,5 +1,6 @@
 import { getServerSession } from 'next-auth';
 import { useSession } from 'next-auth/react';
+import axios from 'axios';
 import { authOptions } from '@/config';
 import {
   AnswerType,
@@ -199,6 +200,24 @@ export const getBooksService = async (search: string = '') => {
   const result = await axiosServerFetch(`${baseUrl}/books?page=1&page_size=7&search=${search}`);
   return result.data;
 };
+
+// ----------------------------------------------------------------
+export const getUsersService = async () => {
+  // export const getUsersService = async (search: string = '') => {
+  // const result = await axiosServerFetch(`${baseUrl}/users?page=1&page_size=7&search=${search}`);
+  const result = await axiosServerFetch(`${baseUrl}/users/`);
+  return result.data;
+  console.log(result.data);
+};
+// export const getUsersService = async (search: string = '') => {
+//   const result = await axiosServerFetch(`${baseUrl}/users/?search=${search}`);
+//   return result.data;
+// };
+// export const getUsersService = async (queryKey: string[], search: string = '') => {
+//   const { data } = await axios.get(`${baseUrl}/users/`);
+//   return data.data;
+// };
+// ----------------------------------------------------------------
 
 export const getMonstersService = async (childId: string) => {
   const { data } = await axiosServerFetch<MonstersResponse>(
