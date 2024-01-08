@@ -84,6 +84,10 @@
   right: 24px;
   z-index: 10;
 
+  & img {
+    cursor: pointer;
+  }
+
   @include breakpoint(tablet) {
     flex-direction: column;
     gap: 8px;

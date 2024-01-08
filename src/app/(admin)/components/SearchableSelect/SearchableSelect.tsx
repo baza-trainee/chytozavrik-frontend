@@ -65,12 +65,14 @@ export interface SearchableSelectProps {
   inputValue?: SingleValue<string>;
   label: string;
   error?: string;
+  loading: boolean;
 }
 
 const SearchableSelect: React.FC<SearchableSelectProps> = ({
   onChange,
   onInputChange,
   clearInput,
+  loading,
   options,
   selected,
   inputValue,
@@ -85,11 +87,17 @@ const SearchableSelect: React.FC<SearchableSelectProps> = ({
 
   const customStyles: StylesConfig<string, false, GroupBase<string>> = useMemo(
     () => ({
+      input: (provided: any) => ({
+        ...provided,
+        color: isOpen ? '#7791fa' : '#000',
+      }),
       control: (provided: any) => ({
         ...provided,
         color: isOpen ? '#7791fa' : '#727272',
         border: '1px solid #e3f0ff',
         minWidth: '722px',
+        borderRadius: '8px',
+        backgroundColor: '#FDFDFD',
       }),
       placeholder: (provided: any) => ({
         ...provided,
@@ -97,11 +105,11 @@ const SearchableSelect: React.FC<SearchableSelectProps> = ({
       }),
       singleValue: (provided: any) => ({
         ...provided,
-        color: isOpen ? '#7791fa' : '#727272',
+        color: isOpen ? '#7791fa' : '#000',
       }),
       valueContainer: (provided: any) => ({
         ...provided,
-        color: isOpen ? '#7791fa' : '#727272',
+        color: isOpen ? '#7791fa' : '#000',
       }),
       menuList: (provided: any) => ({
         ...provided,
@@ -152,6 +160,7 @@ const SearchableSelect: React.FC<SearchableSelectProps> = ({
       }
     >
       <label className={styles.label}>{label}</label>
+
       <Select
         className={styles.searchableSelect}
         styles={customStyles}

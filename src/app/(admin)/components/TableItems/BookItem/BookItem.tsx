@@ -15,7 +15,7 @@ import { useQueryClient } from '@tanstack/react-query';
 import styles from './BookItem.module.scss';
 
 const BookItem = ({ book, page, onCheckboxChange, isDeleting }: BookAdminProps) => {
-  const { deleteBook, isPending, setIsDeleted, isDeleted } = useDeleteBooks();
+  const { deleteBook, isPending, setIsDeleted, isDeleted } = useDeleteBooks(page);
   const [isOpen, setIsOpen] = useState(false);
   const queryClient = useQueryClient();
 
@@ -49,14 +49,15 @@ const BookItem = ({ book, page, onCheckboxChange, isDeleting }: BookAdminProps) 
     recommended: Route.BOOKS_EDIT,
     quizzes: Route.QUIZZES_EDIT,
   };
+
   const editorLinkProps = page === 'quizzes' ? book.quizz_id : book.id || book.book_id;
 
   return (
     <div className={styles.bookItem}>
       <div className={styles.checkbox}>
         <AdminCheckBox
-          id={book.id || book.book_id}
-          onChange={e => onCheckboxChange(e.target.checked, book.id || book.book_id)}
+          id={editorLinkProps}
+          onChange={e => onCheckboxChange(e.target.checked, editorLinkProps)}
         />
       </div>
       <div className={styles.info}>
@@ -98,14 +99,18 @@ const BookItem = ({ book, page, onCheckboxChange, isDeleting }: BookAdminProps) 
           active={isOpen}
           setActive={() => setIsOpen(false)}
           successFnc={() => {
-            deleteBook(book.id || book.book_id);
+            deleteBook(editorLinkProps);
           }}
         />
       )}
       {isDeleted && (
         <Modal
           type="success"
-          message={`Книгу “${book.title}” видалено`}
+          message={
+            page === 'quizzes'
+              ? `Вікторину “${book.title}” видалено`
+              : `Книгу “${book.title}” видалено`
+          }
           title="Успіх!"
           active={isDeleted}
           setActive={() => {

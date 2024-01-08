@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
+import Image from 'next/image';
 import { Typography } from 'components/common';
 import { RecBookType, BookType } from '@/types';
 import Slider from 'react-slick';
@@ -92,7 +93,7 @@ const RecomendedBooks: React.FC<RecomendedBooksProps> = ({ booksData = [], recBo
           {recBooksData?.map(({ title, cover_image: coverImage, id }, index) => (
             <div key={id} className={styles.card} onClick={() => handleCardClick(id)}>
               <div className={styles.card_image}>
-                <img src={coverImage} alt={title} />
+                <Image src={coverImage} alt={title} width={128} height={158} />
               </div>
               {recBooksData[index].state.includes('Вікторина') && (
                 <div className={styles.quiz_marker}>{wigwamTextData[6]}</div>

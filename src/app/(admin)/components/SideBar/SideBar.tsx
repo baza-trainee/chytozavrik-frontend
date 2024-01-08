@@ -7,12 +7,15 @@ import { Button } from 'components/common';
 import { LogIn } from 'lucide-react';
 import { Route } from '@/constants';
 import { signOut } from 'next-auth/react';
+import Link from 'next/link';
 import styles from './SideBar.module.scss';
 
 const SideBar = () => (
   <section className={styles.sidebar}>
     <div className={styles.logo}>
-      <Image src="/images/logo/logo-footer.svg" alt="logo" width={72} height={60} />
+      <Link href={`${Route.HOME}`}>
+        <Image src="/images/logo/logo-footer.svg" alt="logo" width={72} height={60} />
+      </Link>
     </div>
     <NavBar />
     <Button

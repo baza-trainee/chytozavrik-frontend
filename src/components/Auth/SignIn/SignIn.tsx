@@ -10,8 +10,8 @@ import { AlertCircle } from 'lucide-react';
 import { Button, Typography } from '@/components/common';
 import { Checkbox, Input, PasswordInput, validation } from '@/components/common/form';
 import { Route } from '@/constants';
+import { isJson } from '@/utils/isJson';
 import AuthLink from '../AuthLink';
-import { isJson } from '../../../utils/isJson';
 import styles from '../Auth.module.scss';
 
 const schema = yup.object({
@@ -132,7 +132,6 @@ const SignIn = () => {
               <span className={styles['error-message']}>{error}</span>
             </div>
           )}
-
           <Button
             className={styles['button-submit']}
             type="submit"

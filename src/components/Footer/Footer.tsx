@@ -6,6 +6,8 @@ import classNames from 'classnames';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { Phone, Mail } from 'lucide-react';
+import { useQueryContactInfo } from '@/hooks/useQueryContactInfo';
+import { formatPhoneNumber } from '@/utils/formatPhoneNumber';
 import Container from '../common/Container/Container';
 import Typography from '../common/Typography/Typography';
 import styles from './Footer.module.scss';
@@ -13,6 +15,7 @@ import styles from './Footer.module.scss';
 const Footer = () => {
   const pathName = usePathname();
   const isShowFooter = !pathName.includes(Route.WIGWAM);
+  const { contacts } = useQueryContactInfo();
 
   return (
     isShowFooter && (
@@ -73,25 +76,27 @@ const Footer = () => {
                 <ul>
                   <Typography className={styles.informationContact} component="p" variant="h6">
                     <Phone width={18} height={18} className={styles.image} />
-                    +380 63 628 6630
+                    {contacts && formatPhoneNumber(contacts.first_phone)}
                   </Typography>
 
-                  <Typography
-                    className={styles.informationContactSecond}
-                    component="p"
-                    variant="h6"
-                  >
-                    <Phone width={18} height={18} className={styles.image} />
-                    +380 67 568 1788
-                  </Typography>
-                  <a href="mailto:1111111@gmail.com">
+                  {contacts && contacts.second_phone && (
+                    <Typography
+                      className={styles.informationContactSecond}
+                      component="p"
+                      variant="h6"
+                    >
+                      <Phone width={18} height={18} className={styles.image} />
+                      {contacts && formatPhoneNumber(contacts.second_phone)}
+                    </Typography>
+                  )}
+                  <a href={`mailto:${contacts && contacts.email}`}>
                     <Typography
                       className={styles.informationMail}
                       component="p"
                       variant="footer-mail"
                     >
                       <Mail width={18} height={18} className={styles.image} />
-                      1111111@gmail.com
+                      {contacts && contacts.email}
                     </Typography>
                   </a>
                 </ul>

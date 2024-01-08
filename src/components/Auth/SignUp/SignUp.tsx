@@ -44,6 +44,7 @@ const SignUp = () => {
   } = useForm({
     defaultValues,
     resolver: yupResolver(schema),
+    // mode: 'onChange',
   });
   const router = useRouter();
   const [error, setError] = useState<string | null>(null);
@@ -55,7 +56,6 @@ const SignUp = () => {
     try {
       // clear error
       if (error) setError(null);
-
       // Signup request
       const result = await signUpService(data.email, data.password, data.password2);
 
@@ -126,6 +126,8 @@ const SignUp = () => {
             label="Створити пароль"
             placeholder="Введіть свій пароль"
             autoComplete="new-password"
+            isPass
+            isShowMessage
           />
           <PasswordInput
             control={control}
@@ -134,10 +136,11 @@ const SignUp = () => {
             label="Повторити пароль"
             placeholder="Повторіть свій пароль"
             autoComplete="new-password"
+            isPass={false}
           />
         </div>
 
-        <div className={styles['checkboxes-groups']}>
+        <div className={styles['checkboxes-groups-signup']}>
           <Checkbox name="rememberMe" control={control}>
             Запам&apos;ятати мене
           </Checkbox>

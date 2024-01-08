@@ -1,8 +1,8 @@
 'use client';
 
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { Container, Typography, Button } from 'components/common';
-import { Dispatch, SetStateAction, useEffect } from 'react';
+import { Container, Typography } from 'components/common';
+import { Dispatch, SetStateAction } from 'react';
 import AvatarFields from '@/app/(main)/parents/components/FormFields/AvaratsFields/AvatarFields';
 import NameInput from '@/app/(main)/parents/components/FormFields/NameInput/NameInput';
 import Buttons from '@/app/(main)/parents/components/FormFields/Buttons/Buttons';
