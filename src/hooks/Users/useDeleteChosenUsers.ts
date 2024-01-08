@@ -16,7 +16,6 @@ export const useDeleteChosenUsers = () => {
       await Promise.all(
         selected.map(async id => {
           await axios.delete(`users/${id}/`);
-          // await axios.delete(`/users`, { data: { selected } });
         })
       );
     },
