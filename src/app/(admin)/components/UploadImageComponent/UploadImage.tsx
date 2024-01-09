@@ -16,12 +16,20 @@ interface UploadImageProps {
   page: 'books' | 'partners' | 'quizzes';
 }
 
-const twoMB = 2 * 1024 * 1024;
-const fileTypes = ['image/png', 'image/jpeg', 'image/svg+xml', 'image/jpg', 'image/webp'];
+const tenMB = 10 * 1024 * 1024;
+const fileTypes = [
+  'image/png',
+  'image/jpeg',
+  'image/svg+xml',
+  'image/svg',
+  'image/svg-xml',
+  'image/jpg',
+  'image/webp',
+];
 
 const UploadImage: React.FC<UploadImageProps> = ({
   onFileChange,
-  maxSize = twoMB,
+  maxSize = tenMB,
   allowedTypes = fileTypes,
   file,
   initialImg,
