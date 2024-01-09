@@ -42,7 +42,7 @@ const EmptyInput = ({
           Формат зображення: JPG, PNG, SVG
         </Typography>
         <Typography component="span" variant="body">
-          Максимальний розмір: 2 MB
+          Максимальний розмір: 10 MB
         </Typography>
       </div>
     ) : null}
