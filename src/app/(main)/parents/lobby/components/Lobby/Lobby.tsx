@@ -10,6 +10,7 @@ import styles from './Lobby.module.scss';
 const Lobby = () => {
   const { children, isLoading } = useFetchChildren();
   const [isFetchingStarted, setIsFetchingStarted] = useState(false);
+
   useEffect(() => {
     if (isLoading) {
       setIsFetchingStarted(true);

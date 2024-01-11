@@ -27,6 +27,7 @@ const AnswersList = ({ questionId, answers, onNext }: Props) => {
   const [selectAnswer, setSelectAnswer] = useState<number | null>(null);
   const { data: answerResult, isLoading, fetch } = useFetch<AnswerType, AnswerRequestType>();
   const queryClient = useQueryClient();
+
   const clickHandler = (answerId: number) => async () => {
     setSelectAnswer(answerId);
 
