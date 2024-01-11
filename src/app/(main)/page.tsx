@@ -9,10 +9,11 @@ import Auth from '@/components/Auth';
 import Advantages from '@/app/(main)/components/Advantages/Advantages';
 import Refresh from 'components/Refresh/Refresh';
 import Hero from '@/app/(main)/components/Hero/Hero';
+import GratitudeForDonate from 'components/Donate/Gratitude/GratitudeForDonate';
+import { Modal } from 'components/common';
 
-const Home = async () => {
+const Home = async ({ searchParams: { payment } }: { searchParams: { payment: string } }) => {
   const session = await getServerSession(authOptions);
-
   return (
     <>
       {session ? (
@@ -20,7 +21,7 @@ const Home = async () => {
           <Hero />
           <About />
           <Advantages />
-          <Donate />
+          <Donate payment={payment} />
           <Partners />
           <AdditionalInfo />
         </>
@@ -29,7 +30,7 @@ const Home = async () => {
           <Hero />
           <About />
           <AboutDetail />
-          <Donate />
+          <Donate payment={payment} />
           <Advantages />
           <Partners />
           <AdditionalInfo />

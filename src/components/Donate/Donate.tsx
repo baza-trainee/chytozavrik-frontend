@@ -1,13 +1,29 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import GratitudeForDonate from 'components/Donate/Gratitude/GratitudeForDonate';
 import { Button, Container, Typography } from '../common';
 import Modal from '../common/Modal';
 import { DonateDialog } from '../modals';
+
 import styles from './Donate.module.scss';
 
-const Donate = () => {
+const Donate = ({ payment }: { payment?: string }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isPaymentSuccess, setIsPaymentSuccess] = useState(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    if (payment === 'success') {
+      setIsPaymentSuccess(true);
+      router.push('/');
+    }
+  }, [payment]);
+
+  const gratitudeModalHandler = () => {
+    setIsPaymentSuccess(false);
+  };
 
   const closeModalHandler = () => {
     setIsModalOpen(false);
@@ -33,6 +49,11 @@ const Donate = () => {
       {isModalOpen && (
         <Modal onClose={closeModalHandler}>
           <DonateDialog onClose={closeModalHandler} />
+        </Modal>
+      )}
+      {isPaymentSuccess && (
+        <Modal onClose={gratitudeModalHandler}>
+          <GratitudeForDonate />
         </Modal>
       )}
     </>

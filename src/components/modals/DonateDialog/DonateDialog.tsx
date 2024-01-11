@@ -5,6 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Button, Typography } from '@/components/common';
 import { NumberInput, validation } from '@/components/common/form';
+import usePaymentHandler from '@/hooks/Donate/usePaymentHandler';
 import styles from './DonateDialog.module.scss';
 
 type Props = {
@@ -12,13 +13,13 @@ type Props = {
 };
 
 const schema = yup.object({
-  donate: validation.donate,
+  amount: validation.donate,
 });
 
 type FormData = yup.InferType<typeof schema>;
 
 const defaultValues: FormData = {
-  donate: 0,
+  amount: 0,
 };
 
 const DonateDialog = ({ onClose }: Props) => {
@@ -26,16 +27,15 @@ const DonateDialog = ({ onClose }: Props) => {
     defaultValues,
     resolver: yupResolver(schema),
   });
+  const { handlePayment, errorMessage } = usePaymentHandler();
 
   const resetFieldByName = (name: keyof FormData) => () =>
     resetField(name, { keepError: true, keepDirty: true, keepTouched: true });
   const setFieldValue = (name: keyof FormData, value: number) => () =>
     setValue(name, value, { shouldValidate: true, shouldDirty: true, shouldTouch: true });
 
-  const submit = (data: FormData) => {
-    // eslint-disable-next-line no-console
-    console.log(data);
-    // Close modal
+  const submit = async (data: FormData) => {
+    await handlePayment({ paymentData: data });
     onClose();
   };
 
@@ -47,8 +47,8 @@ const DonateDialog = ({ onClose }: Props) => {
       <form className={styles.form} onSubmit={handleSubmit(submit)} noValidate>
         <NumberInput
           control={control}
-          name="donate"
-          resetField={resetFieldByName('donate')}
+          name="amount"
+          resetField={resetFieldByName('amount')}
           label="Введіть або оберіть суму донату"
           placeholder="Введіть суму донату"
         />
@@ -56,21 +56,21 @@ const DonateDialog = ({ onClose }: Props) => {
           <Button
             className={styles['button-template']}
             variant="outline"
-            onClick={setFieldValue('donate', 50)}
+            onClick={setFieldValue('amount', 50)}
           >
             50 грн
           </Button>
           <Button
             className={styles['button-template']}
             variant="outline"
-            onClick={setFieldValue('donate', 100)}
+            onClick={setFieldValue('amount', 100)}
           >
             100 грн
           </Button>
           <Button
             className={styles['button-template']}
             variant="outline"
-            onClick={setFieldValue('donate', 200)}
+            onClick={setFieldValue('amount', 200)}
           >
             200 грн
           </Button>
