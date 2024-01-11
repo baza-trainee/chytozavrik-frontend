@@ -10,7 +10,6 @@ import { useRefreshToken } from '@/hooks/useRefreshToken';
 export const useAuthAxiosInstance = () => {
   const { data: session } = useSession();
   const refreshToken = useRefreshToken();
-
   useEffect(() => {
     const requestIntercept = axiosClient.interceptors.request.use(
       config => {
