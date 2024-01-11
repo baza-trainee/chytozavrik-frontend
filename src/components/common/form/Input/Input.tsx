@@ -110,7 +110,7 @@ const Input = <T extends FieldValues>({
       {isShowMessage && (
         <span className={`${styles.info} ${error ? styles.red : ''} `}>
           Пароль повинен містити мінімум 8 символів, латиницею, у якому є хоча б 1 велика літера, 1
-          цифра та 1 спецсимвол.
+          маленька літера, 1 цифра та 1 спецсимвол.
         </span>
       )}
     </>
