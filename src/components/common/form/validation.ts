@@ -9,9 +9,10 @@ export const notEmailMatch: yup.TestFunction<string | undefined, Record<string, 
   return !value || value.toLowerCase() !== emailPart?.toLowerCase();
 };
 
+// const partnerInputRegex = /^(?!\s+$)[^\s].*[^?\s]$/;
+
 const HttpUrlRegex =
   /^(http(s):\/\/.)[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)$/;
-// /^(http(s):\/\/.)[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$/;
 
 const emailRegex =
   // eslint-disable-next-line no-control-regex
@@ -84,7 +85,11 @@ export const validation = {
   partnerInput: yup
     .string()
     .required('Будь ласка, заповніть поле')
-    .min(2, 'Мінімальна кількість символів 2'),
+    .min(2, 'Мінімальна кількість символів 2')
+    .matches(
+      /^(?=.*[a-zA-Z])[^\s].*[^\s]$/,
+      "Ім'я повинно містити не менше двох символів, починатися та закінчуватися не пробілом і містити хоча б одну літеру"
+    ),
   url: yup
     .string()
     .required('Будь ласка, заповніть поле')

@@ -17,7 +17,15 @@ interface UploadImageProps {
 }
 
 const twoMB = 2 * 1024 * 1024;
-const fileTypes = ['image/png', 'image/jpeg', 'image/svg+xml', 'image/jpg', 'image/webp'];
+const fileTypes = [
+  'image/png',
+  'image/jpeg',
+  'image/svg+xml',
+  'image/svg',
+  'image/svg-xml',
+  'image/jpg',
+  'image/webp',
+];
 
 const UploadImage: React.FC<UploadImageProps> = ({
   onFileChange,
