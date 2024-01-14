@@ -42,7 +42,7 @@ const PartnersForm = ({ id }: { id?: number }) => {
     link: '',
   };
 
-  const { control, reset, handleSubmit, resetField, setValue } = useForm({
+  const { control, reset, handleSubmit, resetField, setValue, getValues } = useForm({
     defaultValues,
     resolver: yupResolver(schema),
     mode: 'onChange',
@@ -77,10 +77,12 @@ const PartnersForm = ({ id }: { id?: number }) => {
     }
   };
   const isFilled = () => {
-    if (dirtyFields.name && dirtyFields.link && isValid && !isImage) {
-      return true;
-    }
-    return false;
+    const formData = getValues();
+
+    const isNameValid = !!formData.name && !errors.name;
+    const isLinkValid = !!formData.link && !errors.link;
+
+    return isNameValid && isLinkValid && isValid && !isImage;
   };
   return partnerLoading ? (
     <Spinner className={styles.spinner} />
