@@ -76,7 +76,12 @@ const PartnersForm = ({ id }: { id?: number }) => {
       addPartner(formData);
     }
   };
-
+  const isFilled = () => {
+    if (dirtyFields.name && dirtyFields.link && isValid && !isImage) {
+      return true;
+    }
+    return false;
+  };
   return partnerLoading ? (
     <Spinner className={styles.spinner} />
   ) : (
@@ -104,6 +109,7 @@ const PartnersForm = ({ id }: { id?: number }) => {
           initialImg={initialImg}
           setInitialImg={setInitialImg}
           page="partners"
+          isFilled={isFilled}
         />
       </div>
       <div className={styles.actions}>
