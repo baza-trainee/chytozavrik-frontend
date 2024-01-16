@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { Typography } from 'components/common';
 import AvatarFields from '@/app/(main)/parents/components/FormFields/AvaratsFields/AvatarFields';
@@ -13,6 +14,8 @@ import styles from './EditWigwam.module.scss';
 type Props = {
   closeEditWigwam: () => void;
   id: number;
+  kidName: string;
+  kidAvatar: number;
 };
 
 type FormData = {
@@ -25,9 +28,10 @@ const defaultValues: FormData = {
   avatar: 0,
 };
 
-const EditWigwam = ({ id, closeEditWigwam }: Props) => {
+const EditWigwam = ({ id, kidName, kidAvatar, closeEditWigwam }: Props) => {
   const {
     register,
+    setValue,
     handleSubmit,
     resetField,
     formState: { errors, isSubmitting },
@@ -39,9 +43,14 @@ const EditWigwam = ({ id, closeEditWigwam }: Props) => {
 
   const { mutate: submitData } = useMutation({
     mutationFn: async (formData: FormData) => {
-      await axios.patch(`${baseUrl}/users/me/children/${id}/`, formData, {
+      const formDataObject = new FormData();
+      Object.entries(formData).forEach(([key, value]) => {
+        formDataObject.append(key, String(value));
+      });
+      await axios.patch(`${baseUrl}/users/me/children/${id}/`, formDataObject, {
         headers: {
           Authorization: `Bearer ${session?.user.token.access}`,
+          'Content-Type': 'multipart/form-data',
         },
       });
     },
@@ -51,14 +60,20 @@ const EditWigwam = ({ id, closeEditWigwam }: Props) => {
     },
   });
 
-  const onSubmit: SubmitHandler<FormData> = formData => {
+  const onSubmit: SubmitHandler<FormData> = async formData => {
     const modifiedFormData = {
       ...formData,
       avatar: Number(formData.avatar),
+      id,
     };
     closeEditWigwam();
-    submitData(modifiedFormData);
+    await submitData(modifiedFormData);
   };
+
+  useEffect(() => {
+    setValue('name', kidName);
+    setValue('avatar', kidAvatar);
+  }, [kidName, kidAvatar]);
 
   return (
     <section>
@@ -68,10 +83,10 @@ const EditWigwam = ({ id, closeEditWigwam }: Props) => {
         </Typography>
         <div className={styles.formWrapper}>
           <div>
-            <NameInput register={register} errors={errors} />
+            <NameInput register={register} errors={errors} defaultValue={kidName} />
             <Buttons onClick={closeEditWigwam} secondBtnText="Зберегти" />
           </div>
-          <AvatarFields register={register} errors={errors} />
+          <AvatarFields register={register} errors={errors} selectedAvatar={kidAvatar} />
         </div>
       </form>
     </section>
