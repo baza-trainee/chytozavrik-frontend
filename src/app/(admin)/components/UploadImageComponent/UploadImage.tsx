@@ -14,6 +14,7 @@ interface UploadImageProps {
   initialImg: string;
   setInitialImg?: Dispatch<React.SetStateAction<string>>;
   page: 'books' | 'partners' | 'quizzes';
+  isFilled?: () => boolean;
 }
 
 const twoMB = 2 * 1024 * 1024;
@@ -35,6 +36,7 @@ const UploadImage: React.FC<UploadImageProps> = ({
   initialImg,
   setInitialImg,
   page,
+  isFilled,
 }) => {
   const [sizeErrorMessage, setSizeErrorMessage] = useState<string>('');
   const [formatErrorMessage, setFormatErrorMessage] = useState<string>('');
@@ -85,23 +87,30 @@ const UploadImage: React.FC<UploadImageProps> = ({
   };
 
   return (
-    <FileUploader
-      classes={`${styles.imageInput} ${pageClass[page]}`}
-      name="file"
-      handleChange={handleChange}
-      fileOrFiles={file}
-    >
-      {file || initialImg ? (
-        <FileInput
-          initialImg={initialImg}
-          file={file}
-          onFileChange={onFileChange}
-          setInitialImg={setInitialImg}
-        />
-      ) : (
-        <EmptyInput sizeErrorMessage={sizeErrorMessage} formatErrorMessage={formatErrorMessage} />
-      )}
-    </FileUploader>
+    <div>
+      <FileUploader
+        classes={
+          isFilled && isFilled()
+            ? [styles.imageInput, styles.validatedInput, pageClass[page]].join(' ')
+            : [styles.imageInput, pageClass[page]].join(' ')
+        }
+        name="file"
+        handleChange={handleChange}
+        fileOrFiles={file}
+      >
+        {file || initialImg ? (
+          <FileInput
+            initialImg={initialImg}
+            file={file}
+            onFileChange={onFileChange}
+            setInitialImg={setInitialImg}
+          />
+        ) : (
+          <EmptyInput sizeErrorMessage={sizeErrorMessage} formatErrorMessage={formatErrorMessage} />
+        )}
+      </FileUploader>
+      {isFilled && isFilled() && <p className={styles.validation}>Будь ласка, заповніть поле</p>}
+    </div>
   );
 };
 

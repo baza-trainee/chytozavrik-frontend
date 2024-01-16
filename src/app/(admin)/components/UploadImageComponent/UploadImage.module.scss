@@ -10,6 +10,10 @@
   justify-content: center;
   padding: 22px 22px;
 
+  &.validatedInput {
+    border-color: #f40000 !important;
+  }
+
   &.books {
     width: 302px;
     height: 262px;
@@ -85,33 +89,6 @@
     position: absolute;
   }
 
-  //.uploadedImageContainer {
-  //  padding-bottom: 10px;
-  //  z-index: 1;
-  //
-  //  .uploadedImage {
-  //    padding-bottom: 0;
-  //    min-height: 100px;
-  //    min-width: 50px;
-  //    height: 100%;
-  //    width: 100%;
-  //    margin: 0;
-  //  }
-  //
-  //  .closeButton {
-  //    position: absolute;
-  //    top: 2px;
-  //    right: 2px;
-  //    padding: 5px;
-  //    box-sizing: unset;
-  //    z-index: 1000;
-  //
-  //    img {
-  //      display: block;
-  //      z-index: 1000;
-  //    }
-  //  }
-  //}
   .closeButton {
     position: absolute;
     top: 2px;
@@ -158,10 +135,17 @@
         margin-bottom: 10px;
         color: #eb2828;
         text-align: center;
-        background-color: #fff0f0;
+        background-color: #905e5e;
         border-left: #eb2828 2px solid;
         padding: 4px 10px;
       }
     }
   }
+}
+.validation {
+  text-align: center;
+  color: #f40000;
+  margin-top: 3px;
+  font-size: 14px;
+  font-family: var(--montserrat-alternates-font);
 }
