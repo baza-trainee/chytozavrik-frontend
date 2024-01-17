@@ -7,9 +7,10 @@ import styles from './NameInput.module.scss';
 interface NameInputProps {
   register: UseFormRegister<any>;
   errors: FieldErrors;
+  defaultValue?: string;
 }
 
-const NameInput = ({ register, errors }: NameInputProps) => (
+const NameInput = ({ register, errors, defaultValue }: NameInputProps) => (
   <div className={styles.container}>
     <label htmlFor="name" className={styles.label}>
       Введіть ім&apos;я дитини
@@ -19,6 +20,7 @@ const NameInput = ({ register, errors }: NameInputProps) => (
       type="text"
       name="name"
       placeholder="Ім'я"
+      defaultValue={defaultValue}
       className={styles.input}
     />
     {errors.name && <span className={styles.name}>Поле обов&apos;язкове</span>}

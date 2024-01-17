@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Avatar1 from 'public/images/kids-avatar1.svg';
 import Avatar2 from 'public/images/kids-avatar2.svg';
@@ -14,86 +14,51 @@ import styles from './AvatarFields.module.scss';
 interface AvatarFieldsetProps {
   register: UseFormRegister<any>;
   errors: FieldErrors;
+  selectedAvatar: number;
 }
 
-const AvatarFields = ({ register, errors }: AvatarFieldsetProps) => (
-  <div className={styles.container}>
-    <fieldset className={styles.fieldset}>
-      <legend className={styles.text}>Оберіть аватар</legend>
-      <div className={styles.radioWrapper}>
-        <input
-          {...register('avatar', { required: true })}
-          type="radio"
-          id="1"
-          name="avatar"
-          className={styles.radio}
-          value=" 1"
-        />
-        <label htmlFor="1">
-          <Image src={Avatar1} alt="аватар дитини" className={styles.image} />
-        </label>
-        <input
-          {...register('avatar', { required: true })}
-          type="radio"
-          id="2"
-          name="avatar"
-          className={styles.radio}
-          value="2"
-        />
-        <label htmlFor="2">
-          <Image src={Avatar2} alt="аватар дитини" className={styles.image} />
-        </label>
-        <input
-          {...register('avatar', { required: true })}
-          type="radio"
-          id="3"
-          name="avatar"
-          className={styles.radio}
-          value="3"
-        />
-        <label htmlFor="3">
-          <Image src={Avatar3} alt="аватар дитини" className={styles.image} />
-        </label>
+const AvatarFields = ({ register, errors, selectedAvatar }: AvatarFieldsetProps) => {
+  const avatarData = [
+    { id: 1, image: Avatar1 },
+    { id: 2, image: Avatar2 },
+    { id: 3, image: Avatar3 },
+    { id: 4, image: Avatar4 },
+    { id: 5, image: Avatar5 },
+    { id: 6, image: Avatar6 },
+  ];
+  const [currentAvatar, setCurrentAvatar] = useState(selectedAvatar);
 
-        <input
-          {...register('avatar', { required: true })}
-          type="radio"
-          id="4"
-          name="avatar"
-          className={styles.radio}
-          value="4"
-        />
-        <label htmlFor="4">
-          <Image src={Avatar4} alt="аватар дитини" className={styles.image} />
-        </label>
+  const handleAvatarChange = (id: number): void => {
+    setCurrentAvatar(id);
+  };
 
-        <input
-          {...register('avatar', { required: true })}
-          type="radio"
-          id="5"
-          name="avatar"
-          className={styles.radio}
-          value="5"
-        />
-        <label htmlFor="5">
-          <Image src={Avatar5} alt="аватар дитини" className={styles.image} />
-        </label>
-
-        <input
-          {...register('avatar', { required: true })}
-          type="radio"
-          id="6"
-          name="avatar"
-          className={styles.radio}
-          value="6"
-        />
-        <label htmlFor="6">
-          <Image src={Avatar6} alt="аватар дитини" className={styles.image} />
-        </label>
-      </div>
-    </fieldset>
-    {errors.avatar && <span className={styles.error}>Оберіть аватар</span>}
-  </div>
-);
+  return (
+    <div className={styles.container}>
+      <fieldset className={styles.fieldset}>
+        <legend className={styles.text}>Оберіть аватар</legend>
+        <div className={styles.radioWrapper}>
+          {avatarData.map(({ id, image }) => (
+            <React.Fragment key={id}>
+              <input
+                {...register('avatar', { required: true })}
+                type="radio"
+                id={String(id)}
+                name="avatar"
+                className={styles.radio}
+                value={String(id)}
+                checked={id === currentAvatar}
+                onChange={() => handleAvatarChange(id)}
+              />
+              <label htmlFor={String(id)}>
+                <Image src={image} alt="аватар дитини" className={styles.image} />
+              </label>
+            </React.Fragment>
+          ))}
+        </div>
+      </fieldset>
+      {errors.avatar && <span className={styles.error}>Оберіть аватар</span>}
+    </div>
+  );
+};
 
 export default AvatarFields;

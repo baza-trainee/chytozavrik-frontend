@@ -98,7 +98,14 @@ const KidProfile = ({ kid }: Props) => {
           </div>
         </div>
       </li>
-      {edit && <EditWigwam closeEditWigwam={handleEdit} id={kid.id} />}
+      {edit && (
+        <EditWigwam
+          closeEditWigwam={handleEdit}
+          id={kid.id}
+          kidName={kid.name}
+          kidAvatar={kid.avatar}
+        />
+      )}
       {(isSuccess || isDeleted) && (
         <Modal
           type={isDeleted ? 'question' : 'success'}

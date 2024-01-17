@@ -72,7 +72,11 @@ const CreateWigwam = ({ setWigwam }: Props) => {
               <NameInput register={register} errors={errors} />
               <Buttons onClick={() => setWigwam(false)} secondBtnText="Створити" />
             </div>
-            <AvatarFields register={register} errors={errors} />
+            <AvatarFields
+              register={register}
+              errors={errors}
+              selectedAvatar={defaultValues.avatar}
+            />
           </div>
         </form>
       </Container>
