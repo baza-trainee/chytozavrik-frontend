@@ -18,7 +18,7 @@ type Props = {
 const Parents = ({ handleClick, kids }: Props) => {
   const [showNote, setShowNote] = useState(true);
   const [showLimit, setShowLimit] = useState(false);
-  const [isDisabled, setIsDisabled] = useState(false); 
+  const [isDisabled, setIsDisabled] = useState(false);
 
   const closeNote = () => {
     setShowNote(false);
@@ -71,10 +71,8 @@ const Parents = ({ handleClick, kids }: Props) => {
             closeNote={closeNote}
             text="Вибачте, ви вже створили максимально дозволену кількість вігвамів"
             img={sad}
-            
           />
         )}
-        
       </Container>
     </section>
   );

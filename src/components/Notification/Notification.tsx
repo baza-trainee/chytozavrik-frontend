@@ -18,7 +18,8 @@ const Notification = ({ text, img, closeNote }: Props) => (
     </button>
     <div className={styles.wrapper}>
       <p className={styles.text}>{text}</p>
-      <div className={styles.img}><Image className={styles.image} src={img} width={90} alt="іконка кота" />
+      <div className={styles.img}>
+        <Image className={styles.image} src={img} width={90} alt="іконка кота" />
       </div>
     </div>
   </div>

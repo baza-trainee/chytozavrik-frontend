@@ -108,7 +108,7 @@ const KidProfile = ({ kid }: Props) => {
               : "Вігвам дитини було успішно видалено. Всі дані, пов'язані з цим аккаунтом більше не доступні і були назавжди видалені."
           }
           title={isDeleted ? 'Видалити вігвам' : 'Видалення аккаунту завершено!'}
-          // 
+          //
           active={isDeleted || isSuccess}
           setActive={() => {
             setIsSuccess(false);
@@ -119,7 +119,6 @@ const KidProfile = ({ kid }: Props) => {
             // setIsSuccess(true);
             setIsDeleted(false);
           }}
-          
         />
       )}
     </>
