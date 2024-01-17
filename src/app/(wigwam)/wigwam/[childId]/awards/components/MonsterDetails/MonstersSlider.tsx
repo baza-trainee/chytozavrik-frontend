@@ -48,15 +48,18 @@ const MonstersSlider = ({
   const minSwipeDistance = 50;
 
   const onTouchStart = (e: React.TouchEvent) => {
+    if (results.length <= 1) return;
     setTouchEnd(null);
     setTouchStart(e.targetTouches[0].clientX);
   };
 
   const onTouchMove = (e: React.TouchEvent) => {
+    if (results.length <= 1) return;
     setTouchEnd(e.targetTouches[0].clientX);
   };
 
   const onTouchEnd = () => {
+    if (results.length <= 1) return;
     if (!touchStart || !touchEnd) return;
     const distance = touchStart - touchEnd;
     const isSwipe = Math.abs(distance) > minSwipeDistance;
