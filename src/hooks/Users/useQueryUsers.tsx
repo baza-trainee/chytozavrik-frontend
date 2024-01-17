@@ -3,18 +3,25 @@ import { useAuthAxiosInstance } from '@/hooks';
 import { useQuery } from '@tanstack/react-query';
 import { BASE_URL } from '@/constants/api';
 
-export const useQueryUsers = () => {
+interface useQueryUsersProps {
+  currentPage: number;
+  searchValue: string | null;
+}
+
+export const useQueryUsers = ({ currentPage, searchValue }: useQueryUsersProps) => {
   const { status } = useSession();
   const axios = useAuthAxiosInstance();
-
+  console.log(currentPage);
+  console.log(searchValue);
   const {
     data: users,
     isLoading: usersLoading,
     error: fetchError,
   } = useQuery({
-    queryKey: ['users'],
+    queryKey: ['users', currentPage, searchValue],
     queryFn: async () => {
-      const res = await axios(`${BASE_URL}/users`);
+      const query = searchValue ? `search=${encodeURIComponent(searchValue)}&` : '';
+      const res = await axios(`${BASE_URL}/users/?${query}page=${currentPage}&page_size=11`);
       return res.data.data;
     },
     enabled: status === 'authenticated',
