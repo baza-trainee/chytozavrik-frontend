@@ -3,7 +3,7 @@
 
 .container {
   width: 326px;
-  height: 87px;
+  min-height: 87px;
   padding: 24px;
   position: absolute;
   z-index: 10;
@@ -32,7 +32,7 @@
     content: '';
     position: absolute;
     right: 20px;
-    bottom: 78px;
+    top: -11px;
     background-image: url('../../../public/images/polygon.svg');
     width: 44px;
     height: 20px;

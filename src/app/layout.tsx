@@ -13,7 +13,7 @@ const montserratAlternates = Montserrat({
   variable: '--montserrat-alternates-font',
   weight: ['300', '400', '600'],
   style: 'normal',
-  subsets: ['cyrillic'],
+  subsets: ['latin'],
   display: 'swap',
 });
 
