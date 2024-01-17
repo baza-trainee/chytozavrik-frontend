@@ -3,12 +3,8 @@ import usersTextData from '@/constants/usersTextData.json';
 import { UserType } from '@/types/User';
 import styles from './UsersCounter.module.scss';
 
-interface UsersCounterProps {
-  users: UserType[];
-}
-
-const UsersCounter: FC<UsersCounterProps> = ({ users }) => {
-  const counter = users?.length || 0;
+const UsersCounter = ({ users }: { users: number }) => {
+  const counter = users || 0;
 
   return (
     <div className={styles.wrapper}>

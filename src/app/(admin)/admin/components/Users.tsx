@@ -20,15 +20,14 @@ const Users = ({ searchValue = '' }: { searchValue: string | null }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [selected, setSelected] = useState<number[]>([]);
   const [isSelectedOpen, setIsSelectedOpen] = useState(false);
-  const { usersLoading, users, fetchError } = useQueryUsers();
+  const { usersLoading, users, fetchError } = useQueryUsers({ currentPage, searchValue });
   const { handleDeleteUsers, deleteUsers, isChosenDeleted, setIsChosenDeleted } =
     useDeleteChosenUsers();
   const queryClient = useQueryClient();
 
   if (fetchError) return <p>{usersTextData[0]}</p>;
 
-  const count = users?.count ? Math.ceil(users.count / 9) : 0;
-  const usersData = users?.results;
+  const count = users?.count ? Math.ceil(users.count / 11) : 0;
 
   const handleCheckboxChange = (checked: boolean, userId: number) => {
     if (checked) {
@@ -38,30 +37,9 @@ const Users = ({ searchValue = '' }: { searchValue: string | null }) => {
     }
   };
 
-  const handlePageChange = (page: number) => {
-    setCurrentPage(page);
-  };
-
-  const startIdx = (currentPage - 1) * 10;
-  const endIdx = startIdx + 10;
-
-  const usersSorted =
-    usersData &&
-    usersData.sort((a: UserType, b: UserType) => {
-      const dateA = new Date(a.date_joined).getTime();
-      const dateB = new Date(b.date_joined).getTime();
-      return dateB - dateA;
-    });
-
-  const filteredUsers = searchValue
-    ? usersSorted?.filter((user: UserType) =>
-        user.email.toLowerCase().includes(searchValue.toLowerCase())
-      )
-    : usersSorted;
-
   return (
     <>
-      <UsersCounter users={filteredUsers} />
+      <UsersCounter users={users?.count} />
       <section className={styles.usersWrapper}>
         <div className={styles.subWrap}>
           <TableHeader
@@ -70,24 +48,22 @@ const Users = ({ searchValue = '' }: { searchValue: string | null }) => {
             colNames={['Email', 'Профілі дітей', 'Дата  реєстрації']}
           />
           {usersLoading && <Spinner className={styles.spinner} />}
-          {filteredUsers &&
-            filteredUsers.length === 0 &&
+          {users &&
+            users.count === 0 &&
             (searchValue ? (
               <NoSearchResults />
             ) : (
               <NoResults text={usersTextData[1]} image={usersTextData[2]} />
             ))}
-          {filteredUsers &&
-            filteredUsers.length > 0 &&
-            filteredUsers.slice(startIdx, endIdx).map((user: UserType) => (
-              <Fragment key={user.id}>
-                <UserItem
-                  user={user}
-                  onCheckboxChange={handleCheckboxChange}
-                  isDeleting={deleteUsers?.includes(user.id)}
-                />
-              </Fragment>
-            ))}
+          {users?.results?.map((user: UserType) => (
+            <Fragment key={user.id}>
+              <UserItem
+                user={user}
+                onCheckboxChange={handleCheckboxChange}
+                isDeleting={deleteUsers?.includes(user.id)}
+              />
+            </Fragment>
+          ))}
         </div>
         {isSelectedOpen && (
           <Modal
@@ -111,15 +87,13 @@ const Users = ({ searchValue = '' }: { searchValue: string | null }) => {
             }}
           />
         )}
-        {filteredUsers && !usersLoading && filteredUsers.length > 10 && (
-          <div className={styles.paginationWrapper}>
-            <Pagination
-              size="small"
-              count={count}
-              onPageChange={handlePageChange}
-              currentPage={currentPage}
-            />
-          </div>
+        {users && !usersLoading && users.count > 11 && (
+          <Pagination
+            size="small"
+            count={count}
+            onPageChange={page => setCurrentPage(page)}
+            currentPage={currentPage}
+          />
         )}
       </section>
     </>
