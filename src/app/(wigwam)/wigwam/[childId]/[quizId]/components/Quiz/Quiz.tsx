@@ -40,7 +40,7 @@ const Quiz = ({ quizInfo }: QuizProps) => {
 
   return (
     <section className={styles.section}>
-      <Container className={styles.container}>
+      <div className={styles.container}>
         {quizPrize ? (
           <QuizPrize prize={quizPrize} onReplyQuiz={replyQuiz} />
         ) : (
@@ -78,7 +78,7 @@ const Quiz = ({ quizInfo }: QuizProps) => {
             </div>
           </>
         )}
-      </Container>
+      </div>
     </section>
   );
 };
