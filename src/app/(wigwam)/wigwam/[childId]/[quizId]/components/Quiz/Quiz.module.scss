@@ -9,6 +9,7 @@
   background-size: auto 48px;
   overflow-y: scroll;
 
+
   @include breakpoint(tablet) {
     min-height: 800px;
     height: calc(100vh - 70px);
@@ -29,7 +30,7 @@
 
 .container {
   --container-pt: 24px;
-  --container-pb: 0;
+  --container-pb: 30px;
   --padding-x: 16px;
 
   position: relative;
