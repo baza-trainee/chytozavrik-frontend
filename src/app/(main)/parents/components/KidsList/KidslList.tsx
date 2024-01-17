@@ -20,11 +20,14 @@ const KidslList = ({ kids, isLoading }: Props) => {
 
   return (
     <div className={styles.section}>
-      {isLoading && <Spinner className="spinner" />}
+
       <Container className={styles.container}>
+
         <Typography className={styles.title} component="h2" variant="h2">
           Вігвами дітей
         </Typography>
+
+        {isLoading && <div className={styles.spinner} ><Spinner /></div>}
         {kids && kids.length >= 1 && (
           <>
             <ul className={styles.list}>
