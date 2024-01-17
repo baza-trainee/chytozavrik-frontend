@@ -9,8 +9,6 @@ export const notEmailMatch: yup.TestFunction<string | undefined, Record<string, 
   return !value || value.toLowerCase() !== emailPart?.toLowerCase();
 };
 
-// const partnerInputRegex = /^(?!\s+$)[^\s].*[^?\s]$/;
-
 const HttpUrlRegex =
   /^(http(s):\/\/.)[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)$/;
 
@@ -88,7 +86,7 @@ export const validation = {
     .min(2, 'Мінімальна кількість символів 2')
     .matches(
       /^(?=.*[a-zA-Z])[^\s].*[^\s]$/,
-      "Ім'я повинно містити не менше двох символів, починатися та закінчуватися не пробілом і містити хоча б одну літеру"
+      "Ім'я повинно містити не менше двох символів, починатися та закінчуватися не пробілом і містити хоча б одну літеру латинського алфавіту"
     ),
   url: yup
     .string()
