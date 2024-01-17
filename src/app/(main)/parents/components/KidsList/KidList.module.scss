@@ -5,6 +5,9 @@
 .section {
   background-color: $primary-next-variant;
   position: relative;
+
+
+
 }
 
 .container {
@@ -12,6 +15,25 @@
   min-width: 360px;
   min-height: 192px;
   padding-top: 60px;
+
+
+  .spinner{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    width: 220px;
+    height: 220px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
+    & span{
+      width: 70px;
+      height: 70px;
+    }
+
+  }
 
   @include breakpoint(tablet) {
     min-height: 270px;
@@ -53,3 +75,4 @@
     line-height: 1.2;
   }
 }
+
