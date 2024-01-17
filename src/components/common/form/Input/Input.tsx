@@ -62,7 +62,7 @@ const Input = <T extends FieldValues>({
       return icon;
     }
 
-    if (field.value.length > 0 && props.type === 'email') {
+    if (field.value?.length > 0 && props.type === 'email') {
       return <IconButton onClick={resetField} icon={<XCircle />} />;
     }
 

@@ -19,7 +19,7 @@ const schema = yup.object({
 type FormData = yup.InferType<typeof schema>;
 
 const defaultValues: FormData = {
-  amount: 0,
+  amount: '',
 };
 
 const DonateDialog = ({ onClose }: Props) => {
@@ -35,7 +35,11 @@ const DonateDialog = ({ onClose }: Props) => {
     setValue(name, value, { shouldValidate: true, shouldDirty: true, shouldTouch: true });
 
   const submit = async (data: FormData) => {
-    await handlePayment({ paymentData: data });
+    const paymentData = {
+      ...data,
+      amount: Number(data.amount),
+    };
+    await handlePayment({ paymentData });
     onClose();
   };
 
