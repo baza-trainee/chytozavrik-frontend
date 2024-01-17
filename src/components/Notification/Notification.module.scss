@@ -64,14 +64,17 @@
   }
 }
 
-.image {
-  width: 80px;
-  height: 45px;
+.img {
+  width: 88px;
+  height: 55px;
 
   @include breakpoint(tablet) {
     width: 96px;
-    height: 54px;
+    height: 70px;
   }
+}
+.image {
+  width: 100%;
 }
 
 .button {
