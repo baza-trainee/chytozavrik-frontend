@@ -41,9 +41,14 @@ export const validation = {
     .oneOf([true], 'Ви повинні прийняти правила користування сайтом.')
     .required(),
   donate: yup
-    .number()
-    .typeError('Сума донату повинна бути більша за 0.')
-    .positive('Сума донату повинна бути більша за 0.')
+    .mixed()
+    .test('is-valid-amount', 'Сума донату повинна бути числом більшим за 0', value => {
+      if (typeof value === 'string' || typeof value === 'number') {
+        const number = parseFloat(value.toString());
+        return !Number.isNaN(number) && number > 0;
+      }
+      return false;
+    })
     .required(),
   bookInput: yup
     .string()
