@@ -21,7 +21,7 @@ const KidProfile = ({ kid }: Props) => {
   const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || '';
   const [edit, setEdit] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [isDiscard, setIsDiscard] = useState(false);
+  const [isDeleted, setIsDeleted] = useState(false);
 
   const handleEdit = () => {
     if (!edit) setEdit(true);
@@ -93,31 +93,33 @@ const KidProfile = ({ kid }: Props) => {
           >
             <Image src="/images/edit.svg" alt="кнопка редагування" width={36} height={36} />
           </div>
-          <div className={styles.button} onClick={() => setIsDiscard(true)}>
+          <div className={styles.button} onClick={() => setIsDeleted(true)}>
             <Image src="/images/delete.svg" alt="кнопка видалення" width={36} height={36} />
           </div>
         </div>
       </li>
       {edit && <EditWigwam closeEditWigwam={handleEdit} id={kid.id} />}
-      {(isSuccess || isDiscard) && (
+      {(isSuccess || isDeleted) && (
         <Modal
-          type={isDiscard ? 'question' : 'success'}
+          type={isDeleted ? 'question' : 'success'}
           message={
-            isDiscard
+            isDeleted
               ? 'Ви дійсно хочете видалити вігвам дитини?'
               : "Вігвам дитини було успішно видалено. Всі дані, пов'язані з цим аккаунтом більше не доступні і були назавжди видалені."
           }
-          title={isDiscard ? 'Видалити вігвам' : 'Видалення аккаунту завершено!'}
-          active={isDiscard || isSuccess}
+          title={isDeleted ? 'Видалити вігвам' : 'Видалення аккаунту завершено!'}
+          // 
+          active={isDeleted || isSuccess}
           setActive={() => {
             setIsSuccess(false);
-            setIsDiscard(false);
+            setIsDeleted(false);
           }}
           successFnc={() => {
             handleDelete(kid.id);
-            setIsSuccess(true);
-            setIsDiscard(false);
+            // setIsSuccess(true);
+            setIsDeleted(false);
           }}
+          
         />
       )}
     </>

@@ -4,6 +4,8 @@ import React, { useState, useEffect } from 'react';
 import { Container, Button, Typography } from 'components/common';
 import Image from 'next/image';
 import Notification from 'components/Notification/Notification';
+import cat from 'public/images/cat/cat.svg';
+import sad from 'public/images/cat/sad.svg';
 import { ChildType } from '@/types';
 import styles from './Parents.module.scss';
 
@@ -16,10 +18,12 @@ type Props = {
 const Parents = ({ handleClick, kids }: Props) => {
   const [showNote, setShowNote] = useState(true);
   const [showLimit, setShowLimit] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(false); 
 
   const closeNote = () => {
     setShowNote(false);
     setShowLimit(false);
+    setIsDisabled(false);
   };
 
   return (
@@ -35,11 +39,12 @@ const Parents = ({ handleClick, kids }: Props) => {
         <Button
           color="secondary"
           className={styles.button}
+          disabled={isDisabled}
           onClick={event => {
             closeNote();
-            if (kids.length >= 6) {
+            if (kids && kids.length >= 6) {
               setShowLimit(true);
-              event.currentTarget.disabled = true;
+              setIsDisabled(true);
             } else handleClick();
           }}
         >
@@ -57,6 +62,7 @@ const Parents = ({ handleClick, kids }: Props) => {
         {kids && kids.length === 0 && showNote && (
           <Notification
             text="Натисніть сюди, щоб створити ігровий простір для своєї дитини"
+            img={cat}
             closeNote={closeNote}
           />
         )}
@@ -64,8 +70,11 @@ const Parents = ({ handleClick, kids }: Props) => {
           <Notification
             closeNote={closeNote}
             text="Вибачте, ви вже створили максимально дозволену кількість вігвамів"
+            img={sad}
+            
           />
         )}
+        
       </Container>
     </section>
   );
