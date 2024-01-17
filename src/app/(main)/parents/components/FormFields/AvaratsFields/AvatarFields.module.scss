@@ -39,13 +39,13 @@
   height: 0;
 }
 
-.radio:checked + label > .image {
-  border: 3px solid #455fc8;
+.radio:hover + label > .image {
+  border: 3px solid #7791fa;
   border-radius: 100px;
 }
 
-.radio:hover + label > .image {
-  border: 3px solid #7791fa;
+.radio:checked + label > .image {
+  border: 3px solid #455fc8;
   border-radius: 100px;
 }
 

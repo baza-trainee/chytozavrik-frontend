@@ -3,7 +3,6 @@
 
 .section {
   position: relative;
-  z-index: 0;
   background-color: $primary;
   @include addWaveBackground('/images/background-wave.svg');
   padding: 68px 0 72px;
