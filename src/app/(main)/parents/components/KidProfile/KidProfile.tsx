@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Fragment, useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
 import { useQueryClient, useMutation } from '@tanstack/react-query';
@@ -22,11 +22,24 @@ const KidProfile = ({ kid }: Props) => {
   const [edit, setEdit] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [isDeleted, setIsDeleted] = useState(false);
-
+  const editWigwamRef = useRef<HTMLDivElement | null>(null)
   const handleEdit = () => {
-    if (!edit) setEdit(true);
-    else setEdit(false);
+    if (!edit) {
+      setEdit(true);
+    } else {
+      setEdit(false);
+    }
   };
+
+  useEffect(() => {
+    if (edit && editWigwamRef.current) {
+      editWigwamRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+        inline: 'nearest'
+      });
+    }
+  }, [edit]);
 
   const { mutate: handleDelete } = useMutation({
     mutationFn: async (id: number) => {
@@ -99,12 +112,15 @@ const KidProfile = ({ kid }: Props) => {
         </div>
       </li>
       {edit && (
-        <EditWigwam
-          closeEditWigwam={handleEdit}
-          id={kid.id}
-          kidName={kid.name}
-          kidAvatar={kid.avatar}
-        />
+        <div  ref={editWigwamRef}>
+          <EditWigwam
+            closeEditWigwam={handleEdit}
+            id={kid.id}
+            kidName={kid.name}
+            kidAvatar={kid.avatar}
+          />
+        </div>
+
       )}
       {(isSuccess || isDeleted) && (
         <Modal
