@@ -25,7 +25,8 @@ $ratio-image3: 3.09;
     max-width: 100%;
     z-index: 999;
     height: auto;
-    bottom: 40px;
+    padding-bottom: 40px;
+
 
     @media screen and (max-height: 600px) {
       align-items: center;
