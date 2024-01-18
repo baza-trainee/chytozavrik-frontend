@@ -10,6 +10,7 @@ import { useRouter } from 'next/navigation';
 import Input from 'components/common/form/Input/Input';
 import UploadImage from '@/app/(admin)/components/UploadImageComponent/UploadImage';
 import { useAddBook, useEditBook, useQueryBookById } from '@/hooks';
+import { handleKeyDown } from '@/utils/handleKeyDown';
 import styles from './BooksFrom.module.scss';
 
 const schema = yup.object({
@@ -102,6 +103,7 @@ const BooksForm = ({ id }: { id?: number }) => {
             label="Назва книги"
             placeholder="Введіть назву книги"
             resetField={() => resetField('title')}
+            onKeyDown={handleKeyDown}
           />
           <Input
             name="author"
@@ -109,6 +111,7 @@ const BooksForm = ({ id }: { id?: number }) => {
             label="Автор книги"
             placeholder="Введіть автора книги"
             resetField={() => resetField('author')}
+            onKeyDown={handleKeyDown}
           />
           <Checkbox name="is_recommended" control={control}>
             Рекомендовані книжки
