@@ -139,7 +139,6 @@ const KidProfile = ({ kid }: Props) => {
           }}
           successFnc={() => {
             handleDelete(kid.id);
-            // setIsSuccess(true);
             setIsDeleted(false);
           }}
         />
