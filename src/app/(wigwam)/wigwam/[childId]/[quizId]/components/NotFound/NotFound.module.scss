@@ -14,14 +14,14 @@ $ratio-image3: 3.09;
   background-image: url('/images/wigwam/NoQuizPage/Cloud-mobile.svg');
   background-color: #7791fa;
   background-repeat: repeat-x;
-  overflow: hidden;
+  position: relative;
+  //overflow: hidden;
 
   .container {
     position: absolute;
     display: flex;
     align-items: flex-end;
-    height: 100%;
-    //height: calc(100vh - 134px);
+    height: calc(100vh - 134px);
     max-width: 100%;
     z-index: 999;
 
