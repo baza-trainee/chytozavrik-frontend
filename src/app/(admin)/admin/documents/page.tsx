@@ -27,7 +27,7 @@ const DocumentsPage = async () => {
             variant="documents"
             colNames={['Назва документу', 'Дата  оновлення', 'Редагування']}
           />
-          <Documents documents={documents.data} />
+          <Documents documents={documents.data.data} />
         </div>
       </div>
     </HydrationBoundary>
