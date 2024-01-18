@@ -10,7 +10,6 @@ $ratio-image3: 3.09;
   justify-content: center;
   align-items: flex-end;
   height: calc(100vh - 135px);
-  min-height: 500px;
   background-image: url('/images/wigwam/NoQuizPage/Cloud-mobile.svg');
   background-color: #7791fa;
   background-repeat: repeat-x;
@@ -20,9 +19,11 @@ $ratio-image3: 3.09;
     position: absolute;
     display: flex;
     align-items: flex-end;
-    height: calc(100vh - 134px);
+    //height: calc(100vh - 134px);
+    //min-height: 600px;
     max-width: 100%;
     z-index: 999;
+    height: auto;
 
     @media screen and (max-height: 600px) {
       align-items: center;
