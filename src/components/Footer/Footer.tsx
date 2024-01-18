@@ -16,7 +16,7 @@ const Footer = () => {
   const pathName = usePathname();
   const isShowFooter = !pathName.includes(Route.WIGWAM);
   const { contacts } = useQueryContactInfo();
-
+  console.log(contacts);
   return (
     isShowFooter && (
       <footer className={styles.footer}>
