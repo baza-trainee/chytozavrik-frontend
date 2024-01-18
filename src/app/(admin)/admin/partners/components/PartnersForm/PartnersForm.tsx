@@ -10,6 +10,7 @@ import { useRouter } from 'next/navigation';
 import Input from 'components/common/form/Input/Input';
 import UploadImage from '@/app/(admin)/components/UploadImageComponent/UploadImage';
 import { useAddPartner, useQueryPartnerById, useEditPartner } from '@/hooks';
+import { handleKeyDown } from '@/utils/handleKeyDown';
 import styles from './PartnersForm.module.scss';
 
 const schema = yup.object({
@@ -96,6 +97,7 @@ const PartnersForm = ({ id }: { id?: number }) => {
             label="Назва"
             placeholder="Введіть назву"
             resetField={() => resetField('name')}
+            onKeyDown={handleKeyDown}
           />
           <Input
             name="link"
@@ -103,6 +105,7 @@ const PartnersForm = ({ id }: { id?: number }) => {
             label="Посилання"
             placeholder="Введіть посилання"
             resetField={() => resetField('link')}
+            onKeyDown={handleKeyDown}
           />
         </div>
         <UploadImage
