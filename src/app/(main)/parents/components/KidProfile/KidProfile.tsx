@@ -22,7 +22,7 @@ const KidProfile = ({ kid }: Props) => {
   const [edit, setEdit] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [isDeleted, setIsDeleted] = useState(false);
-  const editWigwamRef = useRef<HTMLDivElement | null>(null)
+  const editWigwamRef = useRef<HTMLDivElement | null>(null);
   const handleEdit = () => {
     if (!edit) {
       setEdit(true);
@@ -36,7 +36,7 @@ const KidProfile = ({ kid }: Props) => {
       editWigwamRef.current.scrollIntoView({
         behavior: 'smooth',
         block: 'nearest',
-        inline: 'nearest'
+        inline: 'nearest',
       });
     }
   }, [edit]);
@@ -112,7 +112,7 @@ const KidProfile = ({ kid }: Props) => {
         </div>
       </li>
       {edit && (
-        <div  ref={editWigwamRef}>
+        <div ref={editWigwamRef}>
           <EditWigwam
             closeEditWigwam={handleEdit}
             id={kid.id}
@@ -120,7 +120,6 @@ const KidProfile = ({ kid }: Props) => {
             kidAvatar={kid.avatar}
           />
         </div>
-
       )}
       {(isSuccess || isDeleted) && (
         <Modal
