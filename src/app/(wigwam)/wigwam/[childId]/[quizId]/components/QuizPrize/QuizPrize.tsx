@@ -1,9 +1,13 @@
-import { useParams } from 'next/navigation';
+'use client';
+
+import { useParams, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { Button, Typography } from '@/components/common';
 import { Route } from '@/constants';
 import { useConfetti } from '@/hooks';
 import styles from './QuizPrize.module.scss';
+import { useQueryClient } from '@tanstack/react-query';
+
 
 type Props = {
   prize: string;
@@ -13,6 +17,14 @@ type Props = {
 const QuizPrize = ({ prize, onReplyQuiz }: Props) => {
   const canvas = useConfetti({ className: styles.confetti });
   const { childId } = useParams();
+  const router = useRouter();
+  const queryClient = useQueryClient();
+
+  const backHomeHandler = () => {
+    router.replace(`${Route.WIGWAM}/${childId}`);
+    queryClient.invalidateQueries({ queryKey: ['childBooks'] });
+    queryClient.invalidateQueries({ queryKey: ['wigwamQuiz'] });
+  };
 
   return (
     <div className={styles.prize}>
@@ -20,29 +32,29 @@ const QuizPrize = ({ prize, onReplyQuiz }: Props) => {
         <Image
           className={styles.image}
           src={prize}
-          alt="Призове зображення читозаврика"
+          alt='Призове зображення читозаврика'
           width={100}
           height={100}
         />
       </div>
       <div className={styles['text-wrapper']}>
-        <Typography className={styles.text} component="h2" variant="h2">
+        <Typography className={styles.text} component='h2' variant='h2'>
           Молодець!
         </Typography>
-        <Typography className={styles.text} component="h2" variant="h2">
+        <Typography className={styles.text} component='h2' variant='h2'>
           Читозавр з’явиться у твоїй колекції
         </Typography>
       </div>
       <div className={styles['buttons-wrapper']}>
         <Button
           className={styles.button}
-          component="link"
-          href={`${Route.WIGWAM}/${childId}`}
-          color="secondary"
+          component='button'
+          onClick={backHomeHandler}
+          color='secondary'
         >
           До вігваму
         </Button>
-        <Button className={styles.button} variant="outline" onClick={onReplyQuiz}>
+        <Button className={styles.button} variant='outline' onClick={onReplyQuiz}>
           Пройти ще раз
         </Button>
       </div>
