@@ -90,11 +90,9 @@ $ratio-image3: 3.09;
 
       @include breakpoint(tablet) {
         max-width: 100%;
-        margin-bottom: 9%;
       }
 
       @include breakpoint(laptop) {
-        margin-bottom: 90px;
         gap: 36px;
       }
     }
