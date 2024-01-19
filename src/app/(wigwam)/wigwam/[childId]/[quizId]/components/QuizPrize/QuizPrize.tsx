@@ -5,9 +5,8 @@ import Image from 'next/image';
 import { Button, Typography } from '@/components/common';
 import { Route } from '@/constants';
 import { useConfetti } from '@/hooks';
-import styles from './QuizPrize.module.scss';
 import { useQueryClient } from '@tanstack/react-query';
-
+import styles from './QuizPrize.module.scss';
 
 type Props = {
   prize: string;
@@ -32,29 +31,29 @@ const QuizPrize = ({ prize, onReplyQuiz }: Props) => {
         <Image
           className={styles.image}
           src={prize}
-          alt='Призове зображення читозаврика'
+          alt="Призове зображення читозаврика"
           width={100}
           height={100}
         />
       </div>
       <div className={styles['text-wrapper']}>
-        <Typography className={styles.text} component='h2' variant='h2'>
+        <Typography className={styles.text} component="h2" variant="h2">
           Молодець!
         </Typography>
-        <Typography className={styles.text} component='h2' variant='h2'>
+        <Typography className={styles.text} component="h2" variant="h2">
           Читозавр з’явиться у твоїй колекції
         </Typography>
       </div>
       <div className={styles['buttons-wrapper']}>
         <Button
           className={styles.button}
-          component='button'
+          component="button"
           onClick={backHomeHandler}
-          color='secondary'
+          color="secondary"
         >
           До вігваму
         </Button>
-        <Button className={styles.button} variant='outline' onClick={onReplyQuiz}>
+        <Button className={styles.button} variant="outline" onClick={onReplyQuiz}>
           Пройти ще раз
         </Button>
       </div>
