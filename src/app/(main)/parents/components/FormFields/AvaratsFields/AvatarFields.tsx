@@ -27,14 +27,12 @@ const AvatarFields = ({ register, errors, selectedAvatar }: AvatarFieldsetProps)
     { id: 6, image: Avatar6 },
   ];
   const [currentAvatar, setCurrentAvatar] = useState(0);
-  console.log('currentAvatar', currentAvatar);
-  console.log('selectedAvatar', selectedAvatar);
+
   useEffect(() => {
     setCurrentAvatar(selectedAvatar);
   }, [selectedAvatar]);
 
   const handleAvatarChange = (id: number): void => {
-    console.log('handleAvatarChange', id);
     setCurrentAvatar(id);
   };
 
@@ -55,7 +53,6 @@ const AvatarFields = ({ register, errors, selectedAvatar }: AvatarFieldsetProps)
                   value={String(id)}
                   checked={id === currentAvatar}
                   onChange={() => handleAvatarChange(id)}
-                  onBlur={() => handleAvatarChange(id)}
                 />
                 <Image src={image} alt="аватар дитини" className={styles.image} />
               </label>
