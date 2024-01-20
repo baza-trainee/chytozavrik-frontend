@@ -45,7 +45,7 @@ const AvatarFields = ({ register, errors, selectedAvatar }: AvatarFieldsetProps)
         <div className={styles.radioWrapper}>
           {avatarData.map(({ id, image }) => (
             <React.Fragment key={id}>
-              <label htmlFor={String(id)}>
+              <label htmlFor={String(id)} onClick={() => handleAvatarChange(id)}>
                 <input
                   {...register('avatar', { required: true })}
                   type="radio"
@@ -54,7 +54,7 @@ const AvatarFields = ({ register, errors, selectedAvatar }: AvatarFieldsetProps)
                   className={styles.radio}
                   value={String(id)}
                   checked={id === currentAvatar}
-                  onChange={() => handleAvatarChange(id)}
+
                 />
                 <Image src={image} alt="аватар дитини" className={styles.image} />
               </label>
