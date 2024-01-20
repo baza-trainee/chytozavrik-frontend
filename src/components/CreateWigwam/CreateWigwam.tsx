@@ -52,6 +52,7 @@ const CreateWigwam = ({ setWigwam }: Props) => {
   });
 
   const onSubmit: SubmitHandler<FormData> = formData => {
+    console.log(formData);
     const modifiedFormData = {
       ...formData,
       avatar: Number(formData.avatar),
