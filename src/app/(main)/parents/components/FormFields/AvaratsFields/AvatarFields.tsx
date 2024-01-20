@@ -52,9 +52,9 @@ const AvatarFields = ({ register, errors, selectedAvatar }: AvatarFieldsetProps)
                   className={styles.radio}
                   value={String(id)}
                   checked={id === currentAvatar}
-                  onChange={() => handleAvatarChange(id)}
+                  onBlur={() => handleAvatarChange(id)}
                 />
-
+                 <Image src={image} alt="аватар дитини" className={styles.image} />
               </label>
             </React.Fragment>
           ))}
