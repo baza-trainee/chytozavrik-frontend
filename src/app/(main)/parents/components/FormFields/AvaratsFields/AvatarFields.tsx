@@ -54,7 +54,7 @@ const AvatarFields = ({ register, errors, selectedAvatar }: AvatarFieldsetProps)
                   checked={id === currentAvatar}
                   onChange={() => handleAvatarChange(id)}
                 />
-                <Image src={image} alt="аватар дитини" className={styles.image} />
+                {/*<Image src={image} alt="аватар дитини" className={styles.image} />*/}
               </label>
             </React.Fragment>
           ))}
