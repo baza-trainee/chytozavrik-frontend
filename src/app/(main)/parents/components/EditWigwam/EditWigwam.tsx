@@ -61,7 +61,6 @@ const EditWigwam = ({ id, kidName, kidAvatar, closeEditWigwam }: Props) => {
   });
 
   const onSubmit: SubmitHandler<FormData> = formData => {
-    console.log('formData', formData);
     const modifiedFormData = {
       ...formData,
       avatar: Number(formData.avatar),
