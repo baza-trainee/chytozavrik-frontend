@@ -8,9 +8,10 @@ import { Route } from '@/constants';
 import Image from 'next/image';
 import { ChildType } from '@/types';
 import Modal from 'components/common/ModalActions/Modal';
+import * as process from 'process';
 import EditWigwam from '../EditWigwam';
 import styles from './KidProfile.module.scss';
-import * as process from 'process';
+
 
 type Props = {
   kid: ChildType;
