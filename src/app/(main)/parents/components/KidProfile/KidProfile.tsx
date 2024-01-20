@@ -57,6 +57,7 @@ const KidProfile = ({ kid }: Props) => {
     },
   });
 
+
   return (
     <>
       <li key={kid.id} className={styles.item}>
