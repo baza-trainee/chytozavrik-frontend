@@ -46,7 +46,7 @@ const AvatarFields = ({ register, errors, selectedAvatar }: AvatarFieldsetProps)
                   id={String(id)}
                   name="avatar"
                   className={styles.radio}
-                  value={String(id)}
+                  value={id}
                   checked={id === currentAvatar}
                   onChange={() => handleAvatarChange(id)}
                 />

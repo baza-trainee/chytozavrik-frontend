@@ -22,7 +22,7 @@ type FormData = {
 
 const defaultValues: FormData = {
   name: '',
-  avatar: 0,
+  avatar: 1,
 };
 
 const CreateWigwam = ({ setWigwam }: Props) => {
@@ -52,7 +52,6 @@ const CreateWigwam = ({ setWigwam }: Props) => {
   });
 
   const onSubmit: SubmitHandler<FormData> = formData => {
-    console.log(formData);
     const modifiedFormData = {
       ...formData,
       avatar: Number(formData.avatar),
