@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { initialEnv } from '@next/env';
 import * as process from 'process';
 
 const usePaymentHandler = () => {
