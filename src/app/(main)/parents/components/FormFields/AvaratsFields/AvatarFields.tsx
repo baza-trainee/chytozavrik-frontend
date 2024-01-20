@@ -71,7 +71,7 @@ const AvatarFields = ({ register, errors, selectedAvatar }: AvatarFieldsetProps)
                     className={styles.radio}
                     value={String(id)}
                     checked={id === currentAvatar}
-                    onBlur={() => handleAvatarChange(id)}
+                    onClick={() => handleAvatarChange(id)}
                   />
                   : <input
                     {...register('avatar', { required: true })}
@@ -85,7 +85,7 @@ const AvatarFields = ({ register, errors, selectedAvatar }: AvatarFieldsetProps)
                   />
                 }
 
-                <Image src={image} alt="аватар дитини" className={styles.image} style={(currentAvatar === id) ? imageCheckedStyles : {}} onClick={() => imageStyleChangeHandler(id)}/>
+                <Image src={image} alt="аватар дитини" className={styles.image} style={(currentAvatar === id) ? imageCheckedStyles : {}} />
               </label>
             </React.Fragment>
           ))}
