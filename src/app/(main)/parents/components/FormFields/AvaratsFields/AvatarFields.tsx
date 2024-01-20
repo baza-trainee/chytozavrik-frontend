@@ -18,6 +18,7 @@ interface AvatarFieldsetProps {
 }
 
 const AvatarFields = ({ register, errors, selectedAvatar }: AvatarFieldsetProps) => {
+  const [isChecked, setIsChecked] = useState(false)
   const avatarData = [
     { id: 1, image: Avatar1 },
     { id: 2, image: Avatar2 },
@@ -39,6 +40,12 @@ const AvatarFields = ({ register, errors, selectedAvatar }: AvatarFieldsetProps)
 
   const handleAvatarChange = (id: number): void => {
     setCurrentAvatar(id);
+    setIsChecked(true)
+  };
+
+  const imageCheckedStyles = {
+    border: '3px solid #455fc8',
+    borderRadius: '100px',
   };
 
 
@@ -62,6 +69,7 @@ const AvatarFields = ({ register, errors, selectedAvatar }: AvatarFieldsetProps)
                     value={String(id)}
                     checked={id === currentAvatar}
                     onBlur={() => handleAvatarChange(id)}
+                    onMouseDown={() => handleAvatarChange(id)}
                   />
                   : <input
                     {...register('avatar', { required: true })}
@@ -75,7 +83,7 @@ const AvatarFields = ({ register, errors, selectedAvatar }: AvatarFieldsetProps)
                   />
                 }
 
-                <Image src={image} alt="аватар дитини" className={styles.image} />
+                <Image src={image} alt="аватар дитини" className={styles.image} style={(currentAvatar === id) ? imageCheckedStyles : {}} />
               </label>
             </React.Fragment>
           ))}
