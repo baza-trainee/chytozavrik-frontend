@@ -19,6 +19,7 @@
   margin: 0 auto;
 
   & label {
+    position: relative;
     cursor: pointer;
     width: 48px;
     height: 48px;
@@ -43,11 +44,13 @@
 
 .radio {
   opacity: 0;
-  width: 0;
-  height: 0;
+  width: 48px;
+  height: 48px;
 }
 
 .image {
+  position: absolute;
+  left: 0;
   width: 48px;
   height: 48px;
   margin-left: -10px;
