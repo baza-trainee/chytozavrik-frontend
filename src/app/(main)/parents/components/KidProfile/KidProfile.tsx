@@ -52,7 +52,7 @@ const KidProfile = ({ kid }: Props) => {
       });
     },
     onSuccess: async() => {
-      await queryClient.refetchQueries({ queryKey: ['kids'], type: 'active', exact: true })
+      await queryClient.invalidateQueries({ queryKey: ['kids'], refetchType: 'all', exact: true })
       setIsSuccess(true);
     },
   });
