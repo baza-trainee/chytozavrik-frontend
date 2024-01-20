@@ -55,7 +55,7 @@ const AvatarFields = ({ register, errors, selectedAvatar }: AvatarFieldsetProps)
                   value={String(id)}
                   checked={id === currentAvatar}
                   onChange={() => handleAvatarChange(id)}
-                  onClick={() => handleAvatarChange(id)}
+                  onBlur={() => handleAvatarChange(id)}
                 />
                 <Image src={image} alt="аватар дитини" className={styles.image} />
               </label>
