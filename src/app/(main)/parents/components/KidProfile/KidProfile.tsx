@@ -8,8 +8,10 @@ import { Route } from '@/constants';
 import Image from 'next/image';
 import { ChildType } from '@/types';
 import Modal from 'components/common/ModalActions/Modal';
+import * as process from 'process';
 import EditWigwam from '../EditWigwam';
 import styles from './KidProfile.module.scss';
+
 
 type Props = {
   kid: ChildType;
@@ -49,8 +51,8 @@ const KidProfile = ({ kid }: Props) => {
         },
       });
     },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['kids'] });
+    onSuccess: async() => {
+      await queryClient.refetchQueries({ queryKey: ['kids'], type: 'active', exact: true })
       setIsSuccess(true);
     },
   });
@@ -130,7 +132,6 @@ const KidProfile = ({ kid }: Props) => {
               : "Вігвам дитини було успішно видалено. Всі дані, пов'язані з цим аккаунтом більше не доступні і були назавжди видалені."
           }
           title={isDeleted ? 'Видалити вігвам' : 'Видалення аккаунту завершено!'}
-          //
           active={isDeleted || isSuccess}
           setActive={() => {
             setIsSuccess(false);
