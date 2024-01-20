@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Avatar1 from 'public/images/kids-avatar1.svg';
 import Avatar2 from 'public/images/kids-avatar2.svg';
@@ -26,7 +26,11 @@ const AvatarFields = ({ register, errors, selectedAvatar }: AvatarFieldsetProps)
     { id: 5, image: Avatar5 },
     { id: 6, image: Avatar6 },
   ];
-  const [currentAvatar, setCurrentAvatar] = useState(selectedAvatar);
+  const [currentAvatar, setCurrentAvatar] = useState(0);
+
+  useEffect(() => {
+    setCurrentAvatar(selectedAvatar);
+  }, [selectedAvatar]);
 
   const handleAvatarChange = (id: number): void => {
     setCurrentAvatar(id);
