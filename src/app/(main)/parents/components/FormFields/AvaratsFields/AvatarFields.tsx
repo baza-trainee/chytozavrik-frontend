@@ -47,6 +47,11 @@ const AvatarFields = ({ register, errors, selectedAvatar }: AvatarFieldsetProps)
   };
 
 
+  const imageStyleChangeHandler = (id: number): void  => {
+    if (isSafari()) {
+      setCurrentAvatar(id);
+    }
+  }
 
 
   return (
@@ -67,7 +72,6 @@ const AvatarFields = ({ register, errors, selectedAvatar }: AvatarFieldsetProps)
                     value={String(id)}
                     checked={id === currentAvatar}
                     onBlur={() => handleAvatarChange(id)}
-                    onMouseDown={() => setCurrentAvatar(id)}
                   />
                   : <input
                     {...register('avatar', { required: true })}
@@ -81,7 +85,7 @@ const AvatarFields = ({ register, errors, selectedAvatar }: AvatarFieldsetProps)
                   />
                 }
 
-                <Image src={image} alt="аватар дитини" className={styles.image} style={(currentAvatar === id) ? imageCheckedStyles : {}} />
+                <Image src={image} alt="аватар дитини" className={styles.image} style={(currentAvatar === id) ? imageCheckedStyles : {}} onClick={() => imageStyleChangeHandler(id)}/>
               </label>
             </React.Fragment>
           ))}
