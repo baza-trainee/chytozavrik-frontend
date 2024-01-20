@@ -27,12 +27,14 @@ const AvatarFields = ({ register, errors, selectedAvatar }: AvatarFieldsetProps)
     { id: 6, image: Avatar6 },
   ];
   const [currentAvatar, setCurrentAvatar] = useState(0);
-
+  console.log('currentAvatar', currentAvatar);
+  console.log('selectedAvatar', selectedAvatar);
   useEffect(() => {
     setCurrentAvatar(selectedAvatar);
   }, [selectedAvatar]);
 
   const handleAvatarChange = (id: number): void => {
+    console.log('handleAvatarChange', id);
     setCurrentAvatar(id);
   };
 
