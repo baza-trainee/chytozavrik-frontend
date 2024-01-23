@@ -12,7 +12,6 @@ import * as process from 'process';
 import EditWigwam from '../EditWigwam';
 import styles from './KidProfile.module.scss';
 
-
 type Props = {
   kid: ChildType;
 };
@@ -51,12 +50,11 @@ const KidProfile = ({ kid }: Props) => {
         },
       });
     },
-    onSuccess: async() => {
-      await queryClient.refetchQueries({ queryKey: ['kids']})
+    onSettled: async () => {
+      await queryClient.refetchQueries({ queryKey: ['kids'] });
       setIsSuccess(true);
     },
   });
-
 
   return (
     <>
