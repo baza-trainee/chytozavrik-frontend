@@ -24,6 +24,7 @@ const KidProfile = ({ kid }: Props) => {
   const [isSuccess, setIsSuccess] = useState(false);
   const [isDeleted, setIsDeleted] = useState(false);
   const editWigwamRef = useRef<HTMLDivElement | null>(null);
+
   const handleEdit = () => {
     if (!edit) {
       setEdit(true);
@@ -55,7 +56,6 @@ const KidProfile = ({ kid }: Props) => {
       setIsSuccess(true);
     },
   });
-
 
   return (
     <>
