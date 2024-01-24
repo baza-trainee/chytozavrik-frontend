@@ -50,11 +50,12 @@ const KidProfile = ({ kid }: Props) => {
         },
       });
     },
-    onSuccess: async () => {
+    onSettled: async () => {
       await queryClient.refetchQueries({ queryKey: ['kids'] });
       setIsSuccess(true);
     },
   });
+
 
   return (
     <>
