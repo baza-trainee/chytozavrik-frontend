@@ -8,6 +8,7 @@ import { useQueryPartners } from '@/hooks/Partners/useQueryPartners';
 import { Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Partner } from '@/types/admin/PartnersType';
+import Link from 'next/link';
 import styles from './Partners.module.scss';
 import 'swiper/css';
 import 'swiper/css/autoplay';
@@ -49,9 +50,9 @@ const Partners = () => {
         >
           {partners?.results.map((partner: Partner) => (
             <SwiperSlide key={partner.id}>
-              <div className={styles.item}>
+              <Link href={partner.link} className={styles.item}>
                 <img src={partner.img} alt={partner.name} />
-              </div>
+              </Link>
             </SwiperSlide>
           ))}
         </Swiper>
