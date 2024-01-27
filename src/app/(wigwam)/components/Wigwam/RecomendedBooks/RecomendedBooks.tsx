@@ -8,6 +8,7 @@ import { RecBookType, BookType } from '@/types';
 import Slider from 'react-slick';
 import './slick.css';
 import './slick-theme.css';
+import Link from 'next/link';
 import ArrowLeft from './icons/ArrowLeft';
 import ArrowRight from './icons/ArrowRight';
 import wigwamTextData from '../wigwamTextData.json';
@@ -34,8 +35,9 @@ const RecomendedBooks: React.FC<RecomendedBooksProps> = ({ booksData = [], recBo
   const [imageIndex, setImageIndex] = useState(0);
   const router = useRouter();
   const pathname = usePathname();
-
+  console.log(recBooksData);
   const handleCardClick = (id: number, quizId: number | null) => {
+    console.log('quizId', quizId);
     if (quizId) {
       router.push(`${pathname}/${quizId}`);
     } else {
@@ -88,14 +90,22 @@ const RecomendedBooks: React.FC<RecomendedBooksProps> = ({ booksData = [], recBo
       <div className={styles.slider_container}>
         <Slider {...settings}>
           {recBooksData?.map(({ title, cover_image: coverImage, id, quiz_id: quizId }, index) => (
-            <div key={id} className={styles.card} onClick={() => handleCardClick(id, quizId)}>
+            <Link
+              href={
+                quizId
+                  ? `${pathname}/${quizId}`
+                  : `${pathname}/${title.toLowerCase().replace(/\s+/g, '-')}`
+              }
+              key={id}
+              className={styles.card}
+            >
               <div className={styles.card_image}>
                 <Image src={coverImage} alt={title} width={128} height={158} />
               </div>
               {recBooksData[index].state.includes('Вікторина') && (
                 <div className={styles.quiz_marker}>{wigwamTextData[6]}</div>
               )}
-            </div>
+            </Link>
           ))}
         </Slider>
       </div>
