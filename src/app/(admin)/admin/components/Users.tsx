@@ -26,7 +26,7 @@ const Users = ({ searchValue = '' }: { searchValue: string | null }) => {
   const queryClient = useQueryClient();
 
   if (fetchError) return <p>{usersTextData[0]}</p>;
-  console.log(users);
+
   const count = users?.count ? Math.ceil(users.count / 11) : 0;
 
   const handleCheckboxChange = (checked: boolean, userId: number) => {
