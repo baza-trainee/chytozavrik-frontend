@@ -1,10 +1,10 @@
 'use client';
 
 import React, { useState } from 'react';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import { Typography } from 'components/common';
-import { RecBookType, BookType } from '@/types';
+import { RecBookType } from '@/types';
 import Slider from 'react-slick';
 import './slick.css';
 import './slick-theme.css';
@@ -15,7 +15,6 @@ import wigwamTextData from '../wigwamTextData.json';
 import styles from './RecomendedBooks.module.scss';
 
 interface RecomendedBooksProps {
-  booksData?: BookType[] | undefined;
   recBooksData: RecBookType[] | undefined;
 }
 
@@ -31,19 +30,9 @@ const PrevArrow: React.FC<{ onClick: () => void }> = ({ onClick }) => (
   </div>
 );
 
-const RecomendedBooks: React.FC<RecomendedBooksProps> = ({ booksData = [], recBooksData = [] }) => {
+const RecomendedBooks: React.FC<RecomendedBooksProps> = ({ recBooksData = [] }) => {
   const [imageIndex, setImageIndex] = useState(0);
-  const router = useRouter();
   const pathname = usePathname();
-
-  const handleCardClick = (id: number, quizId: number | null) => {
-    console.log('quizId', quizId);
-    if (quizId) {
-      router.push(`${pathname}/${quizId}`);
-    } else {
-      router.push(`${pathname}/${id}`);
-    }
-  };
 
   const settings = {
     dots: false,
