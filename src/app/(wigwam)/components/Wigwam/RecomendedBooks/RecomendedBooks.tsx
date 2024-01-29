@@ -35,7 +35,7 @@ const RecomendedBooks: React.FC<RecomendedBooksProps> = ({ booksData = [], recBo
   const [imageIndex, setImageIndex] = useState(0);
   const router = useRouter();
   const pathname = usePathname();
-  console.log(recBooksData);
+
   const handleCardClick = (id: number, quizId: number | null) => {
     console.log('quizId', quizId);
     if (quizId) {
