@@ -30,7 +30,7 @@ const Partners = () => {
           loop
           modules={[Autoplay]}
           autoplay={{ delay: 1500, disableOnInteraction: false }}
-          speed={600}
+          speed={1500}
           centeredSlides
           breakpoints={{
             320: {
