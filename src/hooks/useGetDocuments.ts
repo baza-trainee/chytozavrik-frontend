@@ -3,9 +3,7 @@ import axios from 'axios';
 import { BASE_URL } from '@/constants/api';
 
 export const useGetDocuments = () => {
-  const {
-    data: documents,
-  } = useQuery({
+  const { data: documents } = useQuery({
     queryKey: ['documents'],
     queryFn: async () => {
       const res = await axios(`${BASE_URL}/documents/`);
@@ -13,5 +11,5 @@ export const useGetDocuments = () => {
     },
   });
 
-  return { documents};
+  return { documents };
 };
