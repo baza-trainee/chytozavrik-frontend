@@ -1,5 +1,6 @@
 import { Montserrat_Alternates as Montserrat, Raleway } from 'next/font/google';
 import Providers from '@/app/providers';
+import { Metadata } from 'next';
 
 const raleway = Raleway({
   variable: '--raleway-font',
