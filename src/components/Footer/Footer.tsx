@@ -8,11 +8,12 @@ import { usePathname } from 'next/navigation';
 import { Phone, Mail } from 'lucide-react';
 import { useQueryContactInfo } from '@/hooks/useQueryContactInfo';
 import { formatPhoneNumber } from '@/utils/formatPhoneNumber';
+import { Fragment } from 'react';
+import { useGetDocuments } from '@/hooks/useGetDocuments';
 import Container from '../common/Container/Container';
 import Typography from '../common/Typography/Typography';
 import styles from './Footer.module.scss';
-import { useGetDocuments } from '@/hooks/useGetDocuments';
-import { Fragment } from 'react';
+
 
 interface IDocument {
   file:string,
