@@ -26,6 +26,7 @@ const WigwamPage = ({ params: { childId } }: WigwamProps) => {
   const { data: wigwamQuiz } = useWigwamQuizzQuery(childId);
   const [isWigwamQuiz, setIsWigwamQuiz] = useState(false);
 
+
   useEffect(() => {
     if (typeof window !== 'undefined') {
       document.documentElement.scrollTop = 0;

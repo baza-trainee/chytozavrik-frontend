@@ -11,6 +11,7 @@ import {
 } from '@/types';
 import { fetch as axiosServerFetch } from '@/services/axios';
 import { MonstersResponse } from '@/types/Monsters';
+import { useQuizzesQuery } from '@/hooks/Quizzes/useQuizzesQuery';
 
 const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || '';
 
@@ -209,6 +210,11 @@ export const getContactsService = async () => {
 export const getChildById = async (childId: string) => {
   const { data } = await axiosServerFetch(`${baseUrl}/users/me/children/${childId}/`);
   return data;
+};
+
+export const getQuizzes = async (childId: string) => {
+  const result = await axiosServerFetch(`/users/me/children/${childId}/quizzes/`);
+  return result.data;
 };
 
 export const getUsersService = async () => {
