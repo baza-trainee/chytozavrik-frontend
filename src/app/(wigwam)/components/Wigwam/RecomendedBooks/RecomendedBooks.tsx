@@ -34,6 +34,7 @@ const RecomendedBooks: React.FC<RecomendedBooksProps> = ({ recBooksData = [] }) 
   const [imageIndex, setImageIndex] = useState(0);
   const pathname = usePathname();
 
+
   const settings = {
     dots: false,
     infinite: true,

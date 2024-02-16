@@ -7,10 +7,16 @@ import { useSession } from 'next-auth/react';
 import { useMedia } from '@/hooks';
 import styles from './Header.module.scss';
 import HeaderButton from './HeaderButton';
+import { useEffect } from 'react';
+
 
 const Header = () => {
   const { data: session } = useSession();
   const { deviceType } = useMedia();
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, []);
 
   return (
     <header>
