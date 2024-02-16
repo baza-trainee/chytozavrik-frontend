@@ -212,11 +212,6 @@ export const getChildById = async (childId: string) => {
   return data;
 };
 
-export const getQuizzes = async (childId: string) => {
-  const result = await axiosServerFetch(`/users/me/children/${childId}/quizzes/`);
-  return result.data;
-};
-
 export const getUsersService = async () => {
   const { data } = await axiosServerFetch(`${baseUrl}/statistics/users/`);
   return data;
