@@ -58,21 +58,27 @@ const Footer = () => {
                     <Link href={Route.WIGWAM_LOBBY}>До вігваму</Link>
                   </Typography>
                 </ul>
-                <ul className={styles.class1}>
-                  {documents?.map((document: IDocument) => (
-                    <Fragment key={document.id}>
-                      <Typography className={styles.informationText} component="p" variant="footer">
-                        <Link
-                          href={`${document.file}#toolbar=0`}
-                          target="_blank"
-                          className={styles.linkText}
+                {Array.isArray(documents) && documents.length > 0 && (
+                  <ul className={styles.class1}>
+                    {documents?.map((document: IDocument) => (
+                      <Fragment key={document.id}>
+                        <Typography
+                          className={styles.informationText}
+                          component="p"
+                          variant="footer"
                         >
-                          {document.name}
-                        </Link>
-                      </Typography>
-                    </Fragment>
-                  ))}
-                </ul>
+                          <Link
+                            href={`${document.file}#toolbar=0`}
+                            target="_blank"
+                            className={styles.linkText}
+                          >
+                            {document.name}
+                          </Link>
+                        </Typography>
+                      </Fragment>
+                    ))}
+                  </ul>
+                )}
               </div>
 
               <div className={classNames(styles.list, styles.contacts)}>
