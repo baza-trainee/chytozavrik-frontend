@@ -7,8 +7,6 @@ import { Button, Container, Typography } from 'components/common';
 import { Route } from '@/constants';
 import styles from './Hero.module.scss';
 
-
-
 const Hero = () => {
   const session = useSession();
 

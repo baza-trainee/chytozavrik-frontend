@@ -10,6 +10,6 @@ interface WigwamProps {
   params: { childId: string };
 }
 
-const Wigwam = ({ params: { childId } }: WigwamProps) => <WigwamPage params={{ childId }} />
+const Wigwam = ({ params: { childId } }: WigwamProps) => <WigwamPage params={{ childId }} />;
 
 export default Wigwam;
