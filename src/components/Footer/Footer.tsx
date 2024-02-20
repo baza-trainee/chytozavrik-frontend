@@ -114,7 +114,7 @@ const Footer = () => {
           </div>
 
           <Typography className={styles.footerText} component="p" variant="footer-end">
-            Розробка Baza Trainee Ukraine 2024 Усі права захищені
+            Розробка Baza Trainee Ukraine 2024 &copy; Усі права захищені
           </Typography>
         </Container>
       </footer>
